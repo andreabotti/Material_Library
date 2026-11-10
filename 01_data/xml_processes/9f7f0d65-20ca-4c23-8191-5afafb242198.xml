@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>9f7f0d65-20ca-4c23-8191-5afafb242198</common:UUID>
+      <name>
+        <baseName xml:lang="en">Concrete C30/37+AER_XC4-XF4-XD3_S4_F-C, at production, IT</baseName>
+      </name>
+      <common:synonyms>Calcestruzzo C30/37+AER_XC4-XF4-XD3_S4_F-C, alla produzione, IT</common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">Systems</common:class>
+          <common:class level="1">Construction</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment>Dataset developed according to Arcadia project Methodology (Report: “Metodologia per gli studi di filiera della Banca Dati italiana LCA”). LCA study of concrete production (Report: “Studio LCA della filiera del calcestruzzo”). This dataset is representative of the average ready mix concretes with strength class C30/37, exposure class XC4-XF4-XD3, slump class S4, 85% natural crushed aggregates and 15% C&amp;D aggregates defined by the UNI EN 206 produced in Italy.</common:generalComment>
+      <referenceToExternalDocumentation type="source data set" refObjectId="2458fb8c-e56e-4c66-9782-93625a700202" version="01.00.000" uri="../sources/2458fb8c-e56e-4c66-9782-93625a700202.xml">
+        <common:shortDescription>Background datasets from Ecoinvent database cut-off (v.3.8) were used for the LCA study.</common:shortDescription>
+      </referenceToExternalDocumentation>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2021</common:referenceYear>
+      <common:dataSetValidUntil>2026</common:dataSetValidUntil>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT"/>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>The ready mix concrete production process includes the clinker, cement, aggregates, additives production stages. Clinker is produced from natural raw materials (such as limestone, clay, gypsum, marl and others) which are crushed, finely ground, homogenised and fired in a blast furnace. Once out, the clinker is cooled and ground in the mills with the addition of other natural raw materials (mainly gypsum and limestone) and other materials/additives to obtain the final homogeneous powder (the cement). &#13;
+Cement is subsequently mixed with aggregates, water and additives in concrete mixing plant.&#13;
+For the background processes (raw material in input) EcoInvent database (v. 3.8) cut-off datasets were used. &#13;
+Reliability 'Good';&#13;
+Geographical representation 'Very good';&#13;
+Temporal representativeness 'Very good’;&#13;
+Technological representativeness ‘Very good’</technologyDescriptionAndIncludedProcesses>
+      <technologicalApplicability>Production of italian ready mix concrete  for construction sector</technologicalApplicability>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Not applicable</LCIMethodApproaches>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <dataCutOffAndCompletenessPrinciples>Production of equipment and infrastructures is not included, except for the background system</dataCutOffAndCompletenessPrinciples>
+      <referenceToDataSource type="source data set" refObjectId="b887e513-31f2-4811-8efc-c16964a876a8" version="01.00.000" uri="../sources/b887e513-31f2-4811-8efc-c16964a876a8.xml">
+        <common:shortDescription>20231110131607_Studio LCA della filiera del calcestruzzo-pubbl.pdf</common:shortDescription>
+      </referenceToDataSource>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>No statement</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Independent external review">
+        <common:reviewDetails>The review was performed  in compliance with Arcadia Methodology “Metodologia per gli studi di filiera” della Banca Dati italiana LCA”. The dataset has been assessed limited to the foreground data collected during the supply chain studies.&#13;
+Each dataset has been evaluated on the basis of the following 4 criteria:&#13;
+1. Temporal Representativeness (RT)&#13;
+2. Geographic Representative (RG);&#13;
+3. Technological Representative (RTec);&#13;
+4. Reliability (A)&#13;
+In this contest the Reliability is very good (data are all calculated/from literature and have been checked by experts)</common:reviewDetails>
+        <common:referenceToNameOfReviewerAndInstitution type="contact data set" refObjectId="63838266-c564-4eb8-80ad-ace7cc5a1073" version="01.00.000" uri="../sources/63838266-c564-4eb8-80ad-ace7cc5a1073.xml">
+          <common:shortDescription>Ecoinnovazione S.r.L.</common:shortDescription>
+        </common:referenceToNameOfReviewerAndInstitution>
+        <common:otherReviewDetails>The study was judged by the reviewer as compliant with both ISO 14040-44 and Arcadia methodology</common:otherReviewDetails>
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Completeness" value="Very good"/>
+        </common:dataQualityIndicators>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="f7fdfb08-d0fb-4f9a-95e4-99f5243543af" uri="../sources/f7fdfb08-d0fb-4f9a-95e4-99f5243543af.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Fully compliant</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="deacf9c9-c0bc-462a-a4a1-45ea1c09c63c" uri="../sources/deacf9c9-c0bc-462a-a4a1-45ea1c09c63c.xml">
+          <common:shortDescription xml:lang="en">ISO 14044</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Not defined</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="bfdeb414-d6ca-488a-8bd6-37fe43c8b3fc" uri="../sources/bfdeb414-d6ca-488a-8bd6-37fe43c8b3fc.xml">
+        <common:shortDescription xml:lang="en">Arcadia – PON Governance e Capacità istituzionale 2014-2020</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Arcadia – PON Governance e Capacità istituzionale 2014-2020</common:project>
+    </common:commissionerAndGoal>
+    <dataGenerator>
+      <common:referenceToPersonOrEntityGeneratingTheDataSet refObjectId="88aa0727-2596-43ce-ba54-66268415edcc" type="contact data set" uri="../sources/88aa0727-2596-43ce-ba54-66268415edcc.xml" version="01.00.000">
+        <common:shortDescription>Università degli Studi di Bergamo dipartimento di Ingegneria e Scienze Applicate (Luigi Coppola, Elisabetta Palumbo, Denny Coffetti, Chiara Panozzo, Simone Rapelli)</common:shortDescription>
+      </common:referenceToPersonOrEntityGeneratingTheDataSet>
+    </dataGenerator>
+    <dataEntryBy>
+      <common:timeStamp>2023-11-07T09:45:44.879+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="a97a0155-0234-4b87-b4ce-a45da52f2a40" uri="../sources/a97a0155-0234-4b87-b4ce-a45da52f2a40.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2023-08-01T16:40:21.785Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/9f7f0d65-20ca-4c23-8191-5afafb242198.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="418ad0bd-fbd8-45af-b884-e3752d003699" type="contact data set" uri="../contacts/418ad0bd-fbd8-45af-b884-e3752d003699.xml" version="01.00.000">
+        <common:shortDescription>ENEA - Arcadia</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+      <common:accessRestrictions>Type of license: Open Database Licence (ODbL)</common:accessRestrictions>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="c2dc794e-54b0-4883-88a4-04b1c4bb899c" uri="../flows/c2dc794e-54b0-4883-88a4-04b1c4bb899c.xml">
+        <common:shortDescription xml:lang="en">Concrete C30/37+AER_XC4-XF4-XD3_S4_F-C, at production, IT</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0000000E+0</meanAmount>
+      <resultingAmount>1.0000000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4ee636da-2cf7-4962-ae64-aac131f84648" uri="../flows/4ee636da-2cf7-4962-ae64-aac131f84648.xml">
+        <common:shortDescription xml:lang="en">CEM IV/A-V 42.5 R</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.6000000E+2</meanAmount>
+      <resultingAmount>3.6000000E+2</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="7df90f06-ce37-4331-94e3-8ff36a300ef2" uri="../flows/7df90f06-ce37-4331-94e3-8ff36a300ef2.xml">
+        <common:shortDescription xml:lang="en">Tap water {CH}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.6000000E+2</meanAmount>
+      <resultingAmount>1.6000000E+2</resultingAmount>
+      <generalComment>Mixing water
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="3">
+      <referenceToFlowDataSet type="flow data set" refObjectId="58673d33-47ab-46b5-b846-f30fa1a16396" uri="../flows/58673d33-47ab-46b5-b846-f30fa1a16396.xml">
+        <common:shortDescription xml:lang="en">Gravel, crushed {CH}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.5200000E+3</meanAmount>
+      <resultingAmount>1.5200000E+3</resultingAmount>
+      <generalComment>Natural crushed aggregate
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="4">
+      <referenceToFlowDataSet type="flow data set" refObjectId="b46add4c-f874-453a-87d6-3203ab63f265" uri="../flows/b46add4c-f874-453a-87d6-3203ab63f265.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry &gt;32 metric ton, euro5 {RER}| market for transport, freight, lorry &gt;32 metric ton, EURO5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>9.7280000E+1</meanAmount>
+      <resultingAmount>9.7280000E+1</resultingAmount>
+      <generalComment>Natural aggregate transport 64 km (Source: Rapporto di Sostenibilità Federbeton 2021)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="5">
+      <referenceToFlowDataSet type="flow data set" refObjectId="b46add4c-f874-453a-87d6-3203ab63f265" uri="../flows/b46add4c-f874-453a-87d6-3203ab63f265.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry &gt;32 metric ton, euro5 {RER}| market for transport, freight, lorry &gt;32 metric ton, EURO5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.4640000E+1</meanAmount>
+      <resultingAmount>4.4640000E+1</resultingAmount>
+      <generalComment>Cement transport 124 km (Source: Rapporto di Sostenibilità Federbeton 2021)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="6">
+      <referenceToFlowDataSet type="flow data set" refObjectId="b46add4c-f874-453a-87d6-3203ab63f265" uri="../flows/b46add4c-f874-453a-87d6-3203ab63f265.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry &gt;32 metric ton, euro5 {RER}| market for transport, freight, lorry &gt;32 metric ton, EURO5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.4720000E+1</meanAmount>
+      <resultingAmount>1.4720000E+1</resultingAmount>
+      <generalComment>Recycled industrial aggregate transport 64 km (Source: Rapporto di Sostenibilità Federbeton 2021)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="7">
+      <referenceToFlowDataSet type="flow data set" refObjectId="3b17203c-e3af-4f70-9dba-bd65824b6140" uri="../flows/3b17203c-e3af-4f70-9dba-bd65824b6140.xml">
+        <common:shortDescription xml:lang="en">C&amp;D aggregate</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.3000000E+2</meanAmount>
+      <resultingAmount>2.3000000E+2</resultingAmount>
+      <generalComment>(Source: Life cycle assessment of  non-hazardous CDW management in Lombardy region (Italy) di G. Borghi et. al.)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="8">
+      <referenceToFlowDataSet type="flow data set" refObjectId="0fba7f92-c9de-4f7e-8455-a4e3965de06a" uri="../flows/0fba7f92-c9de-4f7e-8455-a4e3965de06a.xml">
+        <common:shortDescription xml:lang="en">Polycarboxylates, 40% active substance {RER}| market for polycarboxylates, 40% active substance | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.6000000E+0</meanAmount>
+      <resultingAmount>3.6000000E+0</resultingAmount>
+      <generalComment>Superplasticizer
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="9">
+      <referenceToFlowDataSet type="flow data set" refObjectId="b46add4c-f874-453a-87d6-3203ab63f265" uri="../flows/b46add4c-f874-453a-87d6-3203ab63f265.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry &gt;32 metric ton, euro5 {RER}| market for transport, freight, lorry &gt;32 metric ton, EURO5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.4080000E-1</meanAmount>
+      <resultingAmount>6.4080000E-1</resultingAmount>
+      <generalComment>Superplasticizer transport 178 km (Source: Rapporto di Sostenibilità Federbeton 2021)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="10">
+      <referenceToFlowDataSet type="flow data set" refObjectId="3bbec5c0-c62a-4c30-9099-f0a98fb35f82" uri="../flows/3bbec5c0-c62a-4c30-9099-f0a98fb35f82.xml">
+        <common:shortDescription xml:lang="en">Air entrainer</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.0000000E-4</meanAmount>
+      <resultingAmount>2.0000000E-4</resultingAmount>
+      <generalComment>Air entrainer
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="11">
+      <referenceToFlowDataSet type="flow data set" refObjectId="b46add4c-f874-453a-87d6-3203ab63f265" uri="../flows/b46add4c-f874-453a-87d6-3203ab63f265.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry &gt;32 metric ton, euro5 {RER}| market for transport, freight, lorry &gt;32 metric ton, EURO5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.5600000E-2</meanAmount>
+      <resultingAmount>3.5600000E-2</resultingAmount>
+      <generalComment>Air entrainer transport 178 km (Source: Rapporto di Sostenibilità Federbeton 2021)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="12">
+      <referenceToFlowDataSet type="flow data set" refObjectId="1393f449-5143-4219-8495-beac78aeb580" uri="../flows/1393f449-5143-4219-8495-beac78aeb580.xml">
+        <common:shortDescription xml:lang="en">Electricity, medium voltage {IT}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>9.3600000E+0</meanAmount>
+      <resultingAmount>9.3600000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="13">
+      <referenceToFlowDataSet type="flow data set" refObjectId="a3bcb529-b69d-4296-a2c9-0feeceb103cd" uri="../flows/a3bcb529-b69d-4296-a2c9-0feeceb103cd.xml">
+        <common:shortDescription xml:lang="en">Diesel, burned in building machine {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.2700000E+1</meanAmount>
+      <resultingAmount>2.2700000E+1</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="14">
+      <referenceToFlowDataSet type="flow data set" refObjectId="e1204b0d-23d9-428c-896b-649d697a5516" uri="../flows/e1204b0d-23d9-428c-896b-649d697a5516.xml">
+        <common:shortDescription xml:lang="en">Waste concrete, not reinforced {CH}| treatment of, recycling | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.6800000E+1</meanAmount>
+      <resultingAmount>1.6800000E+1</resultingAmount>
+      <generalComment>0,7% (Source: Rapporto di Sostenibilità Federbeton 2021)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="15">
+      <referenceToFlowDataSet type="flow data set" refObjectId="9120914d-4859-4bf2-95d4-497455f33ad8" uri="../flows/9120914d-4859-4bf2-95d4-497455f33ad8.xml">
+        <common:shortDescription xml:lang="en">Wastewater from concrete production {CH}| treatment of, capacity 5E9l/year | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.9400000E-2</meanAmount>
+      <resultingAmount>3.9400000E-2</resultingAmount>
+      <generalComment>Washing water
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="16">
+      <referenceToFlowDataSet type="flow data set" refObjectId="451c600c-067a-4a89-bbf5-8a172bcea3ff" uri="../flows/451c600c-067a-4a89-bbf5-8a172bcea3ff.xml">
+        <common:shortDescription xml:lang="en">Waste concrete {CH}| market for waste concrete | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>7.2000000E+0</meanAmount>
+      <resultingAmount>7.2000000E+0</resultingAmount>
+      <generalComment>0,3% (Source: Rapporto di Sostenibilità Federbeton 2021)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="17">
+      <referenceToFlowDataSet type="flow data set" refObjectId="21868f36-62ab-4e8e-98ed-7106228c17be" uri="../flows/21868f36-62ab-4e8e-98ed-7106228c17be.xml">
+        <common:shortDescription xml:lang="en">Water to Cooling</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>IT</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.9400000E-2</meanAmount>
+      <resultingAmount>3.9400000E-2</resultingAmount>
+      <generalComment>209,4 l of water for 1 m3 of concrete (Source: Rapporto di Sostenibilità Federbeton 2021)
+Washing water
+209,4 - 170 l average mixing water = 39,4 l = 0,0394 m3
+</generalComment>
+    </exchange>
+  </exchanges>
+</processDataSet>

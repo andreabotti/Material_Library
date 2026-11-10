@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#ffffff;
+  --surface:#f8fafc;
+  --surface2:#f1f5f9;
+  --border:#e2e8f0;
+  --text:#1e293b;
+  --text2:#64748b;
+  --text3:#94a3b8;
+  --green:#2a7d2e;
+  --green-light:#e8f5e9;
+  --green-mid:#bbf7d0;
+  --blue:#185fa5;
+  --blue-light:#e6f1fb;
+  --orange:#d97706;
+  --orange-light:#fff8e1;
+  --orange-mid:#fed7aa;
+  --ff:'IBM Plex Sans',system-ui,sans-serif;
+  --ff-mono:'IBM Plex Mono',monospace;
+  --fs:13px;
+  --fs-sm:11px;
+  --radius:6px;
+  --radius-sm:3px;
+}
+html,body{
+  width:100%;height:100%;overflow:hidden;
+  font-family:var(--ff);font-size:var(--fs);color:var(--text);background:var(--bg);
+}
+#shell{display:flex;height:100%;overflow:hidden;}
+
+/* ── Sidebar ─────────────────────────────────────────────────────────────── */
+#sidebar{
+  width:300px;flex-shrink:0;
+  display:flex;flex-direction:column;
+  border-right:2px solid var(--border);
+  background:var(--surface);
+  overflow:hidden;
+}
+#sidebar-chrome{
+  flex:0 0 auto;padding:10px;
+  background:#fff;z-index:5;
+  border-bottom:1px solid var(--border);
+  box-shadow:0 2px 6px rgba(0,0,0,0.04);
+}
+.search-wrap{position:relative;margin-bottom:7px;}
+#q{
+  width:100%;padding:6px 8px 6px 28px;
+  border:1px solid var(--border);border-radius:var(--radius);
+  font-size:var(--fs);font-family:var(--ff);background:#fff;outline:none;
+  transition:border-color 0.15s;
+}
+#q:focus{border-color:var(--green);}
+.search-icon{
+  position:absolute;left:8px;top:50%;transform:translateY(-50%);
+  font-size:12px;pointer-events:none;color:var(--text3);
+}
+.filter-row{display:flex;gap:5px;margin-bottom:5px;}
+.filter-row select{
+  flex:1;min-width:0;padding:4px 5px;
+  border:1px solid var(--border);border-radius:var(--radius-sm);
+  font-size:var(--fs-sm);font-family:var(--ff);background:#fff;
+  cursor:pointer;outline:none;color:var(--text);
+}
+.filter-row select:focus{border-color:var(--green);}
+#count-row{
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:var(--fs-sm);color:var(--text2);margin-top:4px;
+}
+#btn-clear{
+  border:none;background:none;color:var(--text2);font-size:var(--fs-sm);
+  cursor:pointer;padding:2px 7px;border-radius:var(--radius-sm);
+  transition:background 0.1s;
+}
+#btn-clear:hover{background:var(--surface2);color:var(--text);}
+#proc-list{
+  flex:1 1 auto;overflow-y:auto;padding:4px 0;list-style:none;
+  scroll-behavior:smooth;
+}
+.proc-item{
+  padding:8px 12px;
+  border-bottom:1px solid var(--border);
+  cursor:pointer;
+  transition:background 0.1s;
+  border-left:3px solid transparent;
+}
+.proc-item:hover{background:var(--green-light);}
+.proc-item.selected{
+  background:#e8f5e9;
+  border-left-color:var(--green);
+}
+.proc-item.hidden{display:none;}
+.proc-name{
+  font-size:var(--fs);font-weight:500;line-height:1.3;
+  overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+  margin-bottom:4px;color:var(--text);
+}
+.proc-meta{display:flex;align-items:center;gap:4px;flex-wrap:wrap;}
+
+/* ── Badges / chips ───────────────────────────────────────────────────────── */
+.badge{
+  display:inline-block;font-size:10px;padding:1px 6px;border-radius:99px;
+  font-weight:600;white-space:nowrap;line-height:1.5;
+}
+.bc{background:#dbeafe;color:#1e40af;}
+.bl{background:#d1fae5;color:#065f46;}
+.by{background:#fef3c7;color:#92400e;}
+.bt{background:#ede9fe;color:#5b21b6;}
+.bv{background:#f0fdf4;color:#166534;}
+.bd{background:#fff1f2;color:#be123c;}
+
+/* ── Detail Panel ─────────────────────────────────────────────────────────── */
+#detail{
+  flex:1 1 auto;min-width:0;
+  display:flex;flex-direction:column;overflow:hidden;
+  background:#fff;
+}
+#placeholder{
+  flex:1;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;color:var(--text3);text-align:center;padding:40px;gap:12px;
+}
+.ph-icon{font-size:44px;opacity:0.5;}
+.ph-text{font-size:15px;color:var(--text2);font-weight:500;}
+.ph-sub{font-size:var(--fs-sm);color:var(--text3);max-width:240px;line-height:1.5;}
+#detail-content{
+  flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden;
+}
+#detail-hdr{
+  flex:0 0 auto;padding:14px 18px 10px;
+  border-bottom:1px solid var(--border);
+  background:linear-gradient(135deg,#f8fffe 0%,#f0faf2 100%);
+}
+#d-name{
+  font-size:15px;font-weight:600;line-height:1.3;margin-bottom:8px;color:var(--text);
+}
+#d-badges{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:6px;}
+#d-uuid{font-size:10px;color:var(--text3);font-family:var(--ff-mono);cursor:pointer;}
+#d-uuid:hover{color:var(--green);}
+#d-uuid::before{content:"UUID: ";}
+#detail-body{
+  flex:1 1 auto;overflow-y:auto;overflow-x:hidden;
+  padding:10px 18px 20px;
+}
+
+/* ── Accordion sections ───────────────────────────────────────────────────── */
+.section{
+  border:1px solid var(--border);border-radius:var(--radius);
+  margin-bottom:8px;overflow:hidden;
+}
+.section-hdr{
+  display:flex;align-items:center;gap:7px;padding:8px 12px;
+  background:var(--surface);cursor:pointer;
+  font-weight:600;font-size:var(--fs);color:var(--text2);
+  user-select:none;transition:background 0.1s;
+}
+.section-hdr:hover{background:var(--surface2);}
+.section-hdr.open{color:var(--green);border-bottom:1px solid var(--border);}
+.section-icon{font-size:13px;}
+.section-arrow{font-size:9px;color:var(--text3);margin-left:auto;}
+.section-body{display:none;padding:10px 12px;}
+.section-body.open{display:block;}
+
+/* ── Field table ─────────────────────────────────────────────────────────── */
+.field-table{width:100%;border-collapse:collapse;}
+.field-table tr>td{
+  padding:4px 6px 4px 0;vertical-align:top;
+  border-bottom:1px solid var(--surface2);font-size:var(--fs);
+}
+.field-table tr:last-child>td{border-bottom:none;}
+.field-table tr>td:first-child{
+  width:36%;font-size:var(--fs-sm);color:var(--text2);font-weight:500;
+  white-space:nowrap;padding-right:10px;
+}
+.field-table tr>td:last-child{word-break:break-word;}
+.field-long{white-space:pre-wrap;font-size:var(--fs-sm);line-height:1.45;color:var(--text);}
+.field-empty{color:var(--text3);font-style:italic;font-size:var(--fs-sm);}
+.field-uri{color:var(--blue);font-family:var(--ff-mono);font-size:10px;word-break:break-all;}
+.dq-grid{display:flex;flex-wrap:wrap;gap:8px;}
+.dq-chip{
+  padding:4px 10px;border-radius:99px;font-size:var(--fs-sm);
+  border:1px solid var(--border);background:var(--surface);
+}
+.dq-label{color:var(--text2);margin-right:4px;}
+.dq-val{font-weight:600;color:var(--text);}
+
+/* ── Exchange table ───────────────────────────────────────────────────────── */
+#exc-summary{
+  font-size:var(--fs-sm);color:var(--text2);margin-bottom:8px;
+  display:flex;gap:10px;flex-wrap:wrap;align-items:center;
+}
+.exc-stat{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:2px 8px;border-radius:99px;font-weight:500;
+}
+.exc-stat-in{background:#dcfce7;color:#166534;}
+.exc-stat-out{background:#ffedd5;color:#9a3412;}
+.exc-table-wrap{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--border);}
+table.exc-tbl{width:100%;border-collapse:collapse;font-size:var(--fs-sm);}
+.exc-tbl th{
+  text-align:left;padding:6px 10px;
+  background:var(--surface);
+  border-bottom:2px solid var(--border);
+  font-weight:600;color:var(--text2);
+  white-space:nowrap;
+  position:sticky;top:0;z-index:2;
+}
+.exc-tbl td{padding:5px 10px;border-bottom:1px solid var(--surface2);vertical-align:top;}
+.exc-tbl tr.ei td{background:#f0fdf4;}
+.exc-tbl tr.eo td{background:#fff7ed;}
+.exc-tbl tr.eref td{font-weight:600;}
+.exc-tbl tr:last-child td{border-bottom:none;}
+.exc-tbl tr:hover td{filter:brightness(0.97);}
+.dir-pill{
+  display:inline-block;font-size:10px;padding:1px 5px;border-radius:3px;
+  font-weight:700;white-space:nowrap;
+}
+.dp-in{background:#dcfce7;color:#166534;}
+.dp-out{background:#ffedd5;color:#9a3412;}
+.ref-star{color:var(--orange);font-size:14px;}
+.amt{font-family:var(--ff-mono);font-size:10.5px;}
+.flow-name{max-width:280px;line-height:1.3;}
+
+/* ── Scrollbar styling ───────────────────────────────────────────────────── */
+#proc-list::-webkit-scrollbar,#detail-body::-webkit-scrollbar{width:5px;}
+#proc-list::-webkit-scrollbar-track,#detail-body::-webkit-scrollbar-track{background:transparent;}
+#proc-list::-webkit-scrollbar-thumb,#detail-body::-webkit-scrollbar-thumb{
+  background:var(--border2,#cbd5e1);border-radius:99px;
+}
+</style>
+</head>
+<body>
+<div id="shell">
+
+  <!-- ── Sidebar ──────────────────────────────────────────────────────────── -->
+  <div id="sidebar">
+    <div id="sidebar-chrome">
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input id="q" type="text" placeholder="Search by name or category…" autocomplete="off" spellcheck="false">
+      </div>
+      <div class="filter-row">
+        <select id="f-cat" title="Filter by category"><option value="">All categories</option></select>
+        <select id="f-loc" title="Filter by location"><option value="">All locations</option></select>
+      </div>
+      <div class="filter-row">
+        <select id="f-year" title="Filter by year"><option value="">All years</option></select>
+        <select id="f-type" title="Filter by dataset type"><option value="">All types</option></select>
+      </div>
+      <div id="count-row">
+        <span id="count-label">— processes</span>
+        <button id="btn-clear" onclick="clearFilters()" title="Clear all filters">✕ Clear</button>
+      </div>
+    </div>
+    <ul id="proc-list"></ul>
+  </div>
+
+  <!-- ── Detail Panel ─────────────────────────────────────────────────────── -->
+  <div id="detail">
+    <div id="placeholder">
+      <div class="ph-icon">🌿</div>
+      <div class="ph-text">BDI-LCA ARCADIA Database</div>
+      <div class="ph-sub">Select a process from the list to view its full ILCD dataset details</div>
+    </div>
+
+    <div id="detail-content" style="display:none">
+      <div id="detail-hdr">
+        <div id="d-name"></div>
+        <div id="d-badges"></div>
+        <div id="d-uuid" onclick="copyUUID()" title="Click to copy UUID"></div>
+      </div>
+      <div id="detail-body">
+
+        <div class="section">
+          <div class="section-hdr open" onclick="toggleSection(this)">
+            <span class="section-icon">📋</span> Process Information
+            <span class="section-arrow">▼</span>
+          </div>
+          <div class="section-body open" id="sec-info"></div>
+        </div>
+
+        <div class="section">
+          <div class="section-hdr" onclick="toggleSection(this)">
+            <span class="section-icon">⚙️</span> Modelling &amp; Validation
+            <span class="section-arrow">▶</span>
+          </div>
+          <div class="section-body" id="sec-modelling"></div>
+        </div>
+
+        <div class="section">
+          <div class="section-hdr" onclick="toggleSection(this)">
+            <span class="section-icon">🗂️</span> Administrative Information
+            <span class="section-arrow">▶</span>
+          </div>
+          <div class="section-body" id="sec-admin"></div>
+        </div>
+
+        <div class="section">
+          <div class="section-hdr open" onclick="toggleSection(this)">
+            <span class="section-icon">⇄</span> Input &amp; Output Flows
+            <span class="section-arrow">▼</span>
+          </div>
+          <div class="section-body open" id="sec-flows"></div>
+        </div>
+
+      </div><!-- /detail-body -->
+    </div><!-- /detail-content -->
+  </div><!-- /detail -->
+
+</div><!-- /shell -->
+
+<script>
+/* ── Data injected by Python ─────────────────────────────────────────────── */
+const DATA = /*BDILCA_DATA_PLACEHOLDER*/null;
+
+if (!DATA) {
+  document.getElementById('placeholder').querySelector('.ph-sub').textContent =
+    'Error: no data loaded. Check that xml_processes/ folder is populated.';
+}
+
+/* ── Build lookups ───────────────────────────────────────────────────────── */
+const byUUID = {};
+const catSet  = new Set();
+const locSet  = new Set();
+const yearSet = new Set();
+const typeSet = new Set();
+
+for (const p of (DATA ? DATA.processes : [])) {
+  byUUID[p.uuid] = p;
+  const cat = extractCat(p.classification);
+  if (cat) catSet.add(cat);
+  if (p.location) locSet.add(p.location);
+  if (p.reference_year) yearSet.add(p.reference_year);
+  if (p.type_of_dataset) typeSet.add(p.type_of_dataset);
+}
+
+function extractCat(cls) {
+  const m = cls && cls.match(/L1:([^>|]+)/);
+  if (m) return m[1].trim();
+  const m0 = cls && cls.match(/L0:([^>|]+)/);
+  return m0 ? m0[1].trim() : '';
+}
+
+/* ── Populate filter dropdowns ───────────────────────────────────────────── */
+function populateSelect(id, values, sorted) {
+  const sel = document.getElementById(id);
+  const placeholder = sel.options[0];
+  sel.innerHTML = '';
+  sel.appendChild(placeholder);
+  const arr = sorted ? [...values].sort() : [...values].sort().reverse();
+  for (const v of arr) {
+    const o = document.createElement('option');
+    o.value = v; o.textContent = v;
+    sel.appendChild(o);
+  }
+}
+
+populateSelect('f-cat',  catSet,  true);
+populateSelect('f-loc',  locSet,  true);
+populateSelect('f-year', yearSet, false);
+populateSelect('f-type', typeSet, true);
+
+/* ── Render process list ─────────────────────────────────────────────────── */
+function renderList() {
+  const ul = document.getElementById('proc-list');
+  ul.innerHTML = '';
+  if (!DATA) return;
+  for (const p of DATA.processes) {
+    const li = document.createElement('li');
+    li.className = 'proc-item';
+    li.dataset.uuid = p.uuid;
+    li.onclick = () => selectProcess(p.uuid);
+    const cat = extractCat(p.classification);
+    const badges = [
+      cat  ? `<span class="badge bc">${esc(cat)}</span>` : '',
+      p.location ? `<span class="badge bl">${esc(p.location)}</span>` : '',
+      p.reference_year ? `<span class="badge by">${esc(p.reference_year)}</span>` : '',
+    ].filter(Boolean).join('');
+    li.innerHTML = `<div class="proc-name">${esc(p.name || p.uuid)}</div>`
+                 + (badges ? `<div class="proc-meta">${badges}</div>` : '');
+    ul.appendChild(li);
+  }
+  updateCount();
+}
+
+renderList();
+
+/* ── Filter logic ────────────────────────────────────────────────────────── */
+function applyFilters() {
+  const q    = document.getElementById('q').value.toLowerCase().trim();
+  const cat  = document.getElementById('f-cat').value;
+  const loc  = document.getElementById('f-loc').value;
+  const year = document.getElementById('f-year').value;
+  const type = document.getElementById('f-type').value;
+
+  let n = 0;
+  for (const li of document.querySelectorAll('.proc-item')) {
+    const p = byUUID[li.dataset.uuid];
+    let show = true;
+    if (q   && !p.name.toLowerCase().includes(q) &&
+               !p.classification.toLowerCase().includes(q) &&
+               !(p.general_comment||'').toLowerCase().includes(q)) show = false;
+    if (cat  && extractCat(p.classification) !== cat) show = false;
+    if (loc  && p.location !== loc)  show = false;
+    if (year && p.reference_year !== year) show = false;
+    if (type && p.type_of_dataset !== type) show = false;
+    li.classList.toggle('hidden', !show);
+    if (show) n++;
+  }
+  updateCount(n);
+}
+
+function updateCount(n) {
+  const total = DATA ? DATA.processes.length : 0;
+  const shown = n !== undefined ? n : total;
+  document.getElementById('count-label').textContent =
+    shown === total ? `${total} processes` : `${shown} / ${total} processes`;
+}
+
+function clearFilters() {
+  ['q','f-cat','f-loc','f-year','f-type'].forEach(id => {
+    const el = document.getElementById(id);
+    el.value = '';
+  });
+  applyFilters();
+}
+
+document.getElementById('q').addEventListener('input', applyFilters);
+['f-cat','f-loc','f-year','f-type'].forEach(id =>
+  document.getElementById(id).addEventListener('change', applyFilters)
+);
+
+/* ── Select & render detail ──────────────────────────────────────────────── */
+let _selectedUUID = null;
+
+function selectProcess(uuid) {
+  if (_selectedUUID === uuid) return;
+  _selectedUUID = uuid;
+
+  for (const li of document.querySelectorAll('.proc-item')) {
+    li.classList.toggle('selected', li.dataset.uuid === uuid);
+  }
+  const sel = document.querySelector('.proc-item.selected');
+  if (sel) sel.scrollIntoView({block:'nearest'});
+
+  const p = byUUID[uuid];
+  const excs = (DATA.exchanges[uuid] || []);
+  renderDetail(p, excs);
+}
+
+function renderDetail(p, excs) {
+  document.getElementById('placeholder').style.display = 'none';
+  document.getElementById('detail-content').style.display = 'flex';
+
+  /* Header */
+  document.getElementById('d-name').textContent = p.name || 'Unnamed process';
+  document.getElementById('d-uuid').dataset.uuid = p.uuid;
+  document.getElementById('d-uuid').textContent = p.uuid;
+
+  const cat = extractCat(p.classification);
+  const typeShort = (p.type_of_dataset || '').replace('Unit process,', '').replace('LCI result', 'LCI').trim();
+  document.getElementById('d-badges').innerHTML = [
+    typeShort ? `<span class="badge bt">${esc(typeShort)}</span>` : '',
+    cat       ? `<span class="badge bc">${esc(cat)}</span>` : '',
+    p.location ? `<span class="badge bl">📍 ${esc(p.location)}</span>` : '',
+    p.reference_year ? `<span class="badge by">📅 ${esc(p.reference_year)}</span>` : '',
+    p.valid_until    ? `<span class="badge bv">valid until ${esc(p.valid_until)}</span>` : '',
+    p.compliance     ? `<span class="badge bd">✓ ${esc(p.compliance.split('|')[0].trim())}</span>` : '',
+  ].filter(Boolean).join('');
+
+  /* Process Information */
+  renderFields('sec-info', [
+    ['Classification', fmtClassification(p.classification)],
+    ['Location',       p.location],
+    ['Reference Year', p.reference_year],
+    ['Valid Until',    p.valid_until],
+    ['Synonyms',       p.synonyms],
+    ['Technology Description', {long: p.technology_description}],
+    ['Technical Applicability', {long: p.technical_applicability}],
+    ['Geo Description', p.geo_description],
+    ['General Comment', {long: p.general_comment}],
+    ['External Docs',  p.external_docs],
+  ]);
+
+  /* Modelling & Validation */
+  const dqHtml = [
+    ['Technological', p.dq_technological],
+    ['Time',          p.dq_time],
+    ['Geographical',  p.dq_geographical],
+    ['Completeness',  p.dq_completeness],
+  ].filter(([,v]) => v)
+   .map(([k,v]) => `<div class="dq-chip"><span class="dq-label">${esc(k)}</span><span class="dq-val">${esc(v)}</span></div>`)
+   .join('');
+
+  renderFields('sec-modelling', [
+    ['Type of Dataset',      p.type_of_dataset],
+    ['LCI Method Principle', p.lci_method_principle],
+    ['LCI Method Approaches',p.lci_method_approaches],
+    ['Data Cutoff',          {long: p.data_cutoff}],
+    ['Sampling Procedure',   p.sampling_procedure],
+    ['Data Collection Period',p.data_collection_period],
+    ['Completeness',         p.completeness],
+    ['Data Sources',         p.data_sources],
+    ['Compliance',           p.compliance],
+    ['Review Type',          p.review_type],
+    ['Reviewer',             p.reviewer],
+    ['Review Details',       {long: p.review_details}],
+    ['Data Quality',         dqHtml ? {html: `<div class="dq-grid">${dqHtml}</div>`} : null],
+  ]);
+
+  /* Administrative Information */
+  renderFields('sec-admin', [
+    ['Data Generator',    p.data_generator],
+    ['Commissioner',      p.commissioner],
+    ['Project',           p.project],
+    ['Owner',             p.owner],
+    ['Timestamp',         p.timestamp],
+    ['Version',           p.version],
+    ['Date Last Revision',p.date_last_revision],
+    ['Format',            p.format],
+    ['License',           p.license_type],
+    ['Copyright',         p.copyright],
+    ['Access Restrictions',{long: p.access_restrictions}],
+    ['Permanent URI',     p.permanent_uri ? {uri: p.permanent_uri} : null],
+  ]);
+
+  /* Exchanges */
+  renderExchanges('sec-flows', excs);
+
+  /* Scroll detail body to top */
+  document.getElementById('detail-body').scrollTop = 0;
+}
+
+/* ── Field rendering helpers ─────────────────────────────────────────────── */
+function renderFields(sectionId, fields) {
+  const el = document.getElementById(sectionId);
+  const rows = fields.filter(([, v]) => {
+    if (!v) return false;
+    if (typeof v === 'object' && v !== null) {
+      const inner = v.long || v.html || v.uri || '';
+      return inner && inner.trim();
+    }
+    return v.trim && v.trim();
+  });
+
+  if (!rows.length) {
+    el.innerHTML = '<p class="field-empty">No data available.</p>';
+    return;
+  }
+
+  const rowsHtml = rows.map(([k, v]) => {
+    let cell;
+    if (typeof v === 'object' && v !== null) {
+      if (v.html) cell = v.html;
+      else if (v.uri) cell = `<span class="field-uri">${esc(v.uri)}</span>`;
+      else cell = `<span class="field-long">${esc(v.long || '')}</span>`;
+    } else {
+      cell = esc(v);
+    }
+    return `<tr><td>${esc(k)}</td><td>${cell}</td></tr>`;
+  }).join('');
+
+  el.innerHTML = `<table class="field-table"><tbody>${rowsHtml}</tbody></table>`;
+}
+
+function renderExchanges(sectionId, excs) {
+  const el = document.getElementById(sectionId);
+  if (!excs.length) {
+    el.innerHTML = '<p class="field-empty">No exchange flows found.</p>';
+    return;
+  }
+
+  const nIn  = excs.filter(e => e.direction === 'Input').length;
+  const nOut = excs.filter(e => e.direction === 'Output').length;
+
+  /* Sort: reference flow first, then Input, then Output, then by name */
+  const sorted = [...excs].sort((a, b) => {
+    if (a.is_reference_flow && !b.is_reference_flow) return -1;
+    if (!a.is_reference_flow && b.is_reference_flow) return 1;
+    if (a.direction < b.direction) return -1;
+    if (a.direction > b.direction) return 1;
+    return (a.flow_name || '').localeCompare(b.flow_name || '');
+  });
+
+  const summaryHtml =
+    `<span class="exc-stat exc-stat-in">↓ ${nIn} Inputs</span>` +
+    `<span class="exc-stat exc-stat-out">↑ ${nOut} Outputs</span>` +
+    `<span style="color:var(--text3)">· ${excs.length} total flows</span>`;
+
+  const rowsHtml = sorted.map(e => {
+    const cls = (e.direction === 'Input' ? 'ei' : 'eo') + (e.is_reference_flow ? ' eref' : '');
+    const dir = e.direction === 'Input'
+      ? '<span class="dir-pill dp-in">IN</span>'
+      : '<span class="dir-pill dp-out">OUT</span>';
+    const ref = e.is_reference_flow ? '<span class="ref-star" title="Reference flow">★</span>' : '';
+    const amt = fmtAmt(e.resulting_amount || e.mean_amount);
+    return `<tr class="${cls}">
+      <td>${dir}</td>
+      <td class="flow-name">${esc(e.flow_name || e.flow_uuid || '—')}</td>
+      <td class="amt">${esc(amt)}</td>
+      <td>${esc(e.unit || '')}</td>
+      <td>${ref}</td>
+      <td style="color:var(--text2);max-width:160px">${esc(e.comment || '')}</td>
+    </tr>`;
+  }).join('');
+
+  el.innerHTML = `
+    <div id="exc-summary">${summaryHtml}</div>
+    <div class="exc-table-wrap">
+      <table class="exc-tbl">
+        <thead><tr>
+          <th>Dir</th><th>Flow Name</th><th>Amount</th>
+          <th>Unit</th><th>Ref</th><th>Comment</th>
+        </tr></thead>
+        <tbody>${rowsHtml}</tbody>
+      </table>
+    </div>`;
+}
+
+/* ── Utility functions ───────────────────────────────────────────────────── */
+function esc(s) {
+  if (!s) return '';
+  return String(s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function fmtClassification(cls) {
+  if (!cls) return '';
+  return cls.replace(/L\d+:/g, '').replace(/>/g, ' › ').trim();
+}
+
+function fmtAmt(val) {
+  if (!val && val !== 0) return '—';
+  const n = parseFloat(val);
+  if (isNaN(n)) return val;
+  if (n === 0) return '0';
+  if (Math.abs(n) < 0.001 || Math.abs(n) >= 1e6) return n.toExponential(3);
+  const s = n.toPrecision(5);
+  return s.replace(/\.?0+$/, '');
+}
+
+function toggleSection(hdr) {
+  const body  = hdr.nextElementSibling;
+  const open  = body.classList.contains('open');
+  const arrow = hdr.querySelector('.section-arrow');
+  body.classList.toggle('open', !open);
+  hdr.classList.toggle('open', !open);
+  arrow.textContent = open ? '▶' : '▼';
+}
+
+function copyUUID() {
+  const uuid = document.getElementById('d-uuid').dataset.uuid || '';
+  if (!uuid) return;
+  navigator.clipboard.writeText(uuid).then(() => {
+    const el = document.getElementById('d-uuid');
+    const prev = el.textContent;
+    el.textContent = 'Copied!';
+    setTimeout(() => { el.textContent = uuid; }, 1200);
+  }).catch(() => {});
+}
+</script>
+</body>
+</html>

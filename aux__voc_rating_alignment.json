@@ -1,0 +1,256 @@
+{
+  "_comment": "How each VOC claim in aux__voc_certifications.json lines up with the three schemes EETRA works against: LEED v4.1 EQ Low-Emitting Materials, WELL v2 X06 VOC Restrictions and CAM edilizia 2025 criterio 2.4.1. Read by Developer → VOC Bodies & Certifications (lib_charts fn631).",
+  "_version": 1,
+  "_caveat": "The CAM column is factual: criterio 2.4.1 names a closed list of accepted labels, so a claim is either on it or not. The LEED and WELL columns are a reading of the credit requirements against what each scheme tests, not a ruling: both schemes accept evidence, not labels, so the product's own report still has to show the test standard, the exposure scenario and the TVOC range. Verify on the document before using any of this in a submission.",
+  "_sources": {
+    "cam": "CAM edilizia 2025, Allegato 1/2 (MASE, novembre 2025), criterio 2.4.1 'Emissioni in ambienti interni (inquinamento indoor)'. Testo normativo riportato integralmente: atto ufficiale dello Stato, art. 5 L. 633/1941.",
+    "leed": "LEED v4.1 BD+C, EQ Credit Low-Emitting Materials (USGBC, aprile 2019). Requisiti riassunti, non riprodotti.",
+    "well": "WELL v2 feature X06 'VOC Restrictions' (IWBI). Requisiti riassunti, non riprodotti."
+  },
+
+  "frameworks": [
+    {
+      "id": "leed",
+      "label": "LEED v4.1",
+      "short": "LEED",
+      "credit": "EQ Credit — Low-Emitting Materials",
+      "url": "https://www.usgbc.org/credits/new-construction/v4.1/eqc2",
+      "verbatim": false,
+      "summary": "Il credito vale 1–3 punti secondo quante categorie di prodotto (pitture, adesivi e sigillanti, pavimentazioni, pannelli di parete, controsoffitti, isolanti, arredi, legno composito) rispettano i limiti. Per ogni categoria servono due valutazioni distinte: emissioni e, per i prodotti applicati a umido, contenuto di COV.",
+      "paths": [
+        {
+          "title": "Emissioni — Opzione 1 (CDPH)",
+          "text": "Prova secondo CDPH Standard Method v1.2-2017 con rispetto dei limiti di Tabella 4-1; misura e dichiarazione del range di COV totali a 14 giorni (≤0,5 mg/m³ · 0,5–5 mg/m³ · >5 mg/m³). Laboratorio accreditato ISO/IEC 17025 per i metodi usati; scenario aula per le scuole, ufficio privato altrove. Chi certifica le dichiarazioni del produttore deve essere accreditato ISO/IEC 17065."
+        },
+        {
+          "title": "Emissioni — Opzione 2 (EN 16516 / AgBB)",
+          "text": "Prova secondo EN 16516:2017 con rispetto dei valori LCI della Tabella 1 dello schema AgBB (2015) e di un limite per la formaldeide di 10 µg/m³; misura e dichiarazione del range di COV totali a 28 giorni, con le stesse tre fasce. Laboratorio accreditato ISO/IEC 17025."
+        },
+        {
+          "title": "Contenuto di COV (prodotti applicati a umido)",
+          "text": "Rispetto dei limiti di una delle norme applicabili: CARB 2007 SCM o SCAQMD Rule 1113 (pitture), SCAQMD Rule 1168 (adesivi e sigillanti), Direttiva Decopaint 2004/42/CE, limiti canadesi SOR/2009-264, regolamento COV di Hong Kong, oppure assenza di solventi secondo TRGS 610. Dichiarazione del produttore; nei progetti nordamericani cloruro di metilene e percloroetilene non possono essere aggiunti intenzionalmente."
+        },
+        {
+          "title": "Esenzione — materiali intrinsecamente non emissivi",
+          "text": "Pietra, ceramica, metalli verniciati a polvere, metalli placcati o anodizzati, vetro, calcestruzzo, laterizio e legno massello non trattato, senza rivestimenti, leganti o sigillanti organici integrali, sono conformi senza prove."
+        }
+      ]
+    },
+    {
+      "id": "well",
+      "label": "WELL v2",
+      "short": "WELL",
+      "credit": "X06 — VOC Restrictions (concept Materials)",
+      "url": "https://standard.wellcertified.com/v2/materials/voc-restrictions",
+      "verbatim": false,
+      "summary": "La feature limita i COV su due fronti: i prodotti applicati a umido in opera (Part 1) e gli arredi e prodotti d'interni (Part 2, a punti: una categoria conforme 1 punto, due o più 2 punti).",
+      "paths": [
+        {
+          "title": "Part 1 — prodotti applicati a umido",
+          "text": "Pitture, rivestimenti, adesivi e sigillanti per interni devono rispettare limiti di contenuto di COV (fra gli standard ammessi SCAQMD Rule 1168, la regola CARB per le pitture architettoniche e l'EU Ecolabel). In alternativa almeno il 75% dei prodotti, per area o volume, deve essere provato da laboratorio terzo secondo CDPH Standard Method v1.2, AgBB o i valori EU-LCI con EN 16516."
+        },
+        {
+          "title": "Part 2 — arredi e prodotti d'interni",
+          "text": "Stessi metodi di prova della Part 1, più ANSI/BIFMA e3 (sez. 7.6.1 / 7.6.2) per gli arredi. Prodotti di solo metallo, legno non trattato, vetro, ceramica, calcestruzzo o pietra, senza additivi organici, sono ammessi senza prove. Per pezzi su misura o rigenerati, i materiali applicati a umido e i pannelli a base legno seguono la Part 1 e i criteri formaldeide del credito LEED v4.1 Low-Emitting Materials."
+        }
+      ],
+      "note": "Riferimenti ricavati dalle istruzioni WELL v2 (Letter of Assurance, Q4 2023) e dalla Feature Library; le edizioni trimestrali cambiano le versioni citate di CDPH e EN 16516. Confermare sulla versione di WELL in uso nel progetto."
+    },
+    {
+      "id": "cam",
+      "label": "CAM edilizia 2025",
+      "short": "CAM",
+      "credit": "Criterio 2.4.1 — Emissioni in ambienti interni (inquinamento indoor)",
+      "url": "https://gpp.mase.gov.it/",
+      "verbatim": true,
+      "summary": "Specifica tecnica obbligatoria negli appalti pubblici (art. 57 c. 2 d.lgs. 36/2023). Si applica a pitture e vernici, rasanti e intonaci, adesivi e sigillanti, pavimentazioni, rivestimenti interni, elementi e lastre a vista, controsoffitti, barriere e freni al vapore. Sono escluse piastrelle di ceramica e laterizi non trattati post cottura con vernici, resine o altre sostanze organiche.",
+      "limits_title": "Limite di emissione in microgrammi (μg/m³) a 28 giorni",
+      "limits": [
+        ["Benzene", "1"],
+        ["Tricloroetilene (trielina)", "1"],
+        ["di-2-etilesilftalato (DEHP)", "1"],
+        ["Dibutilftalato (DBP)", "1"],
+        ["COV totali", "1000"],
+        ["Formaldeide", "< 60"],
+        ["Acetaldeide", "< 200"],
+        ["Toluene", "< 300"],
+        ["Tetracloroetilene", "< 250"],
+        ["Xilene", "< 300"],
+        ["1,2,4-Trimetilbenzene", "< 1000"],
+        ["1,4-diclorobenzene", "< 60"],
+        ["Etilbenzene", "< 750"],
+        ["2-Butossietanolo", "< 1000"],
+        ["Stirene", "< 250"]
+      ],
+      "paths": [
+        {
+          "title": "Verifica — metodi di prova",
+          "text": "La determinazione delle emissioni avviene in conformità alla norma UNI EN 16516 o UNI EN ISO 16000, parti 3, 6 e 9 o, per il solo contenuto di formaldeide, anche in conformità alla Norma EN 717-1. Per qualunque metodo di prova o norma da utilizzare, si applicano i seguenti minimi fattori di carico considerando 0,5 ricambi d'aria per ora (a parità di ricambi d'aria, sono ammessi fattori di carico superiori): 1,0 m²/m³ per le pareti; 0,4 m²/m³ per pavimenti o soffitto; 0,05 m²/m³ per piccole superfici, ad esempio porte; 0,05 m²/m³ per le finestre; 0,007 m²/m³ per superfici molto limitate, per esempio sigillanti."
+        },
+        {
+          "title": "Verifica — mezzi di prova",
+          "text": "La dimostrazione del rispetto di questo criterio può avvenire tramite la presentazione di rapporti di prova rilasciati da laboratori accreditati e accompagnati da un documento che faccia esplicito riferimento alla conformità rispetto al presente criterio. In alternativa possono essere scelti prodotti dotati di una etichetta o certificazione fra quelle elencate dal criterio."
+        },
+        {
+          "title": "Etichette ammesse dal criterio",
+          "text": "Oeko-Tex Standard 100 classe 4; Biosafe® (Italia); AgBB (Germania); Blue Angel nelle specifiche RAL UZ 113/120/128/132 (Germania); Eco INSTITUT-Label (Germania); EMICODE EC1/EC1+ (GEV) (Germania); Indoor Air Comfort di Eurofins (Danimarca); Indoor Air Comfort Gold di Eurofins (Danimarca); M1 Emission Classification of Building Materials (Finlandia); CATAS quality award (CQA) CAM edilizia (Italia); CATAS quality award Plus (CQA) CAM edilizia Plus (Italia); Cosmob Qualitas Praemium - INDOOR HI-QUALITY Standard (Italia); Cosmob Qualitas Praemium - INDOOR HI-QUALITY Plus (Italia); Indoor Climate Label (Danish Indoor Climate Labelling Class 2 – Danimarca); Indoor Climate Label (Danish Indoor Climate Labelling Class 1 – Danimarca)."
+        }
+      ]
+    }
+  ],
+
+  "_status_legend": {
+    "yes": "Accettato: la certificazione è nominata dallo schema, o prova esattamente ciò che lo schema chiede.",
+    "partial": "Parziale: il metodo è affine ma lo schema chiede qualcosa in più (il range TVOC, lo scenario d'esposizione, una categoria di prodotto diversa). Serve il rapporto di prova.",
+    "no": "Non sufficiente da solo per questo schema.",
+    "na": "Non pertinente (stato, non una prova)."
+  },
+
+  "alignment": {
+    "indoor_air_comfort": {
+      "cam": ["yes", "Nominata dal criterio 2.4.1: «Indoor Air Comfort di Eurofins (Danimarca)»."],
+      "leed": ["partial", "Copre il percorso europeo (EN 16516 / AgBB), ma il credito chiede anche il range di COV totali dichiarato: serve il rapporto Eurofins, non il solo certificato."],
+      "well": ["partial", "Le prove sono quelle ammesse dalla Part 1; la conformità va mostrata con il rapporto."]
+    },
+    "indoor_air_comfort_gold": {
+      "cam": ["yes", "Nominata dal criterio 2.4.1: «Indoor Air Comfort Gold di Eurofins (Danimarca)»."],
+      "leed": ["yes", "Il livello Gold dichiara conformità ad AgBB e ai label volontari più severi; con il rapporto che riporta il range TVOC copre l'Opzione 2."],
+      "well": ["yes", "Prove CDPH / AgBB / EU-LCI riconosciute dalla Part 1."]
+    },
+    "emicode_ec1plus": {
+      "cam": ["yes", "Nominata dal criterio 2.4.1: «EMICODE EC1/EC1+ (GEV)»."],
+      "leed": ["partial", "Il metodo GEV si appoggia ai criteri AgBB; per l'Opzione 2 serve il rapporto con valori LCI, formaldeide ≤ 10 µg/m³ e range TVOC."],
+      "well": ["partial", "Ammissibile per la via delle prove di emissione, da documentare con il rapporto."]
+    },
+    "emicode_ec1": {
+      "cam": ["yes", "Nominata dal criterio 2.4.1: «EMICODE EC1/EC1+ (GEV)»."],
+      "leed": ["partial", "Come EC1PLUS, con limiti meno severi: il rispetto dei valori LCI va verificato sul rapporto."],
+      "well": ["partial", "Da documentare con il rapporto di prova."]
+    },
+    "emicode_ec2": {
+      "cam": ["no", "Il criterio ammette solo EC1 ed EC1+."],
+      "leed": ["no", "Classe di ingresso dello schema, sotto le soglie del credito."],
+      "well": ["no", "Sotto le soglie della feature."]
+    },
+    "m1_emission_classification": {
+      "cam": ["yes", "Nominata dal criterio 2.4.1: «M1 Emission Classification of Building Materials (Finlandia)»."],
+      "leed": ["partial", "Classificazione finlandese con limiti propri: non è di per sé CDPH né EN 16516/AgBB, serve il rapporto per uno dei due percorsi."],
+      "well": ["partial", "Da ricondurre a uno dei metodi ammessi tramite il rapporto."]
+    },
+    "blue_angel": {
+      "cam": ["partial", "Ammessa solo nelle specifiche RAL UZ 113/120/128/132: verificare il numero DE-UZ del prodotto."],
+      "leed": ["partial", "I criteri DE-UZ richiamano AgBB; per l'Opzione 2 serve comunque il rapporto EN 16516 con range TVOC."],
+      "well": ["partial", "Riconducibile alla via AgBB, da documentare."]
+    },
+    "ul_greenguard": {
+      "cam": ["no", "Non elencata: va dimostrata con rapporto di prova riferito esplicitamente al criterio."],
+      "leed": ["partial", "Il livello base UL 2818 non garantisce la conformità CDPH v1.2 richiesta: verificare sul certificato."],
+      "well": ["partial", "Ammissibile se il rapporto è CDPH v1.2."]
+    },
+    "ul_greenguard_gold": {
+      "cam": ["no", "Non elencata: va dimostrata con rapporto di prova riferito esplicitamente al criterio."],
+      "leed": ["yes", "Include la conformità a CDPH Standard Method v1.2: copre l'Opzione 1 se il certificato riporta scenario e range TVOC."],
+      "well": ["yes", "CDPH v1.2 è fra i metodi ammessi dalla feature."]
+    },
+    "scs_indoor_advantage_gold": {
+      "cam": ["no", "Non elencata: serve il rapporto di prova riferito al criterio."],
+      "leed": ["yes", "Basata su CDPH Standard Method v1.2 (Opzione 1)."],
+      "well": ["yes", "CDPH v1.2 fra i metodi ammessi."]
+    },
+    "floorscore": {
+      "cam": ["no", "Non elencata: serve il rapporto di prova riferito al criterio."],
+      "leed": ["yes", "Basata su CDPH Standard Method v1.2 (Opzione 1), per pavimentazioni dure e sottofondi."],
+      "well": ["yes", "CDPH v1.2 fra i metodi ammessi."]
+    },
+    "cri_green_label_plus": {
+      "cam": ["no", "Non elencata: serve il rapporto di prova riferito al criterio."],
+      "leed": ["yes", "Prove allineate a CDPH Standard Method v1.2, per moquette, sottotappeti e adesivi."],
+      "well": ["yes", "CDPH v1.2 fra i metodi ammessi."]
+    },
+    "gut": {
+      "cam": ["no", "Non elencata dal criterio."],
+      "leed": ["no", "Schema di settore su emissioni, odore e sostanze nocive: non è uno dei due percorsi del credito."],
+      "well": ["no", "Non fra i metodi ammessi."]
+    },
+    "danish_indoor_climate_label": {
+      "cam": ["yes", "Nominata dal criterio 2.4.1 nelle classi 1 e 2."],
+      "leed": ["no", "Esprime un «time value», non i limiti e il range TVOC chiesti dal credito."],
+      "well": ["no", "Non fra i metodi ammessi."]
+    },
+    "french_voc_a_plus": {
+      "cam": ["no", "Non elencata: l'etichetta francese non è fra quelle ammesse dal criterio."],
+      "leed": ["no", "Obbligo di etichettatura francese, non uno dei due percorsi di emissione del credito."],
+      "well": ["no", "Non fra i metodi ammessi."]
+    },
+    "french_voc_a": {
+      "cam": ["no", "Non elencata dal criterio."],
+      "leed": ["no", "Vedi A+: non è un percorso del credito."],
+      "well": ["no", "Non fra i metodi ammessi."]
+    },
+    "french_voc_b_c": {
+      "cam": ["no", "Non elencata dal criterio."],
+      "leed": ["no", "Classi inferiori dell'etichetta francese."],
+      "well": ["no", "Non fra i metodi ammessi."]
+    },
+    "agbb_abg": {
+      "cam": ["yes", "Nominata dal criterio 2.4.1: «AgBB (Germania)»."],
+      "leed": ["yes", "È il riferimento dell'Opzione 2, con EN 16516, formaldeide ≤ 10 µg/m³ e range TVOC a 28 giorni."],
+      "well": ["yes", "AgBB è fra i metodi ammessi dalla Part 1."]
+    },
+    "belgian_voc": {
+      "cam": ["no", "Non elencata dal criterio."],
+      "leed": ["no", "Obbligo di immissione sul mercato belga, non un percorso del credito."],
+      "well": ["no", "Non fra i metodi ammessi."]
+    },
+    "cdph_v1_2": {
+      "cam": ["no", "Non elencata come etichetta: utilizzabile come rapporto di prova con riferimento esplicito al criterio."],
+      "leed": ["yes", "È l'Opzione 1 del credito, se il rapporto riporta scenario d'esposizione e range TVOC a 14 giorni."],
+      "well": ["yes", "Metodo citato per nome dalla feature."]
+    },
+    "leed_v4_low_emitting": {
+      "cam": ["no", "Dichiarazione riferita a LEED, estranea al criterio."],
+      "leed": ["yes", "È la dichiarazione di conformità al credito nella versione v4."],
+      "well": ["partial", "Le prove sottostanti sono spesso le stesse, ma la feature chiede la propria documentazione."]
+    },
+    "leed_v41_low_emitting": {
+      "cam": ["no", "Dichiarazione riferita a LEED, estranea al criterio."],
+      "leed": ["yes", "È la dichiarazione di conformità al credito nella versione v4.1."],
+      "well": ["partial", "Prove spesso coincidenti; documentazione da rifare secondo la feature."]
+    },
+    "cam_voc_attestation": {
+      "cam": ["yes", "È l'attestazione riferita al criterio stesso: verificare che il rapporto di prova allegato richiami il criterio 2.4.1."],
+      "leed": ["partial", "Le prove ISO 16000 / EN 16516 sottostanti possono servire l'Opzione 2, se riportano LCI, formaldeide e range TVOC."],
+      "well": ["partial", "Riconducibile ai metodi ammessi tramite il rapporto."]
+    },
+    "voc_content_declaration": {
+      "cam": ["no", "Il criterio chiede emissioni in camera, non contenuto."],
+      "leed": ["partial", "Copre la sola valutazione del contenuto di COV, obbligatoria per i prodotti applicati a umido: da sola non basta."],
+      "well": ["partial", "Serve la Part 1 per contenuto; le emissioni restano da documentare."]
+    },
+    "voc_emissions_self_declaration": {
+      "cam": ["no", "Il criterio chiede rapporti di laboratorio accreditato o una delle etichette elencate."],
+      "leed": ["no", "Il credito richiede prove di laboratorio accreditato ISO/IEC 17025."],
+      "well": ["no", "La feature richiede prove di laboratorio terzo."]
+    },
+    "eu_taxonomy_dnsh": {
+      "cam": ["no", "Dichiarazione riferita alla tassonomia UE, estranea al criterio."],
+      "leed": ["no", "Non è un percorso del credito."],
+      "well": ["no", "Non è un metodo della feature."]
+    },
+    "voc_emission_test_report": {
+      "cam": ["partial", "Ammesso se emesso da laboratorio accreditato e accompagnato dal documento che richiama il criterio 2.4.1."],
+      "leed": ["partial", "Vale quanto il metodo che riporta: CDPH v1.2 o EN 16516/AgBB, con range TVOC e laboratorio ISO/IEC 17025."],
+      "well": ["partial", "Vale quanto il metodo che riporta."]
+    },
+    "na_not_available": {
+      "cam": ["na", ""],
+      "leed": ["na", ""],
+      "well": ["na", ""]
+    },
+    "nr_not_relevant": {
+      "cam": ["na", "Prodotti inerti non trattati: il criterio li esclude espressamente (piastrelle di ceramica e laterizi non lavorati post cottura)."],
+      "leed": ["na", "Rientrano fra le fonti intrinsecamente non emissive del credito."],
+      "well": ["na", "Materiali di solo metallo, vetro, ceramica, calcestruzzo o pietra sono ammessi senza prove."]
+    }
+  }
+}

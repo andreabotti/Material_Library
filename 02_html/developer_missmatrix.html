@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden}
+body{
+  font-family:'Inter',system-ui,sans-serif;background:#fff;color:#1e293b;font-size:13px;
+  display:flex;flex-direction:column;height:var(--mm-viewport-h,780px);
+}
+#mm-shell{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;overflow:hidden}
+#mm-chrome{
+  flex:0 0 auto;padding:8px 10px 6px;border-bottom:1px solid #e5e7eb;
+  background:#f8fafc;
+}
+.mm-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.mm-toolbar-group{display:inline-flex;border-radius:999px;background:#e5e7eb;padding:2px;flex-wrap:wrap;gap:2px}
+.mm-toolbar-group button{
+  border:none;background:transparent;font-size:12px;padding:4px 10px;border-radius:999px;
+  cursor:pointer;color:#4b5563;font-family:inherit;white-space:nowrap;
+}
+.mm-toolbar-group button.mm-active{background:#111827;color:#f9fafb}
+.mm-toolbar-group button:hover:not(.mm-active){background:#d1d5db}
+.mm-batch{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#64748b}
+.mm-batch button{
+  border:1px solid #cbd5e1;background:#fff;border-radius:6px;width:28px;height:28px;
+  cursor:pointer;font-size:14px;line-height:1;color:#334155;
+}
+.mm-batch button:hover:not(:disabled){background:#f1f5f9;border-color:#94a3b8}
+.mm-batch button:disabled{opacity:.35;cursor:not-allowed}
+.mm-legend{display:flex;flex-wrap:wrap;gap:10px;font-size:11px;color:#64748b}
+.mm-legend-item{display:inline-flex;align-items:center;gap:4px}
+.mm-legend-swatch{width:12px;height:12px;border-radius:2px;border:1px solid rgba(0,0,0,.08)}
+#mm-main{flex:1 1 auto;min-height:0;overflow:auto;padding:4px 6px 8px}
+#mm-chart{min-width:480px;min-height:320px}
+.mm-empty{padding:24px;color:#64748b;text-align:center}
+.mm-dup-hint{font-size:11px;color:#b45309;margin-top:6px}
+</style>
+</head>
+<body>
+<div id="mm-shell">
+  <div id="mm-chrome">
+    <div class="mm-toolbar">
+      <div id="prefix-tabs" class="mm-toolbar-group"></div>
+      <div class="mm-batch">
+        <button type="button" id="btn-prev" title="Previous batch">◀</button>
+        <span id="batch-label">—</span>
+        <button type="button" id="btn-next" title="Next batch">▶</button>
+      </div>
+    </div>
+    <div id="legend" class="mm-legend"></div>
+    <div id="dup-hint" class="mm-dup-hint" hidden></div>
+  </div>
+  <main id="mm-main">
+    <div id="mm-chart"></div>
+  </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<script>
+(function(){
+const IFRAME_HEIGHT = Math.max(480, Number(window.__IFRAME_HEIGHT__) || 780);
+const DATA = window.__MISSMATRIX__ || {};
+const BATCH_SIZE = Math.max(1, Number(DATA.batchSize) || 30);
+const CATEGORIES = DATA.categories || ["empty","n/r","n/a","zero","value"];
+const CAT_COLORS = DATA.categoryColors || {};
+const CAT_LABELS = DATA.categoryLabels || {};
+const PREFIX_ORDER = DATA.prefixOrder || [];
+const GROUPS = DATA.groups || {};
+
+let activePrefix = PREFIX_ORDER[0] || "";
+let batchStart = 0;
+let chart = null;
+
+function splitFieldLabel(s){
+  s = String(s||"");
+  if(s.includes("__")){
+    const i = s.indexOf("__");
+    if(i > 0 && i < s.length - 2) return s.slice(0,i) + "\n" + s.slice(i+2);
+  }
+  if(s.includes("_")){
+    const i = s.indexOf("_");
+    if(i > 0 && i < s.length - 1) return s.slice(0,i) + "\n" + s.slice(i+1);
+  }
+  return s;
+}
+
+function notifyHeight(){
+  try{
+    window.parent.postMessage(
+      {isStreamlitMessage:true, type:"streamlit:setFrameHeight", height:IFRAME_HEIGHT}, "*"
+    );
+  }catch(e){}
+}
+
+function buildLegend(){
+  const el = document.getElementById("legend");
+  el.innerHTML = CATEGORIES.map(c =>
+    `<span class="mm-legend-item"><span class="mm-legend-swatch" style="background:${CAT_COLORS[c]||"#ccc"}"></span>${CAT_LABELS[c]||c}</span>`
+  ).join("");
+}
+
+function buildPrefixTabs(){
+  const el = document.getElementById("prefix-tabs");
+  el.innerHTML = "";
+  for(const pfx of PREFIX_ORDER){
+    const n = (GROUPS[pfx] && GROUPS[pfx].fields) ? GROUPS[pfx].fields.length : 0;
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.textContent = `${pfx} (${n})`;
+    btn.dataset.prefix = pfx;
+    if(pfx === activePrefix) btn.classList.add("mm-active");
+    btn.addEventListener("click", ()=>{
+      activePrefix = pfx;
+      batchStart = 0;
+      buildPrefixTabs();
+      renderChart();
+    });
+    el.appendChild(btn);
+  }
+}
+
+function updateBatchNav(total){
+  const end = Math.min(batchStart + BATCH_SIZE, total);
+  const start = total ? batchStart + 1 : 0;
+  document.getElementById("batch-label").textContent =
+    total ? `${start}–${end} of ${total}` : "No products";
+  document.getElementById("btn-prev").disabled = batchStart <= 0;
+  document.getElementById("btn-next").disabled = batchStart + BATCH_SIZE >= total;
+}
+
+function renderChart(){
+  const host = document.getElementById("mm-chart");
+  const grp = GROUPS[activePrefix];
+  if(!grp || !grp.products || !grp.products.length || !grp.fields || !grp.fields.length){
+    if(chart){ chart.dispose(); chart = null; }
+    host.innerHTML = '<div class="mm-empty">No data for this column group.</div>';
+    updateBatchNav(0);
+    return;
+  }
+
+  // Do not clear host.innerHTML when reusing chart — that destroys the ECharts canvas.
+  if(host.querySelector(".mm-empty")){
+    host.textContent = "";
+    if(chart){ chart.dispose(); chart = null; }
+  }
+  if(!chart){
+    chart = echarts.init(host, null, {renderer:"canvas"});
+  }
+
+  const total = grp.products.length;
+  const slice = grp.products.slice(batchStart, batchStart + BATCH_SIZE);
+  updateBatchNav(total);
+
+  const fields = grp.fields;
+  const xLabels = fields.map(splitFieldLabel);
+  const yLabels = slice.map(p => p.label);
+  const heat = [];
+  for(let y = 0; y < slice.length; y++){
+    const cells = slice[y].cells || [];
+    for(let x = 0; x < fields.length; x++){
+      heat.push([x, y, cells[x] != null ? cells[x] : 0]);
+    }
+  }
+
+  const cellW = 42;
+  const cellH = 18;
+  const maxYLen = yLabels.length ? Math.max(...yLabels.map(s => s.length)) : 12;
+  const leftPad = Math.min(360, Math.max(140, 7 * maxYLen));
+  const chartW = Math.max(480, fields.length * cellW + leftPad + 48);
+  const chartH = Math.max(280, slice.length * cellH + 100);
+  host.style.width = chartW + "px";
+  host.style.height = chartH + "px";
+  chart.resize({width: chartW, height: chartH});
+
+  const pieces = CATEGORIES.map((c, i) => ({
+    value: i,
+    label: CAT_LABELS[c] || c,
+    color: CAT_COLORS[c] || "#ccc",
+  }));
+
+  chart.setOption({
+    animation: false,
+    tooltip: {
+      position: "top",
+      formatter(p){
+        if(!p || !p.data) return "";
+        const xi = p.data[0], yi = p.data[1], v = p.data[2];
+        const cat = CATEGORIES[v] || "?";
+        return `<b>${yLabels[yi] || ""}</b><br>${fields[xi] || ""}<br>${CAT_LABELS[cat] || cat}`;
+      },
+    },
+    grid: {left: leftPad, right: 16, top: 12, bottom: 72},
+    xAxis: {
+      type: "category",
+      data: xLabels,
+      position: "bottom",
+      splitArea: {show: false},
+      axisLabel: {interval: 0, fontSize: 10, lineHeight: 13},
+    },
+    yAxis: {
+      type: "category",
+      data: yLabels,
+      inverse: true,
+      splitArea: {show: false},
+      axisLabel: {fontSize: 10, width: leftPad - 16, overflow: "truncate"},
+    },
+    visualMap: {
+      type: "piecewise",
+      orient: "horizontal",
+      left: "center",
+      bottom: 4,
+      itemWidth: 12,
+      itemHeight: 12,
+      textGap: 4,
+      itemSymbol: "rect",
+      pieces: pieces,
+      selectedMode: false,
+    },
+    series: [{
+      type: "heatmap",
+      data: heat,
+      itemStyle: {borderWidth: 2, borderColor: "#fff"},
+      emphasis: {itemStyle: {borderColor: "#64748b", borderWidth: 2}},
+    }],
+  }, true);
+}
+
+function init(){
+  document.documentElement.style.setProperty("--mm-viewport-h", IFRAME_HEIGHT + "px");
+  buildLegend();
+  if(DATA.duplicateIds && DATA.duplicateIds.length){
+    const hint = document.getElementById("dup-hint");
+    hint.hidden = false;
+    hint.textContent =
+      `${DATA.duplicateIds.length} duplicate EETRA ID(s) in this view — rows are labelled with name, manufacturer and ID.`;
+  }
+  if(!PREFIX_ORDER.length){
+    document.getElementById("mm-chart").innerHTML =
+      '<div class="mm-empty">No column groups to display.</div>';
+    notifyHeight();
+    return;
+  }
+  buildPrefixTabs();
+  document.getElementById("btn-prev").addEventListener("click", ()=>{
+    batchStart = Math.max(0, batchStart - BATCH_SIZE);
+    renderChart();
+  });
+  document.getElementById("btn-next").addEventListener("click", ()=>{
+    const total = (GROUPS[activePrefix] && GROUPS[activePrefix].products) ? GROUPS[activePrefix].products.length : 0;
+    if(batchStart + BATCH_SIZE < total) batchStart += BATCH_SIZE;
+    renderChart();
+  });
+  window.addEventListener("resize", ()=>{ if(chart) chart.resize(); });
+  renderChart();
+  notifyHeight();
+}
+
+init();
+})();
+</script>
+</body>
+</html>

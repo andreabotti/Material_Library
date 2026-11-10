@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>ab9c4009-f3f7-4285-a512-53b76cacd579</common:UUID>
+      <name>
+        <baseName xml:lang="en">Packaging for tomato paste, processing, at Plant, average packaging for 1 kg of tomato paste</baseName>
+      </name>
+      <common:synonyms>1 kg di Imballaggio del concentrato di pomodoro, confezionamento del pomodoro lavorato allo stabilimento.</common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">Packaging</common:class>
+          <common:class level="1">Packaging</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment xml:lang="en">The dataset has been developed within the Arcadia Project. It concerns the processing of industrial tomatoes in reference to the report “Studio LCA della filiera dell’industria del pomodoro confezionato in Italia”.</common:generalComment>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2021</common:referenceYear>
+      <common:dataSetValidUntil>2028</common:dataSetValidUntil>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT">
+        <descriptionOfRestrictions>Italy. Primary data collected in the North and Center-South. Representative dataset of the Italian tomato chain production.</descriptionOfRestrictions>
+      </locationOfOperationSupplyOrProduction>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>These packaging are used by processor companies to contain the tomato paste once the processing steps have been completed. Reference is made to the average packaging used for tomato paste, including primary, secondary, and tertiary packaging, calculated on the average of the main packaging used by processor companies (aluminum, glass, steel, plastic, cardboard, wood). Primary (Italian supply chain) and secondary (literature and/or industry data) data, representative of the Italian supply chain in terms of geographical characteristics and technologies used (machinery, equipment, etc.), were collected. Inventory data were collected as physical quantities of materials used in different processes.&#13;
+Background data were modelled according to Ecoinvent v. 3.8&#13;
+</technologyDescriptionAndIncludedProcesses>
+      <technologicalApplicability>These packaging are specially sealed to ensure proper containment of the tomato paste all the way to the consumer.</technologicalApplicability>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Not applicable</LCIMethodApproaches>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <referenceToDataSource type="source data set" refObjectId="e7a09ada-d080-4006-bf35-276a24ee9768" version="01.00.000" uri="../sources/e7a09ada-d080-4006-bf35-276a24ee9768.xml">
+        <common:shortDescription>20230920164423_Report _Filiera Pomodoro_DEF2023_short.pdf</common:shortDescription>
+      </referenceToDataSource>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>No statement</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Independent external review">
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Completeness" value="Very good"/>
+        </common:dataQualityIndicators>
+        <common:reviewDetails>The study is very representative from a geographical and technological point of view. From a temporal point of view, as the data refer to the two-year period 2020-2021, the representativeness is considered very good. For the tomato paste packaging, the completeness is considered very good.&#13;
+&#13;
+Companies provided the number of pieces, weight, and packaging data sheets. For the companies that provided only the number of pieces, the weight of the packaging was calculated from the weight reported by the other companies.&#13;
+Some of the packaging used by the companies (bins, lids, and pallets) are defined by the companies as durable materials; therefore, the companies were asked about their reuse. Compared to the quantities reported by the companies, it was found that about 50 percent of the total durable packaging used was already in its second use, with an expected reuse of at least three times.&#13;
+&#13;
+The inventory data relating to the various processes within the system's boundaries are therefore to be considered reasonably representative of the supply chain under study, as they can to all intents and purposes be considered average data for the same. The quality of the data used in the study is considered to be good and the data were for the most part measured; where they were calculated or came from literature, they were all checked by experts.&#13;
+Allocation was avoided as far as possible by dividing the unitary process into two or more sub-processes and collecting environmental data on these sub-processes.&#13;
+When allocation could not be avoided, as in the case of products obtained during processing, the inputs and outputs of the system were divided between its different products and by-products.&#13;
+The allocation was generally based on mass (e.g. for waste treatment, waste water and energy used).&#13;
+The review  was performed  in compliance with Arcadia Metodology: “Metodologia per gli studi di filiera della Banca Dati italiana LCA” and ISO 14040-44 norms. The dataset has been assessed limited to the foreground data collected during the supply chain studies.&#13;
+Each dataset has been evaluated based on the following 4 criteria:&#13;
+1. Technological Representativeness;  2. Time Representativeness; 3. Geographical Representativeness; 4. Reliability (A)&#13;
+In this contest the Reliability is very good&#13;
+</common:reviewDetails>
+        <common:referenceToNameOfReviewerAndInstitution type="contact data set" refObjectId="dfbfce62-e377-4803-8ea8-fbed055b3760" version="01.00.000" uri="../sources/dfbfce62-e377-4803-8ea8-fbed055b3760.xml">
+          <common:shortDescription>Ecoinnovazione&#13;
+Alessandra Zamagni&#13;
+a.zamagni@ecoinnovazione.it&#13;
+Nicola Ferrara&#13;
+n.ferrara@ecoinnovazione.it&#13;
+</common:shortDescription>
+        </common:referenceToNameOfReviewerAndInstitution>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="5d23b3e8-d8c3-4e75-a83f-e511c6f9f0ac" uri="../sources/5d23b3e8-d8c3-4e75-a83f-e511c6f9f0ac.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="cc3f8b44-96aa-4b7e-af9c-4460ee7974f1" uri="../sources/cc3f8b44-96aa-4b7e-af9c-4460ee7974f1.xml">
+          <common:shortDescription xml:lang="en">ISO 14044</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="01807191-e156-421a-b2f6-aa609ea534f4" uri="../contacts/01807191-e156-421a-b2f6-aa609ea534f4.xml">
+        <common:shortDescription xml:lang="en">EPLCA project team</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Arcadia – PON Governance e Capacità istituzionale 2014-2020</common:project>
+    </common:commissionerAndGoal>
+    <dataEntryBy>
+      <common:timeStamp>2023-09-20T13:59:20.20+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="a97a0155-0234-4b87-b4ce-a45da52f2a40" uri="../sources/a97a0155-0234-4b87-b4ce-a45da52f2a40.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2023-02-01T08:45:41.327Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/ab9c4009-f3f7-4285-a512-53b76cacd579.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="cb9eaf55-78f4-437c-b495-cd1ab80b2613" type="contact data set" uri="../contacts/cb9eaf55-78f4-437c-b495-cd1ab80b2613.xml" version="01.00.000">
+        <common:shortDescription>ENEA-ARCADIA</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="238ff0f4-05ec-4c59-a774-d16895156cd7" uri="../flows/238ff0f4-05ec-4c59-a774-d16895156cd7.xml">
+        <common:shortDescription xml:lang="en">Packaging for tomato paste, processing, at Plant, average packaging for 1 kg of tomato paste</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0000000E+0</meanAmount>
+      <resultingAmount>1.0000000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="49fff3c1-a2c4-43a9-a436-9cb04bda1b87" uri="../flows/49fff3c1-a2c4-43a9-a436-9cb04bda1b87.xml">
+        <common:shortDescription xml:lang="en">Steel, chromium steel 18/8, hot rolled {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.6300000E-1</meanAmount>
+      <resultingAmount>1.6300000E-1</resultingAmount>
+      <generalComment>watertight band: steel material
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="41d8e21e-6c46-4e71-a2d6-be51062f41f4" uri="../flows/41d8e21e-6c46-4e71-a2d6-be51062f41f4.xml">
+        <common:shortDescription xml:lang="en">Tin plating, pieces {RER}| processing | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.0382166E-2</meanAmount>
+      <resultingAmount>1.0382166E-2</resultingAmount>
+      <generalComment>The term tinplate (and its regional synonym tolla) refers to a sheet of mild steel on the surface of which a thin layer of tin has been deposited. If the layer is applied by electrolysis and the thickness of the iron substrate is less than 0.50 mm, the material is called tinplate.[popular literature]Steel 2mm --&gt; 15.7 kg/m2 [Maiak manufacturer catalog https://www.maiak-m.bg/en/product/i141/product.html]
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="3">
+      <referenceToFlowDataSet type="flow data set" refObjectId="83ef2e4e-c00c-4aa6-be2f-efdc355c344d" uri="../flows/83ef2e4e-c00c-4aa6-be2f-efdc355c344d.xml">
+        <common:shortDescription xml:lang="en">Steel, chromium steel 18/8, hot rolled {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.2000000E-3</meanAmount>
+      <resultingAmount>3.2000000E-3</resultingAmount>
+      <generalComment>steel bin: material
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="4">
+      <referenceToFlowDataSet type="flow data set" refObjectId="a176ef83-0424-45d5-90ca-27a1a58bbd0b" uri="../flows/a176ef83-0424-45d5-90ca-27a1a58bbd0b.xml">
+        <common:shortDescription xml:lang="en">Metal working, average for chromium steel product manufacturing {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.2000000E-3</meanAmount>
+      <resultingAmount>3.2000000E-3</resultingAmount>
+      <generalComment>steel bin: fabrication
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="5">
+      <referenceToFlowDataSet type="flow data set" refObjectId="b279a588-90f3-4a78-a01b-10d411e95102" uri="../flows/b279a588-90f3-4a78-a01b-10d411e95102.xml">
+        <common:shortDescription xml:lang="en">Packaging film, low density polyethylene {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>7.4000000E-5</meanAmount>
+      <resultingAmount>7.4000000E-5</resultingAmount>
+      <generalComment>bag inside the bin
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="6">
+      <referenceToFlowDataSet type="flow data set" refObjectId="b8bf6fe0-d1bd-4f67-a016-7b464cace29c" uri="../flows/b8bf6fe0-d1bd-4f67-a016-7b464cace29c.xml">
+        <common:shortDescription xml:lang="en">Corrugated board box {RER}| market for corrugated board box | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.6300000E-2</meanAmount>
+      <resultingAmount>2.6300000E-2</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="7">
+      <referenceToFlowDataSet type="flow data set" refObjectId="9339549d-9b67-47a1-ac85-4cc7b5cd6f84" uri="../flows/9339549d-9b67-47a1-ac85-4cc7b5cd6f84.xml">
+        <common:shortDescription xml:lang="en">Kraft paper {RER}| market for kraft paper | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.2500000E-5</meanAmount>
+      <resultingAmount>5.2500000E-5</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="8">
+      <referenceToFlowDataSet type="flow data set" refObjectId="8a9e086d-b362-42c1-82ee-84db7d44d0cb" uri="../flows/8a9e086d-b362-42c1-82ee-84db7d44d0cb.xml">
+        <common:shortDescription xml:lang="en">EUR-flat pallet {RER}| market for EUR-flat pallet | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.6200000E-3</meanAmount>
+      <resultingAmount>1.6200000E-3</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="9">
+      <referenceToFlowDataSet type="flow data set" refObjectId="b279a588-90f3-4a78-a01b-10d411e95102" uri="../flows/b279a588-90f3-4a78-a01b-10d411e95102.xml">
+        <common:shortDescription xml:lang="en">Packaging film, low density polyethylene {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.1400000E-4</meanAmount>
+      <resultingAmount>1.1400000E-4</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="10">
+      <referenceToFlowDataSet type="flow data set" refObjectId="2d8ea8ed-3231-4864-a70a-0c825823d6c4" uri="../flows/2d8ea8ed-3231-4864-a70a-0c825823d6c4.xml">
+        <common:shortDescription xml:lang="en">EOL imballaggio_alluminio_EU [2020]</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.6300000E-1</meanAmount>
+      <resultingAmount>1.6300000E-1</resultingAmount>
+      <generalComment>watertight band
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="11">
+      <referenceToFlowDataSet type="flow data set" refObjectId="44fc0ecb-a45e-4c46-b3e0-55d7f7dcc3fe" uri="../flows/44fc0ecb-a45e-4c46-b3e0-55d7f7dcc3fe.xml">
+        <common:shortDescription xml:lang="en">EOL imballaggio_alluminio_IT [2021]</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.6300000E-1</meanAmount>
+      <resultingAmount>1.6300000E-1</resultingAmount>
+      <generalComment>watertight band
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="12">
+      <referenceToFlowDataSet type="flow data set" refObjectId="44fc0ecb-a45e-4c46-b3e0-55d7f7dcc3fe" uri="../flows/44fc0ecb-a45e-4c46-b3e0-55d7f7dcc3fe.xml">
+        <common:shortDescription xml:lang="en">EOL imballaggio_alluminio_IT [2021]</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.2000000E-3</meanAmount>
+      <resultingAmount>3.2000000E-3</resultingAmount>
+      <generalComment>bins
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="13">
+      <referenceToFlowDataSet type="flow data set" refObjectId="2d8ea8ed-3231-4864-a70a-0c825823d6c4" uri="../flows/2d8ea8ed-3231-4864-a70a-0c825823d6c4.xml">
+        <common:shortDescription xml:lang="en">EOL imballaggio_alluminio_EU [2020]</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.2000000E-3</meanAmount>
+      <resultingAmount>3.2000000E-3</resultingAmount>
+      <generalComment>bins
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="14">
+      <referenceToFlowDataSet type="flow data set" refObjectId="19340e17-74e2-4b52-98b2-2b596515047f" uri="../flows/19340e17-74e2-4b52-98b2-2b596515047f.xml">
+        <common:shortDescription xml:lang="en">EOL imballaggio_pallet_IT [2021]</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.6200000E-3</meanAmount>
+      <resultingAmount>1.6200000E-3</resultingAmount>
+      <generalComment>Pallet
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="15">
+      <referenceToFlowDataSet type="flow data set" refObjectId="f22d8a79-1bbd-4e0e-8c75-5b2d069c277d" uri="../flows/f22d8a79-1bbd-4e0e-8c75-5b2d069c277d.xml">
+        <common:shortDescription xml:lang="en">EOL imballaggio_pallet_EU [2020]</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.6200000E-3</meanAmount>
+      <resultingAmount>1.6200000E-3</resultingAmount>
+      <generalComment>pallet
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="16">
+      <referenceToFlowDataSet type="flow data set" refObjectId="687f77b3-1ca5-4e1d-93b9-eb43d11f7e33" uri="../flows/687f77b3-1ca5-4e1d-93b9-eb43d11f7e33.xml">
+        <common:shortDescription xml:lang="en">EOL imballaggio_carta_IT [2021]</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>5.2500000E-5</meanAmount>
+      <resultingAmount>5.2500000E-5</resultingAmount>
+      <generalComment>paper interleaf 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="17">
+      <referenceToFlowDataSet type="flow data set" refObjectId="108f161e-9b38-45bd-b40e-3443adef767e" uri="../flows/108f161e-9b38-45bd-b40e-3443adef767e.xml">
+        <common:shortDescription xml:lang="en">EOL imballaggio_carta_EU [2020]</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>5.2500000E-5</meanAmount>
+      <resultingAmount>5.2500000E-5</resultingAmount>
+      <generalComment>paper interleaf 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="18">
+      <referenceToFlowDataSet type="flow data set" refObjectId="687f77b3-1ca5-4e1d-93b9-eb43d11f7e33" uri="../flows/687f77b3-1ca5-4e1d-93b9-eb43d11f7e33.xml">
+        <common:shortDescription xml:lang="en">EOL imballaggio_carta_IT [2021]</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.6300000E-2</meanAmount>
+      <resultingAmount>2.6300000E-2</resultingAmount>
+      <generalComment>cardboard box
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="19">
+      <referenceToFlowDataSet type="flow data set" refObjectId="108f161e-9b38-45bd-b40e-3443adef767e" uri="../flows/108f161e-9b38-45bd-b40e-3443adef767e.xml">
+        <common:shortDescription xml:lang="en">EOL imballaggio_carta_EU [2020]</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.6300000E-2</meanAmount>
+      <resultingAmount>2.6300000E-2</resultingAmount>
+      <generalComment>cardboard box
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="20">
+      <referenceToFlowDataSet type="flow data set" refObjectId="b04ed02c-e0d8-46ad-945f-9c6721edc5fb" uri="../flows/b04ed02c-e0d8-46ad-945f-9c6721edc5fb.xml">
+        <common:shortDescription xml:lang="en">EOL imballaggio_ plastica_IT [2021]</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>7.4000000E-5</meanAmount>
+      <resultingAmount>7.4000000E-5</resultingAmount>
+      <generalComment>plastic bag
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="21">
+      <referenceToFlowDataSet type="flow data set" refObjectId="431be8d5-4462-4f1a-9c97-d3ac134e70d8" uri="../flows/431be8d5-4462-4f1a-9c97-d3ac134e70d8.xml">
+        <common:shortDescription xml:lang="en">EOL imballaggio_ plastica_EU [2020]</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>7.4000000E-5</meanAmount>
+      <resultingAmount>7.4000000E-5</resultingAmount>
+      <generalComment>plastic bag
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="22">
+      <referenceToFlowDataSet type="flow data set" refObjectId="b04ed02c-e0d8-46ad-945f-9c6721edc5fb" uri="../flows/b04ed02c-e0d8-46ad-945f-9c6721edc5fb.xml">
+        <common:shortDescription xml:lang="en">EOL imballaggio_ plastica_IT [2021]</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.1400000E-4</meanAmount>
+      <resultingAmount>1.1400000E-4</resultingAmount>
+      <generalComment>plastic film
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="23">
+      <referenceToFlowDataSet type="flow data set" refObjectId="431be8d5-4462-4f1a-9c97-d3ac134e70d8" uri="../flows/431be8d5-4462-4f1a-9c97-d3ac134e70d8.xml">
+        <common:shortDescription xml:lang="en">EOL imballaggio_ plastica_EU [2020]</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.1400000E-4</meanAmount>
+      <resultingAmount>1.1400000E-4</resultingAmount>
+      <generalComment>plastic film
+</generalComment>
+    </exchange>
+  </exchanges>
+</processDataSet>

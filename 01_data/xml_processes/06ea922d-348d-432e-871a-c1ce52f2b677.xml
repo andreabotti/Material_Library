@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>06ea922d-348d-432e-871a-c1ce52f2b677</common:UUID>
+      <name>
+        <baseName xml:lang="en">Aluminium, recycling</baseName>
+      </name>
+      <common:synonyms>Riciclo di alluminio.</common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">End-of-life treatment</common:class>
+          <common:class level="1">Material recycling</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment>Dataset developed within the ARCADIA project in the context of the PhD of Federica Carollo (Politecnico di Milano).
+The dataset relates to the recycling of 1 kg of aluminium in Italy. 
+The dataset is composed of 2-unit processes: 
+1) Avoided production of liquid aluminium with a substitution ratio assumed of 1:0,7;
+2) Treatment of aluminium scrap (The Process taken by the Ecoinvent 3.8 database was modified by excluding the aluminium scraps).</common:generalComment>
+      <referenceToExternalDocumentation type="source data set" refObjectId="78cc8909-4b82-4660-8558-1a8bb9b02701" version="01.00.000" uri="../sources/78cc8909-4b82-4660-8558-1a8bb9b02701.xml">
+        <common:shortDescription>Carollo F. (2023). Circularity in construction and demolition waste management chain, Ph.D. Dissertation (Tutored by Rigamonti L., Ceruti F.). Politecnico di Milano. Background datasets from the EcoInvent database cut-off (v. 3.8) were used for the LCA study. </common:shortDescription>
+      </referenceToExternalDocumentation>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2022</common:referenceYear>
+      <common:dataSetValidUntil>2027</common:dataSetValidUntil>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT">
+        <descriptionOfRestrictions>Lombardy Region.</descriptionOfRestrictions>
+      </locationOfOperationSupplyOrProduction>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>100% of aluminium scraps go directly for recycling. &#13;
+1,25 kg of aluminium scraps is needed to obtain 1 kg of recycled aluminium. Recycling 1 kg of aluminium scraps can avoid the production of 0,7 kg of primary liquid aluminium.   &#13;
+&#13;
+Good the Reliability; &#13;
+Very Good the Geographical representativeness; &#13;
+Very Good the Time representativeness; &#13;
+Very Good the Technological representativeness. </technologyDescriptionAndIncludedProcesses>
+      <technologicalApplicability>Recycling of 1 kg of aluminum.</technologicalApplicability>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Allocation - mass</LCIMethodApproaches>
+      <referenceToLCAMethodDetails type="source data set" refObjectId="26e2135b-d252-4968-acbf-08be9a39c2c4" version="01.00.000" uri="../sources/26e2135b-d252-4968-acbf-08be9a39c2c4.xml">
+        <common:shortDescription>Carollo F. (2023). Circularity in construction and demolition waste management chain, Ph.D. Dissertation (Tutored by Rigamonti L., Ceruti F.). Politecnico di Milano</common:shortDescription>
+      </referenceToLCAMethodDetails>
+      <referenceToLCAMethodDetails type="source data set" refObjectId="6c61bbe0-b052-4cc5-b53c-de94fa74a455" version="01.00.000" uri="../sources/6c61bbe0-b052-4cc5-b53c-de94fa74a455.xml">
+        <common:shortDescription>Ruggeri, M., Pantini, S., Rigamonti, L. (2019). Assessing the impact of selective demolition techniques on C&amp;D waste management. IOP Conference Series: Earth and Environmental Science, 296(1), 012005.</common:shortDescription>
+      </referenceToLCAMethodDetails>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <referenceToDataSource type="source data set" refObjectId="aa0646ea-f059-439c-b14e-1d19589252dd" version="01.00.000" uri="../sources/aa0646ea-f059-439c-b14e-1d19589252dd.xml">
+        <common:shortDescription>Carollo F. (2023). Circularity in construction and demolition waste management chain, Ph.D. Dissertation (Tutored by Rigamonti L., Ceruti F.). Politecnico di Milano. Background datasets from the EcoInvent database cut-off (v. 3.8) were used for the LCA study. </common:shortDescription>
+      </referenceToDataSource>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>All relevant flows quantified</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Not reviewed">
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Completeness" value="Good"/>
+          <common:dataQualityIndicator name="Precision" value="Good"/>
+          <common:dataQualityIndicator name="Methodological appropriateness and consistency" value="Good"/>
+          <common:dataQualityIndicator name="Overall quality" value="Good"/>
+        </common:dataQualityIndicators>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="88d4f8d9-60f9-43d1-9ea3-329c10d7d727" uri="../sources/88d4f8d9-60f9-43d1-9ea3-329c10d7d727.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Fully compliant</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Fully compliant</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="d92a1a12-2545-49e2-a585-55c259997756" uri="../sources/d92a1a12-2545-49e2-a585-55c259997756.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Fully compliant</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Fully compliant</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="01807191-e156-421a-b2f6-aa609ea534f4" uri="../contacts/01807191-e156-421a-b2f6-aa609ea534f4.xml">
+        <common:shortDescription xml:lang="en">EPLCA project team</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Arcadia – PON Governance e Capacità istituzionali 2014-2020 (PhD Project of Federica Carollo).</common:project>
+    </common:commissionerAndGoal>
+    <dataGenerator>
+      <common:referenceToPersonOrEntityGeneratingTheDataSet refObjectId="a394ab6a-c78e-4905-89ec-05e2311d0bee" type="contact data set" uri="../sources/a394ab6a-c78e-4905-89ec-05e2311d0bee.xml" version="01.00.000">
+        <common:shortDescription>Federica Carollo (Politecnico di Milano)</common:shortDescription>
+      </common:referenceToPersonOrEntityGeneratingTheDataSet>
+    </dataGenerator>
+    <dataEntryBy>
+      <common:timeStamp>2022-12-04T11:59:44.598+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="a97a0155-0234-4b87-b4ce-a45da52f2a40" uri="../sources/a97a0155-0234-4b87-b4ce-a45da52f2a40.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2022-05-27T13:07:55.83Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/06ea922d-348d-432e-871a-c1ce52f2b677.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="a180c1f7-d12b-486c-80ce-326a5bfb7603" type="contact data set" uri="../sources/a180c1f7-d12b-486c-80ce-326a5bfb7603.xml" version="01.00.000">
+        <common:shortDescription>ENEA-ARCADIA </common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+      <common:accessRestrictions>Type of license: Open Database Licence (ODbL).</common:accessRestrictions>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d41b151b-ce34-4904-a9b6-6e0dd03aa074" uri="../flows/d41b151b-ce34-4904-a9b6-6e0dd03aa074.xml">
+        <common:shortDescription xml:lang="en">Aluminium, recycling</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0000000E+0</meanAmount>
+      <resultingAmount>1.0000000E+0</resultingAmount>
+      <generalComment>The dataset relates to the recycling of 1 kg of aluminium in Italy. 
+Reference: Ruggeri et al., 2019
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="063b1e2c-363c-450a-a64b-a18fbed649d4" uri="../flows/063b1e2c-363c-450a-a64b-a18fbed649d4.xml">
+        <common:shortDescription xml:lang="en">ARCADIA - Aluminium scrap, post-consumer, prepared for melting {RER}| treatment of aluminium scrap, post-consumer, by collecting, sorting, cleaning, pressing | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.2500000E+0</meanAmount>
+      <resultingAmount>1.2500000E+0</resultingAmount>
+      <generalComment>1,25 kg of Aluminium scraps needed to obtain 1 kg of recycled aluminium.
+The original dataset " Aluminium scrap, post-consumer, prepared for melting {RER}| treatment of aluminium scrap, post-consumer, by collecting, sorting, cleaning, pressing | Cut-off, U" was modified as follows: the aluminium scraps input was eliminated to avoid double counting.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="e0e4863c-22e9-4d9f-8bfa-b52f82cbff82" uri="../flows/e0e4863c-22e9-4d9f-8bfa-b52f82cbff82.xml">
+        <common:shortDescription xml:lang="en">Aluminium, primary, liquid {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>7.0000000E-1</meanAmount>
+      <resultingAmount>7.0000000E-1</resultingAmount>
+      <generalComment>[Amount=1*0,7]
+Avoided production of liquid aluminium with a substitution ratio assumed of 1:0,7.
+(Ref.: Ruggeri et al., 2019)
+</generalComment>
+    </exchange>
+  </exchanges>
+</processDataSet>

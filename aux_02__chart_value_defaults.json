@@ -1,0 +1,263 @@
+{
+  "_comment": [
+    "Default 'Value Column (numeric)' per product type for the Charts page.",
+    "",
+    "WHY THIS FILE EXISTS: G__GWP_A1A3 stores the GWP against each product's own",
+    "declared/functional unit, and that unit is NOT consistent across the dataset —",
+    "column G__GWP_FU records it per row and takes values m3, m2, ton, kg, m, m2_R1,",
+    "unit. Charting G__GWP_A1A3 for a product type whose rows mix ton with m2 puts",
+    "incomparable magnitudes on one axis. The normalised columns (_m2, _m3, _m2R1)",
+    "are unit-consistent by construction, so they are the safer default wherever the",
+    "product type has mixed declared units and adequate coverage.",
+    "",
+    "HOW TO EDIT: each entry under 'by_product_type' is an ORDERED preference list.",
+    "The app picks the first column in the list that (a) is offered by the Value",
+    "Column selectbox and (b) has at least 'settings.min_coverage' non-null values in",
+    "the rows currently in view. If none qualifies it falls back to",
+    "'global_default.value_columns', then to the selectbox's first entry. Reorder the",
+    "arrays to change a default; add a product type key to cover a new category.",
+    "Keys must match D__ProductType_ENG exactly. Column names must match the",
+    "parquet's original (uncleaned) names.",
+    "",
+    "'declared_unit' and 'coverage_2026_07' are documentation only — the app ignores",
+    "them. Coverage counts are non-null rows as of the 2026-07 dataset (A__Map_yn=Y)",
+    "and are recorded to justify each choice; they are not kept in sync automatically.",
+    "",
+    "Set 'settings.enabled' to false to restore the previous behaviour (fixed",
+    "selectbox index) without deleting this file."
+  ],
+
+  "settings": {
+    "enabled": true,
+    "min_coverage": 3,
+    "group_by_column": "D__ProductType_ENG",
+    "_comment_group_by": "Categorical column used both as the Group By default and as the column read to detect which product type is in view."
+  },
+
+  "global_default": {
+    "value_columns": [
+      "G__GWP_A1A3",
+      "G__GWP_A1A3_kg",
+      "G__GWP_A1A3_m2",
+      "G__GWP_A1A3_m3"
+    ],
+    "_comment": "Used when the rows in view span several product types (no single dominant type), or when a type has no entry below."
+  },
+
+  "value_column_visibility": {
+    "_comment": [
+      "Restricts which product types may OFFER a value column in the selectbox at all",
+      "(not merely which is preselected). Map a column name to the list of",
+      "D__ProductType_ENG values allowed to see it; the column is hidden for every",
+      "other type, and also hidden when the rows in view span several types (because",
+      "a type-specific basis is not meaningful across a mixed view).",
+      "",
+      "Columns not listed here are always offered. Empty the object to lift all",
+      "restrictions."
+    ],
+    "G__GWP_A1A3_m2R1": ["Insulation"],
+    "_comment_m2R1": "GWP per m2 at R=1 normalises for thermal resistance, which only has meaning for insulants. It is populated for a few non-insulation rows but is not a valid comparison basis for them, so it is restricted to Insulation.",
+  "PR__Cost_per_R": [
+    "Insulation"
+  ],
+  "PR__R_m2KW": [
+    "Insulation"
+  ],
+  "_comment_price_per_R": "Cost per unit of thermal resistance, and R itself, are insulation measures: both come from the listino thickness and lambda. The plain list price (PR__Price_EUR_m2) is not restricted."
+  },
+
+  "by_product_type": {
+    "Adhesives": {
+      "value_columns": ["G__GWP_A1A3", "G__GWP_A1A3_m2"],
+      "declared_unit": "kg",
+      "coverage_2026_07": { "G__GWP_A1A3": 3, "G__GWP_A1A3_m2": 2 },
+      "note": "Declared unit is consistently kg, so the FU/DU column is directly comparable."
+    },
+    "Binder (Cement)": {
+      "value_columns": ["G__GWP_A1A3"],
+      "declared_unit": "ton",
+      "coverage_2026_07": { "G__GWP_A1A3": 109 },
+      "note": "Mass-based product, consistently declared per ton. No area/volume normalisation exists."
+    },
+    "Building boards": {
+      "value_columns": ["G__GWP_A1A3_m2", "G__GWP_A1A3"],
+      "declared_unit": "m2",
+      "coverage_2026_07": { "G__GWP_A1A3_m2": 80, "G__GWP_A1A3": 80 },
+      "note": "Boards are specified and installed by area; per-m2 is the like-for-like comparison."
+    },
+    "Building fasteners": {
+      "value_columns": ["G__GWP_A1A3"],
+      "declared_unit": "kg",
+      "coverage_2026_07": { "G__GWP_A1A3": 10 },
+      "note": "Mass-based, consistently kg."
+    },
+    "Cable trays": {
+      "value_columns": ["G__GWP_A1A3"],
+      "declared_unit": "kg",
+      "coverage_2026_07": { "G__GWP_A1A3": 23 },
+      "note": "Mass-based, consistently kg."
+    },
+    "Cladding": {
+      "value_columns": ["G__GWP_A1A3_m2", "G__GWP_A1A3"],
+      "declared_unit": "m2",
+      "coverage_2026_07": { "G__GWP_A1A3_m2": 6, "G__GWP_A1A3": 6 },
+      "note": "Area-based facade product."
+    },
+    "Coatings": {
+      "value_columns": ["G__GWP_A1A3", "G__GWP_A1A3_m2"],
+      "declared_unit": "kg / ton (mixed)",
+      "coverage_2026_07": { "G__GWP_A1A3": 5, "G__GWP_A1A3_m2": 2 },
+      "note": "Mixed kg/ton declaration; per-m2 coverage too thin to default to. Read with care."
+    },
+    "Coil": {
+      "value_columns": ["G__GWP_A1A3"],
+      "declared_unit": "ton",
+      "coverage_2026_07": { "G__GWP_A1A3": 12 },
+      "note": "Steel coil is a mass commodity."
+    },
+    "Finish (Walls)": {
+      "value_columns": ["G__GWP_A1A3"],
+      "declared_unit": "ton",
+      "coverage_2026_07": { "G__GWP_A1A3": 1 },
+      "note": "Single row — below min_coverage, so this will normally fall through to the global default."
+    },
+    "Firestopping accessories": {
+      "value_columns": ["G__GWP_A1A3"],
+      "declared_unit": "kg",
+      "coverage_2026_07": { "G__GWP_A1A3": 4 },
+      "note": "Mass-based, consistently kg."
+    },
+    "Framing profiles (Cladding/stud frame)": {
+      "value_columns": ["G__GWP_A1A3"],
+      "declared_unit": "m",
+      "coverage_2026_07": { "G__GWP_A1A3": 17 },
+      "note": "Linear product declared per metre; no per-m2/m3 normalisation available."
+    },
+    "Grouting": {
+      "value_columns": ["G__GWP_A1A3", "G__GWP_A1A3_m2"],
+      "declared_unit": "kg",
+      "coverage_2026_07": { "G__GWP_A1A3": 2, "G__GWP_A1A3_m2": 2 },
+      "note": "Very thin coverage; both options below min_coverage."
+    },
+    "In situ Concrete": {
+      "value_columns": ["G__GWP_A1A3_m3", "G__GWP_A1A3"],
+      "declared_unit": "m3",
+      "coverage_2026_07": { "G__GWP_A1A3_m3": 635, "G__GWP_A1A3": 635 },
+      "note": "Concrete is specified by volume. Both columns agree here (FU is already m3); the explicit _m3 column is preferred so the axis unit is unambiguous."
+    },
+    "Insulation": {
+      "value_columns": ["G__GWP_A1A3_m2R1", "G__GWP_A1A3_m2", "G__GWP_A1A3_m3"],
+      "declared_unit": "m2 / m3 / m2_R1 (mixed)",
+      "coverage_2026_07": { "G__GWP_A1A3_m2R1": 329, "G__GWP_A1A3_m2": 313, "G__GWP_A1A3_m3": 329 },
+      "note": "IMPORTANT: insulation rows mix m2, m3 and m2_R1 declarations, so G__GWP_A1A3 is not comparable within this type. Per m2 at R=1 normalises for thermal performance and is the functionally correct basis for comparing insulants of different conductivity and thickness."
+    },
+    "Levelling compound": {
+      "value_columns": ["G__GWP_A1A3", "G__GWP_A1A3_m3"],
+      "declared_unit": "kg / ton (mixed)",
+      "coverage_2026_07": { "G__GWP_A1A3": 8, "G__GWP_A1A3_m3": 8 },
+      "note": "Mixed kg/ton declaration — magnitudes differ by 1000x between rows. Consider switching to _m3 manually."
+    },
+    "Masonry (Block)": {
+      "value_columns": ["G__GWP_A1A3_m2", "G__GWP_A1A3_m3", "G__GWP_A1A3"],
+      "declared_unit": "m2 / kg / m3 / ton (mixed)",
+      "coverage_2026_07": { "G__GWP_A1A3_m2": 41, "G__GWP_A1A3_m3": 42, "G__GWP_A1A3": 51 },
+      "note": "Four different declared units in one type; per-m2 (walling area) is the usual specification basis."
+    },
+    "Masonry (Bricklaying)": {
+      "value_columns": ["G__GWP_A1A3", "G__GWP_A1A3_m3"],
+      "declared_unit": "ton",
+      "coverage_2026_07": { "G__GWP_A1A3": 9, "G__GWP_A1A3_m3": 9 },
+      "note": "Mortar/bricklaying materials declared per ton."
+    },
+    "Metal accessories": {
+      "value_columns": ["G__GWP_A1A3"],
+      "declared_unit": "kg (mostly)",
+      "coverage_2026_07": { "G__GWP_A1A3": 23 },
+      "note": "Predominantly kg; a few rows use a pcs/m2 unit."
+    },
+    "Paints": {
+      "value_columns": ["G__GWP_A1A3"],
+      "declared_unit": "n/a",
+      "coverage_2026_07": { "G__GWP_A1A3": 0 },
+      "note": "No GWP data yet — will fall through to the global default."
+    },
+    "Paving": {
+      "value_columns": ["G__GWP_A1A3"],
+      "declared_unit": "ton",
+      "coverage_2026_07": { "G__GWP_A1A3": 3 },
+      "note": "Declared per ton."
+    },
+    "Raised access floor": {
+      "value_columns": ["G__GWP_A1A3_m2", "G__GWP_A1A3"],
+      "declared_unit": "m2",
+      "coverage_2026_07": { "G__GWP_A1A3_m2": 1, "G__GWP_A1A3": 1 },
+      "note": "Area-based; single row so below min_coverage."
+    },
+    "Rebar": {
+      "value_columns": ["G__GWP_A1A3"],
+      "declared_unit": "ton",
+      "coverage_2026_07": { "G__GWP_A1A3": 15, "G__GWP_A1A3_m3": 15 },
+      "note": "Reinforcement is priced and specified by mass; per-ton is the industry basis even though _m3 is populated."
+    },
+    "Rendering": {
+      "value_columns": ["G__GWP_A1A3", "G__GWP_A1A3_m3"],
+      "declared_unit": "ton",
+      "coverage_2026_07": { "G__GWP_A1A3": 11, "G__GWP_A1A3_m3": 9 },
+      "note": "Declared per ton."
+    },
+    "Screed": {
+      "value_columns": ["G__GWP_A1A3", "G__GWP_A1A3_m3"],
+      "declared_unit": "kg / ton / m3 / m2 (mixed)",
+      "coverage_2026_07": { "G__GWP_A1A3": 10, "G__GWP_A1A3_m3": 9 },
+      "note": "Sparse and unit-mixed; neither option is clean. _m3 is the more physically meaningful basis if coverage improves."
+    },
+    "Skim plaster": {
+      "value_columns": ["G__GWP_A1A3", "G__GWP_A1A3_m3"],
+      "declared_unit": "ton",
+      "coverage_2026_07": { "G__GWP_A1A3": 7, "G__GWP_A1A3_m3": 7 },
+      "note": "Declared per ton."
+    },
+    "Structural accessories": {
+      "value_columns": ["G__GWP_A1A3"],
+      "declared_unit": "kg",
+      "coverage_2026_07": { "G__GWP_A1A3": 1 },
+      "note": "Single row — below min_coverage."
+    },
+    "Structural components": {
+      "value_columns": ["G__GWP_A1A3", "G__GWP_A1A3_m3"],
+      "declared_unit": "ton / m / m2 (mixed)",
+      "coverage_2026_07": { "G__GWP_A1A3": 11, "G__GWP_A1A3_m3": 9 },
+      "note": "Heterogeneous category (beams, columns, precast) with mixed declarations."
+    },
+    "Suspended ceiling": {
+      "value_columns": ["G__GWP_A1A3_m2", "G__GWP_A1A3"],
+      "declared_unit": "m2",
+      "coverage_2026_07": { "G__GWP_A1A3_m2": 28, "G__GWP_A1A3": 28 },
+      "note": "Ceiling systems are specified by area."
+    },
+    "Tiles": {
+      "value_columns": ["G__GWP_A1A3_m2", "G__GWP_A1A3"],
+      "declared_unit": "m2 / kg (mixed)",
+      "coverage_2026_07": { "G__GWP_A1A3_m2": 84, "G__GWP_A1A3": 84 },
+      "note": "Rows mix m2 and kg declarations; per-m2 matches how tiles are specified and has full coverage."
+    },
+    "Waterproofing materials": {
+      "value_columns": ["G__GWP_A1A3", "G__GWP_A1A3_m2"],
+      "declared_unit": "kg",
+      "coverage_2026_07": { "G__GWP_A1A3": 4, "G__GWP_A1A3_m2": 4 },
+      "note": "Declared per kg; per-m2 also populated and arguably more useful for membranes."
+    },
+    "Windows & Doors - Whole system": {
+      "value_columns": ["G__GWP_A1A3_m2", "G__GWP_A1A3"],
+      "declared_unit": "m2 / unit (mixed)",
+      "coverage_2026_07": { "G__GWP_A1A3_m2": 24, "G__GWP_A1A3": 24 },
+      "note": "Mixes per-m2 and per-window declarations; per-m2 is comparable across sizes."
+    },
+    "Windows - Other": {
+      "value_columns": ["G__GWP_A1A3"],
+      "declared_unit": "m",
+      "coverage_2026_07": { "G__GWP_A1A3": 7 },
+      "note": "Spacers/profiles declared per linear metre."
+    }
+  }
+}

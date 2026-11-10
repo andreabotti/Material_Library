@@ -1,0 +1,1229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>d6ce119d-3a8c-4670-9207-862a0747ca4b</common:UUID>
+      <name>
+        <baseName xml:lang="en">Raw cow milk, at farm, produced in Northern Italy</baseName>
+      </name>
+      <common:synonyms>Latte crudo vaccino, all’azienda agrozootecnica, prodotto in Nord Italia</common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">Materials production</common:class>
+          <common:class level="1">Food and renewable raw materials</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment>Dataset developed within the ARCADIA Project (production chain study regarding raw cow milk “STUDIO DI FILIERA DEL LATTE CRUDO VACCINO DEL NORD ITALIA”), in compliance with the technical report “Metodologia per gli studi di filiera della Banca Dati italiana LCA”. The dataset refers to the production of raw cow milk at farm, without further transformation and/or processing and is representative of the Northern Italy processing technologies commonly used for the production of raw cow milk.</common:generalComment>
+      <referenceToExternalDocumentation type="source data set" refObjectId="a8fe3916-7344-4ae4-8065-19bd7ddb1125" version="01.00.000" uri="../sources/a8fe3916-7344-4ae4-8065-19bd7ddb1125.xml">
+        <common:shortDescription>Fantin V., Cortesi S., Frisone F., Sandrucci A., Tamburini A., Bava L., Zucali M., Gislon G., 2023. “STUDIO DI FILIERA DEL LATTE CRUDO VACCINO DEL NORD ITALIA”. Internal report ARCADIA Project. For the LCA study background datasets from Ecoinvent database cut-off (v. 3.7.1) were used.</common:shortDescription>
+      </referenceToExternalDocumentation>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2023</common:referenceYear>
+      <common:dataSetValidUntil>2028</common:dataSetValidUntil>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT">
+        <descriptionOfRestrictions>Northern Italy. Primary data collected in Lombardia. Dataset representative of Northern Italy production of raw cow milk.</descriptionOfRestrictions>
+      </locationOfOperationSupplyOrProduction>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>The functional unit is 1 kg of raw cow milk, intermediate product, available for all subsequent processing operations and for its transformation in other products of the dairy supply chain (butter, cheese, drinking milk, yogurt, etc.). System boundaries are from cradle to farm gate and include the production of on-farm feed, animal breeding and milking phases. Production of equipment and infrastructures is not included, except for the background system. No final packaging is used. Primary data (Lombardy supply chain) representative of the Northern Italy supply chain for geographical characteristics and technologies used (machinery, equipment, etc.) were collected. Inventory data were collected as physical quantities of materials used in different processes. Background data were modelled according to Ecoinvent v. 3.7.1</technologyDescriptionAndIncludedProcesses>
+      <technologicalApplicability>Raw cow milk, intermediate product which can be used for further transformation or processing in the dairy sector to obtain dairy products (eg. butter, cheese, drinking milk, yogurt, etc.)</technologicalApplicability>
+      <referenceToTechnologyPictogramme type="source data set" refObjectId="afab3d6d-b44a-453b-ae2d-943fc6a03ea8" version="01.00.000" uri="../sources/afab3d6d-b44a-453b-ae2d-943fc6a03ea8.xml">
+        <common:shortDescription>20240215122132_Latte crudo.jpg</common:shortDescription>
+      </referenceToTechnologyPictogramme>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Allocation - mass</LCIMethodApproaches>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <dataCutOffAndCompletenessPrinciples>Production of equipment and infrastructure are not included, except for the background system.</dataCutOffAndCompletenessPrinciples>
+      <referenceToDataSource type="source data set" refObjectId="05f3aa8b-152d-4dea-a213-d95816dfb9ea" version="01.00.000" uri="../sources/05f3aa8b-152d-4dea-a213-d95816dfb9ea.xml">
+        <common:shortDescription>20240215122132_Report filiera latte crudo vaccino-pubblico-accessibile.pdf</common:shortDescription>
+      </referenceToDataSource>
+      <dataCollectionPeriod>2019</dataCollectionPeriod>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>No statement</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Independent internal review">
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Completeness" value="Good"/>
+          <common:dataQualityIndicator name="Precision" value="Not applicable"/>
+          <common:dataQualityIndicator name="Methodological appropriateness and consistency" value="Not applicable"/>
+          <common:dataQualityIndicator name="Overall quality" value="Not applicable"/>
+        </common:dataQualityIndicators>
+        <common:reviewDetails>The review was performed in compliance with Arcadia Metodology: “Metodologia per gli studi di filiera della Banca Dati italiana LCA” and ISO 14040-44 norms. The dataset has been assessed limited to the foreground data collected during the supply chain studies.&#13;
+The dataset has been evaluated based on the following 4 criteria:&#13;
+1. Technological Representativeness; 2. Time Representativeness; 3. Geographical Representativeness; 4. Reliability.&#13;
+In this contest the Reliability is “good”.</common:reviewDetails>
+        <common:referenceToNameOfReviewerAndInstitution type="contact data set" refObjectId="1970c5f7-b8f5-45e1-9c16-5f50c3251b00" version="01.00.000" uri="../sources/1970c5f7-b8f5-45e1-9c16-5f50c3251b00.xml">
+          <common:shortDescription>ENEA</common:shortDescription>
+        </common:referenceToNameOfReviewerAndInstitution>
+        <common:otherReviewDetails>The study was judged by the reviewer as compliant with both ISO 14040-44 and&#13;
+Arcadia methodology</common:otherReviewDetails>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="9ac4952c-bd7b-4cdb-9118-e43f7c20cd1b" uri="../sources/9ac4952c-bd7b-4cdb-9118-e43f7c20cd1b.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="69d4f8d0-9907-4443-b6d7-0885923422ca" uri="../sources/69d4f8d0-9907-4443-b6d7-0885923422ca.xml">
+          <common:shortDescription xml:lang="en">ISO 14044</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Not defined</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="1f85cd79-0655-4fb1-a54b-dac1ab7d8b38" uri="../sources/1f85cd79-0655-4fb1-a54b-dac1ab7d8b38.xml">
+        <common:shortDescription xml:lang="en">Arcadia – PON Governance e Capacità istituzionale 2014-2020&#13;
+</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Arcadia – PON Governance e Capacità istituzionale 2014-2020</common:project>
+    </common:commissionerAndGoal>
+    <dataGenerator>
+      <common:referenceToPersonOrEntityGeneratingTheDataSet refObjectId="e67d87ad-78a4-4449-a3f8-784b6f397aff" type="contact data set" uri="../sources/e67d87ad-78a4-4449-a3f8-784b6f397aff.xml" version="01.00.000">
+        <common:shortDescription>ENEA</common:shortDescription>
+      </common:referenceToPersonOrEntityGeneratingTheDataSet>
+    </dataGenerator>
+    <dataEntryBy>
+      <common:timeStamp>2024-02-15T11:54:14.912+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="a97a0155-0234-4b87-b4ce-a45da52f2a40" uri="../sources/a97a0155-0234-4b87-b4ce-a45da52f2a40.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2021-07-16T17:13:46.701Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/d6ce119d-3a8c-4670-9207-862a0747ca4b.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="c70cddcd-11c7-4c01-a381-d362c2fc966f" type="contact data set" uri="../contacts/c70cddcd-11c7-4c01-a381-d362c2fc966f.xml" version="01.00.000">
+        <common:shortDescription>ENEA-ARCADIA</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+      <common:accessRestrictions>Type of license: Open Database Licence (ODbL)</common:accessRestrictions>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="9cd418c7-e1d7-43cf-ad04-7caad138e643" uri="../flows/9cd418c7-e1d7-43cf-ad04-7caad138e643.xml">
+        <common:shortDescription xml:lang="en">Raw cow milk, at farm, produced in Northern Italy</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0000000E+0</meanAmount>
+      <resultingAmount>1.0000000E+0</resultingAmount>
+      <generalComment>Data were provided from Università degli Studi di Milano, Scienze Agrarie e Ambientali - Produzione, Territorio, Agroenergia
+They were collected during the LIFE DOP and LIFE Forage4Climate projects and refer to 2019.
+They refer to the production of 119,010,826 kg of raw cow milk produced by 98 cow farms located in Lombardy (Italy).
+Milk/meat allocation = 85%/15%
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="db5afcff-9f46-4e8f-ab3a-77ca31eb574c" uri="../flows/db5afcff-9f46-4e8f-ab3a-77ca31eb574c.xml">
+        <common:shortDescription xml:lang="en">urea {RER}| market for urea | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.7900000E-3</meanAmount>
+      <resultingAmount>2.7900000E-3</resultingAmount>
+      <generalComment>Fertilizer for crop cultivation for feed production.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="7f4ea688-a076-4f1e-aed6-beb280c64d7a" uri="../flows/7f4ea688-a076-4f1e-aed6-beb280c64d7a.xml">
+        <common:shortDescription xml:lang="en">ammonium nitrate {RER}| market for ammonium nitrate | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>9.7700000E-5</meanAmount>
+      <resultingAmount>9.7700000E-5</resultingAmount>
+      <generalComment>Fertilizer for crop cultivation for feed production.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="3">
+      <referenceToFlowDataSet type="flow data set" refObjectId="3da1cf29-1f1b-4bf3-8963-0260004fa6a4" uri="../flows/3da1cf29-1f1b-4bf3-8963-0260004fa6a4.xml">
+        <common:shortDescription xml:lang="en">inorganic potassium fertiliser, as K2O {IT}| market for inorganic potassium fertiliser, as K2O | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.4500000E-5</meanAmount>
+      <resultingAmount>1.4500000E-5</resultingAmount>
+      <generalComment>Fertilizer for crop cultivation for feed production.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="4">
+      <referenceToFlowDataSet type="flow data set" refObjectId="426752df-aba5-4a97-8856-68c80ee56db8" uri="../flows/426752df-aba5-4a97-8856-68c80ee56db8.xml">
+        <common:shortDescription xml:lang="en">NPK (15-15-15) fertiliser {RER}| market for NPK (15-15-15) fertiliser | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.9700000E-5</meanAmount>
+      <resultingAmount>5.9700000E-5</resultingAmount>
+      <generalComment>Fertilizer for crop cultivation for feed production.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="5">
+      <referenceToFlowDataSet type="flow data set" refObjectId="f50769f1-c9d9-493f-b200-ce0894be0184" uri="../flows/f50769f1-c9d9-493f-b200-ce0894be0184.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry 16-32 metric ton, euro4 {RER}| market for transport, freight, lorry 16-32 metric ton, EURO4 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.9700000E-4</meanAmount>
+      <resultingAmount>2.9700000E-4</resultingAmount>
+      <generalComment>Transport for fertilizers (i.e. urea, ammonium nitrate, potassium carbonate, N:P:K) for 100 km.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="6">
+      <referenceToFlowDataSet type="flow data set" refObjectId="1eb4f11c-2d9e-42ea-b0a4-83d527357e79" uri="../flows/1eb4f11c-2d9e-42ea-b0a4-83d527357e79.xml">
+        <common:shortDescription xml:lang="en">[sulfonyl]urea-compound {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.0200000E-8</meanAmount>
+      <resultingAmount>3.0200000E-8</resultingAmount>
+      <generalComment>Herbicide for crop cultivation for feed production.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="7">
+      <referenceToFlowDataSet type="flow data set" refObjectId="11b2d909-bb69-4397-82ca-4483373d13bb" uri="../flows/11b2d909-bb69-4397-82ca-4483373d13bb.xml">
+        <common:shortDescription xml:lang="en">Acetamide-anillide-compound, unspecified {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.3500000E-7</meanAmount>
+      <resultingAmount>2.3500000E-7</resultingAmount>
+      <generalComment>Herbicide for crop cultivation for feed production.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="8">
+      <referenceToFlowDataSet type="flow data set" refObjectId="59b23d64-a7ec-47d3-a7a7-f3e399400d88" uri="../flows/59b23d64-a7ec-47d3-a7a7-f3e399400d88.xml">
+        <common:shortDescription xml:lang="en">Benzoic-compound {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.2000000E-7</meanAmount>
+      <resultingAmount>1.2000000E-7</resultingAmount>
+      <generalComment>Herbicide for crop cultivation for feed production.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="9">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fbadf613-79c5-4d92-b680-d36d91ecbc59" uri="../flows/fbadf613-79c5-4d92-b680-d36d91ecbc59.xml">
+        <common:shortDescription xml:lang="en">Dinitroaniline-compound {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.3100000E-7</meanAmount>
+      <resultingAmount>1.3100000E-7</resultingAmount>
+      <generalComment>Herbicide for crop cultivation for feed production.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="10">
+      <referenceToFlowDataSet type="flow data set" refObjectId="f7371f33-2590-426f-967a-1c3767ad6fea" uri="../flows/f7371f33-2590-426f-967a-1c3767ad6fea.xml">
+        <common:shortDescription xml:lang="en">Pesticide, unspecified {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.1600000E-7</meanAmount>
+      <resultingAmount>1.1600000E-7</resultingAmount>
+      <generalComment>Herbicide for crop cultivation for feed production.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="11">
+      <referenceToFlowDataSet type="flow data set" refObjectId="f7371f33-2590-426f-967a-1c3767ad6fea" uri="../flows/f7371f33-2590-426f-967a-1c3767ad6fea.xml">
+        <common:shortDescription xml:lang="en">Pesticide, unspecified {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>8.6300000E-8</meanAmount>
+      <resultingAmount>8.6300000E-8</resultingAmount>
+      <generalComment>Fungicide for crop cultivation for feed production.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="12">
+      <referenceToFlowDataSet type="flow data set" refObjectId="3351d649-5d33-4e09-b9ad-423597a4fa7d" uri="../flows/3351d649-5d33-4e09-b9ad-423597a4fa7d.xml">
+        <common:shortDescription xml:lang="en">Phenoxy-compound {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.5900000E-8</meanAmount>
+      <resultingAmount>1.5900000E-8</resultingAmount>
+      <generalComment>Herbicide for crop cultivation for feed production.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="13">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d19f4b5a-89a8-4863-ab5a-4d880df044b0" uri="../flows/d19f4b5a-89a8-4863-ab5a-4d880df044b0.xml">
+        <common:shortDescription xml:lang="en">Pyrethroid-compound {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.1500000E-8</meanAmount>
+      <resultingAmount>1.1500000E-8</resultingAmount>
+      <generalComment>Insecticide for crop cultivation for feed production.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="14">
+      <referenceToFlowDataSet type="flow data set" refObjectId="b5d368e9-4610-4394-85ee-075da8710145" uri="../flows/b5d368e9-4610-4394-85ee-075da8710145.xml">
+        <common:shortDescription xml:lang="en">Pyridine-compound {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>7.9900000E-8</meanAmount>
+      <resultingAmount>7.9900000E-8</resultingAmount>
+      <generalComment>Insecticide for crop cultivation for feed production.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="15">
+      <referenceToFlowDataSet type="flow data set" refObjectId="ca63c469-0e73-47be-b6f7-8f6e43e3d657" uri="../flows/ca63c469-0e73-47be-b6f7-8f6e43e3d657.xml">
+        <common:shortDescription xml:lang="en">Triazine-compound, unspecified {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.2200000E-7</meanAmount>
+      <resultingAmount>4.2200000E-7</resultingAmount>
+      <generalComment>Herbicide for crop cultivation for feed production.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="16">
+      <referenceToFlowDataSet type="flow data set" refObjectId="1eb4f11c-2d9e-42ea-b0a4-83d527357e79" uri="../flows/1eb4f11c-2d9e-42ea-b0a4-83d527357e79.xml">
+        <common:shortDescription xml:lang="en">[sulfonyl]urea-compound {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.8400000E-8</meanAmount>
+      <resultingAmount>3.8400000E-8</resultingAmount>
+      <generalComment>Insecticide/Fungicide for crop cultivation for feed production.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="17">
+      <referenceToFlowDataSet type="flow data set" refObjectId="f50769f1-c9d9-493f-b200-ce0894be0184" uri="../flows/f50769f1-c9d9-493f-b200-ce0894be0184.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry 16-32 metric ton, euro4 {RER}| market for transport, freight, lorry 16-32 metric ton, EURO4 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.2900000E-7</meanAmount>
+      <resultingAmount>1.2900000E-7</resultingAmount>
+      <generalComment>Transport for chemicals for agriculture (i.e. herbicides, insecticides, fungicides) for 100 km.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="18">
+      <referenceToFlowDataSet type="flow data set" refObjectId="0c9fe48a-3101-4d97-a5d9-4c6c465213a1" uri="../flows/0c9fe48a-3101-4d97-a5d9-4c6c465213a1.xml">
+        <common:shortDescription xml:lang="en">Tap water {RER}| market group for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.3700000E+0</meanAmount>
+      <resultingAmount>3.3700000E+0</resultingAmount>
+      <generalComment>Water for animal breeding.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="19">
+      <referenceToFlowDataSet type="flow data set" refObjectId="2e8c9760-c1c7-4ce4-a8e0-feecb6a56577" uri="../flows/2e8c9760-c1c7-4ce4-a8e0-feecb6a56577.xml">
+        <common:shortDescription xml:lang="en">Sugar beet pulp {RoW}| beet sugar production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.7100000E-4</meanAmount>
+      <resultingAmount>1.7100000E-4</resultingAmount>
+      <generalComment>Purchased feed for animal breeding.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="20">
+      <referenceToFlowDataSet type="flow data set" refObjectId="75e5c42a-9947-408c-a083-c6d828499872" uri="../flows/75e5c42a-9947-408c-a083-c6d828499872.xml">
+        <common:shortDescription xml:lang="en">Sodium bicarbonate {GLO}| market for sodium bicarbonate | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.6500000E-4</meanAmount>
+      <resultingAmount>1.6500000E-4</resultingAmount>
+      <generalComment>Purchased feed for animal breeding.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="21">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4ca2e44f-a9a4-4e04-bc2d-2efedb3135fc" uri="../flows/4ca2e44f-a9a4-4e04-bc2d-2efedb3135fc.xml">
+        <common:shortDescription xml:lang="en">Rape meal {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>7.0400000E-4</meanAmount>
+      <resultingAmount>7.0400000E-4</resultingAmount>
+      <generalComment>Purchased feed for animal breeding.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="22">
+      <referenceToFlowDataSet type="flow data set" refObjectId="b3f07840-366b-4ae3-98ed-67a014685b50" uri="../flows/b3f07840-366b-4ae3-98ed-67a014685b50.xml">
+        <common:shortDescription xml:lang="en">cottonseed {RoW}| market for cottonseed | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.6300000E-4</meanAmount>
+      <resultingAmount>3.6300000E-4</resultingAmount>
+      <generalComment>Purchased feed for animal breeding.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="23">
+      <referenceToFlowDataSet type="flow data set" refObjectId="ada0a28f-6640-4bf8-b402-64f7dcbd9a68" uri="../flows/ada0a28f-6640-4bf8-b402-64f7dcbd9a68.xml">
+        <common:shortDescription xml:lang="en">Hay {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.2100000E-2</meanAmount>
+      <resultingAmount>6.2100000E-2</resultingAmount>
+      <generalComment>Purchased feed for animal breeding.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="24">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4bbf2567-9a41-40c6-a050-f6b425b3abce" uri="../flows/4bbf2567-9a41-40c6-a050-f6b425b3abce.xml">
+        <common:shortDescription xml:lang="en">Wheat grain, feed {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.8500000E-3</meanAmount>
+      <resultingAmount>1.8500000E-3</resultingAmount>
+      <generalComment>Purchased feed for animal breeding.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="25">
+      <referenceToFlowDataSet type="flow data set" refObjectId="c796124e-063e-47f6-8b80-d6b53db0d335" uri="../flows/c796124e-063e-47f6-8b80-d6b53db0d335.xml">
+        <common:shortDescription xml:lang="en">Sunflower silage {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.7400000E-3</meanAmount>
+      <resultingAmount>3.7400000E-3</resultingAmount>
+      <generalComment>Purchased feed for animal breeding.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="26">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d48f3f8f-1eb8-4387-8147-b1be00074bf3" uri="../flows/d48f3f8f-1eb8-4387-8147-b1be00074bf3.xml">
+        <common:shortDescription xml:lang="en">mineral supplement, for beef cattle {GLO}| market for mineral supplement, for beef cattle | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.0500000E-3</meanAmount>
+      <resultingAmount>2.0500000E-3</resultingAmount>
+      <generalComment>Purchased feed for animal breeding.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="27">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d9164291-759d-4067-a424-419654a35d6e" uri="../flows/d9164291-759d-4067-a424-419654a35d6e.xml">
+        <common:shortDescription xml:lang="en">maize grain {RoW}| market for maize grain | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>8.3900000E-2</meanAmount>
+      <resultingAmount>8.3900000E-2</resultingAmount>
+      <generalComment>Purchased feed for animal breeding.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="28">
+      <referenceToFlowDataSet type="flow data set" refObjectId="67ef4740-d7cf-474d-980a-536e87a705e5" uri="../flows/67ef4740-d7cf-474d-980a-536e87a705e5.xml">
+        <common:shortDescription xml:lang="en">maize silage {RoW}| market for maize silage | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.1900000E-2</meanAmount>
+      <resultingAmount>1.1900000E-2</resultingAmount>
+      <generalComment>Purchased feed for animal breeding.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="29">
+      <referenceToFlowDataSet type="flow data set" refObjectId="3d825464-e20f-4ef9-a004-6ff51d83b6db" uri="../flows/3d825464-e20f-4ef9-a004-6ff51d83b6db.xml">
+        <common:shortDescription xml:lang="en">Barley grain {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>7.3100000E-3</meanAmount>
+      <resultingAmount>7.3100000E-3</resultingAmount>
+      <generalComment>Purchased feed for animal breeding.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="30">
+      <referenceToFlowDataSet type="flow data set" refObjectId="a254e6ee-2cb1-48e4-ae9b-43996642927d" uri="../flows/a254e6ee-2cb1-48e4-ae9b-43996642927d.xml">
+        <common:shortDescription xml:lang="en">straw {RER}| market for straw | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.3300000E-2</meanAmount>
+      <resultingAmount>1.3300000E-2</resultingAmount>
+      <generalComment>Purchased feed for animal breeding.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="31">
+      <referenceToFlowDataSet type="flow data set" refObjectId="be9f916a-c8a2-4682-a312-abb5b130ce6e" uri="../flows/be9f916a-c8a2-4682-a312-abb5b130ce6e.xml">
+        <common:shortDescription xml:lang="en">soybean meal {RoW}| market for soybean meal | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.7900000E-2</meanAmount>
+      <resultingAmount>3.7900000E-2</resultingAmount>
+      <generalComment>Purchased feed for animal breeding.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="32">
+      <referenceToFlowDataSet type="flow data set" refObjectId="99a402b5-7ce4-4de4-9896-308324622bc9" uri="../flows/99a402b5-7ce4-4de4-9896-308324622bc9.xml">
+        <common:shortDescription xml:lang="en">Linseed seed, at farm {GLO}| market for linseed seed, at farm | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>7.1000000E-3</meanAmount>
+      <resultingAmount>7.1000000E-3</resultingAmount>
+      <generalComment>Purchased feed mix for animal breeding - Feed for lactating cows.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="33">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d9164291-759d-4067-a424-419654a35d6e" uri="../flows/d9164291-759d-4067-a424-419654a35d6e.xml">
+        <common:shortDescription xml:lang="en">maize grain {RoW}| market for maize grain | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.4000000E-2</meanAmount>
+      <resultingAmount>2.4000000E-2</resultingAmount>
+      <generalComment>Purchased feed mix for animal breeding - Feed for lactating cows.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="34">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d48f3f8f-1eb8-4387-8147-b1be00074bf3" uri="../flows/d48f3f8f-1eb8-4387-8147-b1be00074bf3.xml">
+        <common:shortDescription xml:lang="en">mineral supplement, for beef cattle {GLO}| market for mineral supplement, for beef cattle | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>7.9900000E-3</meanAmount>
+      <resultingAmount>7.9900000E-3</resultingAmount>
+      <generalComment>Purchased feed mix for animal breeding - Feed for lactating cows.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="35">
+      <referenceToFlowDataSet type="flow data set" refObjectId="adf94f36-ece9-4b3a-ac7e-8aa87303ad05" uri="../flows/adf94f36-ece9-4b3a-ac7e-8aa87303ad05.xml">
+        <common:shortDescription xml:lang="en">Molasses, from sugar beet {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.4400000E-3</meanAmount>
+      <resultingAmount>4.4400000E-3</resultingAmount>
+      <generalComment>Purchased feed mix for animal breeding - Feed for lactating cows.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="36">
+      <referenceToFlowDataSet type="flow data set" refObjectId="be9f916a-c8a2-4682-a312-abb5b130ce6e" uri="../flows/be9f916a-c8a2-4682-a312-abb5b130ce6e.xml">
+        <common:shortDescription xml:lang="en">soybean meal {RoW}| market for soybean meal | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.7800000E-2</meanAmount>
+      <resultingAmount>1.7800000E-2</resultingAmount>
+      <generalComment>Purchased feed mix for animal breeding - Feed for lactating cows.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="37">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08214cdd-ffec-4a10-9a5d-ed106affd7ee" uri="../flows/08214cdd-ffec-4a10-9a5d-ed106affd7ee.xml">
+        <common:shortDescription xml:lang="en">wheat bran {RoW}| market for wheat bran | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.8800000E-2</meanAmount>
+      <resultingAmount>1.8800000E-2</resultingAmount>
+      <generalComment>Purchased feed mix for animal breeding - Feed for lactating cows.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="38">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4bbf2567-9a41-40c6-a050-f6b425b3abce" uri="../flows/4bbf2567-9a41-40c6-a050-f6b425b3abce.xml">
+        <common:shortDescription xml:lang="en">Wheat grain, feed {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>8.8800000E-3</meanAmount>
+      <resultingAmount>8.8800000E-3</resultingAmount>
+      <generalComment>Purchased feed mix for animal breeding - Feed for lactating cows.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="39">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d9164291-759d-4067-a424-419654a35d6e" uri="../flows/d9164291-759d-4067-a424-419654a35d6e.xml">
+        <common:shortDescription xml:lang="en">maize grain {RoW}| market for maize grain | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.9800000E-5</meanAmount>
+      <resultingAmount>5.9800000E-5</resultingAmount>
+      <generalComment>Purchased feed mix for animal breeding - Feed for heifers
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="40">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d48f3f8f-1eb8-4387-8147-b1be00074bf3" uri="../flows/d48f3f8f-1eb8-4387-8147-b1be00074bf3.xml">
+        <common:shortDescription xml:lang="en">mineral supplement, for beef cattle {GLO}| market for mineral supplement, for beef cattle | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>9.4500000E-6</meanAmount>
+      <resultingAmount>9.4500000E-6</resultingAmount>
+      <generalComment>Purchased feed mix for animal breeding - Feed for heifers
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="41">
+      <referenceToFlowDataSet type="flow data set" refObjectId="adf94f36-ece9-4b3a-ac7e-8aa87303ad05" uri="../flows/adf94f36-ece9-4b3a-ac7e-8aa87303ad05.xml">
+        <common:shortDescription xml:lang="en">Molasses, from sugar beet {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>9.4500000E-6</meanAmount>
+      <resultingAmount>9.4500000E-6</resultingAmount>
+      <generalComment>Purchased feed mix for animal breeding - Feed for heifers
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="42">
+      <referenceToFlowDataSet type="flow data set" refObjectId="be9f916a-c8a2-4682-a312-abb5b130ce6e" uri="../flows/be9f916a-c8a2-4682-a312-abb5b130ce6e.xml">
+        <common:shortDescription xml:lang="en">soybean meal {RoW}| market for soybean meal | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.7200000E-5</meanAmount>
+      <resultingAmount>4.7200000E-5</resultingAmount>
+      <generalComment>Purchased feed mix for animal breeding - Feed for heifers
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="43">
+      <referenceToFlowDataSet type="flow data set" refObjectId="2e8c9760-c1c7-4ce4-a8e0-feecb6a56577" uri="../flows/2e8c9760-c1c7-4ce4-a8e0-feecb6a56577.xml">
+        <common:shortDescription xml:lang="en">Sugar beet pulp {RoW}| beet sugar production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.5600000E-5</meanAmount>
+      <resultingAmount>3.5600000E-5</resultingAmount>
+      <generalComment>Purchased feed mix for animal breeding - Feed for heifers
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="44">
+      <referenceToFlowDataSet type="flow data set" refObjectId="c796124e-063e-47f6-8b80-d6b53db0d335" uri="../flows/c796124e-063e-47f6-8b80-d6b53db0d335.xml">
+        <common:shortDescription xml:lang="en">Sunflower silage {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.8300000E-5</meanAmount>
+      <resultingAmount>2.8300000E-5</resultingAmount>
+      <generalComment>Purchased feed mix for animal breeding - Feed for heifers
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="45">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4bbf2567-9a41-40c6-a050-f6b425b3abce" uri="../flows/4bbf2567-9a41-40c6-a050-f6b425b3abce.xml">
+        <common:shortDescription xml:lang="en">Wheat grain, feed {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.0400000E-5</meanAmount>
+      <resultingAmount>5.0400000E-5</resultingAmount>
+      <generalComment>Purchased feed mix for animal breeding - Feed for heifers
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="46">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08214cdd-ffec-4a10-9a5d-ed106affd7ee" uri="../flows/08214cdd-ffec-4a10-9a5d-ed106affd7ee.xml">
+        <common:shortDescription xml:lang="en">wheat bran {RoW}| market for wheat bran | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.6700000E-5</meanAmount>
+      <resultingAmount>5.6700000E-5</resultingAmount>
+      <generalComment>Purchased feed mix for animal breeding - Feed for heifers
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="47">
+      <referenceToFlowDataSet type="flow data set" refObjectId="3ee18750-bbe0-4e43-9128-9e3035eb2761" uri="../flows/3ee18750-bbe0-4e43-9128-9e3035eb2761.xml">
+        <common:shortDescription xml:lang="en">wheat flour mix {GLO}| market for wheat flour mix | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>9.4500000E-6</meanAmount>
+      <resultingAmount>9.4500000E-6</resultingAmount>
+      <generalComment>Purchased feed mix for animal breeding - Feed for heifers
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="48">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d48f3f8f-1eb8-4387-8147-b1be00074bf3" uri="../flows/d48f3f8f-1eb8-4387-8147-b1be00074bf3.xml">
+        <common:shortDescription xml:lang="en">mineral supplement, for beef cattle {GLO}| market for mineral supplement, for beef cattle | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.2100000E-3</meanAmount>
+      <resultingAmount>3.2100000E-3</resultingAmount>
+      <generalComment>Purchased feed mix for animal breeding - Concentrated feed for lactating cows
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="49">
+      <referenceToFlowDataSet type="flow data set" refObjectId="be9f916a-c8a2-4682-a312-abb5b130ce6e" uri="../flows/be9f916a-c8a2-4682-a312-abb5b130ce6e.xml">
+        <common:shortDescription xml:lang="en">soybean meal {RoW}| market for soybean meal | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.2100000E-2</meanAmount>
+      <resultingAmount>3.2100000E-2</resultingAmount>
+      <generalComment>Purchased feed mix for animal breeding - Concentrated feed for lactating cows
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="50">
+      <referenceToFlowDataSet type="flow data set" refObjectId="c796124e-063e-47f6-8b80-d6b53db0d335" uri="../flows/c796124e-063e-47f6-8b80-d6b53db0d335.xml">
+        <common:shortDescription xml:lang="en">Sunflower silage {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.6100000E-2</meanAmount>
+      <resultingAmount>1.6100000E-2</resultingAmount>
+      <generalComment>Purchased feed mix for animal breeding - Concentrated feed for lactating cows
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="51">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08214cdd-ffec-4a10-9a5d-ed106affd7ee" uri="../flows/08214cdd-ffec-4a10-9a5d-ed106affd7ee.xml">
+        <common:shortDescription xml:lang="en">wheat bran {RoW}| market for wheat bran | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.2800000E-2</meanAmount>
+      <resultingAmount>1.2800000E-2</resultingAmount>
+      <generalComment>Purchased feed mix for animal breeding - Concentrated feed for lactating cows
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="52">
+      <referenceToFlowDataSet type="flow data set" refObjectId="f50769f1-c9d9-493f-b200-ce0894be0184" uri="../flows/f50769f1-c9d9-493f-b200-ce0894be0184.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry 16-32 metric ton, euro4 {RER}| market for transport, freight, lorry 16-32 metric ton, EURO4 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.7900000E-2</meanAmount>
+      <resultingAmount>3.7900000E-2</resultingAmount>
+      <generalComment>Transport for purchased feed for animal breeding for 100 km.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="53">
+      <referenceToFlowDataSet type="flow data set" refObjectId="414e9d0c-a981-4615-b64c-0114dad07d67" uri="../flows/414e9d0c-a981-4615-b64c-0114dad07d67.xml">
+        <common:shortDescription xml:lang="en">Diesel, burned in agricultural machinery {GLO}| market for diesel, burned in agricultural machinery | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.3600000E-1</meanAmount>
+      <resultingAmount>3.3600000E-1</resultingAmount>
+      <generalComment>Diesel for crop cultivation.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="54">
+      <referenceToFlowDataSet type="flow data set" refObjectId="e48750a2-1fc8-4e23-8985-9783c99240f0" uri="../flows/e48750a2-1fc8-4e23-8985-9783c99240f0.xml">
+        <common:shortDescription xml:lang="en">Heat, central or small-scale, natural gas {Europe without Switzerland}| heat production, natural gas, at boiler atmospheric non-modulating &lt;100kW | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.0200000E-2</meanAmount>
+      <resultingAmount>6.0200000E-2</resultingAmount>
+      <generalComment>Methane for animal breeding.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="55">
+      <referenceToFlowDataSet type="flow data set" refObjectId="27fefbdf-b3cb-4355-9993-469885b68b4b" uri="../flows/27fefbdf-b3cb-4355-9993-469885b68b4b.xml">
+        <common:shortDescription xml:lang="en">Electricity, low voltage {IT}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.3932000E-1</meanAmount>
+      <resultingAmount>1.3932000E-1</resultingAmount>
+      <generalComment>Electricity from grid for animal breeding.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="56">
+      <referenceToFlowDataSet type="flow data set" refObjectId="1a58d7a8-f164-48da-ab06-d7cefda66f9d" uri="../flows/1a58d7a8-f164-48da-ab06-d7cefda66f9d.xml">
+        <common:shortDescription xml:lang="en">Electricity, low voltage {IT}| electricity production, photovoltaic, 3kWp slanted-roof installation, multi-Si, panel, mounted | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.3428000E-2</meanAmount>
+      <resultingAmount>1.3428000E-2</resultingAmount>
+      <generalComment>Electricity from photovoltaic panels for animal breeding.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="57">
+      <referenceToFlowDataSet type="flow data set" refObjectId="640f592c-e230-4fa2-b120-407112948197" uri="../flows/640f592c-e230-4fa2-b120-407112948197.xml">
+        <common:shortDescription xml:lang="en">liquefied petroleum gas {Europe without Switzerland}| market for liquefied petroleum gas | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.4000000E-1</meanAmount>
+      <resultingAmount>5.4000000E-1</resultingAmount>
+      <generalComment>LPG for animal breeding.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="58">
+      <referenceToFlowDataSet type="flow data set" refObjectId="414e9d0c-a981-4615-b64c-0114dad07d67" uri="../flows/414e9d0c-a981-4615-b64c-0114dad07d67.xml">
+        <common:shortDescription xml:lang="en">Diesel, burned in agricultural machinery {GLO}| market for diesel, burned in agricultural machinery | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.3600000E-1</meanAmount>
+      <resultingAmount>3.3600000E-1</resultingAmount>
+      <generalComment>Diesel for animal breeding.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="59">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4f462198-40cd-4184-8733-86648a20dc3f" uri="../flows/4f462198-40cd-4184-8733-86648a20dc3f.xml">
+        <common:shortDescription xml:lang="en">ground water</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>IT</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.3700000E-3</meanAmount>
+      <resultingAmount>3.3700000E-3</resultingAmount>
+      <generalComment>Water for animal breeding.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="60">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-a2a9-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-a2a9-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">ammonia</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>IT</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>4.4100000E-3</meanAmount>
+      <resultingAmount>4.4100000E-3</resultingAmount>
+      <generalComment>Emissions from chemical and organic fertilisers use for crop cultivation
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="61">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-96ee-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-96ee-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">nitrogen monoxide</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>IT</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.1000000E-4</meanAmount>
+      <resultingAmount>2.1000000E-4</resultingAmount>
+      <generalComment>Emissions from chemical and organic fertilisers use for crop cultivation
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="62">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-94c3-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-94c3-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">nitrous oxide</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.9200000E-4</meanAmount>
+      <resultingAmount>3.9200000E-4</resultingAmount>
+      <generalComment>Emissions from chemical and organic fertilisers use for crop cultivation
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="63">
+      <referenceToFlowDataSet type="flow data set" refObjectId="ee22a23e-eae9-4649-9375-9283e06fe9e7" uri="../flows/ee22a23e-eae9-4649-9375-9283e06fe9e7.xml">
+        <common:shortDescription xml:lang="en">nicosulfuron</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.7200000E-9</meanAmount>
+      <resultingAmount>2.7200000E-9</resultingAmount>
+      <generalComment>Emissions from pesticide use for crop cultivation.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="64">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4d9a8790-3ddd-11dd-9107-0050c2490048" uri="../flows/4d9a8790-3ddd-11dd-9107-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">flufenacet</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.1200000E-8</meanAmount>
+      <resultingAmount>2.1200000E-8</resultingAmount>
+      <generalComment>Emissions from pesticide use for crop cultivation.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="65">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-a984-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-a984-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">dicamba</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0800000E-8</meanAmount>
+      <resultingAmount>1.0800000E-8</resultingAmount>
+      <generalComment>Emissions from pesticide use for crop cultivation.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="66">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4d9a8790-3ddd-11dd-9627-0050c2490048" uri="../flows/4d9a8790-3ddd-11dd-9627-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">pendimethalin</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.1800000E-8</meanAmount>
+      <resultingAmount>1.1800000E-8</resultingAmount>
+      <generalComment>Emissions from pesticide use for crop cultivation.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="67">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4d9a8790-3ddd-11dd-942f-0050c2490048" uri="../flows/4d9a8790-3ddd-11dd-942f-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">clomazone</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0500000E-8</meanAmount>
+      <resultingAmount>1.0500000E-8</resultingAmount>
+      <generalComment>Emissions from pesticide use for crop cultivation.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="68">
+      <referenceToFlowDataSet type="flow data set" refObjectId="5ee93330-4f7a-4443-b466-372a71cd6141" uri="../flows/5ee93330-4f7a-4443-b466-372a71cd6141.xml">
+        <common:shortDescription xml:lang="en">Pyraclostrobin (prop)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>7.7700000E-9</meanAmount>
+      <resultingAmount>7.7700000E-9</resultingAmount>
+      <generalComment>Emissions from pesticide use for crop cultivation.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="69">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-a835-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-a835-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">(2,4-dichlorophenoxy)acetic acid</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.4300000E-9</meanAmount>
+      <resultingAmount>1.4300000E-9</resultingAmount>
+      <generalComment>Emissions from pesticide use for crop cultivation.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="70">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-a23a-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-a23a-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">tefluthrin</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0400000E-9</meanAmount>
+      <resultingAmount>1.0400000E-9</resultingAmount>
+      <generalComment>Emissions from pesticide use for crop cultivation.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="71">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9275-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9275-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">chlorpyrifos</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>7.1900000E-9</meanAmount>
+      <resultingAmount>7.1900000E-9</resultingAmount>
+      <generalComment>Emissions from pesticide use for crop cultivation.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="72">
+      <referenceToFlowDataSet type="flow data set" refObjectId="727c044f-1186-4f50-8c8e-89907981102d" uri="../flows/727c044f-1186-4f50-8c8e-89907981102d.xml">
+        <common:shortDescription xml:lang="en">mesotrione (iso); 2-[4-(methylsulfonyl)-2-nitrobenzoyl]-1,3-cyclohexanedione</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.8000000E-8</meanAmount>
+      <resultingAmount>3.8000000E-8</resultingAmount>
+      <generalComment>Emissions from pesticide use for crop cultivation.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="73">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9c9c-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9c9c-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">diflubenzuron</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.4500000E-9</meanAmount>
+      <resultingAmount>3.4500000E-9</resultingAmount>
+      <generalComment>Emissions from pesticide use for crop cultivation.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="74">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9610-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9610-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">methane (fossil)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.1700000E-2</meanAmount>
+      <resultingAmount>2.1700000E-2</resultingAmount>
+      <generalComment>Emissions from enteric fermentation and manure management.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="75">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-aa31-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-aa31-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">nitrate</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.8900000E-2</meanAmount>
+      <resultingAmount>1.8900000E-2</resultingAmount>
+      <generalComment>Emissions from chemical and organic fertilisers use for crop cultivation
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="76">
+      <referenceToFlowDataSet type="flow data set" refObjectId="6de7d71a-9482-4bbf-ad3e-cc2e7eab0895" uri="../flows/6de7d71a-9482-4bbf-ad3e-cc2e7eab0895.xml">
+        <common:shortDescription xml:lang="en">phosphorus, total, IT (unspecified)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.3100000E-7</meanAmount>
+      <resultingAmount>1.3100000E-7</resultingAmount>
+      <generalComment>Emissions from chemical fertilisers use for crop cultivation
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="77">
+      <referenceToFlowDataSet type="flow data set" refObjectId="f228326e-7663-45da-a6f0-5bda7d368b7a" uri="../flows/f228326e-7663-45da-a6f0-5bda7d368b7a.xml">
+        <common:shortDescription xml:lang="en">nicosulfuron</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.0200000E-10</meanAmount>
+      <resultingAmount>3.0200000E-10</resultingAmount>
+      <generalComment>Emissions from pesticide use for crop cultivation.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="78">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-a0ba-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-a0ba-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">flufenacet</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.3500000E-9</meanAmount>
+      <resultingAmount>2.3500000E-9</resultingAmount>
+      <generalComment>Emissions from pesticide use for crop cultivation.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="79">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4d9a8790-3ddd-11dd-982a-0050c2490048" uri="../flows/4d9a8790-3ddd-11dd-982a-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">dicamba</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.2000000E-9</meanAmount>
+      <resultingAmount>1.2000000E-9</resultingAmount>
+      <generalComment>Emissions from pesticide use for crop cultivation.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="80">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-ae3d-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-ae3d-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">pendimethalin</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.3100000E-9</meanAmount>
+      <resultingAmount>1.3100000E-9</resultingAmount>
+      <generalComment>Emissions from pesticide use for crop cultivation.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="81">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9dce-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9dce-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">clomazone</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.1600000E-9</meanAmount>
+      <resultingAmount>1.1600000E-9</resultingAmount>
+      <generalComment>Emissions from pesticide use for crop cultivation.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="82">
+      <referenceToFlowDataSet type="flow data set" refObjectId="304d2185-7617-468e-aa8f-bc358859ad04" uri="../flows/304d2185-7617-468e-aa8f-bc358859ad04.xml">
+        <common:shortDescription xml:lang="en">Pyraclostrobin (prop)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>8.6300000E-10</meanAmount>
+      <resultingAmount>8.6300000E-10</resultingAmount>
+      <generalComment>Emissions from pesticide use for crop cultivation.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="83">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-a83b-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-a83b-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">(2,4-dichlorophenoxy)acetic acid</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.5900000E-10</meanAmount>
+      <resultingAmount>1.5900000E-10</resultingAmount>
+      <generalComment>Emissions from pesticide use for crop cultivation.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="84">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-a240-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-a240-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">tefluthrin</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.1500000E-10</meanAmount>
+      <resultingAmount>1.1500000E-10</resultingAmount>
+      <generalComment>Emissions from pesticide use for crop cultivation.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="85">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9ac5-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9ac5-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">chlorpyrifos</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>7.9900000E-10</meanAmount>
+      <resultingAmount>7.9900000E-10</resultingAmount>
+      <generalComment>Emissions from pesticide use for crop cultivation.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="86">
+      <referenceToFlowDataSet type="flow data set" refObjectId="1dd86827-f7ca-4919-b81b-e26c1fe2279d" uri="../flows/1dd86827-f7ca-4919-b81b-e26c1fe2279d.xml">
+        <common:shortDescription xml:lang="en">mesotrione (iso); 2-[4-(methylsulfonyl)-2-nitrobenzoyl]-1,3-cyclohexanedione</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>4.2200000E-9</meanAmount>
+      <resultingAmount>4.2200000E-9</resultingAmount>
+      <generalComment>Emissions from pesticide use for crop cultivation.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="87">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9ca2-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9ca2-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">diflubenzuron</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.8400000E-10</meanAmount>
+      <resultingAmount>3.8400000E-10</resultingAmount>
+      <generalComment>Emissions from pesticide use for crop cultivation.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="88">
+      <referenceToFlowDataSet type="flow data set" refObjectId="a314e6d7-bd1f-4a10-a23f-76e0b6cb26e5" uri="../flows/a314e6d7-bd1f-4a10-a23f-76e0b6cb26e5.xml">
+        <common:shortDescription xml:lang="en">nicosulfuron</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.7200000E-8</meanAmount>
+      <resultingAmount>2.7200000E-8</resultingAmount>
+      <generalComment>Emissions from pesticide use for crop cultivation.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="89">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4d9a8790-3ddd-11dd-9106-0050c2490048" uri="../flows/4d9a8790-3ddd-11dd-9106-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">flufenacet</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.1200000E-7</meanAmount>
+      <resultingAmount>2.1200000E-7</resultingAmount>
+      <generalComment>Emissions from pesticide use for crop cultivation.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="90">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-a983-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-a983-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">dicamba</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0800000E-7</meanAmount>
+      <resultingAmount>1.0800000E-7</resultingAmount>
+      <generalComment>Emissions from pesticide use for crop cultivation.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="91">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-ae3a-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-ae3a-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">pendimethalin</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.1800000E-7</meanAmount>
+      <resultingAmount>1.1800000E-7</resultingAmount>
+      <generalComment>Emissions from pesticide use for crop cultivation.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="92">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9278-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9278-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">clomazone</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0500000E-7</meanAmount>
+      <resultingAmount>1.0500000E-7</resultingAmount>
+      <generalComment>Emissions from pesticide use for crop cultivation.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="93">
+      <referenceToFlowDataSet type="flow data set" refObjectId="ebf86565-385f-4dff-afa7-f237b7332781" uri="../flows/ebf86565-385f-4dff-afa7-f237b7332781.xml">
+        <common:shortDescription xml:lang="en">Pyraclostrobin (prop)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>7.7700000E-8</meanAmount>
+      <resultingAmount>7.7700000E-8</resultingAmount>
+      <generalComment>Emissions from pesticide use for crop cultivation.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="94">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-a834-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-a834-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">(2,4-dichlorophenoxy)acetic acid</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.4300000E-8</meanAmount>
+      <resultingAmount>1.4300000E-8</resultingAmount>
+      <generalComment>Emissions from pesticide use for crop cultivation.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="95">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-90cb-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-90cb-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">tefluthrin</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0400000E-8</meanAmount>
+      <resultingAmount>1.0400000E-8</resultingAmount>
+      <generalComment>Emissions from pesticide use for crop cultivation.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="96">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9274-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9274-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">chlorpyrifos</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>7.1900000E-8</meanAmount>
+      <resultingAmount>7.1900000E-8</resultingAmount>
+      <generalComment>Emissions from pesticide use for crop cultivation.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="97">
+      <referenceToFlowDataSet type="flow data set" refObjectId="3dc8a060-4300-40da-b077-0197680e7a55" uri="../flows/3dc8a060-4300-40da-b077-0197680e7a55.xml">
+        <common:shortDescription xml:lang="en">Mesotrione</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.8000000E-7</meanAmount>
+      <resultingAmount>3.8000000E-7</resultingAmount>
+      <generalComment>Emissions from pesticide use for crop cultivation.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="98">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9c9b-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9c9b-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">diflubenzuron</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.4500000E-8</meanAmount>
+      <resultingAmount>3.4500000E-8</resultingAmount>
+      <generalComment>Emissions from pesticide use for crop cultivation.
+</generalComment>
+    </exchange>
+  </exchanges>
+</processDataSet>

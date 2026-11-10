@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>712943d5-74b0-4310-9399-d5e29992d8f8</common:UUID>
+      <name>
+        <baseName xml:lang="en">Cast-iron raw casting, rotary furnace, green sand casting</baseName>
+      </name>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">Materials production</common:class>
+          <common:class level="1">Metals and semimetals</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment>The dataset has been developed in LIFE EFFIGE project. Details are given in “PEFCR of Raw Casting”. In a cradle to gate approach, the dataset includes the all input and output for the production of 1 ton of cast iron raw casting through cupola furnace and green sand casting.</common:generalComment>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2018</common:referenceYear>
+      <common:dataSetValidUntil>2024</common:dataSetValidUntil>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT"/>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>The dataset includes the model of the production 1 ton of cast iron raw casting with a rotary furnace and green sand casting.&#13;
+Within the upstream processes, the following raw materials, auxiliary and chemicals for melting, moulding and casting are considered: Pig-iron production and supply, iron scrap supply, fluxing agents production and supply, refractory materials production and supply, silica sand production and supply, bentonite production and supply, coal dust production and supply, resins and catalyst production and supply.&#13;
+Within the core processes, the following processes are considered: electricity consumption for melting, moulding, casting and others foundry activities (e.g. compressors, gas cleaning systems, etc.), natural gas consumption for melting, moulding, casting and others foundry activities (e.g. compressors, gas cleaning systems, etc.), coke consumption for melting, water consumption for melting, moulding and casting, air emissions for melting, moulding, casting and waste generation for melting, moulding, casting.&#13;
+Downstream processes such as further finishing activities, distribution to customers, use phase and end-of-life treatment of used products are excluded.</technologyDescriptionAndIncludedProcesses>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Not applicable</LCIMethodApproaches>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <dataCutOffAndCompletenessPrinciples>Production of buildings and equipment have been excluded</dataCutOffAndCompletenessPrinciples>
+      <deviationsFromCutOffAndCompletenessPrinciples>None</deviationsFromCutOffAndCompletenessPrinciples>
+      <deviationsFromSelectionAndCombinationPrinciples>None</deviationsFromSelectionAndCombinationPrinciples>
+      <referenceToDataSource type="source data set" refObjectId="2692b3d7-bc59-4947-b44e-a45369207af0" version="01.00.000" uri="../sources/2692b3d7-bc59-4947-b44e-a45369207af0.xml">
+        <common:shortDescription>“Foundries energy benchmark”, ENEA and ASSOFONDO, 2017; &#13;
+“Environmetal Report”, ASSOFOND, 2016; &#13;
+“Reference Document on Best Available Techniques in the Smitheries and Foundries Industry”, European Commission, 2005; &#13;
+ECOINVENT database.</common:shortDescription>
+      </referenceToDataSource>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>No statement</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Dependent internal review">
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Not applicable"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Not applicable"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Not applicable"/>
+          <common:dataQualityIndicator name="Completeness" value="Not applicable"/>
+          <common:dataQualityIndicator name="Precision" value="Not applicable"/>
+          <common:dataQualityIndicator name="Methodological appropriateness and consistency" value="Not applicable"/>
+          <common:dataQualityIndicator name="Overall quality" value="Not applicable"/>
+        </common:dataQualityIndicators>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="88d4f8d9-60f9-43d1-9ea3-329c10d7d727" uri="../sources/88d4f8d9-60f9-43d1-9ea3-329c10d7d727.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Not defined</common:methodologicalCompliance>
+        <common:reviewCompliance>Not defined</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="d92a1a12-2545-49e2-a585-55c259997756" uri="../sources/d92a1a12-2545-49e2-a585-55c259997756.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Not defined</common:methodologicalCompliance>
+        <common:reviewCompliance>Not defined</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="01807191-e156-421a-b2f6-aa609ea534f4" uri="../contacts/01807191-e156-421a-b2f6-aa609ea534f4.xml">
+        <common:shortDescription xml:lang="en">EPLCA project team</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Progetto Life EFFIGE (LIFE16 ENV/IT/000172)</common:project>
+    </common:commissionerAndGoal>
+    <dataEntryBy>
+      <common:timeStamp>2022-06-06T12:32:42.911+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="a97a0155-0234-4b87-b4ce-a45da52f2a40" uri="../sources/a97a0155-0234-4b87-b4ce-a45da52f2a40.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2022-06-06T12:12:16.367Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/712943d5-74b0-4310-9399-d5e29992d8f8.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="f4a45078-f243-409d-8d01-c2eb7be735ed" type="contact data set" uri="../sources/f4a45078-f243-409d-8d01-c2eb7be735ed.xml" version="01.00.000">
+        <common:shortDescription>LIFE EFFIGE, Assofond</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+      <common:accessRestrictions>All information can be accessed by everybody.</common:accessRestrictions>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="ae410fab-5ac7-4a40-a690-4d648c6e26ae" uri="../flows/ae410fab-5ac7-4a40-a690-4d648c6e26ae.xml">
+        <common:shortDescription xml:lang="en">Cast-iron raw casting, rotary furnace, green sand casting</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0000000E+3</meanAmount>
+      <resultingAmount>1.0000000E+3</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="974814a2-18c9-417a-916f-d4330c2f3cd9" uri="../flows/974814a2-18c9-417a-916f-d4330c2f3cd9.xml">
+        <common:shortDescription xml:lang="en">Bentonite {DE}| quarry operation | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.0000000E+1</meanAmount>
+      <resultingAmount>2.0000000E+1</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="753d83b5-e2f8-45f3-8c83-0a5d93b86c0f" uri="../flows/753d83b5-e2f8-45f3-8c83-0a5d93b86c0f.xml">
+        <common:shortDescription xml:lang="en">Calcium carbonate, precipitated {RER}| market for calcium carbonate, precipitated | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>0.0000000E+0</meanAmount>
+      <resultingAmount>0.0000000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="3">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4e891356-cfa2-49bc-b39f-3e591ed323d2" uri="../flows/4e891356-cfa2-49bc-b39f-3e591ed323d2.xml">
+        <common:shortDescription xml:lang="en">Hard coal {RoW}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.2500000E+1</meanAmount>
+      <resultingAmount>1.2500000E+1</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="4">
+      <referenceToFlowDataSet type="flow data set" refObjectId="586176a6-8ddb-4c40-9ee8-f4f89d299c89" uri="../flows/586176a6-8ddb-4c40-9ee8-f4f89d299c89.xml">
+        <common:shortDescription xml:lang="en">Iron pellet {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.5700000E+1</meanAmount>
+      <resultingAmount>4.5700000E+1</resultingAmount>
+      <generalComment>Ev acciaio
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="5">
+      <referenceToFlowDataSet type="flow data set" refObjectId="c6ab4403-87a8-4e63-af78-014c99d2045c" uri="../flows/c6ab4403-87a8-4e63-af78-014c99d2045c.xml">
+        <common:shortDescription xml:lang="en">Iron scrap, sorted, pressed {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.2900000E+2</meanAmount>
+      <resultingAmount>2.2900000E+2</resultingAmount>
+      <generalComment>Er
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="6">
+      <referenceToFlowDataSet type="flow data set" refObjectId="5b76a271-9de8-44f5-b0ac-54ef9e41ff82" uri="../flows/5b76a271-9de8-44f5-b0ac-54ef9e41ff82.xml">
+        <common:shortDescription xml:lang="en">Natural gas, high pressure {IT}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.4500000E+1</meanAmount>
+      <resultingAmount>5.4500000E+1</resultingAmount>
+      <generalComment>Catalyst
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="7">
+      <referenceToFlowDataSet type="flow data set" refObjectId="568513f9-74bd-4d51-b66a-321d0250234c" uri="../flows/568513f9-74bd-4d51-b66a-321d0250234c.xml">
+        <common:shortDescription xml:lang="en">Pig iron {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>7.2600000E+2</meanAmount>
+      <resultingAmount>7.2600000E+2</resultingAmount>
+      <generalComment>Ev ferro ghisa
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="8">
+      <referenceToFlowDataSet type="flow data set" refObjectId="6506f7ff-3b4d-498e-9106-ee491d5b0599" uri="../flows/6506f7ff-3b4d-498e-9106-ee491d5b0599.xml">
+        <common:shortDescription xml:lang="en">Refractory, fireclay, packed {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.6000000E+2</meanAmount>
+      <resultingAmount>1.6000000E+2</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="9">
+      <referenceToFlowDataSet type="flow data set" refObjectId="42166794-7476-463b-9c96-8ae023a15fa1" uri="../flows/42166794-7476-463b-9c96-8ae023a15fa1.xml">
+        <common:shortDescription xml:lang="en">Silica sand {DE}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.5200000E+2</meanAmount>
+      <resultingAmount>2.5200000E+2</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="10">
+      <referenceToFlowDataSet type="flow data set" refObjectId="3df083cb-67f1-4754-9f2e-b8a38d94f066" uri="../flows/3df083cb-67f1-4754-9f2e-b8a38d94f066.xml">
+        <common:shortDescription xml:lang="en">Electricity, medium voltage {IT}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.0528000E+3</meanAmount>
+      <resultingAmount>3.0528000E+3</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="11">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4f462198-40cd-4184-8733-86648a20dc3f" uri="../flows/4f462198-40cd-4184-8733-86648a20dc3f.xml">
+        <common:shortDescription xml:lang="en">ground water</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>IT</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>7.0000000E-1</meanAmount>
+      <resultingAmount>7.0000000E-1</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="12">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-923d-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-923d-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">carbon dioxide (fossil)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0200000E-1</meanAmount>
+      <resultingAmount>1.0200000E-1</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="13">
+      <referenceToFlowDataSet type="flow data set" refObjectId="f79d0f8f-2b0e-49cb-bed0-b1ea0fbd8625" uri="../flows/f79d0f8f-2b0e-49cb-bed0-b1ea0fbd8625.xml">
+        <common:shortDescription xml:lang="en">Nitrogen oxides</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>IT</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.8000000E-1</meanAmount>
+      <resultingAmount>2.8000000E-1</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="14">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9501-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9501-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">particles (PM2.5 - PM10)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.1700000E-1</meanAmount>
+      <resultingAmount>2.1700000E-1</resultingAmount>
+    </exchange>
+  </exchanges>
+</processDataSet>

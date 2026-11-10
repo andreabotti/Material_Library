@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>3388fcc7-e4f2-4159-8043-469ebe35d24d</common:UUID>
+      <name>
+        <baseName xml:lang="en">Insulating materials, storage</baseName>
+      </name>
+      <common:synonyms>Produzione Big Bags in polipropilene</common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">Materials production</common:class>
+          <common:class level="1">Plastics</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment>Dataset developed within the ARCADIA project in the context of the Ph.D. of Federica Carollo (Politecnico di Milano). 
+The dataset relates to the production of 1 piece of polystyrene big bag, in Italy.  
+The dataset is composed of 2-unit processes:  
+1) Production of the Polypropylene granulate; 
+2) Extrusion of the plastic film. </common:generalComment>
+      <referenceToExternalDocumentation type="source data set" refObjectId="560ede5f-1e54-4ad2-84f7-af57b2439a0a" version="01.00.000" uri="../sources/560ede5f-1e54-4ad2-84f7-af57b2439a0a.xml">
+        <common:shortDescription>Carollo F. (2023). Circularity in construction and demolition waste management chain, Ph.D. Dissertation (Tutored by Rigamonti L., Ceruti F.). Politecnico di Milano. Background datasets from the EcoInvent database cut-off (v. 3.8) were used for the LCA study. </common:shortDescription>
+      </referenceToExternalDocumentation>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2022</common:referenceYear>
+      <common:dataSetValidUntil>2027</common:dataSetValidUntil>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT">
+        <descriptionOfRestrictions>Lombardy Region</descriptionOfRestrictions>
+      </locationOfOperationSupplyOrProduction>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>Waste producers generally send insulating materials to specialized plants which pack the waste in big bags. The packaged materials are then sent to landfills equipped with a dedicated cell and disposed of.  &#13;
+&#13;
+Good the Reliability;   &#13;
+Very Good the Geographical representativeness;   &#13;
+Very Good the Time representativeness;   &#13;
+Very Good the Technological representativeness. </technologyDescriptionAndIncludedProcesses>
+      <technologicalApplicability>Production of 1 piece of polystyrene big bag.</technologicalApplicability>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Allocation - mass</LCIMethodApproaches>
+      <referenceToLCAMethodDetails type="source data set" refObjectId="e6d2d676-75dc-4c8d-ac22-d3fa4d5b303b" version="01.00.000" uri="../sources/e6d2d676-75dc-4c8d-ac22-d3fa4d5b303b.xml">
+        <common:shortDescription>Carollo F. (2023). Circularity in construction and demolition waste management chain, Ph.D. Dissertation (Tutored by Rigamonti L., Ceruti F.). Politecnico di Milano.</common:shortDescription>
+      </referenceToLCAMethodDetails>
+      <referenceToLCAMethodDetails type="source data set" refObjectId="9e2a79bd-9bc6-456e-bf56-28e6e4be28d1" version="01.00.000" uri="../sources/9e2a79bd-9bc6-456e-bf56-28e6e4be28d1.xml">
+        <common:shortDescription>Policaro, P., Carollo, F., Rigamonti, L. (2020). ANALISI QUALITATIVA E QUANTITATIVA DELLA GESTIONE DEI RIFIUTI DI LANA DI ROCCIA. Ingegneria Dell’Ambiente, 7(4). </common:shortDescription>
+      </referenceToLCAMethodDetails>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <referenceToDataSource type="source data set" refObjectId="c636b8d3-f768-4322-a2d6-111a5c2106f8" version="01.00.000" uri="../sources/c636b8d3-f768-4322-a2d6-111a5c2106f8.xml">
+        <common:shortDescription>Carollo F. (2023). Circularity in construction and demolition waste management chain, Ph.D. Dissertation (Tutored by Rigamonti L., Ceruti F.). Politecnico di Milano. Background datasets from the EcoInvent database cut-off (v. 3.8) were used for the LCA study. </common:shortDescription>
+      </referenceToDataSource>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>All relevant flows quantified</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Not reviewed">
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Completeness" value="Good"/>
+          <common:dataQualityIndicator name="Precision" value="Good"/>
+          <common:dataQualityIndicator name="Methodological appropriateness and consistency" value="Good"/>
+          <common:dataQualityIndicator name="Overall quality" value="Good"/>
+        </common:dataQualityIndicators>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="88d4f8d9-60f9-43d1-9ea3-329c10d7d727" uri="../sources/88d4f8d9-60f9-43d1-9ea3-329c10d7d727.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Fully compliant</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Fully compliant</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="d92a1a12-2545-49e2-a585-55c259997756" uri="../sources/d92a1a12-2545-49e2-a585-55c259997756.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Fully compliant</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Fully compliant</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="01807191-e156-421a-b2f6-aa609ea534f4" uri="../contacts/01807191-e156-421a-b2f6-aa609ea534f4.xml">
+        <common:shortDescription xml:lang="en">EPLCA project team</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Arcadia – PON Governance e Capacità istituzionali 2014-2020 (PhD Project of Federica Carollo).</common:project>
+    </common:commissionerAndGoal>
+    <dataGenerator>
+      <common:referenceToPersonOrEntityGeneratingTheDataSet refObjectId="8f291e07-d47a-4b5e-9c88-37e153ba496e" type="contact data set" uri="../sources/8f291e07-d47a-4b5e-9c88-37e153ba496e.xml" version="01.00.000">
+        <common:shortDescription>Federica Carollo (Politecnico di Milano).</common:shortDescription>
+      </common:referenceToPersonOrEntityGeneratingTheDataSet>
+    </dataGenerator>
+    <dataEntryBy>
+      <common:timeStamp>2022-12-03T13:31:12.12+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="a97a0155-0234-4b87-b4ce-a45da52f2a40" uri="../sources/a97a0155-0234-4b87-b4ce-a45da52f2a40.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2022-05-26T16:32:02.915Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/3388fcc7-e4f2-4159-8043-469ebe35d24d.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="0b49be0c-6e5e-4bf9-b839-63e62731f7ec" type="contact data set" uri="../sources/0b49be0c-6e5e-4bf9-b839-63e62731f7ec.xml" version="01.00.000">
+        <common:shortDescription>ENEA-ARCADIA</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+      <common:accessRestrictions>Type of license: Open Database Licence (ODbL). </common:accessRestrictions>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="3909514c-a630-4d0c-be25-ee7c1ce4d305" uri="../flows/3909514c-a630-4d0c-be25-ee7c1ce4d305.xml">
+        <common:shortDescription xml:lang="en">Insulating materials, storage</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0000000E+0</meanAmount>
+      <resultingAmount>1.0000000E+0</resultingAmount>
+      <generalComment>The dataset relates to the production of 1 piece of polystyrene big bag, in Italy.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d6e60ed8-5f54-4cb3-a4f3-cecd3874ef66" uri="../flows/d6e60ed8-5f54-4cb3-a4f3-cecd3874ef66.xml">
+        <common:shortDescription xml:lang="en">Extrusion, plastic film {RER}| extrusion, plastic film | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>8.0000000E-1</meanAmount>
+      <resultingAmount>8.0000000E-1</resultingAmount>
+      <generalComment>Extrusion of plastic film. The value 0.8 was calculated by multypling the weight of the polypropylene for square meters (kg/m2) by the m2 of textile of a big bag of dimension: 90x90x120 cm + 20cm of buttonholes.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="2d098d24-0e51-4d5f-837a-f5ed2ef5068c" uri="../flows/2d098d24-0e51-4d5f-837a-f5ed2ef5068c.xml">
+        <common:shortDescription xml:lang="en">Polypropylene, granulate {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>8.0000000E-1</meanAmount>
+      <resultingAmount>8.0000000E-1</resultingAmount>
+      <generalComment>Polypropylene quantity for the production of 1 big bag. The value 0.8 was calculated by multypling the weight of the polypropylene for square meters (kg/m2) by the m2 of textile of a big bag of dimension: 90x90x120 cm + 20cm of buttonholes.
+</generalComment>
+    </exchange>
+  </exchanges>
+</processDataSet>

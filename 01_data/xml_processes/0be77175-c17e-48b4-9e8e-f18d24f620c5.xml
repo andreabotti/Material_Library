@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>0be77175-c17e-48b4-9e8e-f18d24f620c5</common:UUID>
+      <name>
+        <baseName xml:lang="en">Transport, Lorry, Rigid 28-32 t, diesel, EURO 5</baseName>
+      </name>
+      <common:synonyms>Trasporto, Camion Rigido 28-32 t, diesel, EURO 5</common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">Transport services</common:class>
+          <common:class level="1">Road</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment>The dataset has been developed within the Arcadia Project. It concerns the processing of industrial tomatoes in reference to the report “Studio LCA della filiera dell’industria del pomodoro confezionato in Italia”.
+Dataset are based on emission factor from “banca dati dei fattori di emissione medi del trasporto stradale in Italia” ISPRA (2020-2021).
+</common:generalComment>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2021</common:referenceYear>
+      <common:dataSetValidUntil>2028</common:dataSetValidUntil>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT">
+        <descriptionOfRestrictions>Italy. Data collected from ISPRA.</descriptionOfRestrictions>
+      </locationOfOperationSupplyOrProduction>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>The dataset refers to the transport made by a Lorry, Rigid, 28-32 t, diesel, EURO 5. Data for consumptions and for emissions came from ISPRA.</technologyDescriptionAndIncludedProcesses>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Not applicable</LCIMethodApproaches>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <dataCutOffAndCompletenessPrinciples>Infrastructure not included</dataCutOffAndCompletenessPrinciples>
+      <referenceToDataSource type="source data set" refObjectId="cfe6e7c5-c846-4560-833e-ff7286dd4843" version="01.00.000" uri="../sources/cfe6e7c5-c846-4560-833e-ff7286dd4843.xml">
+        <common:shortDescription>20230921121821_Report _Filiera Pomodoro_DEF2023_short.pdf</common:shortDescription>
+      </referenceToDataSource>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>No statement</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Independent external review">
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Completeness" value="Good"/>
+        </common:dataQualityIndicators>
+        <common:reviewDetails>The study is very representative from a geographical and technological point of view. From a temporal point of view, as the data refer to the 2020, the representativeness is considered very good. For this transport typology, the completeness is considered good.&#13;
+ &#13;
+&#13;
+ISPRA secondary data available in the database of average emission factors for road transport in Italy were used for modelling this mode of transport . The database of average emission factors for road transport is based on estimates made for the purpose of preparing the national inventory of atmospheric emissions reported in 2022, carried out annually by Ispra as a tool for verifying international commitments on the protection of the atmospheric environment, such as the Framework Convention on Climate Change (UNFCCC), the Kyoto Protocol, the Geneva Convention on Transboundary Air Pollution (UNECE-CLRTAP), and the European Directives on limiting emissions. Estimates are prepared by ISPRA on the basis of national input data on vehicle fleets and circulation (fleet numbers, average mileage and fuel consumption, speed by vehicle category with reference to urban, suburban and highway driving cycles, other specific national parameters). Emission factors are calculated both with respect to kilometers driven and with respect to consumption, with reference to both the detail of technologies and aggregation by sector and fuel, elaborated both at the total level and separately for the urban, extra-urban and highway spheres.&#13;
+For the weight of cargo transported by trucks (tonnage), a literature search was conducted through which it was found that trucks transporting goods overland generally travel at a load capacity of 57%: "Freight trucks often travel empty or at less than full load. An estimated 20-35% of truck miles in the United States are driven empty. Those that are not empty have an average load factor of 57%."&#13;
+&#13;
+&#13;
+The inventory data relating to the various processes within the system's boundaries are therefore to be considered reasonably representative of the supply chain under study, as they can to all intents and purposes be considered average data for the same. The quality of the data used in the study is considered to be good and the data were for the most part measured; where they were calculated or came from literature, they were all checked by experts.&#13;
+Allocation was avoided as far as possible by dividing the unitary process into two or more sub-processes and collecting environmental data on these sub-processes.&#13;
+When allocation could not be avoided, as in the case of products obtained during processing, the inputs and outputs of the system were divided between its different products and by-products.&#13;
+The allocation was generally based on mass (e.g. for waste treatment, waste water and energy used).&#13;
+The review  was performed  in compliance with Arcadia Metodology: “Metodologia per gli studi di filiera della Banca Dati italiana LCA” and ISO 14040-44 norms. The dataset has been assessed limited to the foreground data collected during the supply chain studies.&#13;
+Each dataset has been evaluated based on the following 4 criteria:&#13;
+1. Technological Representativeness;  2. Time Representativeness; 3. Geographical Representativeness; 4. Reliability (A)&#13;
+In this contest the Reliability is very good.&#13;
+</common:reviewDetails>
+        <common:referenceToNameOfReviewerAndInstitution type="contact data set" refObjectId="7b49c50f-dbab-4505-a527-9feda1ffa0a2" version="01.00.000" uri="../sources/7b49c50f-dbab-4505-a527-9feda1ffa0a2.xml">
+          <common:shortDescription>Ecoinnovazione&#13;
+Alessandra Zamagni&#13;
+a.zamagni@ecoinnovazione.it&#13;
+Nicola Ferrara&#13;
+n.ferrara@ecoinnovazione.it&#13;
+</common:shortDescription>
+        </common:referenceToNameOfReviewerAndInstitution>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="f002592a-e3b2-4d18-85df-167cb70fcd8e" uri="../sources/f002592a-e3b2-4d18-85df-167cb70fcd8e.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="febe6411-5bc2-4d6f-979c-5853a07a9f51" uri="../sources/febe6411-5bc2-4d6f-979c-5853a07a9f51.xml">
+          <common:shortDescription xml:lang="en">ISO 14044</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="01807191-e156-421a-b2f6-aa609ea534f4" uri="../contacts/01807191-e156-421a-b2f6-aa609ea534f4.xml">
+        <common:shortDescription xml:lang="en">EPLCA project team</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Arcadia – PON Governance e Capacità istituzionale 2014-2020</common:project>
+    </common:commissionerAndGoal>
+    <dataEntryBy>
+      <common:timeStamp>2023-09-20T14:22:22.307+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="a97a0155-0234-4b87-b4ce-a45da52f2a40" uri="../sources/a97a0155-0234-4b87-b4ce-a45da52f2a40.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2023-02-01T17:22:01.369Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/0be77175-c17e-48b4-9e8e-f18d24f620c5.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="94b9ba4c-f789-4d84-875b-c556673da7fb" type="contact data set" uri="../contacts/94b9ba4c-f789-4d84-875b-c556673da7fb.xml" version="01.00.000">
+        <common:shortDescription>ENEA-ARCADIA</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="1ee3cc54-f90b-4170-a764-c92ff46cdf3b" uri="../flows/1ee3cc54-f90b-4170-a764-c92ff46cdf3b.xml">
+        <common:shortDescription xml:lang="en">Transport, Lorry, Rigid 28-32 t, diesel, EURO 5</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0000000E+0</meanAmount>
+      <resultingAmount>1.0000000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="59b0281d-975f-4631-a108-e68a2ebe300b" uri="../flows/59b0281d-975f-4631-a108-e68a2ebe300b.xml">
+        <common:shortDescription xml:lang="en">Diesel, low-sulfur {Europe without Switzerland}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.3214072E-2</meanAmount>
+      <resultingAmount>1.3214072E-2</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-924e-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-924e-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">carbon monoxide (fossil)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>7.0450000E-5</meanAmount>
+      <resultingAmount>7.0450000E-5</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="3">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9155-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9155-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">volatile organic compound</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.1300000E-6</meanAmount>
+      <resultingAmount>2.1300000E-6</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="4">
+      <referenceToFlowDataSet type="flow data set" refObjectId="f79d0f8f-2b0e-49cb-bed0-b1ea0fbd8625" uri="../flows/f79d0f8f-2b0e-49cb-bed0-b1ea0fbd8625.xml">
+        <common:shortDescription xml:lang="en">Nitrogen oxides</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.2882000E-4</meanAmount>
+      <resultingAmount>1.2882000E-4</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="5">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-a302-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-a302-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">non-methane volatile organic compounds</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.8800000E-6</meanAmount>
+      <resultingAmount>1.8800000E-6</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="6">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9202-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9202-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">benzene</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.3200000E-9</meanAmount>
+      <resultingAmount>1.3200000E-9</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="7">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9610-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9610-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">methane (fossil)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.4800000E-7</meanAmount>
+      <resultingAmount>2.4800000E-7</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="8">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-96ee-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-96ee-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">nitrogen monoxide</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.1600000E-4</meanAmount>
+      <resultingAmount>1.1600000E-4</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="9">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-96e5-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-96e5-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">nitrogen dioxide</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.2900000E-5</meanAmount>
+      <resultingAmount>1.2900000E-5</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="10">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-94c3-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-94c3-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">nitrous oxide</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.9200000E-6</meanAmount>
+      <resultingAmount>2.9200000E-6</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="11">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-a2a9-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-a2a9-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">ammonia</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>6.0300000E-7</meanAmount>
+      <resultingAmount>6.0300000E-7</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="12">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9293-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9293-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">particles (PM2.5)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>4.0900000E-6</meanAmount>
+      <resultingAmount>4.0900000E-6</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="13">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-91be-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-91be-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">particles (PM10)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>6.1900000E-6</meanAmount>
+      <resultingAmount>6.1900000E-6</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="14">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4d9a8790-3ddd-11dd-91dc-0050c2490048" uri="../flows/4d9a8790-3ddd-11dd-91dc-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">lead</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.4600000E-9</meanAmount>
+      <resultingAmount>3.4600000E-9</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="15">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9674-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9674-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">cadmium</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>5.5800000E-11</meanAmount>
+      <resultingAmount>5.5800000E-11</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="16">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-a7a0-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-a7a0-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">copper</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.4800000E-8</meanAmount>
+      <resultingAmount>3.4800000E-8</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="17">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9acc-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9acc-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">chromium</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.5600000E-9</meanAmount>
+      <resultingAmount>1.5600000E-9</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="18">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-96c8-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-96c8-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">nickel</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>4.7900000E-10</meanAmount>
+      <resultingAmount>4.7900000E-10</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="19">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-abf3-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-abf3-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">selenium</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>6.7700000E-11</meanAmount>
+      <resultingAmount>6.7700000E-11</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="20">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-94e3-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-94e3-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">zinc</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.4800000E-8</meanAmount>
+      <resultingAmount>1.4800000E-8</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="21">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-ab8b-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-ab8b-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">indeno(1,2,3-cd)pyrene</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>7.6800000E-11</meanAmount>
+      <resultingAmount>7.6800000E-11</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="22">
+      <referenceToFlowDataSet type="flow data set" refObjectId="38a22f2e-f1c4-4231-abce-f3c713ed81ae" uri="../flows/38a22f2e-f1c4-4231-abce-f3c713ed81ae.xml">
+        <common:shortDescription xml:lang="en">benzofluoranthene (unspecified)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.3400000E-10</meanAmount>
+      <resultingAmount>3.3400000E-10</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="23">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-b0de-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-b0de-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">benzo[b]fluoranthene</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.9900000E-10</meanAmount>
+      <resultingAmount>2.9900000E-10</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="24">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9221-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9221-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">benzo[a]pyrene</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>4.9300000E-11</meanAmount>
+      <resultingAmount>4.9300000E-11</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="25">
+      <referenceToFlowDataSet type="flow data set" refObjectId="2537ca37-545a-47f0-ae76-59fd698826a9" uri="../flows/2537ca37-545a-47f0-ae76-59fd698826a9.xml">
+        <common:shortDescription xml:lang="en">dioxins (unspec.) (unspecified)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>7.1300000E-16</meanAmount>
+      <resultingAmount>7.1300000E-16</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="26">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-a632-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-a632-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">furan</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>9.3200000E-16</meanAmount>
+      <resultingAmount>9.3200000E-16</resultingAmount>
+    </exchange>
+  </exchanges>
+</processDataSet>

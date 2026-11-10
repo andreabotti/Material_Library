@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>e2b44581-199a-4520-86af-5c493266abb3</common:UUID>
+      <name>
+        <baseName xml:lang="en">Peeled tomatoes, processing, at plant, Northern Italy, 1 kg of peeled tomatoes</baseName>
+      </name>
+      <common:synonyms>1 kg di Pelati, trasformazione allo stabilimento, Nord Italia </common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">Materials production</common:class>
+          <common:class level="1">Food and renewable raw materials</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment xml:lang="en">The dataset has been developed within the Arcadia Project. It concerns the processing of industrial tomatoes in reference to the report “Studio LCA della filiera dell’industria del pomodoro confezionato in Italia”.</common:generalComment>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2021</common:referenceYear>
+      <common:dataSetValidUntil>2028</common:dataSetValidUntil>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT">
+        <descriptionOfRestrictions>Italy. Primary data collected in the North. Representative dataset of North Italian tomato chain production.</descriptionOfRestrictions>
+      </locationOfOperationSupplyOrProduction>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>Once the tomatoes arrive to the processing company, the manufacturing process begins with washing the berries in tanks to remove all foreign material. Then, the berries are deposited on sorting tables, where the staff works to discard unsuitable fruit (insubstantial, with color defects, or small sizes). To take place, these operations use large amounts of running water, optical sorters and workers. Later on, tomatoes come in contact with the peeler to detach the skin from the pulp. After this stage they undergo a new selection and only the best berries are canned in jars filled with juice and hermetically sealed, to be sterilized.&#13;
+Primary (North Italian supply chain) and secondary (literature and/or industry data) data representative of the North Italian supply chain in terms of geographic characteristics and technologies used (machinery, equipment, etc.) were collected. Inventory data were collected as physical quantities of materials used in different processes. Benefits from the use of secondary materials produced by recycling waste materials (e.g., plastics and cardboard) were excluded.&#13;
+Background data were modelled according to Ecoinvent v. 3.8</technologyDescriptionAndIncludedProcesses>
+      <technologicalApplicability>Peeled tomatoes are whole and suitable for all those dishes in which the fruit does not disintegrate too much. They can also be crushed to stuff pizza or be used in preparations that call for a thick, full-bodied sauce.</technologicalApplicability>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Not applicable</LCIMethodApproaches>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <referenceToDataSource type="source data set" refObjectId="e93901be-f882-4d8d-8d18-6d52a713d521" version="01.00.000" uri="../sources/e93901be-f882-4d8d-8d18-6d52a713d521.xml">
+        <common:shortDescription>20230921104841_Report _Filiera Pomodoro_DEF2023_short.pdf</common:shortDescription>
+      </referenceToDataSource>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>No statement</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Independent external review">
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Completeness" value="Very good"/>
+        </common:dataQualityIndicators>
+        <common:reviewDetails>The study is very representative from a geographical and technological point of view. From a temporal point of view, as the data refer to the two-year period 2020-2021, the representativeness is considered very good. For the North peeled tomatoes, the completeness is considered very good. &#13;
+&#13;
+Consumption of electricity, natural gas, diesel oil, fuel oil and water (used for processing and discharged) were allocated through allocation to individual products, according to PCR 2019:01.&#13;
+&#13;
+The processors interviewed point out that tomato processing involves a great deal of water loss from evaporation. The companies interviewed estimate evaporation to be about 30 percent of the amount of tomato input, but this value is highly variable and tends to rise especially during summer periods.&#13;
+The inventory data relating to the various processes within the system's boundaries are therefore to be considered reasonably representative of the supply chain under study, as they can to all intents and purposes be considered average data for the same. The quality of the data used in the study is considered to be good and the data were for the most part measured; where they were calculated or came from literature, they were all checked by experts.&#13;
+Allocation was avoided as far as possible by dividing the unitary process into two or more sub-processes and collecting environmental data on these sub-processes.&#13;
+When allocation could not be avoided, as in the case of products obtained during processing, the inputs and outputs of the system were divided between its different products and by-products.&#13;
+The allocation was generally based on mass (e.g. for waste treatment, waste water and energy used).&#13;
+The review  was performed  in compliance with Arcadia Metodology: “Metodologia per gli studi di filiera della Banca Dati italiana LCA” and ISO 14040-44 norms. The dataset has been assessed limited to the foreground data collected during the supply chain studies.&#13;
+Each dataset has been evaluated based on the following 4 criteria:&#13;
+1. Technological Representativeness;  2. Time Representativeness; 3. Geographical Representativeness; 4. Reliability (A)&#13;
+In this contest the Reliability is very good&#13;
+</common:reviewDetails>
+        <common:referenceToNameOfReviewerAndInstitution type="contact data set" refObjectId="fcedcec9-4312-4940-8c39-96b182797978" version="01.00.000" uri="../sources/fcedcec9-4312-4940-8c39-96b182797978.xml">
+          <common:shortDescription>Ecoinnovazione&#13;
+Alessandra Zamagni&#13;
+a.zamagni@ecoinnovazione.it&#13;
+Nicola Ferrara&#13;
+n.ferrara@ecoinnovazione.it&#13;
+</common:shortDescription>
+        </common:referenceToNameOfReviewerAndInstitution>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="6be4db4d-f5ec-4fca-8229-4f2f10c1621d" uri="../sources/6be4db4d-f5ec-4fca-8229-4f2f10c1621d.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="2cf09f23-878f-4186-ae60-117739abc52e" uri="../sources/2cf09f23-878f-4186-ae60-117739abc52e.xml">
+          <common:shortDescription xml:lang="en">ISO 14044</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="01807191-e156-421a-b2f6-aa609ea534f4" uri="../contacts/01807191-e156-421a-b2f6-aa609ea534f4.xml">
+        <common:shortDescription xml:lang="en">EPLCA project team</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Arcadia – PON Governance e Capacità istituzionale 2014-2020</common:project>
+    </common:commissionerAndGoal>
+    <dataEntryBy>
+      <common:timeStamp>2023-09-20T14:19:07.457+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="a97a0155-0234-4b87-b4ce-a45da52f2a40" uri="../sources/a97a0155-0234-4b87-b4ce-a45da52f2a40.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2023-02-01T08:45:41.327Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/e2b44581-199a-4520-86af-5c493266abb3.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="f3705704-b388-47d1-b3d0-962b865a0dbe" type="contact data set" uri="../contacts/f3705704-b388-47d1-b3d0-962b865a0dbe.xml" version="01.00.000">
+        <common:shortDescription>ENEA-ARCADIA</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4d6a5ff9-eee5-4fec-b02c-21de8a660d34" uri="../flows/4d6a5ff9-eee5-4fec-b02c-21de8a660d34.xml">
+        <common:shortDescription xml:lang="en">Peeled tomatoes, processing, at plant, Northern Italy, 1 kg of peeled tomatoes</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0000000E+0</meanAmount>
+      <resultingAmount>1.0000000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="0018fa02-6c37-4a73-8298-fb84d2a8c0bf" uri="../flows/0018fa02-6c37-4a73-8298-fb84d2a8c0bf.xml">
+        <common:shortDescription xml:lang="en">Buccette e semi, pelati, nord</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.3400000E-3</meanAmount>
+      <resultingAmount>1.3400000E-3</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="b99458f4-5ea8-4a3a-9b38-dcb6570442ee" uri="../flows/b99458f4-5ea8-4a3a-9b38-dcb6570442ee.xml">
+        <common:shortDescription xml:lang="en">Grigliato di pomodoro, pelati, nord</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.0600000E-2</meanAmount>
+      <resultingAmount>2.0600000E-2</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="3">
+      <referenceToFlowDataSet type="flow data set" refObjectId="40aa5c54-febc-46d2-a508-1aca9dbfd08a" uri="../flows/40aa5c54-febc-46d2-a508-1aca9dbfd08a.xml">
+        <common:shortDescription xml:lang="en">Tap water {Europe without Switzerland}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.2900000E-4</meanAmount>
+      <resultingAmount>1.2900000E-4</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.967"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.002"/>
+        <allocation internalReferenceToCoProduct="2" allocatedFraction="0.031"/>
+      </allocations>
+    </exchange>
+    <exchange dataSetInternalID="4">
+      <referenceToFlowDataSet type="flow data set" refObjectId="a6094585-b28e-49da-bdd1-fca96bbddd15" uri="../flows/a6094585-b28e-49da-bdd1-fca96bbddd15.xml">
+        <common:shortDescription xml:lang="en">Tomato, early maturing variety, field cultivation in Northern Italy, 1 kg of Tomato</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.4400000E-1</meanAmount>
+      <resultingAmount>5.4400000E-1</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.967"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.002"/>
+        <allocation internalReferenceToCoProduct="2" allocatedFraction="0.031"/>
+      </allocations>
+    </exchange>
+    <exchange dataSetInternalID="5">
+      <referenceToFlowDataSet type="flow data set" refObjectId="912d39b4-5802-4e4d-8ff6-05f91653e38f" uri="../flows/912d39b4-5802-4e4d-8ff6-05f91653e38f.xml">
+        <common:shortDescription xml:lang="en">Tomato, medium maturing variety, field cultivation in Northern Italy, 1 kg of Tomato</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.2800000E-1</meanAmount>
+      <resultingAmount>5.2800000E-1</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.967"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.002"/>
+        <allocation internalReferenceToCoProduct="2" allocatedFraction="0.031"/>
+      </allocations>
+    </exchange>
+    <exchange dataSetInternalID="6">
+      <referenceToFlowDataSet type="flow data set" refObjectId="dc9f8be1-dbca-4bdf-857b-d148a84ca986" uri="../flows/dc9f8be1-dbca-4bdf-857b-d148a84ca986.xml">
+        <common:shortDescription xml:lang="en">Tomato, late maturing variety, field cultivation in Northern Italy, 1 kg of Tomato</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.3800000E-1</meanAmount>
+      <resultingAmount>4.3800000E-1</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.967"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.002"/>
+        <allocation internalReferenceToCoProduct="2" allocatedFraction="0.031"/>
+      </allocations>
+    </exchange>
+    <exchange dataSetInternalID="7">
+      <referenceToFlowDataSet type="flow data set" refObjectId="cab8810b-8dab-490c-9d43-9f27645f2c2b" uri="../flows/cab8810b-8dab-490c-9d43-9f27645f2c2b.xml">
+        <common:shortDescription xml:lang="en">Soda ash, dense {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.8200000E-5</meanAmount>
+      <resultingAmount>2.8200000E-5</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.967"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.002"/>
+        <allocation internalReferenceToCoProduct="2" allocatedFraction="0.031"/>
+      </allocations>
+      <generalComment>soda for washing
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="8">
+      <referenceToFlowDataSet type="flow data set" refObjectId="1c2e11cd-04d1-4535-b927-15e76333747d" uri="../flows/1c2e11cd-04d1-4535-b927-15e76333747d.xml">
+        <common:shortDescription xml:lang="en">Nitric acid, without water, in 50% solution state {RER w/o RU}| market for nitric acid, without water, in 50% solution state | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.2100000E-6</meanAmount>
+      <resultingAmount>5.2100000E-6</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.967"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.002"/>
+        <allocation internalReferenceToCoProduct="2" allocatedFraction="0.031"/>
+      </allocations>
+      <generalComment>nitric acid for washing
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="9">
+      <referenceToFlowDataSet type="flow data set" refObjectId="661f6df9-486e-4e83-a530-83667a3e6674" uri="../flows/661f6df9-486e-4e83-a530-83667a3e6674.xml">
+        <common:shortDescription xml:lang="en">Lubricating oil {RER}| market for lubricating oil | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.6600000E-6</meanAmount>
+      <resultingAmount>2.6600000E-6</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.967"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.002"/>
+        <allocation internalReferenceToCoProduct="2" allocatedFraction="0.031"/>
+      </allocations>
+    </exchange>
+    <exchange dataSetInternalID="10">
+      <referenceToFlowDataSet type="flow data set" refObjectId="1e881ae7-e92d-4e1c-bdbc-22117f16f877" uri="../flows/1e881ae7-e92d-4e1c-bdbc-22117f16f877.xml">
+        <common:shortDescription xml:lang="en">Sodium hypochlorite, without water, in 15% solution state {RER}| market for sodium hypochlorite, without water, in 15% solution state | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.2900000E-5</meanAmount>
+      <resultingAmount>1.2900000E-5</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.967"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.002"/>
+        <allocation internalReferenceToCoProduct="2" allocatedFraction="0.031"/>
+      </allocations>
+    </exchange>
+    <exchange dataSetInternalID="11">
+      <referenceToFlowDataSet type="flow data set" refObjectId="3c7fbd74-04b5-4e6a-b371-2e8d1a90727c" uri="../flows/3c7fbd74-04b5-4e6a-b371-2e8d1a90727c.xml">
+        <common:shortDescription xml:lang="en">Chemical, organic {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.0700000E-7</meanAmount>
+      <resultingAmount>2.0700000E-7</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.967"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.002"/>
+        <allocation internalReferenceToCoProduct="2" allocatedFraction="0.031"/>
+      </allocations>
+      <generalComment>Proxy for polyamines
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="12">
+      <referenceToFlowDataSet type="flow data set" refObjectId="f8e42f15-6981-4b0e-a3b9-73e4a9e4528a" uri="../flows/f8e42f15-6981-4b0e-a3b9-73e4a9e4528a.xml">
+        <common:shortDescription xml:lang="en">Urea {RER}| market for urea | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.0600000E-8</meanAmount>
+      <resultingAmount>1.0600000E-8</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.967"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.002"/>
+        <allocation internalReferenceToCoProduct="2" allocatedFraction="0.031"/>
+      </allocations>
+    </exchange>
+    <exchange dataSetInternalID="13">
+      <referenceToFlowDataSet type="flow data set" refObjectId="15f442bb-9143-4ee3-a54d-0a9160ad3d68" uri="../flows/15f442bb-9143-4ee3-a54d-0a9160ad3d68.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry, unspecified {RER}| transport, freight, lorry, all sizes, EURO4 to generic market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.9200000E-5</meanAmount>
+      <resultingAmount>3.9200000E-5</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.967"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.002"/>
+        <allocation internalReferenceToCoProduct="2" allocatedFraction="0.031"/>
+      </allocations>
+      <generalComment>Waste and sludge transport to recovery (sludge+vegetable waste+production waste)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="14">
+      <referenceToFlowDataSet type="flow data set" refObjectId="3f1623a8-29d3-4838-82d5-8a7361ef8a3a" uri="../flows/3f1623a8-29d3-4838-82d5-8a7361ef8a3a.xml">
+        <common:shortDescription xml:lang="en">Packaging for peeled tomato, processing, at Plant, average packaging for 1 kg of peeled tomato</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.0000000E+0</meanAmount>
+      <resultingAmount>1.0000000E+0</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.967"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.002"/>
+        <allocation internalReferenceToCoProduct="2" allocatedFraction="0.031"/>
+      </allocations>
+    </exchange>
+    <exchange dataSetInternalID="15">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4ed784e1-301f-47fc-a0d3-34761194930c" uri="../flows/4ed784e1-301f-47fc-a0d3-34761194930c.xml">
+        <common:shortDescription xml:lang="en">Transport of the product, from plant to final costumers, average transport between 20 t and 34 t</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.0000000E+0</meanAmount>
+      <resultingAmount>1.0000000E+0</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.967"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.002"/>
+        <allocation internalReferenceToCoProduct="2" allocatedFraction="0.031"/>
+      </allocations>
+    </exchange>
+    <exchange dataSetInternalID="16">
+      <referenceToFlowDataSet type="flow data set" refObjectId="3d8d895d-f115-418f-b87c-1ea03ca5190a" uri="../flows/3d8d895d-f115-418f-b87c-1ea03ca5190a.xml">
+        <common:shortDescription xml:lang="en">Transport of fresh tomatoes, from field cultivation to the processing plant, average transport between 3,5 t and 50 t</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.0000000E+0</meanAmount>
+      <resultingAmount>1.0000000E+0</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.967"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.002"/>
+        <allocation internalReferenceToCoProduct="2" allocatedFraction="0.031"/>
+      </allocations>
+    </exchange>
+    <exchange dataSetInternalID="17">
+      <referenceToFlowDataSet type="flow data set" refObjectId="b837a910-f8e5-402f-8cb7-25ac1f95c8b3" uri="../flows/b837a910-f8e5-402f-8cb7-25ac1f95c8b3.xml">
+        <common:shortDescription xml:lang="en">Electricity, medium voltage {IT}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.4236000E-1</meanAmount>
+      <resultingAmount>3.4236000E-1</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.967"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.002"/>
+        <allocation internalReferenceToCoProduct="2" allocatedFraction="0.031"/>
+      </allocations>
+    </exchange>
+    <exchange dataSetInternalID="18">
+      <referenceToFlowDataSet type="flow data set" refObjectId="e99c8876-b57d-46dc-9064-a09350edf676" uri="../flows/e99c8876-b57d-46dc-9064-a09350edf676.xml">
+        <common:shortDescription xml:lang="en">Heat, central or small-scale, natural gas {RER}| market group for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.6020000E+0</meanAmount>
+      <resultingAmount>1.6020000E+0</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.967"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.002"/>
+        <allocation internalReferenceToCoProduct="2" allocatedFraction="0.031"/>
+      </allocations>
+    </exchange>
+    <exchange dataSetInternalID="19">
+      <referenceToFlowDataSet type="flow data set" refObjectId="83f44b95-906f-4ff0-ad2a-ffb7d37afca8" uri="../flows/83f44b95-906f-4ff0-ad2a-ffb7d37afca8.xml">
+        <common:shortDescription xml:lang="en">Heat, central or small-scale, other than natural gas {Europe without Switzerland}| heat production, light fuel oil, at boiler 10kW, non-modulating | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.8288000E-4</meanAmount>
+      <resultingAmount>1.8288000E-4</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.967"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.002"/>
+        <allocation internalReferenceToCoProduct="2" allocatedFraction="0.031"/>
+      </allocations>
+    </exchange>
+    <exchange dataSetInternalID="20">
+      <referenceToFlowDataSet type="flow data set" refObjectId="9ce40dec-44b5-4c30-880d-181982d4d42b" uri="../flows/9ce40dec-44b5-4c30-880d-181982d4d42b.xml">
+        <common:shortDescription xml:lang="en">Wastewater, unpolluted {CH}| market for wastewater, unpolluted | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>4.5600000E-3</meanAmount>
+      <resultingAmount>4.5600000E-3</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.967"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.002"/>
+        <allocation internalReferenceToCoProduct="2" allocatedFraction="0.031"/>
+      </allocations>
+    </exchange>
+    <exchange dataSetInternalID="21">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4f462198-40cd-4184-8733-86648a20dc3f" uri="../flows/4f462198-40cd-4184-8733-86648a20dc3f.xml">
+        <common:shortDescription xml:lang="en">ground water</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>IT</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.4300000E-3</meanAmount>
+      <resultingAmount>4.4300000E-3</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.967"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.002"/>
+        <allocation internalReferenceToCoProduct="2" allocatedFraction="0.031"/>
+      </allocations>
+    </exchange>
+    <exchange dataSetInternalID="22">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-97ef-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-97ef-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">chemical oxygen demand</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>IT</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>5.8000000E-6</meanAmount>
+      <resultingAmount>5.8000000E-6</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.967"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.002"/>
+        <allocation internalReferenceToCoProduct="2" allocatedFraction="0.031"/>
+      </allocations>
+    </exchange>
+    <exchange dataSetInternalID="23">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-96ec-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-96ec-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">nitrogen dioxide</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>5.3000000E-7</meanAmount>
+      <resultingAmount>5.3000000E-7</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.967"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.002"/>
+        <allocation internalReferenceToCoProduct="2" allocatedFraction="0.031"/>
+      </allocations>
+    </exchange>
+    <exchange dataSetInternalID="24">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-aa31-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-aa31-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">nitrate</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>IT</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.1800000E-7</meanAmount>
+      <resultingAmount>2.1800000E-7</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.967"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.002"/>
+        <allocation internalReferenceToCoProduct="2" allocatedFraction="0.031"/>
+      </allocations>
+    </exchange>
+    <exchange dataSetInternalID="25">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-97d4-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-97d4-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">ammonium</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>7.3200000E-8</meanAmount>
+      <resultingAmount>7.3200000E-8</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.967"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.002"/>
+        <allocation internalReferenceToCoProduct="2" allocatedFraction="0.031"/>
+      </allocations>
+    </exchange>
+    <exchange dataSetInternalID="26">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9789-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9789-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">phosphate</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>IT</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>6.0700000E-8</meanAmount>
+      <resultingAmount>6.0700000E-8</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.967"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.002"/>
+        <allocation internalReferenceToCoProduct="2" allocatedFraction="0.031"/>
+      </allocations>
+    </exchange>
+    <exchange dataSetInternalID="27">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-97e0-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-97e0-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">biological oxygen demand</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>IT</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.5700000E-6</meanAmount>
+      <resultingAmount>1.5700000E-6</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.967"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.002"/>
+        <allocation internalReferenceToCoProduct="2" allocatedFraction="0.031"/>
+      </allocations>
+    </exchange>
+  </exchanges>
+</processDataSet>

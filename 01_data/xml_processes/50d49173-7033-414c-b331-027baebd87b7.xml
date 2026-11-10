@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>50d49173-7033-414c-b331-027baebd87b7</common:UUID>
+      <name>
+        <baseName xml:lang="en">Electricity from solid biomass_CL2_ biomass from MSW, combustion and waste-to-energy, at plant</baseName>
+      </name>
+      <common:synonyms>Energia elettrica da biomasse solide _Cl2_biomasse da rifiuti solidi urbani (RSU), combustione e termovalorizzazione, all’impianto</common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">Energy carriers and technologies</common:class>
+          <common:class level="1">Electricity</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment>Dataset developed according to Arcadia project Methodology (Report: “Metodologia per gli studi di filiera della Banca Dati italiana LCA”). LCA study of electricity production from solid biomass  (Report: “La filiera delle biomasse solide  per la produzione di energia elettrica in Italia”). &#13;
+The dataset refers to the production of 1 kWh (=3.6 MJ) of electricity from solid biomass derived from municipal solid waste (MSW), and it is representative of the processing technologies commonly used for this purpose.&#13;
+</common:generalComment>
+      <referenceToExternalDocumentation type="source data set" refObjectId="e27984c9-9c85-458b-beaa-c727f7127c3d" version="01.00.000" uri="../sources/e27984c9-9c85-458b-beaa-c727f7127c3d.xml">
+        <common:shortDescription>Gabriella Fiorentino, Giuliana Ansanelli, Antonietta Cerbone, Alessandro Giocoli, Vincenzo Motola e Amalia Zucaro. LA FILIERA DELLE BIOMASSE SOLIDE PER LA PRODUZIONE DI ENERGIA ELETTRICA IN ITALIA.&#13;
+&#13;
+Background datasets from Ecoinvent database cut-off (v. 3.7.1) were used for the LCA study.&#13;
+</common:shortDescription>
+      </referenceToExternalDocumentation>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2021</common:referenceYear>
+      <common:dataSetValidUntil>2026</common:dataSetValidUntil>
+      <common:timeRepresentativenessDescription>This dataset has been considered valid until 2026, since no main changes have occurred in the electricity production from solid biomass in the investigated years.</common:timeRepresentativenessDescription>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT"/>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>The dataset refers to a system that includes the transportation of biomass (secondary data) and the combustion of biowaste from MSW (primary data) in order obtain electrical energy. The power of the waste-to-energy (WtE) plants is between 1 and 70 MW. The primary data were provided by environmental declarations of plants distributed throughout the country, that use municipal solid waste as biomass to obtain electricity, from Atlaimpianti (https://www.gse.it/dati-e-scenari/atlaimpianti), and the GSE (Gestore Servizi Energetici), 2022. Statistical Report 2020 on Renewable Sources.&#13;
+Background data were modelled according to EcoInvent database 3.7.1&#13;
+</technologyDescriptionAndIncludedProcesses>
+      <technologicalApplicability>Electricity from solid biomass sold to Italian electric grid.</technologicalApplicability>
+      <referenceToTechnologyPictogramme type="source data set" refObjectId="cdb7c987-0e52-4eb6-9aa3-2966c0b6bd03" version="01.00.000" uri="../sources/cdb7c987-0e52-4eb6-9aa3-2966c0b6bd03.xml">
+        <common:shortDescription>20230913181049_Pictogram of technology.jpeg</common:shortDescription>
+      </referenceToTechnologyPictogramme>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Not applicable</LCIMethodApproaches>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <dataCutOffAndCompletenessPrinciples>Production of equipment and infrastructures is not included, except for the background system</dataCutOffAndCompletenessPrinciples>
+      <referenceToDataSource type="source data set" refObjectId="3544c106-0824-405d-9e15-ca6ef4ea52fd" version="01.00.000" uri="../sources/3544c106-0824-405d-9e15-ca6ef4ea52fd.xml">
+        <common:shortDescription>20230913181049_La filiera delle biomasse per la produzione di energia elettrica inItalia.pdf</common:shortDescription>
+      </referenceToDataSource>
+      <dataCollectionPeriod>2019-2021</dataCollectionPeriod>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>No statement</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Independent internal review">
+        <common:reviewDetails>The review was performed in compliance with Arcadia Metodology: “Metodologia per gli studi di filiera della Banca Dati italiana LCA” and ISO 14040-44 norms. The dataset has been assessed limited to the foreground data collected during the supply chain studies.&#13;
+Each dataset has been evaluated based on the following 4 criteria:&#13;
+1. Technological Representativeness; 2. Time Representativeness; 3. Geographical Representativeness; 4. Reliability.&#13;
+In this context the Reliability is good.&#13;
+</common:reviewDetails>
+        <common:referenceToNameOfReviewerAndInstitution type="contact data set" refObjectId="13f78d6c-ab12-4d8c-ac6c-623c490dd78d" version="01.00.000" uri="../sources/13f78d6c-ab12-4d8c-ac6c-623c490dd78d.xml">
+          <common:shortDescription>ENEA</common:shortDescription>
+        </common:referenceToNameOfReviewerAndInstitution>
+        <common:otherReviewDetails>The study was judged by the reviewer as compliant with both ISO 14040-44 and Arcadia methodology</common:otherReviewDetails>
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Completeness" value="Good"/>
+          <common:dataQualityIndicator name="Precision" value="Not applicable"/>
+          <common:dataQualityIndicator name="Methodological appropriateness and consistency" value="Not applicable"/>
+          <common:dataQualityIndicator name="Overall quality" value="Not applicable"/>
+        </common:dataQualityIndicators>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="e91b2739-824d-4f0c-989f-96a57f9538da" uri="../sources/e91b2739-824d-4f0c-989f-96a57f9538da.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="fe834e8f-2234-4990-a33d-a86a23cfc7c4" uri="../sources/fe834e8f-2234-4990-a33d-a86a23cfc7c4.xml">
+          <common:shortDescription xml:lang="en">ISO 14044</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Not defined</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="6e25b08d-dbe6-4dcb-b1c9-3e334d4e1940" uri="../sources/6e25b08d-dbe6-4dcb-b1c9-3e334d4e1940.xml">
+        <common:shortDescription xml:lang="en">Arcadia – PON Governance e Capacità istituzionale 2014-2020  </common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Arcadia – PON Governance e Capacità istituzionale 2014-2020  </common:project>
+    </common:commissionerAndGoal>
+    <dataGenerator>
+      <common:referenceToPersonOrEntityGeneratingTheDataSet refObjectId="97a6c6f8-6d4a-4935-a970-02561ea263bb" type="contact data set" uri="../sources/97a6c6f8-6d4a-4935-a970-02561ea263bb.xml" version="01.00.000">
+        <common:shortDescription>ENEA</common:shortDescription>
+      </common:referenceToPersonOrEntityGeneratingTheDataSet>
+    </dataGenerator>
+    <dataEntryBy>
+      <common:timeStamp>2023-09-13T12:08:31.83+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="a97a0155-0234-4b87-b4ce-a45da52f2a40" uri="../sources/a97a0155-0234-4b87-b4ce-a45da52f2a40.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2022-09-30T12:38:40.63Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/50d49173-7033-414c-b331-027baebd87b7.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="d0be650a-9902-4e62-9570-ea1c05bdc7b9" type="contact data set" uri="../contacts/d0be650a-9902-4e62-9570-ea1c05bdc7b9.xml" version="01.00.000">
+        <common:shortDescription>ENEA-ARCADIA</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="9b0764be-f2e2-4644-919c-3af3ab8a1a47" uri="../flows/9b0764be-f2e2-4644-919c-3af3ab8a1a47.xml">
+        <common:shortDescription xml:lang="en">Electricity from solid biomass_CL2_biomass from MSW</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.6000000E+0</meanAmount>
+      <resultingAmount>3.6000000E+0</resultingAmount>
+      <generalComment>Total electric energy produced = 5,94E8 kWhe (net electricity 5,03E8 kWhe , excluding self-consumption)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="b9679bbf-2e24-4032-b749-5e3e2f1b0d2c" uri="../flows/b9679bbf-2e24-4032-b749-5e3e2f1b0d2c.xml">
+        <common:shortDescription xml:lang="en">Residual biomass</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.3300000E+0</meanAmount>
+      <resultingAmount>1.3300000E+0</resultingAmount>
+      <generalComment>The zero burden approach has been applied.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="13b0a02b-bbd0-4aa6-8b18-b8b517b631bb" uri="../flows/13b0a02b-bbd0-4aa6-8b18-b8b517b631bb.xml">
+        <common:shortDescription xml:lang="en">ARCADIA - Biowaste {GLO}| treatment of biowaste, municipal incineration | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.3300000E+0</meanAmount>
+      <resultingAmount>1.3300000E+0</resultingAmount>
+      <generalComment>The Ecoinvent process has been modified deleting  the emissions.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="3">
+      <referenceToFlowDataSet type="flow data set" refObjectId="2b7894a9-c7ac-49dc-822b-3132cb8ae448" uri="../flows/2b7894a9-c7ac-49dc-822b-3132cb8ae448.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry &gt;32 metric ton, euro6 {RER}| market for transport, freight, lorry &gt;32 metric ton, EURO6 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>9.3100000E-2</meanAmount>
+      <resultingAmount>9.3100000E-2</resultingAmount>
+      <generalComment>Average distance 70 km in accordance with the DM 02/03/2010.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="4">
+      <referenceToFlowDataSet type="flow data set" refObjectId="21868f36-62ab-4e8e-98ed-7106228c17be" uri="../flows/21868f36-62ab-4e8e-98ed-7106228c17be.xml">
+        <common:shortDescription xml:lang="en">Water to Cooling</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>IT</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.8700000E-3</meanAmount>
+      <resultingAmount>1.8700000E-3</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="5">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9c15-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9c15-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">carbon dioxide (biogenic)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.9694000E-1</meanAmount>
+      <resultingAmount>2.9694000E-1</resultingAmount>
+      <generalComment>EF combustion 2019 , worksheet “Non industrial” (ISPRA, 2019)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="6">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-a8e8-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-a8e8-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">methane (biogenic)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.9000000E-5</meanAmount>
+      <resultingAmount>1.9000000E-5</resultingAmount>
+      <generalComment>EF combustion 2019 , worksheet “Non industrial” (ISPRA, 2019)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="7">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-94c3-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-94c3-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">nitrous oxide</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.2000000E-5</meanAmount>
+      <resultingAmount>3.2000000E-5</resultingAmount>
+      <generalComment>EF combustion 2019 , worksheet “Non industrial” (ISPRA, 2019)
+</generalComment>
+    </exchange>
+  </exchanges>
+</processDataSet>

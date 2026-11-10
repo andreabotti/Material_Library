@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>cff200a7-2f3c-4b12-8d2c-c32288081ab7</common:UUID>
+      <name>
+        <baseName xml:lang="en">Transport of fresh tomatoes, from field cultivation to the processing plant, average transport between 3,5 t and 50 t</baseName>
+      </name>
+      <common:synonyms>Trasporto di pomodoro fresco dal campo di coltivazione all’azienda di trasformazione</common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">Transport services</common:class>
+          <common:class level="1">Road</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment>The dataset has been developed within the Arcadia Project. It concerns the processing of industrial tomatoes in reference to the report “Studio LCA della filiera dell’industria del pomodoro confezionato in Italia”. Dataset are based on emission factor from “banca dati dei fattori di  mission medi del trasporto stradale in Italia” ISPRA (2020-2021).</common:generalComment>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2021</common:referenceYear>
+      <common:dataSetValidUntil>2028</common:dataSetValidUntil>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT">
+        <descriptionOfRestrictions>Italy. Primary data collected in North and Center-South. Representative dataset of Italian tomato chain production.</descriptionOfRestrictions>
+      </locationOfOperationSupplyOrProduction>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>The dataset refers to the average transport of tomatoes grown in the field to the processing company. The primary data have been collected from companies in Northern and Central Southern Italy. The means of transport used are mainly Euro 4, Euro 5 and Euro 6 lorries, powered by diesel or petrol. The kilometres travelled have been calculated from processors in Northern and Central Southern Italy.</technologyDescriptionAndIncludedProcesses>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Not applicable</LCIMethodApproaches>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <dataCutOffAndCompletenessPrinciples>Infrastructure not included</dataCutOffAndCompletenessPrinciples>
+      <referenceToDataSource type="source data set" refObjectId="1d08df4d-1092-44c5-a354-28e2d062ee61" version="01.00.000" uri="../sources/1d08df4d-1092-44c5-a354-28e2d062ee61.xml">
+        <common:shortDescription>20230921160640_Report _Filiera Pomodoro_DEF2023_short.pdf</common:shortDescription>
+      </referenceToDataSource>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>No statement</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Independent external review">
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Completeness" value="Good"/>
+        </common:dataQualityIndicators>
+        <common:reviewDetails>The study is very representative from a geographical and technological point of view. From a temporal point of view, as the data refer to the two-year period 2020-2021, the representativeness is considered very good. For the tomatoes’ transportation from cultivation to processing company, the completeness is considered good.&#13;
+&#13;
+For tomatoes’ transportation to the processing farm and transportation from the farm to the final consumer, truck emissions were modeled from ISPRA 2020 data. These are new datasets developed from data shared in the database of average emission factors for road transport in Italy (ISPRA, 2020-2021). Trucks used for transportation were considered to travel 57% loaded (payload factor), as reported in the study conducted by ACEEE (American Council for an Energy-Efficient Economy) "Freight trucks often travel empty or at less than full load. An estimated 20-35% of truck miles in the United States are driven empty. Those that are not empty have an average load factor of 57%." (ACEEE, 2021). Infrastructure was excluded in the dataset construction.&#13;
+&#13;
+For the transport of finished products from processors to the final consumer, truck emissions were modeled from ISPRA 2020 data. Companies in northern Italy provided detailed information on tonnage (Lorry, Rigid, 26-28t - Lorry, Rigid, 28-32t) and relative vehicle power supply, while they described land journeys as equally distributed among Euro 4, Euro 5 and Euro 6 trucks. In addition, they provided information on the destinations of the final product, from which it was possible to calculate the total km traveled by land (through Google Maps) and by sea (through SeaRates.com) assuming the distance from the processing company to the capital of the arrival state. The kilometers traveled were calculated through a weighted average based on the percentage product quantities sent to the same state, provided by the Casalasco company. Southern companies did not provide information on total km traveled but only on the type of truck used, euro 4 (10 percent), euro 5 (40 percent), and euro 6 (50 percent), so trucks carrying the same tonnages provided by companies in northern Italy were assumed in the model, for the same kilometers.&#13;
+&#13;
+&#13;
+The inventory data relating to the various processes within the system's boundaries are therefore to be considered reasonably representative of the supply chain under study, as they can to all intents and purposes be considered average data for the same. The quality of the data used in the study is considered to be good and the data were for the most part measured; where they were calculated or came from literature, they were all checked by experts.&#13;
+Allocation was avoided as far as possible by dividing the unitary process into two or more sub-processes and collecting environmental data on these sub-processes.&#13;
+When allocation could not be avoided, as in the case of products obtained during processing, the inputs and outputs of the system were divided between its different products and by-products.&#13;
+The allocation was generally based on mass (e.g. for waste treatment, waste water and energy used).&#13;
+The review  was performed  in compliance with Arcadia Metodology: “Metodologia per gli studi di filiera della Banca Dati italiana LCA” and ISO 14040-44 norms. The dataset has been assessed limited to the foreground data collected during the supply chain studies.&#13;
+Each dataset has been evaluated based on the following 4 criteria:&#13;
+1. Technological Representativeness;  2. Time Representativeness; 3. Geographical Representativeness; 4. Reliability (A)&#13;
+In this contest the Reliability is very good</common:reviewDetails>
+        <common:referenceToNameOfReviewerAndInstitution type="contact data set" refObjectId="f33a1de6-1bf8-4667-b518-9ceae89ca169" version="01.00.000" uri="../sources/f33a1de6-1bf8-4667-b518-9ceae89ca169.xml">
+          <common:shortDescription>Ecoinnovazione&#13;
+Alessandra Zamagni&#13;
+a.zamagni@ecoinnovazione.it&#13;
+Nicola Ferrara&#13;
+n.ferrara@ecoinnovazione.it&#13;
+</common:shortDescription>
+        </common:referenceToNameOfReviewerAndInstitution>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="f0260b5f-f727-4635-8808-613542d76663" uri="../sources/f0260b5f-f727-4635-8808-613542d76663.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="f9520df9-41b5-494e-a69d-ebffbe30afba" uri="../sources/f9520df9-41b5-494e-a69d-ebffbe30afba.xml">
+          <common:shortDescription xml:lang="en">ISO 14044</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="01807191-e156-421a-b2f6-aa609ea534f4" uri="../contacts/01807191-e156-421a-b2f6-aa609ea534f4.xml">
+        <common:shortDescription xml:lang="en">EPLCA project team</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Arcadia – PON Governance e Capacità istituzionale 2014-2020</common:project>
+    </common:commissionerAndGoal>
+    <dataEntryBy>
+      <common:timeStamp>2023-09-20T14:33:33.534+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="a97a0155-0234-4b87-b4ce-a45da52f2a40" uri="../sources/a97a0155-0234-4b87-b4ce-a45da52f2a40.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2023-02-02T18:12:42.823Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/cff200a7-2f3c-4b12-8d2c-c32288081ab7.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="41dac6e2-ef1d-48d5-bc66-2860bc215b0b" type="contact data set" uri="../contacts/41dac6e2-ef1d-48d5-bc66-2860bc215b0b.xml" version="01.00.000">
+        <common:shortDescription>ENEA-ARCADIA</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="24b27037-c1ad-44c5-8e7e-d72792111caf" uri="../flows/24b27037-c1ad-44c5-8e7e-d72792111caf.xml">
+        <common:shortDescription xml:lang="en">Transport of fresh tomatoes, from field cultivation to the processing plant, average transport between 3,5 t and 50 t</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0000000E+0</meanAmount>
+      <resultingAmount>1.0000000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="2371fa34-51a7-4048-b3b1-52afc9b31f9a" uri="../flows/2371fa34-51a7-4048-b3b1-52afc9b31f9a.xml">
+        <common:shortDescription xml:lang="en">Agricultural Machine, &gt;3,5t, petrol</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.5967500E-3</meanAmount>
+      <resultingAmount>2.5967500E-3</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="b2eb5a0b-5404-4f36-8d8a-2fe2189597f5" uri="../flows/b2eb5a0b-5404-4f36-8d8a-2fe2189597f5.xml">
+        <common:shortDescription xml:lang="en">Transport, Lorry, Articulated 40-50 t, diesel, EURO 4</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.1935000E-2</meanAmount>
+      <resultingAmount>5.1935000E-2</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="3">
+      <referenceToFlowDataSet type="flow data set" refObjectId="bf1950e7-27bf-4085-b5e0-a56f883d9cdf" uri="../flows/bf1950e7-27bf-4085-b5e0-a56f883d9cdf.xml">
+        <common:shortDescription xml:lang="en">Transport, Lorry, Articulated 40-50 t, diesel, EURO 6</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.2130000E-2</meanAmount>
+      <resultingAmount>2.2130000E-2</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="4">
+      <referenceToFlowDataSet type="flow data set" refObjectId="12bc02b6-c546-4c8c-be00-a25283449ca9" uri="../flows/12bc02b6-c546-4c8c-be00-a25283449ca9.xml">
+        <common:shortDescription xml:lang="en">Transport, Lorry, Articulated 20-28 t, diesel, EURO 5</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.6778575E-2</meanAmount>
+      <resultingAmount>6.6778575E-2</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="5">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4f17bd39-7651-48ff-a76b-9986ae990f26" uri="../flows/4f17bd39-7651-48ff-a76b-9986ae990f26.xml">
+        <common:shortDescription xml:lang="en">Transport, Lorry, Rigid 26-28 t, diesel, EURO 4</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.5967500E-4</meanAmount>
+      <resultingAmount>2.5967500E-4</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="6">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d787021e-813e-4559-ab0b-1e755df744e3" uri="../flows/d787021e-813e-4559-ab0b-1e755df744e3.xml">
+        <common:shortDescription xml:lang="en">Transport, Lorry, Articulated 28-34 t, diesel, EURO 4</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.4300000E-3</meanAmount>
+      <resultingAmount>4.4300000E-3</resultingAmount>
+    </exchange>
+  </exchanges>
+</processDataSet>

@@ -1,0 +1,28 @@
+{
+  "_note": "Dataset A__Manufacturer -> key used in aux_companies_sust_credentials.json / aux_companies_impact_framework.json. Entries marked VERIFY were fuzzy-matched; confirm each one.",
+  "aliases": {
+    "Agglo Baghin S.r.l": "Agglo Baghin",
+    "Ceramica Fondovalle S.p.A (Italcer Group)": "CERAMICA FONDOVALLE (ITALCER)",
+    "Ceramica del Conca S.p.A.": "Ceramica del Conca",
+    "Ceramica d’Imola s.c.": "Ceramica Imola",
+    "Ceramiche CCV Castelvetro": "CCV Castelvetro",
+    "Ceramiche La Fenice S.r.l.": "La Fenice S.r.l.",
+    "Ceramiche Piemme": "Ceramica Piemme",
+    "Florim Ceramiche S.p.A. SB": "Florim",
+    "Giussani Enrico & figli S.r.l.": "Giussani Enrico & figli srl",
+    "Gold Art Ceramica S.p.A.": "Gold Art",
+    "Heidelberg Materials Italia Cementi": "Heidelberg Materials",
+    "Industrie Riunite Odolesi I,R,O": "Acciaierie Riunite Odolesi I.R.O.",
+    "Laminam S.p.A.": "Laminam",
+    "Marazzi Group": "Marazzi",
+    "Marmi Scala S.r.l.": "Marmi Scala",
+    "Newfloor S.r.l.": "Newfloor",
+    "Panaria Group": "Panaria",
+    "SIL GROUP": "SIL Group",
+    "CIPA GRES S.p.A.": "IPA GRES",
+    "Gruppo Romani S.p.A.": "Gruppo Roma",
+    "Mirage Granito Ceramico S.p.A.": "Rage Granito",
+    "Tecnocanapa": "nocanapa"
+  },
+  "verify": ["CIPA GRES S.p.A.", "Gruppo Romani S.p.A.", "Mirage Granito Ceramico S.p.A.", "Tecnocanapa"]
+}

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>ab86b7f4-19ec-455e-ba54-9a63dfc9427b</common:UUID>
+      <name>
+        <baseName xml:lang="en">Mixed C&amp;D waste, on-site reuse</baseName>
+      </name>
+      <common:synonyms>Riciclo rifiuti C&amp;D in situ.</common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">End-of-life treatment</common:class>
+          <common:class level="1">Material recycling</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment>Dataset developed within the ARCADIA project in the context of the Ph.D. of Federica Carollo (Politecnico di Milano). 
+The dataset relates to the recycling of 1 kg of mixed construction and demolition (C&amp;D) waste (EWC 17 09 04) in Italy.  
+The dataset is composed of a 1-unit process:  
+1) Treatment on the mobile plant (Process: Mixed C&amp;D, recycling, mobile plant, on-site). </common:generalComment>
+      <referenceToExternalDocumentation type="source data set" refObjectId="0df0e121-2f19-482b-9e6e-1e035557865f" version="01.00.000" uri="../sources/0df0e121-2f19-482b-9e6e-1e035557865f.xml">
+        <common:shortDescription>Carollo F. (2023). Circularity in construction and demolition waste management chain, Ph.D. Dissertation (Tutored by Rigamonti L., Ceruti F.). Politecnico di Milano. Background datasets from the EcoInvent database cut-off (v. 3.8) were used for the LCA study. </common:shortDescription>
+      </referenceToExternalDocumentation>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2022</common:referenceYear>
+      <common:dataSetValidUntil>2027</common:dataSetValidUntil>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT">
+        <descriptionOfRestrictions>Lombardy Region.</descriptionOfRestrictions>
+      </locationOfOperationSupplyOrProduction>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>The C&amp;D waste treatment in mobile recycling facilities consists of a sequence of physical and mechanical steps including crushing, metal separation, sieving, and manual/mechanical sorting to remove the impurities such as wood, paper, and plastic. Mobile plants are fuelled by diesel and usually involve fewer treatment processes (manual sorting is usually adopted, and waste sieving may be optional). Generally, produce all-in aggregates (e.g. classes 0/63 mm, 0/80 mm, 0/90 mm). &#13;
+&#13;
+Good the Reliability;   &#13;
+Very Good the Geographical representativeness;   &#13;
+Very Good the Time representativeness;   &#13;
+Very Good the Technological representativeness. </technologyDescriptionAndIncludedProcesses>
+      <technologicalApplicability>On-site recycling of inert waste deriving from construction and demolition activities. </technologicalApplicability>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Allocation - mass</LCIMethodApproaches>
+      <referenceToLCAMethodDetails type="source data set" refObjectId="5fecf33b-c9f8-4062-a343-1fbd81c2fcd9" version="01.00.000" uri="../sources/5fecf33b-c9f8-4062-a343-1fbd81c2fcd9.xml">
+        <common:shortDescription>Carollo F. (2023). Circularity in construction and demolition waste management chain, Ph.D. Dissertation (Tutored by Rigamonti L., Ceruti F.). Politecnico di Milano.</common:shortDescription>
+      </referenceToLCAMethodDetails>
+      <referenceToLCAMethodDetails type="source data set" refObjectId="97176f06-6549-43f5-b3fd-3c39123d79de" version="01.00.000" uri="../sources/97176f06-6549-43f5-b3fd-3c39123d79de.xml">
+        <common:shortDescription>Borghi, G., Pantini, S., Rigamonti, L. (2018). Life cycle assessment of non-hazardous Construction and Demolition Waste (CDW) management in Lombardy Region (Italy). Journal of Cleaner Production, 184, 815–825.</common:shortDescription>
+      </referenceToLCAMethodDetails>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <referenceToDataSource type="source data set" refObjectId="26761b96-d30b-47d3-aa0b-27947e255b0b" version="01.00.000" uri="../sources/26761b96-d30b-47d3-aa0b-27947e255b0b.xml">
+        <common:shortDescription>Carollo F. (2023). Circularity in construction and demolition waste management chain, Ph.D. Dissertation (Tutored by Rigamonti L., Ceruti F.). Politecnico di Milano. Background datasets from the EcoInvent database cut-off (v. 3.8) were used for the LCA study. </common:shortDescription>
+      </referenceToDataSource>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>All relevant flows quantified</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Not reviewed">
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Completeness" value="Good"/>
+          <common:dataQualityIndicator name="Precision" value="Good"/>
+          <common:dataQualityIndicator name="Methodological appropriateness and consistency" value="Good"/>
+          <common:dataQualityIndicator name="Overall quality" value="Good"/>
+        </common:dataQualityIndicators>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="88d4f8d9-60f9-43d1-9ea3-329c10d7d727" uri="../sources/88d4f8d9-60f9-43d1-9ea3-329c10d7d727.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Fully compliant</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Fully compliant</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="d92a1a12-2545-49e2-a585-55c259997756" uri="../sources/d92a1a12-2545-49e2-a585-55c259997756.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Fully compliant</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Fully compliant</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="01807191-e156-421a-b2f6-aa609ea534f4" uri="../contacts/01807191-e156-421a-b2f6-aa609ea534f4.xml">
+        <common:shortDescription xml:lang="en">EPLCA project team</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Arcadia – PON Governance e Capacità istituzionali 2014-2020 (PhD Project of Federica Carollo).</common:project>
+    </common:commissionerAndGoal>
+    <dataGenerator>
+      <common:referenceToPersonOrEntityGeneratingTheDataSet refObjectId="80c63cd0-022c-40c6-b654-b028c5c7fb3e" type="contact data set" uri="../sources/80c63cd0-022c-40c6-b654-b028c5c7fb3e.xml" version="01.00.000">
+        <common:shortDescription>Federica Carollo (Politecnico di Milano).</common:shortDescription>
+      </common:referenceToPersonOrEntityGeneratingTheDataSet>
+    </dataGenerator>
+    <dataEntryBy>
+      <common:timeStamp>2022-12-03T16:13:25.831+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="a97a0155-0234-4b87-b4ce-a45da52f2a40" uri="../sources/a97a0155-0234-4b87-b4ce-a45da52f2a40.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2022-05-27T16:57:50.249Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/ab86b7f4-19ec-455e-ba54-9a63dfc9427b.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="d0bd87cc-3493-4ffd-9f15-803d5b4e7ff5" type="contact data set" uri="../sources/d0bd87cc-3493-4ffd-9f15-803d5b4e7ff5.xml" version="01.00.000">
+        <common:shortDescription>ENEA-ARCADIA</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+      <common:accessRestrictions>Type of license: Open Database Licence (ODbL). </common:accessRestrictions>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="8985f7fa-7c48-4800-b86c-475aa72a00cb" uri="../flows/8985f7fa-7c48-4800-b86c-475aa72a00cb.xml">
+        <common:shortDescription xml:lang="en">Mixed C&amp;D waste, on-site reuse</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0000000E+0</meanAmount>
+      <resultingAmount>1.0000000E+0</resultingAmount>
+      <generalComment>The dataset relates to the recycling of 1 kg of mixed construction and demolition (C&amp;D) waste (EWC 17 09 04) in Italy.  
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="b806f378-9b61-4d3c-914d-32f857d09525" uri="../flows/b806f378-9b61-4d3c-914d-32f857d09525.xml">
+        <common:shortDescription xml:lang="en">Mixed C&amp;D waste, recycling, mobile plant, on-site</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.0000000E+0</meanAmount>
+      <resultingAmount>1.0000000E+0</resultingAmount>
+    </exchange>
+  </exchanges>
+</processDataSet>

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<!-- Manufacturer monograph — pages/15_Manufacturers.py (Monograph tab, "Interactive" view).
+     One component for profile, KPIs, composition treemaps and data-quality charts;
+     the product catalogue below it is the existing JS2 catalogue iframe.
+     Data arrives as window.__MONO__ (built by _mono_js_payload). Design tokens
+     (_tokens.css) and the shared iframe reset are prepended by read_iframe_component;
+     webfonts + typography vars are injected by the page, as for the Directory.
+
+     Treemap clicks filter the sibling catalogue iframe client-side, through its own
+     Product type / Material type selects (#f-prod / #f-mat): both iframes are
+     same-origin srcdoc frames, so no Streamlit rerun is needed. -->
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --m-text:var(--eetra-text,#1e293b);
+  --m-muted:var(--eetra-text-muted,#64748b);
+  --m-faint:var(--eetra-text-faint,#94a3b8);
+  --m-border:var(--eetra-border,#e2e8f0);
+  --m-border-card:var(--eetra-border-card,#d1d9e6);
+  --m-surface:var(--eetra-surface,#ffffff);
+  --m-alt:var(--eetra-surface-alt,#f8fafc);
+  --m-alt2:var(--eetra-surface-alt2,#f1f5f9);
+  --m-green:var(--eetra-green,#2a7d2e);
+  --m-green-light:var(--eetra-green-light,#e8f5e9);
+  --m-radius:var(--eetra-radius-card,12px);
+}
+html,body{background:var(--m-surface);color:var(--m-text);
+  font-family:var(--eetra-ff-sans,'Miranda Sans',system-ui,sans-serif);font-size:13px;line-height:1.45}
+body{padding:2px 2px 6px}
+a{color:var(--m-green);text-decoration:none}
+a:hover{text-decoration:underline}
+.card{background:var(--m-surface);border:1px solid var(--m-border-card);border-radius:var(--m-radius);padding:14px 16px}
+.row{display:flex;gap:12px}
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+/* Profile (6) + three KPIs (2 each) on one row; the title is a separate iframe above */
+.top{display:grid;grid-template-columns:minmax(0,6fr) repeat(3,minmax(0,2fr));gap:10px;align-items:start}
+.kpis{display:contents}
+@media (max-width:900px){
+  .top{grid-template-columns:minmax(0,1fr);gap:12px;align-items:start}
+  .kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+}
+@media (max-width:760px){.grid2{grid-template-columns:minmax(0,1fr)}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* head part: profile beside a single column of KPI tiles */
+.headgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(150px,200px);gap:14px 16px;align-items:start}
+.hdr-btn .btn{display:flex;width:100%;justify-content:center}
+.prof .none{color:var(--m-faint)}
+.kpis.kpis--stack{display:grid;grid-template-columns:minmax(0,1fr);gap:6px}
+@media (max-width:480px){.headgrid{grid-template-columns:minmax(0,1fr)}.kpis.kpis--stack{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.section{margin-top:14px}
+.h{font-size:14px;font-weight:600;margin-bottom:8px;display:flex;align-items:baseline;gap:8px}
+.h .sub{font-size:11px;font-weight:400;color:var(--m-faint)}
+/* header */
+.hdr{display:flex;gap:14px;align-items:center}
+.logo{width:58px;height:58px;border-radius:10px;border:1px solid var(--m-border);background:var(--m-alt);
+  display:flex;align-items:center;justify-content:center;flex:0 0 auto;overflow:hidden}
+.logo img{max-width:48px;max-height:48px;object-fit:contain}
+.logo.img{width:auto;height:58px;max-width:160px;border:0;background:transparent;border-radius:0}
+.logo.img img{max-width:160px;max-height:58px}
+.head-card{padding:2px 0 0;min-width:0}
+.head-card--title{padding:2px 0}
+.logo .ini{font-weight:600;color:var(--m-muted);font-size:16px}
+.name{font-size:20px;font-weight:600;letter-spacing:-.01em}
+.meta{color:var(--m-muted);font-size:12px;margin-top:2px}
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.pill{font-size:11px;padding:2px 9px;border-radius:999px;border:1px solid transparent;white-space:nowrap}
+.pill.ok{background:var(--eetra-p-ok-bg,#dcfce7);color:var(--eetra-p-ok-fg-strong,#15803d);border-color:var(--eetra-p-ok-border,#86efac)}
+.pill.partial,.pill.warn{background:var(--eetra-p-warn-bg,#fff7ed);color:var(--eetra-p-warn-fg,#ea580c);border-color:var(--eetra-p-warn-border,#fdba74)}
+.pill.off,.pill.no{background:var(--m-alt2);color:var(--m-muted);border-color:var(--m-border)}
+.pill.tier{background:var(--eetra-info-light,#E6F1FB);color:var(--eetra-info,#185FA5);border-color:var(--eetra-p-info-border,#93c5fd)}
+.pill.score{background:#f3e8ff;color:#7e22ce;border-color:#d8b4fe}
+.hdr-side{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.btn{display:inline-flex;align-items:center;gap:6px;font-size:12px;padding:5px 11px;border-radius:8px;
+  border:1px solid var(--m-border-card);background:var(--m-surface);color:var(--m-text);cursor:pointer}
+.btn:hover{border-color:var(--eetra-hover-border,#b8c5d8);text-decoration:none}
+.note{font-size:11px;color:var(--m-faint)}
+.prof{display:grid;grid-template-columns:minmax(0,1fr);gap:4px}
+.prof--under{margin-top:12px;padding-top:12px;border-top:1px solid var(--m-border)}
+.prof div{display:flex;gap:8px;font-size:12px;min-width:0}
+.prof .k{color:var(--m-muted);flex:0 0 118px}
+.prof .v{min-width:0;overflow-wrap:anywhere}
+details{margin-top:10px}
+summary{cursor:pointer;color:var(--m-muted);font-size:12px}
+details p{margin-top:6px;font-size:12px;color:var(--m-text);white-space:pre-line}
+/* KPIs — compact tiles beside the company title */
+.kpi{background:var(--m-alt);border:1px solid var(--m-border);border-radius:8px;padding:6px 8px;min-width:0}
+.kpi .l{font-size:10px;color:var(--m-muted);line-height:1.2;white-space:normal}
+.kpi .v{font-size:16px;font-weight:600;margin-top:2px;letter-spacing:-.01em;line-height:1.2}
+.kpi .d{font-size:10px;margin-top:2px;color:var(--m-faint);line-height:1.2}
+.kpi .d.up{color:var(--eetra-ok,#16a34a)} .kpi .d.down{color:var(--eetra-error,#dc2626)}
+/* charts */
+.chart{width:100%}
+.legend{font-size:11px;color:var(--m-faint);margin-top:4px}
+.docs{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.doc{font-size:11px;padding:3px 8px;border-radius:6px;background:var(--m-alt2);color:var(--eetra-chip-text,#475569)}
+.doc b{font-weight:600;color:var(--m-text)}
+/* filter chip */
+.chipbar{min-height:30px;display:flex;align-items:center;gap:8px;margin-top:12px}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;padding:4px 6px 4px 10px;border-radius:999px;
+  background:var(--m-green-light);color:var(--m-green);border:1px solid #b9dcbb}
+.chip button{border:0;background:transparent;color:inherit;cursor:pointer;font-size:14px;line-height:1;padding:0 4px}
+.prods{font-size:15px;font-weight:600}
+.hint{font-size:11px;color:var(--m-faint)}
+/* treemap tabs (right-column panel) */
+.tmcard{padding:10px 14px 6px}
+.tmtabs{display:flex;align-items:baseline;gap:4px;margin-bottom:8px;border-bottom:1px solid var(--m-border)}
+.tmtab{font:inherit;font-size:13px;font-weight:600;color:var(--m-muted);background:none;border:0;
+  border-bottom:2px solid transparent;padding:4px 8px 6px;margin-bottom:-1px;cursor:pointer}
+.tmtab.on{color:var(--m-green);border-bottom-color:var(--m-green)}
+.tmtabs .sub{margin-left:auto;font-size:11px;color:var(--m-faint)}
+.tmcard .chipbar{margin-top:6px}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<script>
+(function(){
+const D = window.__MONO__ || {};
+const esc = s => String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const fmt0 = v => (v==null || isNaN(v)) ? "—" : Math.round(v).toLocaleString();
+const pp = (v, ref) => (v==null||ref==null||isNaN(v)||isNaN(ref)) ? null : (v-ref);
+
+// ── Markup ──────────────────────────────────────────────────────────────────
+function reportBtn(){
+  return D.reportUrl ? `<a class="btn" href="${esc(D.reportUrl)}" target="_blank" rel="noopener">Sustainability report ↗</a>` : "";
+}
+
+function titleHTML(noReport){
+  const initials = String(D.name||"?").split(/\s+/).slice(0,2).map(w=>w[0]||"").join("").toUpperCase();
+  const logo = D.logo ? `<img src="${esc(D.logo)}" alt="">` : `<span class="ini">${esc(initials)}</span>`;
+  const meta = [D.sector, D.hq ? "HQ " + D.hq : ""].filter(Boolean).map(esc);
+  if (D.website) meta.push(`<a href="${esc(D.website)}" target="_blank" rel="noopener">${esc(D.website.replace(/^https?:\/\//,"").replace(/\/$/,""))}</a>`);
+  const pills = (D.pills||[]).map(p=>`<span class="pill ${esc(p.state||"off")}" title="${esc(p.title||"")}">${esc(p.label)}</span>`);
+  if (D.tier) pills.push(`<span class="pill tier">Tier: ${esc(D.tier)}</span>`);
+  if (D.score!=null) pills.push(`<span class="pill score">Impact score ${Math.round(D.score)}/100</span>`);
+  const side = [];
+  if (D.reportUrl && !noReport) side.push(reportBtn());
+  if (!D.profileFound) side.push(`<span class="note">No company profile yet for this manufacturer.</span>`);
+  return `<div class="head-card head-card--title">
+    <div class="hdr">
+      <div class="logo${D.logo ? " img" : ""}">${logo}</div>
+      <div style="min-width:0">
+        <div class="name">${esc(D.name)}</div>
+        ${meta.length ? `<div class="meta">${meta.join(" · ")}</div>` : ""}
+        ${pills.length ? `<div class="pills">${pills.join("")}</div>` : ""}
+      </div>
+      ${side.length ? `<div class="hdr-side">${side.join("")}</div>` : ""}
+    </div>
+  </div>`;
+}
+
+// Core rows always show (— when unknown); Parent / Listed on only when recorded.
+const PROFILE_ORDER = ["Headquarters","Parent","Ownership","Revenue","Employees","Countries","Listed on","Website","Products in library"];
+const PROFILE_ALWAYS = new Set(["Headquarters","Ownership","Revenue","Employees","Countries","Website","Products in library"]);
+function profileRows(){
+  const have = new Map((D.profile||[]).map(r=>[r[0], r]));
+  const site = D.website ? `<a href="${esc(D.website)}" target="_blank" rel="noopener">${esc(D.website.replace(/^https?:\/\//,"").replace(/\/$/,""))}</a>` : "";
+  const fallback = {"Headquarters": D.hq ? [esc(D.hq), true] : null, "Website": site ? [site, true] : null,
+                    "Products in library": Number.isFinite((D.kpis||{}).n) ? [String(D.kpis.n), false] : null};
+  const rows = [];
+  for (const k of PROFILE_ORDER){
+    const r = have.get(k);
+    if (r){ rows.push(r); continue; }
+    if (!PROFILE_ALWAYS.has(k)) continue;
+    const f = fallback[k];
+    rows.push(f ? [k, f[0], f[1]] : [k, `<span class="none">—</span>`, true]);
+  }
+  for (const r of (D.profile||[])) if (!PROFILE_ORDER.includes(r[0])) rows.push(r);
+  return rows;
+}
+
+function profileHTML(){
+  const prof = profileRows().map(r=>`<div><span class="k">${esc(r[0])}</span><span class="v">${r[2] ? r[1] : esc(r[1])}</span></div>`).join("");
+  if (!prof && !D.narrative) return "";
+  return `<div class="head-card">
+    ${prof ? `<div class="prof">${prof}</div>` : ""}
+    ${D.narrative ? `<details><summary>Sustainability summary</summary><p>${esc(D.narrative)}</p></details>` : ""}
+  </div>`;
+}
+
+function kpiHTML(){
+  const k = D.kpis || {};
+  const tile = (label, value, delta, cls) =>
+    `<div class="kpi"><div class="l">${esc(label)}</div><div class="v">${value}</div><div class="d ${cls||""}">${delta||"&nbsp;"}</div></div>`;
+  const dEpd = pp(k.epdPct, k.epdPctLib), dCmp = pp(k.completeness, k.completenessLib);
+  const dTxt = d => d==null ? "" : `${d>=0?"+":""}${Math.round(d)} pp vs library`;
+  const dCls = d => d==null ? "" : (d>=0 ? "up" : "down");
+  return `<div class="kpis">
+    ${tile("Products", fmt0(k.n), "catalogue-listed")}
+    ${tile("With EPD", k.epdPct==null ? "—" : Math.round(k.epdPct)+"%", dTxt(dEpd), dCls(dEpd))}
+    ${tile("Data completeness", k.completeness==null ? "—" : Math.round(k.completeness)+"%", dTxt(dCmp), dCls(dCmp))}
+  </div>`;
+}
+
+function chipbarHTML(){
+  return `<div class="chipbar"><span class="prods" id="prods"></span><span id="chip"></span><span class="hint" id="chiphint"></span></div>`;
+}
+
+// Right-column panel: both treemaps as tabs, with the filter chip under them.
+function treemapPanelHTML(){
+  const ts = D.treemaps||[];
+  const tabs = ts.map((t,i)=>`<button class="tmtab${i?"":" on"}" data-i="${i}" role="tab" aria-selected="${!i}">${esc(t.title)}</button>`).join("");
+  const panes = ts.map((t,i)=>`<div class="tmpane" data-i="${i}"${i?' hidden':''}><div id="tm${i}" class="chart" style="height:300px"></div></div>`).join("");
+  return `<div class="card tmcard">
+    <div class="tmtabs" role="tablist">${tabs}<span class="sub">click a tile to filter the products below</span></div>
+    ${panes}${chipbarHTML()}</div>`;
+}
+
+function bodyHTML(withTreemaps){
+  const tm = !withTreemaps ? "" : (D.treemaps||[]).map((t,i)=>`<div class="card">
+      <div class="h">${esc(t.title)}<span class="sub">click a tile to filter the products below</span></div>
+      <div id="tm${i}" class="chart" style="height:250px"></div></div>`).join("");
+  const docs = Object.entries(D.docs||{}).map(([k,v])=>`<span class="doc">${esc(k)} <b>${v}</b></span>`).join("");
+  return `
+  ${tm ? `<div class="grid2 section">${tm}</div>` : ""}
+  <div class="grid2 section">
+    <div class="card"><div class="h">Completeness by field group</div>
+      <div id="cmp" class="chart" style="height:230px"></div>
+      <div class="legend">Bar = this manufacturer · dark tick = library average. Fields marked n/r, or hidden for a product type, are excluded.</div></div>
+    <div class="card"><div class="h">Richness per product<span class="sub">share of applicable fields filled</span></div>
+      <div id="rich" class="chart" style="height:200px"></div>
+      ${docs ? `<div class="hint" style="margin-top:6px">Products with a document link</div><div class="docs">${docs}</div>` : ""}</div>
+  </div>
+  ${withTreemaps ? chipbarHTML() : ""}`;
+}
+
+// part "head": title, then profile beside a column of KPI tiles — its own iframe next
+// to the Manufacturer picker. Otherwise: profile (6) + KPIs (1.5×4), then charts.
+// chartsOnly: charts alone (the page's main iframe when the head is separate).
+if (D.part === "head"){
+  // Report button heads the KPI column, so both share one width.
+  document.getElementById("root").innerHTML = `<div class="headgrid">
+    ${titleHTML(true)}<div class="hdr-btn">${reportBtn()}</div>
+    ${profileHTML() || "<div></div>"}${kpiHTML().replace('class="kpis"', 'class="kpis kpis--stack"')}</div>`;
+  return;
+}
+// part "treemaps": the tabbed treemap panel (right column). chartsOnly: the
+// data-quality charts alone, when both the head and the treemaps are separate.
+document.getElementById("root").innerHTML = D.part === "treemaps"
+  ? treemapPanelHTML()
+  : D.chartsOnly
+    ? bodyHTML(false)
+    : `<div class="top">${profileHTML() || "<div></div>"}${kpiHTML()}</div>` + bodyHTML(true);
+
+// ── Catalogue link (client-side filter of the sibling iframe) ───────────────
+function catalogueFrame(){
+  try{
+    for (const f of window.parent.document.querySelectorAll("iframe")){
+      if (f.contentWindow === window) continue;
+      const d = f.contentDocument;
+      if (d && d.getElementById("f-prod") && d.getElementById("cat2-main")) return f;
+    }
+  }catch(_e){}
+  return null;
+}
+function applyCatalogueFilter(field, value){
+  const f = catalogueFrame();
+  if (!f) return "nocat";
+  const d = f.contentDocument;
+  const prod = d.getElementById("f-prod"), mat = d.getElementById("f-mat");
+  const fire = el => el.dispatchEvent(new Event("change", {bubbles:true}));
+  prod.value = ""; mat.value = ""; fire(prod);
+  if (!value) return "ok";
+  const sel = field === "prod" ? prod : mat;
+  if (![...sel.options].some(o => o.value === value)) return "nomatch";
+  sel.value = value; fire(sel);
+  try{ f.scrollIntoView({behavior:"smooth", block:"start"}); }catch(_e){}
+  return "ok";
+}
+
+let active = null;          // {i, field, value, count}
+const charts = [];
+function setChip(){
+  if (!document.getElementById("prods")) return;
+  const total = (D.kpis||{}).n || 0;
+  document.getElementById("prods").textContent =
+    active ? `Products · ${active.count} of ${total}` : `Products · ${total}`;
+  document.getElementById("chip").innerHTML = active
+    ? `<span class="chip">${esc(active.label)}: ${esc(active.value)}<button title="Clear filter" aria-label="Clear filter">×</button></span>` : "";
+  const b = document.querySelector("#chip button");
+  if (b) b.addEventListener("click", ()=>{ applyCatalogueFilter(null, ""); active = null; setChip(); highlight(); });
+}
+function highlight(){
+  charts.forEach((c, i) => {
+    if (!c || !D.treemaps[i]) return;
+    const data = D.treemaps[i].data.map(d => {
+      const on = active && active.i === i && active.value === d.name;
+      const dim = active && !on;
+      return Object.assign({}, d, {itemStyle: Object.assign({}, d.itemStyle||{}, {opacity: dim ? 0.35 : 1, borderColor: on ? css("--m-text") || "#1e293b" : "#fff", borderWidth: on ? 2 : 1})});
+    });
+    c.setOption({series:[{data}]});
+  });
+}
+
+// ── Charts ──────────────────────────────────────────────────────────────────
+const FONT = css("--eetra-ff-sans") || "sans-serif";
+const PALETTES = [
+  ["#1f5e23","#2a7d2e","#3f9a44","#5fb064","#86c48a","#aed8b0","#cfe9d0","#e8f5e9"],
+  ["#0c447c","#185fa5","#2f7bc4","#4f95d4","#78b0e0","#a4cbeb","#c9e0f4","#e6f1fb"],
+];
+const UNFILTERABLE = new Set(["Other", "Not specified"]);
+
+(D.treemaps||[]).forEach((t, i) => {
+  const el = document.getElementById("tm"+i);
+  if (!el || !window.echarts) return;
+  if (!t.data.length){ el.innerHTML = `<div class="hint" style="padding:8px 0">No values recorded.</div>`; charts[i] = null; return; }
+  const pal = PALETTES[i % PALETTES.length];
+  t.data.forEach((d, j) => { d.itemStyle = {color: pal[Math.min(j, pal.length-1)]}; });
+  const c = echarts.init(el, null, {renderer:"canvas"});
+  c.setOption({
+    textStyle:{fontFamily:FONT},
+    tooltip:{formatter: p => `<b>${esc(p.name)}</b><br>${p.value} products` +
+      (UNFILTERABLE.has(p.name) ? `<br><span style="color:#94a3b8">Can't filter on this group</span>` : "")},
+    series:[{
+      type:"treemap", roam:false, nodeClick:false, breadcrumb:{show:false},
+      left:0, right:0, top:0, bottom:0, squareRatio:0.9,
+      itemStyle:{borderColor:"#fff", borderWidth:1, gapWidth:2, borderRadius:6},
+      label:{show:true, formatter: p => `${p.name}\n{n|${p.value}}`, fontSize:12, fontWeight:600, color:"#fff",
+        overflow:"truncate", rich:{n:{fontSize:11, fontWeight:400, color:"rgba(255,255,255,.85)", padding:[3,0,0,0]}}},
+      upperLabel:{show:false},
+      levels:[{itemStyle:{gapWidth:2}}],
+      data:t.data,
+    }],
+  });
+  c.on("click", p => {
+    if (!p || !p.name) return;
+    const hint = document.getElementById("chiphint");
+    hint.textContent = "";
+    if (UNFILTERABLE.has(p.name)){ hint.textContent = `"${p.name}" groups several values and can't be used as a filter.`; return; }
+    if (active && active.i === i && active.value === p.name){
+      applyCatalogueFilter(null, ""); active = null;
+    } else {
+      const r = applyCatalogueFilter(t.field, p.name);
+      if (r === "nocat"){ hint.textContent = "The product catalogue below isn't ready yet. Try again in a moment."; return; }
+      if (r === "nomatch"){ hint.textContent = `No catalogue filter value matches "${p.name}".`; return; }
+      active = {i, field:t.field, value:p.name, label:t.chipLabel, count:p.value};
+    }
+    setChip(); highlight();
+  });
+  charts[i] = c;
+});
+
+const cmpEl = document.getElementById("cmp");
+if (cmpEl && window.echarts){
+  const rows = (D.completeness||[]).slice().reverse();     // first group on top
+  const green = css("--m-green") || "#2a7d2e", ink = css("--m-text") || "#1e293b";
+  const c = echarts.init(cmpEl);
+  c.setOption({
+    textStyle:{fontFamily:FONT},
+    grid:{left:4, right:40, top:4, bottom:18, containLabel:true},
+    tooltip:{trigger:"axis", axisPointer:{type:"shadow"}, formatter: ps => {
+      const r = rows[ps[0].dataIndex];
+      const f = v => v==null ? "—" : Math.round(v)+"%";
+      return `<b>${esc(r.group)}</b><br>This manufacturer: ${f(r.pct)}<br>Library: ${f(r.libPct)}<br>` +
+             `<span style="color:#94a3b8">${r.filled.toLocaleString()} of ${r.applicable.toLocaleString()} applicable cells</span>`;
+    }},
+    xAxis:{type:"value", min:0, max:100, interval:25, axisLabel:{formatter:"{value}%", color:"#94a3b8", fontSize:10},
+      splitLine:{lineStyle:{color:"#eef2f6"}}},
+    yAxis:{type:"category", data:rows.map(r=>r.group), axisTick:{show:false}, axisLine:{show:false},
+      axisLabel:{color:"#475569", fontSize:11}},
+    series:[
+      // Value bar + the rest of a 100% track, stacked; the value label sits at the
+      // track's right end so it never collides with the library tick.
+      {type:"bar", stack:"t", data:rows.map(r=>r.pct==null?0:Math.round(r.pct*10)/10), barWidth:12,
+        itemStyle:{color:green, borderRadius:[4,0,0,4]}},
+      {type:"bar", stack:"t", data:rows.map(r=>r.pct==null?100:Math.round((100-r.pct)*10)/10), barWidth:12,
+        itemStyle:{color:"#f1f5f9", borderRadius:[0,4,4,0]}, emphasis:{disabled:true},
+        label:{show:true, position:"right", distance:6, fontSize:11, color:"#475569",
+          formatter: p => rows[p.dataIndex].pct==null ? "n/a" : Math.round(rows[p.dataIndex].pct)+"%"}},
+      {type:"scatter", data:rows.map(r=>r.libPct==null?null:Math.round(r.libPct*10)/10), symbol:"rect", symbolSize:[3,20],
+        itemStyle:{color:ink}, z:5, tooltip:{show:false}},
+    ],
+  });
+  charts.push(c);
+}
+
+const richEl = document.getElementById("rich");
+if (richEl && window.echarts){
+  const rows = D.richness || [];
+  const shades = ["#d9e8da","#aed8b0","#7fc083","#4c9a51","#2a7d2e"];
+  const c = echarts.init(richEl);
+  c.setOption({
+    textStyle:{fontFamily:FONT},
+    grid:{left:4, right:8, top:18, bottom:4, containLabel:true},
+    tooltip:{formatter: p => `<b>${esc(p.name)}</b> filled<br>${p.value} products`},
+    xAxis:{type:"category", data:rows.map(r=>r.bin), axisTick:{show:false}, axisLine:{lineStyle:{color:"#e2e8f0"}},
+      axisLabel:{color:"#475569", fontSize:11}},
+    yAxis:{type:"value", minInterval:1, axisLabel:{color:"#94a3b8", fontSize:10}, splitLine:{lineStyle:{color:"#eef2f6"}}},
+    series:[{type:"bar", barWidth:"62%", data:rows.map((r,j)=>({value:r.products, itemStyle:{color:shades[j]||"#2a7d2e", borderRadius:[4,4,0,0]}})),
+      label:{show:true, position:"top", fontSize:11, color:"#475569", formatter: p => p.value || ""}}],
+  });
+  charts.push(c);
+}
+
+if (!window.echarts){
+  document.querySelectorAll(".chart").forEach(el => el.innerHTML =
+    `<div class="hint" style="padding:8px 0">Charts need the ECharts library from cdn.jsdelivr.net, which couldn't be loaded. Switch to the Standard view.</div>`);
+}
+
+// Treemap tabs: show one pane; ECharts needs a resize once its pane is visible.
+document.querySelectorAll(".tmtab").forEach(b => b.addEventListener("click", () => {
+  const i = +b.dataset.i;
+  document.querySelectorAll(".tmtab").forEach(x => { const on = +x.dataset.i === i; x.classList.toggle("on", on); x.setAttribute("aria-selected", on); });
+  document.querySelectorAll(".tmpane").forEach(p => { p.hidden = +p.dataset.i !== i; });
+  if (charts[i]) charts[i].resize();
+}));
+
+setChip();
+let rt;
+window.addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => charts.forEach(c => c && c.resize()), 120); });
+})();
+</script>
+</body>
+</html>

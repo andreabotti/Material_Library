@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>4d6bdc33-1345-4404-9923-3e3674c637dc</common:UUID>
+      <name>
+        <baseName xml:lang="en">Natural gypsum, extraction, Lombardy Region</baseName>
+      </name>
+      <common:synonyms>Estrazione di gesso naturale</common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">Materials production</common:class>
+          <common:class level="1">Non-energetic raw materials</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment>Dataset developed within the ARCADIA project in the context of the Ph.D. of Federica Carollo (Politecnico di Milano). 
+The dataset relates to the extraction of 1 tonne of natural gypsum. 
+The dataset is composed of 6-unit processes:  
+1)  Input from the nature of gypsum; 
+2)  Diesel consumption for hammer excavator;  
+3) Diesel consumption of mechanical shovel. </common:generalComment>
+      <referenceToExternalDocumentation type="source data set" refObjectId="f2b4aa5a-6d86-4e95-82ce-00fce014ab59" version="01.00.000" uri="../sources/f2b4aa5a-6d86-4e95-82ce-00fce014ab59.xml">
+        <common:shortDescription>Carollo F. (2023). Circularity in construction and demolition waste management chain, Ph.D. Dissertation (Tutored by Rigamonti L., Ceruti F.). Politecnico di Milano. Background datasets from the EcoInvent database cut-off (v. 3.8) were used for the LCA study. </common:shortDescription>
+      </referenceToExternalDocumentation>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2022</common:referenceYear>
+      <common:dataSetValidUntil>2027</common:dataSetValidUntil>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT">
+        <descriptionOfRestrictions>Lombardy Region.</descriptionOfRestrictions>
+      </locationOfOperationSupplyOrProduction>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>The machinery present in the quarry is a hammer excavator, with which the wall is broken, and the gypsum blocks are crushed, and two mechanical shovels, with which the extracted raw material is loaded onto the trucks for subsequent transport to the processing plant, about 8 km away. The diesel consumption of the two machines is respectively 0.15 l/t and 0.19 l/t. In the processing plant, the gypsum blocks, approximately 30 cm in size, undergo a series of mechanical crushing and screening treatments and any firing, variable according to the type of plaster product to be obtained and its use.&#13;
+&#13;
+Good the Reliability;   &#13;
+Very Good the Geographical representativeness;   &#13;
+Very Good the Time representativeness;   &#13;
+Very Good the Technological representativeness. </technologyDescriptionAndIncludedProcesses>
+      <technologicalApplicability>Extraction of 1 tonne of natural gypsum.</technologicalApplicability>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Allocation - mass</LCIMethodApproaches>
+      <referenceToLCAMethodDetails type="source data set" refObjectId="e9198a15-6274-49bd-a8ac-cf2f17cf9dd4" version="01.00.000" uri="../sources/e9198a15-6274-49bd-a8ac-cf2f17cf9dd4.xml">
+        <common:shortDescription>Carollo F. (2023). Circularity in construction and demolition waste management chain, Ph.D. Dissertation (Tutored by Rigamonti L., Ceruti F.). Politecnico di Milano.</common:shortDescription>
+      </referenceToLCAMethodDetails>
+      <referenceToLCAMethodDetails type="source data set" refObjectId="937c5493-3368-4414-bcfb-8e7538bfcb0c" version="01.00.000" uri="../sources/937c5493-3368-4414-bcfb-8e7538bfcb0c.xml">
+        <common:shortDescription>Giurato, M., Pantini, S., Rigamonti, L. (2018). VALUTAZIONE LCA DEL SISTEMA DI RICICLO DEI RIFIUTI A BASE DI GESSO IN REGIONE LOMBARDIA. Ingegneria Dell’Ambiente, 5(2). https://doi.org/10.32024/IDA.V5I2.146 </common:shortDescription>
+      </referenceToLCAMethodDetails>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <referenceToDataSource type="source data set" refObjectId="b86e1a77-2d2c-48c1-bc91-1665a067af8f" version="01.00.000" uri="../sources/b86e1a77-2d2c-48c1-bc91-1665a067af8f.xml">
+        <common:shortDescription>Carollo F. (2023). Circularity in construction and demolition waste management chain, Ph.D. Dissertation (Tutored by Rigamonti L., Ceruti F.). Politecnico di Milano. Background datasets from the EcoInvent database cut-off (v. 3.8) were used for the LCA study. </common:shortDescription>
+      </referenceToDataSource>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>All relevant flows quantified</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Not reviewed">
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Completeness" value="Good"/>
+          <common:dataQualityIndicator name="Precision" value="Good"/>
+          <common:dataQualityIndicator name="Methodological appropriateness and consistency" value="Good"/>
+          <common:dataQualityIndicator name="Overall quality" value="Good"/>
+        </common:dataQualityIndicators>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="88d4f8d9-60f9-43d1-9ea3-329c10d7d727" uri="../sources/88d4f8d9-60f9-43d1-9ea3-329c10d7d727.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Fully compliant</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Fully compliant</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="d92a1a12-2545-49e2-a585-55c259997756" uri="../sources/d92a1a12-2545-49e2-a585-55c259997756.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Fully compliant</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Fully compliant</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="01807191-e156-421a-b2f6-aa609ea534f4" uri="../contacts/01807191-e156-421a-b2f6-aa609ea534f4.xml">
+        <common:shortDescription xml:lang="en">EPLCA project team</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Arcadia – PON Governance e Capacità istituzionali 2014-2020 (PhD Project of Federica Carollo).</common:project>
+    </common:commissionerAndGoal>
+    <dataGenerator>
+      <common:referenceToPersonOrEntityGeneratingTheDataSet refObjectId="9720cdc2-3c5a-4b22-be25-0771a0d845f2" type="contact data set" uri="../sources/9720cdc2-3c5a-4b22-be25-0771a0d845f2.xml" version="01.00.000">
+        <common:shortDescription>Federica Carollo (Politecnico di Milano) </common:shortDescription>
+      </common:referenceToPersonOrEntityGeneratingTheDataSet>
+    </dataGenerator>
+    <dataEntryBy>
+      <common:timeStamp>2022-12-03T13:39:03.954+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="a97a0155-0234-4b87-b4ce-a45da52f2a40" uri="../sources/a97a0155-0234-4b87-b4ce-a45da52f2a40.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2022-01-14T12:32:22.334Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/4d6bdc33-1345-4404-9923-3e3674c637dc.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="22038d5e-1ede-4805-9b45-cffe6f894923" type="contact data set" uri="../sources/22038d5e-1ede-4805-9b45-cffe6f894923.xml" version="01.00.000">
+        <common:shortDescription>ENEA-ARCADIA</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+      <common:accessRestrictions>Type of license: Open Database Licence (ODbL). </common:accessRestrictions>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="f6f653c0-8873-49c2-94db-416137e5ab00" uri="../flows/f6f653c0-8873-49c2-94db-416137e5ab00.xml">
+        <common:shortDescription xml:lang="en">Natural gypsum, extraction, Lombardy Region</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0000000E+3</meanAmount>
+      <resultingAmount>1.0000000E+3</resultingAmount>
+      <generalComment>Consumption data from gypsum quarry.
+Reference: Giurato et al., 2018 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4aba2a87-8b3f-452b-a00e-1746edf2b6de" uri="../flows/4aba2a87-8b3f-452b-a00e-1746edf2b6de.xml">
+        <common:shortDescription xml:lang="en">Diesel, burned in building machine {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.1200000E+0</meanAmount>
+      <resultingAmount>5.1200000E+0</resultingAmount>
+      <generalComment>[Amount=0,15*0,8*42,7]
+0.15 l/t specific consumption for hammer excavator (diesel density: 0.8 kg/l , PCI diesel: 42.7 MJ7kg )
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4aba2a87-8b3f-452b-a00e-1746edf2b6de" uri="../flows/4aba2a87-8b3f-452b-a00e-1746edf2b6de.xml">
+        <common:shortDescription xml:lang="en">Diesel, burned in building machine {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.4900000E+0</meanAmount>
+      <resultingAmount>6.4900000E+0</resultingAmount>
+      <generalComment>[Amount=0,19*0,8*42,7]
+0.19 l/t is the specific consumption of mechanical shovel (average data from the internet)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="3">
+      <referenceToFlowDataSet type="flow data set" refObjectId="02a1b28a-02a1-4050-b605-1540e32bd13b" uri="../flows/02a1b28a-02a1-4050-b605-1540e32bd13b.xml">
+        <common:shortDescription xml:lang="en">gypsum (land)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.0000000E+3</meanAmount>
+      <resultingAmount>1.0000000E+3</resultingAmount>
+    </exchange>
+  </exchanges>
+</processDataSet>

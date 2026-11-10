@@ -1,0 +1,4493 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<!-- Webfonts: injected from theme.json → typography.google_font_links by fn336 -->
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  /* --c-fs, --c-lh, --js2-* typography: injected from theme.json → catalogue.js2.typography */
+  --c-border:1px solid var(--eetra-border-card,#d1d9e6);
+  --c-radius:var(--eetra-radius-card,12px);
+  --c-bg:var(--eetra-surface,#ffffff);
+  --c-muted:var(--eetra-text-muted,#64748b);
+  --c-green:var(--eetra-green,#2a7d2e);
+  --c-active:var(--eetra-green,#2a7d2e);
+  --c-hover-shadow:var(--eetra-hover-shadow,0 6px 18px rgba(15,23,42,0.08));
+  --c-hover-border:var(--eetra-hover-border,#b8c5d8);
+  --c-tab-border:#e5e7eb;
+  --c-grid-gap:var(--eetra-grid-gap,12px);
+}
+html,body{width:100%;max-width:100%;height:100%;overflow:hidden;}
+body{
+  font-family:var(--eetra-ff-sans,'Miranda Sans',sans-serif);
+  background:#fff;color:#111;font-size:var(--c-fs,13px);
+  line-height:var(--c-lh,1.35);
+  display:flex;flex-direction:column;
+  height:var(--cat2-viewport-h,920px);
+  max-height:var(--cat2-viewport-h,920px);
+  min-height:0;
+}
+#cat2-chrome{
+  flex:0 0 auto;z-index:30;background:#fff;
+  /* Top padding lives in chrome.page_title.margin_bottom (shared with Charts/Developer). */
+  padding:0 4px 4px;border-bottom:1px solid #e5e7eb;
+  box-shadow:0 2px 8px rgba(15,23,42,0.06);
+}
+#cat2-shell{
+  display:flex;flex:1 1 auto;min-height:0;width:100%;overflow:hidden;
+}
+#cat2-main{
+  flex:1 1 auto;min-width:0;min-height:0;overflow-y:auto;overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;padding:0 4px 10px;
+}
+
+/* ── Toolbar ── */
+.rv-toolbar{
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  margin-bottom:6px;padding:0 2px;font-size:var(--c-fs);
+  flex-wrap:wrap;max-width:100%;min-width:0;
+}
+.rv-toolbar-group{display:inline-flex;border-radius:999px;background:#f3f4f6;padding:2px;}
+.rv-toolbar-group button{
+  border:none;background:transparent;font-size:var(--c-fs);padding:3px 10px;
+  border-radius:999px;cursor:pointer;color:#4b5563;
+}
+.rv-toolbar-group button.rv-active{background:#111827;color:#f9fafb}
+.rv-toolbar-group button:hover:not(.rv-active):not(:disabled){background:#e5e7eb}
+.rv-toolbar-group.rv-disabled{opacity:.45;pointer-events:none}
+.rv-toolbar-group.rv-disabled button{cursor:not-allowed;color:#9ca3af}
+.rv-xl-groups-wrap{display:none;align-items:center;flex-wrap:wrap;gap:0;margin-left:4px}
+.rv-xl-groups-wrap.is-visible{display:inline-flex}
+.rv-toolbar-end{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.rv-load{display:flex;align-items:center;gap:6px;min-width:120px}
+.rv-load-track{
+  flex:1;width:72px;height:5px;border-radius:999px;background:#e5e7eb;overflow:hidden;
+}
+.rv-load-fill{height:100%;width:0%;background:#2563eb;border-radius:999px;transition:width .15s ease}
+.rv-load-pct{font-size:var(--c-fs);color:#6b7280;min-width:2.2em;text-align:right;font-variant-numeric:tabular-nums}
+.rv-count{font-size:var(--c-fs);color:#6b7280;white-space:nowrap}
+
+/* ── Filter bar ── */
+.filter-bar{
+  display:flex;flex-wrap:wrap;align-items:center;gap:8px;
+  margin-bottom:0;padding:8px 10px;
+  background:#f8fafc;border:1px solid #e5e7eb;border-radius:8px;
+}
+.filter-bar label{font-size:var(--js2-filter-label-fs,11px);color:#6b7280;font-weight:500;margin-right:2px;white-space:nowrap}
+/* Label+control pairs participate in the flex row directly, so a field can be
+   hidden as one unit without changing the layout of the others. */
+.filter-field{display:contents}
+.filter-field[hidden]{display:none}
+.filter-scope{
+  font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  color:#94a3b8;white-space:nowrap;margin-right:2px;
+}
+.filter-input{
+  flex:1;min-width:160px;max-width:300px;padding:5px 9px;
+  border:1px solid #e5e7eb;border-radius:6px;font-size:var(--c-fs);
+  font-family:inherit;background:#fff;
+}
+.filter-input:focus{outline:2px solid var(--c-active);outline-offset:1px;border-color:#cbd5e1}
+.filter-select{
+  padding:5px 26px 5px 8px;border:1px solid #e5e7eb;border-radius:6px;
+  font-size:var(--c-fs);font-family:inherit;background:#fff;cursor:pointer;
+  appearance:none;-webkit-appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 8px center;
+  min-width:110px;max-width:200px;
+}
+.filter-select:focus{outline:2px solid var(--c-active);outline-offset:1px}
+.filter-clear-btn{
+  border:1px solid #e5e7eb;background:#fff;border-radius:6px;padding:5px 10px;
+  font-size:var(--c-fs);cursor:pointer;color:#6b7280;white-space:nowrap;
+}
+.filter-clear-btn:hover{background:#f3f4f6;color:#374151}
+
+/* ── Grid ── */
+#grid{
+  display:grid;gap:var(--c-grid-gap);width:100%;max-width:100%;
+  min-width:0;align-items:start;box-sizing:border-box;
+}
+.empty-msg{grid-column:1/-1;text-align:center;color:#888;padding:2rem 0;font-size:var(--c-fs)}
+/* Group by: a view setting, not a filter — set apart from the filters before it. */
+.filter-group-sep{width:1px;align-self:stretch;background:#e5e7eb;margin:0 2px}
+.cat2-group-hdr{
+  grid-column:1/-1;display:flex;align-items:baseline;gap:8px;
+  margin:50px 0 0;padding:0 2px 5px;border-bottom:1px solid #e5e7eb;
+  font-size:calc(var(--c-fs) + 1px);font-weight:600;color:#111827;
+}
+.cat2-group-hdr:first-child{margin-top:0}
+.cat2-group-count{font-size:var(--c-fs);font-weight:400;color:#6b7280}
+.rv-table tbody tr.rv-group-row{cursor:default}
+.rv-table tbody tr.rv-group-row td,
+.rv-table tbody tr.rv-group-row:hover td{
+  background:#f3f4f6;font-weight:600;color:#111827;padding-top:8px;padding-bottom:6px;
+}
+
+/* ── Product card ── */
+.cat2-card{
+  background:var(--c-bg);border:var(--c-border);border-radius:var(--c-radius);
+  padding:10px;cursor:pointer;user-select:none;
+  transition:box-shadow .15s ease,border-color .15s ease;
+  display:flex;flex-direction:column;gap:4px;
+  min-width:0;max-width:100%;overflow:hidden;box-sizing:border-box;
+}
+.cat2-card:hover{box-shadow:var(--c-hover-shadow);border-color:var(--c-hover-border)}
+.cat2-card.selected{border-color:#2a7d2e;box-shadow:0 0 0 2px rgba(42,125,46,0.22)}
+
+/* Card header: image + manufacturer/name text */
+.cat2-hdr{display:flex;gap:8px;align-items:flex-start}
+.cat2-hdr-img{flex-shrink:0}
+.cat2-hdr-text{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.cat2-img-thumb{object-fit:cover;border-radius:6px;background:#f8fafc;border:1px solid #f1f5f9;display:block}
+
+/* S: vertical — image spans full width, text below */
+#grid[data-size="S"] .cat2-hdr{flex-direction:column}
+#grid[data-size="S"] .cat2-hdr-img{width:100%}
+#grid[data-size="S"] .cat2-img-thumb{width:100%;height:60px}
+/* M: horizontal — 80px image left, mfr+name right */
+#grid[data-size="M"] .cat2-img-thumb{width:80px;height:72px}
+/* L: same horizontal layout as M, taller image + more name lines */
+#grid[data-size="L"] .cat2-img-thumb{width:100px;height:96px}
+#grid[data-size="L"] .cat2-name{-webkit-line-clamp:4}
+/* XL: wide cards, plain field dump (no GWP/rec pills) */
+#grid[data-size="XL"] .cat2-img-thumb{width:72px;height:64px}
+#grid[data-size="XL"] .cat2-name{-webkit-line-clamp:3}
+#grid[data-size="XL"] .cat2-card-xl .cat2-badges,
+#grid[data-size="XL"] .cat2-card-xl .cat2-footer,
+#grid[data-size="XL"] .cat2-card-xl .cat2-type-top,
+#grid[data-size="XL"] .cat2-card-xl .cat2-type-badges{display:none!important}
+.cat2-xl-tabs{
+  margin-top:6px;padding-top:4px;border-top:1px solid #e5e7eb;
+  font-size:var(--js2-card-xl-tabs-fs,11px);line-height:1.35;min-width:0;
+}
+.cat2-xl-tabbar{
+  display:flex;flex-wrap:wrap;gap:2px;margin-bottom:4px;
+}
+.cat2-xl-tab{
+  border:1px solid #e5e7eb;background:#f9fafb;border-radius:4px;
+  font-size:var(--js2-card-xl-tab-fs,10px);font-weight:600;padding:2px 6px;cursor:pointer;color:#64748b;
+  font-family:inherit;line-height:1.3;
+}
+.cat2-xl-tab:hover:not(.active){background:#e5e7eb}
+.cat2-xl-tab.active{background:#111827;color:#f9fafb;border-color:#111827}
+.cat2-xl-panels{max-height:min(420px,50vh);overflow-y:auto;overflow-x:hidden}
+.cat2-xl-panel{display:none}
+.cat2-xl-panel.active{display:block}
+.cat2-xl-empty{color:#94a3b8;padding:6px 2px;font-style:italic}
+.cat2-xl-row{display:flex;gap:8px;padding:2px 0;border-bottom:1px solid #f1f5f9}
+.cat2-xl-lbl{flex:0 0 30%;max-width:30%;color:#64748b;font-weight:500;word-break:break-word}
+.cat2-xl-val{flex:0 0 70%;max-width:70%;color:#111;word-break:break-word;white-space:pre-wrap;font-weight:400}
+/* M: tighter line-height on product name */
+#grid[data-size="M"] .cat2-name{line-height:var(--js2-card-name-lh-m,1.04)}
+
+.cat2-name{
+  font-weight:600;line-height:var(--js2-card-name-lh,1.3);
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
+}
+#grid[data-size="S"] .cat2-name,
+#grid[data-size="M"] .cat2-name{font-size:var(--js2-card-name-fs-s,13px)}
+#grid[data-size="L"] .cat2-name,
+#grid[data-size="XL"] .cat2-name{font-size:var(--js2-card-name-fs-ml,15px)}
+.cat2-mfr{font-size:var(--js2-card-mfr-fs,11px);color:#475569;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* Expanded entry mode: marks a card as one commercial collection rather than a
+   library row, and says how many colours of it this EPD covers. */
+.cat2-coll-note{
+  display:flex;align-items:center;gap:5px;margin-top:2px;
+  font-size:var(--js2-card-mfr-fs,11px);color:#64748b;min-width:0;
+}
+/* Sits under the whole header, not inside .cat2-hdr-text: that column is what
+   is left of the card after the thumbnail, and at S/M it is too narrow to show
+   even the word "Collection". */
+.cat2-coll-note{margin-top:4px}
+.cat2-coll-tag{
+  flex:0 0 auto;font-size:9px;font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;color:#2a7d2e;background:#eaf3ea;
+  border:1px solid #c5dbc7;border-radius:4px;padding:1px 4px;
+}
+.cat2-coll-count{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* M/L: Manufacturer moves below the product name (name stays right under the type
+   badges). The name-divider pair sits between badges/name/mfr in this same
+   flex-order scheme, so renumbered 1/3/5 to leave 2 and 4 free for them. */
+#grid[data-size="M"] .cat2-type-badges,
+#grid[data-size="L"] .cat2-type-badges{order:1}
+#grid[data-size="M"] .cat2-name,
+#grid[data-size="L"] .cat2-name{order:3}
+#grid[data-size="M"] .cat2-mfr,
+#grid[data-size="L"] .cat2-mfr{order:5}
+
+/* ── Rules above/below the product name — Cards view, sizes M/L/XL only ──
+   Color, thickness and margins come from theme.json → catalogue.js2.card_name_divider
+   (see card_name_divider_root_css() in libs/lib_ui_catalogues.py) and top/bottom are
+   independent: each is its own set of variables, not a mirrored pair. Hidden for S,
+   where the header block already carries its own divider pattern
+   (.cat2-s-thickness) directly under the name. */
+.cat2-name-divider{width:var(--cat2-name-divider-width,100%);flex-shrink:0;border:none;padding:0}
+#grid[data-size="M"] .cat2-name-divider,
+#grid[data-size="L"] .cat2-name-divider{width:var(--cat2-name-divider-width-ml,50%)}
+.cat2-name-divider--top{
+  height:var(--cat2-name-divider-top-thickness,1px);
+  background:var(--cat2-name-divider-top-color,#f3f4f6);
+  margin:var(--cat2-name-divider-top-margin-top,2px) 0 var(--cat2-name-divider-top-margin-bottom,2px) 0;
+}
+.cat2-name-divider--bottom{
+  height:var(--cat2-name-divider-bottom-thickness,1px);
+  background:var(--cat2-name-divider-bottom-color,#f3f4f6);
+  margin:var(--cat2-name-divider-bottom-margin-top,2px) 0 var(--cat2-name-divider-bottom-margin-bottom,2px) 0;
+}
+#grid[data-size="S"] .cat2-name-divider{display:none}
+#grid[data-size="M"] .cat2-name-divider--top,
+#grid[data-size="L"] .cat2-name-divider--top{order:2}
+#grid[data-size="M"] .cat2-name-divider--bottom,
+#grid[data-size="L"] .cat2-name-divider--bottom{order:4}
+.cat2-type-top,.cat2-type-badges{
+  display:none;flex-wrap:wrap;align-items:center;gap:2px;margin-top:1px;
+}
+#grid[data-size="S"] .cat2-type-top{display:flex;margin-bottom:2px}
+#grid[data-size="M"] .cat2-type-badges,
+#grid[data-size="L"] .cat2-type-badges{display:flex}
+
+/* Detail rows — 2-column layout driven by aux__js2_card_fields.json */
+.cat2-detail-2col{
+  display:grid;grid-template-columns:4fr 3fr;column-gap:var(--cat2-card-col-gap,10px);
+  border-top:1px solid #f3f4f6;padding-top:4px;margin-top:2px;
+}
+#grid[data-size="M"] .cat2-detail-2col,
+#grid[data-size="L"] .cat2-detail-2col{
+  column-gap:var(--cat2-card-col-gap-ml,20px);
+}
+/* S: thickness sits under product name (dividers in .cat2-s-thickness); GWP/RC below */
+.cat2-s-thickness{
+  border-top:1px solid #f3f4f6;border-bottom:1px solid #f3f4f6;
+  padding:4px 0;margin-top:2px;
+}
+#grid[data-size="S"] .cat2-detail-s.cat2-detail-s--no-top{border-top:none;margin-top:0;padding-top:0}
+.cat2-detail-s{border-top:1px solid #f3f4f6;padding-top:4px;margin-top:2px}
+.cat2-detail-gwp-full{width:100%;padding-bottom:2px}
+#grid[data-size="S"] .cat2-detail-s .cat2-detail-2col{
+  border-top:1px solid #f3f4f6;padding-top:4px;margin-top:2px;
+  grid-template-columns:1fr 1fr;
+}
+/* M/L: GWP + Rec. Content pills full width, then the detail rows in one column */
+.cat2-detail-m{border-top:1px solid #f3f4f6;padding-top:4px;margin-top:2px}
+#grid[data-size="M"] .cat2-detail-m .cat2-detail-2col,
+#grid[data-size="L"] .cat2-detail-m .cat2-detail-2col{grid-template-columns:1fr}
+#grid[data-size="M"] .cat2-detail-m .cat2-detail-col:empty,
+#grid[data-size="L"] .cat2-detail-m .cat2-detail-col:empty{display:none}
+.cat2-dv .cat2-voc-img{display:inline-block;height:20px;vertical-align:middle}
+.cat2-detail-col{display:flex;flex-direction:column;gap:2px;min-width:0}
+.cat2-detail-row{
+  display:flex;justify-content:space-between;align-items:baseline;
+  gap:4px;padding:2px 0;font-size:var(--js2-card-detail-fs,11px);line-height:var(--js2-card-detail-lh,1.3);
+}
+.cat2-dl{color:#64748b;font-weight:500;flex-shrink:0;white-space:nowrap}
+.cat2-dv{color:#111;text-align:right;word-break:break-word;font-family:inherit}
+.cat2-dv a{color:#2563eb;text-decoration:none;font-family:inherit;font-size:inherit}
+.cat2-dv a:hover{text-decoration:underline}
+.cat2-dv-na{color:#94a3b8;font-style:normal}
+/* Full-width row (multiline description) */
+.cat2-detail-full{border-top:1px solid #f3f4f6;padding-top:3px;margin-top:2px}
+.cat2-content-text{
+  font-size:var(--js2-card-content-fs,10px);color:#475569;padding:2px 0;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
+  line-height:var(--js2-card-content-lh,1.4);
+}
+.cat2-gwp{
+  font-family:var(--js2-ff-serif);font-style:italic;font-weight:600;
+  font-size:var(--js2-card-metric-fs,14px);margin-top:2px;line-height:var(--js2-card-metric-lh,1.2);
+}
+.cat2-gwp--na{
+  font-family:inherit;font-style:normal;font-weight:500;
+  color:#94a3b8;
+}
+.cat2-gwp-bar-wrap{margin:3px 0 1px}
+.cat2-gwp-bar{
+  position:relative;height:6px;border-radius:3px;overflow:visible;
+  background:linear-gradient(to right,#2a7d2e,#7cb87e,#d4c84a,#e8742a,#c0392b);
+}
+.cat2-gwp-needle{
+  position:absolute;top:50%;width:3px;height:12px;border-radius:2px;
+  background:#333;transform:translate(-50%,-50%);pointer-events:none;
+}
+.cat2-gwp-labels{display:flex;justify-content:space-between;margin-top:1px}
+.cat2-gwp-lbl{font-size:var(--js2-card-gwp-lbl-fs,9px);color:#94a3b8}
+.cat2-rc{
+  font-family:var(--js2-ff-serif);font-style:italic;font-weight:600;
+  font-size:var(--js2-card-metric-fs,14px);margin-top:2px;line-height:var(--js2-card-metric-lh,1.2);
+}
+.cat2-rc-bar-wrap{margin:3px 0 1px}
+.cat2-rc-bar{
+  position:relative;height:6px;border-radius:3px;overflow:visible;
+  background:linear-gradient(to right,#9ca3af,#cbd5e1,#93c5fd,#60a5fa);
+}
+.cat2-rc-voc{margin-top:4px}
+.cat2-badges{display:flex;flex-wrap:wrap;align-items:center;gap:2px;margin-top:1px}
+.badge{
+  display:inline-block;border-radius:3px;padding:0 4px;
+  font-size:var(--js2-card-badge-fs,10px);font-weight:500;line-height:1.35;white-space:nowrap;
+}
+.badge-prod,.badge-mat{
+  background:#f4f4f5;color:#52525b;border:1px solid #e4e4e7;
+}
+.badge-cam{background:#fef9c3;color:#a16207;border:1px solid #fde68a}
+.cat2-align{display:inline-flex;gap:3px;flex-wrap:wrap;vertical-align:middle;margin-left:4px}
+.cat2-al{font-size:9.5px;font-weight:700;letter-spacing:.02em;padding:1px 4px;border-radius:3px;
+  white-space:nowrap;cursor:help;line-height:1.5}
+.cat2-al-yes{background:#dcfce7;color:#15803d}
+.cat2-al-partial{background:#fef3c7;color:#a16207}
+.cat2-voc-img{
+  height:30px;width:auto;max-width:120px;object-fit:contain;display:block;
+  border:none;background:transparent;padding:0;margin:0;
+}
+.cat2-footer{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-top:4px;padding-top:5px;border-top:1px solid #f1f5f9;
+  font-size:var(--js2-card-footer-fs,10px);color:#94a3b8;
+}
+
+/* ── List table ── */
+.rv-list-panel{display:flex;flex-direction:column;gap:8px;width:100%;max-width:100%;min-width:0}
+.rv-table-wrap{
+  width:100%;max-width:100%;min-width:0;overflow-x:auto;overflow-y:visible;
+  background:#fff;border:1px solid #e5e7eb;border-radius:8px;
+}
+.rv-table{width:100%;border-collapse:collapse;font-size:var(--c-fs);min-width:min(900px,100%)}
+.rv-table thead th{
+  position:sticky;top:0;z-index:2;background:#f9fafb;color:#374151;text-align:left;
+  font-size:var(--js2-list-hdr-fs,12px);font-weight:600;border-bottom:1px solid #e5e7eb;
+  padding:8px 10px;white-space:nowrap;
+}
+.rv-th-sort{cursor:pointer;user-select:none}
+.rv-th-sort:hover{background:#f3f4f6}
+.rv-th-sort.rv-sort-active{color:#111827;background:#eef2ff}
+.rv-sort-ind{display:inline-block;margin-left:4px;font-size:10px;opacity:.75}
+.rv-table tbody td{
+  border-bottom:1px solid #f1f5f9;padding:7px 10px;vertical-align:middle;
+  color:#111827;word-break:break-word;line-height:var(--js2-list-cell-lh,1.4);
+}
+.rv-table tbody tr{cursor:pointer}
+.rv-table tbody tr:hover td{background:#f8fafc}
+.rv-table tbody tr.selected td{background:#f0fdf4}
+.rv-td-muted{color:#6b7280;font-size:var(--js2-list-hdr-fs,12px)}
+.rv-td-num{text-align:right;font-variant-numeric:tabular-nums}
+.rv-td-mono{font-family:monospace;font-size:var(--js2-list-mono-fs,11px);color:#475569}
+.rv-list-symbol{
+  width:48px;height:48px;border-radius:6px;overflow:hidden;
+  background:#f3f4f6;border:1px solid #e5e7eb;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:var(--js2-list-ph-fs,9px);color:#94a3b8;text-align:center;line-height:1.2;
+}
+.rv-list-symbol img{display:block;width:100%;height:100%;object-fit:contain}
+.rv-voc-badge{
+  height:30px;width:auto;max-width:120px;object-fit:contain;vertical-align:middle;
+  border:none;background:transparent;padding:0;display:inline-block;
+}
+.rv-table a{font-family:inherit;font-size:inherit;color:#2563eb;text-decoration:none}
+.rv-table a:hover{text-decoration:underline}
+
+/* ── Right detail panel (JS2_DETAIL_VIEW_MODE === "right_panel") ── */
+#cat2-detail-panel{
+  flex:0 0 0;width:0;min-width:0;overflow:hidden;
+  display:flex;flex-direction:column;background:#fff;
+  border-left:1px solid transparent;
+  transition:width .2s ease, flex-basis .2s ease, border-color .2s ease;
+}
+#cat2-detail-panel.open{
+  /* Fixed panel width for Info / Sustainability / Documents — previously Info
+     sat at 420px and widened to 620px for a document preview, which resized the
+     grid via effectiveGridCols. Tunable in theme.json → catalogue.js2.detail_panel. */
+  flex:0 0 min(var(--js2-detail-panel-w,440px), var(--js2-detail-panel-max-vw,50vw));
+  width:min(var(--js2-detail-panel-w,440px), var(--js2-detail-panel-max-vw,50vw));
+  border-left-color:#e5e7eb;
+  box-shadow:-6px 0 24px rgba(15,23,42,0.08);
+}
+.cat2-wide-screen #cat2-detail-panel.open{
+  flex-basis:min(calc(var(--js2-detail-panel-w,440px) * 1.2), var(--js2-detail-panel-max-vw,50vw));
+  width:min(calc(var(--js2-detail-panel-w,440px) * 1.2), var(--js2-detail-panel-max-vw,50vw));
+}
+/* Header bar — same chrome as charts_scatter_ec_popup.html. */
+.cat2-detail-hdr{
+  flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;
+  gap:8px;padding:5px 12px;border-bottom:1px solid #f1f5f9;background:#fafafa;
+}
+.cat2-detail-title{
+  font-size:11px;font-weight:600;color:#64748b;
+  text-transform:uppercase;letter-spacing:.05em;
+}
+.cat2-detail-close{
+  border:none;background:#f1f5f9;border-radius:999px;width:28px;height:28px;
+  font-size:var(--js2-detail-close-fs,15px);cursor:pointer;display:flex;align-items:center;justify-content:center;
+  color:#374151;flex-shrink:0;transition:background .12s;
+}
+.cat2-detail-close:hover{background:#e2e8f0}
+#cat2-detail-body{
+  flex:1 1 auto;min-height:0;overflow-y:auto;padding:16px 16px 20px;
+  -webkit-overflow-scrolling:touch;
+}
+/* Sticky footer: Edit item → Developer Dashboard (admin only). */
+#cat2-detail-footer{
+  flex:0 0 auto;padding:10px 16px 14px;background:#fff;
+  border-top:1px solid #eceef1;
+}
+#cat2-detail-footer[hidden]{display:none}
+#cat2-detail-footer .cat2-edit-btn{
+  width:100%;justify-content:center;
+}
+#cat2-detail-body .modal-name--panel{
+  font-size:var(--js2-detail-name-fs,15px);font-weight:600;line-height:1.3;
+  color:#1f2937;margin:0;padding:0;
+}
+#cat2-detail-body .modal-mfr--panel{
+  font-size:var(--js2-modal-mfr-fs,13px);color:#475569;margin:0;
+}
+.modal-name-divider{
+  width:var(--cat2-name-divider-width-ml,50%);flex-shrink:0;border:none;padding:0;
+  height:var(--cat2-name-divider-bottom-thickness,1px);
+  background:var(--cat2-name-divider-bottom-color,#f3f4f6);
+  margin:var(--cat2-name-divider-bottom-margin-top,2px) 0 var(--cat2-name-divider-bottom-margin-bottom,2px) 0;
+}
+.modal-hdr-text{display:flex;flex-direction:column;gap:2px;min-width:0}
+.modal-gwp-row{
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:0;margin-top:4px;
+}
+.modal-hdr-grid--panel{align-items:flex-start;margin:8px 0 0}
+.modal-hdr-grid--panel .modal-hdr-img img{max-width:140px;max-height:110px}
+.modal-hdr-grid--no-img{grid-template-columns:1fr}
+.modal-hdr-gwp--panel{min-width:0}
+/* FU radios above the detail-panel GWP line (same column as the value). */
+.modal-gwp-fu{
+  display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center;
+  margin:0 0 6px;
+}
+.modal-gwp-fu-opt{
+  display:inline-flex;align-items:center;gap:3px;
+  font-size:11px;line-height:1.2;color:#64748b;
+  cursor:pointer;white-space:nowrap;user-select:none;
+}
+.modal-gwp-fu-opt input{
+  margin:0;accent-color:#2a7d2e;width:12px;height:12px;cursor:pointer;
+}
+.modal-gwp-fu-opt.is-disabled,
+.modal-gwp-fu-opt:has(input:disabled){
+  opacity:.38;cursor:default;
+}
+.modal-gwp-fu-opt:has(input:disabled) input{cursor:default}
+.modal-gwp-fu-opt:has(input:checked){color:#1f2937;font-weight:600}
+
+/* ── Detail-panel pill tabs — Info / Collections / Tech / Sus / Documents ─
+   Collections only for Floor (Tiles) with covered products. Documents stay one
+   tab (list inside) so the strip stays stable. Panel width unchanged for a
+   document preview — see #cat2-detail-panel.open. */
+/* Fixed product header (name → mfr → tags → photo|GWP) — above tabs, never scrolls.
+   Layout mirrors charts_scatter_ec_popup.html.
+   padding-bottom: 10px = whitespace above the tab-strip horizontal divider. */
+#cat2-detail-top{flex:0 0 auto;padding:12px 16px 10px;background:#fff}
+#cat2-detail-top:empty{display:none}
+.modal-title-row{
+  display:flex;align-items:flex-start;gap:12px;margin:0 0 6px;
+}
+.modal-mfr-logo{
+  flex:0 0 auto;width:96px;height:48px;
+  display:flex;align-items:center;justify-content:flex-end;
+}
+.modal-mfr-logo img{
+  max-width:96px;max-height:48px;width:auto;height:auto;
+  object-fit:contain;display:block;
+}
+.modal-title-row .modal-hdr-text{flex:1 1 auto;min-width:0}
+.modal-title-row .modal-mfr--panel{margin-bottom:0}
+#cat2-detail-top .modal-name--panel{
+  font-size:var(--js2-detail-name-fs,15px);font-weight:600;line-height:1.3;
+  color:#1f2937;margin:0 0 2px;padding:0;
+}
+#cat2-detail-top .modal-mfr--panel{
+  font-size:var(--js2-modal-mfr-fs,13px);color:#475569;margin:0 0 6px;
+}
+#cat2-detail-top .cat2-panel-top-badges{
+  display:flex;flex-wrap:wrap;gap:2px;margin-bottom:6px;
+}
+#cat2-detail-tabs{
+  flex:0 0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:4px 5px;
+  padding:8px 10px;background:#fff;min-width:0;max-width:100%;
+  border-top:1.5px solid #d1d9e6;border-bottom:1px solid #eceef1;
+  box-sizing:border-box;
+}
+.cat2-doc-tab{
+  border:none;background:transparent;cursor:pointer;white-space:nowrap;
+  display:inline-flex;align-items:center;gap:4px;flex:0 1 auto;min-width:0;
+  padding:4px 9px;border-radius:999px;font-family:inherit;
+  font-size:var(--js2-doc-tab-fs,11.5px);font-weight:500;
+  color:#6b7280;transition:color .12s, background .12s;
+}
+.cat2-doc-tab:hover:not(.active){background:#f4f5f7;color:#374151}
+/* Active pill uses EETRA green rather than Revalu's violet. */
+.cat2-doc-tab.active{background:#eaf3ea;color:#1f5e23;font-weight:600}
+.cat2-doc-tab-icon{font-size:12px;line-height:1;opacity:.85}
+
+/* ── Tech. Details / Sustainability tab bodies ── */
+#cat2-tech-body,#cat2-sus-body,#cat2-coll-body{flex:1 1 auto;min-height:0;overflow-y:auto;padding:4px 16px 20px}
+#cat2-tech-body[hidden],#cat2-sus-body[hidden],#cat2-coll-body[hidden]{display:none}
+/* Collections tab: embedded covered-products gallery (same tiles as the popup). */
+.cat2-coll-embed{padding:2px 0 12px}
+.cat2-coll-embed .cat2-incl-section{margin-top:0;padding-top:0;border-top:none}
+.cat2-coll-embed .cat2-incl-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cat2-coll-embed .cat2-incl-head{padding-right:0}
+/* Match catalogue card field names (Thickness, VOC, … → .cat2-dl / .cat2-detail-row). */
+.cat2-coll-embed .cat2-incl-title{
+  font-size:var(--js2-card-detail-fs,11px);
+  line-height:var(--js2-card-detail-lh,1.3);
+  font-weight:500;
+  color:#64748b;
+}
+/* Tech. Details: flat label/value rows (same grid as Sustainability rows). */
+.cat2-tech-rows{padding:10px 0 12px;display:flex;flex-direction:column;gap:8px;overflow:hidden}
+.cat2-tech-rows a{color:#111827;font-weight:600}
+.cat2-tech-empty{padding:22px 0;font-size:var(--c-fs);color:#6b7280}
+/* Tech. Details → EN 520 section (Building boards): letter badge + meaning + requirement. */
+.cat2-en520{border-top:1px solid #eceef1}
+.cat2-en520-type{display:flex;gap:10px;align-items:flex-start;font-size:var(--js2-sus-fs,12px);line-height:1.45}
+.cat2-en520-code{
+  flex:0 0 auto;min-width:26px;padding:1px 6px;border-radius:5px;text-align:center;
+  font-weight:700;font-size:11.5px;background:#f1f5f9;color:#0f172a;border:1px solid #e2e8f0;
+}
+.cat2-en520-txt{min-width:0}
+.cat2-en520-name{color:#111827;font-weight:600}
+.cat2-en520-req{color:#6b7280}
+.cat2-en520-note{font-size:11.5px;color:#64748b;line-height:1.45}
+.cat2-en520-note a{color:inherit;font-weight:600}
+
+/* ── Sustainability tab: collapsible themed groups (Material Bank-style) ── */
+.cat2-sus-group{border-bottom:1px solid #eceef1}
+.cat2-sus-group > summary{
+  list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;
+  padding:14px 0 12px;font-size:13px;font-weight:600;color:#1f2937;
+}
+.cat2-sus-group > summary::-webkit-details-marker{display:none}
+.cat2-sus-group > summary::after{
+  content:"";margin-left:auto;width:7px;height:7px;
+  border-right:1.5px solid #374151;border-bottom:1.5px solid #374151;
+  transform:rotate(45deg);transition:transform .15s;
+}
+.cat2-sus-group[open] > summary::after{transform:rotate(-135deg)}
+.cat2-sus-icon{width:18px;text-align:center;font-size:14px;line-height:1}
+.cat2-sus-rows{padding:0 0 12px;display:flex;flex-direction:column;gap:8px;overflow:hidden}
+.cat2-sus-row{
+  display:grid;
+  grid-template-columns:var(--js2-sus-label-col,minmax(0,38fr)) 1px var(--js2-sus-value-col,minmax(0,62fr));
+  column-gap:0;
+  font-size:var(--js2-sus-fs,12px);line-height:1.45;align-items:stretch;
+}
+.cat2-sus-row::after{
+  content:"";grid-column:2;grid-row:1/-1;width:1px;background:#cbd5e1;
+  margin:-8px 0;pointer-events:none;
+}
+.cat2-sus-row--emph,
+.cat2-sus-row--emph .cat2-sus-lbl,
+.cat2-sus-row--emph .cat2-sus-val,
+.cat2-sus-row--emph .cat2-sus-txt{font-weight:600;color:#0f172a}
+.cat2-sus-lbl{
+  grid-column:1;color:#6b7280;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  min-width:0;padding-right:var(--js2-sus-row-gap,8px);align-self:baseline;
+}
+.cat2-sus-val{
+  grid-column:3;color:#111827;font-weight:500;text-align:right;min-width:0;
+  font-variant-numeric:tabular-nums;padding-left:var(--js2-sus-row-gap,8px);align-self:baseline;
+}
+.cat2-sus-val.clamped .cat2-sus-txt{
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+}
+.cat2-sus-more{
+  display:block;margin:4px 0 0 auto;border:none;background:none;padding:0;cursor:pointer;
+  font-family:inherit;font-size:11.5px;font-weight:600;color:#111827;text-decoration:underline;
+}
+.cat2-sus-empty{padding:22px 0;font-size:var(--c-fs);color:#6b7280}
+.cat2-sus-preamble{padding:0 0 10px}
+.cat2-mfr-sust-meta{font-size:11.5px;color:#64748b;margin:0 0 8px;line-height:1.4}
+.cat2-mfr-pills{display:flex;flex-wrap:wrap;gap:5px}
+.cat2-mfr-pill{
+  display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600;
+  background:#ecfdf5;color:#166534;border:1px solid #bbf7d0;line-height:1.35;
+}
+.cat2-mfr-pill--off{background:#f8fafc;color:#94a3b8;border-color:#e2e8f0;font-weight:500}
+
+/* ── Documents list (Documents tab) ────────────────────────────────────── */
+.cat2-doc-list{
+  padding:6px 0 18px;display:flex;flex-direction:column;
+}
+.cat2-doc-item{
+  display:flex;gap:14px;align-items:flex-start;
+  padding:14px 16px;background:none;border:none;width:100%;
+  text-align:left;font-family:inherit;cursor:default;
+}
+.cat2-doc-item--clickable{cursor:pointer;border-radius:8px;transition:background .12s}
+.cat2-doc-item--clickable:hover{background:#f8fafc}
+.cat2-doc-item + .cat2-doc-item{border-top:1px solid #f3f4f6}
+/* Page-glyph thumbnail with the document type stamped at its foot. */
+.cat2-doc-thumb{
+  flex:0 0 auto;width:44px;height:56px;border-radius:3px;
+  background:#fff;border:1px solid #e3e6ea;
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
+  padding-bottom:4px;position:relative;overflow:hidden;
+}
+.cat2-doc-thumb::before{
+  content:"";position:absolute;left:7px;right:7px;top:9px;height:22px;
+  background:repeating-linear-gradient(#eef0f3 0 2px, transparent 2px 5px);
+}
+.cat2-doc-thumb-tag{
+  font-size:7.5px;font-weight:700;letter-spacing:.04em;color:#8a93a0;
+  text-transform:uppercase;
+}
+.cat2-doc-info{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:2px}
+.cat2-doc-name{
+  font-size:var(--js2-doc-name-fs,12.5px);font-weight:600;color:#1f2937;
+  line-height:1.35;
+}
+.cat2-doc-meta{font-size:var(--js2-doc-meta-fs,11px);color:#9ca3af;line-height:1.45}
+.cat2-doc-warn{font-size:var(--js2-doc-meta-fs,11px);color:#b45309;line-height:1.45}
+.cat2-doc-acts{display:flex;align-items:center;gap:10px;margin-top:5px}
+.cat2-doc-act{
+  font-size:var(--js2-doc-link-fs,11px);font-weight:500;color:#2a7d2e;
+  background:none;border:none;padding:0;cursor:pointer;font-family:inherit;
+  text-decoration:none;
+}
+.cat2-doc-act:hover{text-decoration:underline}
+.cat2-doc-act.secondary{color:#6b7280}
+.cat2-doc-empty{padding:22px 16px;font-size:var(--c-fs);color:#6b7280;line-height:1.5}
+
+/* ── Inline PDF preview (a document row's "Preview") ───────────────────── */
+.cat2-doc-preview-bar{
+  flex:0 0 auto;display:flex;align-items:center;gap:8px;
+  padding:7px 12px;background:#fafafa;border-bottom:1px solid #eceef1;
+}
+.cat2-doc-back{
+  border:none;background:#f1f5f9;border-radius:6px;cursor:pointer;
+  font-family:inherit;font-size:11px;color:#374151;padding:4px 9px;
+}
+.cat2-doc-back:hover{background:#e2e8f0}
+.cat2-doc-preview-title{
+  font-size:11.5px;font-weight:600;color:#374151;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1 1 auto;
+}
+.cat2-doc-link{
+  font-size:var(--js2-doc-link-fs,11px);color:#2a7d2e;text-decoration:none;
+  border:1px solid #dbe3ec;border-radius:6px;padding:3px 8px;background:#fff;
+  cursor:pointer;font-family:inherit;flex-shrink:0;
+}
+.cat2-doc-link:hover{background:#f1f5f9;text-decoration:none}
+#cat2-doc-body{
+  flex:1 1 auto;min-height:0;position:relative;background:#f1f5f9;
+  display:flex;flex-direction:column;
+}
+#cat2-doc-body[hidden]{display:none}
+.cat2-doc-msg{
+  padding:20px 18px;font-size:var(--c-fs);color:#475569;line-height:1.5;
+  display:flex;flex-direction:column;gap:12px;align-items:flex-start;
+}
+
+/* ── PDF preview (server-rasterised page images; see showDocPreview) ── */
+.cat2-pdf-viewer{flex:1 1 auto;min-height:0;display:flex;flex-direction:column}
+.cat2-pdf-toolbar{
+  flex:0 0 auto;display:flex;align-items:center;justify-content:center;gap:12px;
+  padding:6px 10px;background:#fff;border-bottom:1px solid #eceef1;
+}
+.cat2-pdf-pager{font-size:var(--js2-doc-link-fs,11px);color:#64748b;text-align:center}
+/* All pages in one scroller: they arrive together in the payload, so paging
+   would add nothing but clicks. */
+.cat2-pdf-page-wrap{
+  flex:1 1 auto;min-height:240px;overflow:auto;padding:12px;
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+}
+.cat2-pdf-page{
+  width:100%;height:auto;display:block;background:#fff;border-radius:4px;
+  box-shadow:0 1px 4px rgba(15,23,42,0.12);
+}
+
+/* ── Document preview popup (Documents tab → Preview) ───────────────────── */
+.doc-popup-bg{
+  position:fixed;inset:0;z-index:10000;background:rgba(15,23,42,0.55);
+  display:none;align-items:center;justify-content:center;
+  padding:12px 20px 20px;box-sizing:border-box;
+}
+.doc-popup-bg.open{display:flex}
+/* The range gallery is tall, and centred it floats with its top edge part-way
+   down the cards. Aligned to the top of #grid it starts where the cards start,
+   so the page reads as one frame. The offset is measured at open time (the
+   toolbar's height varies with the filters in use) and applied inline. */
+.doc-popup-bg.align-grid{align-items:flex-start}
+.doc-popup{
+  background:#fff;border-radius:14px;width:min(920px,100%);
+  max-height:calc(100% - 8px);display:flex;flex-direction:column;
+  position:relative;overflow:hidden;
+  box-shadow:0 24px 64px rgba(15,23,42,0.28);
+}
+.doc-popup-close{
+  position:absolute;top:10px;right:10px;z-index:2;
+  border:none;background:#f1f5f9;border-radius:999px;
+  width:32px;height:32px;font-size:16px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;color:#374151;
+}
+.doc-popup-close:hover{background:#e2e8f0}
+/* Listino popup — the manufacturer's own price table for one product. Reuses the
+   document popup's overlay/shell so there is one popup idiom in the component. */
+.price-popup{width:min(1040px,100%)}
+#price-popup-body{padding:18px 20px 20px;overflow:auto}
+.cat2-price-head{padding-right:44px;margin-bottom:12px}
+.cat2-price-title{font-weight:700;font-size:15px;color:#0f172a}
+.cat2-price-sub{font-size:12px;color:#64748b;margin-top:3px}
+.cat2-price-sub a{color:#2563eb;text-decoration:none}
+.cat2-price-sub a:hover{text-decoration:underline}
+table.cat2-price-table{border-collapse:collapse;width:100%;font-size:12px}
+table.cat2-price-table th{
+  background:#eef2f7;color:#1e293b;font-weight:600;text-align:right;
+  padding:6px 8px;border-bottom:1px solid #cbd5e1;white-space:nowrap;
+}
+table.cat2-price-table th:first-child,
+table.cat2-price-table td:first-child{text-align:left}
+table.cat2-price-table td{
+  padding:5px 8px;border-bottom:1px solid #eef2f7;text-align:right;
+  white-space:nowrap;color:#334155;
+}
+table.cat2-price-table tr.is-match td{background:#f1f5ff;font-weight:600;color:#0f172a}
+.cat2-price-note{font-size:11px;color:#64748b;margin-top:10px;line-height:1.5}
+.cat2-price-link{cursor:pointer;text-decoration:underline dotted;text-underline-offset:2px}
+/* Included products / collections covered by a plant- or family-level EPD entry. */
+.incl-popup{width:min(560px,100%)}
+#incl-popup-body{padding:18px 20px 20px;overflow:auto;max-height:min(70vh,560px)}
+.cat2-incl-head{padding-right:44px;margin-bottom:10px}
+.cat2-incl-title{font-weight:700;font-size:15px;color:#0f172a}
+.cat2-incl-sub{font-size:12px;color:#64748b;margin-top:3px;line-height:1.45}
+.cat2-incl-filter{
+  width:100%;box-sizing:border-box;margin:0 0 12px;padding:7px 10px;
+  border:1px solid #e5e7eb;border-radius:8px;font:inherit;font-size:12.5px;
+}
+.cat2-incl-filter:focus{outline:2px solid #2a7d2e;outline-offset:1px;border-color:#cbd5e1}
+.cat2-incl-list{display:flex;flex-direction:column;gap:4px;margin:0;padding:0;list-style:none}
+.cat2-incl-item{
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  width:100%;text-align:left;border:1px solid #eef2f7;background:#fff;
+  border-radius:8px;padding:8px 10px;cursor:pointer;font:inherit;font-size:12.5px;
+  color:#1f2937;transition:background .12s,border-color .12s;
+}
+.cat2-incl-item:hover{background:#f8fafc;border-color:#cbd5e1}
+.cat2-incl-item-name{font-weight:500;min-width:0;overflow-wrap:anywhere}
+.cat2-incl-item-hint{flex:0 0 auto;font-size:11px;color:#2a7d2e;font-weight:500}
+.cat2-incl-empty{padding:14px 0;font-size:12.5px;color:#6b7280}
+/* Gallery mode — used when the names resolve in window.__RANGE_INDEX__, so the
+   range can be browsed the way an architectural catalogue presents it: the
+   actual surface, not a line of text. Falls back to the list above when the
+   range is unknown. */
+.incl-popup.is-gallery{width:min(1240px,100%)}
+.incl-popup.is-gallery #incl-popup-body{max-height:min(78vh,720px)}
+.cat2-incl-grid{
+  display:grid;grid-template-columns:repeat(6,minmax(0,1fr));
+  gap:8px;margin:0;padding:0;list-style:none;
+}
+@media (max-width:900px){
+  .cat2-incl-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+@media (max-width:620px){
+  .cat2-incl-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+.cat2-incl-tile{
+  display:flex;flex-direction:column;width:100%;text-align:left;padding:0;
+  border:1px solid #e8edf3;border-radius:8px;background:#fff;overflow:hidden;
+  cursor:pointer;font:inherit;color:#1f2937;
+  transition:border-color .12s,box-shadow .12s,transform .12s;
+}
+.cat2-incl-tile:hover{
+  border-color:#c5dbc7;box-shadow:0 4px 14px rgba(15,23,42,.10);transform:translateY(-1px);
+}
+.cat2-incl-tile:focus-visible{outline:2px solid #2a7d2e;outline-offset:2px}
+.cat2-incl-thumb{
+  position:relative;aspect-ratio:4/3;background:#f1f5f9 center/cover no-repeat;
+}
+.cat2-incl-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.cat2-incl-thumb-fallback{
+  display:flex;align-items:center;justify-content:center;height:100%;
+  font-size:10px;color:#94a3b8;letter-spacing:.04em;text-transform:uppercase;
+}
+.cat2-incl-badge{
+  position:absolute;top:5px;right:5px;padding:1px 5px;border-radius:999px;
+  background:rgba(15,23,42,.78);color:#fff;font-size:9px;font-weight:600;
+  letter-spacing:.02em;
+}
+.cat2-incl-tile-body{padding:6px 8px 8px;display:flex;flex-direction:column;gap:2px}
+.cat2-incl-tile-name{font-weight:600;font-size:11.5px;line-height:1.3;overflow-wrap:anywhere}
+.cat2-incl-tile-meta{font-size:10px;color:#64748b;line-height:1.3}
+.cat2-incl-tile-link{
+  font-size:10px;color:#2a7d2e;font-weight:600;text-decoration:none;margin-top:1px;
+  padding:0 8px 6px;
+}
+.cat2-incl-tile-link:hover{text-decoration:underline}
+.cat2-incl-toolbar{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.cat2-incl-toolbar .cat2-incl-filter{margin:0;flex:1 1 auto}
+.cat2-incl-count{flex:0 0 auto;font-size:11.5px;color:#64748b;white-space:nowrap}
+.cat2-incl-section{margin-top:14px;padding-top:12px;border-top:1.5px solid #d1d9e6}
+.cat2-incl-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.cat2-incl-chip{
+  border:1px solid #e5e7eb;background:#f8fafc;border-radius:999px;
+  padding:4px 10px;font:inherit;font-size:11.5px;color:#374151;cursor:pointer;
+  max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  transition:background .12s,border-color .12s,color .12s;
+}
+.cat2-incl-chip:hover{background:#eaf3ea;border-color:#c5dbc7;color:#1f5e23}
+.cat2-incl-more{
+  border:none;background:none;padding:4px 2px;cursor:pointer;font:inherit;
+  font-size:11.5px;font-weight:600;color:#2a7d2e;text-decoration:underline;
+}
+#doc-popup-body{
+  flex:1 1 auto;min-height:0;overflow:auto;
+  display:flex;flex-direction:column;
+}
+.doc-popup-bg .cat2-doc-preview-bar{flex:0 0 auto;padding-right:44px}
+.doc-popup-bg .cat2-pdf-viewer{flex:1 1 auto;min-height:280px}
+.doc-popup-bg .cat2-pdf-page-wrap{max-height:none}
+
+/* ── Centre overlay modal (JS2_DETAIL_VIEW_MODE === "center_modal"; legacy) ── */
+.modal-bg{
+  position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.45);
+  display:flex;align-items:center;justify-content:center;
+  padding:8px 16px 24px;
+  overflow-y:auto;box-sizing:border-box;
+}
+.modal{
+  background:#fff;border-radius:16px;padding:24px;max-width:700px;width:100%;
+  position:relative;flex:0 1 auto;margin:0 auto;
+  max-height:calc(100% - 16px);overflow-y:auto;
+  box-shadow:0 20px 60px rgba(0,0,0,0.2);
+  box-sizing:border-box;
+}
+.modal-close{
+  position:absolute;top:14px;right:14px;border:none;background:#f1f5f9;
+  border-radius:999px;width:32px;height:32px;font-size:var(--js2-modal-close-fs,16px);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;color:#374151;
+  transition:background .12s;
+}
+.modal-close:hover{background:#e2e8f0}
+.modal-name{font-size:var(--js2-modal-name-fs,17px);font-weight:700;line-height:1.3;margin-bottom:2px;padding-right:40px}
+.modal-mfr{font-size:var(--js2-modal-mfr-fs,13px);color:#475569;margin-bottom:6px}
+/* Horizontal divider between major sections */
+.modal-section{margin-top:16px;padding-top:14px;border-top:1.5px solid #d1d9e6}
+/* Right-panel Info tab: drop per-block rules; keep a single divider above the CTAs. */
+#cat2-detail-body .modal-section,
+#cat2-detail-body .cat2-incl-section{
+  border-top:none;margin-top:14px;padding-top:0;
+}
+#cat2-detail-body > .modal-section:first-child,
+#cat2-detail-body > .cat2-incl-section:first-child,
+#cat2-detail-body > .modal-copy-group:first-child{
+  margin-top:0;
+}
+.modal-label{
+  font-size:var(--js2-modal-label-fs,11px);font-weight:600;color:#64748b;
+  text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;
+}
+/* Image + GWP side-by-side header */
+.modal-hdr-grid{
+  display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;
+  margin:12px 0 0;
+}
+.modal-hdr-img img{
+  display:block;max-width:180px;max-height:130px;object-fit:contain;
+  border-radius:8px;border:1px solid #f1f5f9;background:#f8fafc;
+}
+/* Detail panel GWP value. Same treatment as the card pill (.cat2-gwp): serif,
+   italic, 600. Right-panel line is "GWP = 13.27 kgCO₂e/m²" (see modalHTMLRightPanel).
+   Size: theme.json > catalogue.js2.typography.modal_gwp_font_size_px. */
+.modal-gwp-value{
+  font-family:var(--js2-ff-serif);font-style:italic;font-weight:600;
+  font-size:var(--js2-modal-gwp-fs,18px);
+  line-height:var(--js2-card-metric-lh,1.2);
+  margin-bottom:6px;
+}
+.modal-gwp-row .modal-gwp-value{margin-bottom:0}
+.modal-detail-2col{
+  display:grid;grid-template-columns:1fr 1fr;
+  column-gap:var(--cat2-popup-col-gap,20px);row-gap:0;align-items:start;
+}
+.modal-col-title{
+  font-size:11px;font-weight:600;color:#64748b;
+  text-transform:uppercase;letter-spacing:.05em;
+  margin-bottom:6px;padding-bottom:4px;border-bottom:1px solid #e5e7eb;
+}
+.modal-detail-col .ext-field-row{border-top:1px solid #f1f5f9;padding:4px 0}
+.modal-doc-viewer-wrap{margin-top:10px;padding-top:10px;border-top:1px solid #f1f5f9}
+.modal-doc-viewer-wrap .modal-btn{width:100%;justify-content:center}
+.modal .ext-field-content{grid-column:1 / -1;margin-top:6px}
+.modal-btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;padding-top:14px;border-top:1.5px solid #d1d9e6}
+.modal-btn{
+  border:1px solid #e5e7eb;background:#fff;border-radius:8px;padding:7px 14px;
+  font-size:var(--c-fs);cursor:pointer;color:#374151;text-decoration:none;
+  display:inline-flex;align-items:center;gap:5px;
+  transition:background .12s,border-color .12s;
+}
+.modal-btn:hover{background:#f8fafc;border-color:#cbd5e1}
+.modal-btn.primary{background:#2a7d2e;color:#fff;border-color:#2a7d2e}
+.modal-btn.primary:hover{background:#1e5f21;border-color:#1e5f21}
+.modal-voc-img{
+  height:32px;width:auto;max-width:140px;object-fit:contain;vertical-align:middle;
+  border:none;background:transparent;padding:0;margin:0;
+}
+.modal-text-block{
+  font-size:var(--c-fs);color:#111;line-height:1.45;
+  white-space:pre-wrap;word-break:break-word;
+  max-height:160px;overflow-y:auto;
+}
+/* Description + Content stack in one column; Comments follows Product Details. */
+.modal-copy-2col{
+  display:flex;flex-direction:column;gap:0;
+}
+.modal-copy-group .modal-text-item{margin-top:16px;padding-top:0;border-top:none}
+.modal-copy-group > :first-child{margin-top:0}
+.modal-copy-group .modal-copy-2col .modal-text-item{margin-top:0}
+/* Slightly more space above titles, less between title and body. */
+.modal-copy-group .modal-text-item .modal-label{margin-top:2px;margin-bottom:2px}
+
+/* ── Extended field classes (mirrors catalogue_component.html) ── */
+.ext-field-row{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  gap:6px;padding:2px 0;
+}
+.ext-field-label{font-size:var(--c-fs);color:#64748b;font-weight:600;flex-shrink:0}
+.ext-field-value{font-size:var(--c-fs);color:#111;text-align:right;word-break:break-word}
+.ext-field-value a{color:#2563eb;text-decoration:underline}
+.ext-field-value a:hover{color:#1d4ed8}
+.ext-field-content{margin-top:4px;padding-top:4px;border-top:1px solid #e5e7eb}
+.ext-field-content .ext-field-label{display:block;margin-bottom:3px}
+.ext-field-box{
+  font-size:var(--c-fs);color:#111;border:1px solid #e5e7eb;border-radius:4px;
+  padding:4px 6px;max-height:80px;overflow-y:auto;width:100%;word-break:break-word;
+}
+.ext-back-panel{padding-top:2px}
+</style>
+</head>
+<body>
+
+<div id="cat2-chrome">
+<!-- Toolbar -->
+<div class="rv-toolbar">
+  <div>
+    <span style="margin-right:6px;color:#6b7280">View</span>
+    <span class="rv-toolbar-group">
+      <button id="rv-btn-grid" type="button" class="rv-active" title="Grid view">⊞ Grid</button>
+      <button id="rv-btn-list" type="button" title="List view">☰ List</button>
+    </span>
+    <span id="rv-size-label" style="margin-left:10px;margin-right:6px;color:#6b7280">Size</span>
+    <span id="rv-size-group" class="rv-toolbar-group" role="group" aria-label="Card size">
+      <button id="rv-size-s" type="button">S</button>
+      <button id="rv-size-m" type="button" class="rv-active">M</button>
+      <button id="rv-size-l" type="button">L</button>
+      <button id="rv-size-xl" type="button">XL</button>
+    </span>
+    <span id="rv-entry-label" style="margin-left:10px;margin-right:6px;color:#6b7280">Entries</span>
+    <span id="rv-entry-group" class="rv-toolbar-group" role="group" aria-label="Entry detail">
+      <button id="rv-entry-condensed" type="button" class="rv-active"
+        title="One entry per library row">Condensed</button>
+      <button id="rv-entry-expanded" type="button"
+        title="One entry per commercial collection covered by the row">Expanded</button>
+    </span>
+    <span id="rv-xl-groups-wrap" class="rv-xl-groups-wrap" aria-hidden="true">
+      <span id="rv-xl-groups-label" style="margin-left:10px;margin-right:6px;color:#6b7280">Data Groups</span>
+      <span id="rv-xl-groups-group" class="rv-toolbar-group" role="group" aria-label="Data group">
+        <button type="button" class="rv-xl-group-btn rv-active" data-xl-group="0+A">0+A</button>
+        <button type="button" class="rv-xl-group-btn" data-xl-group="D">D</button>
+        <button type="button" class="rv-xl-group-btn" data-xl-group="E">E</button>
+        <button type="button" class="rv-xl-group-btn" data-xl-group="G">G</button>
+        <button type="button" class="rv-xl-group-btn" data-xl-group="P">P</button>
+        <button type="button" class="rv-xl-group-btn" data-xl-group="R">R</button>
+        <button type="button" class="rv-xl-group-btn" data-xl-group="S">S</button>
+        <button type="button" class="rv-xl-group-btn" data-xl-group="U">U</button>
+        <button type="button" class="rv-xl-group-btn" data-xl-group="VO">VO</button>
+        <button type="button" class="rv-xl-group-btn" data-xl-group="VV">VV</button>
+      </span>
+    </span>
+  </div>
+  <div class="rv-toolbar-end">
+    <div class="rv-load" id="rv-load">
+      <div class="rv-load-track"><div class="rv-load-fill" id="rv-load-fill"></div></div>
+      <span class="rv-load-pct" id="rv-load-pct">0%</span>
+    </div>
+    <div class="rv-count" id="rv-count"></div>
+  </div>
+</div>
+
+<!-- Filter bar — VIEW-LOCAL refinement only.
+     The app's filter hierarchy is: sidebar (global dataset) → catalogue controls
+     above the tabs (search / tags / display) → this bar. Fields that a higher
+     level already owns are hidden from here via window.__CAT_CFG__.filterBar.hidden
+     (see lib_ui_catalogues.js_catalogue_window_config_json), so the same dimension
+     is never offered twice with two different answers. Each label+control pair is
+     wrapped in a display:contents span so hiding one does not disturb the layout. -->
+<div class="filter-bar" id="filter-bar">
+  <span class="filter-scope" id="filter-scope">Refine within current filters</span>
+  <span class="filter-field" data-field="search">
+    <label>Search</label>
+    <input id="f-search" class="filter-input" type="search" placeholder="name, manufacturer, description, EPD number…">
+  </span>
+  <span class="filter-field" data-field="prod">
+    <label>Product type</label>
+    <select id="f-prod" class="filter-select"></select>
+  </span>
+  <span class="filter-field" data-field="mat">
+    <label>Material</label>
+    <select id="f-mat" class="filter-select"></select>
+  </span>
+  <span class="filter-field" data-field="country">
+    <label>Country</label>
+    <select id="f-country" class="filter-select"></select>
+  </span>
+  <span class="filter-field" data-field="prog">
+    <label>Programme</label>
+    <select id="f-prog" class="filter-select">
+      <option value="">(all)</option>
+    </select>
+  </span>
+  <span class="filter-field" data-field="voc">
+    <label>VOC</label>
+    <select id="f-voc" class="filter-select">
+      <option value="">(all)</option>
+      <option value="yes">With VOC cert</option>
+      <option value="no">No VOC cert</option>
+    </select>
+  </span>
+  <span class="filter-group-sep" aria-hidden="true"></span>
+  <span class="filter-field" data-field="fu">
+    <label for="f-fu">FU:</label>
+    <select id="f-fu" class="filter-select" aria-label="GWP functional unit">
+      <option value="m2">GWP/m2</option>
+      <option value="m3">GWP/m3</option>
+      <option value="kg">GWP/kg</option>
+    </select>
+  </span>
+  <span class="filter-field" data-field="group">
+    <label for="f-group">Group by:</label>
+    <select id="f-group" class="filter-select">
+      <option value="">(none)</option>
+      <option value="material">Material Type</option>
+      <option value="manufacturer">Manufacturer</option>
+      <option value="epd">EPD Number</option>
+    </select>
+  </span>
+  <span class="filter-field" data-field="sort">
+    <label for="f-sort">Sort by:</label>
+    <select id="f-sort" class="filter-select">
+      <option value="product">Alphabetically</option>
+      <option value="epd_number">EPD Number</option>
+      <option value="thickness">Thickness</option>
+      <option value="density">Density</option>
+      <option value="manufacturer">Manufacturer</option>
+      <option value="gwp">GWP</option>
+      <option value="gwp_m2">GWP/m2</option>
+      <option value="gwp_m3">GWP/m3</option>
+      <option value="gwp_kg">GWP/kg</option>
+      <option value="recycled_content">Rec. Content</option>
+    </select>
+  </span>
+  <button id="f-clear" class="filter-clear-btn" type="button">✕ Clear</button>
+</div>
+</div>
+
+<!-- Catalogue + right detail panel. The panel carries a tab strip: product
+     details plus one tab per document the product has, so everything about a
+     product stays in this one column. -->
+<div id="cat2-shell">
+<main id="cat2-main">
+<div id="grid"></div>
+</main>
+<aside id="cat2-detail-panel" aria-hidden="true">
+  <!-- Header bar matches charts_scatter_ec_popup.html (title + close). -->
+  <div class="cat2-detail-hdr">
+    <span class="cat2-detail-title">Product details</span>
+    <button id="cat2-detail-close" class="cat2-detail-close" type="button" aria-label="Close">✕</button>
+  </div>
+  <div id="cat2-detail-top"></div>
+  <nav id="cat2-detail-tabs" role="tablist" aria-label="Product sections"></nav>
+  <div id="cat2-detail-body"></div>
+  <div id="cat2-coll-body" hidden></div>
+  <div id="cat2-tech-body" hidden></div>
+  <div id="cat2-sus-body" hidden></div>
+  <div id="cat2-doc-body" hidden></div>
+  <!-- Admin-only: open Developer → Edit Existing Item for this product. -->
+  <div id="cat2-detail-footer" hidden></div>
+</aside>
+</div>
+
+<!-- Centre overlay modal — used only when JS2_DETAIL_VIEW_MODE === "center_modal" -->
+<div id="modal-bg" class="modal-bg" style="display:none" role="dialog" aria-modal="true">
+  <div class="modal" id="modal">
+    <button id="modal-close" class="modal-close" type="button" aria-label="Close">✕</button>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<!-- Document preview popup — PDF page images from Documents tab (or deep-link) -->
+<div id="doc-popup-bg" class="doc-popup-bg" role="dialog" aria-modal="true" aria-hidden="true">
+  <div id="doc-popup" class="doc-popup">
+    <button id="doc-popup-close" class="doc-popup-close" type="button" aria-label="Close document preview">✕</button>
+    <div id="doc-popup-body"></div>
+  </div>
+</div>
+
+<!-- Listino popup — the manufacturer's full price table for one product -->
+<div id="price-popup-bg" class="doc-popup-bg" role="dialog" aria-modal="true" aria-hidden="true">
+  <div id="price-popup" class="doc-popup price-popup">
+    <button id="price-popup-close" class="doc-popup-close" type="button" aria-label="Close price list">✕</button>
+    <div id="price-popup-body"></div>
+  </div>
+</div>
+
+<!-- Included products / collections covered by this MatLib entry (EPD family) -->
+<div id="incl-popup-bg" class="doc-popup-bg" role="dialog" aria-modal="true" aria-hidden="true">
+  <div id="incl-popup" class="doc-popup incl-popup">
+    <button id="incl-popup-close" class="doc-popup-close" type="button" aria-label="Close included products">✕</button>
+    <div id="incl-popup-body"></div>
+  </div>
+</div>
+
+<!-- Document preview (Documents tab → Preview) shows pages as <img>, rasterised
+     server-side by PyMuPDF — the same approach the EPD Parse page uses for its
+     docked preview. Nothing else works from here: this component is a sandboxed
+     srcdoc iframe (Streamlit's st.iframe), where *navigating* a further nested
+     iframe/embed to a PDF — even a same-origin static URL, even a data: URI —
+     is blocked, and pdf.js can't stand in for it either, because location.origin
+     is the literal string "null" in this context and that defeats its worker
+     same-origin check. Plain images have neither constraint. See
+     lib_ui.fn358_rasterize_pdf_pages. -->
+<!-- Main script is inert (type="text/plain") and started by the loader at the end
+     of <body> once window.__DATA__ is available: Python serves the catalogue rows
+     as a static file (window.__DATA_URL__, see lib_ui._fn336_static_products_url)
+     rather than inlining ~11 MB into every rerun's srcdoc. -->
+<script type="text/plain" id="cat2-main-script">
+const PRODUCTS   =(window.__DATA__ && window.__DATA__.length) ? window.__DATA__ : [];
+const PRICE_TABLES = window.__PRICE_TABLES__ || {};   // EETRA id → listino table
+const GWP_RANGES = window.__GWP_RANGES__ || {};
+const RC_RANGES  = window.__RC_RANGES__  || {};
+const STELLA_IMG = window.__STELLA_IMG__ || "";
+const JS2_FIELDS = (window.__JS2_FIELDS__ && window.__JS2_FIELDS__.detail_rows)
+  ? window.__JS2_FIELDS__ : {detail_rows:[]};
+const FIELD_VIS = window.__FIELD_VIS__ || {};
+// Commercial ranges behind an EPD row: lower-cased product name → image, size,
+// thickness, finishes (aux__product_ranges.json "index"). Lets the included-
+// products popup show the range as a gallery. Absent → popup stays a list.
+const RANGE_INDEX = window.__RANGE_INDEX__ || {};
+// The same file one level up: range id → one commercial collection
+// ("Collezione") with its label, source page, shared thickness/sizes/finishes
+// and a representative thumbnail. Drives the Condensed/Expanded entry toggle.
+const RANGE_COLLECTIONS = window.__RANGE_COLLECTIONS__ || {};
+const MFR_LOGOS = window.__MFR_LOGOS__ || {};
+const CAT_CFG = window.__CAT_CFG__ || {};
+const LIST_FIELDS = window.__LIST_FIELDS__ || {};
+const LIST_OPTIONAL = new Set((CAT_CFG.listOptionalColumns || []));
+const INITIAL_LOAD_PCT = Math.min(100, Math.max(0, Number(window.__LOAD_PCT__) || 0));
+const IFRAME_HEIGHT = Math.max(320, Number(window.__IFRAME_HEIGHT__) || 920);
+
+// ── Product detail presentation (reversible) ──
+// Python default: libs/lib_ui_catalogues.py → JS2_DETAIL_VIEW_MODE
+//   "right_panel"  — fixed right column (active default; ECOportal JS pattern)
+//   "center_modal" — centred overlay popup (legacy; modal-bg below)
+const JS2_DETAIL_VIEW_MODE = String(window.__JS2_DETAIL_VIEW__ || "right_panel").trim().toLowerCase();
+const JS2_USE_RIGHT_PANEL = (JS2_DETAIL_VIEW_MODE === "right_panel");
+
+function fieldVisible(p, key){
+  const fv = FIELD_VIS[p.id];
+  if(!fv || typeof fv[key] !== "boolean") return true;
+  return fv[key];
+}
+
+function setLoadProgress(pct, hideAtComplete){
+  const wrap = document.getElementById("rv-load");
+  const fill = document.getElementById("rv-load-fill");
+  const lbl  = document.getElementById("rv-load-pct");
+  if(!wrap || !fill || !lbl) return;
+  const p = Math.max(0, Math.min(100, Number(pct) || 0));
+  fill.style.width = p + "%";
+  lbl.textContent = Math.round(p) + "%";
+  if(hideAtComplete && p >= 100){
+    wrap.style.display = "none";
+  } else {
+    wrap.style.display = "flex";
+  }
+}
+const FLAGS = {
+  DK:"🇩🇰",DE:"🇩🇪",IT:"🇮🇹",BE:"🇧🇪",PL:"🇵🇱",SE:"🇸🇪",FR:"🇫🇷",GB:"🇬🇧",
+  NL:"🇳🇱",ES:"🇪🇸",AT:"🇦🇹",CH:"🇨🇭",FI:"🇫🇮",NO:"🇳🇴",PT:"🇵🇹",CZ:"🇨🇿",SK:"🇸🇰",
+  HU:"🇭🇺",RO:"🇷🇴",BG:"🇧🇬",HR:"🇭🇷",SI:"🇸🇮",GR:"🇬🇷",TR:"🇹🇷",
+  US:"🇺🇸",CA:"🇨🇦",AU:"🇦🇺",JP:"🇯🇵",KR:"🇰🇷",CN:"🇨🇳",
+};
+const COUNTRY_ISO = {
+  "ITALY":"IT","GERMANY":"DE","FRANCE":"FR","SPAIN":"ES","DENMARK":"DK",
+  "BELGIUM":"BE","POLAND":"PL","SWEDEN":"SE","UNITED KINGDOM":"GB","UK":"GB",
+  "AUSTRIA":"AT","SWITZERLAND":"CH","NETHERLANDS":"NL","NORWAY":"NO",
+  "FINLAND":"FI","PORTUGAL":"PT","CZECH REPUBLIC":"CZ","SLOVAKIA":"SK",
+};
+// Very high resolutions: the screen (not the iframe, which also loses the Streamlit
+// sidebar) wider than 2000 CSS px. The detail panel drops one column on open
+// (effectiveGridCols), so with it open this gives S 9 / M 6 / L 4; XL ignores the panel.
+const WIDE_SCREEN = !!(window.screen && window.screen.width > 2000);
+if(WIDE_SCREEN) document.documentElement.classList.add("cat2-wide-screen");
+const COLS_BY_SIZE = WIDE_SCREEN ? {S:10, M:7, L:5, XL:4} : {S:8, M:6, L:4, XL:3};
+const MIN_CARD_PX  = {S:110, M:128, L:200, XL:220};
+
+// ── State ──
+let viewMode = "grid";
+let sizeMode = "M";
+// "condensed" → one entry per library row (one EPD). "expanded" → one entry per
+// commercial collection the row covers. See buildExpandedProducts.
+const ENTRY_MODE_KEY = "eetraCatalogueEntryMode";
+let entryMode = "condensed";
+try {
+  const _em = sessionStorage.getItem(ENTRY_MODE_KEY);
+  if(_em === "expanded" || _em === "condensed") entryMode = _em;
+} catch(e) {}
+let xlGlobalGroup = "0+A";
+let sortField = "product";
+let sortDir   = 1;
+// Rec. Content sorts highest first; everything else ascending.
+const SORT_DEFAULT_DIR = {recycled_content: -1};
+const SORT_KEY = "eetraCatalogueSort";
+const GRID_FU_KEY = "eetraCatalogueGridFu";
+const GRID_FU_OPTS = new Set(["m2", "m3", "kg"]);
+let gridFuKey = "m2";
+try {
+  const fu = sessionStorage.getItem(GRID_FU_KEY);
+  if(GRID_FU_OPTS.has(fu)) gridFuKey = fu;
+} catch(e) {}
+function saveGridFu(){
+  try { sessionStorage.setItem(GRID_FU_KEY, gridFuKey); } catch(e) {}
+  const sel = document.getElementById("f-fu");
+  if(sel) sel.value = GRID_FU_OPTS.has(gridFuKey) ? gridFuKey : "m2";
+}
+try {
+  const s = JSON.parse(sessionStorage.getItem(SORT_KEY) || "null");
+  if(s && s.field){ sortField = s.field; sortDir = s.dir === -1 ? -1 : 1; }
+} catch(e) {}
+function saveSort(){
+  try { sessionStorage.setItem(SORT_KEY, JSON.stringify({field: sortField, dir: sortDir})); } catch(e) {}
+  const sel = document.getElementById("f-sort");
+  if(sel) sel.value = [...sel.options].some(o => o.value === sortField) ? sortField : "";
+}
+let filters   = {search:"", prod:"", mat:"", country:"", prog:"", voc:""};
+// Group by is a view setting: ✕ Clear leaves it alone. Kept in sessionStorage
+// because the iframe is rebuilt on every Streamlit rerun.
+const GROUP_BY_KEY = "eetraCatalogueGroupBy";
+let groupBy = "";
+try { groupBy = sessionStorage.getItem(GROUP_BY_KEY) || ""; } catch(e) { groupBy = ""; }
+let modalOpen = null;
+
+// ── Helpers ──
+function esc(s){
+  return String(s==null?"":s)
+    .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+function escAttr(s){
+  return String(s==null?"":s)
+    .replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");
+}
+
+// Some manufacturers list several plant countries in one field, "; "-joined
+// (e.g. "Netherlands; Spain") — same delimiter/convention as the Python-side
+// splitter in libs/lib_ui.py (fn322_get_value_counts_for_treemap). Split so the
+// filter offers/matches each country individually instead of the whole compound
+// string as one option.
+function splitCountries(raw){
+  return String(raw||"").split(";").map(s=>s.trim().toUpperCase()).filter(Boolean);
+}
+
+function appOrigin(){
+  try {
+    const o = window.parent && window.parent.location && window.parent.location.origin;
+    if(o && o !== "null") return o;
+  } catch(_e){}
+  try {
+    const o = window.location.origin;
+    if(o && o !== "null") return o;
+  } catch(_e2){}
+  return "";
+}
+
+function appStaticUrl(path){
+  const p = String(path || "").trim();
+  if(!p) return p;
+  if(/^https?:\/\//i.test(p)) return p;
+  const rel = p.startsWith("/") ? p : "/" + p;
+  const origin = appOrigin();
+  return origin ? origin + rel : rel;
+}
+
+function productImageSrc(raw){
+  const u = String(raw || "").trim();
+  if(!u) return "";
+  // pandas NA / workbook blanks must never become <img src> — browsers request
+  // them as relative paths and Streamlit's static lookup crashes on Windows
+  // (WinError 123 for filenames containing < >).
+  if(/^(<|>)?NA>?$/i.test(u) || /^(nan|none|null|-)$/i.test(u)) return "";
+  if(u.startsWith("data:")) return u;
+  if(u.startsWith("/app/")) return appStaticUrl(u);
+  return u;
+}
+
+// Larger served tier, for the detail panel only. The grid deliberately loads a
+// smaller file (see theme.json image_band._cache_tiers_note): a card paints its
+// image into ~78x70 CSS px, the panel into as much as 180x130. imageUrlDetail is
+// only present when it actually differs from imageUrl, so this falls back.
+function productImageSrcDetail(p){
+  return productImageSrc((p && p.imageUrlDetail) || (p && p.imageUrl) || "");
+}
+
+function flagFor(raw){
+  const s = String(raw||"").trim().toUpperCase();
+  if(s.length===2 && FLAGS[s]) return FLAGS[s];
+  const iso = COUNTRY_ISO[s.replace(/\s+/g," ")];
+  return (iso && FLAGS[iso]) ? FLAGS[iso] : (s ? "🌍" : "");
+}
+
+function gwpValueForFu(p, fuKey){
+  if(!fuKey){
+    const v = Number(p.gwp);
+    return Number.isFinite(v) ? v : NaN;
+  }
+  const opt = GWP_FU_OPTS.find(o=>o.key === fuKey);
+  if(!opt) return NaN;
+  return Number(String(p[opt.field] ?? "").trim().replace(",", "."));
+}
+function gwpRangeFor(p, fuKey){
+  const r = GWP_RANGES[p.productType||""] || null;
+  if(!r) return null;
+  if(fuKey){
+    const fr = r[fuKey];
+    if(!fr || fr.max === fr.min) return null;
+    return fr;
+  }
+  if(r.max == null || r.max === r.min) return null;
+  return {min:r.min, max:r.max};
+}
+function gwpPct(p, fuKey){
+  const r = gwpRangeFor(p, fuKey);
+  if(!r || r.max === r.min) return null;
+  const v = gwpValueForFu(p, fuKey);
+  if(!Number.isFinite(v)) return null;
+  return Math.max(0, Math.min(1, (v - r.min) / (r.max - r.min)));
+}
+function gwpColor(pct){
+  if(pct === null) return "var(--c-green)";
+  if(pct < 0.20)  return "#2a7d2e";
+  if(pct < 0.45)  return "#5a9e3a";
+  if(pct < 0.65)  return "#c8a020";
+  if(pct < 0.85)  return "#d97706";
+  return "#c0392b";
+}
+function gwpColorFor(p, fuKey){ return gwpColor(gwpPct(p, fuKey)); }
+
+function gwpUnitInvalid(raw){
+  const u = String(raw||"").trim();
+  if(!u || u === "-") return true;
+  if(/^<?NA>?$/i.test(u)) return true;
+  if(/^(n\/a|na|nan|none)$/i.test(u)) return true;
+  return false;
+}
+
+function gwpDisplayInvalid(s){
+  const t = String(s||"").trim();
+  if(!t || t === "-" || t === "—") return true;
+  if(/<NA>/i.test(t)) return true;
+  if(/\/<?NA>?$/i.test(t)) return true;
+  return false;
+}
+
+function formatGwp(p){
+  const isInSitu = String(p.productType||"").toLowerCase().includes("in situ");
+  if(isInSitu && p.gwpM3){
+    const v = Number(p.gwpM3);
+    return Number.isFinite(v) ? v.toFixed(2)+" kgCO₂e/m³" : "";
+  }
+  // Use pre-formatted display string from server when available
+  const pre = String(p.gwpDisplay||"").trim();
+  if(pre){
+    if(gwpDisplayInvalid(pre)) return "";
+    return pre;
+  }
+  return formatGwpEpdDeclared(p);
+}
+function formatGwpEpdDeclared(p){
+  // Declared A1–A3 as published in the EPD (G__GWP_A1A3 + G__GWP_FU).
+  if(gwpUnitInvalid(p.gwpUnit)) return "";
+  const v = Number(p.gwp);
+  if(!Number.isFinite(v)) return "";
+  const num = v.toFixed(2);
+  let u = String(p.gwpUnit||"").trim()
+    .replace(/\bco2\b/gi,"CO₂").replace(/\bm2\b/gi,"m²").replace(/\bm3\b/gi,"m³")
+    .replace(/^1\s+/,"").trim();
+  if(!u||u==="-") return num+" kgCO₂e";
+  if(/^kg\s*CO₂e/i.test(u)||/^kgCO₂e/i.test(u)) return num+" "+u.replace(/\s+/g," ").trim();
+  return num+" kgCO₂e/"+u.replace(/^\/+/,"").trim();
+}
+function formatGwpBasis(raw, _unit){
+  // Climate Health shows the unit on the field label only (e.g. / kg).
+  if(raw == null || raw === "") return "";
+  const s = String(raw).trim();
+  if(!s || s === "-" || /^nan$/i.test(s)) return "";
+  const n = Number(s.replace(",", "."));
+  if(!Number.isFinite(n)) return "";
+  return n.toFixed(2);
+}
+// Detail-panel FU switcher: same four normalised bases as Climate Health.
+const GWP_FU_OPTS = [
+  {key:"m2",   label:"/ m²",    unit:"m²",    field:"gwpM2"},
+  {key:"m3",   label:"/ m³",    unit:"m³",    field:"gwpM3"},
+  {key:"kg",   label:"/ kg",    unit:"kg",    field:"gwpKg"},
+  {key:"m2R1", label:"/ m² R1", unit:"m²_R1", field:"gwpM2R1"},
+];
+function formatGwpForFu(p, key){
+  const opt = GWP_FU_OPTS.find(o=>o.key === key);
+  if(!opt) return "";
+  const num = formatGwpBasis(p[opt.field]);
+  if(!num) return "";
+  return `${num} kgCO₂e/${opt.unit}`;
+}
+function gwpFuHasValue(p, key){
+  const opt = GWP_FU_OPTS.find(o=>o.key === key);
+  return !!(opt && formatGwpBasis(p[opt.field]));
+}
+function defaultGwpFuKey(p){
+  const pt = String(p.productType||"").toLowerCase();
+  const prefer = [];
+  const epd = gwpEpdBasisKey(p);
+  if(epd) prefer.push(epd);
+  if(pt.includes("in situ")) prefer.push("m3");
+  if(pt.includes("insulation")) prefer.push("m2R1");
+  if(pt.includes("building board") || pt.includes("tile")) prefer.push("m2");
+  prefer.push("m2", "m3", "kg", "m2R1");
+  for(const k of prefer){
+    if(gwpFuHasValue(p, k)) return k;
+  }
+  return "";
+}
+function gwpFuRadiosHtml(p, selectedKey){
+  // Always show all four FUs; disable those without a numeric value.
+  const any = GWP_FU_OPTS.some(o=>gwpFuHasValue(p, o.key));
+  if(!any) return "";
+  const opts = GWP_FU_OPTS.map(o=>{
+    const ok = gwpFuHasValue(p, o.key);
+    const checked = ok && o.key === selectedKey ? " checked" : "";
+    const disabled = ok ? "" : " disabled";
+    const cls = ok ? "modal-gwp-fu-opt" : "modal-gwp-fu-opt is-disabled";
+    return `<label class="${cls}">
+      <input type="radio" name="cat2-gwp-fu" value="${o.key}"${checked}${disabled}>
+      ${esc(o.label)}
+    </label>`;
+  }).join("");
+  return `<div class="modal-gwp-fu" role="radiogroup" aria-label="GWP functional unit" data-product-id="${escAttr(String(p.id||""))}">${opts}</div>`;
+}
+function gwpEpdBasisKey(p){
+  // Which normalised column the EPD declared unit maps onto.
+  const u = String(p.gwpUnit||"").trim().toLowerCase()
+    .replace(/²/g, "2").replace(/³/g, "3");
+  if(!u || u === "-") return "";
+  if(/r\s*=\s*1|m2[\s_]*r[\s_]*1|m2r1/.test(u)) return "m2R1";
+  if(/(^|[^a-z])m3([^0-9]|$)|per\s*m3|\/\s*m3/.test(u)) return "m3";
+  if(/(^|[^a-z])m2([^0-9]|$)|per\s*m2|\/\s*m2/.test(u)) return "m2";
+  if(/\btonn?e?\b|\bto\b|(^|[^a-z])t([^a-z]|$)/.test(u)) return "kg";
+  if(/(^|[^a-z])kg([^a-z]|$)/.test(u)) return "kg";
+  return "";
+}
+function climateGwpRows(p){
+  // One row per available basis. The EPD-declared basis is tagged
+  // "(EPD)" and bold — no duplicate EPD-only line. Insulation also
+  // bolds the R=1 functional comparison. Values are bare numbers; the unit
+  // lives in the label.
+  const isInsul = String(p.productType||"").toLowerCase().includes("insulation");
+  let epdKey = gwpEpdBasisKey(p);
+  const bases = [
+    {key:"m2",   label:"GWP A1–A3 / m²",     text:formatGwpBasis(p.gwpM2)},
+    {key:"m3",   label:"GWP A1–A3 / m³",     text:formatGwpBasis(p.gwpM3)},
+    {key:"kg",   label:"GWP A1–A3 / kg",     text:formatGwpBasis(p.gwpKg)},
+    {key:"m2R1", label:"GWP A1–A3 / m² R=1", text:formatGwpBasis(p.gwpM2R1)},
+  ];
+  // If FU did not classify, match the declared numeric value to a basis.
+  if(!epdKey){
+    const epdN = Number(p.gwp);
+    if(Number.isFinite(epdN)){
+      const hit = bases.find(b=>{
+        if(!b.text) return false;
+        const n = Number(b.text);
+        return Number.isFinite(n) && Math.abs(n - epdN) <= Math.max(1e-6, Math.abs(epdN) * 0.001);
+      });
+      if(hit) epdKey = hit.key;
+    }
+  }
+  const out = [];
+  let markedEpd = false;
+  for(const b of bases){
+    if(!b.text) continue;
+    let label = b.label;
+    let bold = false;
+    if(epdKey && epdKey === b.key){
+      label = b.label + " (EPD)";
+      bold = true;
+      markedEpd = true;
+    }
+    if(isInsul && b.key === "m2R1") bold = true;
+    out.push([label, esc(b.text), bold]);
+  }
+  if(!markedEpd){
+    const epdN = formatGwpBasis(p.gwp);
+    if(epdN) out.unshift(["GWP A1–A3 (EPD)", esc(epdN), true]);
+  }
+  return out;
+}
+
+// Cards view pill — shows "GWP n/a" in muted grey when value/unit is missing.
+function cardGwpPill(p){
+  const fuKey = GRID_FU_OPTS.has(gridFuKey) ? gridFuKey : "";
+  const gwpStr = fuKey ? formatGwpForFu(p, fuKey) : formatGwp(p);
+  if(!gwpStr || gwpDisplayInvalid(gwpStr)){
+    return `<div class="cat2-gwp cat2-gwp--na">GWP n/a</div>`;
+  }
+  const color = gwpColorFor(p, fuKey || undefined);
+  const bar = gwpInlineBar(p, fuKey || undefined);
+  return `<div class="cat2-gwp" style="color:${color}">GWP ${esc(gwpStr)}</div>${bar}`;
+}
+
+function gwpInlineBar(p, fuKey){
+  const pct = gwpPct(p, fuKey);
+  if(pct === null) return "";
+  const r = gwpRangeFor(p, fuKey);
+  if(!r) return "";
+  const np = (pct*100).toFixed(1);
+  return `<div class="cat2-gwp-bar-wrap">
+    <div class="cat2-gwp-bar">
+      <div class="cat2-gwp-needle" style="left:${np}%"></div>
+    </div>
+    <div class="cat2-gwp-labels">
+      <span class="cat2-gwp-lbl">${Math.round(r.min)}</span>
+      <span class="cat2-gwp-lbl">${Math.round(r.max)}</span>
+    </div>
+  </div>`;
+}
+
+// ── Recycled-content pill (mirrors GWP; higher = better) ──
+function rcParseVal(p){
+  const s = String(p.recyclingRate||"").trim().replace(/%$/,"");
+  const v = parseFloat(s.replace(",","."));
+  return Number.isFinite(v) ? v : null;
+}
+function rcPct(p){
+  const r = RC_RANGES[p.productType||""] || null;
+  if(!r || r.max === r.min) return null;
+  const v = rcParseVal(p);
+  if(v === null) return null;
+  return Math.max(0, Math.min(1, (v - r.min) / (r.max - r.min)));
+}
+function rcColor(pct){
+  if(pct === null) return "#94a3b8";
+  if(pct > 0.80) return "#2563eb";
+  if(pct > 0.55) return "#3b82f6";
+  if(pct > 0.35) return "#60a5fa";
+  if(pct > 0.15) return "#93c5fd";
+  return "#9ca3af";
+}
+function rcColorFor(p){ return rcColor(rcPct(p)); }
+function rcInlineBar(p){
+  const pct = rcPct(p);
+  if(pct === null) return "";
+  const r = RC_RANGES[p.productType||""];
+  const np = (pct*100).toFixed(1);
+  return `<div class="cat2-rc-bar-wrap">
+    <div class="cat2-rc-bar">
+      <div class="cat2-gwp-needle" style="left:${np}%"></div>
+    </div>
+    <div class="cat2-gwp-labels">
+      <span class="cat2-gwp-lbl">${r.min.toFixed(0)}%</span>
+      <span class="cat2-gwp-lbl">${r.max.toFixed(0)}%</span>
+    </div>
+  </div>`;
+}
+function rcPill(p){
+  const v = String(p.recyclingRate||"").trim();
+  if(!v || v==="-") return "";
+  const color = rcColorFor(p);
+  const bar   = rcInlineBar(p);
+  return `<div class="cat2-rc" style="color:${color}">Rec. Cont. ${esc(v)}</div>${bar}`;
+}
+function rcPillBlockML(p){
+  const rc = rcPill(p);
+  const voc = vocBadgeCard(p);
+  if(!rc && !voc) return "";
+  const vocBlock = voc ? `<div class="cat2-rc-voc">${voc}</div>` : "";
+  return rc ? rc + vocBlock : vocBlock;
+}
+
+function gwpModalBar(p, fuKey){
+  const pct = gwpPct(p, fuKey);
+  if(pct === null) return "";
+  const r = gwpRangeFor(p, fuKey);
+  if(!r) return "";
+  const np = (pct*100).toFixed(1);
+  return `<div class="modal-gwp-bar" style="margin:6px 0 4px">
+    <div class="modal-gwp-bar-label" style="font-size:11px;color:#94a3b8;margin-bottom:4px;letter-spacing:.02em">
+      Peer-group percentile · ${esc(p.productType||"")}
+    </div>
+    <div style="position:relative;height:8px;border-radius:4px;overflow:visible;
+      background:linear-gradient(to right,#2a7d2e,#7cb87e,#d4c84a,#e8742a,#c0392b)">
+      <div class="modal-gwp-bar-needle" style="position:absolute;top:50%;left:${np}%;width:4px;height:16px;
+        border-radius:2px;background:#333;transform:translate(-50%,-50%);pointer-events:none"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-top:3px">
+      <span class="modal-gwp-bar-min" style="font-size:10px;color:#94a3b8">${r.min.toFixed(2)}</span>
+      <span class="modal-gwp-bar-max" style="font-size:10px;color:#94a3b8">${r.max.toFixed(2)}</span>
+    </div>
+  </div>`;
+}
+
+function camBadge(p){
+  const raw = String(p.camCompliance||"").trim();
+  if(!raw||raw==="-"||/^(no|nan)$/i.test(raw)) return "";
+  const ok = raw==="✓"||/^y(es)?$/i.test(raw)||/^(compliant|ok)$/i.test(raw)||/below|warn/i.test(raw);
+  if(!ok) return "";
+  if(STELLA_IMG)
+    return `<span class="badge badge-cam" title="CAM compliant"><img src="${escAttr(STELLA_IMG)}" style="height:11px;width:auto;vertical-align:middle"> CAM</span>`;
+  return `<span class="badge badge-cam" title="CAM compliant">★ CAM</span>`;
+}
+
+// LEED v4.1 / WELL v2 / CAM 2025 pills for the claim in VO__VOC_Cert. The
+// table (label or alias → statuses and notes) travels once per page as
+// window.__VOC_ALIGN__; see aux__voc_rating_alignment.json. Only the schemes
+// the claim actually serves are shown — three "—" on every card is noise.
+const VOC_ALIGN_MARK = { yes: "✓", partial: "~" };
+function vocAlignPills(p){
+  const map = window.__VOC_ALIGN__ || {};
+  const key = String(p.vocCertKey||"").trim().toLowerCase();
+  if(!key) return "";
+  const rows = (map[key] || []).filter(r => r.status === "yes" || r.status === "partial");
+  if(!rows.length) return "";
+  return `<span class="cat2-align">` + rows.map(r =>
+    `<span class="cat2-al cat2-al-${escAttr(r.status)}" title="${escAttr(
+      r.label + " — " + r.credit + (r.note ? ": " + r.note : ""))}">${esc(r.short)} ${
+      VOC_ALIGN_MARK[r.status] || ""}</span>`).join("") + `</span>`;
+}
+
+function vocBadgeCard(p){
+  const badge = p.vocCertBadge && String(p.vocCertBadge).trim();
+  const tip = String(p.vocText||"VOC certification").trim();
+  const img = badge
+    ? `<img class="cat2-voc-img" src="${escAttr(badge)}" alt="" title="${escAttr(tip||'VOC certification')}">`
+    : "";
+  const pills = vocAlignPills(p);
+  if(!img && !pills) return "";
+  return img + pills;
+}
+
+function typeBadgesHTML(p){
+  const pt = (p.productType  && p.productType!=="-")  ? `<span class="badge badge-prod">${esc(p.productType)}</span>`  : "";
+  const mt = (p.materialType && p.materialType!=="-") ? `<span class="badge badge-mat">${esc(p.materialType)}</span>` : "";
+  return `${pt}${mt}`;
+}
+
+function modalTextItem(label, value){
+  const t = String(value||"").trim();
+  if(!t || t==="-") return "";
+  return `<div class="modal-text-item">
+    <div class="modal-label">${esc(label)}</div>
+    <div class="modal-text-block">${esc(t)}</div>
+  </div>`;
+}
+
+function modalCopyBlock(p){
+  const desc = modalTextItem("Product description", p.productDescription);
+  const content = modalTextItem("Content", p.content);
+  if(!desc && !content) return "";
+  // One column: description then content (not side-by-side).
+  return `<div class="modal-section modal-copy-group">${[desc, content].filter(Boolean).join("")}</div>`;
+}
+
+function modalCommentsBlock(p){
+  const comments = modalTextItem("Comments", p.comments);
+  if(!comments) return "";
+  return `<div class="modal-section modal-copy-group">${comments}</div>`;
+}
+function modalPlantBlock(p){
+  const plant = modalPlantRow(p);
+  const na = cat2DvNa();
+  if(!plant || plant === na) return "";
+  return `<div class="modal-section modal-copy-group">
+    <div class="modal-text-item">
+      <div class="modal-label">Manufacturing plant</div>
+      <div class="modal-text-block">${plant}</div>
+    </div>
+  </div>`;
+}
+
+// Plant-/family-level EPDs (e.g. Marazzi) cover many commercial collections.
+// Names are stored as newline- or semicolon-separated text and stay searchable
+// in the catalogue filter bar.
+const INCL_PREVIEW_N = 8;
+function parseIncludedProducts(raw){
+  const empty = new Set(["", "-", "n/a", "na", "n/r", "nr", "nan", "none", "<na>", "*"]);
+  return String(raw||"")
+    .split(/[\n;|]+/)
+    .map(s => s.replace(/^[\s•\-–—*]+/, "").trim())
+    .filter(s => s && !empty.has(s.toLowerCase()));
+}
+// ── Entry mode: Condensed (one row = one entry) / Expanded (one collection) ──
+//
+// A plant- or sector-level EPD covers whole commercial collections, and the
+// library stores it as ONE row listing every colour in D__IncludedProducts —
+// 618 of them on the Confindustria Ceramica average. Condensed shows that row
+// as it is stored. Expanded answers the other question the catalogue gets
+// asked ("what collections does this reach?") by splitting the row into one
+// entry per Collezione: Emilceramica Essenza Frammenti, Provenza Unique
+// Concrete, and so on, each the entry for exactly one emilgroup.it page.
+//
+// What the split does NOT do is invent data. Every expanded entry carries its
+// parent row's figures unchanged — the EPD is the row's, not the collection's —
+// and only the identity fields are overridden: name, thumbnail, product page,
+// the thickness the collection actually ships, and an includedProducts list
+// narrowed to that collection's own colours, so the gallery popup opens on the
+// collection rather than on all 618.
+//
+// A row whose included products resolve to no collection at all is passed
+// through untouched: Expanded is a finer reading of the same catalogue, never
+// a smaller one.
+let EXPANDED_PRODUCTS = null;
+function collectionIdsFor(p){
+  const ids = [];
+  const seen = new Set();
+  for(const nm of parseIncludedProducts(p.includedProducts)){
+    const meta = RANGE_INDEX[nm.trim().toLowerCase()];
+    const rid = meta && meta.range;
+    if(!rid || seen.has(rid) || !RANGE_COLLECTIONS[rid]) continue;
+    seen.add(rid);
+    ids.push(rid);
+  }
+  return ids;
+}
+function collectionMembersFor(p, rid){
+  return parseIncludedProducts(p.includedProducts).filter(nm => {
+    const meta = RANGE_INDEX[nm.trim().toLowerCase()];
+    return meta && meta.range === rid;
+  });
+}
+function buildExpandedProducts(){
+  if(EXPANDED_PRODUCTS) return EXPANDED_PRODUCTS;
+  // Ids have to stay unique AND numeric — openModal and the list rows round-trip
+  // them through Number(el.dataset.id).
+  let nextId = PRODUCTS.reduce((mx, p) => Math.max(mx, Number(p.id) || 0), 0) + 1;
+  const out = [];
+  for(const p of PRODUCTS){
+    const ids = collectionIdsFor(p);
+    if(!ids.length){ out.push(p); continue; }
+    for(const rid of ids){
+      const c = RANGE_COLLECTIONS[rid];
+      const members = collectionMembersFor(p, rid);
+      const thick = (c.thickness_mm || []).join(" / ");
+      out.push(Object.assign({}, p, {
+        id: nextId++,
+        parentId: p.id,
+        collectionId: rid,
+        collectionOf: p.name || "",
+        collectionCount: members.length || c.n || 0,
+        name: c.label || rid,
+        imageUrl: productImageSrc(c.img) || productImageSrc(p.imageUrl) || "",
+        productUrl: c.source || p.productUrl,
+        thickness: thick || p.thickness,
+        includedProducts: members.join("; "),
+      }));
+    }
+  }
+  EXPANDED_PRODUCTS = out;
+  return out;
+}
+function activeProducts(){
+  return entryMode === "expanded" ? buildExpandedProducts() : PRODUCTS;
+}
+function findProduct(id){
+  return activeProducts().find(r => r.id === id)
+      || PRODUCTS.find(r => r.id === id);
+}
+function parentRowFor(p){
+  if(!p || p.parentId === undefined) return p;
+  return PRODUCTS.find(r => r.id === p.parentId) || p;
+}
+
+const SEARCH_FIELDS = [
+  "name", "manufacturer", "includedProducts",
+  "productDescription", "content",
+  "epdNumber", "epdDeclaredNumber", "eetraId",
+];
+const _searchHaystackCache = new WeakMap();
+function searchHaystack(p){
+  let hay = _searchHaystackCache.get(p);
+  if(hay === undefined){
+    hay = SEARCH_FIELDS
+      .map(k => p[k])
+      .filter(v => v != null && v !== "-")
+      .join(" \u0001 ")
+      .toLowerCase();
+    _searchHaystackCache.set(p, hay);
+  }
+  return hay;
+}
+function searchCatalogueFor(term){
+  const input = document.getElementById("f-search");
+  if(!input) return;
+  input.value = String(term||"");
+  onFilterChange();
+}
+function closeInclPopup(){
+  const bg = document.getElementById("incl-popup-bg");
+  const body = document.getElementById("incl-popup-body");
+  if(bg){
+    bg.classList.remove("open");
+    bg.setAttribute("aria-hidden", "true");
+  }
+  const popup = document.getElementById("incl-popup");
+  if(popup){
+    popup.classList.remove("is-gallery");
+    popup.style.marginTop = "";
+    popup.style.maxHeight = "";
+  }
+  if(bg) bg.classList.remove("align-grid");
+  if(body){
+    body.innerHTML = "";
+    body.style.maxHeight = "";
+  }
+}
+
+// Line the popup up with the top of the cards grid rather than the middle of
+// the viewport. Falls back to the centred layout if #grid is not on screen.
+function alignPopupToGrid(bg, popup, body){
+  const grid = document.getElementById("grid");
+  if(!grid || !bg || !popup) return;
+  const top = Math.round(grid.getBoundingClientRect().top);
+  if(!(top > 0)) return;
+  bg.classList.add("align-grid");
+  // The backdrop already pads its content; the margin is the remainder, or the
+  // popup lands that much too low. Read it rather than assume, since the
+  // padding lives in CSS that may be cached separately from this script.
+  const padTop = parseFloat(getComputedStyle(bg).paddingTop) || 0;
+  const padBottom = parseFloat(getComputedStyle(bg).paddingBottom) || 0;
+  popup.style.marginTop = `${Math.max(0, top - padTop)}px`;
+  popup.style.maxHeight = `calc(100% - ${Math.max(0, top - padTop) + padBottom}px)`;
+  // The body carries its own max-height for the gallery; keep it inside
+  // whatever room is actually left below the grid's top edge.
+  if(body) body.style.maxHeight = `calc(100vh - ${top + 120}px)`;
+}
+// Floor (Tiles) plant-/family-level EPDs list commercial colourways / collections
+// in includedProducts — those belong in the Collections tab, not Info.
+function isFloorTilesProduct(p){
+  const pt = String((p && p.productType) || "").trim().toLowerCase();
+  if(!pt) return false;
+  if(pt === "floor (tiles)") return true;
+  return pt.includes("floor") && pt.includes("tile");
+}
+function productHasCollections(p){
+  if(!p || !isFloorTilesProduct(p)) return false;
+  return parseIncludedProducts(p.includedProducts).length > 0;
+}
+function collectionsCount(p){
+  return parseIncludedProducts((p && p.includedProducts) || "").length;
+}
+
+// Shared gallery / list of covered products. Used by the Collections tab and
+// the full-screen popup (View all). Keyed on ENTRY id in Expanded mode.
+function mountIncludedProductsList(host, p, opts){
+  opts = opts || {};
+  if(!host || !p) return;
+  const embedded = !!opts.embedded;
+  const uid = opts.uid || (embedded ? "coll" : "incl");
+  const items = parseIncludedProducts(p.includedProducts);
+  const rangeLabels = [...new Set(items
+    .map(n => (RANGE_INDEX[n.trim().toLowerCase()] || {}).label)
+    .filter(Boolean))];
+  const TITLE_LABELS = 6;
+  const labelSummary = rangeLabels.length > TITLE_LABELS
+    ? rangeLabels.slice(0, TITLE_LABELS).join(", ")
+      + ` +${rangeLabels.length - TITLE_LABELS} more`
+    : rangeLabels.join(", ");
+  const title = opts.title
+    || (embedded ? "Collections covered" : "Included products / collections");
+  const head = `<div class="cat2-incl-head">
+      <div class="cat2-incl-title"${
+        rangeLabels.length > TITLE_LABELS
+          ? ` title="${escAttr(rangeLabels.join(", "))}"` : ""
+      }>${esc(title)}${
+        rangeLabels.length ? " — " + esc(labelSummary) : ""}</div>
+      <div class="cat2-incl-sub">${p.collectionId
+        ? "The colours of this collection that <strong>"
+          + esc(p.collectionOf || "the parent entry")
+          + "</strong> covers. Click a product to open its manufacturer page."
+        : "Commercial names covered by <strong>" + esc(p.name||"—") + "</strong>"
+          + (p.manufacturer ? " · " + esc(p.manufacturer) : "")
+          + ". Click a product to open its manufacturer page."}</div>
+    </div>`;
+  const resolved = items.map(n => RANGE_INDEX[n.trim().toLowerCase()] || null);
+  const gallery = resolved.some(Boolean);
+  if(typeof opts.onGallery === "function") opts.onGallery(gallery);
+
+  const filterId = `${uid}-filter`;
+  const countId = `${uid}-count`;
+  const toolbar = `<div class="cat2-incl-toolbar">
+      <input id="${filterId}" class="cat2-incl-filter" type="search"
+        placeholder="Filter this list…" autocomplete="off">
+      <span class="cat2-incl-count" id="${countId}"></span>
+    </div>`;
+  const list = document.createElement("ul");
+  list.className = gallery ? "cat2-incl-grid" : "cat2-incl-list";
+
+  function openMfrProductPage(url){
+    const href = String(url || "").trim();
+    if(!href) return;
+    if(!embedded) closeInclPopup();
+    window.open(href, "_blank", "noopener,noreferrer");
+  }
+
+  function tileFor(name, meta){
+    const li = document.createElement("li");
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "cat2-incl-tile";
+    const url = meta && String(meta.url || "").trim();
+    btn.title = url
+      ? "Open product page on manufacturer page"
+      : "No manufacturer page available";
+    const thumbSrc = meta ? productImageSrc(meta.img) : "";
+    const thumb = thumbSrc
+      ? `<img src="${escAttr(thumbSrc)}" alt="" loading="lazy" decoding="async"
+           onerror="this.closest('.cat2-incl-thumb').innerHTML='<div class=\\'cat2-incl-thumb-fallback\\'>no image</div>'">`
+      : `<div class="cat2-incl-thumb-fallback">no image</div>`;
+    const mm = meta && meta.thickness_mm && meta.thickness_mm.length
+      ? `${meta.thickness_mm.join("/")} mm` : "";
+    const badge = mm ? `<span class="cat2-incl-badge">${esc(mm)}</span>` : "";
+    const metaBits = [];
+    // sizes already include the unit (e.g. "60x60 cm") — don't append another "cm".
+    if(meta && meta.sizes && meta.sizes.length) metaBits.push(meta.sizes.join(", "));
+    if(meta && meta.finishes && meta.finishes.length) metaBits.push(meta.finishes.join(" · "));
+    btn.innerHTML =
+      `<span class="cat2-incl-thumb">${thumb}${badge}</span>
+       <span class="cat2-incl-tile-body">
+         <span class="cat2-incl-tile-name">${esc(name)}</span>
+         ${metaBits.length ? `<span class="cat2-incl-tile-meta">${esc(metaBits.join(" — "))}</span>` : ""}
+       </span>`;
+    if(url){
+      btn.addEventListener("click", ()=>openMfrProductPage(url));
+    } else {
+      btn.disabled = true;
+      btn.style.cursor = "default";
+    }
+    li.appendChild(btn);
+    return li;
+  }
+
+  function rowFor(name, meta){
+    const li = document.createElement("li");
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "cat2-incl-item";
+    const url = meta && String(meta.url || "").trim();
+    btn.title = url
+      ? "Open product page on manufacturer page"
+      : "No manufacturer page available";
+    btn.innerHTML = `<span class="cat2-incl-item-name">${esc(name)}</span>`
+      + (url
+        ? `<span class="cat2-incl-item-hint">Open ↗</span>`
+        : `<span class="cat2-incl-item-hint" style="color:#94a3b8">n/a</span>`);
+    if(url) btn.addEventListener("click", ()=>openMfrProductPage(url));
+    else { btn.disabled = true; btn.style.cursor = "default"; }
+    li.appendChild(btn);
+    return li;
+  }
+
+  function inclHaystack(x){
+    const m = x.meta || {};
+    return [x.name, m.label, m.brand].filter(Boolean).join(" ").toLowerCase();
+  }
+
+  function renderList(q){
+    list.innerHTML = "";
+    const needle = String(q||"").trim().toLowerCase();
+    const shown = items
+      .map((n, i) => ({name:n, meta:resolved[i]}))
+      .filter(x => !needle || inclHaystack(x).includes(needle));
+    const count = document.getElementById(countId);
+    if(count) count.textContent = shown.length === items.length
+      ? `${items.length} product${items.length === 1 ? "" : "s"}`
+      : `${shown.length} of ${items.length}`;
+    if(!shown.length){
+      const empty = document.createElement("div");
+      empty.className = "cat2-incl-empty";
+      empty.textContent = needle ? "No matches in this list." : "No included products listed.";
+      list.appendChild(empty);
+      return;
+    }
+    for(const x of shown){
+      list.appendChild(gallery ? tileFor(x.name, x.meta) : rowFor(x.name, x.meta));
+    }
+  }
+
+  host.innerHTML = head + toolbar;
+  host.appendChild(list);
+  renderList("");
+  const filt = document.getElementById(filterId);
+  if(filt){
+    filt.addEventListener("input", ()=>renderList(filt.value));
+    if(opts.focusFilter) filt.focus();
+  }
+}
+
+function openInclPopup(entryId){
+  const p = findProduct(Number(entryId))
+    || PRODUCTS.find(x => String(x.eetraId||"") === String(entryId||""));
+  const bg = document.getElementById("incl-popup-bg");
+  const body = document.getElementById("incl-popup-body");
+  if(!p || !bg || !body) return;
+  const popup = document.getElementById("incl-popup");
+  mountIncludedProductsList(body, p, {
+    uid: "incl-popup",
+    focusFilter: true,
+    onGallery: (gallery) => {
+      if(popup) popup.classList.toggle("is-gallery", gallery);
+    },
+  });
+  bg.classList.add("open");
+  bg.setAttribute("aria-hidden", "false");
+  alignPopupToGrid(bg, popup, body);
+}
+
+// Compact chip preview (centre-modal Info, or legacy call sites). The right
+// detail panel uses the Collections tab instead.
+function modalIncludedBlock(p){
+  const items = parseIncludedProducts(p.includedProducts);
+  if(!items.length) return "";
+  const eid = escAttr(String(p.id));
+  const preview = items.slice(0, INCL_PREVIEW_N);
+  const chips = preview.map(name =>
+    `<button type="button" class="cat2-incl-chip" title="Search catalogue for ${escAttr(name)}"
+      onclick="event.stopPropagation();searchCatalogueFor(${JSON.stringify(name)})">${esc(name)}</button>`
+  ).join("");
+  const more = items.length > INCL_PREVIEW_N
+    ? `<button type="button" class="cat2-incl-more"
+         onclick="event.stopPropagation();openInclPopup('${eid}')">
+         View all ${items.length} ↗</button>`
+    : (items.length > 3
+      ? `<button type="button" class="cat2-incl-more"
+           onclick="event.stopPropagation();openInclPopup('${eid}')">
+           Open list ↗</button>`
+      : "");
+  return `<div class="cat2-incl-section">
+    <div class="modal-label">Included products / collections</div>
+    <div class="cat2-incl-sub" style="margin:0 0 2px">${p.collectionId
+      ? "The colours of this collection that " + esc(p.collectionOf || "the parent entry") + " covers. Click to search."
+      : "Sustainability data for these commercial names is covered by this entry. Click to search."}</div>
+    <div class="cat2-incl-chips">${chips}${more}</div>
+  </div>`;
+}
+
+function updateXLGroupToolbarActive(){
+  document.querySelectorAll("#rv-xl-groups-group .rv-xl-group-btn").forEach(b =>
+    b.classList.toggle("rv-active", b.dataset.xlGroup === xlGlobalGroup)
+  );
+}
+function syncAllXLCardsToGroup(groupId){
+  const g = String(groupId || "").trim();
+  if(!g) return;
+  xlGlobalGroup = g;
+  updateXLGroupToolbarActive();
+  document.querySelectorAll(".cat2-xl-tabs").forEach(root => {
+    let hasPanel = false;
+    root.querySelectorAll(".cat2-xl-tab").forEach(b => {
+      const on = b.dataset.xlTab === g;
+      b.classList.toggle("active", on);
+      if(on) hasPanel = true;
+    });
+    root.querySelectorAll(".cat2-xl-panel").forEach(pnl =>
+      pnl.classList.toggle("active", pnl.dataset.xlPanel === g)
+    );
+    if(!hasPanel) return;
+  });
+}
+function updateEntryToolbarState(){
+  for(const mode of ["condensed", "expanded"]){
+    const btn = document.getElementById(`rv-entry-${mode}`);
+    if(btn) btn.classList.toggle("rv-active", entryMode === mode);
+  }
+  // Nothing to expand into when the aux range file is missing or empty - say so
+  // by greying the control out rather than offering a toggle that does nothing.
+  const none = !Object.keys(RANGE_COLLECTIONS).length;
+  const grp = document.getElementById("rv-entry-group");
+  const lbl = document.getElementById("rv-entry-label");
+  if(grp){
+    grp.classList.toggle("rv-disabled", none);
+    grp.setAttribute("aria-disabled", none ? "true" : "false");
+    for(const btn of grp.querySelectorAll("button")) btn.disabled = none;
+  }
+  if(lbl) lbl.style.color = none ? "#9ca3af" : "#6b7280";
+}
+
+function updateSizeToolbarState(){
+  const grp = document.getElementById("rv-size-group");
+  const lbl = document.getElementById("rv-size-label");
+  const xlWrap = document.getElementById("rv-xl-groups-wrap");
+  const list = viewMode === "list";
+  const showXLGroups = viewMode === "grid" && sizeMode === "XL";
+  if(grp){
+    grp.classList.toggle("rv-disabled", list);
+    grp.setAttribute("aria-disabled", list ? "true" : "false");
+    for(const btn of grp.querySelectorAll("button")){
+      btn.disabled = list;
+    }
+  }
+  if(lbl) lbl.style.color = list ? "#9ca3af" : "#6b7280";
+  const fuField = document.querySelector('.filter-field[data-field="fu"]');
+  if(fuField) fuField.hidden = list;
+  if(xlWrap){
+    xlWrap.classList.toggle("is-visible", showXLGroups);
+    xlWrap.setAttribute("aria-hidden", showXLGroups ? "false" : "true");
+  }
+  if(showXLGroups) updateXLGroupToolbarActive();
+}
+
+// The right detail panel (#cat2-detail-panel) is a flex sibling of #cat2-main,
+// so opening it narrows the grid without #cat2-main's own class list changing —
+// this is the one DOM fact both effectiveGridCols() and openModal/closeModal
+// need to agree on.
+function isDetailPanelOpen(){
+  const panel = document.getElementById("cat2-detail-panel");
+  return !!(panel && panel.classList.contains("open"));
+}
+
+function effectiveGridCols(){
+  const requested = COLS_BY_SIZE[sizeMode] || 5;
+  const minPx = MIN_CARD_PX[sizeMode] || 150;
+  const gap = 12;
+
+  if(sizeMode !== "XL" && isDetailPanelOpen()){
+    // Deliberately NOT #grid's own clientWidth here: render() runs right after
+    // the panel's "open" class is toggled, so #cat2-main hasn't finished its
+    // .2s width transition yet — reading it now would clamp against whatever
+    // partial width the transition happens to be at, which at the panel's full
+    // ~44vw share clamps to 2-3 columns fewer, not one. The ask is "one column
+    // fewer than normal", not "however many now fit in the narrowed space", so
+    // work out the normal (panel-closed) count from the iframe's own width —
+    // stable regardless of the panel, since it only redistributes width
+    // between #cat2-main and the panel — then simply drop one.
+    const outerW = document.documentElement.clientWidth || 600;
+    const normalCols = Math.min(requested, Math.max(1, Math.floor((outerW + gap) / (minPx + gap))));
+    return Math.max(1, normalCols - 1);
+  }
+
+  const gridEl = document.getElementById("grid");
+  const w = (gridEl && gridEl.clientWidth > 0) ? gridEl.clientWidth
+    : (document.documentElement.clientWidth || 600);
+  const maxFit = Math.max(1, Math.floor((w + gap) / (minPx + gap)));
+  return Math.min(requested, maxFit);
+}
+
+// ── Filtering ──
+function passesFilter(p){
+  const s = filters.search.trim().toLowerCase();
+  if(s){
+    if(!searchHaystack(p).includes(s)) return false;
+  }
+  if(filters.prod && String(p.productType||"") !== filters.prod) return false;
+  if(filters.mat  && String(p.materialType||"") !== filters.mat)  return false;
+  if(filters.country && !splitCountries(p.country).includes(filters.country)) return false;
+  if(filters.prog && String(p.epdProgramme||"").trim() !== filters.prog) return false;
+  if(filters.voc==="yes" && !String(p.vocText||"").trim()) return false;
+  if(filters.voc==="no"  &&  String(p.vocText||"").trim()) return false;
+  return true;
+}
+function getFiltered(){ return activeProducts().filter(passesFilter); }
+
+// ── Cascading options ──
+function buildOptions(){
+  const av = {prod:new Set(), mat:new Set(), country:new Set(), prog:new Set()};
+  for(const p of activeProducts()){
+    const s = filters.search.trim().toLowerCase();
+    const ok_s = !s || searchHaystack(p).includes(s);
+    const ok_p = !filters.prod   || String(p.productType||"")===filters.prod;
+    const ok_m = !filters.mat    || String(p.materialType||"")===filters.mat;
+    const cos  = splitCountries(p.country);
+    const ok_c = !filters.country || cos.includes(filters.country);
+    const pg   = String(p.epdProgramme||"").trim();
+    const ok_pg = !filters.prog || pg===filters.prog;
+    const vt   = String(p.vocText||"").trim();
+    const ok_v = !filters.voc || (filters.voc==="yes" ? !!vt : !vt);
+
+    const pt = String(p.productType||"").trim();
+    const mt = String(p.materialType||"").trim();
+    if(pt && ok_s && ok_m && ok_c && ok_pg && ok_v) av.prod.add(pt);
+    if(mt && ok_s && ok_p && ok_c && ok_pg && ok_v) av.mat.add(mt);
+    if(ok_s && ok_p && ok_m && ok_pg && ok_v) cos.forEach(c=>av.country.add(c));
+    if(pg && ok_s && ok_p && ok_m && ok_c  && ok_v) av.prog.add(pg);
+  }
+  return av;
+}
+
+function rebuildSelects(av){
+  function refill(selId, items, labelFn, cur){
+    const sel = document.getElementById(selId);
+    if(!sel) return;
+    sel.innerHTML = '<option value="">(all)</option>';
+    const sorted = [...items].sort((a,b)=>labelFn(a).localeCompare(labelFn(b)));
+    for(const v of sorted) sel.appendChild(new Option(labelFn(v), v));
+    sel.value = items.has(cur) ? cur : "";
+  }
+  function countryLabel(co){
+    const f = FLAGS[co]||"";
+    return f ? f+" "+co : co;
+  }
+  refill("f-prod",    av.prod,    v=>v,          filters.prod);
+  refill("f-mat",     av.mat,     v=>v,          filters.mat);
+  refill("f-country", av.country, countryLabel,  filters.country);
+  refill("f-prog",    av.prog,    v=>v,          filters.prog);
+}
+
+// ── Sort ──
+const SORT_KEYS = {
+  product:        p => (p.name||"").toLowerCase(),
+  manufacturer:   p => (p.manufacturer||"").toLowerCase(),
+  epd_number:     p => {
+    const v = groupValue(p.epdNumber) || groupValue(p.epdDeclaredNumber);
+    return v ? v.replace(/\s+/g, "").toUpperCase() : "\uffff";
+  },
+  // Leading number (ranges sort by their lower bound). Blanks last when ascending.
+  thickness:      p => {
+    const n = techParseNum(p.thickness);
+    return n == null ? 1e15 : n;
+  },
+  density:        p => {
+    const n = techParseNum(p.density);
+    if(n != null) return n;
+    const vol = techParseNum(p.densityVol);
+    return vol == null ? 1e15 : vol;
+  },
+  gwp:            p => Number.isFinite(Number(p.gwp)) ? Number(p.gwp) : 999999,
+  gwp_m2:         p => listGwpSortVal(p, "gwpM2"),
+  gwp_m3:         p => listGwpSortVal(p, "gwpM3"),
+  gwp_kg:         p => listGwpSortVal(p, "gwpKg"),
+  recycled_content: p => {
+    const v = rcParseVal(p);
+    return v === null ? -1 : v;
+  },
+  product_type:   p => (p.productType||"").toLowerCase(),
+  material_type:  p => (p.materialType||"").toLowerCase(),
+};
+function listGwpSortVal(p, field){
+  const v = Number(String(p[field] ?? "").trim().replace(",", "."));
+  return Number.isFinite(v) ? v : 999999;
+}
+function listColumnLabel(key){
+  const labels = CAT_CFG.listColumnLabels || {};
+  return labels[key] || key;
+}
+function js2ListColumnsActive(rows){
+  const cols = (CAT_CFG.listColumns && CAT_CFG.listColumns.length)
+    ? CAT_CFG.listColumns.slice()
+    : ["image","manufacturer","product_type","material_type","product","gwp_m2","gwp_m3","gwp_kg","recycled_content","thickness","density","epd_number","voc","cam"];
+  return cols.filter(k => {
+    if(k === "thickness"){
+      return rows.some(p => fieldVisible(p, "thickness"));
+    }
+    if(LIST_OPTIONAL.has(k)) return LIST_FIELDS[k] === true;
+    return true;
+  });
+}
+function listCellHTML(p, key){
+  const f = flagFor(p.country);
+  switch(key){
+    case "image": {
+      const url = productImageSrc((p.imageUrl && String(p.imageUrl).trim()) || "");
+      if(url){
+        return `<td data-col="image" class="rv-td-image"><div class="rv-list-symbol"><img src="${escAttr(url)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'"></div></td>`;
+      }
+      const mt = String(p.materialType||"").slice(0,8);
+      return `<td data-col="image" class="rv-td-image"><div class="rv-list-symbol">${esc(mt||"—")}</div></td>`;
+    }
+    case "product":
+      return `<td data-col="product"><div style="font-weight:600">${esc(p.name||"—")}</div></td>`;
+    case "manufacturer":
+      return `<td data-col="manufacturer">${esc(p.manufacturer||"—")}${f ? " "+f : ""}</td>`;
+    case "gwp": {
+      const gwpStr = String(p.gwpDisplay || formatGwp(p)).trim();
+      return `<td data-col="gwp">${esc(gwpStr && gwpStr !== "-" ? gwpStr : "—")}</td>`;
+    }
+    case "gwp_m2":
+    case "gwp_m3":
+    case "gwp_kg": {
+      const field = {gwp_m2: "gwpM2", gwp_m3: "gwpM3", gwp_kg: "gwpKg"}[key];
+      const num = formatGwpBasis(p[field]);
+      return `<td data-col="${key}" class="rv-td-num">${num ? esc(num) : "—"}</td>`;
+    }
+    case "recycled_content": {
+      const val = String(p.recyclingRate||"").trim();
+      const color = rcColorFor(p);
+      return `<td data-col="recycled_content" class="rv-td-num" style="color:${color}">${val && val!=="-" ? esc(val) : "—"}</td>`;
+    }
+    case "product_type":
+      return `<td data-col="product_type">${(p.productType&&p.productType!=="-") ? esc(p.productType) : "—"}</td>`;
+    case "material_type":
+      return `<td data-col="material_type">${(p.materialType&&p.materialType!=="-") ? esc(p.materialType) : "—"}</td>`;
+    case "thickness":
+      return `<td data-col="thickness">${fieldVisible(p,"thickness") ? esc(String(p.thickness||"").trim()||"—") : "—"}</td>`;
+    case "density":
+      return `<td data-col="density">${fieldVisible(p,"density") ? esc(String(p.density||"").trim()||"—") : "—"}</td>`;
+    case "epd_number": {
+      const epd = String(p.epdNumber||p.epdDeclaredNumber||"").trim();
+      return `<td data-col="epd_number">${epd && epd!=="-" ? esc(epd) : "—"}</td>`;
+    }
+    case "voc": {
+      const vocBadgeEl = p.vocCertBadge
+        ? `<img class="rv-voc-badge" src="${escAttr(p.vocCertBadge)}" alt="VOC">` : "";
+      return `<td data-col="voc">${vocBadgeEl||"—"}</td>`;
+    }
+    case "cam":
+      return `<td data-col="cam">${camBadge(p)||"—"}</td>`;
+    default:
+      return `<td data-col="${escAttr(key)}">—</td>`;
+  }
+}
+function getSorted(rows){
+  const kfn = SORT_KEYS[sortField] || SORT_KEYS.product;
+  const nameKey = SORT_KEYS.product;
+  return [...rows].sort((a,b)=>{
+    const ka=kfn(a), kb=kfn(b);
+    if(ka<kb) return -sortDir;
+    if(ka>kb) return  sortDir;
+    if(sortField === "product") return 0;
+    const na=nameKey(a), nb=nameKey(b);
+    if(na<nb) return -1;
+    if(na>nb) return 1;
+    return 0;
+  });
+}
+
+// ── Config-driven detail rows (aux__js2_card_fields.json → window.__JS2_FIELDS__) ──
+function cat2DvNa(){
+  return '<span class="cat2-dv-na">N/A</span>';
+}
+function cat2DvNr(){
+  return '<span class="cat2-dv-na">N/R</span>';
+}
+function modalDetailRow(label, valueHtml){
+  return `<div class="ext-field-row"><span class="ext-field-label">${esc(label)}</span><span class="ext-field-value">${valueHtml}</span></div>`;
+}
+function modalDetailValuePresent(raw){
+  // Always treat as relevant — empty → N/A (never N/R). Used for thickness /
+  // density rows on Tech. Details where Compact field_visibility wrongly hid
+  // Vol. Density for insulation and similar types.
+  const v = String(raw||"").trim();
+  if(!v || v==="-" || /^<?na>?$/i.test(v) || /^nan$/i.test(v) || /^n\/?a$/i.test(v))
+    return cat2DvNa();
+  return esc(v);
+}
+function techParseNum(raw){
+  const s = String(raw||"").trim();
+  if(!s || s==="-" || /^<?na>?$/i.test(s) || /^nan$/i.test(s) || /^n\/?a$/i.test(s))
+    return null;
+  const m = s.replace(",", ".").match(/-?\d+(?:\.\d+)?/);
+  if(!m) return null;
+  const n = Number(m[0]);
+  return Number.isFinite(n) ? n : null;
+}
+function techDensities(p){
+  // ρ (kg/m³) = m_A (kg/m²) / d (m); fill whichever side is missing.
+  let vol = String(p.densityVol||"").trim();
+  let area = String(p.densityKgm2||"").trim();
+  if(!vol || /^<?na>?$/i.test(vol) || /^nan$/i.test(vol))
+    vol = String(p.density||"").trim();
+  if(/^<?na>?$/i.test(vol) || /^nan$/i.test(vol) || vol==="-") vol = "";
+  if(/^<?na>?$/i.test(area) || /^nan$/i.test(area) || area==="-") area = "";
+  const thick = techParseNum(p.thickness);
+  let volN = techParseNum(vol);
+  let areaN = techParseNum(area);
+  if(volN == null && areaN != null && thick != null && thick > 0){
+    vol = Math.round(areaN * 1000 / thick) + " kg/m³";
+  } else if(areaN == null && volN != null && thick != null && thick > 0){
+    area = Math.round(volN * (thick / 1000)) + " kg/m²";
+  } else {
+    if(volN != null && !/kg\/m/i.test(vol)) vol = Math.round(volN) + " kg/m³";
+    if(areaN != null && !/kg\/m/i.test(area)) area = Math.round(areaN) + " kg/m²";
+  }
+  return { vol, area };
+}
+function modalDetailValue(p, visKey, raw){
+  if(!fieldVisible(p, visKey)) return cat2DvNr();
+  const v = String(raw||"").trim();
+  if(!v || v==="-" || /^<?na>?$/i.test(v) || /^nan$/i.test(v)) return cat2DvNa();
+  return esc(v);
+}
+function modalProductDetailsCol(p){
+  const dens = techDensities(p);
+  return [
+    modalDetailRow("Thickness", modalDetailValuePresent(p.thickness)),
+    modalDetailRow("Sup. Density", modalDetailValuePresent(dens.area)),
+    modalDetailRow("Vol. Density", modalDetailValuePresent(dens.vol)),
+    modalDetailRow("Conductivity", modalDetailValue(p, "conductivity", p.conductivity)),
+    modalDetailRow("Fire rating", modalDetailValue(p, "fireRating", p.fireRating)),
+    modalDetailRow("Manuf. plant", modalPlantRow(p)),
+    modalDetailRow(priceLabel(p), modalListPriceRow(p)),
+    modalDetailRow("Tech. details URL", modalTechDetailsUrlRow(p)),
+  ].join("");
+}
+// Manufacturer list price (listino), VAT excluded and before discount — an
+// indication, never a quotation. The edition sits in the tooltip and the link
+// opens the listino PDF the figure was read from.
+function modalListPriceRow(p){
+  const val = String(p.listPrice||"").trim();
+  if(!val || val==="-") return cat2DvNa();
+  const url = cat2HrefVal(p.listPriceUrl);
+  const link = url
+    ? ` <a href="${escAttr(url)}" target="_blank" rel="noopener noreferrer" title="${escAttr(priceTooltip(p))}">🔗</a>`
+    : "";
+  return priceValueHTML(p, val) + link;
+}
+function modalTechDetailsUrlRow(p){
+  const url = docCleanUrl(p && p.techDetailsUrl);
+  if(!url) return cat2DvNa();
+  return `<a href="${escAttr(url)}" target="_blank" rel="noopener noreferrer" title="Technical data sheet">Open Link ↗</a>`;
+}
+
+// ── Listino: the manufacturer's own price table, as a popup ──
+// A MatLib entry often covers a whole thickness range (DF 39 is 50–240 mm), so
+// the card can only show a span. The popup is where that span opens up into the
+// SKUs the manufacturer actually sells — code, size, price, availability and
+// packaging — with the rows matching this entry's thickness highlighted.
+function priceIsReseller(p){
+  const t = priceTable(p);
+  return !!(t && t.is_reseller);
+}
+// "List price" is the manufacturer's own; a reseller's web price must not wear that label
+function priceLabel(p){ return priceIsReseller(p) ? "Reseller price" : "List price"; }
+function priceTable(p){
+  const eid = String((p && p.eetraId) || "").trim();
+  return eid ? (PRICE_TABLES[eid] || null) : null;
+}
+function priceTooltip(p){
+  const edition = String((p && p.listPriceEdition) || "").trim();
+  const t = priceTable(p);
+  const reseller = !!(t && t.is_reseller);
+  const base = reseller ? "Prezzo web del rivenditore (non listino del produttore), IVA esclusa"
+                        : "Prezzo di listino, IVA esclusa";
+  const head = edition ? `${reseller ? "Rivenditore" : "Listino"} ${edition} — ${base}` : base;
+  return t ? `${head}. Clicca per la tabella completa (${t.n_sku} referenze).` : head;
+}
+// The value itself opens the popup when there is a table behind it; otherwise it
+// stays plain text, so the affordance is never a dead click.
+function priceValueHTML(p, val){
+  const t = priceTable(p);
+  const title = escAttr(priceTooltip(p));
+  if(!t) return `<span title="${title}">${esc(val)}</span>`;
+  const eid = escAttr(String(p.eetraId||""));
+  return `<span class="cat2-price-link" role="button" tabindex="0" title="${title}"`
+       + ` onclick="event.stopPropagation();openPricePopup('${eid}')">${esc(val)} ▾</span>`;
+}
+function closePricePopup(){
+  const bg = document.getElementById("price-popup-bg");
+  const body = document.getElementById("price-popup-body");
+  if(bg){
+    bg.classList.remove("open");
+    bg.setAttribute("aria-hidden", "true");
+  }
+  if(body) body.innerHTML = "";
+}
+function openPricePopup(eetraId){
+  const t = PRICE_TABLES[String(eetraId||"")];
+  const bg = document.getElementById("price-popup-bg");
+  const body = document.getElementById("price-popup-body");
+  if(!t || !bg || !body) return;
+  const pageRef = t.source_page ? ` (p. ${t.source_page})` : "";
+  const link = cat2HrefVal(t.source_url)
+    ? ` · <a href="${escAttr(t.source_url)}" target="_blank" rel="noopener noreferrer">${t.is_reseller ? "Pagina prodotto" : "Listino PDF"}${pageRef} ↗</a>`
+    : "";
+  const bits = [t.edition ? `${t.is_reseller ? "Rivenditore" : "Listino"} ${esc(t.edition)}` : "",
+                esc(t.basis || "")].filter(Boolean);
+  const head = `<div class="cat2-price-head">
+      <div class="cat2-price-title">${esc(t.product)} — ${t.n_sku} referenze</div>
+      <div class="cat2-price-sub">${bits.join(" · ")}${link}</div>
+    </div>`;
+  const ths = (t.columns||[]).map(c => `<th>${esc(c)}</th>`).join("");
+  const trs = (t.rows||[]).map(function(r){
+    const tds = (r.cells||[]).map(c => `<td>${esc(c)}</td>`).join("");
+    return `<tr class="${r.highlight ? "is-match" : ""}">${tds}</tr>`;
+  }).join("");
+  const matched = (t.rows||[]).some(r => r.highlight);
+  const notes = [
+    t.entry_is_range
+      ? `Questa scheda copre ${t.entry_thickness} mm: sotto le ${t.n_sku} referenze a listino del produttore.`
+      : "",
+    matched ? "In evidenza la referenza che corrisponde allo spessore di questa scheda." : "",
+    t.availability_legend ? `Dis.: ${t.availability_legend}.` : "",
+    t.is_reseller
+      ? "Prezzi web di un rivenditore, non il listino ufficiale del produttore: IVA scorporata, spesso in offerta e variabili nel tempo — indicazione di massima, non un'offerta."
+      : "Prezzi di listino del produttore, IVA esclusa e al lordo di sconti — indicazione di massima, non un'offerta.",
+  ].filter(Boolean).map(n => `<div>${esc(n)}</div>`).join("");
+  body.innerHTML = head
+    + `<table class="cat2-price-table"><thead><tr>${ths}</tr></thead><tbody>${trs}</tbody></table>`
+    + `<div class="cat2-price-note">${notes}</div>`;
+  bg.classList.add("open");
+  bg.setAttribute("aria-hidden", "false");
+}
+function modalEpdDec(p){
+  const dec = String(p.epdDeclaredNumber||"").trim();
+  return (dec && dec!=="-") ? esc(dec) : cat2DvNa();
+}
+function modalEpdReg(p){
+  const reg = String(p.epdNumber||"").trim();
+  const url = cat2HrefVal(p.epdUrl);
+  if(!reg || reg==="-") return cat2DvNa();
+  if(url){
+    return `<a href="${escAttr(url)}" target="_blank" rel="noopener noreferrer">${esc(reg)}</a>`;
+  }
+  return esc(reg);
+}
+function modalRecycled(p){
+  const val = String(p.recyclingRate||"").trim();
+  const url = cat2HrefVal(p.recyclingUrl);
+  if(!val || val==="-" || /^<?na>?$/i.test(val) || /^nan$/i.test(val)) return cat2DvNa();
+  const fromEpd = modalRecycledIsFromEpd(p);
+  const linkTitle = fromEpd
+    ? "Recycled content from EPD"
+    : "Recycled content declaration";
+  const link = url
+    ? ` <a href="${escAttr(url)}" target="_blank" rel="noopener noreferrer" title="${escAttr(linkTitle)}">🔗</a>`
+    : "";
+  return esc(val) + link;
+}
+function modalRecycledIsFromEpd(p){
+  // Same remote file as the EPD (common when R__Rec_Reco_ByProd_URL mirrors E__EPD_URL).
+  const rc = cat2HrefVal(p.recyclingUrl);
+  const epd = cat2HrefVal(p.epdUrl);
+  return !!(rc && epd && rc === epd);
+}
+function modalRecycledLabel(p){
+  const url = cat2HrefVal(p.recyclingUrl);
+  if(!url) return "Recycled content";
+  return modalRecycledIsFromEpd(p)
+    ? "Recycled content (from EPD)"
+    : "Recycled content (from Declaration)";
+}
+// Certificate behind the recycled-content claim (R__Rec_Cert_*). Expiry shows
+// as dd/mm/yyyy and is flagged once past.
+function modalRecCertText(v){
+  const t = String(v||"").trim();
+  return (t && t!=="-" && !/^(nan|none|n\/r)$/i.test(t)) ? t : "";
+}
+function modalRecCertExpiry(p){
+  const raw = modalRecCertText(p.recCertExpiry);
+  if(!raw) return "";
+  const m = raw.match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if(!m) return esc(raw);
+  const shown = `${m[3]}/${m[2]}/${m[1]}`;
+  const expired = new Date(`${m[1]}-${m[2]}-${m[3]}T23:59:59`) < new Date();
+  return expired
+    ? `${esc(shown)} <span title="Certificate expired" style="color:#c0392b">⚠ expired</span>`
+    : esc(shown);
+}
+function modalRecCertRows(p){
+  return [
+    ["Rec. cert. no.", esc(modalRecCertText(p.recCertNo))],
+    ["Rec. cert. expiry", modalRecCertExpiry(p)],
+  ];
+}
+function modalVocDisplayText(raw){
+  // Drop ``Cat. …``; abbreviate known cert names (Indoor Air Comfort Gold → IAC).
+  // Link is attached separately by modalVocRow.
+  return String(raw||"").split(/\s*·\s*/)
+    .map(s => s.trim())
+    .filter(s => s && !/^Cat\.\s/i.test(s))
+    .map(s => s
+      .replace(/\b(?:Indoor[\s-]+Air(?:[\s-]+Comfort)?(?:[\s-]+Gold)?|IAC[\s-]*Gold)\b/gi, "IAC")
+      .replace(/\s+/g, " ")
+      .trim())
+    .filter(Boolean)
+    .join(" · ");
+}
+function modalVocRow(p){
+  const text = modalVocDisplayText(p.vocText);
+  const url = cat2HrefVal(p.vocUrl);
+  if(!text && !url) return cat2DvNa();
+  const link = url
+    ? ` <a href="${escAttr(url)}" target="_blank" rel="noopener noreferrer" title="VOC documentation">🔗</a>`
+    : "";
+  return (text ? esc(text) : "") + link;
+}
+function modalMsdsRow(p){
+  const url = cat2HrefVal(p.msdsUrl);
+  if(!url) return "";
+  return `<a href="${escAttr(url)}" target="_blank" rel="noopener noreferrer" title="Safety Data Sheet (MSDS / SDS)">Available 🔗</a>`;
+}
+function modalCamRow(p){
+  const badge = camBadge(p);
+  if(badge) return badge;
+  const raw = String(p.camCompliance||"").trim();
+  if(!raw || raw==="-" || /^(no|nan)$/i.test(raw)) return cat2DvNa();
+  // A CAM declaration URL shows as a link icon, not the full address.
+  const url = docCleanUrl(raw);
+  if(url) return `<a href="${escAttr(url)}" target="_blank" rel="noopener noreferrer" title="CAM compliance declaration">🔗</a>`;
+  return esc(raw);
+}
+// Product-level certification (e.g. Green Tag Level A) — not a VOC scheme, so it
+// lives under Responsible Sourcing rather than Human Health. The link opens the
+// manufacturer's page that documents it.
+function modalCertRow(p){
+  const list = Array.isArray(p.certifications) ? p.certifications : [];
+  const names = list.map(x => String(x||"").trim()).filter(x => x && x!=="-" && x!=="n/r");
+  if(!names.length) return cat2DvNa();
+  const url = docCleanUrl(p.certificationsUrl);
+  const link = url
+    ? ` <a href="${escAttr(url)}" target="_blank" rel="noopener noreferrer" title="Certification page">🔗</a>`
+    : "";
+  return esc(names.join(", ")) + link;
+}
+function modalPlantRow(p){
+  const plant = String(p.plant||"").trim();
+  const country = String(p.country||"").trim();
+  const bits = [plant, country].filter(x => x && x!=="-");
+  if(!bits.length) return cat2DvNa();
+  const f = flagFor(p.country);
+  return `${f ? f+" " : ""}${esc(bits.join(" · "))}`;
+}
+function modalSustainabilityCol(p){
+  // Shortcut to the document tabs above. Only offered when the product actually
+  // has a document, so the button can never be a no-op.
+  const eid = String(p.eetraId||"").trim();
+  const nDocs = buildDocEntries(p).length;
+  const docsBtn = (eid && nDocs)
+    ? `<div class="modal-doc-viewer-wrap"><button type="button" class="modal-btn" onclick="viewDocuments('${escAttr(eid)}')">🗎 Documents (${nDocs})</button></div>`
+    : "";
+  return [
+    modalDetailRow("EPD Dec.", modalEpdDec(p)),
+    modalDetailRow("EPD Reg.", modalEpdReg(p)),
+    modalDetailRow(modalRecycledLabel(p), modalRecycled(p)),
+    modalDetailRow("VOC", modalVocRow(p)),
+    modalDetailRow("CAM", modalCamRow(p)),
+    docsBtn,
+  ].join("");
+}
+function modalDetailPanelHTML(p){
+  return `<div class="modal-detail-2col">
+    <div class="modal-detail-col">
+      <div class="modal-col-title">Product Details</div>
+      ${modalProductDetailsCol(p)}
+    </div>
+    <div class="modal-detail-col">
+      <div class="modal-col-title">Sustainability</div>
+      ${modalSustainabilityCol(p)}
+    </div>
+  </div>`;
+}
+function cat2HrefVal(href){
+  const u = String(href||"").trim();
+  if(!u || u === "-" || /^(n\/a|na|n\/r|nr)$/i.test(u)) return "";
+  return u;
+}
+function cardDetailRows(p, prependLeft="", prependRight="", skipFields=[]){
+  let defs    = JS2_FIELDS.detail_rows || [];
+  const order = (JS2_FIELDS.size_order || {})[sizeMode];
+  if(Array.isArray(order)) defs = order.map(f => defs.find(d => d.field === f)).filter(Boolean);
+  const pt    = String(p.productType||"").trim();
+  const left  = [], right = [], full = [];
+
+  for(const def of defs){
+    if(skipFields.includes(def.field)) continue;
+    const sizes = def.sizes === "*" ? ["S","M","L"] : (def.sizes||[]);
+    if(!sizes.includes(sizeMode)) continue;
+    const ptypes = def.product_types;
+    if(ptypes !== "*" && Array.isArray(ptypes)){
+      if(!ptypes.some(t => pt.toLowerCase().includes(t.toLowerCase()))) continue;
+    }
+    const label = def.field === "listPrice" ? priceLabel(p)
+      : (def.labels_by_size && def.labels_by_size[sizeMode]) || def.label || def.field;
+    if(def.voc_row){
+      const valHtml = vocBadgeCard(p) || modalVocRow(p);
+      const row = `<div class="cat2-detail-row"><span class="cat2-dl">${esc(label)}</span><span class="cat2-dv">${valHtml}</span></div>`;
+      (def.column === "right" ? right : left).push(row);
+      continue;
+    }
+    if(def.field === "recyclingRate" || def.field === "recyclingUrl"){
+      const valHtml = modalRecycled(p);
+      const row = `<div class="cat2-detail-row"><span class="cat2-dl">${esc(label)}</span><span class="cat2-dv">${valHtml}</span></div>`;
+      (def.column === "right" ? right : left).push(row);
+      continue;
+    }
+    if(def.link_only){
+      const href = cat2HrefVal(p[def.field]);
+      const valHtml = href
+        ? `<a href="${escAttr(href)}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" title="${escAttr(label)}">🔗</a>`
+        : cat2DvNa();
+      const row = `<div class="cat2-detail-row"><span class="cat2-dl">${esc(label)}</span><span class="cat2-dv">${valHtml}</span></div>`;
+      (def.column === "right" ? right : left).push(row);
+      continue;
+    }
+    if(def.field && !fieldVisible(p, def.field)) continue;
+    let val = String(p[def.field]||"").trim();
+    if((!val || val==="-") && def.fallback_field)
+      val = String(p[def.fallback_field]||"").trim();
+    const hasLinkField = !!(def.link_field);
+    const href = hasLinkField ? cat2HrefVal(p[def.link_field]) : "";
+    const isEpdRow = def.field === "epdNumber";
+    if((!val || val==="-") && !hasLinkField) continue;
+    if((!val || val==="-") && hasLinkField && !isEpdRow) continue;
+
+    if(def.multiline || def.column === "full"){
+      full.push(`<div class="cat2-detail-full"><div class="cat2-content-text">${esc(val)}</div></div>`);
+    } else {
+      let valHtml;
+      if(!val || val==="-"){
+        valHtml = cat2DvNa();
+      } else if(def.field === "listPrice"){
+        // the price opens the manufacturer's full table; the 🔗 opens the PDF
+        valHtml = priceValueHTML(p, val) + (href
+          ? ` <a href="${escAttr(href)}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" title="Fonte del prezzo">🔗</a>`
+          : "");
+      } else if(href){
+        valHtml = `<a href="${escAttr(href)}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">${esc(val)} 🔗</a>`;
+      } else {
+        valHtml = esc(val);
+      }
+      const row = `<div class="cat2-detail-row"><span class="cat2-dl">${esc(label)}</span><span class="cat2-dv">${valHtml}</span></div>`;
+      (def.column === "right" ? right : left).push(row);
+    }
+  }
+
+  if(!prependLeft && !prependRight && !left.length && !right.length && !full.length) return "";
+  let html = "";
+  if(prependLeft || prependRight || left.length || right.length){
+    html += `<div class="cat2-detail-2col">
+      <div class="cat2-detail-col">${prependLeft}${left.join("")}</div>
+      <div class="cat2-detail-col">${prependRight}${right.join("")}</div>
+    </div>`;
+  }
+  html += full.join("");
+  return html;
+}
+
+// S card: Thickness under product name, between horizontal dividers; full
+// "Thickness" label (never abbreviated).
+// Expanded mode only: one line under the name saying this card is a collection
+// and how many of its colours the parent EPD row lists. Empty in Condensed, so
+// both card paths can call it unconditionally.
+function collectionNoteHTML(p){
+  if(!p || !p.collectionId) return "";
+  const n = Number(p.collectionCount) || 0;
+  // The card has room for the count and nothing else; which row covers it goes
+  // in the tooltip and, in full, in the detail panel.
+  const text = n ? `${n} colour${n === 1 ? "" : "s"}` : "";
+  const tip = p.collectionOf
+    ? `${n ? n + " colours of this collection are " : "This collection is "}covered by ${p.collectionOf}`
+    : "";
+  return `<div class="cat2-coll-note" title="${escAttr(tip)}">
+    <span class="cat2-coll-tag">Collection</span>
+    ${text ? `<span class="cat2-coll-count">${esc(text)}</span>` : ""}
+  </div>`;
+}
+function cardThicknessSectionS(p){
+  if(!fieldVisible(p, "thickness")) return "";
+  const val = String(p.thickness||"").trim();
+  if(!val || val === "-") return "";
+  const row = `<div class="cat2-detail-row"><span class="cat2-dl">Thickness</span><span class="cat2-dv">${esc(val)}</span></div>`;
+  return `<div class="cat2-s-thickness">${row}</div>`;
+}
+
+// ── XL card: raw fields grouped by column prefix (0__/A__ → 0+A, etc.) ──
+const XL_TAB_ORDER = ["0+A", "D", "E", "G", "P", "R", "S", "U", "VO", "VV"];
+
+function xlFieldGroupKey(col){
+  const s = String(col);
+  const sep = s.indexOf("__");
+  if(sep < 1) return "Other";
+  const p = s.slice(0, sep).toUpperCase();
+  if(p === "0" || p === "A") return "0+A";
+  if(p === "V") return "VO"; // legacy V__* / local cache columns
+  if(XL_TAB_ORDER.includes(p)) return p;
+  return "Other";
+}
+function cardXLFieldRows(keys, raw){
+  return keys.map(k => {
+    const vs = (raw[k] === null || raw[k] === undefined) ? "" : String(raw[k]);
+    return `<div class="cat2-xl-row"><span class="cat2-xl-lbl">${esc(k)}</span><span class="cat2-xl-val">${esc(vs) || "—"}</span></div>`;
+  }).join("");
+}
+function cardXLFieldsHTML(p){
+  const raw = p.rawFields;
+  if(!raw || typeof raw !== "object"){
+    return '<div class="cat2-xl-tabs"><div class="cat2-xl-empty">No raw data</div></div>';
+  }
+  const grouped = {};
+  for(const k of Object.keys(raw)){
+    const g = xlFieldGroupKey(k);
+    if(!grouped[g]) grouped[g] = [];
+    grouped[g].push(k);
+  }
+  for(const g of Object.keys(grouped)){
+    grouped[g].sort((a, b) => a.localeCompare(b));
+  }
+  const tabs = [...XL_TAB_ORDER];
+  const active = XL_TAB_ORDER.includes(xlGlobalGroup) ? xlGlobalGroup : tabs[0];
+  const tabBar = tabs.map(g =>
+    `<button type="button" class="cat2-xl-tab${g === active ? " active" : ""}" data-xl-tab="${escAttr(g)}">${esc(g)}</button>`
+  ).join("");
+  const panels = tabs.map(g => {
+    const keys = grouped[g] || [];
+    const body = keys.length
+      ? cardXLFieldRows(keys, raw)
+      : '<div class="cat2-xl-empty">No fields</div>';
+    return `<div class="cat2-xl-panel${g === active ? " active" : ""}" data-xl-panel="${escAttr(g)}">${body}</div>`;
+  }).join("");
+  return `<div class="cat2-xl-tabs">
+    <div class="cat2-xl-tabbar">${tabBar}</div>
+    <div class="cat2-xl-panels">${panels}</div>
+  </div>`;
+}
+function bindXLCardTabs(){
+  const grid = document.getElementById("grid");
+  if(!grid || grid._xlTabsBound) return;
+  grid._xlTabsBound = true;
+  grid.addEventListener("click", e => {
+    const inXL = e.target.closest(".cat2-xl-tabs");
+    if(!inXL) return;
+    e.stopPropagation();
+    const tab = e.target.closest(".cat2-xl-tab");
+    if(!tab) return;
+    const root = tab.closest(".cat2-xl-tabs");
+    if(!root) return;
+    syncAllXLCardsToGroup(tab.dataset.xlTab);
+  });
+}
+function cardHTML(p){
+  const _cardImg = productImageSrc(p.imageUrl);
+  const imgHtml = _cardImg
+    ? `<img class="cat2-img-thumb" src="${escAttr(_cardImg)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">`
+    : "";
+  const hdrImg = imgHtml ? `<div class="cat2-hdr-img">${imgHtml}</div>` : "";
+  const mfrPlain = esc(p.manufacturer || "—");
+  const collNote = collectionNoteHTML(p);
+  // Sizes M/L/XL only — hidden via CSS for S, which already has its own divider
+  // pattern (.cat2-s-thickness) directly under the name.
+  const nameDividerTop = `<div class="cat2-name-divider cat2-name-divider--top"></div>`;
+  const nameDividerBottom = `<div class="cat2-name-divider cat2-name-divider--bottom"></div>`;
+  const hdrBlockPlain = `<div class="cat2-hdr">
+    ${hdrImg}
+    <div class="cat2-hdr-text">
+      <div class="cat2-mfr">${mfrPlain}</div>
+      ${nameDividerTop}
+      <div class="cat2-name">${esc(p.name||"—")}</div>
+      ${nameDividerBottom}
+    </div>
+  </div>` + collNote;
+
+  if(sizeMode === "XL"){
+    return `<div class="cat2-card cat2-card-xl" data-id="${p.id}">
+      ${hdrBlockPlain}
+      ${cardXLFieldsHTML(p)}
+    </div>`;
+  }
+
+  const f      = flagFor(p.country);
+  const prog   = String(p.epdProgramme||"").trim();
+
+  const typeB  = typeBadgesHTML(p);
+  const typeTop = typeB ? `<div class="cat2-type-top">${typeB}</div>` : "";
+  const typeHdr = typeB ? `<div class="cat2-type-badges">${typeB}</div>` : "";
+  const camB = camBadge(p);
+  const vocB = vocBadgeCard(p);
+
+  const gwpPrelude = cardGwpPill(p);
+  const thicknessSectionS = sizeMode === "S" ? cardThicknessSectionS(p) : "";
+  let detailRows;
+  if(sizeMode === "S"){
+    const gwpFull = gwpPrelude ? `<div class="cat2-detail-gwp-full">${gwpPrelude}</div>` : "";
+    const rc = rcPill(p);
+    const rcFull = rc ? `<div class="cat2-detail-gwp-full">${rc}</div>` : "";
+    const vocAfterRc = vocB ? `<div class="cat2-rc-voc">${vocB}</div>` : "";
+    const prelude = gwpFull + rcFull + vocAfterRc;
+    const meta = cardDetailRows(p, "", "", ["thickness"]);
+    const inner = prelude + meta;
+    const noTop = thicknessSectionS ? " cat2-detail-s--no-top" : "";
+    detailRows = inner ? `<div class="cat2-detail-s${noTop}">${inner}</div>` : "";
+  } else if(sizeMode === "M" || sizeMode === "L"){
+    const gwpFull = gwpPrelude ? `<div class="cat2-detail-gwp-full">${gwpPrelude}</div>` : "";
+    const rc = rcPill(p);
+    const rcFull = rc ? `<div class="cat2-detail-gwp-full">${rc}</div>` : "";
+    detailRows = `<div class="cat2-detail-m">${gwpFull}${rcFull}${cardDetailRows(p)}</div>`;
+  } else {
+    detailRows = cardDetailRows(p, gwpPrelude + rcPillBlockML(p), "");
+  }
+  const mfrHtml  = `${esc(p.manufacturer||"—")}${f ? ' <span title="Country">'+f+'</span>' : ""}`;
+  const hdrBlock = `<div class="cat2-hdr">
+    ${hdrImg}
+    <div class="cat2-hdr-text">
+      ${typeHdr}
+      <div class="cat2-mfr">${mfrHtml}</div>
+      ${nameDividerTop}
+      <div class="cat2-name">${esc(p.name||"—")}</div>
+      ${nameDividerBottom}
+    </div>
+  </div>` + collNote;
+
+  return `<div class="cat2-card" data-id="${p.id}">
+    ${typeTop}
+    ${hdrBlock}
+    ${thicknessSectionS}
+    <div class="cat2-badges">${camB}</div>
+    ${detailRows}
+    <div class="cat2-footer">
+      <span>${esc(prog&&prog!=="-"?prog:"")}</span>
+      <span>${f&&p.country ? f+" "+esc(p.country) : ""}</span>
+    </div>
+  </div>`;
+}
+
+// ── Modal HTML ──
+function mfrLogoSrc(name){
+  const key = String(name||"").trim().toLowerCase().replace(/\s+/g, " ");
+  return (MFR_LOGOS && MFR_LOGOS[key]) || "";
+}
+function mfrLogoHtml(p){
+  const src = mfrLogoSrc(p && p.manufacturer);
+  if(!src) return "";
+  return `<div class="modal-mfr-logo"><img src="${escAttr(src)}" alt=""></div>`;
+}
+function modalHTMLRightPanel(p){
+  // Top stack matches charts_scatter_ec_popup.html:
+  // name → manufacturer · plant → tags → photo | GWP A1–A3 block.
+  const fuKey   = defaultGwpFuKey(p);
+  const color   = gwpColorFor(p, fuKey || undefined);
+  const gwpStr  = (fuKey && formatGwpForFu(p, fuKey)) || formatGwp(p);
+  const f       = flagFor(p.country);
+  const barHtml = gwpModalBar(p, fuKey || undefined);
+  const plant   = (p.plant && p.plant!=="-") ? ` · ${esc(p.plant)}` : "";
+  const hasImg  = !!productImageSrcDetail(p);
+  const mfrLine = `${f ? f+" " : ""}${esc(p.manufacturer||"—")}${plant}`;
+  const fuRadios = gwpFuRadiosHtml(p, fuKey);
+  const logoHtml = mfrLogoHtml(p);
+
+  const gwpBlock = (gwpStr && gwpStr !== "—")
+    ? `${fuRadios}<div class="modal-gwp-value" data-product-id="${escAttr(String(p.id||""))}" style="color:${color}">GWP = ${esc(gwpStr)}</div>
+       ${barHtml}`
+    : (fuRadios
+      ? `${fuRadios}<div class="modal-gwp-value" data-product-id="${escAttr(String(p.id||""))}" style="color:${color}">GWP = —</div>`
+      : "");
+
+  const mediaBlock = hasImg
+    ? `<div class="modal-hdr-grid modal-hdr-grid--panel">
+        <div class="modal-hdr-img">
+          <img src="${escAttr(productImageSrcDetail(p))}" alt="${escAttr(p.name||"")}" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        </div>
+        <div class="modal-hdr-gwp--panel">${gwpBlock}</div>
+       </div>`
+    : (gwpBlock ? `<div class="modal-hdr-grid modal-hdr-grid--panel modal-hdr-grid--no-img"><div class="modal-hdr-gwp--panel">${gwpBlock}</div></div>` : "");
+
+  const badges = [
+    (p.productType  && p.productType!=="-")  ? `<span class="badge badge-prod">${esc(p.productType)}</span>`  : "",
+    (p.materialType && p.materialType!=="-") ? `<span class="badge badge-mat">${esc(p.materialType)}</span>` : "",
+  ].filter(Boolean).join("");
+
+  let btns = "";
+  if(p.productUrl && String(p.productUrl).trim() && p.productUrl!=="-")
+    btns += `<a class="modal-btn primary" href="${escAttr(p.productUrl)}" target="_blank" rel="noopener noreferrer">🌐 Product page</a>`;
+  if(p.epdUrl && String(p.epdUrl).trim() && p.epdUrl!=="-" && !/^(n\/a|na|n\/r|nr)$/i.test(String(p.epdUrl).trim()))
+    btns += `<a class="modal-btn" href="${escAttr(p.epdUrl)}" target="_blank" rel="noopener noreferrer">📄 Open EPD</a>`;
+
+  const copyBlock = modalCopyBlock(p);
+  const commentsBlock = modalCommentsBlock(p);
+  const plantBlock = modalPlantBlock(p);
+
+  // Covered products / collections live in the Collections tab (Floor tiles).
+  // Product Details and Sustainability are their own pill tabs — Info keeps
+  // copy, comments, plant, CTAs. .cat2-panel-top is lifted out by
+  // openDetailPanelRight into the fixed header above the tabs.
+  return `
+    <div class="cat2-panel-top">
+      <div class="modal-title-row">
+        <div class="modal-hdr-text">
+          <div class="modal-name modal-name--panel">${esc(p.name||"—")}</div>
+          <div class="modal-mfr modal-mfr--panel">${mfrLine}</div>
+          ${p.collectionId ? `<div class="modal-mfr modal-mfr--panel cat2-coll-note">
+            <span class="cat2-coll-tag">Collection</span>
+            <span class="cat2-coll-count">${esc(
+              "every figure below is declared for " + (p.collectionOf || "the parent entry")
+              + ", not for this collection on its own")}</span>
+          </div>` : ""}
+        </div>
+        ${logoHtml}
+      </div>
+      ${badges ? `<div class="cat2-panel-top-badges">${badges}</div>` : ""}
+      ${mediaBlock}
+    </div>
+    ${copyBlock}
+    ${commentsBlock}
+    ${plantBlock}
+    ${btns ? `<div class="modal-btns">${btns}</div>` : ""}
+  `;
+}
+
+function modalHTML(p){
+  if(JS2_USE_RIGHT_PANEL) return modalHTMLRightPanel(p);
+
+  const color   = gwpColorFor(p);
+  const gwpStr  = formatGwp(p);
+  const f       = flagFor(p.country);
+  const barHtml = gwpModalBar(p);
+  const plant   = (p.plant && p.plant!=="-") ? ` · ${esc(p.plant)}` : "";
+
+  const hasImg = !!productImageSrcDetail(p);
+
+  // Image + GWP: side-by-side when image exists, GWP-only section otherwise
+  const gwpBlock = `
+    <div class="modal-label">GWP A1–A3</div>
+    <div class="modal-gwp-value" style="color:${color}">${esc(gwpStr)}</div>
+    ${barHtml}`;
+
+  const topBlock = hasImg
+    ? `<div class="modal-hdr-grid">
+        <div class="modal-hdr-img">
+          <img src="${escAttr(productImageSrcDetail(p))}" alt="${escAttr(p.name||"")}" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        </div>
+        <div>${gwpBlock}</div>
+       </div>`
+    : `<div class="modal-section">${gwpBlock}</div>`;
+
+  const detailPanel = modalDetailPanelHTML(p);
+
+  const badges = [
+    (p.productType  && p.productType!=="-")  ? `<span class="badge badge-prod">${esc(p.productType)}</span>`  : "",
+    (p.materialType && p.materialType!=="-") ? `<span class="badge badge-mat">${esc(p.materialType)}</span>` : "",
+  ].filter(Boolean).join("");
+
+  let btns = "";
+  if(p.productUrl && String(p.productUrl).trim() && p.productUrl!=="-")
+    btns += `<a class="modal-btn primary" href="${escAttr(p.productUrl)}" target="_blank" rel="noopener noreferrer">🌐 Product page</a>`;
+  if(p.epdUrl && String(p.epdUrl).trim() && p.epdUrl!=="-" && !/^(n\/a|na|n\/r|nr)$/i.test(String(p.epdUrl).trim()))
+    btns += `<a class="modal-btn" href="${escAttr(p.epdUrl)}" target="_blank" rel="noopener noreferrer">📄 Open EPD</a>`;
+
+  const copyBlock = modalCopyBlock(p);
+  const includedBlock = modalIncludedBlock(p);
+  const commentsBlock = modalCommentsBlock(p);
+
+  return `
+    <div class="modal-name">${esc(p.name||"—")}</div>
+    <div class="modal-mfr">${f ? f+" " : ""}${esc(p.manufacturer||"—")}${plant}</div>
+    ${badges ? `<div style="display:flex;flex-wrap:wrap;gap:2px;margin-bottom:6px">${badges}</div>` : ""}
+    ${topBlock}
+    ${copyBlock}
+    ${includedBlock}
+    <div class="modal-section">${detailPanel}</div>
+    ${commentsBlock}
+    ${btns ? `<div class="modal-btns">${btns}</div>` : ""}
+  `;
+}
+
+// ── List table (columns from window.__CAT_CFG__ / lib_ui_catalogues.JS2_LIST_*) ──
+const JS2_LIST_SORTABLE = new Set([
+  "product","manufacturer","gwp","gwp_m2","gwp_m3","gwp_kg",
+  "recycled_content","product_type","material_type",
+  "thickness","density","epd_number",
+]);
+
+function listTableHTML(rows){
+  const cols = js2ListColumnsActive(rows.filter(r => !isGroupHeader(r)));
+  const thead = cols.map(key => {
+    const lbl = listColumnLabel(key);
+    if(key === "image" || !JS2_LIST_SORTABLE.has(key)){
+      return `<th data-col="${escAttr(key)}">${esc(lbl)}</th>`;
+    }
+    const active = sortField === key;
+    const ind = active ? (sortDir===1?"▲":"▼") : "";
+    return `<th class="rv-th-sort${active?" rv-sort-active":""}" data-col="${escAttr(key)}" data-key="${escAttr(key)}">${esc(lbl)}<span class="rv-sort-ind">${ind}</span></th>`;
+  }).join("");
+
+  const empty = `<tr><td colspan="${cols.length}" style="text-align:center;color:#6b7280;padding:2rem 10px">No matching products.</td></tr>`;
+  const tbody = rows.map(p => isGroupHeader(p)
+    ? `<tr class="rv-group-row"><td colspan="${cols.length}">${esc(p.group)} <span class="cat2-group-count">· ${p.count.toLocaleString()}</span></td></tr>`
+    : `<tr data-id="${p.id}">${cols.map(k => listCellHTML(p, k)).join("")}</tr>`
+  ).join("");
+
+  return `<div class="rv-table-wrap">
+    <table class="rv-table">
+      <thead><tr>${thead}</tr></thead>
+      <tbody>${tbody||empty}</tbody>
+    </table>
+  </div>`;
+}
+
+// ── Render ──
+/* Incremental grid rendering: cards appended in batches as the user scrolls
+   (#cat2-main is the scroll root), instead of building the full DOM at once. */
+let __incIO = null;
+function renderCardsIncremental(grid, items, htmlFn, opts){
+  opts = opts || {};
+  const BATCH = opts.batch || 40;
+  if(__incIO){ __incIO.disconnect(); __incIO = null; }
+  grid.innerHTML = "";
+  if(items.length <= BATCH*1.5){
+    grid.insertAdjacentHTML("beforeend", items.map(htmlFn).join(""));
+    if(opts.onAppend) opts.onAppend(grid);
+    if(opts.onDone) opts.onDone();
+    return;
+  }
+  let idx = 0;
+  const sentinel = document.createElement("div");
+  sentinel.style.cssText = "grid-column:1/-1;height:1px;";
+  function append(){
+    if(!sentinel.parentNode) return;
+    const slice = items.slice(idx, idx+BATCH);
+    idx += slice.length;
+    sentinel.insertAdjacentHTML("beforebegin", slice.map(htmlFn).join(""));
+    if(opts.onAppend) opts.onAppend(grid);
+    if(idx >= items.length && __incIO){ __incIO.disconnect(); __incIO = null; sentinel.remove(); }
+    if(opts.onDone) opts.onDone();
+  }
+  grid.appendChild(sentinel);
+  __incIO = new IntersectionObserver(function(entries){
+    if(entries.some(e=>e.isIntersecting)) append();
+  }, {root: opts.root || null, rootMargin: "800px 0px"});
+  append();
+  // Condensed↔Expanded restore: keep loading batches until the anchor card exists.
+  if(opts.ensureId != null){
+    const targetIdx = items.findIndex(
+      it => !isGroupHeader(it) && Number(it.id) === Number(opts.ensureId)
+    );
+    if(targetIdx >= 0){
+      while(idx <= targetIdx && idx < items.length) append();
+    }
+  }
+  if(__incIO && sentinel.parentNode) __incIO.observe(sentinel);
+}
+function bindNewGridCards(grid){
+  if(gridCardOpensDetail()){
+    for(const el of grid.querySelectorAll(".cat2-card:not([data-inc-bound])")){
+      el.setAttribute("data-inc-bound","1");
+      el.addEventListener("click", ()=>openModal(Number(el.dataset.id)));
+    }
+  } else if(sizeMode === "XL"){
+    for(const el of grid.querySelectorAll(".cat2-card.cat2-card-xl:not([data-inc-bound])")){
+      el.setAttribute("data-inc-bound","1");
+      el.style.cursor = "default";
+    }
+    syncAllXLCardsToGroup(xlGlobalGroup);
+  }
+}
+// ── Group by ──
+// Workbook placeholders ("*", "-", "n/r", …) mean "no value": they join the blank group.
+const GROUP_BLANK = new Set(["", "*", "-", "—", "n/a", "n/r", "na", "nr", "n/d", "none", "nan"]);
+function groupValue(raw){
+  const v = String(raw||"").trim().replace(/\s+/g, " ");
+  return GROUP_BLANK.has(v.toLowerCase()) ? "" : v;
+}
+const GROUP_BY = {
+  material:     {label: "Material Type", none: "(no material type)", key: p => groupValue(p.materialType)},
+  manufacturer: {label: "Manufacturer",  none: "(no manufacturer)",  key: p => groupValue(p.manufacturer)},
+  epd:          {label: "EPD Number",    none: "(no EPD number)",
+                 key: p => groupValue(p.epdNumber) || groupValue(p.epdDeclaredNumber)},
+};
+/* Sorted rows → [{group, count}, row, row, …, {group, count}, row, …].
+   Groups run A→Z with the blank group last; the current sort holds inside each. */
+function groupRows(sorted){
+  const g = GROUP_BY[groupBy];
+  if(!g) return sorted;
+  const buckets = new Map();
+  for(const p of sorted){
+    const k = g.key(p);
+    // EPD numbers differ only by spacing/case in the source (S-P-01137 vs S-P- 01137).
+    const id = groupBy === "epd" ? k.replace(/\s+/g, "").toUpperCase() : k.toLowerCase();
+    if(!buckets.has(id)) buckets.set(id, {label: k, rows: []});
+    buckets.get(id).rows.push(p);
+  }
+  const keys = [...buckets.keys()].sort((a, b) =>
+    (a === "") - (b === "") || a.localeCompare(b, undefined, {numeric: true, sensitivity: "base"}));
+  const out = [];
+  for(const k of keys){
+    const b = buckets.get(k);
+    out.push({group: k === "" ? g.none : b.label, count: b.rows.length});
+    out.push(...b.rows);
+  }
+  return out;
+}
+function isGroupHeader(item){ return item && item.group !== undefined && item.count !== undefined; }
+function groupHeaderHTML(h){
+  return `<div class="cat2-group-hdr" role="heading" aria-level="3">${esc(h.group)}<span class="cat2-group-count">${h.count.toLocaleString()} product${h.count === 1 ? "" : "s"}</span></div>`;
+}
+function gridItemHTML(item){ return isGroupHeader(item) ? groupHeaderHTML(item) : cardHTML(item); }
+
+/* Keep the same library row / collection in view across Condensed↔Expanded.
+   Entry ids change between modes, so we anchor on parentId + eetraId (+ collection). */
+function _anchorFromProductEl(el, main){
+  if(!el || !main) return null;
+  const p = findProduct(Number(el.dataset.id));
+  if(!p) return null;
+  const root = main.getBoundingClientRect();
+  const r = el.getBoundingClientRect();
+  return {
+    parentId: p.parentId !== undefined ? Number(p.parentId) : Number(p.id),
+    collectionId: p.collectionId || null,
+    eetraId: String(p.eetraId || ""),
+    entryId: Number(p.id),
+    offsetFromTop: r.top - root.top,
+  };
+}
+function captureViewportAnchor(){
+  const main = document.getElementById("cat2-main");
+  if(!main) return null;
+  const root = main.getBoundingClientRect();
+  const nodes = main.querySelectorAll(".cat2-card[data-id], .rv-table tbody tr[data-id]");
+  for(const el of nodes){
+    const r = el.getBoundingClientRect();
+    if(r.bottom <= root.top + 4) continue;
+    if(r.top >= root.bottom - 4) break;
+    const anchor = _anchorFromProductEl(el, main);
+    if(anchor) return anchor;
+  }
+  return null;
+}
+/** Anchor on a specific card (card click / panel open-close), falling back to the first visible. */
+function captureCardAnchor(id){
+  const main = document.getElementById("cat2-main");
+  if(!main || id == null) return captureViewportAnchor();
+  const el = document.querySelector(
+    `.cat2-card[data-id="${id}"], .rv-table tbody tr[data-id="${id}"]`
+  );
+  return _anchorFromProductEl(el, main) || captureViewportAnchor();
+}
+/** Re-render the grid after a width change (detail panel open/close) without jumping scroll.
+ *  Pass ``anchor`` when you already captured it *before* the layout change (panel open). */
+function renderGridPreservingScroll(preferId, after, anchor){
+  if(viewMode !== "grid"){
+    if(typeof after === "function") after();
+    return;
+  }
+  const a = anchor
+    || (preferId != null
+      ? (captureCardAnchor(preferId) || captureViewportAnchor())
+      : captureViewportAnchor());
+  const ensureId = preferId != null
+    ? Number(preferId)
+    : (a && a.entryId != null ? Number(a.entryId) : null);
+  render({
+    ensureId,
+    onAnchored: () => {
+      restoreViewportAnchor(a, ensureId);
+      if(typeof after === "function") after();
+    },
+  });
+}
+function resolveEntryModeAnchorId(anchor){
+  if(!anchor) return null;
+  const list = activeProducts();
+  if(entryMode === "expanded"){
+    if(anchor.collectionId){
+      const hit = list.find(p =>
+        String(p.collectionId || "") === String(anchor.collectionId) &&
+        (Number(p.parentId) === Number(anchor.parentId) ||
+         Number(p.id) === Number(anchor.parentId) ||
+         (anchor.eetraId && String(p.eetraId || "") === anchor.eetraId))
+      );
+      if(hit) return hit.id;
+    }
+    const child = list.find(p => Number(p.parentId) === Number(anchor.parentId));
+    if(child) return child.id;
+    const same = list.find(p => Number(p.id) === Number(anchor.parentId));
+    if(same) return same.id;
+  } else {
+    const parent = PRODUCTS.find(p => Number(p.id) === Number(anchor.parentId))
+      || (anchor.eetraId
+        ? PRODUCTS.find(p => String(p.eetraId || "") === anchor.eetraId)
+        : null);
+    if(parent) return parent.id;
+  }
+  if(anchor.eetraId){
+    const byEid = list.find(p => String(p.eetraId || "") === anchor.eetraId);
+    if(byEid) return byEid.id;
+  }
+  return null;
+}
+function restoreViewportAnchor(anchor, targetId){
+  if(targetId == null) return;
+  const main = document.getElementById("cat2-main");
+  if(!main) return;
+  const el = document.querySelector(
+    `.cat2-card[data-id="${targetId}"], .rv-table tbody tr[data-id="${targetId}"]`
+  );
+  if(!el) return;
+  const offset = (anchor && typeof anchor.offsetFromTop === "number")
+    ? anchor.offsetFromTop : 12;
+  const mainRect = main.getBoundingClientRect();
+  const elRect = el.getBoundingClientRect();
+  main.scrollTop += (elRect.top - mainRect.top - offset);
+}
+
+function render(opts){
+  opts = opts || {};
+  updateSizeToolbarState();
+  const filtered = getFiltered();
+  const sorted   = getSorted(filtered);
+  const grid     = document.getElementById("grid");
+  grid.dataset.size = viewMode === "grid" ? sizeMode : "";
+  const countEl  = document.getElementById("rv-count");
+  const total    = activeProducts().length;
+  countEl.textContent = filtered.length===total
+    ? `${total.toLocaleString()} products`
+    : `${filtered.length.toLocaleString()} of ${total.toLocaleString()} products`;
+
+  if(viewMode==="grid"){
+    const ncol = effectiveGridCols();
+    grid.style.gridTemplateColumns = `repeat(${ncol}, minmax(0, 1fr))`;
+    grid.className = "";
+    if(!sorted.length){
+      grid.innerHTML = `<div class="empty-msg">No products match the current filters.</div>`;
+      notifyHeight(); return;
+    }
+    renderCardsIncremental(grid, groupRows(sorted), gridItemHTML, {
+      root: document.getElementById("cat2-main"),
+      onAppend: bindNewGridCards,
+      onDone: notifyHeight,
+      ensureId: opts.ensureId,
+    });
+  } else {
+    grid.style.gridTemplateColumns = "";
+    grid.className = "rv-list-panel";
+    if(!sorted.length){
+      grid.innerHTML = `<div class="empty-msg">No products match the current filters.</div>`;
+      notifyHeight(); return;
+    }
+    grid.innerHTML = listTableHTML(groupRows(sorted));
+    for(const th of grid.querySelectorAll(".rv-th-sort")){
+      th.addEventListener("click", ()=>{
+        const k = th.dataset.key;
+        if(sortField===k) sortDir*=-1; else { sortField=k; sortDir=SORT_DEFAULT_DIR[k] || 1; }
+        saveSort();
+        render();
+      });
+    }
+    for(const tr of grid.querySelectorAll("tbody tr[data-id]")){
+      tr.addEventListener("click", ()=>openModal(Number(tr.dataset.id)));
+    }
+  }
+  if(modalOpen !== null){
+    const visible = getFiltered().some(p=>p.id===modalOpen);
+    if(!visible || (viewMode === "grid" && sizeMode === "XL")) closeModal();
+    else highlightProduct(modalOpen);
+  }
+  notifyHeight();
+  if(typeof opts.onAnchored === "function"){
+    requestAnimationFrame(() => requestAnimationFrame(opts.onAnchored));
+  }
+}
+
+// ── Product detail — dual mode (right_panel | center_modal) ──
+function clearProductSelection(){
+  document.querySelectorAll(".cat2-card.selected, .rv-table tbody tr.selected")
+    .forEach(el=>el.classList.remove("selected"));
+}
+function highlightProduct(id){
+  clearProductSelection();
+  const el = document.querySelector(
+    `.cat2-card[data-id="${id}"], .rv-table tbody tr[data-id="${id}"]`
+  );
+  if(el) el.classList.add("selected");
+}
+function openDetailPanelRight(html, id){
+  const body = document.getElementById("cat2-detail-body");
+  const top = document.getElementById("cat2-detail-top");
+  body.innerHTML = html;
+  top.innerHTML = "";
+  const head = body.querySelector(".cat2-panel-top");
+  if(head) top.appendChild(head);
+  const panel = document.getElementById("cat2-detail-panel");
+  panel.classList.add("open");
+  panel.setAttribute("aria-hidden", "false");
+  // Tells the overlaid doc panel how far in from the right edge to sit.
+  highlightProduct(id);
+}
+function closeDetailPanelRight(){
+  const panel = document.getElementById("cat2-detail-panel");
+  panel.classList.remove("open");
+  panel.setAttribute("aria-hidden", "true");
+  document.getElementById("cat2-detail-body").innerHTML = "";
+  document.getElementById("cat2-detail-top").innerHTML = "";
+  clearProductSelection();
+}
+// ── Detail-panel tabs: product details + one per document ──
+// Entries are built here, in the browser, from fields already present on the
+// product record — no Streamlit rerun. PDFs the pipeline mirrors locally are
+// served by Streamlit at /app/static/docs/<file> (see
+// lib_doc_storage.fn_sync_static_doc_links), so the viewer just points an iframe
+// at a URL. A rerun would re-serialise the whole catalogue, thumbnails included,
+// which is what made the old base64 round trip slow.
+//
+// window.__DOC_PREVIEW__ is still honoured: it carries server-fetched bytes for
+// documents that exist only as a remote URL (CAM / DoP / MSDS / recycled-content
+// evidence are never downloaded by the pipeline), requested on demand.
+const DOC_PREVIEW = window.__DOC_PREVIEW__ || null;
+const CAN_EDIT_ITEM = !!window.__CAN_EDIT_ITEM__;
+const DETAILS_TAB = "info";
+const COLL_TAB    = "collections";
+const TECH_TAB    = "tech";
+const DOCS_TAB    = "documents";
+const SUS_TAB     = "sustainability";
+let detailTab = DETAILS_TAB;   // DETAILS_TAB | COLL_TAB | TECH_TAB | SUS_TAB | DOCS_TAB
+let docPreviewKind = null;     // document kind being previewed, or null (list view)
+let docEntries = [];           // document entries for the product in the panel
+let docPanelProduct = null;
+
+// Ask Python to open Developer Dashboard → Edit Existing Item for this product.
+function requestEditItem(eetraId){
+  postToStreamlit({
+    type: "eetra:editItem",
+    eetraId: String(eetraId||""),
+    nonce: Date.now(),
+  });
+}
+
+// Sticky footer under every tab — only when the signed-in user can edit.
+function syncDetailEditFooter(p){
+  const foot = document.getElementById("cat2-detail-footer");
+  if(!foot) return;
+  const eid = p && String(p.eetraId||"").trim();
+  if(!CAN_EDIT_ITEM || !eid){
+    foot.hidden = true;
+    foot.innerHTML = "";
+    return;
+  }
+  foot.hidden = false;
+  foot.innerHTML = "";
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "modal-btn cat2-edit-btn";
+  btn.textContent = "✏️ Edit item";
+  btn.title = "Open this product in Developer Dashboard → Edit Existing Item";
+  btn.addEventListener("click", ()=>requestEditItem(eid));
+  foot.appendChild(btn);
+}
+
+// kind → tab/list labels + the product field carrying the manufacturer's URL.
+// `name` is the full document title shown in the list, `tag` the thumbnail stamp.
+const DOC_KINDS = [
+  {kind:"epd",  tag:"EPD",  name:"Environmental Product Declaration", urlField:"epdUrl"},
+  {kind:"tech", tag:"TDS",  name:"Technical Data Sheet",              urlField:"techDetailsUrl"},
+  // vocUrl, not vocUrlPrimary/vocUrlAlt: fn336 consolidates those two source
+  // columns into one field and drops the originals before serialising.
+  {kind:"voc",  tag:"VOC",  name:"VOC Emissions Certificate",         urlField:"vocUrl"},
+  {kind:"cam",  tag:"CAM",  name:"CAM Compliance Declaration",        urlField:"camCompliance"},
+  {kind:"dop",  tag:"DoP",  name:"Declaration of Performance",        urlField:"dopUrl"},
+  {kind:"msds", tag:"SDS",  name:"Safety Data Sheet",                 urlField:"msdsUrl"},
+  {kind:"rc",   tag:"RC",   name:"Recycled Content Declaration",      urlField:"recyclingUrl"},
+];
+
+function docCleanUrl(v){
+  const s = String(v==null?"":v).trim();
+  if(!s || s === "-" || /^(n\/?a|n\/?r|nan|no)$/i.test(s)) return "";
+  return /^https?:\/\//i.test(s) ? s : "";
+}
+
+// One entry per document a product actually has. staticUrl set → previewable
+// immediately from /app/static/docs/; otherwise it lives only on the
+// manufacturer's site. Entries carry the file's size and retrieval date so the
+// list can show them without downloading anything.
+function buildDocEntries(p){
+  const meta = p.docMeta || {};
+  const out = [];
+  const seen = {};   // collapse fields citing the same file (EPD == RC evidence)
+  for(const spec of DOC_KINDS){
+    const remote = docCleanUrl(p[spec.urlField]);
+    const m = meta[spec.kind] || null;
+    const staticUrl = (m && !m.bad) ? m.url : "";
+    const notPdf = !!(m && m.bad);
+    if(!remote && !m) continue;
+    // Index under EVERY identifier the entry has — one kind may be recognised by
+    // its mirrored file and another only by its URL while both point at the same
+    // document (863 rows share E__EPD_URL with R__Rec_Reco_ByProd_URL). Must match
+    // fn357_build_doc_panel_payload's rule, or the two disagree about which kinds
+    // exist and a server-fetched preview arrives under a kind the list never shows.
+    const keys = [(m && m.url) || "", remote].filter(Boolean);
+    const dup = keys.map(k=>seen[k]).find(Boolean);
+    if(dup){
+      (dup.alsoLabels = dup.alsoLabels || []).push(spec.tag);
+      continue;
+    }
+    const entry = {
+      kind: spec.kind, tag: spec.tag, label: spec.name,
+      url: remote, staticUrl: staticUrl, notPdf: notPdf,
+      kb: m ? (m.kb || 0) : 0,
+      ts: m ? (m.ts || "") : "",
+    };
+    for(const k of keys) seen[k] = entry;
+    out.push(entry);
+  }
+  return out;
+}
+
+function docPanelEntries(){ return docEntries; }
+
+// Server-fetched bytes for a remote-only document, if Python supplied them.
+function docServerEntry(kind){
+  if(!DOC_PREVIEW || !docPanelProduct) return null;
+  if(String(DOC_PREVIEW.eetraId||"") !== String(docPanelProduct.eetraId||"")) return null;
+  return (DOC_PREVIEW.docs || []).find(d=>d.kind===kind) || null;
+}
+
+// Pill tabs: Info, Collections (Floor tiles with covered products), Tech.
+// Details, Sustainability, Documents (n). When Collections is present the strip
+// is crowded (~440px panel) — use shorter labels so Documents stays on-screen
+// (the strip also wraps; see #cat2-detail-tabs).
+function renderDetailTabs(){
+  const strip = document.getElementById("cat2-detail-tabs");
+  strip.innerHTML = "";
+  const n = docPanelEntries().length;
+  const nColl = collectionsCount(docPanelProduct);
+  const hasColl = productHasCollections(docPanelProduct);
+  const crowded = hasColl; // 5 pills otherwise clip Documents off the panel
+  const mk = (key, icon, label, title) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "cat2-doc-tab" + (key === detailTab ? " active" : "");
+    b.setAttribute("role", "tab");
+    b.setAttribute("aria-selected", key === detailTab ? "true" : "false");
+    if(title) b.title = title;
+    b.innerHTML = `<span class="cat2-doc-tab-icon">${icon}</span>${esc(label)}`;
+    b.addEventListener("click", ()=>showDetailTab(key));
+    strip.appendChild(b);
+  };
+  mk(DETAILS_TAB, "ⓘ", "Info");
+  if(hasColl){
+    mk(COLL_TAB, "▦", nColl ? `Coll. (${nColl})` : "Coll.",
+      nColl ? `Collections (${nColl})` : "Collections");
+  }
+  mk(TECH_TAB, "⚙", crowded ? "Tech" : "Tech. Details",
+    crowded ? "Tech. Details" : "");
+  mk(SUS_TAB, "🌿", "Sustainability");
+  if(n) mk(DOCS_TAB, "🗎", crowded ? `Docs (${n})` : `Documents (${n})`,
+    crowded ? `Documents (${n})` : "");
+}
+
+function renderCollectionsTab(p){
+  const body = document.getElementById("cat2-coll-body");
+  if(!body) return;
+  body.innerHTML = "";
+  if(!productHasCollections(p)){
+    body.innerHTML = `<div class="cat2-sus-empty">No collections for this product.</div>`;
+    return;
+  }
+  const host = document.createElement("div");
+  host.className = "cat2-coll-embed";
+  body.appendChild(host);
+  mountIncludedProductsList(host, p, {
+    embedded: true,
+    uid: "coll-tab",
+    title: "Products covered",
+  });
+}
+
+// Sustainability tab — fields grouped by theme, each group collapsible, as on
+// Material Bank. Rows with no value are dropped; a group with no rows is hidden.
+const SUS_GROUPS = [
+  {icon:"♡", title:"Human Health", rows:p=>[
+    ["VOC emissions", modalVocRow(p)],
+    ["Safety Data Sheet (MSDS)", modalMsdsRow(p)],
+  ]},
+  {icon:"🌐", title:"Climate Health", rows:p=>{
+    const prog = String(p.epdProgramme||"").trim();
+    return [
+      ...climateGwpRows(p),
+      ["EPD Dec. n.", modalEpdDec(p)],
+      ["EPD Reg. n.", modalEpdReg(p)],
+      ["EPD programme", (prog && prog !== "-") ? esc(prog) : ""],
+    ];
+  }},
+  {icon:"♻", title:"Circular Economy", rows:p=>[
+    [modalRecycledLabel(p), modalRecycled(p)],
+    ...modalRecCertRows(p),
+  ]},
+  {icon:"🌿", title:"Responsible Sourcing", rows:p=>[
+    ["CAM compliance", modalCamRow(p)],
+    ["Product certification", modalCertRow(p)],
+  ]},
+  {icon:"🏭", title:"Manufacturer's Sustainability",
+    preamble:p=>mfrSustPreamble(p),
+    rows:p=>mfrSustRows(p),
+  },
+];
+
+function mfrSustData(p){
+  const s = p && p.mfrSust;
+  return (s && typeof s === "object") ? s : null;
+}
+function mfrSustPreamble(p){
+  const s = mfrSustData(p);
+  if(!s) return "";
+  const meta = [s.name, s.sector, s.hq].filter(x => x && String(x).trim() && String(x).trim()!=="—");
+  const pills = (s.pills||[]).map(pill=>{
+    const on = !!pill.on;
+    return `<span class="cat2-mfr-pill${on?"":" cat2-mfr-pill--off"}">${esc(pill.label||"")}</span>`;
+  }).join("");
+  return `<div class="cat2-mfr-sust-head">`
+    + (meta.length ? `<div class="cat2-mfr-sust-meta">${esc(meta.join(" · "))}</div>` : "")
+    + (pills ? `<div class="cat2-mfr-pills">${pills}</div>` : "")
+    + `</div>`;
+}
+function mfrSustRows(p){
+  const s = mfrSustData(p);
+  if(!s) return [];
+  return (s.rows||[])
+    .filter(r => Array.isArray(r) && r[0] && r[1] && String(r[1]).trim() && String(r[1]).trim()!=="—")
+    .map(([lab, val]) => [String(lab), esc(String(val))]);
+}
+
+// Tech. Details tab — former Info "Product Details" fields as a flat list.
+function renderTechDetailsTab(p){
+  const body = document.getElementById("cat2-tech-body");
+  const dens = techDensities(p);
+  const rows = [
+    ["Thickness", modalDetailValuePresent(p.thickness)],
+    ["Sup. Density", modalDetailValuePresent(dens.area)],
+    ["Vol. Density", modalDetailValuePresent(dens.vol)],
+    ["Conductivity", modalDetailValue(p, "conductivity", p.conductivity)],
+    ["Fire rating", modalDetailValue(p, "fireRating", p.fireRating)],
+    ["Manuf. plant", modalPlantRow(p)],
+    [priceLabel(p), modalListPriceRow(p)],
+    ["Tech. details URL", modalTechDetailsUrlRow(p)],
+  ];
+  const rowsHtml = rows.map(([l, v]) =>
+    `<div class="cat2-sus-row"><span class="cat2-sus-lbl">${esc(l)}</span>`
+    + `<span class="cat2-sus-val"><span class="cat2-sus-txt">${v}</span></span></div>`
+  ).join("");
+  body.innerHTML = (rowsHtml
+    ? `<div class="cat2-tech-rows">${rowsHtml}</div>`
+    : `<div class="cat2-tech-empty">No technical details for this product.</div>`)
+    + en520SectionHtml(p);
+}
+
+// Building boards only: EN 520 board type, one row per type letter with what
+// the standard requires of it (payload built by lib_en520.fn_en520_payload).
+function en520SectionHtml(p){
+  const e = p && p.en520;
+  if(!e || typeof e !== "object") return "";
+  const head = `<div class="cat2-sus-row cat2-sus-row--emph"><span class="cat2-sus-lbl">`
+    + `${esc(e.inScope ? "Designation" : "Standard")}</span><span class="cat2-sus-val">`
+    + `<span class="cat2-sus-txt">${esc(e.inScope ? (e.designation || "—") : (e.standard || "—"))}</span></span></div>`
+    + ((!e.inScope && e.designation)
+      ? `<div class="cat2-sus-row"><span class="cat2-sus-lbl">Designation</span><span class="cat2-sus-val">`
+        + `<span class="cat2-sus-txt">${esc(e.designation)}</span></span></div>`
+      : "");
+  const types = (e.types || []).map(t =>
+    `<div class="cat2-en520-type"><span class="cat2-en520-code">${esc(t.code)}</span>`
+    + `<div class="cat2-en520-txt"><div class="cat2-en520-name">${esc(t.name)}</div>`
+    + (t.req ? `<div class="cat2-en520-req">${esc(t.req)}</div>` : "")
+    + `</div></div>`
+  ).join("");
+  const src = docCleanUrl(e.source);
+  const note = e.note
+    ? `<div class="cat2-en520-note">${esc(e.note)}`
+      + (src ? ` <a href="${esc(src)}" target="_blank" rel="noopener noreferrer">Source ↗</a>` : "")
+      + `</div>`
+    : "";
+  return `<details class="cat2-sus-group cat2-en520" open><summary>`
+    + `<span class="cat2-sus-icon">▤</span>EN 520:2004+A1:2009</summary>`
+    + `<div class="cat2-sus-rows">${head}${types}${note}</div></details>`;
+}
+
+function renderSustainabilityTab(p){
+  const body = document.getElementById("cat2-sus-body");
+  const na = cat2DvNa();
+  const groups = SUS_GROUPS.map(g=>{
+    const rows = g.rows(p).filter(([, v]) => v && v !== na);
+    const preamble = (typeof g.preamble === "function") ? (g.preamble(p) || "") : "";
+    if(!rows.length && !preamble) return "";
+    const rowsHtml = rows.map(([l, v, bold]) =>
+      `<div class="cat2-sus-row${bold ? " cat2-sus-row--emph" : ""}"><span class="cat2-sus-lbl">${esc(l)}</span>`
+      + `<span class="cat2-sus-val"><span class="cat2-sus-txt">${v}</span></span></div>`
+    ).join("");
+    return `<details class="cat2-sus-group" open><summary>`
+      + `<span class="cat2-sus-icon">${g.icon}</span>${esc(g.title)}</summary>`
+      + (preamble ? `<div class="cat2-sus-preamble">${preamble}</div>` : "")
+      + (rowsHtml ? `<div class="cat2-sus-rows">${rowsHtml}</div>` : "")
+      + `</details>`;
+  }).join("");
+  body.innerHTML = groups || `<div class="cat2-sus-empty">No sustainability data for this product.</div>`;
+  // Clamp long values to two lines behind a "See more" toggle.
+  for(const val of body.querySelectorAll(".cat2-sus-val")){
+    val.classList.add("clamped");
+    const txt = val.querySelector(".cat2-sus-txt");
+    if(txt.scrollHeight <= txt.clientHeight + 1){ val.classList.remove("clamped"); continue; }
+    const btn = document.createElement("button");
+    btn.type = "button"; btn.className = "cat2-sus-more"; btn.textContent = "See more";
+    btn.addEventListener("click", ()=>{
+      const open = val.classList.toggle("clamped");
+      btn.textContent = open ? "See more" : "See less";
+    });
+    val.appendChild(btn);
+  }
+}
+
+// Revalu-style list: page glyph, document name, size/date, then actions.
+function renderDocList(){
+  const body = document.getElementById("cat2-doc-body");
+  body.innerHTML = "";
+  const list = document.createElement("div");
+  list.className = "cat2-doc-list";
+
+  for(const d of docPanelEntries()){
+    const served  = docServerEntry(d.kind);
+    // Previewable if bytes exist anywhere the server can reach: mirrored locally
+    // (staticUrl), already fetched this run (dataUri), or already rendered (pages).
+    const rendered = !!(served && served.pages && served.pages.length);
+    const canView = !!(d.staticUrl || (served && served.dataUri) || rendered);
+
+    const row = document.createElement("div");
+    row.className = "cat2-doc-item" + (canView ? " cat2-doc-item--clickable" : "");
+
+    const openPreview = (ev)=>{
+      if(ev && ev.target && ev.target.closest(".cat2-doc-act")) return;
+      if(!canView) return;
+      if(rendered) openDocPopup(d.kind);
+      else requestDocPreview(docPanelProduct ? docPanelProduct.eetraId : "", d.kind, null);
+    };
+    if(canView) row.addEventListener("click", openPreview);
+
+    const thumb = document.createElement("div");
+    thumb.className = "cat2-doc-thumb";
+    thumb.innerHTML = `<span class="cat2-doc-thumb-tag">${esc(d.tag)}</span>`;
+    row.appendChild(thumb);
+
+    const info = document.createElement("div");
+    info.className = "cat2-doc-info";
+
+    const name = document.createElement("div");
+    name.className = "cat2-doc-name";
+    // One file can be cited by several fields (an EPD that is also the
+    // recycled-content evidence); note it rather than listing it twice.
+    name.textContent = d.label + ((d.alsoLabels && d.alsoLabels.length)
+      ? " (also " + d.alsoLabels.join(", ") + ")" : "");
+    info.appendChild(name);
+
+    // Dates are the file's retrieval time, not the issue date the manufacturer
+    // printed on it — say "Retrieved" so it can't be misread as the latter.
+    const meta = document.createElement("div");
+    meta.className = "cat2-doc-meta";
+    if(d.kb){
+      // Don't call it a PDF when the magic bytes say otherwise.
+      meta.textContent = (d.notPdf ? "File · " : "PDF · ") + d.kb + " KB"
+        + (d.ts ? " · Retrieved " + d.ts : "");
+    }else{
+      meta.textContent = "Hosted by the manufacturer";
+    }
+    info.appendChild(meta);
+
+    if(d.notPdf){
+      const warn = document.createElement("div");
+      warn.className = "cat2-doc-warn";
+      warn.textContent = "Stored file isn't a valid PDF — source URL likely wrong";
+      info.appendChild(warn);
+    }else if(d.fetchFailed){
+      const warn = document.createElement("div");
+      warn.className = "cat2-doc-warn";
+      warn.textContent = d.fetchNote || "Couldn't retrieve this document.";
+      info.appendChild(warn);
+    }
+
+    const acts = document.createElement("div");
+    acts.className = "cat2-doc-acts";
+    if(canView){
+      const view = document.createElement("button");
+      view.type = "button";
+      view.className = "cat2-doc-act";
+      view.textContent = "Preview";
+      // Pages already rendered (the user is coming back to this document) — show
+      // them straight away; otherwise it takes a round trip to Python to render.
+      view.addEventListener("click", (ev)=>{
+        ev.stopPropagation();
+        rendered
+          ? openDocPopup(d.kind)
+          : requestDocPreview(docPanelProduct ? docPanelProduct.eetraId : "", d.kind, view);
+      });
+      acts.appendChild(view);
+    }
+    if(d.staticUrl){
+      const dl = document.createElement("a");
+      dl.className = "cat2-doc-act";
+      dl.href = appStaticUrl(d.staticUrl);
+      dl.download = "";
+      dl.textContent = "Download";
+      acts.appendChild(dl);
+    }
+    if(!canView && d.url && !d.notPdf && !d.fetchFailed){
+      // Server-side fetch sidesteps the manufacturer's CORS/framing rules, but
+      // costs a rerun — so it stays an explicit choice.
+      const load = document.createElement("button");
+      load.type = "button";
+      load.className = "cat2-doc-act";
+      load.textContent = "Load preview";
+      load.addEventListener("click", ()=>{
+        load.textContent = "Fetching…";
+        load.disabled = true;
+        requestDocsFromPython(docPanelProduct ? docPanelProduct.eetraId : "", d.kind);
+      });
+      acts.appendChild(load);
+    }
+    if(d.url){
+      const src = document.createElement("a");
+      src.className = "cat2-doc-act secondary";
+      src.href = d.url; src.target = "_blank"; src.rel = "noopener noreferrer";
+      src.textContent = "Source ↗";
+      acts.appendChild(src);
+    }
+    info.appendChild(acts);
+    row.appendChild(info);
+    list.appendChild(row);
+  }
+
+  if(!docPanelEntries().length){
+    const none = document.createElement("div");
+    none.className = "cat2-doc-empty";
+    none.textContent = "No documents are on file for this product.";
+    list.appendChild(none);
+  }
+  body.appendChild(list);
+}
+
+// A server-side fetch came back with nothing usable. Annotate that row so the
+// outcome is visible — otherwise the rerun just redraws the same list and the
+// click looks like it did nothing.
+function flagDocFetchFailed(kind){
+  const entry = docPanelEntries().find(d=>d.kind===kind);
+  if(!entry) return;
+  entry.fetchFailed = true;
+  const served = docServerEntry(kind);
+  entry.fetchNote = (served && served.note)
+    ? served.note
+    : "Couldn't retrieve this document — the manufacturer's site refused the "
+      + "request. Use Source ↗ to open it in a new tab.";
+  if(detailTab === DOCS_TAB && !docPreviewKind) renderDocList();
+}
+
+// appOrigin / appStaticUrl — defined above (before cardHTML) for product images too.
+
+// Popup preview for one document: page images in an overlay, detail panel stays
+// on the document list. Images are rendered server-side (lib_ui.fn358_rasterize_pdf_pages).
+function closeDocPopup(){
+  docPreviewKind = null;
+  const bg = document.getElementById("doc-popup-bg");
+  const body = document.getElementById("doc-popup-body");
+  if(bg){
+    bg.classList.remove("open");
+    bg.setAttribute("aria-hidden", "true");
+  }
+  if(body) body.innerHTML = "";
+}
+
+function openDocPopup(kind){
+  const entry = docPanelEntries().find(d=>d.kind===kind);
+  if(!entry) return;
+  docPreviewKind = kind;
+  const popupBody = document.getElementById("doc-popup-body");
+  const popupBg = document.getElementById("doc-popup-bg");
+  if(!popupBody || !popupBg) return;
+  popupBody.innerHTML = "";
+  buildDocPreviewContent(entry, popupBody, {inPopup:true});
+  popupBg.classList.add("open");
+  popupBg.setAttribute("aria-hidden", "false");
+}
+
+function buildDocPreviewContent(entry, body, opts){
+  const inPopup = !!(opts && opts.inPopup);
+  const served = docServerEntry(entry.kind);
+  const pages = (served && served.pages) || [];
+
+  const bar = document.createElement("div");
+  bar.className = "cat2-doc-preview-bar";
+  const back = document.createElement("button");
+  back.type = "button";
+  back.className = "cat2-doc-back";
+  back.textContent = inPopup ? "Close" : "← Documents";
+  back.addEventListener("click", ()=>{
+    if(inPopup) closeDocPopup();
+    else { docPreviewKind = null; showDetailTab(DOCS_TAB); }
+  });
+  bar.appendChild(back);
+  const t = document.createElement("span");
+  t.className = "cat2-doc-preview-title";
+  t.textContent = entry.label;
+  bar.appendChild(t);
+  if(entry.staticUrl){
+    const dl = document.createElement("a");
+    dl.className = "cat2-doc-link";
+    dl.href = appStaticUrl(entry.staticUrl); dl.download = "";
+    dl.textContent = "Download";
+    bar.appendChild(dl);
+  }
+  body.appendChild(bar);
+
+  function renderMessage(text){
+    const wrap = document.createElement("div");
+    wrap.className = "cat2-doc-msg";
+    const msg = document.createElement("div");
+    msg.textContent = text;
+    wrap.appendChild(msg);
+    if(entry.url){
+      const a = document.createElement("a");
+      a.className = "cat2-doc-link";
+      a.href = entry.url; a.target = "_blank"; a.rel = "noopener noreferrer";
+      a.textContent = "Open " + entry.label + " ↗";
+      wrap.appendChild(a);
+    }
+    body.appendChild(wrap);
+    if(!inPopup) notifyHeight();
+  }
+
+  if(!pages.length){
+    renderMessage((served && served.note)
+      || "Couldn't render this document. Use Download or Source ↗ instead.");
+    return;
+  }
+
+  const viewer = document.createElement("div");
+  viewer.className = "cat2-pdf-viewer";
+  const total = served.pageCount || pages.length;
+  if(total > 1 || pages.length < total){
+    const toolbar = document.createElement("div");
+    toolbar.className = "cat2-pdf-toolbar";
+    const pagerLabel = document.createElement("span");
+    pagerLabel.className = "cat2-pdf-pager";
+    pagerLabel.textContent = pages.length < total
+      ? "First " + pages.length + " of " + total + " pages"
+      : total + " pages";
+    toolbar.appendChild(pagerLabel);
+    viewer.appendChild(toolbar);
+  }
+  const pageWrap = document.createElement("div");
+  pageWrap.className = "cat2-pdf-page-wrap";
+  pages.forEach((src, i) => {
+    const img = document.createElement("img");
+    img.className = "cat2-pdf-page";
+    img.src = src;
+    img.alt = entry.label + " — page " + (i + 1);
+    pageWrap.appendChild(img);
+  });
+  viewer.appendChild(pageWrap);
+  body.appendChild(viewer);
+  if(!inPopup) notifyHeight();
+}
+
+function showDocPreview(kind){
+  openDocPopup(kind);
+}
+
+// Ask Python to rasterise one document, then re-open its preview once the rerun
+// has rebuilt this component with the pages in its payload.
+function requestDocPreview(eetraId, kind, btn){
+  if(btn){ btn.textContent = "Rendering…"; btn.disabled = true; }
+  requestDocsFromPython(eetraId, kind);
+}
+
+function showDetailTab(key){
+  const details = document.getElementById("cat2-detail-body");
+  const docBody = document.getElementById("cat2-doc-body");
+  const techBody = document.getElementById("cat2-tech-body");
+  const susBody = document.getElementById("cat2-sus-body");
+  const collBody = document.getElementById("cat2-coll-body");
+
+  // Collections tab is only offered when the product has covered collections;
+  // if something asks for it anyway (stale state), fall back to Info.
+  if(key === COLL_TAB && !productHasCollections(docPanelProduct)) key = DETAILS_TAB;
+
+  detailTab = key;
+  renderDetailTabs();
+
+  if(key === DETAILS_TAB || key === COLL_TAB || key === TECH_TAB || key === SUS_TAB){
+    closeDocPopup();
+    docBody.hidden = true;
+    docBody.innerHTML = "";
+    details.hidden = key !== DETAILS_TAB;
+    if(collBody) collBody.hidden = key !== COLL_TAB;
+    techBody.hidden = key !== TECH_TAB;
+    susBody.hidden = key !== SUS_TAB;
+    if(key === COLL_TAB && docPanelProduct) renderCollectionsTab(docPanelProduct);
+    if(key === TECH_TAB && docPanelProduct) renderTechDetailsTab(docPanelProduct);
+    // Render after un-hiding so the "See more" overflow check can measure.
+    if(key === SUS_TAB && docPanelProduct) renderSustainabilityTab(docPanelProduct);
+    notifyHeight();
+    return;
+  }
+
+  details.hidden = true;
+  if(collBody){ collBody.hidden = true; collBody.innerHTML = ""; }
+  techBody.hidden = true;
+  susBody.hidden = true;
+  docBody.hidden = false;
+  renderDocList();
+  if(docPreviewKind) openDocPopup(docPreviewKind);
+  notifyHeight();
+}
+
+// Called when a card is opened: name the product, work out its documents, and
+// start on Info — the documents are one click away.
+function initDetailTabs(product){
+  docPanelProduct = product || null;
+  docEntries = product ? buildDocEntries(product) : [];
+  docPreviewKind = null;
+  syncDetailEditFooter(product);
+  showDetailTab(DETAILS_TAB);
+}
+
+// Jump straight to the Documents tab (the card's "View documents" button).
+function openDocTab(product, kind){
+  if(product && product !== docPanelProduct) initDetailTabs(product);
+  if(!docEntries.length) return;
+  if(kind) {
+    docPreviewKind = kind;
+    showDetailTab(DOCS_TAB);
+  } else showDetailTab(DOCS_TAB);
+}
+
+function docPanelIsOpen(){
+  return detailTab === DOCS_TAB;
+}
+
+function resetDetailTabs(){
+  detailTab = DETAILS_TAB;
+  docPreviewKind = null;
+  docEntries = [];
+  closeDocPopup();
+  const strip = document.getElementById("cat2-detail-tabs");
+  strip.innerHTML = "";
+  const docBody = document.getElementById("cat2-doc-body");
+  docBody.hidden = true;
+  docBody.innerHTML = "";
+  const collBody = document.getElementById("cat2-coll-body");
+  if(collBody){ collBody.hidden = true; collBody.innerHTML = ""; }
+  const techBody = document.getElementById("cat2-tech-body");
+  techBody.hidden = true;
+  techBody.innerHTML = "";
+  const susBody = document.getElementById("cat2-sus-body");
+  susBody.hidden = true;
+  susBody.innerHTML = "";
+  document.getElementById("cat2-detail-body").hidden = false;
+  syncDetailEditFooter(null);
+  // Only needed if Python is holding a fetch target for this product; otherwise
+  // the panel is pure client state and there is nothing to clear.
+  const _eid = DOC_PREVIEW ? String(DOC_PREVIEW.eetraId||"") : "";
+  if(_eid) postToStreamlit({type:"eetra:closeDocuments", eetraId:_eid, nonce:Date.now()});
+  docPanelProduct = null;
+}
+
+function openDetailModalCenter(html){
+  document.getElementById("modal-body").innerHTML = html;
+  document.getElementById("modal-bg").style.display = "flex";
+  const main = document.getElementById("cat2-main");
+  if(main) main.style.overflow = "hidden";
+  document.getElementById("modal-bg").scrollTop = 0;
+}
+function closeDetailModalCenter(){
+  document.getElementById("modal-bg").style.display = "none";
+  const main = document.getElementById("cat2-main");
+  if(main) main.style.overflow = "";
+}
+
+function gridCardOpensDetail(){
+  return viewMode === "grid" && sizeMode !== "XL";
+}
+
+function openModal(id){
+  if(viewMode === "grid" && sizeMode === "XL") return;
+  const p = findProduct(id);
+  if(!p) return;
+  modalOpen = id;
+  const html = modalHTML(p);
+  if(JS2_USE_RIGHT_PANEL){
+    // Capture before the panel opens — opening it narrows the grid, then
+    // render() rebuilds cards for the new column count; without an anchor the
+    // catalogue scroll jumps (often looking like it recentres).
+    const keepId = id;
+    const anchor = captureCardAnchor(keepId) || captureViewportAnchor();
+    openDetailPanelRight(html, id);
+    renderGridPreservingScroll(keepId, () => highlightProduct(keepId), anchor);
+    initDetailTabs(p);
+  }
+  else openDetailModalCenter(html);
+  notifyHeight();
+}
+function closeModal(){
+  // Capture while the selected card is still in the DOM / viewport.
+  const keepId = modalOpen;
+  const closeAnchor = (JS2_USE_RIGHT_PANEL && viewMode === "grid")
+    ? (captureCardAnchor(keepId) || captureViewportAnchor())
+    : null;
+  modalOpen = null;
+  if(JS2_USE_RIGHT_PANEL){
+    resetDetailTabs();
+    closeDetailPanelRight();
+    // Give the freed-up width back to the grid's column count.
+    if(viewMode === "grid"){
+      render({
+        ensureId: keepId,
+        onAnchored: () => restoreViewportAnchor(closeAnchor, keepId),
+      });
+    }
+  }
+  else closeDetailModalCenter();
+  notifyHeight();
+}
+
+// ── Height notification (fixed viewport — scroll inside #cat2-main) ──
+function notifyHeight(){
+  try{
+    const h = IFRAME_HEIGHT;
+    window.parent.postMessage(
+      {isStreamlitMessage:true, type:"streamlit:setFrameHeight", height:h}, "*"
+    );
+  }catch(e){}
+}
+
+// ── Event wiring ──
+document.getElementById("rv-btn-grid").addEventListener("click", ()=>{
+  viewMode="grid";
+  document.getElementById("rv-btn-grid").classList.add("rv-active");
+  document.getElementById("rv-btn-list").classList.remove("rv-active");
+  render();
+});
+document.getElementById("rv-btn-list").addEventListener("click", ()=>{
+  viewMode="list";
+  document.getElementById("rv-btn-list").classList.add("rv-active");
+  document.getElementById("rv-btn-grid").classList.remove("rv-active");
+  render();
+});
+for(const sz of ["s","m","l","xl"]){
+  document.getElementById(`rv-size-${sz}`).addEventListener("click", ()=>{
+    if(viewMode === "list") return;
+    sizeMode = sz.toUpperCase();
+    if(sizeMode === "XL" && modalOpen !== null) closeModal();
+    document.querySelectorAll(".rv-toolbar-group button[id^='rv-size']")
+      .forEach(b=>b.classList.remove("rv-active"));
+    document.getElementById(`rv-size-${sz}`).classList.add("rv-active");
+    updateSizeToolbarState();
+    if(viewMode==="grid") render(); else notifyHeight();
+  });
+}
+for(const mode of ["condensed", "expanded"]){
+  document.getElementById(`rv-entry-${mode}`).addEventListener("click", ()=>{
+    if(entryMode === mode) return;
+    // Remember the product(s) in view before ids/layout change with the mode.
+    const anchor = captureViewportAnchor();
+    entryMode = mode;
+    try { sessionStorage.setItem(ENTRY_MODE_KEY, entryMode); } catch(err) {}
+    // Entry ids are only unique within a mode, so whatever is open belongs to
+    // the set we are leaving.
+    if(modalOpen !== null) closeModal();
+    closeInclPopup();
+    updateEntryToolbarState();
+    // The option lists are built from the entries on screen, and expanding
+    // changes how many of each there are.
+    rebuildSelects(buildOptions());
+    const ensureId = resolveEntryModeAnchorId(anchor);
+    render({
+      ensureId,
+      onAnchored: () => restoreViewportAnchor(anchor, ensureId),
+    });
+  });
+}
+
+document.querySelectorAll("#rv-xl-groups-group .rv-xl-group-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    if(viewMode !== "grid" || sizeMode !== "XL") return;
+    syncAllXLCardsToGroup(btn.dataset.xlGroup);
+  });
+});
+
+function onFilterChange(){
+  filters.search  = document.getElementById("f-search").value;
+  filters.prod    = document.getElementById("f-prod").value;
+  filters.mat     = document.getElementById("f-mat").value;
+  filters.country = document.getElementById("f-country").value;
+  filters.prog    = document.getElementById("f-prog").value;
+  filters.voc     = document.getElementById("f-voc").value;
+  const av = buildOptions();
+  rebuildSelects(av);
+  render();
+}
+
+document.getElementById("f-search").addEventListener("input",  onFilterChange);
+document.getElementById("f-prod").addEventListener("change",   onFilterChange);
+document.getElementById("f-mat").addEventListener("change",    onFilterChange);
+document.getElementById("f-country").addEventListener("change",onFilterChange);
+document.getElementById("f-prog").addEventListener("change",   onFilterChange);
+document.getElementById("f-voc").addEventListener("change",    onFilterChange);
+document.getElementById("f-fu").addEventListener("change", e => {
+  gridFuKey = GRID_FU_OPTS.has(e.target.value) ? e.target.value : "m2";
+  saveGridFu();
+  render();
+});
+document.getElementById("f-group").addEventListener("change", e => {
+  groupBy = GROUP_BY[e.target.value] ? e.target.value : "";
+  try { sessionStorage.setItem(GROUP_BY_KEY, groupBy); } catch(err) {}
+  render();
+});
+document.getElementById("f-sort").addEventListener("change", e => {
+  sortField = SORT_KEYS[e.target.value] ? e.target.value : "product";
+  sortDir = SORT_DEFAULT_DIR[sortField] || 1;
+  saveSort();
+  render();
+});
+document.getElementById("f-clear").addEventListener("click", ()=>{
+  filters = {search:"", prod:"", mat:"", country:"", prog:"", voc:""};
+  document.getElementById("f-search").value  = "";
+  document.getElementById("f-prod").value    = "";
+  document.getElementById("f-mat").value     = "";
+  document.getElementById("f-country").value = "";
+  document.getElementById("f-prog").value    = "";
+  document.getElementById("f-voc").value     = "";
+  onFilterChange();
+});
+
+document.getElementById("cat2-detail-close").addEventListener("click", closeModal);
+document.getElementById("modal-close").addEventListener("click", closeModal);
+// Detail-panel GWP FU radios live in #cat2-detail-top (lifted from panel body).
+document.getElementById("cat2-detail-panel").addEventListener("change", e=>{
+  const input = e.target;
+  if(!input || input.name !== "cat2-gwp-fu") return;
+  const key = String(input.value||"");
+  const wrap = input.closest(".modal-gwp-fu");
+  const id = wrap && wrap.getAttribute("data-product-id");
+  const p = findProduct(Number(id));
+  const panelTop = document.getElementById("cat2-detail-top");
+  const valEl = panelTop && panelTop.querySelector(".modal-gwp-value");
+  if(!p || !valEl) return;
+  const text = formatGwpForFu(p, key);
+  valEl.textContent = text ? `GWP = ${text}` : "GWP = —";
+  valEl.style.color = gwpColorFor(p, key);
+  const host = valEl.parentElement;
+  if(!host) return;
+  const oldBar = host.querySelector(".modal-gwp-bar");
+  const newBarHtml = gwpModalBar(p, key);
+  if(oldBar){
+    if(newBarHtml){
+      const tmp = document.createElement("div");
+      tmp.innerHTML = newBarHtml;
+      const next = tmp.firstElementChild;
+      if(next) oldBar.replaceWith(next);
+    } else {
+      oldBar.remove();
+    }
+  } else if(newBarHtml){
+    valEl.insertAdjacentHTML("afterend", newBarHtml);
+  }
+});
+document.getElementById("doc-popup-close").addEventListener("click", closeDocPopup);
+document.getElementById("doc-popup-bg").addEventListener("click", e=>{
+  if(e.target === document.getElementById("doc-popup-bg")) closeDocPopup();
+});
+document.getElementById("price-popup-close").addEventListener("click", closePricePopup);
+document.getElementById("price-popup-bg").addEventListener("click", e=>{
+  if(e.target === document.getElementById("price-popup-bg")) closePricePopup();
+});
+document.getElementById("incl-popup-close").addEventListener("click", closeInclPopup);
+document.getElementById("incl-popup-bg").addEventListener("click", e=>{
+  if(e.target === document.getElementById("incl-popup-bg")) closeInclPopup();
+});
+// The price value is a span (it lives inside generated card markup), so give it
+// the keyboard behaviour its role="button" promises.
+document.addEventListener("keydown", e=>{
+  if(e.key !== "Enter" && e.key !== " ") return;
+  const el = e.target && e.target.closest && e.target.closest(".cat2-price-link");
+  if(!el) return;
+  e.preventDefault();
+  e.stopPropagation();
+  el.click();
+});
+document.getElementById("modal-bg").addEventListener("click", e=>{
+  if(!JS2_USE_RIGHT_PANEL && e.target===document.getElementById("modal-bg")) closeModal();
+});
+document.addEventListener("keydown", e=>{
+  if(e.key!=="Escape") return;
+  const inclPopupOpen = document.getElementById("incl-popup-bg").classList.contains("open");
+  const pricePopupOpen = document.getElementById("price-popup-bg").classList.contains("open");
+  const docPopupOpen = document.getElementById("doc-popup-bg").classList.contains("open");
+  if(inclPopupOpen) closeInclPopup();
+  else if(pricePopupOpen) closePricePopup();
+  else if(docPopupOpen) closeDocPopup();
+  else if(docPanelIsOpen()) showDetailTab(DETAILS_TAB);
+  else if(modalOpen!==null) closeModal();
+});
+
+// Bridge to Python via libs/catalogue_bridge, which turns this postMessage into
+// setComponentValue and thus an ordinary Streamlit rerun. Needed for previews
+// (pages are rasterised server-side) and for documents that exist solely as a
+// remote URL (fetched server-side, sidestepping the manufacturer's CORS rules).
+//
+// Deliberately NOT a query-param + location.reload(): this app builds its nav
+// with st.navigation(), which has no per-page URL routing, so any hard reload
+// bounces the user to the default page (Welcome).
+function postToStreamlit(msg){
+  try{ window.parent.postMessage(msg, "*"); }catch(_e){}
+  // The bridge listens on the top window too, in case this iframe is nested
+  // deeper than one level.
+  try{ if(window.top !== window.parent) window.top.postMessage(msg, "*"); }catch(_e){}
+}
+
+// Which document the user asked Python to fetch. The rerun rebuilds this iframe
+// from scratch, so the request has to outlive it — sessionStorage does, and being
+// same-origin it is readable on the way back in.
+const DOC_WANTED_KEY = "eetraCatalogueDocWanted";
+
+function requestDocsFromPython(eetraId, kind){
+  try{
+    sessionStorage.setItem(DOC_WANTED_KEY,
+      JSON.stringify({eetraId:String(eetraId||""), kind:String(kind||"")}));
+  }catch(_e){}
+  postToStreamlit({
+    type: "eetra:viewDocuments",
+    eetraId: String(eetraId||""),
+    // Python rasterises just this document for the preview — it can't guess which
+    // one from the id alone, and rendering all of them would be wasteful.
+    kind: String(kind||""),
+    nonce: Date.now(),
+  });
+}
+
+// The kind requested before the last rerun, if it was for this product.
+function takeRequestedDocKind(eetraId){
+  try{
+    const raw = sessionStorage.getItem(DOC_WANTED_KEY);
+    if(!raw) return "";
+    sessionStorage.removeItem(DOC_WANTED_KEY);
+    const v = JSON.parse(raw);
+    return String(v.eetraId||"") === String(eetraId||"") ? String(v.kind||"") : "";
+  }catch(_e){ return ""; }
+}
+
+function viewDocuments(eetraId){
+  // Fully client-side: locally mirrored PDFs are fetched by the iframe from
+  // /app/static/docs/, so switching to a document tab costs no rerun at all.
+  // Only a remote-only document needs Python, and then only on request (see the
+  // "Load preview in app" button in showDetailTab).
+  const p = PRODUCTS.find(x=>String(x.eetraId||"") === String(eetraId||""));
+  if(!p) return;
+  openDocTab(p, null);
+}
+
+// ── Filter-bar hierarchy ──
+// Hide the fields a higher control level already owns (config-driven, so the
+// split lives in Python next to the sidebar / catalogue controls rather than being
+// duplicated here). A hidden field keeps its element, so its value stays "" and
+// the filter predicate simply never matches on it.
+function applyFilterBarConfig(){
+  const cfg = CAT_CFG.filterBar || {};
+  const hidden = new Set(cfg.hidden || []);
+  document.querySelectorAll(".filter-field").forEach(function(el){
+    const field = el.getAttribute("data-field");
+    if(hidden.has(field)){
+      el.hidden = true;
+      const ctl = el.querySelector("input,select");
+      if(ctl) ctl.value = "";
+    }
+  });
+  const scope = document.getElementById("filter-scope");
+  if(scope){
+    if(cfg.scopeLabel === "") scope.hidden = true;
+    else if(cfg.scopeLabel) scope.textContent = cfg.scopeLabel;
+  }
+}
+
+// ── Init ──
+(function init(){
+  bindXLCardTabs();
+  applyFilterBarConfig();
+  if(!Object.keys(RANGE_COLLECTIONS).length) entryMode = "condensed";
+  updateEntryToolbarState();
+  { const gSel = document.getElementById("f-group");
+    if(gSel.closest(".filter-field").hidden || !GROUP_BY[groupBy]) groupBy = "";
+    gSel.value = groupBy; }
+  saveGridFu();
+  if(!SORT_KEYS[sortField]){ sortField = "product"; sortDir = 1; }
+  saveSort();
+  document.documentElement.style.setProperty("--cat2-viewport-h", IFRAME_HEIGHT + "px");
+  const lay = JS2_FIELDS.layout || {};
+  if(lay.card_column_gap_px != null)
+    document.documentElement.style.setProperty('--cat2-card-col-gap', lay.card_column_gap_px + 'px');
+  const _mlGap = lay.card_column_gap_px_ml != null ? lay.card_column_gap_px_ml : lay.card_column_gap_px;
+  if(_mlGap != null)
+    document.documentElement.style.setProperty('--cat2-card-col-gap-ml', _mlGap + 'px');
+  if(lay.popup_column_gap_px != null)
+    document.documentElement.style.setProperty('--cat2-popup-col-gap', lay.popup_column_gap_px + 'px');
+
+  let pct = INITIAL_LOAD_PCT > 0 ? INITIAL_LOAD_PCT : 5;
+  setLoadProgress(pct);
+  const av = buildOptions();
+  pct = Math.max(pct, 75);
+  setLoadProgress(pct);
+  rebuildSelects(av);
+  pct = Math.max(pct, 90);
+  setLoadProgress(pct);
+  render();
+  requestAnimationFrame(()=> setLoadProgress(100, true));
+  // Auto-open product detail panel when navigated here from ECOportal JS, or
+  // after the documents round trip (Python passes the same id as open_product).
+  const _openProduct = window.__OPEN_PRODUCT__
+    || (DOC_PREVIEW ? DOC_PREVIEW.eetraId : "");
+  if(_openProduct){
+    // activeProducts(), not PRODUCTS: in Expanded mode the row itself is not on
+    // screen, so open the first of its collections instead of an entry that
+    // render() would immediately close as invisible.
+    const _match = activeProducts().find(p =>
+      String(p.eetraId||"") === _openProduct ||
+      String(p.epdNumber||"") === _openProduct ||
+      String(p.epdDeclaredNumber||"") === _openProduct
+    );
+    if(_match) requestAnimationFrame(()=> openModal(_match.id));
+  }
+  // A preview request completed on the previous run — reopen the card on the
+  // Documents tab, showing the document that was actually asked for (not merely
+  // the first one that happens to have rendered).
+  if(DOC_PREVIEW && DOC_PREVIEW.eetraId){
+    const _dp = PRODUCTS.find(p=>String(p.eetraId||"") === String(DOC_PREVIEW.eetraId));
+    const _wanted = takeRequestedDocKind(DOC_PREVIEW.eetraId);
+    const _got = (DOC_PREVIEW.docs || []).find(
+      d => d.kind === _wanted && d.pages && d.pages.length
+    );
+    if(_dp) requestAnimationFrame(()=>{
+      openDocTab(_dp, _got ? _got.kind : null);
+      // Nothing rendered — say why on the row instead of silently re-showing the
+      // same list with no explanation.
+      if(_wanted && !_got) flagDocFetchFailed(_wanted);
+    });
+  }
+  let rt;
+  window.addEventListener("resize", ()=>{
+    clearTimeout(rt);
+    rt = setTimeout(()=>{ if(viewMode==="grid") render(); notifyHeight(); }, 120);
+  });
+  window.addEventListener("load", ()=>setTimeout(notifyHeight, 200));
+  // The loader may start this script after "load" has already fired.
+  if(document.readyState === "complete") setTimeout(notifyHeight, 200);
+})();
+</script>
+<script>
+// ── Loader: fetch the catalogue rows, then start the main script ──
+(function(){
+  function startMain(){
+    const src = document.getElementById("cat2-main-script");
+    const s = document.createElement("script");
+    s.text = src ? src.textContent : "";
+    document.body.appendChild(s);
+  }
+  const url = window.__DATA_URL__;
+  if(!url || (window.__DATA__ && window.__DATA__.length)){ startMain(); return; }
+  // Same origin resolution as appStaticUrl() in the main script.
+  let origin = "";
+  try{ const o = window.parent.location.origin; if(o && o !== "null") origin = o; }catch(_e){}
+  if(!origin){ try{ const o = window.location.origin; if(o && o !== "null") origin = o; }catch(_e){} }
+  fetch(origin + url)
+    .then(r => { if(!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+    .then(rows => { window.__DATA__ = Array.isArray(rows) ? rows : []; startMain(); })
+    .catch(err => {
+      window.__DATA__ = [];
+      startMain();
+      const msg = document.createElement("div");
+      msg.style.cssText = "padding:12px 16px;margin:8px;border:1px solid #f5c2c7;background:#f8d7da;color:#842029;font:13px sans-serif;border-radius:6px";
+      msg.textContent = "Catalogue data could not be loaded (" + (err && err.message || err) + "). Reload the page to retry.";
+      document.body.insertBefore(msg, document.body.firstChild);
+    });
+})();
+</script>
+</body>
+</html>

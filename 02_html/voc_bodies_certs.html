@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Hosted by pages/5_Developer.py → VOC Bodies & Certifications (fn631). The rows are
+     injected live as window.__VOC_BODIES__: the catalogue claims from
+     aux_11__voc_certifications.json (body, role, tier, description) joined to what the
+     parquet actually holds (product counts, report types, recorded bodies, spellings). -->
+<title>MatLib VOC Bodies &amp; Certifications</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f3f5f4; --panel:#ffffff; --ink:#1b2422; --muted:#5e6b68; --line:#d5dcda; --soft:#e7ecea;
+  --accent:#0f6d6a; --accent-soft:#d6ebe9;
+  --t3p:#1d7a4b; --treg:#2b5ea8; --trat:#a2661a; --tself:#6b5ca5; --tgap:#b04a3a;
+  --t3p-soft:#dcefe4; --treg-soft:#dde7f6; --trat-soft:#f5e7d2; --tself-soft:#e6e2f3; --tgap-soft:#f6dfdb;
+  /* The app's own faces: _tokens.css is prepended into this style block by
+     read_iframe_component, so --eetra-ff-sans / --font-mono are the same
+     stacks the Catalogue and Manufacturers components use. */
+  --f-display:var(--eetra-ff-sans,'Miranda Sans','Inter',system-ui,sans-serif);
+  --f-body:var(--eetra-ff-sans,'Miranda Sans','Inter',system-ui,sans-serif);
+  --f-mono:var(--font-mono,'IBM Plex Mono',ui-monospace,Consolas,monospace);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121816; --panel:#1a2220; --ink:#e3ebe8; --muted:#93a29e; --line:#2f3b38; --soft:#222c2a;
+  --accent:#4fc1b9; --accent-soft:#18403d;
+  --t3p:#62c48f; --treg:#79a6e8; --trat:#e0a55a; --tself:#a99ae0; --tgap:#e07b69;
+  --t3p-soft:#1b3427; --treg-soft:#1c2a40; --trat-soft:#3a2c17; --tself-soft:#2a2440; --tgap-soft:#3b2320;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121816; --panel:#1a2220; --ink:#e3ebe8; --muted:#93a29e; --line:#2f3b38; --soft:#222c2a;
+  --accent:#4fc1b9; --accent-soft:#18403d;
+  --t3p:#62c48f; --treg:#79a6e8; --trat:#e0a55a; --tself:#a99ae0; --tgap:#e07b69;
+  --t3p-soft:#1b3427; --treg-soft:#1c2a40; --trat-soft:#3a2c17; --tself-soft:#2a2440; --tgap-soft:#3b2320;
+  color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:13px;line-height:1.45}
+.wrap{padding-inline:4px;padding-block:4px 20px}
+header h1{font-family:var(--f-display);font-weight:700;font-size:22px;margin:2px 0 0;line-height:1.2;letter-spacing:-.01em}
+.eyebrow{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.stats{display:flex;flex-wrap:wrap;gap:6px 26px;margin-top:14px;font-variant-numeric:tabular-nums}
+.stats div{display:flex;flex-direction:column}
+.stats b{font-family:var(--f-display);font-size:20px;font-weight:600;line-height:1.1}
+.stats span{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+
+.toolbar{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin-top:24px}
+.toolbar input[type=search]{font:13px var(--f-body);color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:7px 10px;width:min(280px,100%)}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chips label{display:inline-flex;gap:5px;align-items:center;font-size:12.5px;color:var(--muted);cursor:pointer;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:3px 10px}
+.chips label.on{border-color:var(--accent);color:var(--ink)}
+.hint{font-size:12.5px;color:var(--muted)}
+.grpsel{display:inline-flex;gap:7px;align-items:center;font-size:12.5px;color:var(--muted)}
+.grpsel select{font:600 12.5px var(--f-body);color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:6px 8px}
+button:focus-visible,input:focus-visible,label:focus-within,tr:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.tbl-scroll{overflow:auto;margin-top:16px;border:1px solid var(--line);border-radius:8px;background:var(--panel);max-height:72vh}
+table{border-collapse:separate;border-spacing:0;width:100%;font-size:13px}
+thead th{position:sticky;top:0;z-index:2;background:var(--panel);text-align:left;font:600 11px var(--f-body);text-transform:uppercase;letter-spacing:.05em;color:var(--muted);padding:9px 10px;border-bottom:1px solid var(--line);white-space:nowrap;cursor:pointer;user-select:none}
+thead th .ind{font-family:var(--f-mono);color:var(--accent);margin-left:4px;opacity:0}
+thead th[aria-sort] .ind{opacity:1}
+tbody td{padding:7px 10px;border-bottom:1px solid var(--soft);vertical-align:top}
+tbody tr:hover td{background:var(--accent-soft)}
+tbody tr.grp td{background:var(--soft);font-family:var(--f-display);font-size:14.5px;font-weight:700;letter-spacing:0;padding:7px 10px}
+tbody tr.grp td span{font-family:var(--f-body);font-size:11.5px;font-weight:400;color:var(--muted);margin-left:10px;letter-spacing:0}
+tbody tr.grp[data-i]{cursor:pointer}
+tbody tr.sub td{padding-top:5px;padding-bottom:5px}
+tbody tr.sub td.body{font-weight:400;padding-left:20px}
+td.body{font-weight:600;min-width:170px}
+td.cert{min-width:220px}
+td.num{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+td.num.zero{color:var(--muted)}
+.role{display:block;font-size:12px;color:var(--muted);font-weight:400}
+.tier{display:inline-block;font-family:var(--f-mono);font-size:10.5px;font-weight:500;letter-spacing:.05em;padding:1px 6px;border-radius:3px;white-space:nowrap}
+.tier.third_party{background:var(--t3p-soft);color:var(--t3p)}
+.tier.regulatory{background:var(--treg-soft);color:var(--treg)}
+.tier.rating_systems{background:var(--trat-soft);color:var(--trat)}
+.tier.self_declarations{background:var(--tself-soft);color:var(--tself)}
+.tier.test_reports{background:var(--soft);color:var(--muted);border:1px solid var(--line)}
+.tier.unmapped{background:var(--tgap-soft);color:var(--tgap)}
+.list{display:flex;flex-wrap:wrap;gap:4px}
+.list i{font-style:normal;font-size:11.5px;background:var(--soft);border:1px solid var(--line);border-radius:3px;padding:1px 5px;color:var(--muted);white-space:nowrap}
+.list i.alt{border-style:dashed}
+.none{color:var(--muted)}
+tr.det td{background:var(--soft);font-size:12.5px;color:var(--muted);padding:10px 14px 14px}
+tr.det p{margin:0 0 8px;max-width:95ch;color:var(--ink)}
+tr.det dl{display:grid;grid-template-columns:minmax(130px,auto) 1fr;gap:4px 14px;margin:0}
+tr.det dt{font-size:11.5px;text-transform:uppercase;letter-spacing:.05em}
+tr.det dd{margin:0}
+.empty{padding:28px 14px;text-align:center;color:var(--muted)}
+
+/* Alignment with LEED / WELL / CAM */
+th.algh{white-space:nowrap}
+.align{display:flex;gap:4px;flex-wrap:wrap}
+.al{display:inline-flex;align-items:center;gap:3px;font-family:var(--f-mono);font-size:10.5px;
+  padding:1px 5px;border-radius:3px;border:1px solid var(--line);white-space:nowrap;cursor:help}
+.al i{font-style:normal;font-weight:500;opacity:.75;letter-spacing:.03em}
+.al-yes{background:var(--t3p-soft);color:var(--t3p);border-color:transparent}
+.al-partial{background:var(--trat-soft);color:var(--trat);border-color:transparent}
+.al-no{color:var(--muted)}
+.al-unknown{background:var(--tgap-soft);color:var(--tgap);border-color:transparent}
+.al-na{color:var(--muted);opacity:.6}
+tbody tr.grp td span.grpal{display:inline-flex;gap:4px;margin-left:12px;vertical-align:middle}
+
+/* Requirements panel */
+.reqs{margin-top:14px;border:1px solid var(--line);border-radius:8px;background:var(--panel)}
+.reqs>summary{cursor:pointer;padding:9px 12px;font-weight:600;font-size:12.5px;list-style-position:inside}
+.reqs>summary::marker{color:var(--accent)}
+.reqs>div{padding:0 14px 14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px 26px;align-items:start}
+.fw h2{font-size:14px;margin:0 0 6px;display:flex;flex-direction:column;gap:2px}
+.fw h2 small{font-weight:400;font-size:11.5px;color:var(--muted)}
+.fw h3{font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);margin:10px 0 2px}
+.fw p{margin:0;font-size:12.5px;line-height:1.5}
+.fw .fwnote{margin-top:8px;color:var(--muted);font-size:11.5px}
+.fw .fwsrc{margin-top:10px;padding-top:8px;border-top:1px solid var(--soft);color:var(--muted);font-size:11px}
+.verb{font-family:var(--f-mono);font-size:9.5px;text-transform:uppercase;letter-spacing:.05em;
+  background:var(--t3p-soft);color:var(--t3p);padding:1px 5px;border-radius:3px;margin-left:4px}
+.verb.sum{background:var(--soft);color:var(--muted)}
+table.lim{border-collapse:collapse;margin:8px 0 2px;font-size:11.5px;width:100%}
+table.lim caption{text-align:left;color:var(--muted);font-size:11px;padding-bottom:4px}
+table.lim th{text-align:left;font-weight:400;padding:2px 8px 2px 0;border-bottom:1px solid var(--soft)}
+table.lim td{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums;
+  padding:2px 0;border-bottom:1px solid var(--soft);white-space:nowrap}
+.caveat{grid-column:1/-1;margin:0;padding-top:10px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:11.5px;line-height:1.5}
+footer{margin-top:12px;font-size:11.5px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Developer · VOC</div>
+    <h1>VOC bodies &amp; certifications</h1>
+    <div class="stats" id="stats"></div>
+  </header>
+
+  <details id="reqs" class="reqs">
+    <summary>Requirements behind the three columns — LEED v4.1 · WELL v2 · CAM edilizia 2025</summary>
+    <div id="reqs-body"></div>
+  </details>
+
+  <div class="toolbar">
+    <input type="search" id="q" placeholder="Search body, certification, spelling…" aria-label="Search">
+    <div class="chips" id="tiers"></div>
+    <label class="chips"><label><input type="checkbox" id="used"> In use only</label></label>
+    <label class="grpsel">Group by
+      <select id="grp">
+        <option value="body" selected>Body</option>
+        <option value="cert">Certification</option>
+        <option value="none">Nothing — flat list</option>
+      </select>
+    </label>
+    <span class="hint" id="count"></span>
+  </div>
+
+  <div class="tbl-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th data-k="body">Body<span class="ind"></span></th>
+          <th data-k="cert">Certification / claim<span class="ind"></span></th>
+          <th data-k="tier_label">Tier<span class="ind"></span></th>
+          <th data-k="align" class="algh">LEED · WELL · CAM<span class="ind"></span></th>
+          <th data-k="products" class="num">Products<span class="ind"></span></th>
+          <th data-k="report_types">Report types in data<span class="ind"></span></th>
+          <th data-k="bodies_seen">Bodies recorded in data<span class="ind"></span></th>
+          <th data-k="spellings">Spellings in data<span class="ind"></span></th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+  <footer>Catalogue: <code>aux_11__voc_certifications.json</code> · counts from the live parquet
+    (base ⊕ edits). Click a row for the catalogue description and aliases.</footer>
+</div>
+
+<script>
+(function () {
+  var DATA = window.__VOC_BODIES__ || { rows: [], stats: {} };
+  var ROWS = DATA.rows || [];
+  // Tiers come from the rows themselves, in catalogue order, so a tier added to
+  // aux_11__voc_certifications.json gets its filter chip without touching this file.
+  var SHORT = {
+    third_party: "Third-party", regulatory: "Regulatory", rating_systems: "Rating system",
+    self_declarations: "Self-declaration", test_reports: "Test report",
+    unmapped: "Not in catalogue"
+  };
+  var TIERS = (function () {
+    var seen = {}, out = [];
+    ROWS.forEach(function (r) {
+      if (seen[r.tier]) return;
+      seen[r.tier] = 1;
+      out.push([r.tier, SHORT[r.tier] || r.tier_label || r.tier]);
+    });
+    // Catalogue order (the order of SHORT), tiers it does not name after them,
+    // and the clean-up list last whatever happens.
+    var rank = Object.keys(SHORT);
+    out.sort(function (a, b) {
+      var ia = rank.indexOf(a[0]), ib = rank.indexOf(b[0]);
+      if (ia < 0) ia = rank.length;
+      if (ib < 0) ib = rank.length;
+      if (a[0] === "unmapped") ia = 99;
+      if (b[0] === "unmapped") ib = 99;
+      return ia - ib;
+    });
+    return out;
+  })();
+  // grp: "body" (bodies and the claims they stand for), "cert" (claims and the
+  // laboratories recorded against them) or "none" (flat).
+  var state = { q: "", tiers: {}, used: false, grp: "body", sort: "products", dir: -1, open: null };
+  TIERS.forEach(function (t) { state.tiers[t[0]] = true; });
+
+  function esc(s) {
+    return String(s === null || s === undefined ? "" : s)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+  function list(values, cls) {
+    if (!values || !values.length) return '<span class="none">—</span>';
+    return '<div class="list">' + values.map(function (v) {
+      return '<i class="' + (cls || "") + '">' + esc(v) + "</i>";
+    }).join("") + "</div>";
+  }
+  // ── alignment with LEED / WELL / CAM ──────────────────────────────────────
+  var FW = DATA.frameworks || [];
+  var LEGEND = DATA.legend || {};
+  var ALIGN_MARK = { yes: "✓", partial: "~", no: "—", unknown: "?", na: "·" };
+  var ALIGN_RANK = { yes: 4, partial: 3, unknown: 2, no: 1, na: 0 };
+
+  function alignScore(r) {
+    var a = r.align || {};
+    return FW.reduce(function (n, fw) {
+      return n + (ALIGN_RANK[(a[fw.id] || [])[0]] || 0);
+    }, 0);
+  }
+
+  function alignHtml(r) {
+    var a = r.align || {};
+    if (!FW.length) return '<span class="none">—</span>';
+    return '<div class="align">' + FW.map(function (fw) {
+      var st = (a[fw.id] || ["no"])[0];
+      var note = (a[fw.id] || ["", ""])[1] || "";
+      return '<span class="al al-' + esc(st) + '" title="' + esc(fw.short + " — " + st + (note ? ": " + note : "")) +
+        '"><i>' + esc(fw.short) + "</i>" + ALIGN_MARK[st] + "</span>";
+    }).join("") + "</div>";
+  }
+
+  function tierName(id) {
+    for (var i = 0; i < TIERS.length; i++) if (TIERS[i][0] === id) return TIERS[i][1];
+    return id || "—";
+  }
+
+  function frameworkPanel() {
+    var host = document.getElementById("reqs-body");
+    if (!host) return;
+    if (!FW.length) { host.innerHTML = '<p class="none">No alignment file loaded.</p>'; return; }
+    var src = DATA.sources || {};
+    var html = FW.map(function (fw) {
+      var parts = '<section class="fw"><h2>' + esc(fw.label) + '<small>' + esc(fw.credit) + "</small></h2>";
+      if (fw.summary) parts += "<p>" + esc(fw.summary) + "</p>";
+      if (fw.limits && fw.limits.length) {
+        parts += '<table class="lim"><caption>' + esc(fw.limits_title || "") + "</caption><tbody>" +
+          fw.limits.map(function (row) {
+            return "<tr><th>" + esc(row[0]) + "</th><td>" + esc(row[1]) + "</td></tr>";
+          }).join("") + "</tbody></table>";
+      }
+      (fw.paths || []).forEach(function (pth) {
+        parts += "<h3>" + esc(pth.title) + "</h3><p>" + esc(pth.text) + "</p>";
+      });
+      if (fw.note) parts += '<p class="fwnote">' + esc(fw.note) + "</p>";
+      parts += '<p class="fwsrc">' + esc(src[fw.id] || "") +
+        (fw.url ? ' <a href="' + esc(fw.url) + '" target="_blank" rel="noopener noreferrer">↗</a>' : "") +
+        (fw.verbatim ? ' <b class="verb">testo integrale</b>' : ' <b class="verb sum">sintesi</b>') + "</p>";
+      return parts + "</section>";
+    }).join("");
+    if (DATA.caveat) html += '<p class="caveat">' + esc(DATA.caveat) + "</p>";
+    host.innerHTML = html;
+  }
+
+  function stats() {
+    var s = DATA.stats || {};
+    var cells = [
+      [s.bodies, "Bodies"],
+      [s.certs, "Claims listed"],
+      [s.in_use, "Claims in use"],
+      [s.unmapped, "Not in catalogue"],
+      [s.products_with_claim, "Products with a claim"],
+      [s.products_total, "Products in view"]
+    ];
+    document.getElementById("stats").innerHTML = cells.map(function (c) {
+      return "<div><b>" + (c[0] === undefined ? "—" : c[0]) + "</b><span>" + c[1] + "</span></div>";
+    }).join("");
+  }
+
+  function chips() {
+    document.getElementById("tiers").innerHTML = TIERS.map(function (t) {
+      return '<label class="on" data-t="' + t[0] + '"><input type="checkbox" checked data-t="' +
+        t[0] + '"> ' + t[1] + "</label>";
+    }).join("");
+    document.getElementById("tiers").addEventListener("change", function (ev) {
+      var id = ev.target.getAttribute("data-t");
+      if (!id) return;
+      state.tiers[id] = ev.target.checked;
+      ev.target.parentNode.classList.toggle("on", ev.target.checked);
+      render();
+    });
+  }
+
+  function haystack(r) {
+    return [r.body, r.role, r.cert, r.tier_label, (r.spellings || []).join(" "),
+            (r.bodies_seen || []).join(" "), (r.aliases || []).join(" ")].join(" ").toLowerCase();
+  }
+
+  function visible() {
+    var q = state.q.trim().toLowerCase();
+    return ROWS.filter(function (r) {
+      if (!state.tiers[r.tier]) return false;
+      if (state.used && !r.products) return false;
+      if (q && haystack(r).indexOf(q) < 0) return false;
+      return true;
+    });
+  }
+
+  function groupKey(r) {
+    if (state.grp === "body") return r.body || "— no body —";
+    if (state.grp === "cert") return r.cert || "";
+    return "";
+  }
+
+  function one(a, b, k, dir) {
+    if (k === "align") return (alignScore(a) - alignScore(b)) * dir;
+    var va = a[k], vb = b[k];
+    if (Array.isArray(va)) { va = va.length; vb = vb.length; }
+    if (typeof va === "number" || typeof vb === "number") {
+      return ((va || 0) - (vb || 0)) * dir;
+    }
+    va = String(va || "").toLowerCase(); vb = String(vb || "").toLowerCase();
+    return (va < vb ? -1 : va > vb ? 1 : 0) * dir;
+  }
+
+  // Totals per group for the current filter, so sorting by Products orders the
+  // groups by what they add up to rather than by name. Filled in by render().
+  var groupTotals = {};
+
+  // Groups stay together whatever the sort: the chosen column orders the rows
+  // inside each group, so clicking Products no longer breaks the grouping.
+  function cmp(a, b) {
+    if (state.grp !== "none") {
+      var ga = groupKey(a), gb = groupKey(b);
+      if (ga !== gb) {
+        if (state.sort === "body" || state.sort === "cert") {
+          return one(a, b, state.sort, state.dir);
+        }
+        if (state.sort === "products") {
+          var d = ((groupTotals[ga] || 0) - (groupTotals[gb] || 0)) * state.dir;
+          if (d) return d;
+        }
+        return ga.toLowerCase() < gb.toLowerCase() ? -1 : 1;
+      }
+    }
+    return one(a, b, state.sort, state.dir);
+  }
+
+  function rowHtml(r, i) {
+    var cells =
+      '<td class="body">' + (r.body ? esc(r.body) : '<span class="none">— no body —</span>') +
+        '<span class="role">' + esc(r.role || "") + "</span></td>" +
+      '<td class="cert">' + esc(r.cert) + "</td>" +
+      '<td><span class="tier ' + esc(r.tier) + '">' + esc(tierName(r.tier)) + "</span></td>" +
+      "<td>" + alignHtml(r) + "</td>" +
+      '<td class="num' + (r.products ? "" : " zero") + '">' + (r.products || 0) + "</td>" +
+      "<td>" + list(r.report_types) + "</td>" +
+      "<td>" + list(r.bodies_seen) + "</td>" +
+      "<td>" + list(r.spellings, "alt") + "</td>";
+    return '<tr tabindex="0" data-i="' + i + '">' + cells + "</tr>" +
+      (state.open === i ? detailHtml(r) : "");
+  }
+
+  function detailHtml(r) {
+    return '<tr class="det"><td colspan="8">' +
+        (r.description ? "<p>" + esc(r.description) + "</p>" : "") +
+        "<dl>" +
+        "<dt>Body</dt><dd>" + (esc(r.body) || "—") + " · " + (esc(r.role) || "—") + "</dd>" +
+        "<dt>Catalogue aliases</dt><dd>" + list(r.aliases) + "</dd>" +
+        "<dt>Spellings in data</dt><dd>" + list(r.spellings, "alt") + "</dd>" +
+        FW.map(function (fw) {
+          var st = ((r.align || {})[fw.id] || ["no", ""]);
+          return "<dt>" + esc(fw.short) + "</dt><dd>" +
+            '<span class="al al-' + esc(st[0]) + '"><i>' + esc(fw.short) + "</i>" +
+            ALIGN_MARK[st[0]] + "</span> " + esc(st[1] || LEGEND[st[0]] || "") + "</dd>";
+        }).join("") +
+        "<dt>Source</dt><dd>" + (r.source === "catalogue"
+          ? "aux_11__voc_certifications.json"
+          : "parquet only — not in the catalogue") + "</dd>" +
+        "</dl></td></tr>";
+  }
+
+  // Who the library actually recorded against a claim, with a count each. The
+  // remainder are products carrying the claim with no body written down.
+  function bodyBreakdown(r) {
+    var counts = r.body_counts || {};
+    var out = Object.keys(counts).map(function (name) {
+      return { name: name, n: counts[name] };
+    }).sort(function (a, b) { return b.n - a.n; });
+    var tallied = out.reduce(function (n, x) { return n + x.n; }, 0);
+    var rest = (r.products || 0) - tallied;
+    if (rest > 0) out.push({ name: "— not recorded —", n: rest, none: true });
+    if (!out.length) out.push({ name: r.body || "— no body —", n: 0, catalogue: true });
+    return out;
+  }
+
+  function breakdownHtml(r) {
+    return bodyBreakdown(r).map(function (b) {
+      return '<tr class="sub"><td class="body">' +
+        (b.none ? '<span class="none">' + esc(b.name) + "</span>" : esc(b.name)) +
+        '<span class="role">' + (b.catalogue ? esc(r.role || "") : "recorded in the data") + "</span></td>" +
+        '<td class="cert"><span class="none">↳ ' + esc(r.cert) + "</span></td>" +
+        '<td><span class="tier ' + esc(r.tier) + '">' + esc(tierName(r.tier)) + "</span></td>" +
+        "<td></td>" +
+        '<td class="num' + (b.n ? "" : " zero") + '">' + b.n + "</td>" +
+        "<td>" + list(r.report_types) + "</td><td></td><td>" + list(r.spellings, "alt") + "</td></tr>";
+    }).join("");
+  }
+
+  function groupHeader(title, sub, i, extra) {
+    return '<tr class="grp"' + (i === undefined ? "" : ' tabindex="0" data-i="' + i + '"') +
+      '><td colspan="8">' + esc(title) + "<span>" + esc(sub) + "</span>" +
+      (extra ? '<span class="grpal">' + extra + "</span>" : "") + "</td></tr>";
+  }
+
+  function render() {
+    var rows = visible();
+    groupTotals = {};
+    rows.forEach(function (r) {
+      var k = groupKey(r);
+      groupTotals[k] = (groupTotals[k] || 0) + (r.products || 0);
+    });
+    rows = rows.slice().sort(cmp);
+    var body = document.getElementById("rows");
+    document.getElementById("count").textContent =
+      rows.length + " of " + ROWS.length + " claims";
+    if (!rows.length) {
+      body.innerHTML = '<tr><td colspan="8" class="empty">Nothing matches the current filters.</td></tr>';
+      return;
+    }
+    var html = "", last = null;
+    rows.forEach(function (r) {
+      var i = ROWS.indexOf(r);
+      if (state.grp === "body") {
+        var name = r.body || "— no body —";
+        if (name !== last) {
+          last = name;
+          var mine = rows.filter(function (x) { return (x.body || "— no body —") === name; });
+          var prods = mine.reduce(function (n, x) { return n + (x.products || 0); }, 0);
+          html += groupHeader(name, mine.length + (mine.length === 1 ? " claim" : " claims") +
+            " · " + prods + (prods === 1 ? " product" : " products"));
+        }
+        html += rowHtml(r, i);
+      } else if (state.grp === "cert") {
+        // One block per claim: the claim on the header, the laboratories and
+        // scheme owners recorded against it underneath.
+        html += groupHeader(r.cert, (r.body || "no body in the catalogue") +
+          " · " + (r.products || 0) + (r.products === 1 ? " product" : " products"), i,
+          alignHtml(r));
+        html += breakdownHtml(r);
+        if (state.open === i) html += detailHtml(r);
+      } else {
+        html += rowHtml(r, i);
+      }
+    });
+    body.innerHTML = html;
+  }
+
+  function sortBy(key, dir) {
+    if (dir !== undefined) { state.sort = key; state.dir = dir; }
+    else if (state.sort === key) { state.dir = -state.dir; }
+    else { state.sort = key; state.dir = (key === "products") ? -1 : 1; }
+    var ths = document.querySelectorAll("thead th");
+    for (var i = 0; i < ths.length; i++) {
+      if (ths[i].getAttribute("data-k") === key) {
+        ths[i].setAttribute("aria-sort", state.dir > 0 ? "ascending" : "descending");
+        ths[i].querySelector(".ind").textContent = state.dir > 0 ? "▲" : "▼";
+      } else {
+        ths[i].removeAttribute("aria-sort");
+        ths[i].querySelector(".ind").textContent = "";
+      }
+    }
+    render();
+  }
+
+  document.querySelector("thead").addEventListener("click", function (ev) {
+    var th = ev.target.closest("th");
+    if (th && th.getAttribute("data-k")) sortBy(th.getAttribute("data-k"));
+  });
+  document.getElementById("rows").addEventListener("click", function (ev) {
+    var tr = ev.target.closest("tr[data-i]");
+    if (!tr) return;
+    var i = parseInt(tr.getAttribute("data-i"), 10);
+    state.open = (state.open === i) ? null : i;
+    render();
+  });
+  document.getElementById("rows").addEventListener("keydown", function (ev) {
+    if (ev.key !== "Enter" && ev.key !== " ") return;
+    var tr = ev.target.closest("tr[data-i]");
+    if (!tr) return;
+    ev.preventDefault();
+    var i = parseInt(tr.getAttribute("data-i"), 10);
+    state.open = (state.open === i) ? null : i;
+    render();
+  });
+  document.getElementById("q").addEventListener("input", function (ev) {
+    state.q = ev.target.value; state.open = null; render();
+  });
+  document.getElementById("used").addEventListener("change", function (ev) {
+    state.used = ev.target.checked; render();
+  });
+  document.getElementById("grp").addEventListener("change", function (ev) {
+    state.grp = ev.target.value;
+    state.open = null;
+    // Sort by whatever the grouping is about, unless a column was picked.
+    if (state.sort === "body" || state.sort === "cert") {
+      sortBy(state.grp === "cert" ? "cert" : "body", 1);
+      return;
+    }
+    render();
+  });
+
+  stats();
+  frameworkPanel();
+  chips();
+  sortBy("body", 1);
+})();
+</script>
+</body>
+</html>

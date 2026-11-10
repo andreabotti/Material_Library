@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>6165a1c6-0a74-4168-aa06-8e7c361461c2</common:UUID>
+      <name>
+        <baseName xml:lang="en">Processing of particleboard/MDF panel by Computerized Numerical Control machine</baseName>
+      </name>
+      <common:synonyms>Lavorazione di pannelli di truciolare e MDF laminati utilizzando un centro di lavoro a controllo numerico (CNC), presso l’utilizzatore</common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">Use and consumption</common:class>
+          <common:class level="1">Use of energy-using products</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment xml:lang="en">Dataset developed according to Arcadia project Methodology (Report: “Metodologia per gli studi di filiera della Banca Dati italiana LCA”). LCA study of processing of laminated chipboard and MDF panels using a Computerized Numerical Control (CNC) machine: " STUDIO LCA DELLA FASE DI LAVORAZIONE DI PANNELLI A BASE LEGNO PER MEZZO DI UN CENTRO DI LAVORO A CONTROLLO NUMERICO”.&#13;
+The dataset refers to the processing of laminated chipboard and MDF panels using a Computerized Numerical Control (CNC) machine and is representative of the mid-top range of the technologies commonly used for the processing of wood based materials.&#13;
+&#13;
+</common:generalComment>
+      <referenceToExternalDocumentation type="source data set" refObjectId="795cef8f-211c-4dc5-b18b-61d2678df761" version="01.00.000" uri="../sources/795cef8f-211c-4dc5-b18b-61d2678df761.xml">
+        <common:shortDescription>Background datasets from Ecoinvent database cut-off (v.3.7.1) were used for the LCA study</common:shortDescription>
+      </referenceToExternalDocumentation>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2022</common:referenceYear>
+      <common:dataSetValidUntil>2027</common:dataSetValidUntil>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT">
+        <descriptionOfRestrictions>Italy. Primary data collected in Marche region. Dataset representative of Italian processing of laminated chipboard and MDF panels using a Computerized Numerical Control (CNC) machine</descriptionOfRestrictions>
+      </locationOfOperationSupplyOrProduction>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>Processing of laminated chipboard and MDF panels with a weight of 4941 g (average weight between the laminated MDF panel (5098 g) and the laminated chipboard panel (4783 g)). The size of the laminated chipboard is 605x605X18mm and its density is 770kg/m³ ; the size of the MDF panel is 700x550X18mm and its density is 710kg/m³. The process involves the processing, of the panel which undergoes a series of operations: milling, drilling and cutting, in order to obtain a semi-finished product. The machine uses electricity for the processing and wood dust and scraps are generated as waste flow. The electricity consumption for the processing of the panel is 256,5 Wh.&#13;
+Both the production of the panel entering the machine and the management of waste products are excluded from the system boundaries. The wood waste deriving from the panel processing (including the dust extracted from the hoods) is classified as non-hazardous recovery waste and can be used for the production of wood particleboard or energy recovery. Background data were modelled according to Ecoinvent v. 3.7.1</technologyDescriptionAndIncludedProcesses>
+      <technologicalApplicability>The processing of laminated chipboard and MDF panels can be used for all types of wood furniture</technologicalApplicability>
+      <referenceToTechnologyPictogramme type="source data set" refObjectId="092b5443-1520-4b31-8ea0-eb3586e247b5" version="01.00.000" uri="../sources/092b5443-1520-4b31-8ea0-eb3586e247b5.xml">
+        <common:shortDescription>20230912113239_Rover B FT.jpg</common:shortDescription>
+      </referenceToTechnologyPictogramme>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Not applicable</LCIMethodApproaches>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <dataCutOffAndCompletenessPrinciples>Production of equipment and infrastructure ,   production of the particleboard/MDF panel and wood waste treatment are not included.</dataCutOffAndCompletenessPrinciples>
+      <referenceToDataSource type="source data set" refObjectId="19f86c76-4dad-4b1c-ad5d-676814c9a077" version="01.00.000" uri="../sources/19f86c76-4dad-4b1c-ad5d-676814c9a077.xml">
+        <common:shortDescription>20230912113239_REPORT DI FILIERA_lavorazionePannello_accessibile.pdf</common:shortDescription>
+      </referenceToDataSource>
+      <dataCollectionPeriod>2022</dataCollectionPeriod>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>No statement</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Independent internal review">
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Technological representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Completeness" value="Very good"/>
+          <common:dataQualityIndicator name="Precision" value="Not applicable"/>
+          <common:dataQualityIndicator name="Methodological appropriateness and consistency" value="Not applicable"/>
+          <common:dataQualityIndicator name="Overall quality" value="Not applicable"/>
+        </common:dataQualityIndicators>
+        <common:reviewDetails>The review was performed in compliance with Arcadia Methodology “Metodologia per gli studi di filiera della Banca Dati italiana LCA”. The dataset has been assessed limited to the foreground data collected during the study.&#13;
+Each dataset has been evaluated on the basis of the following 4 criteria:&#13;
+1. Technological Representativeness; &#13;
+2. Time Representativeness; &#13;
+3. Geographical Representativeness;&#13;
+4. Reliability.&#13;
+In this contest the Reliability is good </common:reviewDetails>
+        <common:referenceToNameOfReviewerAndInstitution type="contact data set" refObjectId="f759085c-890b-42ab-a4a2-e8c3108cc45f" version="01.00.000" uri="../sources/f759085c-890b-42ab-a4a2-e8c3108cc45f.xml">
+          <common:shortDescription>ENEA</common:shortDescription>
+        </common:referenceToNameOfReviewerAndInstitution>
+        <common:otherReviewDetails>The study was judged by the reviewer as compliant with both ISO 14040-44 and Arcadia methodology</common:otherReviewDetails>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="88d4f8d9-60f9-43d1-9ea3-329c10d7d727" uri="../sources/88d4f8d9-60f9-43d1-9ea3-329c10d7d727.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="d92a1a12-2545-49e2-a585-55c259997756" uri="../sources/d92a1a12-2545-49e2-a585-55c259997756.xml">
+          <common:shortDescription xml:lang="en">ISO 14044</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Not defined</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="01807191-e156-421a-b2f6-aa609ea534f4" uri="../contacts/01807191-e156-421a-b2f6-aa609ea534f4.xml">
+        <common:shortDescription xml:lang="en">Arcadia – PON Governance e Capacità istituzionale 2014-2020</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Arcadia – PON Governance e Capacità istituzionale 2014-2020</common:project>
+    </common:commissionerAndGoal>
+    <dataGenerator>
+      <common:referenceToPersonOrEntityGeneratingTheDataSet refObjectId="8b4a3707-ce48-4293-912e-28ec8ec69206" type="contact data set" uri="../sources/8b4a3707-ce48-4293-912e-28ec8ec69206.xml" version="01.00.000">
+        <common:shortDescription>ENEA</common:shortDescription>
+      </common:referenceToPersonOrEntityGeneratingTheDataSet>
+    </dataGenerator>
+    <dataEntryBy>
+      <common:timeStamp>2023-09-08T10:56:42.946+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="a97a0155-0234-4b87-b4ce-a45da52f2a40" uri="../sources/a97a0155-0234-4b87-b4ce-a45da52f2a40.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2022-10-30T10:33:03.950Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/6165a1c6-0a74-4168-aa06-8e7c361461c2.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="00264fa4-1eed-4a0d-ad0b-b55bc27f5b64" type="contact data set" uri="../contacts/00264fa4-1eed-4a0d-ad0b-b55bc27f5b64.xml" version="01.00.000">
+        <common:shortDescription>ENEA-ARCADIA</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+      <common:accessRestrictions>Type of license: Open Database Licence (ODbL)</common:accessRestrictions>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="0a416155-9950-4d05-99dd-38cec562ee27" uri="../flows/0a416155-9950-4d05-99dd-38cec562ee27.xml">
+        <common:shortDescription xml:lang="en">Processing of particleboard/MDF panel by Computerized Numerical Control machine</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0000000E-3</meanAmount>
+      <resultingAmount>1.0000000E-3</resultingAmount>
+      <generalComment>Average weight between the particleboard and the MDF panel 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4f170518-9ea6-410d-a8a6-99c836daa1bc" uri="../flows/4f170518-9ea6-410d-a8a6-99c836daa1bc.xml">
+        <common:shortDescription xml:lang="en">Electricity, medium voltage {IT}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.8684000E-4</meanAmount>
+      <resultingAmount>1.8684000E-4</resultingAmount>
+      <generalComment>Electricity consumption for panel processing 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4f19ca02-7b3b-11dd-ad8b-0800200c9a66" uri="../flows/4f19ca02-7b3b-11dd-ad8b-0800200c9a66.xml">
+        <common:shortDescription xml:lang="en">landfill of untreated wood</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.9800000E-5</meanAmount>
+      <resultingAmount>1.9800000E-5</resultingAmount>
+      <generalComment>Wood waste from the panel processing
+</generalComment>
+    </exchange>
+  </exchanges>
+</processDataSet>

@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>ada3283d-2a6f-4f30-93e0-039664b27d30</common:UUID>
+      <name>
+        <baseName xml:lang="en">Storage of chilled goods, cold storage, 1 week</baseName>
+      </name>
+      <common:synonyms>Stoccaggio in magazzino frigorifero di prodotti freschi per una settimana </common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">Systems</common:class>
+          <common:class level="1">Other systems</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment>The dataset has been developed in LIFE EFFIGE project. Details are given in “PEFCR of contracted supply service for school meals” (lifeeffige.eu). The background system is not included in the model. To complete the inventory, the use of data from other published database is necessary. The dataset includes the model of a Distribution Centre (DC). The DC space-time is allocated to chilled goods based on the DC capacity, the volume occupied by the product and the storage time. </common:generalComment>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2018</common:referenceYear>
+      <common:dataSetValidUntil>2024</common:dataSetValidUntil>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT"/>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>The dataset includes the model of a Distribution Centre (DC) for dry, chilled and frozen storage.  The DC modelled is a 30000 m2 building, 10 m high, and with a 30,000 m2 parking. Life of the building is 80 years. Chilled and frozen storage areas are 30% of the total area. The area of services is 5% as well as the area of offices. The actual capacity of the DC has been assumed to be 72,000 m3 for ambient storage and 36,000 m3 for chilled/ frozen storage.  The model includes infrastructure and building; electricity, natural gas and water consumption; refrigerant gases consumption and leakages.  The DC impact per product has been calculated using an allocation based on the total storage capacity of the distribution centre.  The storage volume of chilled goods has been assumed to be three times their actual volume and chilled goods have been assumed to be stored for 1 week on average.  </technologyDescriptionAndIncludedProcesses>
+      <technologicalApplicability>Due to several assumptions and estimation included in the model, the dataset can be used for those cases where the impact of storage operations is not the main contribution to the total impact of the system. </technologicalApplicability>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Not applicable</LCIMethodApproaches>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <dataCutOffAndCompletenessPrinciples>Waste production is not included, excepting hazardous waste from refrigerant disposal.</dataCutOffAndCompletenessPrinciples>
+      <referenceToDataSource type="source data set" refObjectId="656b46f7-e58f-4af8-95d0-304b624d71e8" version="01.00.000" uri="../sources/656b46f7-e58f-4af8-95d0-304b624d71e8.xml">
+        <common:shortDescription>PEFCR guidance version 6.3; The Guide Energy use in offices, March 2003; the calculator available at http://www.impiantiecontrolli.com/sw_celle/sw_celle_frigo.php </common:shortDescription>
+      </referenceToDataSource>
+      <referenceToDataSource type="source data set" refObjectId="4a683eaf-f444-46ab-962f-05d41bac378c" version="01.00.000" uri="../sources/4a683eaf-f444-46ab-962f-05d41bac378c.xml">
+        <common:shortDescription>Primary data from a 30000 m2 Distribution Centre  for dry, chilled and frozen storage, runned by the meal school service supplier.</common:shortDescription>
+      </referenceToDataSource>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>No statement</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Independent internal review">
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Not applicable"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Not applicable"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Not applicable"/>
+          <common:dataQualityIndicator name="Completeness" value="Not applicable"/>
+          <common:dataQualityIndicator name="Precision" value="Not applicable"/>
+          <common:dataQualityIndicator name="Methodological appropriateness and consistency" value="Not applicable"/>
+          <common:dataQualityIndicator name="Overall quality" value="Not applicable"/>
+        </common:dataQualityIndicators>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="88d4f8d9-60f9-43d1-9ea3-329c10d7d727" uri="../sources/88d4f8d9-60f9-43d1-9ea3-329c10d7d727.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Not defined</common:methodologicalCompliance>
+        <common:reviewCompliance>Not defined</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="d92a1a12-2545-49e2-a585-55c259997756" uri="../sources/d92a1a12-2545-49e2-a585-55c259997756.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Not defined</common:methodologicalCompliance>
+        <common:reviewCompliance>Not defined</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="01807191-e156-421a-b2f6-aa609ea534f4" uri="../contacts/01807191-e156-421a-b2f6-aa609ea534f4.xml">
+        <common:shortDescription xml:lang="en">EPLCA project team</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Progetto Life EFFIGE (LIFE16 ENV/IT/000172)</common:project>
+    </common:commissionerAndGoal>
+    <dataGenerator>
+      <common:referenceToPersonOrEntityGeneratingTheDataSet refObjectId="a59f237b-6cca-49a7-9925-e93f61f55ef4" type="contact data set" uri="../sources/a59f237b-6cca-49a7-9925-e93f61f55ef4.xml" version="01.00.000">
+        <common:shortDescription>LIFE EFFIGE</common:shortDescription>
+      </common:referenceToPersonOrEntityGeneratingTheDataSet>
+    </dataGenerator>
+    <dataEntryBy>
+      <common:timeStamp>2022-04-12T17:42:41.747+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="a97a0155-0234-4b87-b4ce-a45da52f2a40" uri="../sources/a97a0155-0234-4b87-b4ce-a45da52f2a40.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2018-06-27T17:19:51.307Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/ada3283d-2a6f-4f30-93e0-039664b27d30.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="90403262-c8c2-477b-9458-dbdf4efec345" type="contact data set" uri="../sources/90403262-c8c2-477b-9458-dbdf4efec345.xml" version="01.00.000">
+        <common:shortDescription>LIFE EFFIGE</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+      <common:accessRestrictions>Type of license: Open Database Licence (ODbL)</common:accessRestrictions>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="1dfdae2c-d385-4c89-8f9b-910dc7dc6fb0" uri="../flows/1dfdae2c-d385-4c89-8f9b-910dc7dc6fb0.xml">
+        <common:shortDescription xml:lang="en">Storage of chilled goods</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>IT</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0000000E+0</meanAmount>
+      <resultingAmount>1.0000000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4a2b25a1-163c-4fe6-af97-1a463bcb9717" uri="../flows/4a2b25a1-163c-4fe6-af97-1a463bcb9717.xml">
+        <common:shortDescription xml:lang="en">Tap water {Europe without Switzerland}| market for | Cut-off, S</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.0000000E-2</meanAmount>
+      <resultingAmount>2.0000000E-2</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="ed6502c9-970e-41f5-a8be-959b8f2eadd0" uri="../flows/ed6502c9-970e-41f5-a8be-959b8f2eadd0.xml">
+        <common:shortDescription xml:lang="en">Building, multi-storey {GLO}| market for | Cut-off, S</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.0000000E-6</meanAmount>
+      <resultingAmount>5.0000000E-6</resultingAmount>
+      <generalComment>Building lifetime 80 years 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="3">
+      <referenceToFlowDataSet type="flow data set" refObjectId="75cf68e1-5896-45b2-86d4-d7cefdee0b6c" uri="../flows/75cf68e1-5896-45b2-86d4-d7cefdee0b6c.xml">
+        <common:shortDescription xml:lang="en">Refrigerant R134a {GLO}| market for | Cut-off, S</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.4800000E-6</meanAmount>
+      <resultingAmount>1.4800000E-6</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="4">
+      <referenceToFlowDataSet type="flow data set" refObjectId="09a019c7-b4af-46fb-affd-2fa0c0e3f187" uri="../flows/09a019c7-b4af-46fb-affd-2fa0c0e3f187.xml">
+        <common:shortDescription xml:lang="en">Road, company, internal {CH}| construction | Cut-off, S</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.2000000E-4</meanAmount>
+      <resultingAmount>1.2000000E-4</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="5">
+      <referenceToFlowDataSet type="flow data set" refObjectId="affdb3d2-d8e8-4940-94dd-94a64ba2ccb7" uri="../flows/affdb3d2-d8e8-4940-94dd-94a64ba2ccb7.xml">
+        <common:shortDescription xml:lang="en">Electricity, medium voltage {IT}| market for | Cut-off, S</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.7240000E-2</meanAmount>
+      <resultingAmount>5.7240000E-2</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="6">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d5be979d-16dd-41fa-ab62-4df0a83c574f" uri="../flows/d5be979d-16dd-41fa-ab62-4df0a83c574f.xml">
+        <common:shortDescription xml:lang="en">Heat, central or small-scale, natural gas {Europe without Switzerland}| market for heat, central or small-scale, natural gas | Cut-off, S</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.8400000E-4</meanAmount>
+      <resultingAmount>6.8400000E-4</resultingAmount>
+      <generalComment>9.6 kWh/Nm3, https://energia.regione.emilia-romagna.it/servizi-on-line/allegati-banche-dati/
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="7">
+      <referenceToFlowDataSet type="flow data set" refObjectId="48c6620d-920d-492a-a1f7-ee3fd2cc0e3a" uri="../flows/48c6620d-920d-492a-a1f7-ee3fd2cc0e3a.xml">
+        <common:shortDescription xml:lang="en">Wastewater, average {Europe without Switzerland}| treatment of wastewater, average, capacity 1E9l/year | Cut-off, S</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.0000000E-5</meanAmount>
+      <resultingAmount>2.0000000E-5</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="8">
+      <referenceToFlowDataSet type="flow data set" refObjectId="e3433c3a-0a52-44f6-9769-3fc2c52039b7" uri="../flows/e3433c3a-0a52-44f6-9769-3fc2c52039b7.xml">
+        <common:shortDescription xml:lang="en">Hazardous waste, for incineration {Europe without Switzerland}| treatment of hazardous waste, hazardous waste incineration | Cut-off, S</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.5100000E-7</meanAmount>
+      <resultingAmount>3.5100000E-7</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="9">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-a6d2-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-a6d2-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">HFC-134a</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>4.5100000E-8</meanAmount>
+      <resultingAmount>4.5100000E-8</resultingAmount>
+      <generalComment>emissions in use and end-of-life
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="10">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-a3ea-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-a3ea-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">HFC-125</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>4.9600000E-7</meanAmount>
+      <resultingAmount>4.9600000E-7</resultingAmount>
+      <generalComment>emissions in use and end-of-life
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="11">
+      <referenceToFlowDataSet type="flow data set" refObjectId="26162114-f5b3-45b5-87c3-f0fe0ecf2bb9" uri="../flows/26162114-f5b3-45b5-87c3-f0fe0ecf2bb9.xml">
+        <common:shortDescription xml:lang="en">1,1,1-trifluoroethane</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>5.8600000E-7</meanAmount>
+      <resultingAmount>5.8600000E-7</resultingAmount>
+      <generalComment>emissions in use and end-of-life
+</generalComment>
+    </exchange>
+  </exchanges>
+</processDataSet>

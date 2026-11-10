@@ -1,0 +1,25 @@
+Material,Category,Density_label,GWP_min_kgCO2eq_FU,GWP_max_kgCO2eq_FU,PENR_min_MJ_FU,PENR_max_MJ_FU,n_values,Notes
+Glass wool,Mineral derived,17-64,0.6,1.2,16,31,24,From abstract
+Stone wool,Mineral derived,35-130,1.4,4.2,21,66,30,From abstract
+EPS,Fossil fuel derived,15-30,1.9,3.5,44,78,48,From abstract
+XPS,Fossil fuel derived,24-38,,,,,13,
+PUR/PIR,Fossil fuel derived,31.5-35,,,,,20,
+Expanded clay,Mineral derived,245-275,,,,,7,
+Glass foam,Mineral derived,100-165,,,,,3,Few values
+Vermiculite,Mineral derived,172,,,,,1,Single value
+Perlite,Mineral derived,139-166,,,,,3,Few values
+Wood fibers (low density),Natural derived,30-80,,,,,6,
+Wood fibers (high density),Natural derived,110-250,,,,,5,Wide variation
+Mineralized wood fibers,Natural derived,420-520,,,,,4,
+Cellulose,Natural derived,30-80,,,,,21,
+Cork,Natural derived,80-115,,,,,7,Wide variation
+Straw bale,Natural derived,100-109,,,,,4,
+Cotton,Natural derived,30-40,,,,,2,Few values
+Hemp,Natural derived,38-41,,,,,4,
+Flax,Natural derived,30-40,,,,,4,
+Reeds,Natural derived,145,,,,,1,Single value
+Sheep wool,Natural derived,30,,,,,1,Single value
+Textile fibers,Innovative,,,,,,1,Single value
+Recycled PET,Innovative,12-100,,,,,6,
+Aerogel,Innovative,150,11.6,18.7,251,372,3,From abstract
+VIP,Innovative,180-250,,,,,5,Wide variation

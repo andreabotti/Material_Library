@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>7c8ff5ec-8cd3-4f02-8e03-1cabc403fa01</common:UUID>
+      <name>
+        <baseName xml:lang="en">Cables, recycling</baseName>
+      </name>
+      <common:synonyms>Riciclo di cavi in rame e plastica.</common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">End-of-life treatment</common:class>
+          <common:class level="1">Material recycling</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment>Dataset developed within the ARCADIA project in the context of the Ph.D. of Federica Carollo (Politecnico di Milano). 
+The dataset relates to the recycling of 1 kg of cables in Italy. 
+
+The dataset is composed of 5-unit processes: 
+1) Treatment facility (it is a rough estimation of the infrastructure); 
+2) Transport the separated copper and plastic to the respective recycling plants. Hypothesis: 100 km away; 
+3) Sorting and recycling processes for the copper (Process: Copper, recycled); 
+4) Electricity consumed for treatment (considering the Italian energy mix); 
+5) Incineration of the residual plastic. </common:generalComment>
+      <referenceToExternalDocumentation type="source data set" refObjectId="b4491252-5927-4042-bf21-65488beebf0c" version="01.00.000" uri="../sources/b4491252-5927-4042-bf21-65488beebf0c.xml">
+        <common:shortDescription>Carollo F. (2023). Circularity in construction and demolition waste management chain, Ph.D. Dissertation (Tutored by Rigamonti L., Ceruti F.). Politecnico di Milano. Background datasets from the EcoInvent database cut-off (v. 3.8) were used for the LCA study. </common:shortDescription>
+      </referenceToExternalDocumentation>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2022</common:referenceYear>
+      <common:dataSetValidUntil>2027</common:dataSetValidUntil>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT">
+        <descriptionOfRestrictions>Lombardy Region</descriptionOfRestrictions>
+      </locationOfOperationSupplyOrProduction>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>The electric cables are shredded to optimise the subsequent mechanical separation of the copper from the rubber, and both fractions are then sent for recovery. On average, the cables are composed of 70% rubber and 30% copper.  &#13;
+&#13;
+Good the Reliability; &#13;
+Very Good the Geographical representativeness; &#13;
+Very Good the Time representativeness; &#13;
+Very Good the Technological representativeness. </technologyDescriptionAndIncludedProcesses>
+      <technologicalApplicability>Recycling of 1 kg of cables.</technologicalApplicability>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Allocation - mass</LCIMethodApproaches>
+      <referenceToLCAMethodDetails type="source data set" refObjectId="b838dd21-118f-4286-92ab-64824248b09e" version="01.00.000" uri="../sources/b838dd21-118f-4286-92ab-64824248b09e.xml">
+        <common:shortDescription>Carollo F. (2023). Circularity in construction and demolition waste management chain, Ph.D. Dissertation (Tutored by Rigamonti L., Ceruti F.). Politecnico di Milano</common:shortDescription>
+      </referenceToLCAMethodDetails>
+      <referenceToLCAMethodDetails type="source data set" refObjectId="4b0a516f-241b-44b6-a800-dc5e66cdcfff" version="01.00.000" uri="../sources/4b0a516f-241b-44b6-a800-dc5e66cdcfff.xml">
+        <common:shortDescription>Biganzoli, L., Falbo, A., Forte, F., Grosso, M., &amp; Rigamonti, L. (2015). Mass balance and life cycle assessment of the waste electrical and electronic equipment management system implemented in Lombardia Region (Italy). Science of The Total Environment, 524–525, 361–375.</common:shortDescription>
+      </referenceToLCAMethodDetails>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <referenceToDataSource type="source data set" refObjectId="d38d5181-673f-40a6-9a70-79f1fd80c44b" version="01.00.000" uri="../sources/d38d5181-673f-40a6-9a70-79f1fd80c44b.xml">
+        <common:shortDescription>Carollo F. (2023). Circularity in construction and demolition waste management chain, Ph.D. Dissertation (Tutored by Rigamonti L., Ceruti F.). Politecnico di Milano. Background datasets from the EcoInvent database cut-off (v. 3.8) were used for the LCA study. </common:shortDescription>
+      </referenceToDataSource>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>All relevant flows quantified</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Not reviewed">
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Completeness" value="Good"/>
+          <common:dataQualityIndicator name="Precision" value="Good"/>
+          <common:dataQualityIndicator name="Methodological appropriateness and consistency" value="Good"/>
+          <common:dataQualityIndicator name="Overall quality" value="Good"/>
+        </common:dataQualityIndicators>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="88d4f8d9-60f9-43d1-9ea3-329c10d7d727" uri="../sources/88d4f8d9-60f9-43d1-9ea3-329c10d7d727.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Fully compliant</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Fully compliant</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="d92a1a12-2545-49e2-a585-55c259997756" uri="../sources/d92a1a12-2545-49e2-a585-55c259997756.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Fully compliant</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Fully compliant</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="01807191-e156-421a-b2f6-aa609ea534f4" uri="../contacts/01807191-e156-421a-b2f6-aa609ea534f4.xml">
+        <common:shortDescription xml:lang="en">EPLCA project team</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Arcadia – PON Governance e Capacità istituzionali 2014-2020 (PhD Project of Federica Carollo).</common:project>
+    </common:commissionerAndGoal>
+    <dataGenerator>
+      <common:referenceToPersonOrEntityGeneratingTheDataSet refObjectId="14de6d1b-904f-47ee-a60e-9cffbac254fa" type="contact data set" uri="../sources/14de6d1b-904f-47ee-a60e-9cffbac254fa.xml" version="01.00.000">
+        <common:shortDescription>Federica Carollo (Politecnico di Milano).</common:shortDescription>
+      </common:referenceToPersonOrEntityGeneratingTheDataSet>
+    </dataGenerator>
+    <dataEntryBy>
+      <common:timeStamp>2022-12-03T13:19:38.407+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="a97a0155-0234-4b87-b4ce-a45da52f2a40" uri="../sources/a97a0155-0234-4b87-b4ce-a45da52f2a40.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2022-05-27T13:17:23.27Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/7c8ff5ec-8cd3-4f02-8e03-1cabc403fa01.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="c2298b92-1cb2-4dce-b936-8187bce3be3b" type="contact data set" uri="../sources/c2298b92-1cb2-4dce-b936-8187bce3be3b.xml" version="01.00.000">
+        <common:shortDescription>ENEA-ARCADIA</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+      <common:accessRestrictions>Type of license: Open Database Licence (ODbL).</common:accessRestrictions>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d330a085-4532-4dc4-8cd4-1aac47ab15e0" uri="../flows/d330a085-4532-4dc4-8cd4-1aac47ab15e0.xml">
+        <common:shortDescription xml:lang="en">Cables, recycling</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0000000E+0</meanAmount>
+      <resultingAmount>1.0000000E+0</resultingAmount>
+      <generalComment>The electric cables are subjected to shredding in order to optimize the subsequent mechanical separation of the copper from the rubber. Both fractions are then sent for recovery. On average, the cables are composed of 70% rubber and 30% copper.
+Reference: Biganzoli et al., 2015 and Ruggeri et al., 2019.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="21590d48-0708-4714-9766-d9145310a64c" uri="../flows/21590d48-0708-4714-9766-d9145310a64c.xml">
+        <common:shortDescription xml:lang="en">Manual treatment facility, waste electric and electronic equipment {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.0000000E-10</meanAmount>
+      <resultingAmount>4.0000000E-10</resultingAmount>
+      <generalComment>(4,5,5,3,5,na)
+Rough estimation of infrastructure
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="1dea0665-91cd-45a0-aa8f-5b6dc8af611d" uri="../flows/1dea0665-91cd-45a0-aa8f-5b6dc8af611d.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry 16-32 metric ton, EURO4 {RER}| transport, freight, lorry 16-32 metric ton, EURO4 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.0000000E-1</meanAmount>
+      <resultingAmount>1.0000000E-1</resultingAmount>
+      <generalComment>[Amount=0,3*100+0,7*100]
+Change from the original process: transport of the separated copper and separated plastic to the respective recycling plants. By hypothesis it is assumed that they are 100km away
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="3">
+      <referenceToFlowDataSet type="flow data set" refObjectId="0e2c3872-2805-4387-bf26-671cce02e594" uri="../flows/0e2c3872-2805-4387-bf26-671cce02e594.xml">
+        <common:shortDescription xml:lang="en">Copper, recycled</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.0000000E-1</meanAmount>
+      <resultingAmount>3.0000000E-1</resultingAmount>
+      <generalComment>70% of copper sorted and recycled
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="4">
+      <referenceToFlowDataSet type="flow data set" refObjectId="dcdb5ff3-2437-4129-8e38-75386edf4128" uri="../flows/dcdb5ff3-2437-4129-8e38-75386edf4128.xml">
+        <common:shortDescription xml:lang="en">Electricity, medium voltage {IT}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.4800000E-1</meanAmount>
+      <resultingAmount>6.4800000E-1</resultingAmount>
+      <generalComment>(1,4,5,3,1,na)
+Data from a European cable recycling company
+(Electricity substituted with Italian mix)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="5">
+      <referenceToFlowDataSet type="flow data set" refObjectId="eff3cfbf-8187-4a33-92f2-8ee71f3b5343" uri="../flows/eff3cfbf-8187-4a33-92f2-8ee71f3b5343.xml">
+        <common:shortDescription xml:lang="en">ARCADIA - Waste wire plastic {CH}| treatment of, municipal incineration | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>7.0000000E-1</meanAmount>
+      <resultingAmount>7.0000000E-1</resultingAmount>
+      <generalComment>70% of Plastics incinerated.
+The original dataset "Waste wire plastic {CH}| treatment of, municipal incineration | Cut-off, U" was modified as follows: site-specific electricity and fuel consumptions was added.
+</generalComment>
+    </exchange>
+  </exchanges>
+</processDataSet>

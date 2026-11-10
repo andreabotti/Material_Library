@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>e431a797-5aaa-4b72-9564-aeaa81963077</common:UUID>
+      <name>
+        <baseName xml:lang="en">Window, polyvinylchloride frame, double glazing, coated-laminated</baseName>
+      </name>
+      <common:synonyms>Finestra con telaio in polivinilcloruro e vetrocamera a doppio vetro, basso-emissivo-stratificato, alla produzione</common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">Systems</common:class>
+          <common:class level="1">Construction</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment>Dataset developed within the ARCADIA Project (production chain study regarding PVC frame for windows “PRODUZIONE
+DI TELAI IN PVC PER INFISSI E SERRAMENTI E PRODUZIONE DI FINESTRE IN PVC CON VETROCAMERA A DOPPIO O TRIPLO VETRO”). The dataset refers to the production of an average windows with PVC frame and double-glazing (C-L), including all window’s elements (reinforcement, hardware, gaskets, glazing blocks, screws, double-glazing, spacer). Dataset is representative of the Italian average processing technologies commonly used for the production of PVC windows. 
+The data set covers relevant process steps / technologies over the supply chain of the represented cradle to gate inventory with a good overall data quality. The inventory is based on primary data for PVC-U compounding, insulated double-glazing production and window assembly, and on secondary data (literature and/or LCI datasets) representative of Italian supply chain.
+Complete PVC window with double glazing is used as a transparent vertical closure of buildings. Dimensions: total window surface 1.23 m x 1.48 m, transparent surface 1.30 m2.
+</common:generalComment>
+      <referenceToExternalDocumentation type="source data set" refObjectId="030f2a8c-005d-4946-ba80-67725dfd73b9" version="01.00.000" uri="../sources/030f2a8c-005d-4946-ba80-67725dfd73b9.xml">
+        <common:shortDescription>Giorgi S., Lavagna M., Campioli A., 2023 “PRODUZIONE&#13;
+DI TELAI IN PVC PER INFISSI E SERRAMENTI E PRODUZIONE DI FINESTRE IN PVC CON VETROCAMERA A DOPPIO O TRIPLO VETRO”. Internal report ARCADIA Project.  &#13;
+Primary data of the main production processes (foreground data) collected from representative producers. &#13;
+Background datasets from Ecoinvent database cut-off (v.3.6) were used for the LCA study. &#13;
+</common:shortDescription>
+      </referenceToExternalDocumentation>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2021</common:referenceYear>
+      <common:dataSetValidUntil>2026</common:dataSetValidUntil>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT">
+        <descriptionOfRestrictions>Italy. Primary data collected in Italian compounding PVC-U plant, window PVC production plant, insulated double-glazing production plant. Dataset representative of Italian production of windows PVC with double glazing.</descriptionOfRestrictions>
+      </locationOfOperationSupplyOrProduction>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>The production process of “Window, polyvinylchloride frame, double glazing, coated-laminated”, include the production process of window frame PVC and the production process of double glazing, which are represented by the datasets “Polyvinylchloride frame for a window of 1,23 m x 1,48 m” and “Insulated Glass Unit, double glazing, coated-laminated. &#13;
+Primary data from Italian production plant and secondary data from literature and/or sector data representative of Italian supply chain for the geographical characteristics and technologies used (machineries, equipment, etc) were collected. Inventory data have been collected as physical quantities of materials used in the different processes. &#13;
+Dataset includes all window’s elements (reinforcement, hardware, gaskets, glazing blocks, screws), double glazing and spacer.&#13;
+The System Boundary of LCA is cradle-to-gate. The system boundary considers A1 “procurement of raw materials”, A2 “transport”, A3 “production”, according to EN15804:2012+A1:2013 standard. &#13;
+The production of machinery and infrastructure (and related maintenance waste), used for window and door production activities, is excluded from the system boundaries, except for those already contained in the Ecoinvent datasets used to model the background data. &#13;
+In accordance with EN 15804:2012+A1:2013, any electric motors and connected electric devices for opening/closing windows are excluded from the system boundary. &#13;
+The Cradle-to-gate analysis includes the input of raw materials, energy, water and the outputs of solid waste, air emissions, water emissions, and transport related to the considered system boundary. &#13;
+Background data were modelled according to Ecoinvent v. 3.6&#13;
+</technologyDescriptionAndIncludedProcesses>
+      <technologicalApplicability>The windows PVC with double glazing are used as a transparent vertical closure of buildings.</technologicalApplicability>
+      <referenceToTechnologyFlowDiagrammOrPicture type="source data set" refObjectId="3341e4b7-c91b-45b9-92af-9cdf1f02c7eb" version="01.00.000" uri="../sources/3341e4b7-c91b-45b9-92af-9cdf1f02c7eb.xml">
+        <common:shortDescription>20231017133626_Flowchart window PVC.jpg</common:shortDescription>
+      </referenceToTechnologyFlowDiagrammOrPicture>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Allocation - mass</LCIMethodApproaches>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <dataCutOffAndCompletenessPrinciples>Production of equipment and infrastructures is not included, except for the background system.</dataCutOffAndCompletenessPrinciples>
+      <deviationsFromCutOffAndCompletenessPrinciples>None for the inventory.&#13;
+Completeness related to elementary flows cannot be evaluated.&#13;
+</deviationsFromCutOffAndCompletenessPrinciples>
+      <dataSelectionAndCombinationPrinciples>Good consistency of data sources regarding data, modeling, adequacy. The primary data collected is highly reliable and representative both in geographical, technological and temporal terms. Cases where average values have been used are highlighted by the specific dataset “Polyvinylchloride frame for a window of 1,23 m x 1,48 m” and “Insulated Glass Unit, double glazing, coated-laminated”. &#13;
+Transport represents an average distance between double-glazing production plant and window assembly plant. &#13;
+</dataSelectionAndCombinationPrinciples>
+      <deviationsFromSelectionAndCombinationPrinciples>None</deviationsFromSelectionAndCombinationPrinciples>
+      <deviationsFromTreatmentAndExtrapolationPrinciples>None</deviationsFromTreatmentAndExtrapolationPrinciples>
+      <referenceToDataSource type="source data set" refObjectId="c4702371-170c-47dd-804e-73c8772b9313" version="01.00.000" uri="../sources/c4702371-170c-47dd-804e-73c8772b9313.xml">
+        <common:shortDescription>20231017133626_REPORT FILIERA PVC-PUBBLICO.pdf</common:shortDescription>
+      </referenceToDataSource>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>No statement</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Independent external review">
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Completeness" value="Not evaluated / unknown"/>
+          <common:dataQualityIndicator name="Precision" value="Not applicable"/>
+          <common:dataQualityIndicator name="Methodological appropriateness and consistency" value="Not applicable"/>
+          <common:dataQualityIndicator name="Overall quality" value="Not applicable"/>
+        </common:dataQualityIndicators>
+        <common:reviewDetails>The review was performed in compliance with Arcadia Metodology “Metodologia per gli studi di filiera della Banca Dati italiana LCA” and ISO 14040-44 norms. The dataset has been assessed limited to the foreground data collected during the supply chain studies.&#13;
+Each dataset has been evaluated on the basis of the following 4 criteria:&#13;
+1. Technological Representative;&#13;
+2. Time Representativeness;&#13;
+3. Geographic Representative;&#13;
+4. Reliability.&#13;
+In this context reliability is very good. &#13;
+The data used are consistent, appropriate and reasonable in view of the goal and scope of the study. The system boundaries include all relevant processes and activity types from cradle to gate. A cut-off has been applied to production of equipment and infrastructure and to the processes involved in the recycling of PVC and glass. These are in line with the requirements of the “Metodologia per gli studi di filiera della Banca Dati italiana LCA” (Buttol et al., v2, November 2021).&#13;
+The LCI modelling choices follow the requirements of Buttol et al. (2021), such as allocation, consistency of included processes, and LCI methodology in general. It has been consistently applied along the whole dataset. &#13;
+The representativeness of the dataset (time-related, geographical, technology) is well documented and very good, thanks also to the involvement of relevant market operators.  &#13;
+The precision and completeness of the dataset cannot be evaluated.&#13;
+&#13;
+</common:reviewDetails>
+        <common:referenceToNameOfReviewerAndInstitution type="contact data set" refObjectId="bb9500dd-ef0a-438e-b67f-bba53c6ae752" version="01.00.000" uri="../sources/bb9500dd-ef0a-438e-b67f-bba53c6ae752.xml">
+          <common:shortDescription>Ecoinnovazione srl</common:shortDescription>
+        </common:referenceToNameOfReviewerAndInstitution>
+        <common:otherReviewDetails>The study was judged by the reviewer as compliant with both ISO 14040-44 and Arcadia methodology.</common:otherReviewDetails>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="b8f2997d-22ba-4190-ae28-e8e17dbf4b30" uri="../sources/b8f2997d-22ba-4190-ae28-e8e17dbf4b30.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="61763929-e2a4-497c-8945-7dc51a790cdc" uri="../sources/61763929-e2a4-497c-8945-7dc51a790cdc.xml">
+          <common:shortDescription xml:lang="en">ISO 14044</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Not defined</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="999195cd-c891-434a-8ec4-d3fde4bb742d" uri="../sources/999195cd-c891-434a-8ec4-d3fde4bb742d.xml">
+        <common:shortDescription xml:lang="en">Arcadia – PON Governance e Capacità istituzionale 2014-2020</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Arcadia – PON Governance e Capacità istituzionali 2014-2020.</common:project>
+      <common:intendedApplications>None</common:intendedApplications>
+    </common:commissionerAndGoal>
+    <dataGenerator>
+      <common:referenceToPersonOrEntityGeneratingTheDataSet refObjectId="517a2c5e-514e-4d12-830d-65aae0b0c2c0" type="contact data set" uri="../sources/517a2c5e-514e-4d12-830d-65aae0b0c2c0.xml" version="01.00.000">
+        <common:shortDescription>Politecnico di Milano, DABC, LifeCycleTEAM</common:shortDescription>
+      </common:referenceToPersonOrEntityGeneratingTheDataSet>
+    </dataGenerator>
+    <dataEntryBy>
+      <common:timeStamp>2023-04-26T15:34:51.231+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="a97a0155-0234-4b87-b4ce-a45da52f2a40" uri="../sources/a97a0155-0234-4b87-b4ce-a45da52f2a40.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2022-11-21T15:54:06.248Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/e431a797-5aaa-4b72-9564-aeaa81963077.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="7889b852-1a72-4021-be24-e5d28f2af1a2" type="contact data set" uri="../contacts/7889b852-1a72-4021-be24-e5d28f2af1a2.xml" version="01.00.000">
+        <common:shortDescription>ENEA-ARCADIA</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+      <common:accessRestrictions>Type of license: Open Database Licence (ODbL).</common:accessRestrictions>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="9716404d-8ba4-4f1d-b39d-253a7bb9ca80" uri="../flows/9716404d-8ba4-4f1d-b39d-253a7bb9ca80.xml">
+        <common:shortDescription xml:lang="en">Window, polyvinylchloride frame, double glazing, coated-laminated</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0000000E+0</meanAmount>
+      <resultingAmount>1.0000000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="5be368e0-d759-4b86-be42-4949fe9f5485" uri="../flows/5be368e0-d759-4b86-be42-4949fe9f5485.xml">
+        <common:shortDescription xml:lang="en">Polyvinylchloride frame for a window of 1,23 m x 1,48 m</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.0000000E+0</meanAmount>
+      <resultingAmount>1.0000000E+0</resultingAmount>
+      <generalComment>Production of PVC frame for windows. The dataset includes the compounding process for production of PVC-U, the extrusion of PVC-U and the window assembling. 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="76f1aefc-973b-49c5-b062-57c49433ef4f" uri="../flows/76f1aefc-973b-49c5-b062-57c49433ef4f.xml">
+        <common:shortDescription xml:lang="en">Insulated Glass Unit, double glazing, coated-laminated</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.3000000E+0</meanAmount>
+      <resultingAmount>1.3000000E+0</resultingAmount>
+      <generalComment>Production of insulated glass unit, double glazing, considering one coated float glass and one laminated glass. 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="3">
+      <referenceToFlowDataSet type="flow data set" refObjectId="1af2a06f-5838-4a76-a4a4-07482fee7c2b" uri="../flows/1af2a06f-5838-4a76-a4a4-07482fee7c2b.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry 16-32 metric ton, EURO5 {RER}| transport, freight, lorry 16-32 metric ton, EURO5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.8400000E+0</meanAmount>
+      <resultingAmount>6.8400000E+0</resultingAmount>
+      <generalComment>Transport from IG production site to window production site
+</generalComment>
+    </exchange>
+  </exchanges>
+</processDataSet>

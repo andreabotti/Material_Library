@@ -1,0 +1,24 @@
+[server]
+# Auto Rerun (Run on save): rerun the app when source files change during development.
+runOnSave = true
+allowRunOnSave = true
+# Watchdog + OneDrive can drop the ``libs`` package mid-reload (KeyError: 'libs').
+fileWatcherType = "poll"
+# Serve ./static at /app/static/. Needed so the catalogue's document panel can load
+# PDFs straight from the browser (see static/docs → 01_data/pdf) instead of paying a
+# full Streamlit rerun to inline them as base64. Only ./static is exposed.
+enableStaticServing = true
+
+[theme]
+# Auto-generated from theme.json → streamlit_theme. Do not edit by hand.
+primaryColor = "#2a7d2e"
+backgroundColor = "#ffffff"
+secondaryBackgroundColor = "#f8fafc"
+textColor = "#1e293b"
+font = "sans serif"
+
+[mapbox]
+# Keep credentials in `.streamlit/secrets.toml` (see `[mapbox].token` there).
+# Note: we intentionally do NOT set `style` here; all maps fall back to
+# Mapbox Light v11 (`mapbox://styles/mapbox/light-v11`) in code, which is
+# stable and broadly compatible.

@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>d56fb9f0-f59d-4390-bbdb-da3d4379a348</common:UUID>
+      <name>
+        <baseName xml:lang="en">Wooden floor, hardwood finishing, at production, unspecified</baseName>
+      </name>
+      <common:synonyms>Pavimento in legno con finitura in legno nobile, alla produzione, non specificato</common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">Materials production</common:class>
+          <common:class level="1">Wood</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment>Dataset developed within the ARCADIA Project (production chain study regarding forest wood chips “STUDIO DI FILIERA DEI PAVIMENTI IN LEGNO”).
+The dataset refers to the production of an average hardwood floor and it can be considered representative of the Italian average processing technologies commonly used for the production of wooden floors</common:generalComment>
+      <referenceToExternalDocumentation type="source data set" refObjectId="d35a2378-7a1f-484a-89fb-a60651206012" version="01.00.000" uri="../sources/d35a2378-7a1f-484a-89fb-a60651206012.xml">
+        <common:shortDescription>Scrucca F., Frisone F., Rinaldi, C. 2023. “STUDIO DI FILIERA DEI PAVIMENTI IN LEGNO”. Internal report ARCADIA Project. For the LCA study background datasets from Ecoinvent database cut-off (v. 3.7.1) were used.</common:shortDescription>
+      </referenceToExternalDocumentation>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2022</common:referenceYear>
+      <common:dataSetValidUntil>2027</common:dataSetValidUntil>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT">
+        <descriptionOfRestrictions>Primary data collected in Veneto. Dataset representative of the production of 1 m2 wooden floor with hardwood finishing in Italy.</descriptionOfRestrictions>
+      </locationOfOperationSupplyOrProduction>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>1 m2 of wooden floor with a birch plywood support and an unspecified hardwood finishing glued together with high-strength polyurethane glue. Production of equipment and infrastructures is not included, except for the background system. Primary data (Veneto) and secondary data (literature and/or sector data) representative of the Italian production were collected. Inventory data were collected as physical quantities of materials used in the different processes. Background data were modelled according to Ecoinvent v. 3.7.1</technologyDescriptionAndIncludedProcesses>
+      <technologicalApplicability>The product is used for internal floors finishing in buildings.</technologicalApplicability>
+      <referenceToTechnologyPictogramme type="source data set" refObjectId="b6cb7fc1-f329-454c-93a9-b56ede3d5cc7" version="01.00.000" uri="../sources/b6cb7fc1-f329-454c-93a9-b56ede3d5cc7.xml">
+        <common:shortDescription>20231130094505_Unspecified.jpg</common:shortDescription>
+      </referenceToTechnologyPictogramme>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Allocation - other explicit assignment</LCIMethodApproaches>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <dataCutOffAndCompletenessPrinciples>Production of equipment and infrastructure are not included, except for the background system.</dataCutOffAndCompletenessPrinciples>
+      <referenceToDataSource type="source data set" refObjectId="aaead5b6-cfc7-45f7-a634-742a9e2b1549" version="01.00.000" uri="../sources/aaead5b6-cfc7-45f7-a634-742a9e2b1549.xml">
+        <common:shortDescription>20231130094505_Studio LCA di filiera pavimenti in legno.pdf</common:shortDescription>
+      </referenceToDataSource>
+      <dataCollectionPeriod>2022</dataCollectionPeriod>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>No statement</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Independent internal review">
+        <common:reviewDetails>The review was performed in compliance with Arcadia Metodology: “Metodologia per gli studi di filiera della Banca Dati italiana LCA” and ISO 14040-44 standards. The dataset has been assessed limited to the foreground data collected during the supply chain studies.&#13;
+Each dataset has been evaluated based on the following 4 criteria:&#13;
+1. Technological Representativeness; 2. Time Representativeness; 3. Geographical Representativeness; 4. Reliability &#13;
+In this contest the Reliability is good</common:reviewDetails>
+        <common:referenceToNameOfReviewerAndInstitution type="contact data set" refObjectId="64a4c03c-b5df-42cf-80e8-8479c38fd517" version="01.00.000" uri="../sources/64a4c03c-b5df-42cf-80e8-8479c38fd517.xml">
+          <common:shortDescription>ENEA</common:shortDescription>
+        </common:referenceToNameOfReviewerAndInstitution>
+        <common:otherReviewDetails>The review was performed in compliance with Arcadia Metodology: “Metodologia per gli studi di filiera della Banca Dati italiana LCA” and ISO 14040-44 standards. The dataset has been assessed limited to the foreground data collected during the supply chain studies.&#13;
+Each dataset has been evaluated based on the following 4 criteria:&#13;
+1. Technological Representativeness; 2. Time Representativeness; 3. Geographical Representativeness; 4. Reliability &#13;
+In this contest the Reliability is good</common:otherReviewDetails>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="b36deb77-2454-4b64-8ac7-90578529fe30" uri="../sources/b36deb77-2454-4b64-8ac7-90578529fe30.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="44754541-f863-471a-8cc4-891665b9f158" uri="../sources/44754541-f863-471a-8cc4-891665b9f158.xml">
+          <common:shortDescription xml:lang="en">ISO 14044</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Not defined</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="661c7e98-30fd-4104-9943-59ebdedc5ef9" uri="../sources/661c7e98-30fd-4104-9943-59ebdedc5ef9.xml">
+        <common:shortDescription xml:lang="en">ENEA - Arcadia</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Arcadia – PON Governance e Capacità istituzionale 2014-2020</common:project>
+    </common:commissionerAndGoal>
+    <dataGenerator>
+      <common:referenceToPersonOrEntityGeneratingTheDataSet type="contact data set" refObjectId="5fcdf64d-533f-4df9-a0ce-85c71a781f9a" uri="../contacts/5fcdf64d-533f-4df9-a0ce-85c71a781f9a.xml">
+        <common:shortDescription xml:lang="en">ENEA</common:shortDescription>
+      </common:referenceToPersonOrEntityGeneratingTheDataSet>
+    </dataGenerator>
+    <dataEntryBy>
+      <common:timeStamp>2023-10-16T09:39:23.947+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="a97a0155-0234-4b87-b4ce-a45da52f2a40" uri="../sources/a97a0155-0234-4b87-b4ce-a45da52f2a40.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2022-03-23T15:51:26.692Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/d56fb9f0-f59d-4390-bbdb-da3d4379a348.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="04a24d70-0164-4377-9560-2bfb68f0789e" type="contact data set" uri="../contacts/04a24d70-0164-4377-9560-2bfb68f0789e.xml" version="01.00.000">
+        <common:shortDescription>ENEA - Arcadia</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+      <common:accessRestrictions>Type of license: Open Database Licence (ODbL)</common:accessRestrictions>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="dc204f71-f32a-4beb-b40e-8d4de03cdab0" uri="../flows/dc204f71-f32a-4beb-b40e-8d4de03cdab0.xml">
+        <common:shortDescription xml:lang="en">Wooden floor, hardwood finishing, at production, unspecified</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0000000E+0</meanAmount>
+      <resultingAmount>1.0000000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="de9d12de-0635-4411-a325-747925d8dfbf" uri="../flows/de9d12de-0635-4411-a325-747925d8dfbf.xml">
+        <common:shortDescription xml:lang="en">plywood {RER}| plywood production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.4500000E-2</meanAmount>
+      <resultingAmount>1.4500000E-2</resultingAmount>
+      <generalComment>birch plywood support
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="8398a89a-25d9-4288-a135-59851e7d1330" uri="../flows/8398a89a-25d9-4288-a135-59851e7d1330.xml">
+        <common:shortDescription xml:lang="en">Sawlog and veneer log, hardwood, measured as solid wood under bark {RoW}| hardwood forestry, oak, sustainable forest management | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.8533330E-3</meanAmount>
+      <resultingAmount>3.8533330E-3</resultingAmount>
+      <generalComment>noble oak wood
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="3">
+      <referenceToFlowDataSet type="flow data set" refObjectId="665bba74-f685-45fe-ba92-c052f1b6ec85" uri="../flows/665bba74-f685-45fe-ba92-c052f1b6ec85.xml">
+        <common:shortDescription xml:lang="en">Sawlog and veneer log, hardwood, measured as solid wood under bark {RoW}| hardwood forestry, beech, sustainable forest management | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.8000000E-4</meanAmount>
+      <resultingAmount>6.8000000E-4</resultingAmount>
+      <generalComment>noble deciduous wood
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="4">
+      <referenceToFlowDataSet type="flow data set" refObjectId="aa686835-97fb-4511-a96b-4a197b56e4c5" uri="../flows/aa686835-97fb-4511-a96b-4a197b56e4c5.xml">
+        <common:shortDescription xml:lang="en">Methylene diphenyl diisocyanate {RER}| market for methylene diphenyl diisocyanate | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.0000000E-1</meanAmount>
+      <resultingAmount>1.0000000E-1</resultingAmount>
+      <generalComment>polyurethane glue for wood layers
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="5">
+      <referenceToFlowDataSet type="flow data set" refObjectId="43ebeaf3-a8df-4c51-a1dc-b6cdc81b1364" uri="../flows/43ebeaf3-a8df-4c51-a1dc-b6cdc81b1364.xml">
+        <common:shortDescription xml:lang="en">Alkyd paint, white, without solvent, in 60% solution state {RER}| market for alkyd paint, white, without solvent, in 60% solution state | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.0000000E-1</meanAmount>
+      <resultingAmount>3.0000000E-1</resultingAmount>
+      <generalComment>noble wood painting
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="6">
+      <referenceToFlowDataSet type="flow data set" refObjectId="b1ec0e48-ca18-4350-9b90-02ed8ce64b22" uri="../flows/b1ec0e48-ca18-4350-9b90-02ed8ce64b22.xml">
+        <common:shortDescription xml:lang="en">Epoxy resin, liquid {RER}| market for epoxy resin, liquid | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.2000000E+0</meanAmount>
+      <resultingAmount>1.2000000E+0</resultingAmount>
+      <generalComment>epoxy resin for installation
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="7">
+      <referenceToFlowDataSet type="flow data set" refObjectId="f093001f-5ac0-441d-8110-ad0dfecd798b" uri="../flows/f093001f-5ac0-441d-8110-ad0dfecd798b.xml">
+        <common:shortDescription xml:lang="en">Corrugated board box {RER}| market for corrugated board box | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>7.4860000E-2</meanAmount>
+      <resultingAmount>7.4860000E-2</resultingAmount>
+      <generalComment>UPSTREAM and CORE packaging
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="8">
+      <referenceToFlowDataSet type="flow data set" refObjectId="729288d4-56bc-43a3-bb1e-8c73b845ac5b" uri="../flows/729288d4-56bc-43a3-bb1e-8c73b845ac5b.xml">
+        <common:shortDescription xml:lang="en">Packaging film, low density polyethylene {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.8311000E-2</meanAmount>
+      <resultingAmount>1.8311000E-2</resultingAmount>
+      <generalComment>UPSTREAM and CORE packaging
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="9">
+      <referenceToFlowDataSet type="flow data set" refObjectId="8e32e336-0971-4fc2-b508-81e853414a2a" uri="../flows/8e32e336-0971-4fc2-b508-81e853414a2a.xml">
+        <common:shortDescription xml:lang="en">Polypropylene, granulate {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.1700000E-3</meanAmount>
+      <resultingAmount>6.1700000E-3</resultingAmount>
+      <generalComment>UPSTREAM and CORE packaging
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="10">
+      <referenceToFlowDataSet type="flow data set" refObjectId="2530fc7b-5960-4396-a5c4-57b186c8c032" uri="../flows/2530fc7b-5960-4396-a5c4-57b186c8c032.xml">
+        <common:shortDescription xml:lang="en">Electricity, medium voltage {IT}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.0052000E+1</meanAmount>
+      <resultingAmount>2.0052000E+1</resultingAmount>
+      <generalComment>CORE electricity consumption
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="11">
+      <referenceToFlowDataSet type="flow data set" refObjectId="b9f0959c-1f94-43dc-ae22-3e776693f376" uri="../flows/b9f0959c-1f94-43dc-ae22-3e776693f376.xml">
+        <common:shortDescription xml:lang="en">Electricity, low voltage {IT}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.5000000E-1</meanAmount>
+      <resultingAmount>4.5000000E-1</resultingAmount>
+      <generalComment>DOWNSTREAM electricity consumption
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="12">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fa6d9ec3-643e-40ab-80d9-f55c68f41516" uri="../flows/fa6d9ec3-643e-40ab-80d9-f55c68f41516.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry &gt;32 metric ton, euro4 {RER}| market for transport, freight, lorry &gt;32 metric ton, EURO4 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.6450000E+1</meanAmount>
+      <resultingAmount>2.6450000E+1</resultingAmount>
+      <generalComment>CORE transportation
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="13">
+      <referenceToFlowDataSet type="flow data set" refObjectId="32754331-961d-4446-af67-efadb2bd8d61" uri="../flows/32754331-961d-4446-af67-efadb2bd8d61.xml">
+        <common:shortDescription xml:lang="en">transport, freight, sea, container ship {GLO}| market for transport, freight, sea, container ship | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.5816667E+0</meanAmount>
+      <resultingAmount>4.5816667E+0</resultingAmount>
+      <generalComment>CORE transportation
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="14">
+      <referenceToFlowDataSet type="flow data set" refObjectId="cc1b8e78-b065-4028-9204-381847bad4fe" uri="../flows/cc1b8e78-b065-4028-9204-381847bad4fe.xml">
+        <common:shortDescription xml:lang="en">Waste wood, untreated {IT}| market for waste wood, untreated | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>4.4300000E+0</meanAmount>
+      <resultingAmount>4.4300000E+0</resultingAmount>
+      <generalComment>CORE and DOWNSTREAM waste
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="15">
+      <referenceToFlowDataSet type="flow data set" refObjectId="78f6972d-5777-4403-88ce-c7ac4bba4f29" uri="../flows/78f6972d-5777-4403-88ce-c7ac4bba4f29.xml">
+        <common:shortDescription xml:lang="en">Waste plastic, mixture {IT}| market for waste plastic, mixture | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>9.1400000E-3</meanAmount>
+      <resultingAmount>9.1400000E-3</resultingAmount>
+      <generalComment>CORE and DOWNSTREAM waste
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="16">
+      <referenceToFlowDataSet type="flow data set" refObjectId="10f14caf-ab5e-4c46-9a41-f19800c2ee44" uri="../flows/10f14caf-ab5e-4c46-9a41-f19800c2ee44.xml">
+        <common:shortDescription xml:lang="en">Waste wood, untreated {RoW}| heat production, untreated waste wood, at furnace 1000-5000 kW | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>7.3300000E-1</meanAmount>
+      <resultingAmount>7.3300000E-1</resultingAmount>
+      <generalComment>CORE waste
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="17">
+      <referenceToFlowDataSet type="flow data set" refObjectId="e9ecb8c5-6b8f-4d07-886e-da1c7fcec356" uri="../flows/e9ecb8c5-6b8f-4d07-886e-da1c7fcec356.xml">
+        <common:shortDescription xml:lang="en">Waste paperboard {IT}| market for waste paperboard | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>4.5000000E-3</meanAmount>
+      <resultingAmount>4.5000000E-3</resultingAmount>
+      <generalComment>CORE waste
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="18">
+      <referenceToFlowDataSet type="flow data set" refObjectId="3932452c-615e-49c7-9a88-391be6b47703" uri="../flows/3932452c-615e-49c7-9a88-391be6b47703.xml">
+        <common:shortDescription xml:lang="en">Waste graphical paper {IT}| market for waste graphical paper | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>7.0000000E-1</meanAmount>
+      <resultingAmount>7.0000000E-1</resultingAmount>
+      <generalComment>DOWNSTREAM waste
+</generalComment>
+    </exchange>
+  </exchanges>
+</processDataSet>

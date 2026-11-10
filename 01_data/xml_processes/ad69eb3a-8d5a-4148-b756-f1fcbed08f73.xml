@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>ad69eb3a-8d5a-4148-b756-f1fcbed08f73</common:UUID>
+      <name>
+        <baseName xml:lang="en">Steel square and rectangular hollow sections, heat treated, at plant</baseName>
+      </name>
+      <common:synonyms>Profili cavi quadri e rettangolari in acciaio con trattamento termico</common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">Materials production</common:class>
+          <common:class level="1">Metals and semimetals</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment>Dataset developed within the ARCADIA Project (production chain study regarding steel products “STUDIO DI FILIERA ACCIAIO PER COSTRUZIONI IN CARPENTERIA METALLICA”). The dataset involves beams and angles with various profiles produced from scrap from recycling and is representative of the processing technologies commonly used in steel beams and angles production.</common:generalComment>
+      <referenceToExternalDocumentation type="source data set" refObjectId="ca921b7e-37b3-492a-9d19-b7cba9c9de26" version="01.00.000" uri="../sources/ca921b7e-37b3-492a-9d19-b7cba9c9de26.xml">
+        <common:shortDescription>Scrucca F., Ceruti F., Sesana M.M., Martelli S.M, Rinaldi, C., 2023. “STUDIO DI FILIERA CCIAIO PER COSTRUZIONI IN CARPENTERIA METALLICA”. Internal report ARCADIA Project. For the LCA study background datasets from Ecoinvent database cut-off (v. 3.7.1) were used.</common:shortDescription>
+      </referenceToExternalDocumentation>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2023</common:referenceYear>
+      <common:dataSetValidUntil>2028</common:dataSetValidUntil>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT">
+        <descriptionOfRestrictions>Italy. Primary data collected in Lombardia. Dataset representative of Italian production of steel square and rectangular hollow sections with hot treatment.</descriptionOfRestrictions>
+      </locationOfOperationSupplyOrProduction>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>1 kg of steel square and rectangular hollow sections with hot treatment, available for all subsequent transport/processing operations. Hollow sections are produced using a mix of steel coils from EAF (Electric Arc Furnace) and BOF (Basic Oxigen Furnace) and the studied product is representative of an average of cold and hot rolled hollow sections. Production of equipment and infrastructures is not included, except for the background system. Primary data data were collected as physical quantities of materials used in the different processes. Background data were modelled according to Ecoinvent v. 3.7.1</technologyDescriptionAndIncludedProcesses>
+      <technologicalApplicability>Steel square and rectangular hollow sections with hot treatment for structural use, produced in accordance with EN standards EN10219-1; EN 10219-2; EN 10210-1; EN 10210-2.</technologicalApplicability>
+      <referenceToTechnologyPictogramme type="source data set" refObjectId="6998b19d-90ef-4c28-9a91-811f56b11915" version="01.00.000" uri="../sources/6998b19d-90ef-4c28-9a91-811f56b11915.xml">
+        <common:shortDescription>20231130125528_Profili cavi_tratt-termico.jpg</common:shortDescription>
+      </referenceToTechnologyPictogramme>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Allocation - other explicit assignment</LCIMethodApproaches>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <dataCutOffAndCompletenessPrinciples>Production of equipment and infrastructure are not included, except for the background system.</dataCutOffAndCompletenessPrinciples>
+      <referenceToDataSource type="source data set" refObjectId="bf3cb256-f2fc-4d68-94da-1319ef91bcac" version="01.00.000" uri="../sources/bf3cb256-f2fc-4d68-94da-1319ef91bcac.xml">
+        <common:shortDescription>20231130125528_Studio LCA di filiera acciaio.pdf</common:shortDescription>
+      </referenceToDataSource>
+      <dataCollectionPeriod>2022</dataCollectionPeriod>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>No statement</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Independent external review">
+        <common:reviewDetails>The review was performed in compliance with Arcadia Metodology: “Metodologia per gli studi di filiera della Banca Dati italiana LCA” and ISO 14040-44 norms. The dataset has been assessed limited to the foreground data collected during the supply chain studies.&#13;
+Each dataset has been evaluated based on the following 4 criteria:&#13;
+1. Technological Representativeness; 2. Time Representativeness; 3. Geographical Representativeness; 4. Reliability. In this contest the Reliability is “good”.</common:reviewDetails>
+        <common:referenceToNameOfReviewerAndInstitution type="contact data set" refObjectId="195ac2dd-1f18-4dd3-b24a-b46a904851ce" version="01.00.000" uri="../sources/195ac2dd-1f18-4dd3-b24a-b46a904851ce.xml">
+          <common:shortDescription>Ecoinnovazione s.r.l.</common:shortDescription>
+        </common:referenceToNameOfReviewerAndInstitution>
+        <common:otherReviewDetails>The study was judged by the reviewer as compliant with both ISO 14040-44 and Arcadia methodology.</common:otherReviewDetails>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="59fc4dff-2ef7-4d62-ad7e-945ee19fa1e8" uri="../sources/59fc4dff-2ef7-4d62-ad7e-945ee19fa1e8.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="4ea71bb4-db5b-4620-ac9b-c4de6dfcab20" uri="../sources/4ea71bb4-db5b-4620-ac9b-c4de6dfcab20.xml">
+          <common:shortDescription xml:lang="en">ISO 14044</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Not defined</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="429c3d4c-7758-4841-a330-e2ccf133c241" uri="../sources/429c3d4c-7758-4841-a330-e2ccf133c241.xml">
+        <common:shortDescription xml:lang="en">ENEA - Arcadia</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Arcadia – PON Governance e Capacità istituzionale 2014-2020</common:project>
+    </common:commissionerAndGoal>
+    <dataGenerator>
+      <common:referenceToPersonOrEntityGeneratingTheDataSet refObjectId="9ff6ddf7-8739-4d9a-864a-6b315281191e" type="contact data set" uri="../sources/9ff6ddf7-8739-4d9a-864a-6b315281191e.xml" version="01.00.000">
+        <common:shortDescription>ENEA</common:shortDescription>
+      </common:referenceToPersonOrEntityGeneratingTheDataSet>
+    </dataGenerator>
+    <dataEntryBy>
+      <common:timeStamp>2023-10-26T15:36:11.869+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="a97a0155-0234-4b87-b4ce-a45da52f2a40" uri="../sources/a97a0155-0234-4b87-b4ce-a45da52f2a40.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2023-06-20T10:05:50.150Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/ad69eb3a-8d5a-4148-b756-f1fcbed08f73.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="f9711464-ce57-4a3b-a251-bef5fb3d8cea" type="contact data set" uri="../contacts/f9711464-ce57-4a3b-a251-bef5fb3d8cea.xml" version="01.00.000">
+        <common:shortDescription>ENEA - Arcadia</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+      <common:accessRestrictions>Type of license: Open Database Licence (ODbL)</common:accessRestrictions>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="b494d31e-e3a7-4d23-97b7-d72792f9cd93" uri="../flows/b494d31e-e3a7-4d23-97b7-d72792f9cd93.xml">
+        <common:shortDescription xml:lang="en">Steel square and rectangular hollow sections, heat treated, at plant</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0000000E+0</meanAmount>
+      <resultingAmount>1.0000000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="034e26a6-48ee-4dca-85c4-ebbeb129aedf" uri="../flows/034e26a6-48ee-4dca-85c4-ebbeb129aedf.xml">
+        <common:shortDescription xml:lang="en">Steel, low-alloyed {RER}| steel production, converter, low-alloyed | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.1960000E-1</meanAmount>
+      <resultingAmount>6.1960000E-1</resultingAmount>
+      <generalComment>primary lsteel from basic oxygen furnace (BOF)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="8827d9ae-f049-4cee-ae22-1f920cb70584" uri="../flows/8827d9ae-f049-4cee-ae22-1f920cb70584.xml">
+        <common:shortDescription xml:lang="en">steel, low-alloyed {Europe without Switzerland and Austria}| steel production, electric, low-alloyed | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.5330000E-1</meanAmount>
+      <resultingAmount>4.5330000E-1</resultingAmount>
+      <generalComment>primary lsteel from electric arc furnace (EAF)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="3">
+      <referenceToFlowDataSet type="flow data set" refObjectId="6b1717ed-fc9c-43b7-b8b7-cf3becb2be3a" uri="../flows/6b1717ed-fc9c-43b7-b8b7-cf3becb2be3a.xml">
+        <common:shortDescription xml:lang="en">transport, freight, sea, container ship {GLO}| market for transport, freight, sea, container ship | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.6197400E+0</meanAmount>
+      <resultingAmount>1.6197400E+0</resultingAmount>
+      <generalComment>pymary steel - sea transport 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="4">
+      <referenceToFlowDataSet type="flow data set" refObjectId="b26db12a-abc3-4ffb-b048-884cbda44a5b" uri="../flows/b26db12a-abc3-4ffb-b048-884cbda44a5b.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry &gt;32 metric ton, euro4 {RER}| market for transport, freight, lorry &gt;32 metric ton, EURO4 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.3873000E-2</meanAmount>
+      <resultingAmount>2.3873000E-2</resultingAmount>
+      <generalComment>pymary steel - road transport 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="5">
+      <referenceToFlowDataSet type="flow data set" refObjectId="b2a658d3-89eb-4605-a5f4-422c476a1d8b" uri="../flows/b2a658d3-89eb-4605-a5f4-422c476a1d8b.xml">
+        <common:shortDescription xml:lang="en">Transport, freight train {RER}| market group for transport, freight train | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.0200000E-1</meanAmount>
+      <resultingAmount>2.0200000E-1</resultingAmount>
+      <generalComment>pymary steel - rail transport 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="6">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fcbe4e1c-9b17-45df-bb5d-1d6e94abf6e0" uri="../flows/fcbe4e1c-9b17-45df-bb5d-1d6e94abf6e0.xml">
+        <common:shortDescription xml:lang="en">Argon, liquid {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>9.8842100E-7</meanAmount>
+      <resultingAmount>9.8842100E-7</resultingAmount>
+      <generalComment>Argon - welding line
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="7">
+      <referenceToFlowDataSet type="flow data set" refObjectId="dc8c9df0-6176-470b-9b49-593920b470d4" uri="../flows/dc8c9df0-6176-470b-9b49-593920b470d4.xml">
+        <common:shortDescription xml:lang="en">Nitrogen, liquid {RER}| air separation, cryogenic | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.6579649E-2</meanAmount>
+      <resultingAmount>1.6579649E-2</resultingAmount>
+      <generalComment>Nitrogen (furnace)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="8">
+      <referenceToFlowDataSet type="flow data set" refObjectId="bea7fbe0-fcee-439a-ba66-36d2aad9bc47" uri="../flows/bea7fbe0-fcee-439a-ba66-36d2aad9bc47.xml">
+        <common:shortDescription xml:lang="en">Lubricating oil {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.0584000E-4</meanAmount>
+      <resultingAmount>1.0584000E-4</resultingAmount>
+      <generalComment>oils for operation - various
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="9">
+      <referenceToFlowDataSet type="flow data set" refObjectId="58703d01-1a21-4f5e-9f85-46ec9595bacc" uri="../flows/58703d01-1a21-4f5e-9f85-46ec9595bacc.xml">
+        <common:shortDescription xml:lang="en">Steel, chromium steel 18/8 {RER}| steel production, electric, chromium steel 18/8 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.6939100E-5</meanAmount>
+      <resultingAmount>5.6939100E-5</resultingAmount>
+      <generalComment>stainless steel for operation
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="10">
+      <referenceToFlowDataSet type="flow data set" refObjectId="33925fa6-1dc2-4f7a-88b2-e0e4caeaa564" uri="../flows/33925fa6-1dc2-4f7a-88b2-e0e4caeaa564.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry 7.5-16 metric ton, euro4 {RER}| market for transport, freight, lorry 7.5-16 metric ton, EURO4 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.5130000E-5</meanAmount>
+      <resultingAmount>5.5130000E-5</resultingAmount>
+      <generalComment>other materials transport
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="11">
+      <referenceToFlowDataSet type="flow data set" refObjectId="ab952682-fbd6-46b2-959e-a5bc9376f4fd" uri="../flows/ab952682-fbd6-46b2-959e-a5bc9376f4fd.xml">
+        <common:shortDescription xml:lang="en">Natural gas, high pressure {IT}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.0795604E-2</meanAmount>
+      <resultingAmount>3.0795604E-2</resultingAmount>
+      <generalComment>natural gas (heating + furnace)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="12">
+      <referenceToFlowDataSet type="flow data set" refObjectId="e94e623a-abc2-4ad2-b4f7-f3a7d551b9f4" uri="../flows/e94e623a-abc2-4ad2-b4f7-f3a7d551b9f4.xml">
+        <common:shortDescription xml:lang="en">Tap water {Europe without Switzerland}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.2505100E-7</meanAmount>
+      <resultingAmount>6.2505100E-7</resultingAmount>
+      <generalComment>process water
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="13">
+      <referenceToFlowDataSet type="flow data set" refObjectId="1aa88dbe-8a71-42cb-8c84-1ddfb4971484" uri="../flows/1aa88dbe-8a71-42cb-8c84-1ddfb4971484.xml">
+        <common:shortDescription xml:lang="en">Steel, chromium steel 18/8 {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.2303650E-3</meanAmount>
+      <resultingAmount>2.2303650E-3</resultingAmount>
+      <generalComment>packaging
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="14">
+      <referenceToFlowDataSet type="flow data set" refObjectId="09eaffa1-54c4-4ea5-b4cb-345d8209d1d5" uri="../flows/09eaffa1-54c4-4ea5-b4cb-345d8209d1d5.xml">
+        <common:shortDescription xml:lang="en">pig iron {RoW}| market for pig iron | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.5252700E-5</meanAmount>
+      <resultingAmount>5.5252700E-5</resultingAmount>
+      <generalComment>packaging
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="15">
+      <referenceToFlowDataSet type="flow data set" refObjectId="60bb6495-a7af-415b-9591-899944541e81" uri="../flows/60bb6495-a7af-415b-9591-899944541e81.xml">
+        <common:shortDescription xml:lang="en">Polyvinylchloride, at regional storage/RER U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.0050000E-7</meanAmount>
+      <resultingAmount>6.0050000E-7</resultingAmount>
+      <generalComment>packaging
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="16">
+      <referenceToFlowDataSet type="flow data set" refObjectId="9200dbad-4c05-4fbb-896e-8e5edde813a6" uri="../flows/9200dbad-4c05-4fbb-896e-8e5edde813a6.xml">
+        <common:shortDescription xml:lang="en">Polyethylene terephthalate, granulate, amorphous, at plant/RER U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.0050000E-7</meanAmount>
+      <resultingAmount>6.0050000E-7</resultingAmount>
+      <generalComment>packaging
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="17">
+      <referenceToFlowDataSet type="flow data set" refObjectId="6936605c-934a-4495-91b5-0a7074c2ddaf" uri="../flows/6936605c-934a-4495-91b5-0a7074c2ddaf.xml">
+        <common:shortDescription xml:lang="en">Polycarbonate {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.7105600E-4</meanAmount>
+      <resultingAmount>1.7105600E-4</resultingAmount>
+      <generalComment>packaging
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="18">
+      <referenceToFlowDataSet type="flow data set" refObjectId="33925fa6-1dc2-4f7a-88b2-e0e4caeaa564" uri="../flows/33925fa6-1dc2-4f7a-88b2-e0e4caeaa564.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry 7.5-16 metric ton, euro4 {RER}| market for transport, freight, lorry 7.5-16 metric ton, EURO4 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.2000000E-7</meanAmount>
+      <resultingAmount>2.2000000E-7</resultingAmount>
+      <generalComment>waste transport
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="19">
+      <referenceToFlowDataSet type="flow data set" refObjectId="a6939726-7815-4e8c-addb-f064ce7f31a2" uri="../flows/a6939726-7815-4e8c-addb-f064ce7f31a2.xml">
+        <common:shortDescription xml:lang="en">Electricity, medium voltage {IT}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.9055600E-1</meanAmount>
+      <resultingAmount>2.9055600E-1</resultingAmount>
+      <generalComment>electricity (process + furnace)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="20">
+      <referenceToFlowDataSet type="flow data set" refObjectId="63c6e429-f994-4ec1-b529-989b554837a2" uri="../flows/63c6e429-f994-4ec1-b529-989b554837a2.xml">
+        <common:shortDescription xml:lang="en">Hazardous waste, for incineration {Europe without Switzerland}| treatment of hazardous waste, hazardous waste incineration | APOS, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>4.5526500E-7</meanAmount>
+      <resultingAmount>4.5526500E-7</resultingAmount>
+      <generalComment>Production perocess hazardous waste
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="21">
+      <referenceToFlowDataSet type="flow data set" refObjectId="83791684-350a-4fb2-89bf-7194954de32c" uri="../flows/83791684-350a-4fb2-89bf-7194954de32c.xml">
+        <common:shortDescription xml:lang="en">Waste plastic, mixture {RoW}| treatment of waste plastic, mixture, municipal incineration | Conseq, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.7616600E-7</meanAmount>
+      <resultingAmount>2.7616600E-7</resultingAmount>
+      <generalComment>Packaging and plastic waste
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="22">
+      <referenceToFlowDataSet type="flow data set" refObjectId="f79d0f8f-2b0e-49cb-bed0-b1ea0fbd8625" uri="../flows/f79d0f8f-2b0e-49cb-bed0-b1ea0fbd8625.xml">
+        <common:shortDescription xml:lang="en">Nitrogen oxides</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>IT</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.2376900E-4</meanAmount>
+      <resultingAmount>1.2376900E-4</resultingAmount>
+      <generalComment>Production process emissions
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="23">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-924e-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-924e-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">carbon monoxide (fossil)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.1198100E-5</meanAmount>
+      <resultingAmount>1.1198100E-5</resultingAmount>
+      <generalComment>Production process emissions
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="24">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9745-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9745-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">oxygen</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>5.4222600E-6</meanAmount>
+      <resultingAmount>5.4222600E-6</resultingAmount>
+      <generalComment>Production process emissions
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="25">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-923d-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-923d-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">carbon dioxide (fossil)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.7130700E-6</meanAmount>
+      <resultingAmount>3.7130700E-6</resultingAmount>
+      <generalComment>Production process emissions
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="26">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9501-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9501-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">particles (PM2.5 - PM10)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>9.4900000E-7</meanAmount>
+      <resultingAmount>9.4900000E-7</resultingAmount>
+      <generalComment>Production process emissions
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="27">
+      <referenceToFlowDataSet type="flow data set" refObjectId="3d2b2a48-33b6-40e9-ab8e-e3048178d873" uri="../flows/3d2b2a48-33b6-40e9-ab8e-e3048178d873.xml">
+        <common:shortDescription xml:lang="en">heavy metals, unspecified (unspecified)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>8.3600000E-9</meanAmount>
+      <resultingAmount>8.3600000E-9</resultingAmount>
+      <generalComment>Production process emissions
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="28">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d86b9e8a-6555-11dd-ad8b-0800200c9a66" uri="../flows/d86b9e8a-6555-11dd-ad8b-0800200c9a66.xml">
+        <common:shortDescription xml:lang="en">hydrocarbons (unspecified)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.0900000E-11</meanAmount>
+      <resultingAmount>2.0900000E-11</resultingAmount>
+      <generalComment>Production process emissions
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="29">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9155-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9155-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">volatile organic compound</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>9.1200000E-7</meanAmount>
+      <resultingAmount>9.1200000E-7</resultingAmount>
+      <generalComment>Production process emissions
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="30">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-97ef-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-97ef-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">chemical oxygen demand</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>IT</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.1600000E-9</meanAmount>
+      <resultingAmount>3.1600000E-9</resultingAmount>
+      <generalComment>Production process emissions
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="31">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-97e0-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-97e0-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">biological oxygen demand</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>IT</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.2700000E-9</meanAmount>
+      <resultingAmount>1.2700000E-9</resultingAmount>
+      <generalComment>Production process emissions
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="32">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-97d4-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-97d4-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">ammonium</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>6.9600000E-11</meanAmount>
+      <resultingAmount>6.9600000E-11</resultingAmount>
+      <generalComment>Production process emissions
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="33">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-950a-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-950a-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">chloride</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0400000E-7</meanAmount>
+      <resultingAmount>1.0400000E-7</resultingAmount>
+      <generalComment>Production process emissions
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="34">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-a292-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-a292-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">cadmium</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.5800000E-13</meanAmount>
+      <resultingAmount>1.5800000E-13</resultingAmount>
+      <generalComment>Production process emissions
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="35">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9f75-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9f75-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">chromium</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>6.3300000E-13</meanAmount>
+      <resultingAmount>6.3300000E-13</resultingAmount>
+      <generalComment>Production process emissions
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="36">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9597-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9597-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">iron</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.3100000E-10</meanAmount>
+      <resultingAmount>1.3100000E-10</resultingAmount>
+      <generalComment>Production process emissions
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="37">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-96ce-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-96ce-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">nickel</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.1600000E-12</meanAmount>
+      <resultingAmount>3.1600000E-12</resultingAmount>
+      <generalComment>Production process emissions
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="38">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-94e9-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-94e9-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">zinc</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>4.2400000E-11</meanAmount>
+      <resultingAmount>4.2400000E-11</resultingAmount>
+      <generalComment>Production process emissions
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="39">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4d9a8790-3ddd-11dd-91e2-0050c2490048" uri="../flows/4d9a8790-3ddd-11dd-91e2-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">lead</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>7.5900000E-12</meanAmount>
+      <resultingAmount>7.5900000E-12</resultingAmount>
+      <generalComment>Production process emissions
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="40">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4d9a8790-3ddd-11dd-96cf-0050c2490048" uri="../flows/4d9a8790-3ddd-11dd-96cf-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">copper</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.8000000E-12</meanAmount>
+      <resultingAmount>3.8000000E-12</resultingAmount>
+      <generalComment>Production process emissions
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="41">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-aaa8-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-aaa8-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">hydrocarbons (unspecified)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.5800000E-10</meanAmount>
+      <resultingAmount>1.5800000E-10</resultingAmount>
+      <generalComment>Production process emissions
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="42">
+      <referenceToFlowDataSet type="flow data set" refObjectId="5c394929-78f0-4cf2-9702-300cfe7c54b6" uri="../flows/5c394929-78f0-4cf2-9702-300cfe7c54b6.xml">
+        <common:shortDescription xml:lang="en">Solids, inorganic</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.2700000E-9</meanAmount>
+      <resultingAmount>1.2700000E-9</resultingAmount>
+      <generalComment>Production process emissions
+</generalComment>
+    </exchange>
+  </exchanges>
+</processDataSet>

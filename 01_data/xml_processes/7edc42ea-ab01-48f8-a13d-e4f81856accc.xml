@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>7edc42ea-ab01-48f8-a13d-e4f81856accc</common:UUID>
+      <name>
+        <baseName xml:lang="en">Mixed C&amp;D waste, recycling, mobile plant, on-site</baseName>
+      </name>
+      <common:synonyms>Riciclo rifiuti C&amp;D in impianto mobile</common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">End-of-life treatment</common:class>
+          <common:class level="1">Material recycling</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment>Dataset developed within the ARCADIA project in the context of the Ph.D. of Federica Carollo (Politecnico di Milano). 
+The dataset relates to recycling 1 tonne of mixed construction and demolition (C&amp;D) waste (EWC 17 09 04) in Italy.  
+The dataset is composed of 4-unit processes:  
+1) avoided production of natural aggregates (For C1/C2 and C4 use) (Process: Inert natural mix from Lombardy Region); 
+2) Diesel consumption for waste treatment; 
+3) Water consumption for the waste treatment; 
+4) Steel-manganese alloy for mill jaws spare parts.</common:generalComment>
+      <referenceToExternalDocumentation type="source data set" refObjectId="56a519e6-6287-476e-a1a0-18853568ae29" version="01.00.000" uri="../sources/56a519e6-6287-476e-a1a0-18853568ae29.xml">
+        <common:shortDescription>Carollo F. (2023). Circularity in construction and demolition waste management chain, Ph.D. Dissertation (Tutored by Rigamonti L., Ceruti F.). Politecnico di Milano. Background datasets from the EcoInvent database cut-off (v. 3.8) were used for the LCA study. </common:shortDescription>
+      </referenceToExternalDocumentation>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2022</common:referenceYear>
+      <common:dataSetValidUntil>2027</common:dataSetValidUntil>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT">
+        <descriptionOfRestrictions>Lombardy Region.</descriptionOfRestrictions>
+      </locationOfOperationSupplyOrProduction>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>The C&amp;D waste treatment in mobile recycling facilities consists of a sequence of physical and mechanical steps, including crushing, metal separation, sieving, and manual/mechanical sorting to remove the impurities such as wood, paper, and plastic. Mobile plants are fuelled by diesel and usually involve fewer treatment processes (manual sorting is usually adopted, and waste sieving may be optional). Generally, produce all-in aggregates (e.g. classes 0/63 mm, 0/80 mm, 0/90 mm). &#13;
+&#13;
+Good the Reliability;   &#13;
+Very Good the Geographical representativeness;   &#13;
+Very Good the Time representativeness;   &#13;
+Very Good the Technological representativeness. </technologyDescriptionAndIncludedProcesses>
+      <technologicalApplicability>On-site recycling of inert waste deriving from construction and demolition activities.</technologicalApplicability>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Allocation - mass</LCIMethodApproaches>
+      <referenceToLCAMethodDetails type="source data set" refObjectId="24c84781-8e08-4bbc-8ae0-95ff05544343" version="01.00.000" uri="../sources/24c84781-8e08-4bbc-8ae0-95ff05544343.xml">
+        <common:shortDescription>Carollo F. (2023). Circularity in construction and demolition waste management chain, Ph.D. Dissertation (Tutored by Rigamonti L., Ceruti F.). Politecnico di Milano. Background datasets from the EcoInvent database cut-off (v. 3.8) were used for the LCA study. </common:shortDescription>
+      </referenceToLCAMethodDetails>
+      <referenceToLCAMethodDetails type="source data set" refObjectId="eeb6b393-c941-4358-9e3f-666cb4e883fd" version="01.00.000" uri="../sources/eeb6b393-c941-4358-9e3f-666cb4e883fd.xml">
+        <common:shortDescription>Borghi, G., Pantini, S., &amp; Rigamonti, L. (2018). Life cycle assessment of non-hazardous Construction and  Demolition Waste (CDW) management in Lombardy Region (Italy). Journal of Cleaner Production, 184, 815–825.  </common:shortDescription>
+      </referenceToLCAMethodDetails>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <referenceToDataSource type="source data set" refObjectId="17f5ac9d-6762-4ec8-86ce-6cae5590d2c4" version="01.00.000" uri="../sources/17f5ac9d-6762-4ec8-86ce-6cae5590d2c4.xml">
+        <common:shortDescription>Carollo F. (2023). Circularity in construction and demolition waste management chain, Ph.D. Dissertation (Tutored by Rigamonti L., Ceruti F.). Politecnico di Milano. Background datasets from the EcoInvent database cut-off (v. 3.8) were used for the LCA study. </common:shortDescription>
+      </referenceToDataSource>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>All relevant flows quantified</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Not reviewed">
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Completeness" value="Good"/>
+          <common:dataQualityIndicator name="Precision" value="Good"/>
+          <common:dataQualityIndicator name="Methodological appropriateness and consistency" value="Good"/>
+          <common:dataQualityIndicator name="Overall quality" value="Good"/>
+        </common:dataQualityIndicators>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="88d4f8d9-60f9-43d1-9ea3-329c10d7d727" uri="../sources/88d4f8d9-60f9-43d1-9ea3-329c10d7d727.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Fully compliant</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Fully compliant</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="d92a1a12-2545-49e2-a585-55c259997756" uri="../sources/d92a1a12-2545-49e2-a585-55c259997756.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Fully compliant</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Fully compliant</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="01807191-e156-421a-b2f6-aa609ea534f4" uri="../contacts/01807191-e156-421a-b2f6-aa609ea534f4.xml">
+        <common:shortDescription xml:lang="en">EPLCA project team</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Arcadia – PON Governance e Capacità istituzionali 2014-2020 (PhD Project of Federica Carollo).</common:project>
+    </common:commissionerAndGoal>
+    <dataGenerator>
+      <common:referenceToPersonOrEntityGeneratingTheDataSet refObjectId="a6007ea7-5a27-4e33-bff1-09ef51561932" type="contact data set" uri="../sources/a6007ea7-5a27-4e33-bff1-09ef51561932.xml" version="01.00.000">
+        <common:shortDescription>Federica Carollo (Politecnico di Milano).</common:shortDescription>
+      </common:referenceToPersonOrEntityGeneratingTheDataSet>
+    </dataGenerator>
+    <dataEntryBy>
+      <common:timeStamp>2022-12-03T16:20:21.691+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="a97a0155-0234-4b87-b4ce-a45da52f2a40" uri="../sources/a97a0155-0234-4b87-b4ce-a45da52f2a40.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2017-02-16T16:57:27.307Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/7edc42ea-ab01-48f8-a13d-e4f81856accc.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="b5102963-d129-45c9-b83a-d58de9c0df21" type="contact data set" uri="../sources/b5102963-d129-45c9-b83a-d58de9c0df21.xml" version="01.00.000">
+        <common:shortDescription>ENEA-ARCADIA</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+      <common:accessRestrictions>Type of license: Open Database Licence (ODbL).</common:accessRestrictions>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="aadf6047-7219-417c-bf0f-ac84ac02c63a" uri="../flows/aadf6047-7219-417c-bf0f-ac84ac02c63a.xml">
+        <common:shortDescription xml:lang="en">Mixed C&amp;D waste, recycling, mobile plant, on-site</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0000000E+3</meanAmount>
+      <resultingAmount>1.0000000E+3</resultingAmount>
+      <generalComment>The dataset relates to recycling 1 tonne of mixed construction and demolition (C&amp;D) waste (EWC 17 09 04) in Italy.  
+Reference: Borghi et al. 2018 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="36fd69c7-aefa-462d-becf-2717d25ee1f2" uri="../flows/36fd69c7-aefa-462d-becf-2717d25ee1f2.xml">
+        <common:shortDescription xml:lang="en">Diesel, burned in building machine {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.2000000E+1</meanAmount>
+      <resultingAmount>2.2000000E+1</resultingAmount>
+      <generalComment>[Amount=0,64 l/t * 0,8 kg/l * 42,7 MJ/kg]
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="66560055-f0c7-4905-b831-409628edf8d5" uri="../flows/66560055-f0c7-4905-b831-409628edf8d5.xml">
+        <common:shortDescription xml:lang="en">Ferromanganese, high-coal, 74.5% Mn {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.0000000E-2</meanAmount>
+      <resultingAmount>2.0000000E-2</resultingAmount>
+      <generalComment>steel-manganese alloy for mill jaws spare parts
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="3">
+      <referenceToFlowDataSet type="flow data set" refObjectId="8bbe4e42-b343-43bc-bd46-e887e0dfc229" uri="../flows/8bbe4e42-b343-43bc-bd46-e887e0dfc229.xml">
+        <common:shortDescription xml:lang="en">Inert natural mix from Lombardy Region</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>5.7600000E+2</meanAmount>
+      <resultingAmount>5.7600000E+2</resultingAmount>
+      <generalComment>Avoided production of natural aggregates (C1/C2 use).
+[Amount=0,97*1*0,594]
+Q_C1C2*M*SRMs
+[Q_C1C2 (Quality for C1/C2 use) = 0,97
+M (Market for recycled aggregate sale)=1
+SRMs (Secondary raw materials for C1/C2 use)= 0,594]
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="4">
+      <referenceToFlowDataSet type="flow data set" refObjectId="8bbe4e42-b343-43bc-bd46-e887e0dfc229" uri="../flows/8bbe4e42-b343-43bc-bd46-e887e0dfc229.xml">
+        <common:shortDescription xml:lang="en">Inert natural mix from Lombardy Region</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.4300000E+2</meanAmount>
+      <resultingAmount>3.4300000E+2</resultingAmount>
+      <generalComment>Avoided production of natural aggregates (C4 use).[Amount=0,86*1*0,399]
+Q_C4*M*SRMs
+[Q_C4 (Quality for C4 use) = 0,86
+M (Market for recycled aggregate sale)=1
+SRMs (Secondary raw materials for C4 use)= 0,399] 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="5">
+      <referenceToFlowDataSet type="flow data set" refObjectId="419682fe-60fb-4b43-be89-bf2824b51104" uri="../flows/419682fe-60fb-4b43-be89-bf2824b51104.xml">
+        <common:shortDescription xml:lang="en">water</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>IT</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.5600000E-3</meanAmount>
+      <resultingAmount>1.5600000E-3</resultingAmount>
+      <generalComment>1,56 l/t (well water)
+</generalComment>
+    </exchange>
+  </exchanges>
+</processDataSet>

@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>116280ea-dc5c-4e4f-91ab-b6d9e26680f0</common:UUID>
+      <name>
+        <baseName xml:lang="en">Electricity from solid biomass_CL1_other biomass, combustion and cogeneration, at plant.</baseName>
+      </name>
+      <common:synonyms>Elettricità da biomasse solide_CL1_altre biomasse, combustione e cogenerazione, all’impianto</common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">Energy carriers and technologies</common:class>
+          <common:class level="1">Electricity</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment>Dataset developed according to Arcadia project Methodology (Report: “Metodologia per gli studi di filiera della Banca Dati italiana LCA”). LCA study of electricity production from solid biomass  (Report: “La filiera delle biomasse solide  per la produzione di energia elettrica in Italia”). &#13;
+The dataset refers to the production of 1 kWh (=3.6 MJ) of electricity from forest, agri-food and agro-industrial solid biomass residues (i.e., biowaste other than Municipal Solid Waste - MSW) and it is representative of the processing technologies commonly used for this purpose.&#13;
+</common:generalComment>
+      <referenceToExternalDocumentation type="source data set" refObjectId="4ac8a45d-c32a-4cf2-a616-02ffa45b2cc6" version="01.00.000" uri="../sources/4ac8a45d-c32a-4cf2-a616-02ffa45b2cc6.xml">
+        <common:shortDescription>Gabriella Fiorentino, Giuliana Ansanelli, Antonietta Cerbone, Alessandro Giocoli, Vincenzo Motola e Amalia Zucaro. LA FILIERA DELLE BIOMASSE SOLIDE PER LA PRODUZIONE DI ENERGIA ELETTRICA IN ITALIA. Internal report ARCADIA Project. &#13;
+Background datasets from EcoInvent database cut-off (v.3.7.1) were used for the LCA study. &#13;
+</common:shortDescription>
+      </referenceToExternalDocumentation>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2020</common:referenceYear>
+      <common:dataSetValidUntil>2026</common:dataSetValidUntil>
+      <common:timeRepresentativenessDescription>This dataset has been considered valid until 2026, since no main changes have occurred in the electricity production from solid biomass in the investigated years.</common:timeRepresentativenessDescription>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT"/>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>The dataset (1kWh (=3.6 MJ) Elettricity from solid biomas_other biomass) refers to a system that includes pre-treatment of residual biomass (chipping), transport (secondary data) and the combustion of residual biomass from forest, agri-food and agro-industrial (primary data) in order obtain electrical energy (cradle-to-gate approach). The capacity of biomass treatment plants is between 1 and 75 MW.&#13;
+The primary data were provided by companies belonging to the Energy from Solid Biomass Association (EBS), distributed throughout the country, and the GSE (Gestore Servizi Energetici), 2022. Statistical Report 2020 on Renewable Sources; from Atlaimpianti (https://www.gse.it/dati-e-scenari/atlaimpianti).&#13;
+For wood chip pre-treatment, data were taken from the study conducted by Scrucca et al. 2021 (Arcadia Report "Chain Study - Forest Chips"). &#13;
+Background data were modelled according to EcoInvent database 3.7.1.&#13;
+</technologyDescriptionAndIncludedProcesses>
+      <technologicalApplicability>Electricity from solid biomass sold to Italian electric grid.</technologicalApplicability>
+      <referenceToTechnologyPictogramme type="source data set" refObjectId="30a45344-7a6f-47ea-b4d0-cb11ed56e9a1" version="01.00.000" uri="../sources/30a45344-7a6f-47ea-b4d0-cb11ed56e9a1.xml">
+        <common:shortDescription>20230913174056_Pictogram of technology.jpeg</common:shortDescription>
+      </referenceToTechnologyPictogramme>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Not applicable</LCIMethodApproaches>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <dataCutOffAndCompletenessPrinciples>Production of equipment and infrastructures is not included, except for the background system</dataCutOffAndCompletenessPrinciples>
+      <referenceToDataSource type="source data set" refObjectId="ce82a9d2-628b-4fee-be8a-02949420e69e" version="01.00.000" uri="../sources/ce82a9d2-628b-4fee-be8a-02949420e69e.xml">
+        <common:shortDescription>20230913174056_La filiera delle biomasse per la produzione di energia elettrica inItalia.pdf</common:shortDescription>
+      </referenceToDataSource>
+      <dataCollectionPeriod>2018-2020</dataCollectionPeriod>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>No statement</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Independent internal review">
+        <common:reviewDetails>The review was performed in compliance with Arcadia Metodology: “Metodologia per gli studi di filiera della Banca Dati italiana LCA” and ISO 14040-44 norms. The dataset has been assessed limited to the foreground data collected during the supply chain studies.&#13;
+Each dataset has been evaluated based on the following 4 criteria:&#13;
+1. Technological Representativeness; 2. Time Representativeness; 3. Geographical Representativeness; 4. Reliability.&#13;
+In this context the Reliability is good.&#13;
+</common:reviewDetails>
+        <common:referenceToNameOfReviewerAndInstitution type="contact data set" refObjectId="704acdae-e8be-49fc-8683-1122d1143d71" version="01.00.000" uri="../sources/704acdae-e8be-49fc-8683-1122d1143d71.xml">
+          <common:shortDescription>ENEA</common:shortDescription>
+        </common:referenceToNameOfReviewerAndInstitution>
+        <common:otherReviewDetails>The study was judged by the reviewer as compliant with both ISO 14040-44 and Arcadia methodology</common:otherReviewDetails>
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Completeness" value="Good"/>
+          <common:dataQualityIndicator name="Precision" value="Not applicable"/>
+          <common:dataQualityIndicator name="Methodological appropriateness and consistency" value="Not applicable"/>
+          <common:dataQualityIndicator name="Overall quality" value="Not applicable"/>
+        </common:dataQualityIndicators>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="4b91a084-3e09-482e-8c34-57766e7b69ac" uri="../sources/4b91a084-3e09-482e-8c34-57766e7b69ac.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="177f6909-e9d5-41b1-aa34-70944abe2f5a" uri="../sources/177f6909-e9d5-41b1-aa34-70944abe2f5a.xml">
+          <common:shortDescription xml:lang="en">ISO 14044</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Not defined</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="859f480a-a3a6-4e98-a898-574d8102fd0d" uri="../sources/859f480a-a3a6-4e98-a898-574d8102fd0d.xml">
+        <common:shortDescription xml:lang="en">Arcadia – PON Governance e Capacità istituzionale 2014-2020</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Arcadia – PON Governance e Capacità istituzionale 2014-2020</common:project>
+    </common:commissionerAndGoal>
+    <dataGenerator>
+      <common:referenceToPersonOrEntityGeneratingTheDataSet refObjectId="44951923-434e-45ba-9e34-a64fe1ae2ec2" type="contact data set" uri="../sources/44951923-434e-45ba-9e34-a64fe1ae2ec2.xml" version="01.00.000">
+        <common:shortDescription>ENEA</common:shortDescription>
+      </common:referenceToPersonOrEntityGeneratingTheDataSet>
+    </dataGenerator>
+    <dataEntryBy>
+      <common:timeStamp>2023-09-13T12:07:01.112+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="a97a0155-0234-4b87-b4ce-a45da52f2a40" uri="../sources/a97a0155-0234-4b87-b4ce-a45da52f2a40.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2022-09-29T10:41:45.593Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/116280ea-dc5c-4e4f-91ab-b6d9e26680f0.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="4083c6ef-9cae-427d-be2e-9f5ae30b9e49" type="contact data set" uri="../contacts/4083c6ef-9cae-427d-be2e-9f5ae30b9e49.xml" version="01.00.000">
+        <common:shortDescription>ENEA-ARCADIA</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+      <common:accessRestrictions>Type of license: Open Database Licence (ODbL)</common:accessRestrictions>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="93bedcce-c8d9-474a-9e66-5d0d846535c6" uri="../flows/93bedcce-c8d9-474a-9e66-5d0d846535c6.xml">
+        <common:shortDescription xml:lang="en">Electricity from solid biomass_CL1_other biomass</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.6000000E+0</meanAmount>
+      <resultingAmount>3.6000000E+0</resultingAmount>
+      <generalComment>Total electric energy produced = 1.76E06 MWhe (net electricity 1.57E06 MWhe , excluding self-consumption)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="51b7b8d6-6825-4584-be35-2fa7bc88454c" uri="../flows/51b7b8d6-6825-4584-be35-2fa7bc88454c.xml">
+        <common:shortDescription xml:lang="en">Residual biomass</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.4900000E+0</meanAmount>
+      <resultingAmount>1.4900000E+0</resultingAmount>
+      <generalComment>The zero burden approach has been applied.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="65383440-2bc2-4e3e-9359-b28df6f23208" uri="../flows/65383440-2bc2-4e3e-9359-b28df6f23208.xml">
+        <common:shortDescription xml:lang="en">ARCADIA - Electricity, high voltage {IT}| heat and power co-generation, wood chips, 6667 kW, state-of-the-art 2014 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.6000000E+0</meanAmount>
+      <resultingAmount>3.6000000E+0</resultingAmount>
+      <generalComment>The Ecoinvent process has been modified deleting the woodchips input, the emissions and waste treatment.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="3">
+      <referenceToFlowDataSet type="flow data set" refObjectId="85cd28ba-3c38-448a-af10-1365375764f1" uri="../flows/85cd28ba-3c38-448a-af10-1365375764f1.xml">
+        <common:shortDescription xml:lang="en">Chipping</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.4900000E+0</meanAmount>
+      <resultingAmount>1.4900000E+0</resultingAmount>
+      <generalComment>Process based on Scrucca et al. 2021 (Report Arcadia "Studio di filiera - Cippato forestale")
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="4">
+      <referenceToFlowDataSet type="flow data set" refObjectId="2171d7d7-1f9d-40ba-83a9-ff6b9f615314" uri="../flows/2171d7d7-1f9d-40ba-83a9-ff6b9f615314.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry &gt;32 metric ton, euro6 {RER}| market for transport, freight, lorry &gt;32 metric ton, EURO6 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>9.3900000E-2</meanAmount>
+      <resultingAmount>9.3900000E-2</resultingAmount>
+      <generalComment>Average distance 70 km in accordance with the DM 02/03/2010. Transport of local biomass (90%)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="5">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d62ea7b0-7c4b-4371-92fe-af58d9df73fa" uri="../flows/d62ea7b0-7c4b-4371-92fe-af58d9df73fa.xml">
+        <common:shortDescription xml:lang="en">transport, freight, sea, container ship {GLO}| market for transport, freight, sea, container ship | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.2200000E-1</meanAmount>
+      <resultingAmount>2.2200000E-1</resultingAmount>
+      <generalComment>Transport by ship of biomass from USA and Canada (2%)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="6">
+      <referenceToFlowDataSet type="flow data set" refObjectId="2171d7d7-1f9d-40ba-83a9-ff6b9f615314" uri="../flows/2171d7d7-1f9d-40ba-83a9-ff6b9f615314.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry &gt;32 metric ton, euro6 {RER}| market for transport, freight, lorry &gt;32 metric ton, EURO6 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.7300000E-3</meanAmount>
+      <resultingAmount>3.7300000E-3</resultingAmount>
+      <generalComment>Transport by truck of biomass from USA and Canada (2%) on national distance
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="7">
+      <referenceToFlowDataSet type="flow data set" refObjectId="2171d7d7-1f9d-40ba-83a9-ff6b9f615314" uri="../flows/2171d7d7-1f9d-40ba-83a9-ff6b9f615314.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry &gt;32 metric ton, euro6 {RER}| market for transport, freight, lorry &gt;32 metric ton, EURO6 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.4700000E-2</meanAmount>
+      <resultingAmount>6.4700000E-2</resultingAmount>
+      <generalComment>Transport by truck of biomass from Europe (8%) on international distance
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="8">
+      <referenceToFlowDataSet type="flow data set" refObjectId="38eebd76-0864-4bd9-99ee-63827b10895e" uri="../flows/38eebd76-0864-4bd9-99ee-63827b10895e.xml">
+        <common:shortDescription xml:lang="en">wastewater, unpolluted {CH}| market for wastewater, unpolluted | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>8.2500000E-4</meanAmount>
+      <resultingAmount>8.2500000E-4</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="9">
+      <referenceToFlowDataSet type="flow data set" refObjectId="667cbb7c-b8d3-4037-9c01-5a4c36a1dfa5" uri="../flows/667cbb7c-b8d3-4037-9c01-5a4c36a1dfa5.xml">
+        <common:shortDescription xml:lang="en">hazardous waste, for underground deposit {RER}| market for hazardous waste, for underground deposit | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>8.7300000E-5</meanAmount>
+      <resultingAmount>8.7300000E-5</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="10">
+      <referenceToFlowDataSet type="flow data set" refObjectId="305cc6f7-6d06-40bf-bc3b-0e432e63efd8" uri="../flows/305cc6f7-6d06-40bf-bc3b-0e432e63efd8.xml">
+        <common:shortDescription xml:lang="en">Inert waste {Europe without Switzerland}| treatment of inert waste, sanitary landfill | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>6.7100000E-4</meanAmount>
+      <resultingAmount>6.7100000E-4</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="11">
+      <referenceToFlowDataSet type="flow data set" refObjectId="21868f36-62ab-4e8e-98ed-7106228c17be" uri="../flows/21868f36-62ab-4e8e-98ed-7106228c17be.xml">
+        <common:shortDescription xml:lang="en">Water to Cooling</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>IT</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.6200000E-3</meanAmount>
+      <resultingAmount>1.6200000E-3</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="12">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-a8e8-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-a8e8-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">methane (biogenic)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.1519991E-3</meanAmount>
+      <resultingAmount>1.1519991E-3</resultingAmount>
+      <generalComment>EF combustion 2019 , worksheet “Non industrial” (ISPRA, 2019)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="13">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9c15-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9c15-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">carbon dioxide (biogenic)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.4055973E-1</meanAmount>
+      <resultingAmount>3.4055973E-1</resultingAmount>
+      <generalComment>EF combustion 2019 , worksheet “Non industrial” (ISPRA, 2019)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="14">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-94c3-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-94c3-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">nitrous oxide</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>5.0399960E-5</meanAmount>
+      <resultingAmount>5.0399960E-5</resultingAmount>
+      <generalComment>EF combustion 2019 , worksheet “Non industrial” (ISPRA, 2019)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="15">
+      <referenceToFlowDataSet type="flow data set" refObjectId="8a313a02-e251-11e6-bf01-fe55135034f3" uri="../flows/8a313a02-e251-11e6-bf01-fe55135034f3.xml">
+        <common:shortDescription xml:lang="en">carbon monoxide (biogenic)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.6679431E-2</meanAmount>
+      <resultingAmount>1.6679431E-2</resultingAmount>
+      <generalComment>EF combustion 2019 , worksheet “Non industrial” (ISPRA, 2019)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="16">
+      <referenceToFlowDataSet type="flow data set" refObjectId="f79d0f8f-2b0e-49cb-bed0-b1ea0fbd8625" uri="../flows/f79d0f8f-2b0e-49cb-bed0-b1ea0fbd8625.xml">
+        <common:shortDescription xml:lang="en">Nitrogen oxides</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>IT</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.3678374E-4</meanAmount>
+      <resultingAmount>2.3678374E-4</resultingAmount>
+      <generalComment>EF combustion 2019 , worksheet “Non industrial” (ISPRA, 2019)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="17">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-a302-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-a302-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">non-methane volatile organic compounds</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.9260405E-3</meanAmount>
+      <resultingAmount>1.9260405E-3</resultingAmount>
+      <generalComment>EF combustion 2019 , worksheet “Non industrial” (ISPRA, 2019)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="18">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-ac48-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-ac48-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">sulfur dioxide</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>IT</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>5.0325537E-5</meanAmount>
+      <resultingAmount>5.0325537E-5</resultingAmount>
+      <generalComment>EF combustion 2019 , worksheet “Non industrial” (ISPRA, 2019)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="19">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-a2a9-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-a2a9-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">ammonia</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>IT</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.7396087E-5</meanAmount>
+      <resultingAmount>1.7396087E-5</resultingAmount>
+      <generalComment>EF combustion 2019 , worksheet “Non industrial” (ISPRA, 2019)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="20">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-91be-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-91be-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">particles (PM10)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.1943720E-3</meanAmount>
+      <resultingAmount>1.1943720E-3</resultingAmount>
+      <generalComment>EF combustion 2019 , worksheet “Non industrial” (ISPRA, 2019)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="21">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9293-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9293-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">particles (PM2.5)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.1863970E-3</meanAmount>
+      <resultingAmount>1.1863970E-3</resultingAmount>
+      <generalComment>EF combustion 2019 , worksheet “Non industrial” (ISPRA, 2019)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="22">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9293-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9293-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">particles (PM2.5)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.1264053E-4</meanAmount>
+      <resultingAmount>1.1264053E-4</resultingAmount>
+      <generalComment>EF combustion 2019 , worksheet “Non industrial” (ISPRA, 2019).
+This flow refers to carbon black.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="23">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-aadf-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-aadf-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">polycyclic aromatic hydrocarbons</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>6.9392000E-7</meanAmount>
+      <resultingAmount>6.9392000E-7</resultingAmount>
+      <generalComment>EF combustion 2019 , worksheet “Non industrial” (ISPRA, 2019)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="24">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9221-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9221-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">benzo[a]pyrene</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.1004200E-7</meanAmount>
+      <resultingAmount>2.1004200E-7</resultingAmount>
+      <generalComment>EF combustion 2019 , worksheet “Non industrial” (ISPRA, 2019)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="25">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-b0de-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-b0de-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">benzo[b]fluoranthene</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.3928300E-7</meanAmount>
+      <resultingAmount>2.3928300E-7</resultingAmount>
+      <generalComment>EF combustion 2019 , worksheet “Non industrial” (ISPRA, 2019)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="26">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4d9a8790-3ddd-11dd-94a1-0050c2490048" uri="../flows/4d9a8790-3ddd-11dd-94a1-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">benzo[k]fluoranthene</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0747000E-7</meanAmount>
+      <resultingAmount>1.0747000E-7</resultingAmount>
+      <generalComment>EF combustion 2019 , worksheet “Non industrial” (ISPRA, 2019)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="27">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-ab8b-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-ab8b-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">indeno(1,2,3-cd)pyrene</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.3712600E-7</meanAmount>
+      <resultingAmount>1.3712600E-7</resultingAmount>
+      <generalComment>EF combustion 2019 , worksheet “Non industrial” (ISPRA, 2019)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="28">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-ab67-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-ab67-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">2,3,7,8-tetrachlorodibenzo-p-dioxin</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.3300000E-12</meanAmount>
+      <resultingAmount>1.3300000E-12</resultingAmount>
+      <generalComment>EF combustion 2019 , worksheet “Non industrial” (ISPRA, 2019)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="29">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-97e4-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-97e4-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">polychlorinated biphenyls</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.1289000E-10</meanAmount>
+      <resultingAmount>2.1289000E-10</resultingAmount>
+      <generalComment>EF combustion 2019 , worksheet “Non industrial” (ISPRA, 2019)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="30">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-a2fb-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-a2fb-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">hexachlorobenzene</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.1289000E-11</meanAmount>
+      <resultingAmount>2.1289000E-11</resultingAmount>
+      <generalComment>EF combustion 2019 , worksheet “Non industrial” (ISPRA, 2019)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="31">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9674-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9674-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">cadmium</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.9600000E-8</meanAmount>
+      <resultingAmount>1.9600000E-8</resultingAmount>
+      <generalComment>EF combustion 2019 , worksheet “Non industrial” (ISPRA, 2019)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="32">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-a7a0-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-a7a0-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">copper</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.6800000E-8</meanAmount>
+      <resultingAmount>2.6800000E-8</resultingAmount>
+      <generalComment>EF combustion 2019 , worksheet “Non industrial” (ISPRA, 2019)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="33">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-a8c4-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-a8c4-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">mercury</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.8000000E-8</meanAmount>
+      <resultingAmount>1.8000000E-8</resultingAmount>
+      <generalComment>EF combustion 2019 , worksheet “Non industrial” (ISPRA, 2019)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="34">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4d9a8790-3ddd-11dd-91dc-0050c2490048" uri="../flows/4d9a8790-3ddd-11dd-91dc-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">lead</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>6.9700000E-8</meanAmount>
+      <resultingAmount>6.9700000E-8</resultingAmount>
+      <generalComment>EF combustion 2019 , worksheet “Non industrial” (ISPRA, 2019)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="35">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-94e3-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-94e3-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">zinc</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>5.0700000E-7</meanAmount>
+      <resultingAmount>5.0700000E-7</resultingAmount>
+      <generalComment>EF combustion 2019 , worksheet “Non industrial” (ISPRA, 2019)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="36">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-91d7-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-91d7-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">arsenic</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>8.8700000E-10</meanAmount>
+      <resultingAmount>8.8700000E-10</resultingAmount>
+      <generalComment>EF combustion 2019 , worksheet “Non industrial” (ISPRA, 2019)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="37">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9acc-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9acc-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">chromium</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>6.0700000E-9</meanAmount>
+      <resultingAmount>6.0700000E-9</resultingAmount>
+      <generalComment>EF combustion 2019 , worksheet “Non industrial” (ISPRA, 2019)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="38">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-96c8-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-96c8-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">nickel</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.5500000E-9</meanAmount>
+      <resultingAmount>3.5500000E-9</resultingAmount>
+      <generalComment>EF combustion 2019 , worksheet “Non industrial” (ISPRA, 2019)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="39">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-abf3-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-abf3-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">selenium</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>8.8700000E-10</meanAmount>
+      <resultingAmount>8.8700000E-10</resultingAmount>
+      <generalComment>EF combustion 2019 , worksheet “Non industrial” (ISPRA, 2019)
+</generalComment>
+    </exchange>
+  </exchanges>
+</processDataSet>

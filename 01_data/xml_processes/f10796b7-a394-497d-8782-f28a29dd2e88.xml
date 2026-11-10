@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>f10796b7-a394-497d-8782-f28a29dd2e88</common:UUID>
+      <name>
+        <baseName xml:lang="en">Forest wood chips, fir, class B (ISO 17225-4), at production, Silver fir and spruce mix</baseName>
+      </name>
+      <common:synonyms>Cippato forestale classe B, alla produzione, mix abete bianco e rosso</common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">Energy carriers and technologies</common:class>
+          <common:class level="1">Renewable fuels</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment xml:lang="en">Dataset developed within the ARCADIA Project (production chain study regarding forest wood chips “STUDIO DI FILIERA CIPPATO FORESTALE”). The dataset involves the use of mechanical means for felling and on-site handling of the timber and is representative of the processing technologies commonly used in the wood harvesting in mountain environment. Wood chipping carried out on-site through a mobile chipper.&#13;
+</common:generalComment>
+      <referenceToExternalDocumentation type="source data set" refObjectId="1b89b957-ad3b-4719-8a2b-8f4244bbc66d" version="01.00.000" uri="../sources/1b89b957-ad3b-4719-8a2b-8f4244bbc66d.xml">
+        <common:shortDescription>Scrucca F, Rinaldi, C., Morara E., Argnani A., 2021. “STUDIO DI FILIERA&#13;
+CIPPATO FORESTALE”. Internal report ARCADIA Project. For the LCA study background datasets from Ecoinvent database cut-off (v. 3.7.1) were used.</common:shortDescription>
+      </referenceToExternalDocumentation>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2021</common:referenceYear>
+      <common:dataSetValidUntil>2026</common:dataSetValidUntil>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT">
+        <descriptionOfRestrictions>Northern Italy. Primary data collected in Friuli Venezia Giulia. Dataset representative of regions where wood harvesting occurs mainly in mountain environment (or similar)</descriptionOfRestrictions>
+      </locationOfOperationSupplyOrProduction>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>1 tonne of forest wood chips, as a mix of silver fir and spruce, obtained from forest virgin wood, available for transportation for subsequent intended uses. Production of equipment and infrastructures is not included, except for the background system. Primary data and secondary data were collected as physical quantities of materials used in the different processes. Background data were modelled according to Ecoinvent v. 3.7.1</technologyDescriptionAndIncludedProcesses>
+      <technologicalApplicability>The product can be used as energetic raw material, for electricity production or combined heat-power generation, in medium to large size plant</technologicalApplicability>
+      <referenceToTechnologyPictogramme type="source data set" refObjectId="9c34d532-6753-4267-90a9-6986e5f3e6aa" version="01.00.000" uri="../sources/9c34d532-6753-4267-90a9-6986e5f3e6aa.xml">
+        <common:shortDescription>20230628164832_Classe-B.jpg</common:shortDescription>
+      </referenceToTechnologyPictogramme>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Allocation - volume</LCIMethodApproaches>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <dataCutOffAndCompletenessPrinciples>Production of equipment and infrastructure are not included, except for the background system.</dataCutOffAndCompletenessPrinciples>
+      <referenceToDataSource type="source data set" refObjectId="a6f1b788-19e5-4e44-a7ff-9c927c1b4ee6" version="01.00.000" uri="../sources/a6f1b788-19e5-4e44-a7ff-9c927c1b4ee6.xml">
+        <common:shortDescription>20230628164832_ARCADIA_Studio-filiera_Cippato-forestale.pdf</common:shortDescription>
+      </referenceToDataSource>
+      <dataCollectionPeriod>2021</dataCollectionPeriod>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>No statement</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Independent internal review">
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Fair"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Completeness" value="Good"/>
+          <common:dataQualityIndicator name="Precision" value="Not applicable"/>
+          <common:dataQualityIndicator name="Methodological appropriateness and consistency" value="Not applicable"/>
+          <common:dataQualityIndicator name="Overall quality" value="Not applicable"/>
+        </common:dataQualityIndicators>
+        <common:reviewDetails>The review was performed in compliance with Arcadia Metodology: “Metodologia per gli studi di filiera della Banca Dati italiana LCA” and ISO 14040-44 norms. The dataset has been assessed limited to the foreground data collected during the supply chain studies.&#13;
+Each dataset has been evaluated based on the following 4 criteria:&#13;
+1. Technological Representativeness; 2. Time Representativeness; 3. Geographical Representativeness; 4. Reliability.&#13;
+In this contest the Reliability is “good”.</common:reviewDetails>
+        <common:referenceToNameOfReviewerAndInstitution type="contact data set" refObjectId="3eee6656-8ba2-4aeb-97e7-7f2faf850513" version="01.00.000" uri="../sources/3eee6656-8ba2-4aeb-97e7-7f2faf850513.xml">
+          <common:shortDescription>ENEA</common:shortDescription>
+        </common:referenceToNameOfReviewerAndInstitution>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="88d4f8d9-60f9-43d1-9ea3-329c10d7d727" uri="../sources/88d4f8d9-60f9-43d1-9ea3-329c10d7d727.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="d92a1a12-2545-49e2-a585-55c259997756" uri="../sources/d92a1a12-2545-49e2-a585-55c259997756.xml">
+          <common:shortDescription xml:lang="en">ISO 14044</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Not defined</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="01807191-e156-421a-b2f6-aa609ea534f4" uri="../contacts/01807191-e156-421a-b2f6-aa609ea534f4.xml">
+        <common:shortDescription xml:lang="en">ENEA - Arcadia</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Arcadia – PON Governance e Capacità istituzionale 2014-2020</common:project>
+    </common:commissionerAndGoal>
+    <dataGenerator>
+      <common:referenceToPersonOrEntityGeneratingTheDataSet refObjectId="33ce7640-4204-40c3-aa70-e5f2f79e6c15" type="contact data set" uri="../sources/33ce7640-4204-40c3-aa70-e5f2f79e6c15.xml" version="01.00.000">
+        <common:shortDescription>ENEA</common:shortDescription>
+      </common:referenceToPersonOrEntityGeneratingTheDataSet>
+    </dataGenerator>
+    <dataEntryBy>
+      <common:timeStamp>2023-06-14T11:16:23.617+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="a97a0155-0234-4b87-b4ce-a45da52f2a40" uri="../sources/a97a0155-0234-4b87-b4ce-a45da52f2a40.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2021-07-20T09:33:26.157Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/f10796b7-a394-497d-8782-f28a29dd2e88.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="1f9f0f9d-ab54-4ea5-a42f-0753e4279c26" type="contact data set" uri="../sources/1f9f0f9d-ab54-4ea5-a42f-0753e4279c26.xml" version="01.00.000">
+        <common:shortDescription>ENEA-ARCADIA</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+      <common:accessRestrictions>Type of license: Open Database Licence (ODbL)</common:accessRestrictions>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="51d5cc84-788b-46d2-8337-e1481b28fa34" uri="../flows/51d5cc84-788b-46d2-8337-e1481b28fa34.xml">
+        <common:shortDescription xml:lang="en">Forest wood chips, fir, class B (ISO 17225-4), at production, Silver fir and spruce mix</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0000000E+3</meanAmount>
+      <resultingAmount>1.0000000E+3</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="1dbf923f-4ae4-402b-9d0a-e1913de39896" uri="../flows/1dbf923f-4ae4-402b-9d0a-e1913de39896.xml">
+        <common:shortDescription xml:lang="en">Diesel {Europe without Switzerland}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.0089570E-3</meanAmount>
+      <resultingAmount>2.0089570E-3</resultingAmount>
+      <generalComment>Equipment transportation
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="c3883115-e0a8-42c9-b5d0-f8defc607a33" uri="../flows/c3883115-e0a8-42c9-b5d0-f8defc607a33.xml">
+        <common:shortDescription xml:lang="en">Petrol, unleaded {RER}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.6639179E-2</meanAmount>
+      <resultingAmount>2.6639179E-2</resultingAmount>
+      <generalComment>Tree felling
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="3">
+      <referenceToFlowDataSet type="flow data set" refObjectId="703506ad-be77-4659-ac5b-c9ea58e2a242" uri="../flows/703506ad-be77-4659-ac5b-c9ea58e2a242.xml">
+        <common:shortDescription xml:lang="en">Lubricating oil {RER}| market for lubricating oil | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>9.1130980E-3</meanAmount>
+      <resultingAmount>9.1130980E-3</resultingAmount>
+      <generalComment>Tree felling
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="4">
+      <referenceToFlowDataSet type="flow data set" refObjectId="1dbf923f-4ae4-402b-9d0a-e1913de39896" uri="../flows/1dbf923f-4ae4-402b-9d0a-e1913de39896.xml">
+        <common:shortDescription xml:lang="en">Diesel {Europe without Switzerland}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.2572000E-1</meanAmount>
+      <resultingAmount>1.2572000E-1</resultingAmount>
+      <generalComment>Logging
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="5">
+      <referenceToFlowDataSet type="flow data set" refObjectId="c3883115-e0a8-42c9-b5d0-f8defc607a33" uri="../flows/c3883115-e0a8-42c9-b5d0-f8defc607a33.xml">
+        <common:shortDescription xml:lang="en">Petrol, unleaded {RER}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>8.3530000E-2</meanAmount>
+      <resultingAmount>8.3530000E-2</resultingAmount>
+      <generalComment>Delimbing trees and cut into logs
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="6">
+      <referenceToFlowDataSet type="flow data set" refObjectId="703506ad-be77-4659-ac5b-c9ea58e2a242" uri="../flows/703506ad-be77-4659-ac5b-c9ea58e2a242.xml">
+        <common:shortDescription xml:lang="en">Lubricating oil {RER}| market for lubricating oil | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.8500000E-3</meanAmount>
+      <resultingAmount>3.8500000E-3</resultingAmount>
+      <generalComment>Delimbing trees and cut into logs
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="7">
+      <referenceToFlowDataSet type="flow data set" refObjectId="1dbf923f-4ae4-402b-9d0a-e1913de39896" uri="../flows/1dbf923f-4ae4-402b-9d0a-e1913de39896.xml">
+        <common:shortDescription xml:lang="en">Diesel {Europe without Switzerland}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.5728888E+0</meanAmount>
+      <resultingAmount>1.5728888E+0</resultingAmount>
+      <generalComment>Loading and moving logs
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="8">
+      <referenceToFlowDataSet type="flow data set" refObjectId="5340d843-d6ef-4128-b567-74f27a6f83ad" uri="../flows/5340d843-d6ef-4128-b567-74f27a6f83ad.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry, unspecified {RER}| market for transport, freight, lorry, unspecified | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.0500000E+0</meanAmount>
+      <resultingAmount>2.0500000E+0</resultingAmount>
+      <generalComment>Transport chipper on site
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="9">
+      <referenceToFlowDataSet type="flow data set" refObjectId="1dbf923f-4ae4-402b-9d0a-e1913de39896" uri="../flows/1dbf923f-4ae4-402b-9d0a-e1913de39896.xml">
+        <common:shortDescription xml:lang="en">Diesel {Europe without Switzerland}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.3923389E+0</meanAmount>
+      <resultingAmount>2.3923389E+0</resultingAmount>
+      <generalComment>Chipping
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="10">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-923d-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-923d-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">carbon dioxide (fossil)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>7.0465740E-3</meanAmount>
+      <resultingAmount>7.0465740E-3</resultingAmount>
+      <generalComment>Equipment transportation
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="11">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-923d-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-923d-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">carbon dioxide (fossil)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>6.1811507E-2</meanAmount>
+      <resultingAmount>6.1811507E-2</resultingAmount>
+      <generalComment>Tree felling
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="12">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-923d-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-923d-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">carbon dioxide (fossil)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>5.6890149E-1</meanAmount>
+      <resultingAmount>5.6890149E-1</resultingAmount>
+      <generalComment>Logging
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="13">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-923d-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-923d-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">carbon dioxide (fossil)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.9281800E-2</meanAmount>
+      <resultingAmount>1.9281800E-2</resultingAmount>
+      <generalComment>Delimbing trees and cut into logs
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="14">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-923d-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-923d-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">carbon dioxide (fossil)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>4.4810127E+0</meanAmount>
+      <resultingAmount>4.4810127E+0</resultingAmount>
+      <generalComment>Transport chipper on site
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="15">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-923d-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-923d-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">carbon dioxide (fossil)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.8545455E+0</meanAmount>
+      <resultingAmount>3.8545455E+0</resultingAmount>
+      <generalComment>Chipping
+</generalComment>
+    </exchange>
+  </exchanges>
+</processDataSet>

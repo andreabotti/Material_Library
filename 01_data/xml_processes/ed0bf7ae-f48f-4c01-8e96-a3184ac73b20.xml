@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>ed0bf7ae-f48f-4c01-8e96-a3184ac73b20</common:UUID>
+      <name>
+        <baseName xml:lang="en">Onion Production, bulk, at plant </baseName>
+      </name>
+      <common:synonyms> 	Produzione Cipolla </common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">Materials production</common:class>
+          <common:class level="1">Agricultural production means</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment> 	The dataset was developed within the LIFE MAGIS project. Production of 1 ton of onion in Italy.</common:generalComment>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2019</common:referenceYear>
+      <common:dataSetValidUntil>2025</common:dataSetValidUntil>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT"/>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>The process includes both the production of seeds and the tillage of the land with agricultural means, the treatments carried out, the fertilization and irrigation of the land.</technologyDescriptionAndIncludedProcesses>
+      <technologicalApplicability>The product can be used as such or serve as ingredients for other processes in the preparation of preserves or processed foods.</technologicalApplicability>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Not applicable</LCIMethodApproaches>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <dataCutOffAndCompletenessPrinciples>No cut-off applied </dataCutOffAndCompletenessPrinciples>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>No statement</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Dependent internal review">
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Not applicable"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Not applicable"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Not applicable"/>
+          <common:dataQualityIndicator name="Completeness" value="Not applicable"/>
+          <common:dataQualityIndicator name="Precision" value="Not applicable"/>
+          <common:dataQualityIndicator name="Methodological appropriateness and consistency" value="Not applicable"/>
+          <common:dataQualityIndicator name="Overall quality" value="Not applicable"/>
+        </common:dataQualityIndicators>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="88d4f8d9-60f9-43d1-9ea3-329c10d7d727" uri="../sources/88d4f8d9-60f9-43d1-9ea3-329c10d7d727.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Fully compliant</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Fully compliant</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="d92a1a12-2545-49e2-a585-55c259997756" uri="../sources/d92a1a12-2545-49e2-a585-55c259997756.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Fully compliant</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Fully compliant</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="01807191-e156-421a-b2f6-aa609ea534f4" uri="../contacts/01807191-e156-421a-b2f6-aa609ea534f4.xml">
+        <common:shortDescription xml:lang="en">EPLCA project team</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project> LIFE MAGIS Project</common:project>
+    </common:commissionerAndGoal>
+    <dataEntryBy>
+      <common:timeStamp>2023-02-15T09:40:49.428+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="a97a0155-0234-4b87-b4ce-a45da52f2a40" uri="../sources/a97a0155-0234-4b87-b4ce-a45da52f2a40.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2020-09-08T16:29:16.858Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/ed0bf7ae-f48f-4c01-8e96-a3184ac73b20.xml</common:permanentDataSetURI>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="461e9c5e-2869-4ea6-97ec-948d427257ae" uri="../flows/461e9c5e-2869-4ea6-97ec-948d427257ae.xml">
+        <common:shortDescription xml:lang="en">Onion Production</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0000000E+3</meanAmount>
+      <resultingAmount>1.0000000E+3</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="0a42d621-d154-41f8-b6ee-7fdb46317eec" uri="../flows/0a42d621-d154-41f8-b6ee-7fdb46317eec.xml">
+        <common:shortDescription xml:lang="en">Transport, tractor and trailer, agricultural {RoW}| processing | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.4500000E+2</meanAmount>
+      <resultingAmount>1.4500000E+2</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="a662a8c3-d9b5-4949-913c-6fab7230d841" uri="../flows/a662a8c3-d9b5-4949-913c-6fab7230d841.xml">
+        <common:shortDescription xml:lang="en">Glyphosate {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.2000000E-2</meanAmount>
+      <resultingAmount>3.2000000E-2</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="3">
+      <referenceToFlowDataSet type="flow data set" refObjectId="bf1d7041-ba30-4eae-8615-555631a1d363" uri="../flows/bf1d7041-ba30-4eae-8615-555631a1d363.xml">
+        <common:shortDescription xml:lang="en">Dinitroaniline-compound {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.1000000E-2</meanAmount>
+      <resultingAmount>2.1000000E-2</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="4">
+      <referenceToFlowDataSet type="flow data set" refObjectId="3e365b10-bff6-4611-ab2d-b1537700aba0" uri="../flows/3e365b10-bff6-4611-ab2d-b1537700aba0.xml">
+        <common:shortDescription xml:lang="en">Cyclic N-compound {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.6000000E-2</meanAmount>
+      <resultingAmount>1.6000000E-2</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="5">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4b21ba24-9ad3-42be-b7d2-b9c79846effe" uri="../flows/4b21ba24-9ad3-42be-b7d2-b9c79846effe.xml">
+        <common:shortDescription xml:lang="en">Nitro-compound {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.7000000E-2</meanAmount>
+      <resultingAmount>1.7000000E-2</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="6">
+      <referenceToFlowDataSet type="flow data set" refObjectId="12212381-06a1-496e-bb0f-d1f8b8a3ea65" uri="../flows/12212381-06a1-496e-bb0f-d1f8b8a3ea65.xml">
+        <common:shortDescription xml:lang="en">Organophosphorus-compound, unspecified {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.0000000E-2</meanAmount>
+      <resultingAmount>1.0000000E-2</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="7">
+      <referenceToFlowDataSet type="flow data set" refObjectId="b9fbe481-660d-4bbd-9ebf-28746bf210ef" uri="../flows/b9fbe481-660d-4bbd-9ebf-28746bf210ef.xml">
+        <common:shortDescription xml:lang="en">Pesticide, unspecified {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>7.0000000E-3</meanAmount>
+      <resultingAmount>7.0000000E-3</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="8">
+      <referenceToFlowDataSet type="flow data set" refObjectId="0a1dacef-f0da-40ef-9778-28f70437c866" uri="../flows/0a1dacef-f0da-40ef-9778-28f70437c866.xml">
+        <common:shortDescription xml:lang="en">Pyrethroid-compound {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>7.1000000E-2</meanAmount>
+      <resultingAmount>7.1000000E-2</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="9">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4b21ba24-9ad3-42be-b7d2-b9c79846effe" uri="../flows/4b21ba24-9ad3-42be-b7d2-b9c79846effe.xml">
+        <common:shortDescription xml:lang="en">Nitro-compound {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.5000000E-2</meanAmount>
+      <resultingAmount>1.5000000E-2</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="10">
+      <referenceToFlowDataSet type="flow data set" refObjectId="b9fbe481-660d-4bbd-9ebf-28746bf210ef" uri="../flows/b9fbe481-660d-4bbd-9ebf-28746bf210ef.xml">
+        <common:shortDescription xml:lang="en">Pesticide, unspecified {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.5000000E-2</meanAmount>
+      <resultingAmount>1.5000000E-2</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="11">
+      <referenceToFlowDataSet type="flow data set" refObjectId="b9fbe481-660d-4bbd-9ebf-28746bf210ef" uri="../flows/b9fbe481-660d-4bbd-9ebf-28746bf210ef.xml">
+        <common:shortDescription xml:lang="en">Pesticide, unspecified {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.0000000E-3</meanAmount>
+      <resultingAmount>4.0000000E-3</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="12">
+      <referenceToFlowDataSet type="flow data set" refObjectId="c53a8674-d957-4091-93d0-c58abf81a492" uri="../flows/c53a8674-d957-4091-93d0-c58abf81a492.xml">
+        <common:shortDescription xml:lang="en">Dimethenamide {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>8.9000000E-2</meanAmount>
+      <resultingAmount>8.9000000E-2</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="13">
+      <referenceToFlowDataSet type="flow data set" refObjectId="b4e06036-182b-45c2-8233-1695d216f46a" uri="../flows/b4e06036-182b-45c2-8233-1695d216f46a.xml">
+        <common:shortDescription xml:lang="en">Dithiocarbamate-compound {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.6400000E-1</meanAmount>
+      <resultingAmount>1.6400000E-1</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="14">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4b21ba24-9ad3-42be-b7d2-b9c79846effe" uri="../flows/4b21ba24-9ad3-42be-b7d2-b9c79846effe.xml">
+        <common:shortDescription xml:lang="en">Nitro-compound {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>8.7000000E-2</meanAmount>
+      <resultingAmount>8.7000000E-2</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="15">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d905fef7-7d02-48f8-8d80-c51e8ebc3131" uri="../flows/d905fef7-7d02-48f8-8d80-c51e8ebc3131.xml">
+        <common:shortDescription xml:lang="en">Benzimidazole-compound {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.0000000E-3</meanAmount>
+      <resultingAmount>5.0000000E-3</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="16">
+      <referenceToFlowDataSet type="flow data set" refObjectId="043c8d6d-cd52-4c70-862c-9e3b0fe6a44d" uri="../flows/043c8d6d-cd52-4c70-862c-9e3b0fe6a44d.xml">
+        <common:shortDescription xml:lang="en">Metamitron {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.4000000E-2</meanAmount>
+      <resultingAmount>4.4000000E-2</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="17">
+      <referenceToFlowDataSet type="flow data set" refObjectId="c926d66b-afb4-461c-802f-7fdddcea81ae" uri="../flows/c926d66b-afb4-461c-802f-7fdddcea81ae.xml">
+        <common:shortDescription xml:lang="en">Acetamide-anillide-compound, unspecified {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.4000000E-2</meanAmount>
+      <resultingAmount>1.4000000E-2</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="18">
+      <referenceToFlowDataSet type="flow data set" refObjectId="b9fbe481-660d-4bbd-9ebf-28746bf210ef" uri="../flows/b9fbe481-660d-4bbd-9ebf-28746bf210ef.xml">
+        <common:shortDescription xml:lang="en">Pesticide, unspecified {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.4000000E-2</meanAmount>
+      <resultingAmount>3.4000000E-2</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="19">
+      <referenceToFlowDataSet type="flow data set" refObjectId="ab048de5-2919-4e1b-8d87-8b6e148b29cd" uri="../flows/ab048de5-2919-4e1b-8d87-8b6e148b29cd.xml">
+        <common:shortDescription xml:lang="en">Sulfite {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.8000000E-2</meanAmount>
+      <resultingAmount>6.8000000E-2</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="20">
+      <referenceToFlowDataSet type="flow data set" refObjectId="bca2025a-47ab-4926-b901-b8f00af90189" uri="../flows/bca2025a-47ab-4926-b901-b8f00af90189.xml">
+        <common:shortDescription xml:lang="en">Ossicloruro di Rame</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.0200000E-1</meanAmount>
+      <resultingAmount>1.0200000E-1</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="21">
+      <referenceToFlowDataSet type="flow data set" refObjectId="32f5d109-d64e-4e72-863d-9b89aa30e67f" uri="../flows/32f5d109-d64e-4e72-863d-9b89aa30e67f.xml">
+        <common:shortDescription xml:lang="en">Poltiglia Bordolese</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.6000000E-2</meanAmount>
+      <resultingAmount>1.6000000E-2</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="22">
+      <referenceToFlowDataSet type="flow data set" refObjectId="acd16470-a717-42db-894c-656083cc81b7" uri="../flows/acd16470-a717-42db-894c-656083cc81b7.xml">
+        <common:shortDescription xml:lang="en">Ammonium nitrate, as N {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.5940000E+0</meanAmount>
+      <resultingAmount>1.5940000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="23">
+      <referenceToFlowDataSet type="flow data set" refObjectId="73d5f313-c3d7-4ada-8efc-cf0aa1f4b8ab" uri="../flows/73d5f313-c3d7-4ada-8efc-cf0aa1f4b8ab.xml">
+        <common:shortDescription xml:lang="en">Phosphate fertiliser, as P2O5 {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.7100000E-1</meanAmount>
+      <resultingAmount>2.7100000E-1</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="24">
+      <referenceToFlowDataSet type="flow data set" refObjectId="a21babb2-c237-45b2-ae95-a6135f2514d0" uri="../flows/a21babb2-c237-45b2-ae95-a6135f2514d0.xml">
+        <common:shortDescription xml:lang="en">Nitrogen fertiliser, as N {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.0200000E-1</meanAmount>
+      <resultingAmount>1.0200000E-1</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="25">
+      <referenceToFlowDataSet type="flow data set" refObjectId="b14a49ff-f4d2-4495-8be6-4d8b0635faaf" uri="../flows/b14a49ff-f4d2-4495-8be6-4d8b0635faaf.xml">
+        <common:shortDescription xml:lang="en">Potassium nitrate {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.7000000E-2</meanAmount>
+      <resultingAmount>5.7000000E-2</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="26">
+      <referenceToFlowDataSet type="flow data set" refObjectId="3e79ddb2-58d5-4074-adba-30a35d1afe4f" uri="../flows/3e79ddb2-58d5-4074-adba-30a35d1afe4f.xml">
+        <common:shortDescription xml:lang="en">Fertilizzante 14 10 20</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.7900000E-1</meanAmount>
+      <resultingAmount>5.7900000E-1</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="27">
+      <referenceToFlowDataSet type="flow data set" refObjectId="9a37fdb9-bede-480e-b209-cfc0fb58289b" uri="../flows/9a37fdb9-bede-480e-b209-cfc0fb58289b.xml">
+        <common:shortDescription xml:lang="en">Fertilizzante 12 12 17</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.9800000E-1</meanAmount>
+      <resultingAmount>2.9800000E-1</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="28">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4befdcf6-2b29-4c13-bb64-07d228b2d5dd" uri="../flows/4befdcf6-2b29-4c13-bb64-07d228b2d5dd.xml">
+        <common:shortDescription xml:lang="en">Fertilizzante 20 20 20</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.3300000E-1</meanAmount>
+      <resultingAmount>2.3300000E-1</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="29">
+      <referenceToFlowDataSet type="flow data set" refObjectId="9280fa82-5a87-433f-871b-edfc7747ed16" uri="../flows/9280fa82-5a87-433f-871b-edfc7747ed16.xml">
+        <common:shortDescription xml:lang="en">Fertilizzante 0 30 20</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.6000000E-2</meanAmount>
+      <resultingAmount>3.6000000E-2</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="30">
+      <referenceToFlowDataSet type="flow data set" refObjectId="9adaade2-3a6e-4c7e-b44c-799bb25ce3a6" uri="../flows/9adaade2-3a6e-4c7e-b44c-799bb25ce3a6.xml">
+        <common:shortDescription xml:lang="en">Horn meal {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.0000000E-2</meanAmount>
+      <resultingAmount>1.0000000E-2</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="31">
+      <referenceToFlowDataSet type="flow data set" refObjectId="55f39ae9-4dd1-41d1-a9bf-40db027e8e3f" uri="../flows/55f39ae9-4dd1-41d1-a9bf-40db027e8e3f.xml">
+        <common:shortDescription xml:lang="en">Wood chips, dry, measured as dry mass {RER}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.0860000E+0</meanAmount>
+      <resultingAmount>1.0860000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="32">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4567b110-8dc6-4605-925b-a76e1f4dde6b" uri="../flows/4567b110-8dc6-4605-925b-a76e1f4dde6b.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry 7.5-16 metric ton, EURO5 {RER}| transport, freight, lorry 7.5-16 metric ton, EURO5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.5300000E-2</meanAmount>
+      <resultingAmount>2.5300000E-2</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="33">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4567b110-8dc6-4605-925b-a76e1f4dde6b" uri="../flows/4567b110-8dc6-4605-925b-a76e1f4dde6b.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry 7.5-16 metric ton, EURO5 {RER}| transport, freight, lorry 7.5-16 metric ton, EURO5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.3380000E-3</meanAmount>
+      <resultingAmount>6.3380000E-3</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="34">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4567b110-8dc6-4605-925b-a76e1f4dde6b" uri="../flows/4567b110-8dc6-4605-925b-a76e1f4dde6b.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry 7.5-16 metric ton, EURO5 {RER}| transport, freight, lorry 7.5-16 metric ton, EURO5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>8.8050000E-3</meanAmount>
+      <resultingAmount>8.8050000E-3</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="35">
+      <referenceToFlowDataSet type="flow data set" refObjectId="44d2a75b-062d-4936-b551-491eaa48c569" uri="../flows/44d2a75b-062d-4936-b551-491eaa48c569.xml">
+        <common:shortDescription xml:lang="en">Electricity, medium voltage {IT}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.4000000E-2</meanAmount>
+      <resultingAmount>5.4000000E-2</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="36">
+      <referenceToFlowDataSet type="flow data set" refObjectId="195496a7-d05b-4238-9c52-759eebd48a91" uri="../flows/195496a7-d05b-4238-9c52-759eebd48a91.xml">
+        <common:shortDescription xml:lang="en">Mixed plastics (waste treatment) {GLO}| recycling of mixed plastics | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.2600000E-1</meanAmount>
+      <resultingAmount>2.2600000E-1</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="37">
+      <referenceToFlowDataSet type="flow data set" refObjectId="c9e2eca3-2181-4686-920e-218e15d3a01b" uri="../flows/c9e2eca3-2181-4686-920e-218e15d3a01b.xml">
+        <common:shortDescription xml:lang="en">Hazardous waste, for incineration {RoW}| treatment of hazardous waste, hazardous waste incineration | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.7900000E-1</meanAmount>
+      <resultingAmount>2.7900000E-1</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="38">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4f462198-40cd-4184-8733-86648a20dc3f" uri="../flows/4f462198-40cd-4184-8733-86648a20dc3f.xml">
+        <common:shortDescription xml:lang="en">ground water</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>IT</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.7900000E+0</meanAmount>
+      <resultingAmount>4.7900000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="39">
+      <referenceToFlowDataSet type="flow data set" refObjectId="419682fe-60fb-4b43-be89-bf2824b51104" uri="../flows/419682fe-60fb-4b43-be89-bf2824b51104.xml">
+        <common:shortDescription xml:lang="en">water</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>IT</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.3560000E+1</meanAmount>
+      <resultingAmount>2.3560000E+1</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="40">
+      <referenceToFlowDataSet type="flow data set" refObjectId="2a240c57-b782-4745-943b-0602d7a953c4" uri="../flows/2a240c57-b782-4745-943b-0602d7a953c4.xml">
+        <common:shortDescription xml:lang="en">Water (rain water)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>9.9700000E+4</meanAmount>
+      <resultingAmount>9.9700000E+4</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="41">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4f462198-40cd-4184-8733-86648a20dc3f" uri="../flows/4f462198-40cd-4184-8733-86648a20dc3f.xml">
+        <common:shortDescription xml:lang="en">ground water</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>IT</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.6000000E+0</meanAmount>
+      <resultingAmount>1.6000000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="42">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-a2a9-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-a2a9-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">ammonia</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>7.1660000E-2</meanAmount>
+      <resultingAmount>7.1660000E-2</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="43">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-94c3-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-94c3-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">nitrous oxide</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.4413000E-2</meanAmount>
+      <resultingAmount>2.4413000E-2</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="44">
+      <referenceToFlowDataSet type="flow data set" refObjectId="f79d0f8f-2b0e-49cb-bed0-b1ea0fbd8625" uri="../flows/f79d0f8f-2b0e-49cb-bed0-b1ea0fbd8625.xml">
+        <common:shortDescription xml:lang="en">Nitrogen oxides</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.4670000E-2</meanAmount>
+      <resultingAmount>2.4670000E-2</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="45">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-94c3-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-94c3-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">nitrous oxide</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>7.5500000E-3</meanAmount>
+      <resultingAmount>7.5500000E-3</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="46">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-aa31-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-aa31-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">nitrate</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.4878000E+0</meanAmount>
+      <resultingAmount>2.4878000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="47">
+      <referenceToFlowDataSet type="flow data set" refObjectId="410e1215-9953-46ce-a878-2079353eb801" uri="../flows/410e1215-9953-46ce-a878-2079353eb801.xml">
+        <common:shortDescription xml:lang="en">Phosphorus</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>6.5000000E-5</meanAmount>
+      <resultingAmount>6.5000000E-5</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="48">
+      <referenceToFlowDataSet type="flow data set" refObjectId="410e1215-9953-46ce-a878-2079353eb801" uri="../flows/410e1215-9953-46ce-a878-2079353eb801.xml">
+        <common:shortDescription xml:lang="en">Phosphorus</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>6.3000000E-5</meanAmount>
+      <resultingAmount>6.3000000E-5</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="49">
+      <referenceToFlowDataSet type="flow data set" refObjectId="410e1215-9953-46ce-a878-2079353eb801" uri="../flows/410e1215-9953-46ce-a878-2079353eb801.xml">
+        <common:shortDescription xml:lang="en">Phosphorus</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.9100000E-4</meanAmount>
+      <resultingAmount>1.9100000E-4</resultingAmount>
+    </exchange>
+  </exchanges>
+</processDataSet>

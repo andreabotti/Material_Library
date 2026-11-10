@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>57081712-732e-4f8e-b34a-c58e11059a21</common:UUID>
+      <name>
+        <baseName xml:lang="en">Metals, sorting</baseName>
+      </name>
+      <common:synonyms>Selezione metalli ferrosi</common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">End-of-life treatment</common:class>
+          <common:class level="1">Other end-of-life services</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment xml:lang="en">The ferrous metals separated during the treatment are sent for recovery for the production of secondary steel, after a preliminary phase of selection and pressing carried out in metal sorting plants. The treatment of ferrous metals is simulated in SimaPro through a process built ad hoc on the basis of&#13;
+work by Rigamonti et al., (2015) in which it was hypothesized that metal waste is sent to a plant in which first a sorting of the material is made (efficiency 91%) and then the actual one recycling operation (efficiency 88.1%); the substitution ratio between secondary and primary steel is assumed 1:1 by mass. The distance for the delivery of metal waste to the sorting plant was assumed equal to 10 km, data obtained from the analysis of the MUDs of the recycling plants that declare the quantity of ferrous metals separated during treatment and their respective fate. The rejects of the first selection phase a&#13;
+metal waste is subjected to are disposed of in landfills for aggregates, assuming that they are composed from cement residues adhered to the iron bars. The transport of ferrous metals from C&amp;D recycling plants to sorting of waste from selection to landfill and of metals from selection to the mill take place through large trucks&gt; 32 tons (of which 50% Euro3 and 50% Euro4), for a distance equal to 50 km (Rigamonti et al., 2015).&#13;
+</common:generalComment>
+      <referenceToExternalDocumentation type="source data set" refObjectId="fd1e1c84-94fb-48be-a2af-51198f4a3df9" version="01.00.000" uri="../sources/fd1e1c84-94fb-48be-a2af-51198f4a3df9.xml">
+        <common:shortDescription>Dataset developed within the ARCADIA project in the context of the Ph.D. of Federica Carollo (Politecnico di Milano). &#13;
+The dataset relates to the sorting of 1 tonne of ferrous metals. &#13;
+The dataset is composed of 5-unit processes:  &#13;
+1) Electricity consumption; &#13;
+2) transport from sorting to recycling (Process: Metals, Transport, EURO3-EURO4); &#13;
+3) transport of waste from sorting to landfill ((Process: Metals, Transport, EURO3-EURO4); &#13;
+4) Landfill for mixed C&amp;D waste (Process: Mixed C&amp;D waste, landfill); &#13;
+5) Ferrous metals recycling (Process: Metals, recycling). </common:shortDescription>
+      </referenceToExternalDocumentation>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2022</common:referenceYear>
+      <common:dataSetValidUntil>2027</common:dataSetValidUntil>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT">
+        <descriptionOfRestrictions>Lombardy Region.</descriptionOfRestrictions>
+      </locationOfOperationSupplyOrProduction>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>The ferrous metals separated during the treatment are sent for recovery to produce secondary steel after a preliminary phase of selection and pressing carried out in metal sorting plants. The treatment of ferrous metals is simulated in SimaPro through a process built ad hoc based on work by Rigamonti et al. (2015), in which it was hypothesised that metal waste is sent to a plant in which the first sorting of the material is made (efficiency 91%) and then the actual one recycling operation (efficiency 88.1%); the substitution ratio between secondary and primary steel is assumed 1:1 by mass. The distance for the delivery of metal waste to the sorting plant was supposed to equal 10 km, data obtained from the analysis of the MUDs of the recycling plants that declare the number of ferrous metals separated during treatment and their respective fate. The rejects of the first metal waste selection phase are subjected to being disposed of in landfills for aggregates, assuming that they are composed of cement residues adhered to the iron bars. The transport of ferrous metals from C&amp;D recycling plants to the sorting of waste from selection to landfill and of metals from selection to the mill take place through large trucks&gt; 32 tons (of which 50% Euro3 and 50% Euro4), for a distance equal to 50 km (Rigamonti et al., 2015). &#13;
+&#13;
+Good the Reliability;   &#13;
+Very Good the Geographical representativeness;   &#13;
+Very Good the Time representativeness;   &#13;
+Very Good the Technological representativeness. </technologyDescriptionAndIncludedProcesses>
+      <referenceToIncludedProcesses type="process data set" refObjectId="b4788c64-6e3f-4e89-b1a8-f7aa56dedc8e" version="01.00.000" uri="../sources/b4788c64-6e3f-4e89-b1a8-f7aa56dedc8e.xml">
+        <common:shortDescription>Carollo F. (2023). Circularity in construction and demolition waste management chain, Ph.D. Dissertation (Tutored by Rigamonti L., Ceruti F.). Politecnico di Milano. Background datasets from the EcoInvent database cut-off (v. 3.8) were used for the LCA study. </common:shortDescription>
+      </referenceToIncludedProcesses>
+      <technologicalApplicability>Sorting of a tonne of ferrous metals.</technologicalApplicability>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Allocation - mass</LCIMethodApproaches>
+      <referenceToLCAMethodDetails type="source data set" refObjectId="7def6b59-6209-4de7-9658-b3037c839e81" version="01.00.000" uri="../sources/7def6b59-6209-4de7-9658-b3037c839e81.xml">
+        <common:shortDescription>Carollo F. (2023). Circularity in construction and demolition waste management chain, Ph.D. Dissertation (Tutored by Rigamonti L., Ceruti F.). Politecnico di Milano. </common:shortDescription>
+      </referenceToLCAMethodDetails>
+      <referenceToLCAMethodDetails type="source data set" refObjectId="cd008eae-9291-4b65-a801-b98d6ac2fe44" version="01.00.000" uri="../sources/cd008eae-9291-4b65-a801-b98d6ac2fe44.xml">
+        <common:shortDescription>Rigamonti L., Pantini S., Borghi G. (2017). Relazione Finale. Valutazione con metodologia LCA (Life Cycle Assessment) dei flussi e del destino dei rifiuti da costruzione e demolizione. https://www.regione.lombardia.it/wps/wcm/connect/8fd3e9e3-2e89-4192-b378-edfa3373d2b7/Report_LCA+rifiuti_C%26D.pdf?MOD=AJPERES&amp;CACHEID=ROOTWORKSPACE-8fd3e9e3-2e89-4192-b378-edfa3373d2b7-m6OnNX</common:shortDescription>
+      </referenceToLCAMethodDetails>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <referenceToDataSource type="source data set" refObjectId="12e71b61-5197-4e3c-9520-1eedadd78d20" version="01.00.000" uri="../sources/12e71b61-5197-4e3c-9520-1eedadd78d20.xml">
+        <common:shortDescription>Carollo F. (2023). Circularity in construction and demolition waste management chain, Ph.D. Dissertation (Tutored by Rigamonti L., Ceruti F.). Politecnico di Milano. Background datasets from the EcoInvent database cut-off (v. 3.8) were used for the LCA study. </common:shortDescription>
+      </referenceToDataSource>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>All relevant flows quantified</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Not reviewed">
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Completeness" value="Good"/>
+          <common:dataQualityIndicator name="Precision" value="Good"/>
+          <common:dataQualityIndicator name="Methodological appropriateness and consistency" value="Good"/>
+          <common:dataQualityIndicator name="Overall quality" value="Good"/>
+        </common:dataQualityIndicators>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="88d4f8d9-60f9-43d1-9ea3-329c10d7d727" uri="../sources/88d4f8d9-60f9-43d1-9ea3-329c10d7d727.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Fully compliant</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="d92a1a12-2545-49e2-a585-55c259997756" uri="../sources/d92a1a12-2545-49e2-a585-55c259997756.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Fully compliant</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Fully compliant</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="01807191-e156-421a-b2f6-aa609ea534f4" uri="../contacts/01807191-e156-421a-b2f6-aa609ea534f4.xml">
+        <common:shortDescription xml:lang="en">EPLCA project team</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Arcadia – PON Governance e Capacità istituzionali 2014-2020 (PhD Project of Federica Carollo).</common:project>
+    </common:commissionerAndGoal>
+    <dataGenerator>
+      <common:referenceToPersonOrEntityGeneratingTheDataSet refObjectId="1de09f22-aa87-4de5-8d72-ed5c85b64839" type="contact data set" uri="../sources/1de09f22-aa87-4de5-8d72-ed5c85b64839.xml" version="01.00.000">
+        <common:shortDescription>Federica Carollo (Politecnico di Milano) </common:shortDescription>
+      </common:referenceToPersonOrEntityGeneratingTheDataSet>
+    </dataGenerator>
+    <dataEntryBy>
+      <common:timeStamp>2022-12-03T16:39:33.841+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="a97a0155-0234-4b87-b4ce-a45da52f2a40" uri="../sources/a97a0155-0234-4b87-b4ce-a45da52f2a40.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2011-02-26T14:35:50.843Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/57081712-732e-4f8e-b34a-c58e11059a21.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="e7e63729-ff5d-4ffe-b6bd-c5f0a22c7552" type="contact data set" uri="../sources/e7e63729-ff5d-4ffe-b6bd-c5f0a22c7552.xml" version="01.00.000">
+        <common:shortDescription>ENEA-ARCADIA</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+      <common:accessRestrictions>Type of license: Open Database Licence (ODbL). </common:accessRestrictions>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="a41f0e16-ce03-4546-9d66-d17bda93478b" uri="../flows/a41f0e16-ce03-4546-9d66-d17bda93478b.xml">
+        <common:shortDescription xml:lang="en">Metals, sorting</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0000000E+3</meanAmount>
+      <resultingAmount>1.0000000E+3</resultingAmount>
+      <generalComment>Reference: Borghi et al., 2018. 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="9f1332f8-bb42-4631-807b-bf40ab288575" uri="../flows/9f1332f8-bb42-4631-807b-bf40ab288575.xml">
+        <common:shortDescription xml:lang="en">Electricity, medium voltage {IT}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.7100000E+2</meanAmount>
+      <resultingAmount>1.7100000E+2</resultingAmount>
+      <generalComment>Electriticy consumption 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="85038e29-6020-4113-b23b-18231776ac27" uri="../flows/85038e29-6020-4113-b23b-18231776ac27.xml">
+        <common:shortDescription xml:lang="en">Metals, Transport, EURO3-EURO4</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.5500000E+1</meanAmount>
+      <resultingAmount>4.5500000E+1</resultingAmount>
+      <generalComment>transport from sorting to recycling (=50 km *91%) 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="3">
+      <referenceToFlowDataSet type="flow data set" refObjectId="85038e29-6020-4113-b23b-18231776ac27" uri="../flows/85038e29-6020-4113-b23b-18231776ac27.xml">
+        <common:shortDescription xml:lang="en">Metals, Transport, EURO3-EURO4</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.5000000E+0</meanAmount>
+      <resultingAmount>4.5000000E+0</resultingAmount>
+      <generalComment>transport of waste from sorting to landfill (=50 km *9%) 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="4">
+      <referenceToFlowDataSet type="flow data set" refObjectId="e0dce373-a5c9-4281-8355-068a8a371943" uri="../flows/e0dce373-a5c9-4281-8355-068a8a371943.xml">
+        <common:shortDescription xml:lang="en">Mixed C&amp;D waste, landfill</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>9.0000000E+1</meanAmount>
+      <resultingAmount>9.0000000E+1</resultingAmount>
+      <generalComment>9% goes to landfill
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="5">
+      <referenceToFlowDataSet type="flow data set" refObjectId="bd9906d4-fe36-4c85-90f8-9bae17b81240" uri="../flows/bd9906d4-fe36-4c85-90f8-9bae17b81240.xml">
+        <common:shortDescription xml:lang="en">Metals, recycling</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>9.1000000E+2</meanAmount>
+      <resultingAmount>9.1000000E+2</resultingAmount>
+      <generalComment>Sorting efficiency is 91% 
+</generalComment>
+    </exchange>
+  </exchanges>
+</processDataSet>

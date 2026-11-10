@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>8fdd8cb5-011c-462f-9ae2-52b12fceeddf</common:UUID>
+      <name>
+        <baseName xml:lang="en">Office Chair , Production and disposal of office chair</baseName>
+        <treatmentStandardsRoutes> Production and disposal of office chair </treatmentStandardsRoutes>
+      </name>
+      <common:synonyms>Sedia da ufficio</common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">Systems</common:class>
+          <common:class level="1">Textiles, furnitures and other interiors</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment>The dataset has been developed in LIFE EFFIGE project. Details are given in “PEFCR of Office chair”. In a cradle to grave approach, the dataset includes the all input and output for the production of 1 office chair including the end of life of its materials.</common:generalComment>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2018</common:referenceYear>
+      <common:dataSetValidUntil>2024</common:dataSetValidUntil>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT"/>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>The dataset includes the model of the production 1 unit of office chair including the end of life of its materials.&#13;
+The following life cycle phases are included :&#13;
+Manufacturing chair components&#13;
+Manufacturing chair packaging&#13;
+Manufacturing -chair&#13;
+Distribution&#13;
+Use &amp; maintenance&#13;
+End of life</technologyDescriptionAndIncludedProcesses>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Not applicable</LCIMethodApproaches>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <dataCutOffAndCompletenessPrinciples>Production of buildings and equipment have been excluded</dataCutOffAndCompletenessPrinciples>
+      <deviationsFromCutOffAndCompletenessPrinciples>None.</deviationsFromCutOffAndCompletenessPrinciples>
+      <deviationsFromSelectionAndCombinationPrinciples>None.</deviationsFromSelectionAndCombinationPrinciples>
+      <referenceToDataSource type="source data set" refObjectId="79347096-88bc-4b34-9b1c-2931dd78f7d0" version="01.00.000" uri="../sources/79347096-88bc-4b34-9b1c-2931dd78f7d0.xml">
+        <common:shortDescription>PEFCR of office chair (https://www.lifeeffige.eu/)</common:shortDescription>
+      </referenceToDataSource>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>No statement</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Dependent internal review">
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Not applicable"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Not applicable"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Not applicable"/>
+          <common:dataQualityIndicator name="Completeness" value="Not applicable"/>
+          <common:dataQualityIndicator name="Precision" value="Not applicable"/>
+          <common:dataQualityIndicator name="Methodological appropriateness and consistency" value="Not applicable"/>
+          <common:dataQualityIndicator name="Overall quality" value="Not applicable"/>
+        </common:dataQualityIndicators>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="88d4f8d9-60f9-43d1-9ea3-329c10d7d727" uri="../sources/88d4f8d9-60f9-43d1-9ea3-329c10d7d727.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Not defined</common:methodologicalCompliance>
+        <common:reviewCompliance>Not defined</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="d92a1a12-2545-49e2-a585-55c259997756" uri="../sources/d92a1a12-2545-49e2-a585-55c259997756.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Not defined</common:methodologicalCompliance>
+        <common:reviewCompliance>Not defined</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="01807191-e156-421a-b2f6-aa609ea534f4" uri="../contacts/01807191-e156-421a-b2f6-aa609ea534f4.xml">
+        <common:shortDescription xml:lang="en">EPLCA project team</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Progetto Life EFFIGE (LIFE16 ENV/IT/000172)</common:project>
+    </common:commissionerAndGoal>
+    <dataEntryBy>
+      <common:timeStamp>2022-06-06T12:32:42.924+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="a97a0155-0234-4b87-b4ce-a45da52f2a40" uri="../sources/a97a0155-0234-4b87-b4ce-a45da52f2a40.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2022-06-06T11:55:47.969Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/8fdd8cb5-011c-462f-9ae2-52b12fceeddf.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="e78248e7-88e8-43b5-8883-9be3d6a3c415" type="contact data set" uri="../sources/e78248e7-88e8-43b5-8883-9be3d6a3c415.xml" version="01.00.000">
+        <common:shortDescription>LIFE EFFIGE, Federlegnoarredo</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+      <common:accessRestrictions>Type of license :Open Database Licence (ODbL)</common:accessRestrictions>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="60e9d743-9c99-4ef9-b2cb-55f1e6298475" uri="../flows/60e9d743-9c99-4ef9-b2cb-55f1e6298475.xml">
+        <common:shortDescription xml:lang="en">Office Chair</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0000000E+0</meanAmount>
+      <resultingAmount>1.0000000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="de29e9ca-1e1b-4a04-9b31-ce2c7ca9511e" uri="../flows/de29e9ca-1e1b-4a04-9b31-ce2c7ca9511e.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry &gt;32 metric ton, EURO5 {RER}| transport, freight, lorry &gt;32 metric ton, EURO5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.1100000E+0</meanAmount>
+      <resultingAmount>1.1100000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="de29e9ca-1e1b-4a04-9b31-ce2c7ca9511e" uri="../flows/de29e9ca-1e1b-4a04-9b31-ce2c7ca9511e.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry &gt;32 metric ton, EURO5 {RER}| transport, freight, lorry &gt;32 metric ton, EURO5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>8.4000000E-1</meanAmount>
+      <resultingAmount>8.4000000E-1</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="3">
+      <referenceToFlowDataSet type="flow data set" refObjectId="de29e9ca-1e1b-4a04-9b31-ce2c7ca9511e" uri="../flows/de29e9ca-1e1b-4a04-9b31-ce2c7ca9511e.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry &gt;32 metric ton, EURO5 {RER}| transport, freight, lorry &gt;32 metric ton, EURO5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.0000000E-1</meanAmount>
+      <resultingAmount>5.0000000E-1</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="4">
+      <referenceToFlowDataSet type="flow data set" refObjectId="de29e9ca-1e1b-4a04-9b31-ce2c7ca9511e" uri="../flows/de29e9ca-1e1b-4a04-9b31-ce2c7ca9511e.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry &gt;32 metric ton, EURO5 {RER}| transport, freight, lorry &gt;32 metric ton, EURO5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>8.5500000E-1</meanAmount>
+      <resultingAmount>8.5500000E-1</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="5">
+      <referenceToFlowDataSet type="flow data set" refObjectId="de29e9ca-1e1b-4a04-9b31-ce2c7ca9511e" uri="../flows/de29e9ca-1e1b-4a04-9b31-ce2c7ca9511e.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry &gt;32 metric ton, EURO5 {RER}| transport, freight, lorry &gt;32 metric ton, EURO5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.7000000E+0</meanAmount>
+      <resultingAmount>1.7000000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="6">
+      <referenceToFlowDataSet type="flow data set" refObjectId="de29e9ca-1e1b-4a04-9b31-ce2c7ca9511e" uri="../flows/de29e9ca-1e1b-4a04-9b31-ce2c7ca9511e.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry &gt;32 metric ton, EURO5 {RER}| transport, freight, lorry &gt;32 metric ton, EURO5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.1000000E+0</meanAmount>
+      <resultingAmount>1.1000000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="7">
+      <referenceToFlowDataSet type="flow data set" refObjectId="de29e9ca-1e1b-4a04-9b31-ce2c7ca9511e" uri="../flows/de29e9ca-1e1b-4a04-9b31-ce2c7ca9511e.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry &gt;32 metric ton, EURO5 {RER}| transport, freight, lorry &gt;32 metric ton, EURO5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.8000000E+0</meanAmount>
+      <resultingAmount>2.8000000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="8">
+      <referenceToFlowDataSet type="flow data set" refObjectId="de29e9ca-1e1b-4a04-9b31-ce2c7ca9511e" uri="../flows/de29e9ca-1e1b-4a04-9b31-ce2c7ca9511e.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry &gt;32 metric ton, EURO5 {RER}| transport, freight, lorry &gt;32 metric ton, EURO5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.0000000E-1</meanAmount>
+      <resultingAmount>5.0000000E-1</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="9">
+      <referenceToFlowDataSet type="flow data set" refObjectId="de29e9ca-1e1b-4a04-9b31-ce2c7ca9511e" uri="../flows/de29e9ca-1e1b-4a04-9b31-ce2c7ca9511e.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry &gt;32 metric ton, EURO5 {RER}| transport, freight, lorry &gt;32 metric ton, EURO5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.0000000E-1</meanAmount>
+      <resultingAmount>6.0000000E-1</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="10">
+      <referenceToFlowDataSet type="flow data set" refObjectId="de29e9ca-1e1b-4a04-9b31-ce2c7ca9511e" uri="../flows/de29e9ca-1e1b-4a04-9b31-ce2c7ca9511e.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry &gt;32 metric ton, EURO5 {RER}| transport, freight, lorry &gt;32 metric ton, EURO5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.0000000E-1</meanAmount>
+      <resultingAmount>4.0000000E-1</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="11">
+      <referenceToFlowDataSet type="flow data set" refObjectId="de29e9ca-1e1b-4a04-9b31-ce2c7ca9511e" uri="../flows/de29e9ca-1e1b-4a04-9b31-ce2c7ca9511e.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry &gt;32 metric ton, EURO5 {RER}| transport, freight, lorry &gt;32 metric ton, EURO5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.1200000E+0</meanAmount>
+      <resultingAmount>1.1200000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="12">
+      <referenceToFlowDataSet type="flow data set" refObjectId="de29e9ca-1e1b-4a04-9b31-ce2c7ca9511e" uri="../flows/de29e9ca-1e1b-4a04-9b31-ce2c7ca9511e.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry &gt;32 metric ton, EURO5 {RER}| transport, freight, lorry &gt;32 metric ton, EURO5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>7.1850000E+0</meanAmount>
+      <resultingAmount>7.1850000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="13">
+      <referenceToFlowDataSet type="flow data set" refObjectId="f9ee3543-5344-4fe0-933b-4c48cbfc7450" uri="../flows/f9ee3543-5344-4fe0-933b-4c48cbfc7450.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, sea, transoceanic ship {GLO}| processing | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>7.1850000E+1</meanAmount>
+      <resultingAmount>7.1850000E+1</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="14">
+      <referenceToFlowDataSet type="flow data set" refObjectId="475129b9-6681-4411-93e8-a95aeea6e9bc" uri="../flows/475129b9-6681-4411-93e8-a95aeea6e9bc.xml">
+        <common:shortDescription xml:lang="en">Aluminium, primary, ingot {IAI Area, EU27 &amp; EFTA}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.7000000E+0</meanAmount>
+      <resultingAmount>1.7000000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="15">
+      <referenceToFlowDataSet type="flow data set" refObjectId="ab9a2305-e2fc-421b-a21a-70bbb11e157a" uri="../flows/ab9a2305-e2fc-421b-a21a-70bbb11e157a.xml">
+        <common:shortDescription xml:lang="en">Corrugated board box {GLO}| market for corrugated board box | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.2000000E+0</meanAmount>
+      <resultingAmount>3.2000000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="16">
+      <referenceToFlowDataSet type="flow data set" refObjectId="662a2585-38c9-4573-9836-fff8216ac59d" uri="../flows/662a2585-38c9-4573-9836-fff8216ac59d.xml">
+        <common:shortDescription xml:lang="en">Extrusion, plastic film {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.7000000E+0</meanAmount>
+      <resultingAmount>1.7000000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="17">
+      <referenceToFlowDataSet type="flow data set" refObjectId="e988d6d6-86c0-451d-862b-c806c1455086" uri="../flows/e988d6d6-86c0-451d-862b-c806c1455086.xml">
+        <common:shortDescription xml:lang="en">Injection moulding {RER}| processing | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>7.4229400E+0</meanAmount>
+      <resultingAmount>7.4229400E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="18">
+      <referenceToFlowDataSet type="flow data set" refObjectId="88f7e2ff-8c32-4b83-8676-42e75f6472a2" uri="../flows/88f7e2ff-8c32-4b83-8676-42e75f6472a2.xml">
+        <common:shortDescription xml:lang="en">Nylon 6 {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.0800000E+0</meanAmount>
+      <resultingAmount>2.0800000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="19">
+      <referenceToFlowDataSet type="flow data set" refObjectId="88f7e2ff-8c32-4b83-8676-42e75f6472a2" uri="../flows/88f7e2ff-8c32-4b83-8676-42e75f6472a2.xml">
+        <common:shortDescription xml:lang="en">Nylon 6 {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.0000000E-1</meanAmount>
+      <resultingAmount>4.0000000E-1</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="20">
+      <referenceToFlowDataSet type="flow data set" refObjectId="88f7e2ff-8c32-4b83-8676-42e75f6472a2" uri="../flows/88f7e2ff-8c32-4b83-8676-42e75f6472a2.xml">
+        <common:shortDescription xml:lang="en">Nylon 6 {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.6500000E-1</meanAmount>
+      <resultingAmount>1.6500000E-1</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="21">
+      <referenceToFlowDataSet type="flow data set" refObjectId="764e53d3-a05d-445e-a6d5-75a91ef04fe8" uri="../flows/764e53d3-a05d-445e-a6d5-75a91ef04fe8.xml">
+        <common:shortDescription xml:lang="en">Packaging film, low density polyethylene {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.0000000E-1</meanAmount>
+      <resultingAmount>4.0000000E-1</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="22">
+      <referenceToFlowDataSet type="flow data set" refObjectId="7f255175-5255-4480-848e-864f6258cd39" uri="../flows/7f255175-5255-4480-848e-864f6258cd39.xml">
+        <common:shortDescription xml:lang="en">Polypropylene, granulate {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.6217300E+0</meanAmount>
+      <resultingAmount>3.6217300E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="23">
+      <referenceToFlowDataSet type="flow data set" refObjectId="7f255175-5255-4480-848e-864f6258cd39" uri="../flows/7f255175-5255-4480-848e-864f6258cd39.xml">
+        <common:shortDescription xml:lang="en">Polypropylene, granulate {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.1200000E+0</meanAmount>
+      <resultingAmount>1.1200000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="24">
+      <referenceToFlowDataSet type="flow data set" refObjectId="9652b6a9-3699-4d9d-bf1f-bd90818d65d7" uri="../flows/9652b6a9-3699-4d9d-bf1f-bd90818d65d7.xml">
+        <common:shortDescription xml:lang="en">Polyurethane, flexible foam {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.0120700E+0</meanAmount>
+      <resultingAmount>2.0120700E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="25">
+      <referenceToFlowDataSet type="flow data set" refObjectId="1cebc9e6-a3c9-4477-8474-86d207070c0c" uri="../flows/1cebc9e6-a3c9-4477-8474-86d207070c0c.xml">
+        <common:shortDescription xml:lang="en">Steel, low-alloyed {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.0000000E+0</meanAmount>
+      <resultingAmount>1.0000000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="26">
+      <referenceToFlowDataSet type="flow data set" refObjectId="1cebc9e6-a3c9-4477-8474-86d207070c0c" uri="../flows/1cebc9e6-a3c9-4477-8474-86d207070c0c.xml">
+        <common:shortDescription xml:lang="en">Steel, low-alloyed {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.0000000E-1</meanAmount>
+      <resultingAmount>6.0000000E-1</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="27">
+      <referenceToFlowDataSet type="flow data set" refObjectId="1cebc9e6-a3c9-4477-8474-86d207070c0c" uri="../flows/1cebc9e6-a3c9-4477-8474-86d207070c0c.xml">
+        <common:shortDescription xml:lang="en">Steel, low-alloyed {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.0000000E-1</meanAmount>
+      <resultingAmount>4.0000000E-1</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="28">
+      <referenceToFlowDataSet type="flow data set" refObjectId="b3734c62-fe4c-4ecf-b251-597612d36257" uri="../flows/b3734c62-fe4c-4ecf-b251-597612d36257.xml">
+        <common:shortDescription xml:lang="en">Tap water {Europe without Switzerland}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>7.5000000E+0</meanAmount>
+      <resultingAmount>7.5000000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="29">
+      <referenceToFlowDataSet type="flow data set" refObjectId="efacc50a-a69b-4021-adde-48815f57545e" uri="../flows/efacc50a-a69b-4021-adde-48815f57545e.xml">
+        <common:shortDescription xml:lang="en">Textile, woven cotton {GLO}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.3000000E-1</meanAmount>
+      <resultingAmount>3.3000000E-1</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="30">
+      <referenceToFlowDataSet type="flow data set" refObjectId="131c6e3e-6b47-458a-9ab2-ffdf1adee823" uri="../flows/131c6e3e-6b47-458a-9ab2-ffdf1adee823.xml">
+        <common:shortDescription xml:lang="en">Electricity, medium voltage {IT}| electricity voltage transformation from high to medium voltage | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>7.4000002E+1</meanAmount>
+      <resultingAmount>7.4000002E+1</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="31">
+      <referenceToFlowDataSet type="flow data set" refObjectId="624a2ef2-16eb-4673-835f-4aa5845b1c90" uri="../flows/624a2ef2-16eb-4673-835f-4aa5845b1c90.xml">
+        <common:shortDescription xml:lang="en">Municipal solid waste {IT}| treatment of, incineration | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.2000000E+0</meanAmount>
+      <resultingAmount>3.2000000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="32">
+      <referenceToFlowDataSet type="flow data set" refObjectId="eead2257-d3dd-4bee-a57f-0f8d8652fe0b" uri="../flows/eead2257-d3dd-4bee-a57f-0f8d8652fe0b.xml">
+        <common:shortDescription xml:lang="en">Steel and iron (waste treatment) {GLO}| recycling of steel and iron | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.4370000E+1</meanAmount>
+      <resultingAmount>1.4370000E+1</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="33">
+      <referenceToFlowDataSet type="flow data set" refObjectId="73f61f81-e461-43c5-bbf7-64454ba79339" uri="../flows/73f61f81-e461-43c5-bbf7-64454ba79339.xml">
+        <common:shortDescription xml:lang="en">Waste plastic, mixture {Europe without Switzerland}| market for waste plastic, mixture | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>5.0000000E-1</meanAmount>
+      <resultingAmount>5.0000000E-1</resultingAmount>
+    </exchange>
+  </exchanges>
+</processDataSet>

@@ -1,0 +1,21 @@
+Material,Category,Density_min_kg_m3,Density_max_kg_m3,Lambda_min_W_mK,Lambda_max_W_mK,Avg_reference_flow_kg_per_FU,Specific_heat_min_kJ_kgK,Specific_heat_max_kJ_kgK,Fire_class,Water_resistance,Compression_resistance_kPa,Durability_years,Source
+Stone wool,Mineral derived,35,130,0.033,0.04,2.44,0.85,1.0,A1,Good,50,50,Grazieschi et al. 2021
+Glass wool,Mineral derived,12,64,0.031,0.045,0.91,,0.85,A1,Good,50,50,Grazieschi et al. 2021
+Expanded clay,Mineral derived,245,275,0.095,0.12,35.75,,1.00,A1,,50,50,Grazieschi et al. 2021
+Vermiculite,Mineral derived,170,170,0.062,0.09,12.92,0.8,1.0,A1,,,,Grazieschi et al. 2021
+Perlite,Mineral derived,139,166,0.04,0.055,11.31,0.9,1.0,A1,Good,,,Grazieschi et al. 2021
+EPS,Fossil fuel derived,15,30,0.031,0.037,0.72,1.25,1.25,E,Good,,50,Grazieschi et al. 2021
+XPS,Fossil fuel derived,24,38,0.031,0.036,1.16,1.3,1.7,E,Good,250-500,50,Grazieschi et al. 2021
+PUR/PIR,Fossil fuel derived,31.5,35,0.022,0.04,0.87,1.3,1.45,F-E,Good,150,50,Grazieschi et al. 2021
+Wood fibers (low density),Natural derived,30,60,0.037,0.038,2.8,1.9,2.1,E,Scarce,,,Grazieschi et al. 2021
+Wood fibers (high density),Natural derived,110,250,0.047,0.08,9.8,2.1,2.1,E-D,Scarce,40-300,,Grazieschi et al. 2021
+Mineralized wood fibers,Natural derived,420,520,0.07,0.1,39.2,1.8,2.1,A2-B,,>200,50,Grazieschi et al. 2021
+Cork,Natural derived,80,115,0.04,0.05,3.93,1.5,1.7,E,Scarce,,50,Grazieschi et al. 2021
+Cellulose,Natural derived,30,80,0.037,0.042,1.75,1.3,2.0,E,Vulnerable,,50,Grazieschi et al. 2021
+Straw bale,Natural derived,100,109,0.038,0.067,5.55,0.6,0.6,E,Vulnerable,,,Grazieschi et al. 2021
+Hemp,Natural derived,38,41,0.038,0.06,2.25,1.6,1.7,E,Vulnerable,,,Grazieschi et al. 2021
+Flax,Natural derived,30,40,0.038,0.042,2.45,1.4,1.6,E,Vulnerable,,,Grazieschi et al. 2021
+Sheep wool,Natural derived,30,30,0.033,0.033,0.96,1.9,2.0,E,Vulnerable,,50,Grazieschi et al. 2021
+Recycled PET,Innovative,12,100,0.039,0.039,1.03,0.24,0.24,B,,,50,Grazieschi et al. 2021
+Aerogel,Innovative,150,220,0.015,0.028,2.37,1.05,1.05,C,Hydrophobic,,50,Grazieschi et al. 2021
+VIP,Innovative,180,250,0.02,0.02,5.0,,,,Hydrophobic,,50,Grazieschi et al. 2021

@@ -1,0 +1,115 @@
+{
+  "_doc": "JS2 catalogue: detail rows on grid cards. Injected by Python as window.__JS2_FIELDS__. 'column': 'left' = sustainability (GWP + Rec. Content pill), 'right' = declarations/links + physical params. 'link_only': true shows label + link when URL field is set (M/L). 'link_field': value links to another field. 'fallback_field': used when primary field is empty. 'labels_by_size': per-size label override. 'voc_row': VOC badge (or VOC text + link) as a row. 'size_order': per-size row order (fields not listed are not shown at that size); sizes without an entry use detail_rows order.",
+  "layout": {
+    "_doc_layout": "card_column_gap_px: S (and fallback). card_column_gap_px_ml: M/L grid card left/right columns. popup_column_gap_px: modal only.",
+    "card_column_gap_px": 10,
+    "card_column_gap_px_ml": 20,
+    "popup_column_gap_px": 20
+  },
+  "size_order": {
+    "M": ["thickness", "techDetailsUrl", "fireRating", "listPrice", "recyclingRate", "vocUrl"],
+    "L": ["thickness", "techDetailsUrl", "fireRating", "listPrice", "recyclingRate", "vocUrl"]
+  },
+  "detail_rows": [
+    {
+      "field": "thickness",
+      "label": "Thickness",
+      "column": "right",
+      "sizes": ["S", "M", "L"],
+      "product_types": "*"
+    },
+    {
+      "field": "epdNumber",
+      "label": "EPD",
+      "fallback_field": "epdDeclaredNumber",
+      "column": "right",
+      "sizes": ["L"],
+      "product_types": "*",
+      "link_field": "epdUrl"
+    },
+    {
+      "field": "recyclingRate",
+      "label": "Rec. Content",
+      "column": "right",
+      "sizes": ["M", "L"],
+      "product_types": "*",
+      "link_field": "recyclingUrl"
+    },
+    {
+      "field": "dopUrl",
+      "label": "DOP",
+      "column": "right",
+      "sizes": ["L"],
+      "product_types": "*",
+      "link_only": true
+    },
+    {
+      "field": "techDetailsUrl",
+      "label": "Tech. details",
+      "column": "right",
+      "sizes": ["M", "L"],
+      "product_types": "*",
+      "link_only": true
+    },
+    {
+      "field": "density",
+      "label": "Vol. Density",
+      "column": "right",
+      "sizes": ["L"],
+      "product_types": ["Insulation", "In-situ", "Concrete", "Floor screed", "Mortar", "Plaster"]
+    },
+    {
+      "field": "thermalConductivity",
+      "label": "λ",
+      "column": "right",
+      "sizes": ["S", "L"],
+      "product_types": ["Insulation"]
+    },
+    {
+      "field": "listPrice",
+      "label": "List price",
+      "column": "right",
+      "sizes": ["M", "L"],
+      "product_types": "*",
+      "link_field": "listPriceUrl"
+    },
+    {
+      "field": "fireRating",
+      "label": "Fire class",
+      "column": "right",
+      "sizes": ["M", "L"],
+      "product_types": "*"
+    },
+    {
+      "field": "vocUrl",
+      "label": "VOC",
+      "column": "right",
+      "sizes": ["M", "L"],
+      "product_types": "*",
+      "voc_row": true
+    },
+    {
+      "field": "serviceLife",
+      "label": "Serv. life",
+      "column": "right",
+      "sizes": ["L"],
+      "product_types": "*"
+    },
+    {
+      "field": "content",
+      "label": "Content",
+      "column": "full",
+      "sizes": ["L"],
+      "product_types": "*",
+      "multiline": true
+    },
+    {
+      "field": "productDescription",
+      "label": "Description",
+      "column": "full",
+      "sizes": ["L"],
+      "product_types": "*",
+      "multiline": true
+    }
+  ]
+}

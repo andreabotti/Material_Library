@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>40d8e54d-91fa-458d-b9df-64db8a68dd4c</common:UUID>
+      <name>
+        <baseName xml:lang="en">Iron and Steel, recycling</baseName>
+      </name>
+      <common:synonyms>Riciclo di ferro e acciaio </common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">End-of-life treatment</common:class>
+          <common:class level="1">Material recycling</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment>Dataset developed within the ARCADIA project in the context of the Ph.D. of Federica Carollo (Politecnico di Milano). 
+The dataset relates to recycling 1 kg of iron and steel in Italy. 
+The dataset is composed of 4-unit processes: 
+1) Avoided production of liquid steel with a substitution ratio assumed of 1:1; 
+2) Secondary steel production (The Process taken by Ecoinvent 3.8 database was modified by excluding the steel scraps); 
+3) Sorting process for iron scraps (The Process taken by Ecoinvent 3.8 database was modified by excluding the iron scraps); 
+4) Municipal incineration of remaining iron scraps. </common:generalComment>
+      <referenceToExternalDocumentation type="source data set" refObjectId="eb1d8799-c6e9-4801-9324-42530be65e2c" version="01.00.000" uri="../sources/eb1d8799-c6e9-4801-9324-42530be65e2c.xml">
+        <common:shortDescription>Carollo F. (2023). Circularity in construction and demolition waste management chain, Ph.D. Dissertation (Tutored by Rigamonti L., Ceruti F.). Politecnico di Milano. Background datasets from the EcoInvent database cut-off (v. 3.8) were used for the LCA study. </common:shortDescription>
+      </referenceToExternalDocumentation>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2022</common:referenceYear>
+      <common:dataSetValidUntil>2027</common:dataSetValidUntil>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT">
+        <descriptionOfRestrictions>Lombardy Region.</descriptionOfRestrictions>
+      </locationOfOperationSupplyOrProduction>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>94% of iron waste goes for recycling. &#13;
+Considering a recycling efficiency of 88%, 6% goes for municipal incineration. &#13;
+The process permits obtaining liquid steel, which can substitute primary liquid steel.  &#13;
+&#13;
+Good the Reliability;   &#13;
+Very Good the Geographical representativeness;   &#13;
+Very Good the Time representativeness;   &#13;
+Very Good the Technological representativeness. </technologyDescriptionAndIncludedProcesses>
+      <technologicalApplicability>Recycling of 1 kg of iron and steel. </technologicalApplicability>
+    </technology>
+    <mathematicalRelations>
+      <modelDescription xml:lang="en">Constant and calculated process parameters</modelDescription>
+      <variableParameter name="acciaio_primario">
+        <meanValue>8.8100000E+2</meanValue>
+      </variableParameter>
+    </mathematicalRelations>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Allocation - mass</LCIMethodApproaches>
+      <referenceToLCAMethodDetails type="source data set" refObjectId="e8bba89d-1b0b-4463-9891-b7b56c7de8f0" version="01.00.000" uri="../sources/e8bba89d-1b0b-4463-9891-b7b56c7de8f0.xml">
+        <common:shortDescription>Carollo F. (2023). Circularity in construction and demolition waste management chain, Ph.D. Dissertation (Tutored by Rigamonti L., Ceruti F.). Politecnico di Milano. </common:shortDescription>
+      </referenceToLCAMethodDetails>
+      <referenceToLCAMethodDetails type="source data set" refObjectId="1adbbc07-ae3f-4b4f-a93c-e3475ccd4caf" version="01.00.000" uri="../sources/1adbbc07-ae3f-4b4f-a93c-e3475ccd4caf.xml">
+        <common:shortDescription>Ruggeri, M., Pantini, S., Rigamonti, L. (2019). Assessing the impact of selective demolition techniques on C&amp;D waste management. IOP Conference Series: Earth and Environmental Science, 296(1), 012005.</common:shortDescription>
+      </referenceToLCAMethodDetails>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <referenceToDataSource type="source data set" refObjectId="8540c9b6-fcc5-4947-adbc-d13137afe811" version="01.00.000" uri="../sources/8540c9b6-fcc5-4947-adbc-d13137afe811.xml">
+        <common:shortDescription>Carollo F. (2023). Circularity in construction and demolition waste management chain, Ph.D. Dissertation (Tutored by Rigamonti L., Ceruti F.). Politecnico di Milano.  Background datasets from the EcoInvent database cut-off (v. 3.8) were used for the LCA study. </common:shortDescription>
+      </referenceToDataSource>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>All relevant flows quantified</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Not reviewed">
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Completeness" value="Good"/>
+          <common:dataQualityIndicator name="Precision" value="Good"/>
+          <common:dataQualityIndicator name="Methodological appropriateness and consistency" value="Good"/>
+          <common:dataQualityIndicator name="Overall quality" value="Good"/>
+        </common:dataQualityIndicators>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="88d4f8d9-60f9-43d1-9ea3-329c10d7d727" uri="../sources/88d4f8d9-60f9-43d1-9ea3-329c10d7d727.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Fully compliant</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Fully compliant</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="d92a1a12-2545-49e2-a585-55c259997756" uri="../sources/d92a1a12-2545-49e2-a585-55c259997756.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Fully compliant</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Fully compliant</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="01807191-e156-421a-b2f6-aa609ea534f4" uri="../contacts/01807191-e156-421a-b2f6-aa609ea534f4.xml">
+        <common:shortDescription xml:lang="en">EPLCA project team</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Arcadia – PON Governance e Capacità istituzionali 2014-2020 (PhD Project of Federica Carollo). </common:project>
+    </common:commissionerAndGoal>
+    <dataGenerator>
+      <common:referenceToPersonOrEntityGeneratingTheDataSet refObjectId="a507e62e-b655-4652-8145-f53e45c4077d" type="contact data set" uri="../sources/a507e62e-b655-4652-8145-f53e45c4077d.xml" version="01.00.000">
+        <common:shortDescription>Federica Carollo (Politecnico di Milano) </common:shortDescription>
+      </common:referenceToPersonOrEntityGeneratingTheDataSet>
+    </dataGenerator>
+    <dataEntryBy>
+      <common:timeStamp>2022-12-03T13:18:48.81+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="a97a0155-0234-4b87-b4ce-a45da52f2a40" uri="../sources/a97a0155-0234-4b87-b4ce-a45da52f2a40.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2011-02-26T14:39:15.687Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/40d8e54d-91fa-458d-b9df-64db8a68dd4c.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="565029d1-b7e8-431c-a11f-9866071b8e62" type="contact data set" uri="../sources/565029d1-b7e8-431c-a11f-9866071b8e62.xml" version="01.00.000">
+        <common:shortDescription>ENEA-ARCADIA</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+      <common:accessRestrictions>Type of license: Open Database Licence (ODbL). </common:accessRestrictions>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="c7da9f85-5ba8-45c1-8471-3b010b888f9e" uri="../flows/c7da9f85-5ba8-45c1-8471-3b010b888f9e.xml">
+        <common:shortDescription xml:lang="en">Iron and Steel, recycling</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0000000E+0</meanAmount>
+      <resultingAmount>1.0000000E+0</resultingAmount>
+      <generalComment>The dataset relates to recycling 1 kg of iron and steel in Italy. 
+Reference: Ruggeri et al, 2019
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="6a47f59c-a8f8-4a92-9e97-a1b3a7183941" uri="../flows/6a47f59c-a8f8-4a92-9e97-a1b3a7183941.xml">
+        <common:shortDescription xml:lang="en">ARCADIA - steel, low-alloyed {Europe without Switzerland and Austria}| steel production, electric, low-alloyed | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>8.2700000E-1</meanAmount>
+      <resultingAmount>8.2700000E-1</resultingAmount>
+      <generalComment>[Amount=0,94*0,88]
+94% of waste goes for recycling.
+Considering a recycling efficiency of 88% (calculated by dividing 1 by the iron scraps sorted declared in the module which is 1.13). The original dataset "steel, low-alloyed {Europe without Switzerland and Austria}| steel production, electric, low-alloyed | Cut-off, U" was modified as follows:  the steel scraps input was eliminated to avoid double counting (Ref: Ruggeri et al, 2019).
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="cb8d500d-21bb-46e4-8273-5fc0e3e53535" uri="../flows/cb8d500d-21bb-46e4-8273-5fc0e3e53535.xml">
+        <common:shortDescription xml:lang="en">ARCADIA - Iron scrap, sorted, pressed {RER}| sorting and pressing of iron scrap | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>9.4000000E-1</meanAmount>
+      <resultingAmount>9.4000000E-1</resultingAmount>
+      <generalComment>0.94 -&gt; because we are considering the output of the sorting process. The original dataset "Iron scrap, sorted, pressed {RER}| sorting and pressing of iron scrap | Cut-off, U" was modified as follows:  the iron scraps input was eliminated to avoid double counting.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="3">
+      <referenceToFlowDataSet type="flow data set" refObjectId="25166f73-c229-4271-b01e-082fbc161a01" uri="../flows/25166f73-c229-4271-b01e-082fbc161a01.xml">
+        <common:shortDescription xml:lang="en">Steel, low-alloyed {RER}| steel production, converter, low-alloyed | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>8.2700000E-1</meanAmount>
+      <resultingAmount>8.2700000E-1</resultingAmount>
+      <generalComment>[Amount=0,94*0,88]
+Avoided production of liquid steel with a substitution ratio assumed of 1:1
+(Ref: Ruggeri et al, 2019)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="4">
+      <referenceToFlowDataSet type="flow data set" refObjectId="a3123ae9-b862-4ec0-8a6a-912544956f58" uri="../flows/a3123ae9-b862-4ec0-8a6a-912544956f58.xml">
+        <common:shortDescription xml:lang="en">Scrap steel {Europe without Switzerland}| treatment of scrap steel, municipal incineration | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>6.0000000E-2</meanAmount>
+      <resultingAmount>6.0000000E-2</resultingAmount>
+      <generalComment>Incineration of iron scraps residues (Ref: Ruggeri et al, 2019)
+</generalComment>
+    </exchange>
+  </exchanges>
+</processDataSet>

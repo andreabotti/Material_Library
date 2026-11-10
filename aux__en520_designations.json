@@ -1,0 +1,58 @@
+{
+  "_doc": "EN 520:2004+A1:2009 board-type reference for the Building boards Tech. Details section (libs/lib_en520.py). Product designations come from S__Comments ('Type D E F H1 I R'); 'overrides' replaces that for products whose comment is missing or which are not EN 520 boards.",
+  "standard": "EN 520:2004+A1:2009",
+  "types": {
+    "A":  {"name": "Standard board", "req": "Face suitable for gypsum plaster or decoration; base requirements only"},
+    "D":  {"name": "Controlled density", "req": "Density ≥ 800 kg/m³"},
+    "E":  {"name": "Sheathing board", "req": "For external walls, not permanently exposed to weather. Total water absorption ≤ 10 %, water-vapour resistance factor µ ≤ 25"},
+    "F":  {"name": "Improved core cohesion at high temperature", "req": "Core contains mineral fibres/additives; specimen must not break in the high-temperature core-cohesion test"},
+    "H1": {"name": "Reduced water absorption rate", "req": "Total water absorption ≤ 5 %, surface absorption ≤ 180 g/m²"},
+    "H2": {"name": "Reduced water absorption rate", "req": "Total water absorption ≤ 10 %, surface absorption ≤ 220 g/m²"},
+    "H3": {"name": "Reduced water absorption rate", "req": "Total water absorption ≤ 25 %, surface absorption ≤ 300 g/m²"},
+    "I":  {"name": "Enhanced surface hardness", "req": "Ball-impact indentation diameter ≤ 15 mm"},
+    "P":  {"name": "Base board", "req": "Face intended to receive gypsum plaster; may be perforated"},
+    "R":  {"name": "Enhanced strength", "req": "Flexural breaking load ≥ 58·t N longitudinal, ≥ 24·t N transverse (t = thickness, mm)"}
+  },
+  "glass_mat": {
+    "standard": "EN 15283-1",
+    "note": "Glass-mat gypsum board (GM): designated under EN 15283-1, not EN 520. The suffix letters have the same meaning as the EN 520 types; limits are set by EN 15283-1."
+  },
+  "overrides": {
+    "BBW__GYP__0035": {
+      "standard": "EN 15283-2",
+      "designation": "GF (gypsum fibre board)",
+      "note": "Gypsum fibre board — outside the scope of EN 520. Rigidur boards are CE-marked under EN 15283-2 (Rigidur H: GF-C1-I-W2); check the DoP for this product's exact designation.",
+      "source": "https://www.rigips.de/Dokumente/leistungserklarung/rigidur-h-10-le-2504-en.pdf"
+    },
+    "BBW__GYP__0097": {
+      "standard": "EN 15283-2",
+      "designation": "GF-C1-I-W2",
+      "note": "Gypsum fibre board — outside the scope of EN 520 (CE marking under EN 15283-2). Designation as commonly declared for fermacell gypsum fibreboard; confirm on the DoP.",
+      "source": ""
+    },
+    "BBW__FIC__0099": {
+      "standard": "ETA 22/0753",
+      "designation": "",
+      "note": "Lightweight cement board reinforced with glass-fibre mesh — not an EN 520 product. CE-marked via European Technical Assessment ETA 22/0753.",
+      "source": "https://www.fassabortolo.it/documents/10179/587481/FASSA_STE_IT_GYPSOTECH-EXTERNA-LIGHT_2021-04.pdf/d979e52c-0629-4c5e-8bff-cc2def590ddb"
+    },
+    "BBW__FIC__0100": {
+      "standard": "ETA-07/0173",
+      "designation": "EN 12467 category B",
+      "note": "Cement board — not an EN 520 product. CE-marked via ETA-07/0173 (DIBt, EAD 210024-00-0504); classified category B per EN 12467.",
+      "source": "https://www.dibt.de/pdf_storage/2017/ETA-07!0173(8.05.04-38!17)e.pdf"
+    },
+    "BBW__FIC__0101": {
+      "standard": "ETA",
+      "designation": "",
+      "note": "Cement board — not an EN 520 product. Knauf AQUAPANEL boards are CE-marked via a European Technical Assessment; check the DoP for the reference.",
+      "source": ""
+    },
+    "BBW__FIC__0103": {
+      "standard": "EN 12467",
+      "designation": "NT, class 1, category B",
+      "note": "Cement-based board — not an EN 520 product. CE-marked under EN 12467 (fibre-cement flat sheets).",
+      "source": "https://www.gyproc.ie/documents/dop/dop-gyproc-ireland-plasterboards-aquaroc.pdf"
+    }
+  }
+}

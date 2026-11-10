@@ -1,0 +1,682 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{color-scheme:light dark}
+  html,body{margin:0}
+  body{font:14px system-ui,sans-serif}
+  img{max-width:100%}
+  [hidden]{display:none!important}
+</style>
+<title>MatLib Optimisation Register</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --accent:#2a7d2e;
+    --accent-deep:#1b5320;
+    --accent-wash:#e8f1e6;
+    --ink:#17211a;
+    --ink-2:#39463c;
+    --muted:#5d6b60;
+    --faint:#8b978e;
+    --ground:#ffffff;
+    --surface:#f4f7f3;
+    --rule:#dae2db;
+    --rule-hard:#b9c6bb;
+    --open:#b45309;
+    --open-wash:#fdf1e3;
+    --fixed:#2a7d2e;
+    --fixed-wash:#e8f1e6;
+    --correct:#8f3f1f;
+    --correct-wash:#fbeee7;
+    --shadow:0 1px 2px rgba(23,33,26,.05);
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --accent:#6cc172;
+      --accent-deep:#9ad79e;
+      --accent-wash:#1a2a1c;
+      --ink:#e6ece7;
+      --ink-2:#c2cec4;
+      --muted:#93a396;
+      --faint:#6f7f73;
+      --ground:#0e1511;
+      --surface:#16201a;
+      --rule:#27342a;
+      --rule-hard:#3a4b3e;
+      --open:#e0a260;
+      --open-wash:#2a2015;
+      --fixed:#6cc172;
+      --fixed-wash:#1a2a1c;
+      --correct:#d99070;
+      --correct-wash:#2a1a14;
+      --shadow:0 1px 2px rgba(0,0,0,.3);
+    }
+  }
+  :root[data-theme="dark"]{
+    --accent:#6cc172; --accent-deep:#9ad79e; --accent-wash:#1a2a1c;
+    --ink:#e6ece7; --ink-2:#c2cec4; --muted:#93a396; --faint:#6f7f73;
+    --ground:#0e1511; --surface:#16201a; --rule:#27342a; --rule-hard:#3a4b3e;
+    --open:#e0a260; --open-wash:#2a2015; --fixed:#6cc172; --fixed-wash:#1a2a1c;
+    --correct:#d99070; --correct-wash:#2a1a14; --shadow:0 1px 2px rgba(0,0,0,.3);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--ground); color:var(--ink);
+    font-family:"Source Serif 4",Georgia,"Times New Roman",serif;
+    font-size:17px; line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1000px; margin:0 auto; padding-inline:24px; padding-block:0 72px}
+  h1,h2,h3,.ui{font-family:Archivo,"Helvetica Neue",Arial,sans-serif}
+  .mono,code,.num{font-family:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace}
+  code{
+    font-size:.86em; background:var(--surface); color:var(--ink-2);
+    padding:.1em .34em; border-radius:3px; border:1px solid var(--rule);
+    word-break:break-word;
+  }
+  p{margin:0 0 1em; max-width:68ch}
+  a{color:var(--accent-deep); text-decoration-thickness:1px; text-underline-offset:2px}
+
+  /* ---- masthead ---- */
+  header.mast{border-bottom:2px solid var(--ink); padding-block:44px 22px; margin-bottom:8px}
+  .eyebrow{
+    font-family:Archivo,sans-serif; font-size:11.5px; font-weight:600;
+    letter-spacing:.16em; text-transform:uppercase; color:var(--accent-deep);
+    display:flex; flex-wrap:wrap; gap:10px; align-items:baseline; margin-bottom:18px;
+  }
+  .eyebrow .sep{color:var(--rule-hard)}
+  h1{
+    font-size:clamp(34px,6.2vw,54px); font-weight:700; line-height:1.03;
+    letter-spacing:-.022em; margin:0 0 14px; text-wrap:balance; color:var(--ink);
+  }
+  .standfirst{font-size:19px; color:var(--ink-2); max-width:60ch; margin:0 0 20px}
+  .mast-meta{
+    display:flex; flex-wrap:wrap; gap:8px 26px; font-family:"IBM Plex Mono",monospace;
+    font-size:12.5px; color:var(--muted); padding-top:6px; border-top:1px solid var(--rule);
+  }
+  .mast-meta b{color:var(--ink-2); font-weight:500}
+
+  /* ---- section chrome ---- */
+  section{margin-top:56px}
+  h2{
+    font-size:13px; font-weight:600; letter-spacing:.15em; text-transform:uppercase;
+    color:var(--accent-deep); margin:0 0 4px;
+  }
+  .h2-rule{height:1px; background:var(--rule-hard); margin-bottom:26px}
+  .lede{font-size:18px; color:var(--ink-2); max-width:66ch; margin-bottom:26px}
+
+  /* ---- headline ledger ---- */
+  .ledger{border-top:1px solid var(--rule)}
+  .lrow{
+    display:grid; grid-template-columns:1fr auto auto auto; gap:6px 18px;
+    align-items:baseline; padding:15px 0; border-bottom:1px solid var(--rule);
+  }
+  .lrow .what{font-size:16px; color:var(--ink)}
+  .lrow .what small{display:block; font-size:12.5px; color:var(--faint); font-family:Archivo,sans-serif}
+  .lrow .from,.lrow .to{
+    font-family:"IBM Plex Mono",monospace; font-size:15px; font-variant-numeric:tabular-nums;
+    text-align:right; min-width:8.5ch;
+  }
+  .lrow .from{color:var(--faint); text-decoration:line-through; text-decoration-color:var(--rule-hard)}
+  .lrow .to{color:var(--ink); font-weight:600}
+  .factor{
+    font-family:Archivo,sans-serif; font-size:11.5px; font-weight:600; letter-spacing:.04em;
+    color:var(--accent-deep); background:var(--accent-wash); border:1px solid var(--rule);
+    padding:2px 8px; border-radius:99px; white-space:nowrap; min-width:8ch; text-align:center;
+  }
+  @media (max-width:620px){
+    .lrow{grid-template-columns:1fr auto; }
+    .lrow .what{grid-column:1/-1}
+    .lrow .factor{justify-self:end}
+  }
+
+  /* ---- log chart ---- */
+  .chart{background:var(--surface); border:1px solid var(--rule); border-radius:4px; padding:22px 20px 14px}
+  .chart-title{font-family:Archivo,sans-serif; font-size:13px; font-weight:600; color:var(--ink); margin-bottom:3px}
+  .chart-sub{font-family:Archivo,sans-serif; font-size:12px; color:var(--faint); margin-bottom:20px}
+  .bar-row{display:grid; grid-template-columns:200px 1fr; gap:14px; align-items:center; margin-bottom:9px}
+  .bar-lab{font-family:Archivo,sans-serif; font-size:12.5px; color:var(--ink-2); text-align:right; line-height:1.25}
+  .bar-track{position:relative; height:26px}
+  .bar-fill{
+    position:absolute; left:0; top:4px; height:18px; background:var(--accent);
+    border-radius:0 2px 2px 0; display:flex; align-items:center; justify-content:flex-end;
+    padding-right:7px;
+  }
+  .bar-fill.final{background:var(--accent-deep)}
+  .bar-val{
+    font-family:"IBM Plex Mono",monospace; font-size:11.5px; font-weight:600;
+    color:#fff; font-variant-numeric:tabular-nums; white-space:nowrap;
+  }
+  :root[data-theme="dark"] .bar-val{color:#0e1511}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .bar-val{color:#0e1511}}
+  .bar-val.outside{color:var(--ink); position:absolute; left:calc(100% + 7px); top:50%; transform:translateY(-50%)}
+  .axis{position:relative; height:22px; margin-left:214px; border-top:1px solid var(--rule-hard); margin-top:6px}
+  .tick{position:absolute; top:0; font-family:"IBM Plex Mono",monospace; font-size:10.5px; color:var(--faint); transform:translateX(-50%); padding-top:4px}
+  .tick::before{content:""; position:absolute; top:0; left:50%; width:1px; height:4px; background:var(--rule-hard)}
+  @media (max-width:640px){
+    .bar-row{grid-template-columns:1fr; gap:2px; margin-bottom:14px}
+    .bar-lab{text-align:left}
+    .axis{margin-left:0}
+  }
+
+  /* ---- findings register ---- */
+  .finding{
+    display:grid; grid-template-columns:52px 1fr; gap:0 20px;
+    padding:26px 0; border-top:1px solid var(--rule);
+  }
+  .finding:first-of-type{border-top:2px solid var(--ink)}
+  .fnum{
+    font-family:Archivo,sans-serif; font-size:26px; font-weight:700; line-height:1;
+    color:var(--rule-hard); font-variant-numeric:tabular-nums; padding-top:2px;
+  }
+  .finding.done .fnum{color:var(--accent)}
+  .fhead{display:flex; flex-wrap:wrap; gap:10px; align-items:baseline; margin-bottom:8px}
+  h3{font-size:21px; font-weight:600; letter-spacing:-.012em; margin:0; color:var(--ink); text-wrap:balance}
+  .chip{
+    font-family:Archivo,sans-serif; font-size:10.5px; font-weight:600; letter-spacing:.1em;
+    text-transform:uppercase; padding:3px 9px; border-radius:3px; white-space:nowrap;
+  }
+  .chip.fixed{color:var(--fixed); background:var(--fixed-wash); border:1px solid var(--fixed)}
+  .chip.open{color:var(--open); background:var(--open-wash); border:1px solid var(--open)}
+  .chip.note{color:var(--muted); background:var(--surface); border:1px solid var(--rule-hard)}
+  .finding p{font-size:16.5px}
+  .finding p:last-child{margin-bottom:0}
+  .did{
+    border-left:2px solid var(--accent); padding:2px 0 2px 16px; margin:14px 0 0;
+    background:none;
+  }
+  .did .did-lab{
+    font-family:Archivo,sans-serif; font-size:10.5px; font-weight:600; letter-spacing:.12em;
+    text-transform:uppercase; color:var(--accent-deep); display:block; margin-bottom:5px;
+  }
+  .did p{font-size:16px; color:var(--ink-2)}
+  @media (max-width:560px){
+    .finding{grid-template-columns:1fr; gap:0}
+    .fnum{font-size:15px; margin-bottom:4px}
+  }
+
+  /* ---- evidence strip ---- */
+  .ev{
+    display:flex; flex-wrap:wrap; gap:0; margin-top:14px;
+    border:1px solid var(--rule); border-radius:3px; overflow:hidden;
+  }
+  .ev div{
+    flex:1 1 130px; padding:9px 13px; border-right:1px solid var(--rule); background:var(--surface);
+  }
+  .ev div:last-child{border-right:none}
+  .ev dt{
+    font-family:Archivo,sans-serif; font-size:10px; font-weight:600; letter-spacing:.09em;
+    text-transform:uppercase; color:var(--faint); margin-bottom:2px;
+  }
+  .ev dd{
+    margin:0; font-family:"IBM Plex Mono",monospace; font-size:14px; font-weight:500;
+    color:var(--ink); font-variant-numeric:tabular-nums;
+  }
+
+  /* ---- corrections ---- */
+  .corr{
+    border:1px solid var(--correct); border-left-width:3px; border-radius:3px;
+    background:var(--correct-wash); padding:20px 22px; margin-bottom:14px;
+  }
+  .corr h3{font-size:17px; color:var(--correct); margin-bottom:6px}
+  .corr p{font-size:16px; color:var(--ink-2); margin-bottom:0}
+  .corr p + p{margin-top:.7em}
+
+  /* ---- table ---- */
+  .tbl-wrap{overflow-x:auto; border:1px solid var(--rule); border-radius:3px}
+  table{border-collapse:collapse; width:100%; font-size:14.5px; min-width:520px}
+  th{
+    font-family:Archivo,sans-serif; font-size:10.5px; font-weight:600; letter-spacing:.1em;
+    text-transform:uppercase; color:var(--faint); text-align:left;
+    padding:10px 14px; border-bottom:1px solid var(--rule-hard); background:var(--surface);
+  }
+  td{padding:11px 14px; border-bottom:1px solid var(--rule); vertical-align:top; color:var(--ink-2)}
+  tr:last-child td{border-bottom:none}
+  td.f{font-family:"IBM Plex Mono",monospace; font-size:13px; color:var(--ink); white-space:nowrap}
+
+  /* ---- verify list ---- */
+  ul.checks{list-style:none; padding:0; margin:0; border-top:1px solid var(--rule)}
+  ul.checks li{
+    padding:11px 0 11px 28px; border-bottom:1px solid var(--rule); position:relative;
+    font-size:16px; color:var(--ink-2); max-width:72ch;
+  }
+  ul.checks li::before{
+    content:"✓"; position:absolute; left:2px; top:11px; color:var(--accent);
+    font-family:Archivo,sans-serif; font-weight:700; font-size:14px;
+  }
+  .runbox{
+    margin-top:18px; background:var(--surface); border:1px solid var(--rule); border-radius:3px;
+    padding:14px 16px; font-family:"IBM Plex Mono",monospace; font-size:13px;
+    color:var(--ink-2); overflow-x:auto; white-space:pre; line-height:1.7;
+  }
+  footer{
+    margin-top:64px; padding-top:20px; border-top:1px solid var(--rule);
+    font-family:Archivo,sans-serif; font-size:12.5px; color:var(--faint);
+    display:flex; flex-wrap:wrap; gap:6px 20px; justify-content:space-between;
+  }
+</style>
+
+</head>
+<body>
+<div class="wrap">
+
+<header class="mast">
+  <div class="eyebrow">
+    <span>EETRA Material Library</span><span class="sep">/</span>
+    <span>Performance Audit</span><span class="sep">/</span>
+    <span>2026.07 build</span>
+  </div>
+  <h1>Optimisation Register</h1>
+  <p class="standfirst">Nine findings across speed, storage and usability in the MatLib Streamlit app. Six implemented and measured; two open, one that could not be reproduced — plus two follow-on questions answered since.</p>
+  <div class="mast-meta">
+    <span><b>Scope</b> app.py · libs/ · pages/ · 02_html/</span>
+    <span><b>Dataset</b> 1,609 products × 135 columns</span>
+    <span><b>Streamlit</b> 1.60.0</span>
+    <span><b>Dated</b> 15–16 Sep 2026</span>
+  </div>
+</header>
+
+<section>
+  <h2>Headline</h2><div class="h2-rule"></div>
+  <p class="lede">All figures measured against <code>01_data/base_data.parquet</code> on the real catalogue, not estimated. Ratios this extreme don't plot honestly on a linear axis, so they're given as a ledger.</p>
+
+  <div class="ledger">
+    <div class="lrow">
+      <div class="what">Image bytes in the catalogue payload<small>Finding 1 — base64 inlined into the iframe srcdoc</small></div>
+      <div class="from">315.8 MB</div><div class="to">0.128 MB</div>
+      <div class="factor">2,400× less</div>
+    </div>
+    <div class="lrow">
+      <div class="what">Catalogue payload build, per rerun<small>Finding 2 — rebuilt on every keystroke and toggle</small></div>
+      <div class="from">14.01 s</div><div class="to">0.06 s</div>
+      <div class="factor">233× faster</div>
+    </div>
+    <div class="lrow">
+      <div class="what">Filesystem calls, cold render<small>Finding 3 — OneDrive-synced working directory</small></div>
+      <div class="from">11,711</div><div class="to">133</div>
+      <div class="factor">88× fewer</div>
+    </div>
+    <div class="lrow">
+      <div class="what">Image caches on disk<small>Finding 6 — three stores, three key schemes</small></div>
+      <div class="from">3 · 115 MB</div><div class="to">2 · 59 MB</div>
+      <div class="factor">56 MB freed</div>
+    </div>
+    <div class="lrow">
+      <div class="what">Copies of the dataset on disk<small>Finding 5 — four byte-identical parquets</small></div>
+      <div class="from">4 files</div><div class="to">2 files</div>
+      <div class="factor">one canonical</div>
+    </div>
+    <div class="lrow">
+      <div class="what">Declared dependencies<small>Finding 9 — imports missing from requirements.txt</small></div>
+      <div class="from">10 of 23</div><div class="to">23 of 23</div>
+      <div class="factor">deploys clean</div>
+    </div>
+    <div class="lrow">
+      <div class="what">Thumbnail bytes for a full grid<small>Image tiers — one served size split into two</small></div>
+      <div class="from">5.19 MB</div><div class="to">3.21 MB</div>
+      <div class="factor">38% lighter</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Where the build time went</h2><div class="h2-rule"></div>
+  <p class="lede">Finding 2 came apart in five stages. Each was verified byte-identical against the previous payload before moving on.</p>
+
+  <div class="chart">
+    <div class="chart-title">fn336 catalogue payload build — 1,609 products</div>
+    <div class="chart-sub">Logarithmic scale · median of three runs · lower is better</div>
+
+    <div class="bar-row">
+      <div class="bar-lab">Baseline</div>
+      <div class="bar-track"><div class="bar-fill" style="width:95.3%"><span class="bar-val">14.01 s</span></div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-lab">+ badge memo, tag map,<br>field-visibility memo</div>
+      <div class="bar-track"><div class="bar-fill" style="width:80.6%"><span class="bar-val">4.59 s</span></div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-lab">+ object-dtype rows,<br>doc-URL columns</div>
+      <div class="bar-track"><div class="bar-fill" style="width:68.4%"><span class="bar-val">1.81 s</span></div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-lab">+ bulk rawFields</div>
+      <div class="bar-track"><div class="bar-fill" style="width:63.0%"><span class="bar-val">1.20 s</span></div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-lab">+ payload cache <em>(rerun)</em></div>
+      <div class="bar-track"><div class="bar-fill final" style="width:23.6%"><span class="bar-val">0.06 s</span></div></div>
+    </div>
+
+    <div class="axis">
+      <span class="tick" style="left:0%">0.01s</span>
+      <span class="tick" style="left:30.3%">0.1s</span>
+      <span class="tick" style="left:60.6%">1s</span>
+      <span class="tick" style="left:90.9%">10s</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Findings 1–3, 5, 6, 9 · implemented</h2><div class="h2-rule"></div>
+
+  <article class="finding done">
+    <div class="fnum">01</div>
+    <div>
+      <div class="fhead"><h3>The catalogue shipped ~300 MB of base64 images</h3><span class="chip fixed">Fixed</span></div>
+      <p>Only the last-resort live-fetch branch wrote to <code>static/img_cache</code>. Every local-disk branch called <code>image_path_to_data_uri()</code>, which read the <em>full-resolution original</em> and base64-inlined it into the iframe srcdoc — for a 100&nbsp;px image band. Two bugs compounded it: no downscaling (median source 51&nbsp;KB, largest 1&nbsp;MB), and a memo keyed on <code>(url, eetra_id, name)</code>, so 552 distinct files were re-encoded once per each of the 1,580 rows referencing them.</p>
+      <div class="did"><span class="did-lab">What changed</span>
+      <p>All branches now route through <code>static/img_cache</code>: downscaled once to the existing <code>theme.json → image_band.fetch_max_*</code> budget (300×300), written as WebP with a per-thread temp file and <code>os.replace</code>, and referenced as a short URL. The memo keys on the image URL alone. No JavaScript changed — <code>productImageSrc → appStaticUrl</code> already resolved <code>/app/…</code> paths and the tags already carried <code>loading="lazy"</code>.</p></div>
+      <dl class="ev">
+        <div><dt>Payload</dt><dd>315.8 → 0.128 MB</dd></div>
+        <div><dt>Rows served locally</dt><dd>21 → 1,587</dd></div>
+        <div><dt>Thumbnails on disk</dt><dd>6.4 MB</dd></div>
+        <div><dt>Conversion, one-off</dt><dd>16.1 s</dd></div>
+      </dl>
+    </div>
+  </article>
+
+  <article class="finding done">
+    <div class="fnum">02</div>
+    <div>
+      <div class="fhead"><h3>The payload build ran on every rerun</h3><span class="chip fixed">Fixed</span></div>
+      <p><code>fn336_render_catalogue_flipcard</code> rebuilt ~600 lines of payload on every Catalogue rerun — each search keystroke, tag toggle and document click. Profiling found four distinct causes, not one.</p>
+      <div class="did"><span class="did-lab">What changed</span>
+      <p><b>Badge composite:</b> <code>fn346_voc_cert_composite_data_uri</code> was 7.9&nbsp;s of the profile — 1,198 calls re-opening two PNGs, resizing and encoding, for just <em>three</em> reachable results. Memoized on the derived kinds tuple, so "M1", "M1 class" and "M1 classification" share one entry.</p>
+      <p><b>Tags:</b> one <code>groupby</code> pass replaced <code>fn407_get_tags_for_product</code> per row, which was copying the whole tags frame and re-resolving its path 1,609 times.</p>
+      <p><b>Row extraction:</b> the frame arrives as 125 <code>string</code> columns and 10 <code>Float64</code>, so pandas rebuilt the common dtype across all 135 on <em>every</em> row access — <code>find_common_type</code> alone was 8&nbsp;s. One <code>astype(object)</code> (5&nbsp;ms) removes the search entirely.</p>
+      <p><b>The cache:</b> the build moved into <code>_fn336_cached_catalogue_payload</code>, keyed on the frame plus a config signature covering field visibility, display params and the tags mtime. Only theme/session CSS, <code>cols</code>, <code>height</code>, <code>open_product</code> and <code>doc_preview</code> stay live per rerun.</p></div>
+      <dl class="ev">
+        <div><dt>Rerun</dt><dd>14.01 → 0.06 s</dd></div>
+        <div><dt>Full render</dt><dd>0.11 s</dd></div>
+        <div><dt>Filter change</dt><dd>0.33 s</dd></div>
+        <div><dt>Payload</dt><dd>byte-identical</dd></div>
+      </dl>
+    </div>
+  </article>
+
+  <article class="finding done">
+    <div class="fnum">03</div>
+    <div>
+      <div class="fhead"><h3>Filesystem probing on a OneDrive volume</h3><span class="chip fixed">Fixed</span><span class="chip note">Estimate corrected</span></div>
+      <p>Three media resolvers shared one shape: build a candidate filename, <code>is_file()</code>, repeat across five or six extensions and up to two directories. <code>static_img_cache_url</code> alone was up to eight probes per call, called up to three times per image — and Finding 1 had made it the primary lookup, so this was partly self-inflicted.</p>
+      <div class="did"><span class="did-lab">What changed</span>
+      <p><code>_dir_file_index()</code> lists a directory once into a dict and answers every candidate from it, with the freshness check itself rate-limited to 2&nbsp;s — a first attempt that re-stat'd the directory per lookup only traded eight syscalls for one. Files this process writes register immediately, so the served store is never stale for its own writes. <code>fn_sync_static_doc_links</code> and <code>_static_doc_file_info</code> moved to <code>os.scandir</code>, whose directory enumeration already carries size and mtime.</p></div>
+      <dl class="ev">
+        <div><dt>Syscalls</dt><dd>11,711 → 133</dd></div>
+        <div><dt>Doc sync</dt><dd>~150 → 8 ms</dd></div>
+        <div><dt>Cold render</dt><dd>4.02 → 3.73 s</dd></div>
+        <div><dt>Real saving</dt><dd>~0.3 s</dd></div>
+      </dl>
+    </div>
+  </article>
+
+  <article class="finding done">
+    <div class="fnum">06</div>
+    <div>
+      <div class="fhead"><h3>Three parallel image caches</h3><span class="chip fixed">Fixed</span></div>
+      <p><code>01_data/img</code> (pipeline originals, <code>sha256[:16]</code>), <code>.cache/images</code> (fetch cache, <code>md5</code> with a <code>__catalogue</code> filename variant) and <code>static/img_cache</code> (served thumbnails, <code>md5</code>) held overlapping content under three key schemes. Every caller of <code>fn110_cached_fetch_image</code> passes <code>profile="catalogue"</code> — the legacy 300×160 profile had no callers left, so 238 of those files were from a retired code path.</p>
+      <div class="did"><span class="did-lab">What changed</span>
+      <p><code>fn110</code>'s fetch tier now reads and writes <code>static/img_cache</code>, the same store the catalogue serves from. That leaves two directories with clearly separate jobs: pipeline source of truth, and served thumbnails. <code>04_tools/10_consolidate_image_caches.py</code> checks the legacy store for anything unique before removal — it found 7 candidates, all of which turned out to be 50×50 CDN error graphics that the app's own <code>catalogue_image_cache_is_valid</code> rejects. Nothing was lost; <code>.cache/images</code> was deleted.</p></div>
+      <dl class="ev">
+        <div><dt>Stores</dt><dd>3 → 2</dd></div>
+        <div><dt>Freed</dt><dd>55.3 MB</dd></div>
+        <div><dt>Unique images lost</dt><dd>0</dd></div>
+        <div><dt>Coverage</dt><dd>unchanged</dd></div>
+      </dl>
+    </div>
+  </article>
+
+  <article class="finding done">
+    <div class="fnum">05</div>
+    <div>
+      <div class="fhead"><h3>Four byte-identical copies of the dataset</h3><span class="chip fixed">Fixed</span></div>
+      <p><code>base_data.parquet</code>, <code>live_data.parquet</code> and copies of both under <code>01_data/</code> all hashed to <code>5f1736c1…</code>. <code>live_data.parquet</code> was a <em>materialised</em> base ⊕ edits merge, rewritten after every save so that modules reading it directly — the document-path map, the tags layer, the manufacturers page and four offline tools — would not have to merge for themselves. A third copy of rows that already lived in two files, and a way for a failed write to serve stale data silently.</p>
+      <div class="did"><span class="did-lab">What changed</span>
+      <p>Two files remain, both in <code>01_data/</code> beside the rest of the project's data: <code>base_data.parquet</code> (the Excel conversion, written only by the pipeline) and <code>edits_data.parquet</code> (the append-only log of everything done through the app's form). The merge is no longer stored — <code>fn159_effective_dataset()</code> derives it on read, cached on both files' mtimes, and every former direct reader now calls it. The Excel pipeline stops emitting the duplicates. Path resolution prefers <code>01_data/</code> and falls back to the old root location, so an un-migrated checkout still starts.</p></div>
+      <dl class="ev">
+        <div><dt>Files</dt><dd>4 → 2</dd></div>
+        <div><dt>Readers repointed</dt><dd>7</dd></div>
+        <div><dt>Edit round-trip</dt><dd>verified</dd></div>
+        <div><dt>Payload</dt><dd>byte-identical</dd></div>
+      </dl>
+    </div>
+  </article>
+
+  <article class="finding done">
+    <div class="fnum">09</div>
+    <div>
+      <div class="fhead"><h3><code>requirements.txt</code> was missing half its dependencies</h3><span class="chip fixed">Fixed</span></div>
+      <p>Ten of the twenty-three packages the code imports were declared. A clean deploy failed on the first chart. Rebuilt by walking every import across <code>app.py</code>, <code>libs/</code>, <code>pages/</code>, <code>04_tools/</code> and <code>05_tests/</code> and mapping each module to its distribution, rather than by memory.</p>
+      <div class="did"><span class="did-lab">What changed</span>
+      <p>Added <code>pillow</code>, <code>numpy</code>, <code>pyarrow</code>, <code>plotly</code>, <code>altair</code>, <code>pydeck</code>, <code>requests</code>, <code>urllib3</code>, <code>orjson</code>, <code>msal</code>, <code>Office365-REST-Python-Client</code>, <code>duckdb</code>, <code>openai</code> and <code>botocore</code>. Removed <code>pycountry</code>, listed for a long time and imported nowhere. <code>soda4lca</code> is documented as deliberately optional — it powers the ECOportal Ingest tab only and is imported inside a try.</p>
+      <p>Two things surfaced while checking. <code>pyarrow</code> was never declared even though every parquet read depends on it. And <code>portalocker</code>, which locks <code>tags.parquet</code> during writes, <em>was</em> declared but is <b>not installed</b> in the current environment — so those writes run unlocked today and two concurrent saves can interleave. Installing it closes a real hazard.</p></div>
+      <dl class="ev">
+        <div><dt>Declared</dt><dd>10 → 23</dd></div>
+        <div><dt>Floors verified</dt><dd>22 of 23 met</dd></div>
+        <div><dt>Unmet</dt><dd>portalocker</dd></div>
+        <div><dt>Dead entries</dt><dd>1 removed</dd></div>
+      </dl>
+    </div>
+  </article>
+</section>
+
+<section>
+  <h2>Follow-on work</h2><div class="h2-rule"></div>
+  <p class="lede">Two questions asked after the nine findings were closed. Neither was on the original list; both changed the code.</p>
+
+  <article class="finding done">
+    <div class="fnum">A</div>
+    <div>
+      <div class="fhead"><h3>Can <code>static/</code> fold into <code>01_data/</code>?</h3><span class="chip note">Evaluated — no</span></div>
+      <p>Read out of Streamlit 1.60's own source rather than assumed. Three findings, any one of which settles it:</p>
+      <p><b>The name and location are hardcoded.</b> <code>file_util.get_app_static_dir()</code> is literally <code>Path(app.py).parent / "static"</code>. There is no config option pointing it elsewhere.</p>
+      <p><b>A symlink would work and would be a mistake.</b> The route calls <code>os.path.realpath()</code> on the root, so <code>static → 01_data</code> would resolve and serve. It would also publish <code>base_data.parquet</code>, <code>edits_data.parquet</code>, <code>tags.parquet</code> and all 904 PDFs over HTTP with <code>Access-Control-Allow-Origin: *</code> — and these are server routes that never execute the script, so they bypass the login gate entirely.</p>
+      <p><b>It would break regardless.</b> <code>bootstrap.py</code> walks the folder at startup and, above <code>MAX_APP_STATIC_FOLDER_SIZE</code> (1 GiB), calls <code>config.set_option("server.enableStaticServing", False)</code> — silently, for the whole process. <code>01_data</code> is 1.3 GB, so the merge would disable static serving and take out both the document panel and every catalogue image.</p>
+      <div class="did"><span class="did-lab">Conclusion</span>
+      <p>The two directories have genuinely different jobs: <code>01_data</code> is private source of truth, <code>static/</code> is the public serving window, and only the second can be reached by a browser. The split stands. One incidental find: <code>static/fonts/ronzino/</code> (180 KB) is referenced nowhere — <code>theme.json</code>'s <code>local_fonts</code> is empty and nothing loads those faces.</p></div>
+      <dl class="ev">
+        <div><dt>static/ total</dt><dd>708.9 MiB</dd></div>
+        <div><dt>of 1 GiB cap</dt><dd>69%</dd></div>
+        <div><dt>headroom</dt><dd>315 MiB</dd></div>
+        <div><dt>dead weight</dt><dd>fonts, 180 KB</dd></div>
+      </dl>
+    </div>
+  </article>
+
+  <article class="finding done">
+    <div class="fnum">B</div>
+    <div>
+      <div class="fhead"><h3>Originals kept, two served thumbnail tiers</h3><span class="chip fixed">Implemented</span></div>
+      <p>Finding 1 replaced base64 inlining with a single 300 px served size. Measuring what the catalogue actually paints showed one size was wrong in both directions at once:</p>
+      <div class="tbl-wrap" style="margin:12px 0">
+        <table>
+          <thead><tr><th>Context</th><th>Displayed</th><th>Was served</th></tr></thead>
+          <tbody>
+            <tr><td>Grid, size M</td><td class="f">78×70</td><td class="f">300×225</td></tr>
+            <tr><td>Grid, size L</td><td class="f">98×94</td><td class="f">300×225</td></tr>
+            <tr><td>Grid, size XL</td><td class="f">70×62</td><td class="f">300×225</td></tr>
+            <tr><td>Detail panel</td><td class="f">98×74 (CSS allows 180×130)</td><td class="f">300×225</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Three times too large for a grid card, and too small for a HiDPI detail panel.</p>
+      <div class="did"><span class="did-lab">What changed</span>
+      <p>Two tiers, both produced from a single decode of the untouched original and sized in <code>theme.json → image_band</code>: <code>&lt;md5&gt;.webp</code> at 200 px is what the grid loads 1,600 of, <code>&lt;md5&gt;__d.webp</code> at 400 px is what the panel loads one of per click. The card tier keeps the bare name, so URLs already in a cached payload keep resolving. <code>04_tools/11_rebuild_image_tiers.py</code> performs the migration, report-only unless <code>--apply</code>.</p>
+      <p>The originals in <code>01_data/img</code> are never written — 53 MB, 552 files, only ever read.</p></div>
+      <dl class="ev">
+        <div><dt>Grid transfer</dt><dd>5.19 → 3.21 MB</dd></div>
+        <div><dt>Detail tier</dt><dd>400 px, on click</dd></div>
+        <div><dt>Rebuilt</dt><dd>543 of 562</dd></div>
+        <div><dt>Payload cost</dt><dd>+136 KB</dd></div>
+      </dl>
+    </div>
+  </article>
+</section>
+
+<section>
+  <h2>Corrections to this audit</h2><div class="h2-rule"></div>
+  <p class="lede">Two estimates in the original report were wrong, and two bugs were introduced during the work and caught before delivery. Recording them because the numbers above are only worth what the method behind them is.</p>
+
+  <div class="corr">
+    <h3>Finding 3's cost was overstated by roughly 15×</h3>
+    <p>The instrumented profile attributed 4.48&nbsp;s to stat calls. Measuring actual syscall latency afterwards put it at <b>12–17&nbsp;µs per call</b> — the rest was my own measurement wrapper. The syscall <em>count</em> in the original report (≈11,000) was right; the cost attributed to it was not. Real saving: ~0.3&nbsp;s on a cold render, ~0 on warm reruns.</p>
+    <p>Kept anyway on two grounds: <code>os.scandir</code> of the whole 562-file directory costs ~992&nbsp;µs against ~194&nbsp;ms of stats, so it still nets positive; and these figures are for locally-hydrated files. A OneDrive Files On-Demand file dehydrated to cloud-only blocks on network per stat, and 133 of those is survivable where 11,711 is not.</p>
+  </div>
+
+  <div class="corr">
+    <h3>"<code>read_iframe_component</code> re-reads the template every render" — not a hot spot</h3>
+    <p>Claimed in the original report as per-render overhead worth memoizing. Measured: three file reads, under a millisecond, absorbed by the OS page cache. Left alone rather than adding a memo for nothing.</p>
+  </div>
+
+  <div class="corr">
+    <h3>Introduced: underscore-prefixed cache parameters key nothing</h3>
+    <p>The first version of the payload cache named its parameters <code>_is_js2</code> and <code>_config_signature</code>. Streamlit <em>excludes</em> underscore-prefixed parameters from the cache key, so neither keyed anything — a field-visibility edit would have silently served a stale catalogue. Caught by the invalidation test (0.057&nbsp;s where a rebuild was due), renamed, and the trap recorded in the docstring. <code>_progress</code> keeps its underscore deliberately, being a live widget handle.</p>
+  </div>
+
+  <div class="corr">
+    <h3>Introduced: a cached progress bar took the Catalogue down</h3>
+    <p>The payload cache drove a progress bar belonging to a placeholder created by the calling page. <code>@st.cache_data</code> <em>records the Streamlit element calls a cached function makes</em> so it can replay them on a hit — and on a hit that placeholder no longer exists, so every cached render raised <code>CacheReplayClosureError</code>. It could only fail on a cache hit, which is exactly what the bare-mode test harness never exercises; it reached the user before it reached a test.</p>
+    <p>The bar is gone, replaced by the decorator's own spinner, and the regression is now covered by an <code>AppTest</code> run that drives one miss followed by two hits under a real script runner.</p>
+  </div>
+
+  <div class="corr">
+    <h3>Introduced: a legacy PNG silently shadowed the rebuilt thumbnail</h3>
+    <p><code>static_img_cache_url</code> probes <code>.png</code> before <code>.webp</code>, so that entries written by older versions keep resolving. When the tier rebuild wrote a new 200 px WebP beside a leftover 300 px PNG of the same key, the probe kept returning the PNG and the rebuild appeared to do nothing for those images. Writes now prune same-key files at other extensions, so one key means one file; verified zero keys present at more than one extension.</p>
+  </div>
+
+  <div class="corr">
+    <h3>Introduced: the cache migration shipped CDN placeholders</h3>
+    <p>The first run of <code>10_consolidate_image_caches.py</code> rescued 7 "unique" images into the served store. Inspection showed all were 50×50, 918-byte CDN error graphics — below the 64&nbsp;px floor the app's own <code>catalogue_image_cache_is_valid</code> enforces. The migration had laundered rejected placeholders into a store the catalogue trusts on sight. The tool now applies that same admission test; the six files were removed and coverage returned to baseline.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Findings 4, 7, 8 · open and unresolved</h2><div class="h2-rule"></div>
+
+  <article class="finding">
+    <div class="fnum">04</div>
+    <div>
+      <div class="fhead"><h3>OneDrive does not preserve hard links</h3><span class="chip open">Open</span></div>
+      <p><code>01_data/pdf</code> is 1.3&nbsp;GB and <code>static/docs</code> hard-links 702&nbsp;MB of it — verified sharing inodes (<code>nlink = 2</code>), so locally it costs nothing. In the cloud, OneDrive uploads both as independent files: ~2&nbsp;GB of tenant quota and sync bandwidth for 1.3&nbsp;GB of PDFs.</p>
+      <div class="did"><span class="did-lab">Recommended</span><p>Exclude <code>static/docs</code>, <code>01_data/img</code>, <code>__pycache__</code>, <code>.pytest_cache</code> and <code>logs/</code> from sync. OneDrive has no <code>.gitignore</code> equivalent, so this means either moving the repo out of the synced tree or using per-folder exclusion.</p></div>
+    </div>
+  </article>
+
+  <article class="finding">
+    <div class="fnum">07</div>
+    <div>
+      <div class="fhead"><h3>Collections is missing from the nav bar</h3><span class="chip note">Could not reproduce</span></div>
+      <p>The original report repeated the diagnosis in <code>app.py</code>'s comment — a Streamlit limit on flat <code>position="top"</code> pages — and proposed passing a dict to group them. Neither holds up.</p>
+      <p>A faithful reproduction (the same five page files, same titles, same icons, same order, an expanded sidebar, the admin sixth page, and <code>st.navigation</code> called late in the script) renders <b>all six links, Collections included</b>. The app's global CSS was dumped and searched: nothing hides a nav item. Five flat pages is nowhere near an overflow threshold.</p>
+      <div class="did"><span class="did-lab">Status</span><p>Left unchanged rather than applying a speculative fix. The real nav only exists past the login gate, so confirming it needs a signed-in session. If it still happens there, the cause is something the reproduction does not capture — and the grouped-dict change proposed earlier would likely not have addressed it.</p></div>
+    </div>
+  </article>
+
+  <article class="finding">
+    <div class="fnum">08</div>
+    <div>
+      <div class="fhead"><h3>No <code>url_path</code> on any page</h3><span class="chip open">Open</span></div>
+      <p>Every deep link and hard reload bounces to Welcome, which is why <code>?view_docs_for=</code> needs a whole fallback path in <code>app.py</code>. Adding <code>url_path=</code> to each <code>st.Page</code> gives real URLs and lets that fallback be deleted.</p>
+    </div>
+  </article>
+
+</section>
+
+<section>
+  <h2>Found in passing</h2><div class="h2-rule"></div>
+  <p class="lede">Not part of the original nine; surfaced while measuring.</p>
+
+  <article class="finding">
+    <div class="fnum">—</div>
+    <div>
+      <div class="fhead"><h3>Cold start now waits on failing network fetches</h3><span class="chip open">Open</span></div>
+      <p>With disk and CPU addressed, the ~3.7&nbsp;s cold render is dominated by <code>http.client</code> waiting on the 13 image URLs that no longer resolve. Those failures aren't negative-cached, so every process start re-attempts them against a 20&nbsp;s timeout. This is now the largest remaining win on the catalogue path.</p>
+    </div>
+  </article>
+
+  <article class="finding">
+    <div class="fnum">—</div>
+    <div>
+      <div class="fhead"><h3><code>products_json</code> is 11.2 MB, almost all <code>rawFields</code></h3><span class="chip note">Product decision</span></div>
+      <p>Every one of the 135 columns, as strings, for every product, shipped on every view to serve the XL grid size. Images are now 0.13&nbsp;MB of it. Trimming to the columns XL displays — or fetching on demand when someone switches to XL — is the next big cut, but it's a decision about that view rather than a mechanical optimisation.</p>
+    </div>
+  </article>
+
+  <article class="finding">
+    <div class="fnum">—</div>
+    <div>
+      <div class="fhead"><h3>One pipeline output is not an image</h3><span class="chip note">Pipeline</span></div>
+      <p><code>01_data/img/7ed83ddbe52fe2ab.aspx</code> (25&nbsp;KB) fails to decode — almost certainly an HTML error page saved with an image extension. That card's image was already broken in the browser; the new code degrades identically.</p>
+    </div>
+  </article>
+
+  <article class="finding">
+    <div class="fnum">—</div>
+    <div>
+      <div class="fhead"><h3>Authentication</h3><span class="chip open">Open</span></div>
+      <p><code>fn111_get_auth_users</code> hard-codes a fallback admin credential in source, compares passwords in plaintext with <code>==</code>, and the gate screen pre-fills that admin password. Fine for an internal tool on a trusted network; not fine if this is ever reachable beyond it.</p>
+    </div>
+  </article>
+</section>
+
+<section>
+  <h2>Files changed</h2><div class="h2-rule"></div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>File</th><th>Change</th><th>Findings</th></tr></thead>
+      <tbody>
+        <tr><td class="f">libs/lib_data.py</td><td>Single thumbnail store (<code>ensure_static_img_cache</code>, atomic writes); directory index with TTL; <code>fn110</code> fetch tier repointed at <code>static/img_cache</code></td><td class="f">1, 3, 6</td></tr>
+        <tr><td class="f">libs/lib_ui.py</td><td>Image chain routed through the static store; badge composite memoized; tag map; field-visibility per type; object-dtype rows; bulk <code>rawFields</code>; payload split into <code>_fn336_cached_catalogue_payload</code>; <code>_static_doc_file_info</code> via scandir</td><td class="f">1, 2, 3</td></tr>
+        <tr><td class="f">libs/lib_doc_storage.py</td><td><code>fn_static_doc_url</code> via the directory index; <code>fn_sync_static_doc_links</code> rewritten on <code>os.scandir</code></td><td class="f">3</td></tr>
+        <tr><td class="f">04_tools/10_consolidate_image_caches.py</td><td>New — audits the legacy cache for unique images, migrates any that pass the app's admission test, reports only unless <code>--apply</code></td><td class="f">6</td></tr>
+        <tr><td class="f">libs/lib_tags.py</td><td>Data-directory markers accept <code>base_data.parquet</code>; duplicate-ID audit reads the merge</td><td class="f">5</td></tr>
+        <tr><td class="f">pages/_manufacturers_ui.py</td><td>Product counts from the merge instead of <code>live_data.parquet</code></td><td class="f">5</td></tr>
+        <tr><td class="f">pages/13_Add_Edit_Item.py</td><td>Docs corrected — the form appends to the edit log and nothing is re-materialised</td><td class="f">5</td></tr>
+        <tr><td class="f">04_tools/03_excel_to_parquet.py</td><td>Writes one base parquet into <code>01_data/</code>; no root copy, no materialised merge</td><td class="f">5</td></tr>
+        <tr><td class="f">04_tools/04, 05, 08, 09</td><td>Repointed at <code>01_data/base_data.parquet</code>; 09 writes the single canonical file</td><td class="f">5</td></tr>
+        <tr><td class="f">requirements.txt</td><td>Rebuilt from a full import walk — 13 added, 1 dead entry removed, optional dependency documented</td><td class="f">9</td></tr>
+        <tr><td class="f">02_html/catalogue_component_js2.html</td><td>Detail panel loads the larger tier (<code>productImageSrcDetail</code>); GWP pill type aligned with the card</td><td class="f">B</td></tr>
+        <tr><td class="f">theme.json</td><td><code>image_band</code> tier sizes; upright serif faces requested; restart requirement documented</td><td class="f">B</td></tr>
+        <tr><td class="f">04_tools/11_rebuild_image_tiers.py</td><td>New — rewrites both tiers from the originals, report-only unless <code>--apply</code></td><td class="f">B</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2>How this was verified</h2><div class="h2-rule"></div>
+  <ul class="checks">
+    <li>Payload compared key-by-key after every stage — all six pre-existing keys byte-identical to baseline; the only delta is a newly-returned <code>list_fields_json</code>, which the Charts consumer reads via <code>.get()</code>.</li>
+    <li>Cache invalidation exercised for a filter change, a <code>FIELD_VISIBILITY</code> edit (1.27&nbsp;s rebuild) and a tag edit — the last by writing a real tag to <code>BBW__GYP__0002</code>, confirming it appeared, then restoring <code>tags.parquet</code> md5-identical.</li>
+    <li>Dynamic arguments and session CSS confirmed live on cache hits: toggling card borders and switching detail level to Extended both take effect in 0.11&nbsp;s.</li>
+    <li>All 1,609 image URLs resolve identically through the directory index and direct <code>is_file()</code> probing; 200 document names likewise, present and missing.</li>
+    <li><code>fn_sync_static_doc_links</code> makes byte-identical decisions to the old implementation (649 skipped, 255 budget-skipped), leaves <code>static/docs</code> unchanged, keeps all 649 hard links, and is idempotent.</li>
+    <li>Served over HTTP from the running app: <code>/app/static/img_cache/</code> returns 200 <code>image/webp</code>, <code>/app/static/docs/</code> returns 200 <code>application/pdf</code>, both with <code>access-control-allow-origin: *</code> — which is what lets the sandboxed srcdoc iframe (origin <code>"null"</code>) load them.</li>
+    <li><code>./static</code> totals 708 MiB, under Streamlit's 1 GiB startup cap, which is checked once at boot and silently disables static serving app-wide if exceeded.</li>
+    <li>Dataset consolidation: all four parquets confirmed byte-identical before the move; the two survivors verified md5-identical after it; the catalogue payload byte-identical across the change.</li>
+    <li>The Add/Edit round-trip re-tested end to end — an update replays over base with no audit-column leakage and no row-count change, a new id appends (1,609 → 1,610), and <code>edits_data.parquet</code> was restored byte-for-byte afterwards.</li>
+    <li>Every former <code>live_data.parquet</code> reader re-checked: the document-path map still returns 1,609 ids, manufacturer counts still cover 84 manufacturers, the tags layer still resolves <code>01_data/</code>.</li>
+    <li>Dependency floors checked against the installed environment: 22 of 23 satisfied, the exception being <code>portalocker</code>, which is genuinely absent.</li>
+    <li>Image tiers verified in the live component against real data: the card slot loads <code>&lt;md5&gt;.webp</code> at 200×150, the panel loads <code>&lt;md5&gt;__d.webp</code> at 400×300 into a 98×74 box, both served 200 with an ETag so any cached 300 px copy revalidates away.</li>
+    <li>8/8 existing tests pass; everything compiles; app boots with no server errors.</li>
+  </ul>
+
+  <div class="runbox">python -m pytest 05_tests -q
+python 04_tools/10_consolidate_image_caches.py        # report only
+streamlit run app.py --server.port 8502</div>
+</section>
+
+<footer>
+  <span>EETRA Material Library · Low-Carbon, Circular Materials for a Regenerative Future</span>
+  <span>Findings 1, 2, 3, 5, 6, 9 implemented · 4 and 8 open · 7 unreproduced · follow-on A, B done</span>
+</footer>
+
+</div>
+
+</body>
+</html>

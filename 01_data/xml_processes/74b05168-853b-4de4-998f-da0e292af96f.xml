@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>74b05168-853b-4de4-998f-da0e292af96f</common:UUID>
+      <name>
+        <baseName xml:lang="en">Wood veneer, dyed, at production, European wood species</baseName>
+      </name>
+      <common:synonyms>Piallaccio di legno tinto, realizzato con specie legnose di provenienza europea</common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">Materials production</common:class>
+          <common:class level="1">Wood</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment>Dataset developed within the ARCADIA Project (production chain study regarding wood veneer “STUDIO DI FILIERA PIALLACCIO DI LEGNO”). The dataset involves the dying of natural wood veneer throughout its thickness and is representative of the processing technologies commonly used in wood veneer production.</common:generalComment>
+      <referenceToExternalDocumentation type="source data set" refObjectId="a2dd6f02-574f-4fd5-9760-3110010ac18c" version="01.00.000" uri="../sources/a2dd6f02-574f-4fd5-9760-3110010ac18c.xml">
+        <common:shortDescription>Scrucca F., Frisone F., Rinaldi, C., 2023. “STUDIO DI FILIERA PIALLACCIO DI LEGNO”. Internal report ARCADIA Project. For the LCA study background datasets from Ecoinvent database cut-off (v. 3.7.1) were used.</common:shortDescription>
+      </referenceToExternalDocumentation>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2022</common:referenceYear>
+      <common:dataSetValidUntil>2027</common:dataSetValidUntil>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT">
+        <descriptionOfRestrictions>Italy. Primary data collected in Lombardia. Dataset representative of Italian production of dyed wood veneers.</descriptionOfRestrictions>
+      </locationOfOperationSupplyOrProduction>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>1 m2 of dyed wood veneer, available for all subsequent transport/processing operations. Production of equipment and infrastructures is not included, except for the background system. Primary data data were collected as physical quantities of materials used in the different processes. Background data were modelled according to Ecoinvent v. 3.7.1</technologyDescriptionAndIncludedProcesses>
+      <technologicalApplicability>Dyed wood veneer in sheets of variable length and width, which can be used for veneering of suitable specific supports (MDF, honeycomb panel, chipboard, multilayer, ...), or to create other specific products (such as plywood, boards, …)</technologicalApplicability>
+      <referenceToTechnologyPictogramme type="source data set" refObjectId="437f23f1-c6b6-4411-b6aa-8b0286f80be3" version="01.00.000" uri="../sources/437f23f1-c6b6-4411-b6aa-8b0286f80be3.xml">
+        <common:shortDescription>20231130114736_Piallaccio.jpg</common:shortDescription>
+      </referenceToTechnologyPictogramme>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Allocation - other explicit assignment</LCIMethodApproaches>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <dataCutOffAndCompletenessPrinciples>Production of equipment and infrastructure are not included, except for the background system.</dataCutOffAndCompletenessPrinciples>
+      <referenceToDataSource type="source data set" refObjectId="795148f0-96e6-43d5-b1d5-bc627b15f705" version="01.00.000" uri="../sources/795148f0-96e6-43d5-b1d5-bc627b15f705.xml">
+        <common:shortDescription>20231130114736_Studio di filieliera piallaccio di legno.pdf</common:shortDescription>
+      </referenceToDataSource>
+      <dataCollectionPeriod>2022</dataCollectionPeriod>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>No statement</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Independent internal review">
+        <common:reviewDetails>The review was performed in compliance with Arcadia Metodology: “Metodologia per gli studi di filiera della Banca Dati italiana LCA” and ISO 14040-44 norms. The dataset has been assessed limited to the foreground data collected during the supply chain studies.&#13;
+Each dataset has been evaluated based on the following 4 criteria:&#13;
+1. Technological Representativeness; 2. Time Representativeness; 3. Geographical Representativeness; 4. Reliability. In this contest the Reliability is “good”.</common:reviewDetails>
+        <common:referenceToNameOfReviewerAndInstitution type="contact data set" refObjectId="36c36b07-da91-4631-994f-d5124998bd15" version="01.00.000" uri="../sources/36c36b07-da91-4631-994f-d5124998bd15.xml">
+          <common:shortDescription>ENEA</common:shortDescription>
+        </common:referenceToNameOfReviewerAndInstitution>
+        <common:otherReviewDetails>The study was judged by the reviewer as compliant with both ISO 14040-44 and Arcadia methodology.</common:otherReviewDetails>
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Completeness" value="Good"/>
+          <common:dataQualityIndicator name="Precision" value="Not applicable"/>
+          <common:dataQualityIndicator name="Methodological appropriateness and consistency" value="Not applicable"/>
+          <common:dataQualityIndicator name="Overall quality" value="Not applicable"/>
+        </common:dataQualityIndicators>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="1aad8681-4495-4136-8654-f5f92a78898e" uri="../sources/1aad8681-4495-4136-8654-f5f92a78898e.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="01d19df3-ecf3-40e3-b7b0-514be7e8a721" uri="../sources/01d19df3-ecf3-40e3-b7b0-514be7e8a721.xml">
+          <common:shortDescription xml:lang="en">ISO 14044</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Not defined</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="5cab75a6-2324-40ee-8c08-b169f11bebac" uri="../sources/5cab75a6-2324-40ee-8c08-b169f11bebac.xml">
+        <common:shortDescription xml:lang="en">ENEA - Arcadia</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Arcadia – PON Governance e Capacità istituzionale 2014-2020</common:project>
+    </common:commissionerAndGoal>
+    <dataGenerator>
+      <common:referenceToPersonOrEntityGeneratingTheDataSet refObjectId="10cb14f5-3524-46b4-a3db-83788e7f89d1" type="contact data set" uri="../sources/10cb14f5-3524-46b4-a3db-83788e7f89d1.xml" version="01.00.000">
+        <common:shortDescription>ENEA</common:shortDescription>
+      </common:referenceToPersonOrEntityGeneratingTheDataSet>
+    </dataGenerator>
+    <dataEntryBy>
+      <common:timeStamp>2023-11-29T15:23:18.965+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="a97a0155-0234-4b87-b4ce-a45da52f2a40" uri="../sources/a97a0155-0234-4b87-b4ce-a45da52f2a40.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2022-03-23T15:51:26.692Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/74b05168-853b-4de4-998f-da0e292af96f.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="34bcfc40-daf7-49f6-9783-264bad8ef31b" type="contact data set" uri="../contacts/34bcfc40-daf7-49f6-9783-264bad8ef31b.xml" version="01.00.000">
+        <common:shortDescription>ENEA - Arcadia</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+      <common:accessRestrictions>Type of license: Open Database Licence (ODbL)</common:accessRestrictions>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="db270b54-9d74-4530-a990-36914180822c" uri="../flows/db270b54-9d74-4530-a990-36914180822c.xml">
+        <common:shortDescription xml:lang="en">Wood veneer, dyed, at production, European wood species</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0000000E+0</meanAmount>
+      <resultingAmount>1.0000000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="990af8de-3da9-4c87-9568-488a987194b3" uri="../flows/990af8de-3da9-4c87-9568-488a987194b3.xml">
+        <common:shortDescription xml:lang="en">Natural gas, low pressure {RoW}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.1000000E-1</meanAmount>
+      <resultingAmount>3.1000000E-1</resultingAmount>
+      <generalComment>Natural gas for process heat generation
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="577532b4-60d7-4fa9-8ea3-116402086940" uri="../flows/577532b4-60d7-4fa9-8ea3-116402086940.xml">
+        <common:shortDescription xml:lang="en">Chemical, inorganic {GLO}| market for chemicals, inorganic | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.1400000E-2</meanAmount>
+      <resultingAmount>6.1400000E-2</resultingAmount>
+      <generalComment>Chemical for the production process
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="3">
+      <referenceToFlowDataSet type="flow data set" refObjectId="39cc590a-9dee-4167-a250-aebc382b95e6" uri="../flows/39cc590a-9dee-4167-a250-aebc382b95e6.xml">
+        <common:shortDescription xml:lang="en">Hydrogen peroxide, without water, in 50% solution state {RER}| market for hydrogen peroxide, without water, in 50% solution state | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.3290000E-1</meanAmount>
+      <resultingAmount>6.3290000E-1</resultingAmount>
+      <generalComment>Chemical for the production process
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="4">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d060e5c6-00f9-4f30-82a7-2af80e352347" uri="../flows/d060e5c6-00f9-4f30-82a7-2af80e352347.xml">
+        <common:shortDescription xml:lang="en">Sodium hydroxide, without water, in 50% solution state {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.5800000E-2</meanAmount>
+      <resultingAmount>4.5800000E-2</resultingAmount>
+      <generalComment>Chemical for the production process
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="5">
+      <referenceToFlowDataSet type="flow data set" refObjectId="918b07f0-582f-4dfc-8745-b4652dabbd9f" uri="../flows/918b07f0-582f-4dfc-8745-b4652dabbd9f.xml">
+        <common:shortDescription xml:lang="en">Acetic acid, without water, in 98% solution state {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.4700000E-2</meanAmount>
+      <resultingAmount>1.4700000E-2</resultingAmount>
+      <generalComment>Chemical for the production process
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="6">
+      <referenceToFlowDataSet type="flow data set" refObjectId="03e70e30-8df9-40fb-ae42-d2642fd34098" uri="../flows/03e70e30-8df9-40fb-ae42-d2642fd34098.xml">
+        <common:shortDescription xml:lang="en">Sodium sulfate, anhydrite {RER}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.1000000E-4</meanAmount>
+      <resultingAmount>5.1000000E-4</resultingAmount>
+      <generalComment>Chemical for the production process
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="7">
+      <referenceToFlowDataSet type="flow data set" refObjectId="3203e59b-c04a-45ac-8f48-c3b6381fa4ae" uri="../flows/3203e59b-c04a-45ac-8f48-c3b6381fa4ae.xml">
+        <common:shortDescription xml:lang="en">Solvent, organic {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.1900000E-3</meanAmount>
+      <resultingAmount>1.1900000E-3</resultingAmount>
+      <generalComment>Chemical for the production process
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="8">
+      <referenceToFlowDataSet type="flow data set" refObjectId="cba437c6-022b-4359-b40c-dfabbcf9bc02" uri="../flows/cba437c6-022b-4359-b40c-dfabbcf9bc02.xml">
+        <common:shortDescription xml:lang="en">ammonia, anhydrous, liquid {RER}| market for ammonia, anhydrous, liquid | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.5800000E-2</meanAmount>
+      <resultingAmount>1.5800000E-2</resultingAmount>
+      <generalComment>Chemical for the production process
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="9">
+      <referenceToFlowDataSet type="flow data set" refObjectId="dabcd0c8-5833-4f86-8ffb-c991ecbb7afb" uri="../flows/dabcd0c8-5833-4f86-8ffb-c991ecbb7afb.xml">
+        <common:shortDescription xml:lang="en">Tap water {Europe without Switzerland}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.6200000E+1</meanAmount>
+      <resultingAmount>5.6200000E+1</resultingAmount>
+      <generalComment>Process water
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="10">
+      <referenceToFlowDataSet type="flow data set" refObjectId="06df9547-8505-4f54-a38a-02d3db7a8c2c" uri="../flows/06df9547-8505-4f54-a38a-02d3db7a8c2c.xml">
+        <common:shortDescription xml:lang="en">Packaging film, low density polyethylene {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.7001400E-4</meanAmount>
+      <resultingAmount>1.7001400E-4</resultingAmount>
+      <generalComment>Raw material packaging
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="11">
+      <referenceToFlowDataSet type="flow data set" refObjectId="003a4272-db79-4ef3-9c16-99d35afd6485" uri="../flows/003a4272-db79-4ef3-9c16-99d35afd6485.xml">
+        <common:shortDescription xml:lang="en">Electricity, medium voltage {IT}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.8471600E+0</meanAmount>
+      <resultingAmount>1.8471600E+0</resultingAmount>
+      <generalComment>Process electricity
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="12">
+      <referenceToFlowDataSet type="flow data set" refObjectId="74be9fde-e5fb-4076-9685-3e90dff51765" uri="../flows/74be9fde-e5fb-4076-9685-3e90dff51765.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry, unspecified {RER}| transport, freight, lorry, all sizes, EURO4 to generic market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.2603000E-2</meanAmount>
+      <resultingAmount>3.2603000E-2</resultingAmount>
+      <generalComment>Process materials and waste transportation
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="13">
+      <referenceToFlowDataSet type="flow data set" refObjectId="74be9fde-e5fb-4076-9685-3e90dff51765" uri="../flows/74be9fde-e5fb-4076-9685-3e90dff51765.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry, unspecified {RER}| transport, freight, lorry, all sizes, EURO4 to generic market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.3000000E-1</meanAmount>
+      <resultingAmount>5.3000000E-1</resultingAmount>
+      <generalComment>Raw material (wood) transportation
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="14">
+      <referenceToFlowDataSet type="flow data set" refObjectId="9c591996-60d0-485d-ba4f-ba2750ccf99f" uri="../flows/9c591996-60d0-485d-ba4f-ba2750ccf99f.xml">
+        <common:shortDescription xml:lang="en">Wastewater from plywood production {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>5.5800000E-2</meanAmount>
+      <resultingAmount>5.5800000E-2</resultingAmount>
+      <generalComment>Production process waste
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="15">
+      <referenceToFlowDataSet type="flow data set" refObjectId="68d6d427-9b60-44db-83db-5817f7818dc2" uri="../flows/68d6d427-9b60-44db-83db-5817f7818dc2.xml">
+        <common:shortDescription xml:lang="en">Waste wood, untreated {IT}| market for waste wood, untreated | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>7.7200000E-3</meanAmount>
+      <resultingAmount>7.7200000E-3</resultingAmount>
+      <generalComment>Production process waste
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="16">
+      <referenceToFlowDataSet type="flow data set" refObjectId="c8619d2b-5d9d-4ca1-92f3-3abe844f29f1" uri="../flows/c8619d2b-5d9d-4ca1-92f3-3abe844f29f1.xml">
+        <common:shortDescription xml:lang="en">Sewage sludge, dried {RoW}| market for sewage sludge, dried | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>6.9800000E-2</meanAmount>
+      <resultingAmount>6.9800000E-2</resultingAmount>
+      <generalComment>Production process waste
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="17">
+      <referenceToFlowDataSet type="flow data set" refObjectId="a9c7e0fc-2efb-4f97-8022-b8744260b68e" uri="../flows/a9c7e0fc-2efb-4f97-8022-b8744260b68e.xml">
+        <common:shortDescription xml:lang="en">Waste polyethylene {IT}| market for waste polyethylene | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.7001400E-4</meanAmount>
+      <resultingAmount>1.7001400E-4</resultingAmount>
+      <generalComment>Packaging waste
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="18">
+      <referenceToFlowDataSet type="flow data set" refObjectId="172b2803-6556-11dd-ad8b-0800200c9a66" uri="../flows/172b2803-6556-11dd-ad8b-0800200c9a66.xml">
+        <common:shortDescription xml:lang="en">soft wood (dry matter)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.3900000E-1</meanAmount>
+      <resultingAmount>4.3900000E-1</resultingAmount>
+      <generalComment>Input raw material
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="19">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-924e-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-924e-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">carbon monoxide (fossil)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.6600000E-8</meanAmount>
+      <resultingAmount>1.6600000E-8</resultingAmount>
+      <generalComment>Direct process emissions
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="20">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9155-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9155-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">volatile organic compound</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.1000000E-4</meanAmount>
+      <resultingAmount>1.1000000E-4</resultingAmount>
+      <generalComment>Direct process emissions
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="21">
+      <referenceToFlowDataSet type="flow data set" refObjectId="f79d0f8f-2b0e-49cb-bed0-b1ea0fbd8625" uri="../flows/f79d0f8f-2b0e-49cb-bed0-b1ea0fbd8625.xml">
+        <common:shortDescription xml:lang="en">Nitrogen oxides</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>IT</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.1600000E-7</meanAmount>
+      <resultingAmount>2.1600000E-7</resultingAmount>
+      <generalComment>Direct process emissions
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="22">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-923d-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-923d-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">carbon dioxide (fossil)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>6.1500000E-1</meanAmount>
+      <resultingAmount>6.1500000E-1</resultingAmount>
+      <generalComment>CO2 emissions from natural gas combustion
+</generalComment>
+    </exchange>
+  </exchanges>
+</processDataSet>

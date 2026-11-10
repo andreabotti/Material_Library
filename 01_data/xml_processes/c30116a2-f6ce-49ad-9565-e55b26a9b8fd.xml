@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>c30116a2-f6ce-49ad-9565-e55b26a9b8fd</common:UUID>
+      <name>
+        <baseName xml:lang="en">Electricity from solid biomass, Combustion, cogeneration and waste-to-energy, at plant</baseName>
+      </name>
+      <common:synonyms>Elettricità da biomasse solide, combustione, cogenerazione e termovalorizzazione, all’impianto</common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">Energy carriers and technologies</common:class>
+          <common:class level="1">Electricity</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment>Dataset developed according to Arcadia project Methodology (Report: “Metodologia per gli studi di filiera della Banca Dati italiana LCA”). LCA study of electricity production from solid biomass (Report: “La filiera delle biomasse solide  per la produzione di energia elettrica in Italia”). &#13;
+The dataset refers to the production of 1 kWh (=3.6 MJ) of electricity from solid biomass, in Italy and it is representative of the processing technologies commonly used for this purpose.&#13;
+The dataset consists of 2 unit processes: &#13;
+1) Production of electricity from forest, agri-food and agro-industrial solid biomass residues (i.e., biowaste other than Municipal Solid Waste - MSW) (percentage contribution to the whole dataset: 65%).&#13;
+2) Production of electricity from solid biomass derived from municipal solid waste (MSW), (percentage contribution to the whole dataset: 35%).&#13;
+</common:generalComment>
+      <referenceToExternalDocumentation type="source data set" refObjectId="9c375d7a-37d1-4a2b-89ac-2f0c497fd3cb" version="01.00.000" uri="../sources/9c375d7a-37d1-4a2b-89ac-2f0c497fd3cb.xml">
+        <common:shortDescription>Gabriella Fiorentino, Giuliana Ansanelli, Antonietta Cerbone, Alessandro Giocoli, Vincenzo Motola e Amalia Zucaro. LA FILIERA DELLE BIOMASSE SOLIDE PER LA PRODUZIONE DI ENERGIA ELETTRICA IN ITALIA.&#13;
+Internal report ARCADIA Project. &#13;
+Background datasets from EcoInvent database cut-off (v.3.7.1) were used for the LCA study. &#13;
+</common:shortDescription>
+      </referenceToExternalDocumentation>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2021</common:referenceYear>
+      <common:dataSetValidUntil>2026</common:dataSetValidUntil>
+      <common:timeRepresentativenessDescription>This dataset has been considered valid until 2026, since no main changes have occurred in the electricity production from solid biomass in the investigated years.</common:timeRepresentativenessDescription>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT"/>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>The dataset (1kWh Elettricity from solid biomass IT mix) refers to a system that includes pre-treatment of residual biomass, transport (secondary data) and combustion of biomass (primary data) to obtain electricity (cradle-to-gate approach). The capacity of biomass treatment plants is between 1 and 75 MW.&#13;
+The primary data were provided by companies belonging to the Energy from Solid Biomass Association (EBS), distributed throughout the country, and the GSE (Gestore Servizi Energetici), 2022. Statistical Report 2020 on Renewable Sources; from Atlaimpianti (https://www.gse.it/dati-e-scenari/atlaimpianti) and from environmental declarations of plants that use municipal solid waste as biomass to obtain electricity.&#13;
+For wood chip pre-treatment, data were taken from the study conducted by Scrucca et al. 2021 (Arcadia Report "Chain Study - Forest Chips"). &#13;
+&#13;
+Background data were modelled according to EcoInvent database v.3.7.1 .&#13;
+</technologyDescriptionAndIncludedProcesses>
+      <technologicalApplicability>Electricity from solid biomass sold to Italian electric grid.</technologicalApplicability>
+      <referenceToTechnologyPictogramme type="source data set" refObjectId="ad687533-de02-44ad-8311-03f219edf03a" version="01.00.000" uri="../sources/ad687533-de02-44ad-8311-03f219edf03a.xml">
+        <common:shortDescription>20230913164831_Pictogram of technology.jpeg</common:shortDescription>
+      </referenceToTechnologyPictogramme>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Not applicable</LCIMethodApproaches>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <dataCutOffAndCompletenessPrinciples>Production of equipment and infrastructures is not included, except for the background system</dataCutOffAndCompletenessPrinciples>
+      <referenceToDataSource type="source data set" refObjectId="c2d90865-5ae8-4377-91e4-bf825261ecdc" version="01.00.000" uri="../sources/c2d90865-5ae8-4377-91e4-bf825261ecdc.xml">
+        <common:shortDescription>20230913164831_La filiera delle biomasse per la produzione di energia elettrica inItalia.pdf</common:shortDescription>
+      </referenceToDataSource>
+      <dataCollectionPeriod>2018 - 2021</dataCollectionPeriod>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>No statement</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Independent internal review">
+        <common:reviewDetails>The review was performed in compliance with Arcadia Metodology: “Metodologia per gli studi di filiera della Banca Dati italiana LCA” and ISO 14040-44 norms. The dataset has been assessed limited to the foreground data collected during the supply chain studies. Each dataset has been evaluated based on the following 4 criteria:&#13;
+1. Technological Representativeness; 2. Time Representativeness; 3. Geographical Representativeness; 4. Reliability .&#13;
+In this context the Reliability is good.&#13;
+</common:reviewDetails>
+        <common:referenceToNameOfReviewerAndInstitution type="contact data set" refObjectId="d41f4313-7903-4dcd-a403-431eed98aa50" version="01.00.000" uri="../sources/d41f4313-7903-4dcd-a403-431eed98aa50.xml">
+          <common:shortDescription>ENEA</common:shortDescription>
+        </common:referenceToNameOfReviewerAndInstitution>
+        <common:otherReviewDetails>The study was judged by the reviewer as compliant with both ISO 14040-44 and Arcadia methodology</common:otherReviewDetails>
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Completeness" value="Good"/>
+          <common:dataQualityIndicator name="Precision" value="Not applicable"/>
+          <common:dataQualityIndicator name="Methodological appropriateness and consistency" value="Not applicable"/>
+          <common:dataQualityIndicator name="Overall quality" value="Not applicable"/>
+        </common:dataQualityIndicators>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="d96ec9cf-3984-451c-a9c3-715b88adfbef" uri="../sources/d96ec9cf-3984-451c-a9c3-715b88adfbef.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="c11e8103-8333-4075-a5c0-301b1bdd05f1" uri="../sources/c11e8103-8333-4075-a5c0-301b1bdd05f1.xml">
+          <common:shortDescription xml:lang="en">ISO 14044</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Not defined</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="0110a46c-27df-4d3d-b06c-918a3f5221a2" uri="../sources/0110a46c-27df-4d3d-b06c-918a3f5221a2.xml">
+        <common:shortDescription xml:lang="en">Arcadia – PON Governance e Capacità istituzionale 2014-2020</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Arcadia – PON Governance e Capacità istituzionale 2014-2020</common:project>
+    </common:commissionerAndGoal>
+    <dataGenerator>
+      <common:referenceToPersonOrEntityGeneratingTheDataSet refObjectId="526c0efa-57f5-46e6-aa14-599d22981b97" type="contact data set" uri="../sources/526c0efa-57f5-46e6-aa14-599d22981b97.xml" version="01.00.000">
+        <common:shortDescription>ENEA</common:shortDescription>
+      </common:referenceToPersonOrEntityGeneratingTheDataSet>
+    </dataGenerator>
+    <dataEntryBy>
+      <common:timeStamp>2023-09-12T16:24:43.432+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="a97a0155-0234-4b87-b4ce-a45da52f2a40" uri="../sources/a97a0155-0234-4b87-b4ce-a45da52f2a40.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2022-10-13T12:07:26.331Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/c30116a2-f6ce-49ad-9565-e55b26a9b8fd.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="32c92e85-b45e-4eb6-88b5-0fc0be60502b" type="contact data set" uri="../contacts/32c92e85-b45e-4eb6-88b5-0fc0be60502b.xml" version="01.00.000">
+        <common:shortDescription>ENEA-ARCADIA</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+      <common:accessRestrictions>Type of license: Open Database Licence (ODbL)</common:accessRestrictions>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="e9f96578-bbf1-40dc-a6df-cc444c512ccf" uri="../flows/e9f96578-bbf1-40dc-a6df-cc444c512ccf.xml">
+        <common:shortDescription xml:lang="en">Electricity from solid biomass, Combustion, cogeneration and waste-to-energy, at plant</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.6000000E+0</meanAmount>
+      <resultingAmount>3.6000000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="b871558e-b7ab-4ceb-aa11-06da16246958" uri="../flows/b871558e-b7ab-4ceb-aa11-06da16246958.xml">
+        <common:shortDescription xml:lang="en">Electricity from solid biomass_CL1_other biomass</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.3400000E+0</meanAmount>
+      <resultingAmount>2.3400000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fdfae947-78c1-4a00-bb91-e892b66bb6ca" uri="../flows/fdfae947-78c1-4a00-bb91-e892b66bb6ca.xml">
+        <common:shortDescription xml:lang="en">Electricity from solid biomass_CL2_biomass from MSW</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.2600000E+0</meanAmount>
+      <resultingAmount>1.2600000E+0</resultingAmount>
+    </exchange>
+  </exchanges>
+</processDataSet>

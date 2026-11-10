@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#ffffff;
+  --surface:#f8fafc;
+  --surface2:#f1f5f9;
+  --border:#e2e8f0;
+  --border2:#cbd5e1;
+  --text:#1e293b;
+  --text2:#64748b;
+  --text3:#94a3b8;
+  --green:#2a7d2e;
+  --green-light:#e8f5e9;
+  --ok:#16a34a;
+  --warn:#d97706;
+  --warn-light:#fff8e1;
+  --error:#dc2626;
+  --info:#185FA5;
+  --info-light:#E6F1FB;
+  --radius:8px;
+  --radius-sm:4px;
+  --radius-pill:999px;
+  --c-border:1px solid var(--border);
+  --c-bg:var(--bg);
+  --c-pad:14px;
+  --c-fs:13px;
+  --c-grid-gap:12px;
+  --ff-serif:'Source Serif Pro',Georgia,serif;
+  --ff-sans:'IBM Plex Sans',system-ui,sans-serif;
+  --ff-mono:'IBM Plex Mono',monospace;
+}
+html,body{width:100%;max-width:100%;height:100%;overflow:hidden}
+body{
+  font-family:var(--ff-sans);font-weight:400;
+  background:var(--bg);color:var(--text);font-size:var(--c-fs);
+  display:flex;flex-direction:column;
+  height:var(--ice-viewport-h,860px);
+  max-height:var(--ice-viewport-h,860px);
+  min-height:0;
+}
+#ice-shell{display:flex;flex:1 1 auto;min-height:0;width:100%;overflow:hidden}
+#ice-app{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;min-height:0}
+#ice-chrome{
+  flex:0 0 auto;z-index:20;background:#fff;
+  padding:6px 4px 0;border-bottom:1px solid #e5e7eb;
+  box-shadow:0 2px 8px rgba(15,23,42,0.04);
+}
+#ice-main{
+  flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;padding:0 4px 10px;
+}
+
+/* ── Toolbar ── */
+.rv-toolbar{
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  margin-bottom:8px;padding:0 2px;font-size:var(--c-fs);
+  flex-wrap:wrap;max-width:100%;min-width:0;
+}
+.rv-toolbar-group{
+  display:inline-flex;border-radius:999px;background:#f3f4f6;padding:2px;
+}
+.rv-toolbar-group button{
+  border:none;background:transparent;font-size:var(--c-fs);padding:3px 10px;
+  border-radius:999px;cursor:pointer;color:#4b5563;
+}
+.rv-toolbar-group button.rv-active{background:#111827;color:#f9fafb}
+.rv-toolbar-group button:hover:not(.rv-active){background:#e5e7eb}
+.rv-count{font-size:var(--c-fs);color:#6b7280}
+
+/* ── Filter bar ── */
+.filter-bar{
+  display:flex;flex-wrap:wrap;align-items:center;gap:8px;
+  margin-bottom:10px;padding:8px 10px;
+  background:#f8fafc;border:1px solid #e5e7eb;border-radius:8px;
+}
+.filter-bar label{font-size:11px;color:#6b7280;font-weight:500;margin-right:2px;white-space:nowrap}
+.filter-input{
+  flex:1;min-width:160px;max-width:300px;padding:5px 9px;
+  border:1px solid #e5e7eb;border-radius:6px;font-size:var(--c-fs);
+  font-family:inherit;background:#fff;
+}
+.filter-input:focus{outline:2px solid var(--ok);outline-offset:1px;border-color:#cbd5e1}
+.filter-select{
+  padding:5px 26px 5px 8px;border:1px solid #e5e7eb;border-radius:6px;
+  font-size:var(--c-fs);font-family:inherit;background:#fff;cursor:pointer;
+  appearance:none;-webkit-appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 8px center;
+  min-width:100px;max-width:200px;
+}
+.filter-select:focus{outline:2px solid var(--ok);outline-offset:1px}
+.filter-clear-btn{
+  border:1px solid #e5e7eb;background:#fff;border-radius:6px;padding:5px 10px;
+  font-size:var(--c-fs);cursor:pointer;color:#6b7280;white-space:nowrap;
+}
+.filter-clear-btn:hover{background:#f3f4f6;color:#374151}
+
+/* ── Grid ── */
+#grid{
+  display:grid;gap:var(--c-grid-gap);width:100%;max-width:100%;
+  min-width:0;align-items:start;box-sizing:border-box;
+}
+.empty-msg{
+  grid-column:1/-1;text-align:center;color:#888;
+  padding:2rem 0;font-size:var(--c-fs);
+}
+
+/* ── Material Card ── */
+.mat-card{
+  background:var(--bg);border:1px solid var(--border);border-radius:10px;
+  padding:14px 16px;cursor:pointer;user-select:none;
+  transition:border-color 150ms ease,box-shadow 150ms ease;
+  display:flex;flex-direction:column;gap:10px;
+  min-width:0;max-width:100%;overflow:hidden;box-sizing:border-box;
+}
+.mat-card:hover{border-color:var(--green);box-shadow:0 6px 18px rgba(15,23,42,0.08)}
+.mat-card.selected{border-color:var(--green);border-width:1.5px;box-shadow:0 0 0 1px rgba(42,125,46,0.12)}
+.mat-card.is-legacy{border-color:#fde68a;background:#fffbeb}
+.card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.card-name-block{min-width:0;flex:1}
+.card-name{
+  font-family:var(--ff-serif);font-style:italic;font-weight:600;
+  font-size:14px;color:var(--text);line-height:1.25;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
+}
+.card-meta{font-size:11px;color:var(--text2);margin-top:2px;line-height:1.3}
+.card-ver{
+  font-size:10px;font-weight:600;padding:3px 9px;border-radius:var(--radius-pill);
+  white-space:nowrap;flex-shrink:0;
+}
+.card-ver-current{background:var(--green-light);color:var(--green);border:1px solid #86efac}
+.card-ver-legacy{background:#fef9c3;color:#854d0e;border:1px solid #fde68a}
+/* GWP value — green serif, mirrors Catalogue JS .cat2-gwp pill */
+.card-gwp{
+  font-family:var(--ff-serif);font-style:italic;font-weight:600;
+  font-size:calc(var(--c-fs) + 1px);color:var(--green);line-height:1.3;
+  display:flex;flex-direction:column;gap:1px;min-width:0;
+}
+.card-gwp-line{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card-gwp-unit{font-size:11px;opacity:.85}
+.card-gwp--none{color:var(--text3);font-weight:400}
+.card-footer{
+  display:flex;justify-content:space-between;align-items:center;
+  padding-top:6px;border-top:1px solid var(--surface2);gap:6px;flex-wrap:wrap;
+}
+.badge{
+  display:inline-block;border-radius:var(--radius-pill);padding:2px 7px;
+  font-size:10px;font-weight:500;line-height:1.35;white-space:nowrap;
+}
+.badge-cat{background:var(--info-light);color:var(--info);border:1px solid #93c5fd}
+.badge-unit{background:var(--surface);color:var(--text2);border:1px solid var(--border)}
+.dqi-bar-wrap{display:flex;align-items:center;gap:5px;flex-shrink:0}
+.dqi-bar{height:6px;border-radius:3px;background:#e2e8f0;width:48px;overflow:hidden;flex-shrink:0}
+.dqi-bar-fill{height:100%;border-radius:3px;background:var(--ok);transition:width .2s}
+.dqi-label{font-size:10px;color:var(--text2);font-family:var(--ff-mono)}
+
+/* ── List table ── */
+.rv-list-panel{display:flex;flex-direction:column;gap:8px;width:100%;max-width:100%;min-width:0}
+.rv-table-wrap{
+  width:100%;max-width:100%;min-width:0;overflow-x:auto;overflow-y:visible;
+  background:#fff;border:1px solid #e5e7eb;border-radius:8px;
+}
+.rv-table{width:100%;border-collapse:collapse;font-size:var(--c-fs);min-width:min(860px,100%)}
+.rv-table thead th{
+  position:sticky;top:0;z-index:2;background:#f9fafb;color:#374151;text-align:left;
+  font-size:calc(var(--c-fs) - 1px);font-weight:600;border-bottom:1px solid #e5e7eb;
+  padding:8px 10px;white-space:nowrap;
+}
+.rv-th-sort{cursor:pointer;user-select:none}
+.rv-th-sort:hover{background:#f3f4f6}
+.rv-th-sort.rv-sort-active{color:#111827;background:#eef2ff}
+.rv-sort-ind{display:inline-block;margin-left:4px;font-size:10px;opacity:.75}
+.rv-table tbody td{
+  border-bottom:1px solid #f1f5f9;padding:7px 10px;vertical-align:top;
+  color:#111827;word-break:break-word;line-height:1.4;
+}
+.rv-table tbody tr{cursor:pointer}
+.rv-table tbody tr:hover td{background:#f8fafc}
+.rv-table tbody tr.selected td{background:#f0fdf4}
+.rv-table tbody tr.is-legacy td:first-child{border-left:3px solid #fde68a}
+.rv-td-muted{color:#6b7280;font-size:calc(var(--c-fs) - 1px)}
+.rv-td-mono{font-family:monospace;font-size:11px;color:#475569}
+.rv-td-right{text-align:right}
+
+/* ── Detail panel ── */
+#detail-panel{
+  flex:0 0 0;width:0;min-width:0;overflow:hidden;
+  display:flex;flex-direction:column;background:#fff;
+  border-left:1px solid transparent;
+  transition:width .2s ease,flex-basis .2s ease,border-color .2s ease;
+}
+#detail-panel.open{
+  flex:0 0 min(400px,42vw);
+  width:min(400px,42vw);
+  border-left-color:#e5e7eb;
+  box-shadow:-6px 0 24px rgba(15,23,42,0.08);
+}
+.detail-panel-hdr{
+  flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;
+  gap:8px;padding:10px 12px;border-bottom:1px solid #f1f5f9;background:#fafafa;
+}
+.detail-panel-title{
+  font-size:11px;font-weight:600;color:#64748b;
+  text-transform:uppercase;letter-spacing:.05em;
+}
+.detail-close{
+  border:none;background:#f1f5f9;border-radius:999px;width:30px;height:30px;
+  font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  color:#374151;flex-shrink:0;transition:background .12s;
+}
+.detail-close:hover{background:#e2e8f0}
+#detail-body{
+  flex:1 1 auto;min-height:0;overflow-y:auto;padding:16px 16px 20px;
+  -webkit-overflow-scrolling:touch;
+}
+.modal-name{
+  font-size:16px;font-family:var(--ff-serif);font-style:italic;font-weight:600;
+  line-height:1.3;margin-bottom:6px;color:var(--text);
+}
+.modal-section{margin-top:14px;padding-top:12px;border-top:1px solid #f1f5f9}
+.modal-label{
+  font-size:11px;font-weight:600;color:#64748b;
+  text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;
+}
+.modal-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 16px;margin-top:4px}
+.modal-kv{display:flex;flex-direction:column;gap:2px}
+.modal-k{font-size:11px;color:#6b7280;font-weight:500}
+.modal-v{font-size:var(--c-fs);color:#111;font-weight:600}
+.modal-v.mono{font-family:monospace;font-size:12px;font-weight:400;word-break:break-all}
+.modal-v.modal-gwp{
+  font-family:var(--ff-serif);font-style:italic;font-weight:600;
+  font-size:15px;color:var(--green);line-height:1.3;
+}
+.modal-gwp-unit{font-size:11px;opacity:.85}
+.info-dot{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:14px;height:14px;margin-left:4px;border-radius:50%;
+  background:var(--surface2);color:var(--text2);border:1px solid var(--border2);
+  font-size:9px;font-weight:600;font-style:normal;text-transform:none;
+  letter-spacing:0;cursor:help;vertical-align:middle;
+  font-family:var(--ff-serif);
+}
+.info-dot:hover{background:var(--info-light);color:var(--info);border-color:var(--info)}
+.modal-comment{
+  font-size:12px;color:#374151;background:#f8fafc;border-radius:6px;
+  padding:8px 10px;margin-top:4px;line-height:1.6;white-space:pre-wrap;border:1px solid #e5e7eb;
+}
+.modal-badges{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.modal-dqi{display:flex;align-items:center;gap:8px;margin-top:4px}
+.modal-dqi-bar{height:8px;border-radius:4px;background:#e2e8f0;width:80px;overflow:hidden}
+.modal-dqi-fill{height:100%;border-radius:4px;background:var(--ok)}
+.modal-dqi-val{font-size:13px;font-weight:700;font-family:var(--ff-mono);color:var(--text)}
+.modal-row-ref{font-size:10px;color:var(--text3);margin-top:16px;font-family:var(--ff-mono)}
+</style>
+</head>
+<body>
+
+<div id="ice-shell">
+<div id="ice-app">
+<div id="ice-chrome">
+<!-- Toolbar -->
+<div class="rv-toolbar">
+  <div>
+    <span style="margin-right:6px;color:#6b7280">View</span>
+    <span class="rv-toolbar-group">
+      <button id="rv-btn-grid" type="button" class="rv-active" title="Grid view">⊞ Grid</button>
+      <button id="rv-btn-list" type="button" title="List view">☰ List</button>
+    </span>
+    <span style="margin-left:10px;margin-right:6px;color:#6b7280">Size</span>
+    <span class="rv-toolbar-group">
+      <button id="rv-size-s" type="button">S</button>
+      <button id="rv-size-m" type="button" class="rv-active">M</button>
+      <button id="rv-size-l" type="button">L</button>
+    </span>
+  </div>
+  <div class="rv-count" id="rv-count"></div>
+</div>
+
+<!-- Filter bar -->
+<div class="filter-bar" id="filter-bar">
+  <label>Search</label>
+  <input id="f-search" class="filter-input" type="search" placeholder="material name…">
+  <label>Category</label>
+  <select id="f-cat" class="filter-select"></select>
+  <label>Unit</label>
+  <select id="f-unit" class="filter-select">
+    <option value="">(all)</option>
+    <option value="kg">kg</option>
+    <option value="m2">m²</option>
+    <option value="m3">m³</option>
+    <option value="tonne">tonne</option>
+    <option value="each">each</option>
+  </select>
+  <label>Data</label>
+  <select id="f-ver" class="filter-select">
+    <option value="">all versions</option>
+    <option value="current">V4.1 only</option>
+    <option value="legacy">legacy only</option>
+  </select>
+  <button id="f-clear" class="filter-clear-btn" type="button">✕ Clear</button>
+</div>
+</div>
+
+<!-- Main content -->
+<main id="ice-main">
+<div id="grid"></div>
+</main>
+</div>
+
+<!-- Detail panel -->
+<aside id="detail-panel" aria-hidden="true">
+  <div class="detail-panel-hdr">
+    <span class="detail-panel-title">Material details</span>
+    <button id="detail-close" class="detail-close" type="button" aria-label="Close">✕</button>
+  </div>
+  <div id="detail-body"></div>
+</aside>
+</div>
+
+<script>
+/* INJECT_ICE_DATA_HERE */
+
+if (!window.__ICE_DATA__) window.__ICE_DATA__ = [];
+if (!window.__ICE_IFRAME_H__) window.__ICE_IFRAME_H__ = 860;
+
+const DATA = window.__ICE_DATA__;
+const IFRAME_H = Math.max(480, Number(window.__ICE_IFRAME_H__) || 860);
+
+// Apply viewport height
+document.body.style.height = IFRAME_H + "px";
+document.body.style.maxHeight = IFRAME_H + "px";
+
+// ── State ──
+let viewMode = "grid";
+let sizeMode = "M";
+let sortField = "name";
+let sortDir = 1;
+let filters = {search:"", cat:"", unit:"", ver:""};
+let openIdx = null;
+
+// ── Constants ──
+const COLS_BY_SIZE = {S:8, M:5, L:3};
+const MIN_CARD_PX_BY_SIZE = {S:118, M:160, L:240};
+
+// ── Helpers ──
+function esc(s){
+  return String(s == null ? "" : s)
+    .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+
+function fmtEC(v, decimals){
+  if(v == null) return "—";
+  const n = Number(v);
+  if(isNaN(n)) return "—";
+  if(decimals != null) return n.toFixed(decimals);
+  if(Math.abs(n) >= 100) return n.toFixed(1);
+  if(Math.abs(n) >= 10)  return n.toFixed(2);
+  if(Math.abs(n) >= 1)   return n.toFixed(3);
+  if(Math.abs(n) >= 0.01) return n.toFixed(4);
+  return n.toPrecision(3);
+}
+
+const DQI_TIP =
+  "Data Quality Indicator — taken directly from the 'DQI Score' column of the ICE Summary sheet " +
+  "(Circular Ecology, ICE DB V4.1). Each datapoint is scored 1–5 on method compatibility, " +
+  "assurance/review, temporal correlation (age of study), geographical compatibility and " +
+  "transparency, plus category-level population & analytical checks, then normalised to 0–1 " +
+  "(higher = better). Methodology: 'Data Quality Matrix' sheet in the ICE workbook.";
+
+function fmtDQI(v){
+  if(v == null) return null;
+  return Number(v).toFixed(2);
+}
+
+function dqiColor(v){
+  if(v == null) return "var(--text3)";
+  if(v >= 0.7) return "var(--ok)";
+  if(v >= 0.4) return "var(--warn)";
+  return "var(--error)";
+}
+
+function effectiveGridCols(mode){
+  const requested = COLS_BY_SIZE[mode] || COLS_BY_SIZE.M;
+  const gridEl = document.getElementById("grid");
+  const w = gridEl && gridEl.clientWidth > 0
+    ? gridEl.clientWidth
+    : document.documentElement.clientWidth;
+  if(!w || w < 1) return requested;
+  const gap = 12;
+  const minCard = MIN_CARD_PX_BY_SIZE[mode] || MIN_CARD_PX_BY_SIZE.M;
+  const maxFit = Math.max(1, Math.floor((w + gap) / (minCard + gap)));
+  return Math.min(requested, maxFit);
+}
+
+// ── Filter & sort ──
+function matchesFilters(r){
+  if(filters.search){
+    const q = filters.search.toLowerCase();
+    const haystack = (r.name + " " + (r.subcategory||"") + " " + (r.lookup_name||"")).toLowerCase();
+    if(!haystack.includes(q)) return false;
+  }
+  if(filters.cat && r.category !== filters.cat) return false;
+  if(filters.unit){
+    const u = filters.unit;
+    if(u === "each"){
+      if(r.declared_unit !== "each" && r.declared_unit !== "unit") return false;
+    } else {
+      if(r.declared_unit !== u) return false;
+    }
+  }
+  if(filters.ver === "current" && r.is_legacy) return false;
+  if(filters.ver === "legacy" && !r.is_legacy) return false;
+  return true;
+}
+
+function getVisible(){
+  let rows = DATA.filter(matchesFilters);
+  rows.sort((a,b)=>{
+    let va = a[sortField], vb = b[sortField];
+    if(va == null && vb == null) return 0;
+    if(va == null) return 1;
+    if(vb == null) return -1;
+    if(typeof va === "string") return sortDir * va.localeCompare(vb);
+    return sortDir * (va - vb);
+  });
+  return rows;
+}
+
+// ── Render grid ──
+function cardHTML(r, idx){
+  const legacy = r.is_legacy;
+  const ecKg = r.ec_kgco2e_per_kg;
+  const ecUnit = r.ec_kgco2e_per_unit;
+  const unit = r.declared_unit || "kg";
+  const dqi = r.dqi_score;
+
+  // Only show metrics that actually exist in the ICE DB — no fallback duplication
+  const ecLines = [];
+  if(ecKg != null)
+    ecLines.push(`<div class="card-gwp-line">${fmtEC(ecKg)} <span class="card-gwp-unit">kg CO₂e/kg</span></div>`);
+  if(ecUnit != null)
+    ecLines.push(`<div class="card-gwp-line">${fmtEC(ecUnit)} <span class="card-gwp-unit">kg CO₂e/${esc(unit)}</span></div>`);
+
+  const verClass = legacy ? "card-ver-legacy" : "card-ver-current";
+  const verText = legacy ? "legacy" : "V4.1";
+  const dqiPct = dqi != null ? Math.round(dqi * 100) : 0;
+  const dqiStr = dqi != null ? fmtDQI(dqi) : null;
+  const isSelected = openIdx === idx;
+
+  return `<div class="mat-card${legacy ? " is-legacy" : ""}${isSelected ? " selected" : ""}"
+    data-idx="${idx}" role="button" tabindex="0" aria-label="${esc(r.name)}">
+    <div class="card-head">
+      <div class="card-name-block">
+        <div class="card-name">${esc(r.name)}</div>
+        <div class="card-meta">${esc(r.category)}${r.subcategory ? " › " + esc(r.subcategory) : ""}</div>
+      </div>
+      <span class="card-ver ${verClass}">${verText}</span>
+    </div>
+    <div class="card-gwp${ecLines.length ? "" : " card-gwp--none"}">${
+      ecLines.length ? ecLines.join("") : "no EC value"
+    }</div>
+    <div class="card-footer">
+      <span class="badge badge-cat">${esc(r.category)}</span>
+      <span class="badge badge-unit">${esc(unit)}</span>
+      ${dqiStr != null ? `<div class="dqi-bar-wrap" title="${esc(DQI_TIP)}">
+        <div class="dqi-bar"><div class="dqi-bar-fill" style="width:${dqiPct}%;background:${dqiColor(dqi)}"></div></div>
+        <span class="dqi-label">${dqiStr}</span>
+      </div>` : ""}
+    </div>
+  </div>`;
+}
+
+function listHTML(rows){
+  const cols = [
+    {key:"name",       label:"Material",      cls:""},
+    {key:"category",   label:"Category",      cls:"rv-td-muted"},
+    {key:"declared_unit", label:"Unit",        cls:"rv-td-muted"},
+    {key:"ec_kgco2e_per_kg", label:"EC/kg",   cls:"rv-td-mono rv-td-right"},
+    {key:"ec_kgco2e_per_unit", label:"EC/unit",cls:"rv-td-mono rv-td-right"},
+    {key:"dqi_score",  label:"DQI", tip:true,  cls:"rv-td-mono rv-td-right"},
+    {key:"ice_version",label:"Version",        cls:"rv-td-muted"},
+  ];
+  const arrowFor = k => {
+    if(k !== sortField) return "";
+    return `<span class="rv-sort-ind">${sortDir > 0 ? "▲" : "▼"}</span>`;
+  };
+  const thead = cols.map(c =>
+    `<th class="rv-th-sort${c.key===sortField?" rv-sort-active":""}"
+      data-col="${c.key}"${c.tip ? ` title="${esc(DQI_TIP)}"` : ""}>${c.label}${arrowFor(c.key)}</th>`
+  ).join("");
+
+  const tbody = rows.map((r,i) => {
+    const ecKg = r.ec_kgco2e_per_kg;
+    const ecUnit = r.ec_kgco2e_per_unit;
+    const dataIdx = DATA.indexOf(r);
+    return `<tr class="${r.is_legacy?" is-legacy":""}${openIdx===dataIdx?" selected":""}"
+      data-idx="${dataIdx}">
+      <td>${esc(r.name)}</td>
+      <td class="rv-td-muted">${esc(r.category)}</td>
+      <td class="rv-td-muted">${esc(r.declared_unit)}</td>
+      <td class="rv-td-mono rv-td-right">${ecKg != null ? fmtEC(ecKg,4) : "—"}</td>
+      <td class="rv-td-mono rv-td-right">${ecUnit != null ? fmtEC(ecUnit,4) : "—"}</td>
+      <td class="rv-td-mono rv-td-right">${r.dqi_score != null ? fmtDQI(r.dqi_score) : "—"}</td>
+      <td class="rv-td-muted">${esc(r.ice_version || "V4.1")}</td>
+    </tr>`;
+  }).join("");
+
+  return `<div class="rv-list-panel">
+    <div class="rv-table-wrap">
+      <table class="rv-table">
+        <thead><tr>${thead}</tr></thead>
+        <tbody>${tbody}</tbody>
+      </table>
+    </div>
+  </div>`;
+}
+
+function render(){
+  const rows = getVisible();
+  const gridEl = document.getElementById("grid");
+
+  document.getElementById("rv-count").textContent =
+    rows.length + " of " + DATA.length + " materials";
+
+  if(viewMode === "list"){
+    gridEl.style.display = "block";
+    gridEl.innerHTML = rows.length
+      ? listHTML(rows)
+      : `<div class="empty-msg">No materials match the current filters.</div>`;
+  } else {
+    const cols = effectiveGridCols(sizeMode);
+    gridEl.style.display = "grid";
+    gridEl.style.gridTemplateColumns = `repeat(${cols},1fr)`;
+    if(rows.length){
+      gridEl.innerHTML = rows.map((r) => {
+        const idx = DATA.indexOf(r);
+        return cardHTML(r, idx);
+      }).join("");
+    } else {
+      gridEl.innerHTML = `<div class="empty-msg">No materials match the current filters.</div>`;
+    }
+  }
+}
+
+// ── Detail panel ──
+function openDetail(idx){
+  openIdx = idx;
+  const r = DATA[idx];
+  const panel = document.getElementById("detail-panel");
+  const body = document.getElementById("detail-body");
+  panel.classList.add("open");
+  panel.setAttribute("aria-hidden","false");
+
+  const ecKg = r.ec_kgco2e_per_kg;
+  const ecUnit = r.ec_kgco2e_per_unit;
+  const unit = r.declared_unit || "kg";
+  const dqi = r.dqi_score;
+  const dqiPct = dqi != null ? Math.round(dqi * 100) : 0;
+  const legacy = r.is_legacy;
+
+  let html = `<div class="modal-name">${esc(r.name)}</div>`;
+
+  // Badges
+  html += `<div class="modal-badges">
+    <span class="badge badge-cat">${esc(r.category)}</span>
+    <span class="badge badge-unit">${esc(unit)}</span>
+    ${legacy ? `<span class="badge" style="background:#fef9c3;color:#854d0e;border:1px solid #fde68a">legacy</span>` : `<span class="badge" style="background:var(--green-light);color:var(--green);border:1px solid #86efac">V4.1</span>`}
+  </div>`;
+
+  // EC values — only the metric(s) that exist in the ICE DB
+  const modalEc = [];
+  if(ecKg != null) modalEc.push(`<div class="modal-kv">
+    <span class="modal-k">EC per kg</span>
+    <span class="modal-v modal-gwp">${fmtEC(ecKg,6)} <span class="modal-gwp-unit">kg CO₂e/kg</span></span>
+  </div>`);
+  if(ecUnit != null) modalEc.push(`<div class="modal-kv">
+    <span class="modal-k">EC per ${esc(unit)}</span>
+    <span class="modal-v modal-gwp">${fmtEC(ecUnit,6)} <span class="modal-gwp-unit">kg CO₂e/${esc(unit)}</span></span>
+  </div>`);
+
+  html += `<div class="modal-section">
+    <div class="modal-label">Embodied Carbon (A1–A3)</div>
+    <div class="modal-grid">
+      ${modalEc.length ? modalEc.join("") : `<div class="modal-kv">
+        <span class="modal-k">EC value</span>
+        <span class="modal-v" style="color:var(--text3)">not available</span>
+      </div>`}
+      ${r.mass_per_unit_kg != null ? `<div class="modal-kv">
+        <span class="modal-k">Mass per ${esc(unit)}</span>
+        <span class="modal-v mono">${r.mass_per_unit_kg} kg</span>
+      </div>` : ""}
+      ${r.ec_value_raw ? `<div class="modal-kv" style="grid-column:1/-1">
+        <span class="modal-k">Raw value (legacy)</span>
+        <span class="modal-v mono" style="font-size:11px;color:var(--text2)">${esc(r.ec_value_raw)}</span>
+      </div>` : ""}
+    </div>
+  </div>`;
+
+  // Data quality
+  html += `<div class="modal-section">
+    <div class="modal-label">Data Quality
+      <span class="info-dot" title="${esc(DQI_TIP)}" tabindex="0">i</span>
+    </div>
+    ${dqi != null ? `<div class="modal-dqi">
+      <div class="modal-dqi-bar"><div class="modal-dqi-fill" style="width:${dqiPct}%;background:${dqiColor(dqi)}"></div></div>
+      <span class="modal-dqi-val" style="color:${dqiColor(dqi)}">${fmtDQI(dqi)}</span>
+      <span style="font-size:11px;color:var(--text2)">${r.dqi_version ? "DQI matrix " + esc(r.dqi_version) : ""}</span>
+    </div>` :
+    `<span style="font-size:12px;color:var(--text3)">DQI not available (legacy data — pre-V3.0 entries were never scored)</span>`}
+  </div>`;
+
+  // Source / version
+  html += `<div class="modal-section">
+    <div class="modal-label">Source</div>
+    <div class="modal-grid">
+      <div class="modal-kv">
+        <span class="modal-k">ICE version</span>
+        <span class="modal-v">${esc(r.ice_version || "V4.1")}</span>
+      </div>
+      <div class="modal-kv">
+        <span class="modal-k">Subcategory</span>
+        <span class="modal-v">${r.subcategory ? esc(r.subcategory) : "—"}</span>
+      </div>
+      <div class="modal-kv">
+        <span class="modal-k">Lookup name</span>
+        <span class="modal-v mono" style="font-size:11px">${esc(r.lookup_name)}</span>
+      </div>
+    </div>
+  </div>`;
+
+  // Comments
+  if(r.comments){
+    html += `<div class="modal-section">
+      <div class="modal-label">Notes &amp; applicability</div>
+      <div class="modal-comment">${esc(r.comments)}</div>
+    </div>`;
+  }
+
+  html += `<div class="modal-row-ref">ICE Summary row ${r.source_row}</div>`;
+
+  body.innerHTML = html;
+  render();
+}
+
+function closeDetail(){
+  openIdx = null;
+  document.getElementById("detail-panel").classList.remove("open");
+  document.getElementById("detail-panel").setAttribute("aria-hidden","true");
+  render();
+}
+
+// ── Populate category dropdown ──
+function buildCatSelect(){
+  const cats = [...new Set(DATA.map(r => r.category))].sort();
+  const sel = document.getElementById("f-cat");
+  sel.innerHTML = `<option value="">(all categories)</option>` +
+    cats.map(c => `<option value="${esc(c)}">${esc(c)}</option>`).join("");
+}
+
+// ── Event wiring ──
+function wireEvents(){
+  document.getElementById("rv-btn-grid").addEventListener("click", ()=>{
+    viewMode = "grid";
+    document.getElementById("rv-btn-grid").classList.add("rv-active");
+    document.getElementById("rv-btn-list").classList.remove("rv-active");
+    render();
+  });
+  document.getElementById("rv-btn-list").addEventListener("click", ()=>{
+    viewMode = "list";
+    document.getElementById("rv-btn-list").classList.add("rv-active");
+    document.getElementById("rv-btn-grid").classList.remove("rv-active");
+    render();
+  });
+
+  ["rv-size-s","rv-size-m","rv-size-l"].forEach(id => {
+    document.getElementById(id).addEventListener("click", ()=>{
+      sizeMode = id.split("-")[2].toUpperCase();
+      document.querySelectorAll("#ice-chrome .rv-toolbar-group button").forEach(b => {
+        if(!b.id.startsWith("rv-btn")) b.classList.remove("rv-active");
+      });
+      document.getElementById(id).classList.add("rv-active");
+      render();
+    });
+  });
+
+  document.getElementById("f-search").addEventListener("input", e=>{
+    filters.search = e.target.value.trim();
+    render();
+  });
+  document.getElementById("f-cat").addEventListener("change", e=>{
+    filters.cat = e.target.value;
+    render();
+  });
+  document.getElementById("f-unit").addEventListener("change", e=>{
+    filters.unit = e.target.value;
+    render();
+  });
+  document.getElementById("f-ver").addEventListener("change", e=>{
+    filters.ver = e.target.value;
+    render();
+  });
+  document.getElementById("f-clear").addEventListener("click", ()=>{
+    filters = {search:"", cat:"", unit:"", ver:""};
+    document.getElementById("f-search").value = "";
+    document.getElementById("f-cat").value = "";
+    document.getElementById("f-unit").value = "";
+    document.getElementById("f-ver").value = "";
+    render();
+  });
+
+  document.getElementById("detail-close").addEventListener("click", closeDetail);
+
+  document.getElementById("grid").addEventListener("click", e=>{
+    // Card click in grid mode
+    const card = e.target.closest(".mat-card");
+    if(card){
+      const idx = parseInt(card.dataset.idx, 10);
+      if(openIdx === idx) closeDetail();
+      else openDetail(idx);
+      return;
+    }
+    // Row click in list mode
+    const tr = e.target.closest("tr[data-idx]");
+    if(tr){
+      const idx = parseInt(tr.dataset.idx, 10);
+      if(openIdx === idx) closeDetail();
+      else openDetail(idx);
+      return;
+    }
+    // Column header sort in list mode
+    const th = e.target.closest("th[data-col]");
+    if(th){
+      const col = th.dataset.col;
+      if(sortField === col) sortDir *= -1;
+      else { sortField = col; sortDir = 1; }
+      render();
+    }
+  });
+
+  document.addEventListener("keydown", e=>{
+    if(e.key === "Escape" && openIdx !== null) closeDetail();
+  });
+
+  window.addEventListener("resize", ()=> render());
+}
+
+// ── Init ──
+buildCatSelect();
+wireEvents();
+render();
+</script>
+</body>
+</html>

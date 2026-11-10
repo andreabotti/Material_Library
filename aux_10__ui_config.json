@@ -1,0 +1,988 @@
+{
+  "field_visibility": {
+    "default": {
+      "Compact": {
+        "Density": false,
+        "Thickness": true,
+        "Conductivity (ʎ)": false,
+        "Fire rating": true,
+        "Service Life": false,
+        "Recycling Rate": true,
+        "EPD Num.": false,
+        "Technical Details": false,
+        "VOC": true,
+        "EN197-1": false,
+        "Comments": false,
+        "Manufacturing Plant": true,
+        "U-value": false
+      },
+      "Extended": {
+        "Density": false,
+        "Thickness": true,
+        "Conductivity (ʎ)": false,
+        "Fire rating": true,
+        "Service Life": false,
+        "Recycling Rate": true,
+        "EPD Num.": true,
+        "Technical Details": true,
+        "VOC": true,
+        "EN197-1": false,
+        "Comments": true,
+        "Manufacturing Plant": true,
+        "U-value": false
+      }
+    },
+    "Binder": {
+      "Compact": {
+        "Density": false,
+        "Thickness": false,
+        "Conductivity (ʎ)": false,
+        "Fire rating": false,
+        "Service Life": false,
+        "Recycling Rate": true,
+        "EPD Num.": true,
+        "Technical Details": false,
+        "VOC": true,
+        "EN197-1": true,
+        "Comments": false,
+        "Manufacturing Plant": true,
+        "U-value": false
+      },
+      "Extended": {
+        "Density": false,
+        "Thickness": false,
+        "Conductivity (ʎ)": false,
+        "Fire rating": false,
+        "Service Life": false,
+        "Recycling Rate": true,
+        "EPD Num.": true,
+        "Technical Details": true,
+        "VOC": true,
+        "EN197-1": true,
+        "Comments": false,
+        "Manufacturing Plant": true,
+        "U-value": false
+      }
+    },
+    "Building boards": {
+      "Compact": {
+        "Density": true,
+        "Thickness": true,
+        "Conductivity (ʎ)": false,
+        "Fire rating": true,
+        "Service Life": false,
+        "Recycling Rate": true,
+        "EPD Num.": true,
+        "Technical Details": false,
+        "VOC": true,
+        "EN197-1": false,
+        "Comments": false,
+        "Manufacturing Plant": false,
+        "U-value": false
+      },
+      "Extended": {
+        "Density": true,
+        "Thickness": true,
+        "Conductivity (ʎ)": false,
+        "Fire rating": true,
+        "Service Life": false,
+        "Recycling Rate": true,
+        "EPD Num.": true,
+        "Technical Details": true,
+        "VOC": true,
+        "EN197-1": false,
+        "Comments": true,
+        "Manufacturing Plant": true,
+        "U-value": false
+      }
+    },
+    "Building Fasteners": {
+      "Compact": {
+        "Density": false,
+        "Thickness": false,
+        "Conductivity (ʎ)": false,
+        "Fire rating": false,
+        "Service Life": false,
+        "Recycling Rate": true,
+        "EPD Num.": true,
+        "Technical Details": false,
+        "VOC": true,
+        "EN197-1": false,
+        "Comments": false,
+        "Manufacturing Plant": true,
+        "U-value": false
+      },
+      "Extended": {
+        "Density": false,
+        "Thickness": false,
+        "Conductivity (ʎ)": false,
+        "Fire rating": false,
+        "Service Life": false,
+        "Recycling Rate": true,
+        "EPD Num.": true,
+        "Technical Details": true,
+        "VOC": true,
+        "EN197-1": false,
+        "Comments": false,
+        "Manufacturing Plant": true,
+        "U-value": false
+      }
+    },
+    "Filler": {
+      "Compact": {
+        "Density": false,
+        "Thickness": false,
+        "Conductivity (ʎ)": false,
+        "Fire rating": false,
+        "Service Life": false,
+        "Recycling Rate": true,
+        "EPD Num.": true,
+        "Technical Details": false,
+        "VOC": true,
+        "EN197-1": false,
+        "Comments": false,
+        "Manufacturing Plant": true,
+        "U-value": false
+      },
+      "Extended": {
+        "Density": false,
+        "Thickness": false,
+        "Conductivity (ʎ)": false,
+        "Fire rating": false,
+        "Service Life": false,
+        "Recycling Rate": true,
+        "EPD Num.": true,
+        "Technical Details": true,
+        "VOC": true,
+        "EN197-1": false,
+        "Comments": false,
+        "Manufacturing Plant": true,
+        "U-value": false
+      }
+    },
+    "In situ Concrete": {
+      "Compact": {
+        "Density": false,
+        "Thickness": false,
+        "Conductivity (ʎ)": false,
+        "Fire rating": false,
+        "Service Life": false,
+        "Recycling Rate": true,
+        "EPD Num.": true,
+        "Technical Details": false,
+        "VOC": true,
+        "EN197-1": false,
+        "Comments": false,
+        "Manufacturing Plant": true,
+        "U-value": false
+      },
+      "Extended": {
+        "Density": false,
+        "Thickness": false,
+        "Conductivity (ʎ)": false,
+        "Fire rating": false,
+        "Service Life": false,
+        "Recycling Rate": true,
+        "EPD Num.": true,
+        "Technical Details": true,
+        "VOC": true,
+        "EN197-1": true,
+        "Comments": false,
+        "Manufacturing Plant": true,
+        "U-value": false
+      }
+    },
+    "Insulation": {
+      "Compact": {
+        "Density": true,
+        "Thickness": true,
+        "Conductivity (ʎ)": true,
+        "Fire rating": true,
+        "Service Life": false,
+        "Recycling Rate": true,
+        "EPD Num.": true,
+        "Technical Details": false,
+        "VOC": true,
+        "EN197-1": false,
+        "Comments": false,
+        "Manufacturing Plant": false,
+        "U-value": true
+      },
+      "Extended": {
+        "Density": true,
+        "Thickness": true,
+        "Content": true,
+        "Conductivity (ʎ)": true,
+        "Fire rating": true,
+        "Service Life": false,
+        "Recycling Rate": true,
+        "EPD Num.": true,
+        "Technical Details": true,
+        "VOC": true,
+        "EN197-1": false,
+        "Comments": false,
+        "Manufacturing Plant": true,
+        "U-value": true
+      }
+    },
+    "Masonry (Block)": {
+      "Compact": {
+        "Density": true,
+        "Thickness": true,
+        "Conductivity (ʎ)": true,
+        "Fire rating": true,
+        "Service Life": false,
+        "Recycling Rate": true,
+        "EPD Num.": true,
+        "Technical Details": false,
+        "VOC": true,
+        "EN197-1": false,
+        "Comments": false,
+        "Manufacturing Plant": true,
+        "U-value": true
+      },
+      "Extended": {
+        "Density": true,
+        "Thickness": true,
+        "Conductivity (ʎ)": true,
+        "Fire rating": true,
+        "Service Life": false,
+        "Recycling Rate": true,
+        "EPD Num.": true,
+        "Technical Details": true,
+        "VOC": true,
+        "EN197-1": false,
+        "Comments": false,
+        "Manufacturing Plant": true,
+        "U-value": true
+      }
+    },
+    "Panel": {
+      "Compact": {
+        "Density": true,
+        "Thickness": true,
+        "Conductivity (ʎ)": true,
+        "Fire rating": true,
+        "Service Life": false,
+        "Recycling Rate": true,
+        "EPD Num.": false,
+        "Technical Details": false,
+        "VOC": true,
+        "EN197-1": false,
+        "Comments": false,
+        "Manufacturing Plant": true,
+        "U-value": true
+      },
+      "Extended": {
+        "Density": true,
+        "Thickness": true,
+        "Conductivity (ʎ)": true,
+        "Fire rating": true,
+        "Service Life": false,
+        "Recycling Rate": true,
+        "EPD Num.": true,
+        "Technical Details": true,
+        "VOC": true,
+        "EN197-1": false,
+        "Comments": false,
+        "Manufacturing Plant": true,
+        "U-value": true
+      }
+    },
+    "Windows & Doors - Glazing": {
+      "Compact": {
+        "Density": true,
+        "Thickness": true,
+        "Conductivity (ʎ)": true,
+        "Fire rating": true,
+        "Service Life": false,
+        "Recycling Rate": true,
+        "EPD Num.": false,
+        "Technical Details": false,
+        "VOC": true,
+        "EN197-1": false,
+        "Comments": false,
+        "Manufacturing Plant": true,
+        "U-value": true
+      },
+      "Extended": {
+        "Density": true,
+        "Thickness": true,
+        "Conductivity (ʎ)": true,
+        "Fire rating": true,
+        "Service Life": false,
+        "Recycling Rate": true,
+        "EPD Num.": true,
+        "Technical Details": true,
+        "VOC": true,
+        "EN197-1": false,
+        "Comments": false,
+        "Manufacturing Plant": true,
+        "U-value": true
+      }
+    },
+    "Rebar": {
+      "Compact": {
+        "Density": false,
+        "Thickness": false,
+        "Conductivity (ʎ)": false,
+        "Fire rating": false,
+        "Service Life": false,
+        "Recycling Rate": true,
+        "EPD Num.": true,
+        "Technical Details": false,
+        "VOC": true,
+        "EN197-1": false,
+        "Comments": false,
+        "Manufacturing Plant": true,
+        "U-value": false
+      },
+      "Extended": {
+        "Density": false,
+        "Thickness": false,
+        "Conductivity (ʎ)": false,
+        "Fire rating": false,
+        "Service Life": false,
+        "Recycling Rate": true,
+        "EPD Num.": true,
+        "Technical Details": true,
+        "VOC": true,
+        "EN197-1": false,
+        "Comments": false,
+        "Manufacturing Plant": true,
+        "U-value": false
+      }
+    },
+    "Tiles": {
+      "Compact": {
+        "Density": false,
+        "Thickness": true,
+        "Conductivity (ʎ)": false,
+        "Fire rating": false,
+        "Service Life": false,
+        "Recycling Rate": false,
+        "EPD Num.": true,
+        "Technical Details": false,
+        "VOC": true,
+        "EN197-1": false,
+        "Comments": false,
+        "Manufacturing Plant": false,
+        "Content": false,
+        "U-value": false
+      },
+      "Extended": {
+        "Density": true,
+        "Thickness": true,
+        "Conductivity (ʎ)": false,
+        "Fire rating": false,
+        "Service Life": false,
+        "Recycling Rate": false,
+        "EPD Num.": true,
+        "Technical Details": false,
+        "VOC": true,
+        "EN197-1": false,
+        "Comments": false,
+        "Manufacturing Plant": true,
+        "Content": true,
+        "U-value": false
+      }
+    }
+  },
+  "field_meta": {
+    "EN197-1": {
+      "order": 10,
+      "catalog_label": "EN197-1",
+      "source_columns": "D__EN197-1",
+      "unit": "-"
+    },
+    "Density": {
+      "order": 20,
+      "catalog_label": "Vol. Density",
+      "source_columns": "P__Mass_kgm3",
+      "unit": "kg/m3"
+    },
+    "Thickness": {
+      "order": 30,
+      "catalog_label": "Thickness",
+      "source_columns": "P__Thick_mm | E__EPD_Thick_mm",
+      "unit": "mm"
+    },
+    "Content": {
+      "order": 35,
+      "catalog_label": "Content",
+      "source_columns": "D__Content",
+      "unit": "-"
+    },
+    "Conductivity (ʎ)": {
+      "order": 40,
+      "catalog_label": "Conductivity (ʎ)",
+      "source_columns": "P__L_WmK | E__L_WmK",
+      "unit": "W/mK"
+    },
+    "Fire rating": {
+      "order": 50,
+      "catalog_label": "Fire rating",
+      "source_columns": "P__FireRating",
+      "unit": "-"
+    },
+    "Service Life": {
+      "order": 60,
+      "catalog_label": "Service Life",
+      "source_columns": "P__ServiceLife",
+      "unit": "-"
+    },
+    "Technical Details": {
+      "order": 70,
+      "catalog_label": "Details",
+      "source_columns": "U__TechDetails_URL | D__TechDetails",
+      "unit": "-"
+    },
+    "VOC": {
+      "order": 115,
+      "catalog_label": "VOC",
+      "source_columns": "VO__VOC_Cert",
+      "unit": "-"
+    },
+    "Recycling Rate": {
+      "order": 100,
+      "catalog_label": "Recycled Content",
+      "source_columns": "R__Rec_Reco_ByProd_% | R__Reco_Tot_%",
+      "unit": "%"
+    },
+    "EPD Dec.": {
+      "order": 109,
+      "catalog_label": "EPD Dec. n.",
+      "source_columns": "E__EPD_DecNumber",
+      "unit": "-"
+    },
+    "EPD Num.": {
+      "order": 110,
+      "catalog_label": "EPD Reg. n.",
+      "source_columns": "E__EPD_DecNumber | E__EPD_RegNumber | E__EPD_URL",
+      "unit": "-"
+    },
+    "Comments": {
+      "order": 120,
+      "catalog_label": "Comments",
+      "source_columns": "S__Comments",
+      "unit": "-"
+    },
+    "Manufacturing Plant": {
+      "order": 130,
+      "catalog_label": "Plant",
+      "source_columns": "E__ManuCountry | E__ManuPlant",
+      "unit": "-"
+    },
+    "U-value": {
+      "order": 45,
+      "catalog_label": "U-value",
+      "source_columns": "P__U_Wm2K",
+      "unit": "W/m2K"
+    }
+  },
+  "column_display_labels": {
+    "P__Mass_kgm3": "Vol. Density (kg/m³)",
+    "P__Mass_kgm2": "Sup. Density (kg/m²)",
+    "R__Rec_Reco_ByProd_%": "Recycled Content",
+    "G__GWP_FU": "GWP FU/DU",
+    "G__GWP_A1A3": "GWP A1–A3 (FU/DU)",
+    "G__GWP_A1A3_kg": "GWP A1–A3 (per kg)",
+    "G__GWP_A1A3_m2": "GWP A1–A3 (per m²)",
+    "G__GWP_A1A3_m3": "GWP A1–A3 (per m³)",
+    "G__GWP_A1A3_m2R1": "GWP A1–A3 (per m², R=1)",
+    "G__GWP_A1": "GWP A1",
+    "G__GWP_A2": "GWP A2",
+    "G__GWP_A3": "GWP A3",
+    "R__Reco_Tot_%": "Recycling rate (total)",
+    "R__Rec_Tot_%": "Recycled content (total)",
+    "R__Rec_Pre_%": "Recycled content (pre-consumer)",
+    "R__Rec_Post_%": "Recycled content (post-consumer)",
+    "R__ByProd_Tot_%": "By-product (total)",
+    "PR__Price_EUR_m2": "List price (€/m²)",
+    "PR__Cost_per_R": "List price per R (€/m²·K/W)",
+    "PR__R_m2KW": "Thermal resistance R (m²K/W)"
+  },
+  "field_ui_settings": {
+    "divider_order_threshold": 99,
+    "divider_color": "#2a7d2e",
+    "divider_width_pct": 60,
+    "divider_margin_top_px": 10,
+    "divider_margin_bottom_px": 4,
+    "divider_border_px": 1.5
+  },
+  "filter_widget": {
+    "columns": [
+      "D__ProductType_ENG",
+      "D__MaterialType_ENG",
+      "A__Manufacturer",
+      "A__ProductName",
+      "P__Thick_mm",
+      "E__ManuCountry"
+    ],
+    "column_1_options": [
+      "D__ProductType_ENG",
+      "D__MaterialType_ENG",
+      "A__Manufacturer",
+      "E__ManuCountry"
+    ],
+    "default_columns": [
+      "D__ProductType_ENG",
+      "A__Manufacturer",
+      "D__MaterialType_ENG"
+    ],
+    "product_type_default_value": "Floor (Tiles)",
+    "_product_type_default_value_comment": "When Filter Column 1 is D__ProductType_ENG, Value for Filter 1 defaults to this (if present in the option list)."
+  },
+  "chart_widget": {
+    "group_by_columns": {
+      "D__ProductType_ENG": true,
+      "D__MaterialType_ENG": true,
+      "A__Manufacturer": true,
+      "A__ProductName": true,
+      "P__Thick_mm": true,
+      "E__ManuCountry": true
+    },
+    "value_columns": {
+      "P__U_Wm2K": false,
+      "P__L_WmK": true,
+      "P__Thick_mm": true,
+      "P__Mass_kgm3": true,
+      "P__Mass_kgm2": true,
+      "P__Mass_kg": false,
+      "G__GWP_A1A3_kg": true,
+      "G__GWP_A1A3_m2": true,
+      "G__GWP_A1A3_m3": true,
+      "G__GWP_A1A3_m2R1": true,
+      "G__GWP_A1A3": true,
+      "G__GWP_A1": false,
+      "G__GWP_A2": false,
+      "G__GWP_A3": false,
+      "R__Rec_Pre_%": true,
+      "R__Rec_Post_%": true,
+      "R__Rec_Tot_%": true,
+      "R__Reco_Tot_%": false,
+      "R__ByProd_Tot_%": false,
+      "R__Rec_Reco_ByProd_%": true,
+      "PR__Price_EUR_m2": true,
+      "PR__Cost_per_R": true,
+      "PR__R_m2KW": false
+    },
+    "color_by_columns": {
+      "D__ProductType_ENG": true,
+      "D__MaterialType_ENG": true,
+      "A__Manufacturer": true,
+      "P__Thick_mm": true,
+      "E__ManuCountry": true
+    }
+  },
+  "tabular_column_visibility": {
+    "_base": {
+      "D": {
+        "D__ProductType_ENG": true,
+        "D__MaterialType_ENG": true,
+        "D__EN197-1": false,
+        "D__Content": false,
+        "D__TechDetails": true
+      },
+      "P": {
+        "P__Mass_kgm3": true,
+        "P__Thick_mm": true,
+        "P__Lambda_WmK": false,
+        "P__FireRating": true,
+        "P__ServiceLife": false
+      },
+      "C": {
+        "E__EPD_RegNumber": true,
+        "E__EPD_URL": true,
+        "E__EPD_Publisher": true,
+        "E__EPD_Type": true,
+        "E__EPD_IssueDate": true,
+        "E__EPD_ValidUntil": true
+      },
+      "G": {
+        "G__GWP_A1A3": true,
+        "G__GWP_FU": true,
+        "G__GWP_A1A3_m3": true,
+        "G__GWP_A1A3_m2R1": false
+      },
+      "R": {
+        "R__Reco_Tot_%": true,
+        "R__Rec_Reco_ByProd_%": true
+      },
+      "VO": {
+        "VO__VOC_Body": false,
+        "VO__Product_Category": false,
+        "VO__VOC_Cert": true
+      }
+    },
+    "Binder": {
+      "D": {
+        "D__EN197-1": true,
+        "D__Content": true,
+        "D__TechDetails": false
+      },
+      "P": {
+        "P__Mass_kgm3": false,
+        "P__Thick_mm": false,
+        "P__FireRating": false
+      },
+      "G": {
+        "G__GWP_A1A3_m3": false
+      }
+    },
+    "Filler": {
+      "D": {
+        "D__EN197-1": true,
+        "D__Content": true
+      },
+      "P": {
+        "P__Thick_mm": false,
+        "P__FireRating": false
+      },
+      "G": {
+        "G__GWP_A1A3_m3": false
+      }
+    },
+    "Building boards": {
+      "R": {
+        "R__Reco_Tot_%": false
+      }
+    },
+    "Building Fasteners": {
+      "P": {
+        "P__Thick_mm": false
+      }
+    },
+    "Insulation": {
+      "P": {
+        "P__Lambda_WmK": true
+      },
+      "G": {
+        "G__GWP_A1A3_m2R1": true
+      },
+      "R": {
+        "R__Rec_Reco_ByProd_%": false
+      }
+    },
+    "Panel": {
+      "P": {
+        "P__Lambda_WmK": true
+      },
+      "R": {
+        "R__Rec_Reco_ByProd_%": false
+      }
+    },
+    "Windows & Doors - Glazing": {
+      "P": {
+        "P__Lambda_WmK": true
+      },
+      "R": {
+        "R__Rec_Reco_ByProd_%": false
+      }
+    },
+    "In situ Concrete": {
+      "P": {
+        "P__Mass_kgm3": false,
+        "P__FireRating": false
+      },
+      "G": {
+        "G__GWP_A1A3_m3": false
+      },
+      "R": {
+        "R__Rec_Reco_ByProd_%": false
+      }
+    },
+    "default": {
+      "D": {
+        "D__EN197-1": true,
+        "D__Content": true
+      },
+      "P": {
+        "P__Lambda_WmK": true,
+        "P__ServiceLife": true
+      },
+      "G": {
+        "G__GWP_A1A3_m2R1": true
+      }
+    }
+  },
+  "manufacturer_logos": {
+    "BWR": {
+      "logo_path": "img/bwr_logo.png",
+      "color": "#004f91"
+    },
+    "Beton Eisack": {
+      "logo_path": "img/betoneisack_logo.svg",
+      "color": "#268040"
+    },
+    "Cementi Costantinopoli": {
+      "logo_path": "img/cementi_costantinopoli_logo.png",
+      "color": "#686767"
+    },
+    "Cementirossi": {
+      "logo_path": "img/cementirossi_logo.png",
+      "color": "#e41f2c"
+    },
+    "BetonRossi": {
+      "logo_path": "img/betonrossi_logo.jpg",
+      "color": "#e41f2c"
+    },
+    "Beton Rossi": {
+      "logo_path": "img/betonrossi_logo.jpg",
+      "color": "#e41f2c"
+    },
+    "Buzzi Unicem": {
+      "logo_path": "img/buzzi_unicem_logo.png",
+      "color": "#0060b4"
+    },
+    "Unical": {
+      "logo_path": "img/unical_logo.jpg",
+      "color": "#0060b4"
+    },
+    "Holcim": {
+      "logo_path": "img/holcim_logo.jpg",
+      "color": "#05b8f0"
+    },
+    "Findo": {
+      "logo_path": "img/findo_logo.png",
+      "color": "#686767"
+    },
+    "Pittini": {
+      "logo_path": "img/pittini_logo.png",
+      "color": "#00358e"
+    },
+    "Feralpi": {
+      "logo_path": "img/feralpi_logo.jpg",
+      "color": "#00662f"
+    },
+    "Knauf": {
+      "logo_path": "img/knauf_og_1.png"
+    },
+    "Fassa Bortolo": {
+      "logo_path": "img/FassaBortolo_logo.png"
+    },
+    "Gyproc": {
+      "logo_path": "img/Gyproc_Logo_RGB.png",
+      "color": "#005eb8"
+    },
+    "Siniat": {
+      "logo_path": "img/siniat-logo.svg",
+      "color": "#b51783"
+    },
+    "Ediltec": {
+      "logo_path": "img/greca-verdone-thin.svg"
+    },
+    "Agglo Baghin S.r.l": {
+      "logo_path": "img/agglobaghin_logo.png"
+    },
+    "Agglo Baghin": {
+      "logo_path": "img/agglobaghin_logo.png"
+    },
+    "Ursa": {
+      "logo_path": "img/ursa_logo.svg"
+    },
+    "Hilti": {
+      "logo_path": "img/hilti_logo.svg"
+    },
+    "Polisette": {
+      "logo_path": "img/polisette_logo.png"
+    },
+    "Celenit": {
+      "logo_path": "img/celenit_logo.png"
+    },
+    "Xella Italia": {
+      "logo_path": "img/xella_logo.svg"
+    },
+    "Isover (Saint Gobain)": {
+      "logo_path": "img/isover_logo.png"
+    },
+    "Colacem": {
+      "logo_path": "img/colacem_logo.png"
+    },
+    "Heidelberg Materials Italia Cementi": {
+      "logo_path": "img/heidelberg_logo.svg"
+    },
+    "Heidelberg Materials": {
+      "logo_path": "img/heidelberg_logo.svg"
+    },
+    "Mapei": {
+      "logo_path": "img/mapei_logo.svg"
+    },
+    "Metra": {
+      "logo_path": "img/metra_logo.svg"
+    },
+    "IPM ITALIA SRL": {
+      "logo_path": "img/ipmitalia_logo.png"
+    },
+    "Rockwool": {
+      "logo_path": "img/rockwool_logo.svg"
+    },
+    "Beton Lana": {
+      "logo_path": "img/betonlana_logo.png"
+    },
+    "Stiferite": {
+      "logo_path": "img/stiferite_logo.png"
+    },
+    "Schüco": {
+      "logo_path": "img/schueco_logo.svg"
+    },
+    "Sch�co": {
+      "logo_path": "img/schueco_logo.svg"
+    },
+    "Schueco": {
+      "logo_path": "img/schueco_logo.svg"
+    },
+    "Iris Ceramica Group": {
+      "logo_path": "img/iris_logo.png"
+    },
+    "Marmi Scala S.r.l.": {
+      "logo_path": "img/marmiscala_logo.png"
+    },
+    "Marmi Scala": {
+      "logo_path": "img/marmiscala_logo.png"
+    },
+    "Giussani Enrico & figli S.r.l.": {
+      "logo_path": "img/giussani_logo.png"
+    },
+    "Giussani Enrico & figli srl": {
+      "logo_path": "img/giussani_logo.png"
+    },
+    "CIPA GRES S.p.A.": {
+      "logo_path": "img/cipagres_logo.png"
+    },
+    "IPA GRES": {
+      "logo_path": "img/cipagres_logo.png"
+    },
+    "Panaria Group": {
+      "logo_path": "img/panaria_logo.png"
+    },
+    "Panaria": {
+      "logo_path": "img/panaria_logo.png"
+    },
+    "ArcelorMittal Europe": {
+      "logo_path": "img/arcelormittal_logo.svg"
+    },
+    "Laminam S.p.A.": {
+      "logo_path": "img/laminam_logo.png"
+    },
+    "Laminam": {
+      "logo_path": "img/laminam_logo.png"
+    },
+    "Gresmalt": {
+      "logo_path": "img/gresmalt_logo.png"
+    },
+    "Isolpack": {
+      "logo_path": "img/isolpack_logo.png"
+    },
+    "Kerakoll": {
+      "logo_path": "img/kerakoll_logo.svg"
+    },
+    "Wienerberger": {
+      "logo_path": "img/wienerberger_logo.svg"
+    },
+    "Mirage Granito Ceramico S.p.A.": {
+      "logo_path": "img/mirage_logo.svg"
+    },
+    "Rage Granito": {
+      "logo_path": "img/mirage_logo.svg"
+    },
+    "Atena S.p.A.": {
+      "logo_path": "img/atena_logo.svg"
+    },
+    "Hunterdouglas": {
+      "logo_path": "img/hunterdouglas_logo.svg"
+    },
+    "SAINT-GOBAIN": {
+      "logo_path": "img/saint-gobain_logo.png"
+    },
+    "Ceramiche CCV Castelvetro": {
+      "logo_path": "img/ccvcastelvetro_logo.png"
+    },
+    "CCV Castelvetro": {
+      "logo_path": "img/ccvcastelvetro_logo.png"
+    },
+    "Emilceramica": {
+      "logo_path": "img/emilceramica_logo.png"
+    },
+    "Ceramica del Conca S.p.A.": {
+      "logo_path": "img/delconca_logo.png"
+    },
+    "Ceramica del Conca": {
+      "logo_path": "img/delconca_logo.png"
+    },
+    "Marazzi": {
+      "logo_path": "img/marazzi_logo.svg"
+    },
+    "Marazzi Group": {
+      "logo_path": "img/marazzi_logo.svg"
+    },
+    "Ceramiche La Fenice S.r.l.": {
+      "logo_path": "img/lafenice_logo.png"
+    },
+    "La Fenice S.r.l.": {
+      "logo_path": "img/lafenice_logo.png"
+    },
+    "Micheletto": {
+      "logo_path": "img/micheletto_logo.png"
+    },
+    "James Hardie Europe GmbH": {
+      "logo_path": "img/fermacell_logo.svg"
+    },
+    "DIMA": {
+      "logo_path": "img/dima_logo.png"
+    },
+    "Tecnocanapa": {
+      "logo_path": "img/tecnocanapa_logo.jpg"
+    },
+    "nocanapa": {
+      "logo_path": "img/tecnocanapa_logo.jpg"
+    },
+    "Industrie Riunite Odolesi I,R,O": {
+      "logo_path": "img/iro_logo.svg"
+    },
+    "Acciaierie Riunite Odolesi I.R.O.": {
+      "logo_path": "img/iro_logo.svg"
+    },
+    "GMIX": {
+      "logo_path": "img/gmix_logo.svg"
+    },
+    "Confindustria Ceramica": {
+      "logo_path": "img/confindustriaceramica_logo.svg"
+    },
+    "Florim Ceramiche S.p.A. SB": {
+      "logo_path": "img/florim_logo.svg"
+    },
+    "Florim": {
+      "logo_path": "img/florim_logo.svg"
+    },
+    "Gruppo Romani S.p.A.": {
+      "logo_path": "img/romani_logo.png"
+    },
+    "Gruppo Roma": {
+      "logo_path": "img/romani_logo.png"
+    },
+    "Ceramiche Piemme": {
+      "logo_path": "img/piemme_logo.jpg"
+    },
+    "Ceramica Piemme": {
+      "logo_path": "img/piemme_logo.jpg"
+    },
+    "Newfloor S.r.l.": {
+      "logo_path": "img/newfloor_logo.svg"
+    },
+    "Newfloor": {
+      "logo_path": "img/newfloor_logo.svg"
+    },
+    "Gold Art Ceramica S.p.A.": {
+      "logo_path": "img/goldart_logo.svg"
+    },
+    "Gold Art": {
+      "logo_path": "img/goldart_logo.svg"
+    },
+    "Feralpi Group": {
+      "logo_path": "img/feralpi_logo.jpg",
+      "color": "#00662f"
+    }
+  },
+  "_comment_tabular_cv": "tabular_column_visibility: _base holds majority defaults; per-product-type dicts hold only overrides (diff from base)."
+}

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>0bfeff3a-c907-4b64-be0d-dc26121338cd</common:UUID>
+      <name>
+        <baseName xml:lang="en">Electricity from photovoltaic, 570 kWp, open ground installation, multi-Si, production mix at plant, Low Voltage</baseName>
+      </name>
+      <common:synonyms>Elettricità da fotovoltaico, 570 kWp, installazione in campo, silicio policristallino, produzione all’impianto, Basso Voltaggio</common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">Energy carriers and technologies</common:class>
+          <common:class level="1">Electricity</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment>Dataset developed according to Arcadia project  Methodology (Report: “Metodologia per gli studi di filiera della Banca Dati italiana LCA”). LCA study of electricity production from photovoltaic systems with 570 kWp of power&#13;
+ (Report: “Filiera di produzione del mix elettrico italiano”). &#13;
+The dataset refers to the production of 1 kWh of electricity from photovoltaic systems with 570 kWp of power, in Italy, and it is representative of the processing technologies commonly used for this purpose.&#13;
+</common:generalComment>
+      <referenceToExternalDocumentation type="source data set" refObjectId="437adcd4-cc8f-4a3d-89e9-4ef7053d83d9" version="01.00.000" uri="../sources/437adcd4-cc8f-4a3d-89e9-4ef7053d83d9.xml">
+        <common:shortDescription>Gabriella Fiorentino, Simona Scalbi, Antonietta Cerbone, Giuliana Ansanelli, Marco Giammartini, Amalia Zucaro. Filiera di produzione del mix elettrico italiano.&#13;
+&#13;
+Background datasets from EcoInvent database cut-off (v.3.7.1) were used for the LCA study. &#13;
+</common:shortDescription>
+      </referenceToExternalDocumentation>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2018</common:referenceYear>
+      <common:dataSetValidUntil>2026</common:dataSetValidUntil>
+      <common:timeRepresentativenessDescription>This dataset has been considered valid until 2026, since no main changes have occurred in the electricity production from photovoltaic in the investigated years.</common:timeRepresentativenessDescription>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT"/>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>The dataset (1 kWh of electricity from photovoltaic IT, 570 kWp) refers to a system that includes all processes, from the extraction of raw materials to produce the photovoltaic panels up to the production of 1 kWh of electricity (cradle-to-gate approach), taking into account the 20-year life time of the system and the insolation received in the reference year (primary data).&#13;
+The primary data were provided by photovoltaic solar statistical report  from GSE (Gestore Servizi Energetici, 2019), and by PVGIS software that calculates the insolation received.&#13;
+For the LCA study, background datasets from EcoInvent database 3.7.1 cut-off were used.&#13;
+</technologyDescriptionAndIncludedProcesses>
+      <technologicalApplicability>Electricity from Italian electricity mix  sold to Italian electric grid.</technologicalApplicability>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <deviationsFromLCIMethodPrinciple>None</deviationsFromLCIMethodPrinciple>
+      <LCIMethodApproaches>Not applicable</LCIMethodApproaches>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <dataCutOffAndCompletenessPrinciples>Production of equipment and infrastructures is not included, except for the background system</dataCutOffAndCompletenessPrinciples>
+      <dataCollectionPeriod>2018 - 2019</dataCollectionPeriod>
+      <referenceToDataSource type="source data set" refObjectId="7a89cfc6-d3bf-467f-8f34-6597cbf7907d" version="01.00.000" uri="../sources/7a89cfc6-d3bf-467f-8f34-6597cbf7907d.xml">
+        <common:shortDescription>20231031170512_Filiera di produzione del mix elettrico italiano.pdf</common:shortDescription>
+      </referenceToDataSource>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>No statement</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Independent external review">
+        <common:reviewDetails>The review was performed in compliance with Arcadia Metodology: “Metodologia per gli studi di filiera della Banca Dati italiana LCA” and ISO 14040-44 norms. The dataset has been assessed limited to the foreground data collected during the supply chain studies.&#13;
+Each dataset has been evaluated based on the following 4 criteria:&#13;
+1. Technological Representativeness; 2. Time Representativeness; 3. Geographical Representativeness; 4. Reliability (A)&#13;
+In this context, the Reliability is very good.&#13;
+</common:reviewDetails>
+        <common:referenceToNameOfReviewerAndInstitution type="contact data set" refObjectId="0fce064b-e5d8-4f67-a705-297d7fb69feb" version="01.00.000" uri="../sources/0fce064b-e5d8-4f67-a705-297d7fb69feb.xml">
+          <common:shortDescription>Ecoinnovazione</common:shortDescription>
+        </common:referenceToNameOfReviewerAndInstitution>
+        <common:otherReviewDetails>The study was judged by the reviewer as compliant with both ISO 14040-44 and Arcadia methodology.</common:otherReviewDetails>
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Completeness" value="Good"/>
+          <common:dataQualityIndicator name="Precision" value="Not applicable"/>
+          <common:dataQualityIndicator name="Methodological appropriateness and consistency" value="Not applicable"/>
+          <common:dataQualityIndicator name="Overall quality" value="Not applicable"/>
+        </common:dataQualityIndicators>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="a1584c83-b38e-4e2d-bde1-c8d0dfd6f7c3" uri="../sources/a1584c83-b38e-4e2d-bde1-c8d0dfd6f7c3.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="a2131ae3-a55a-46c8-85c0-9fbe932164d9" uri="../sources/a2131ae3-a55a-46c8-85c0-9fbe932164d9.xml">
+          <common:shortDescription xml:lang="en">ISO 14044</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Not defined</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="b764c5e2-be66-438a-8251-a91d4547b03f" uri="../sources/b764c5e2-be66-438a-8251-a91d4547b03f.xml">
+        <common:shortDescription xml:lang="en">Arcadia – PON Governance e Capacità istituzionale 2014-2020</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Arcadia – PON Governance e Capacità istituzionale 2014-2020</common:project>
+    </common:commissionerAndGoal>
+    <dataGenerator>
+      <common:referenceToPersonOrEntityGeneratingTheDataSet refObjectId="0d2d503a-b623-434e-bcb9-ecc064b0f0e3" type="contact data set" uri="../sources/0d2d503a-b623-434e-bcb9-ecc064b0f0e3.xml" version="01.00.000">
+        <common:shortDescription>ENEA</common:shortDescription>
+      </common:referenceToPersonOrEntityGeneratingTheDataSet>
+    </dataGenerator>
+    <dataEntryBy>
+      <common:timeStamp>2023-10-26T11:47:40.559+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="3b3937b5-f7a1-45c5-9cce-e0d12ea688ef" uri="../sources/3b3937b5-f7a1-45c5-9cce-e0d12ea688ef.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2023-04-06T13:13:31.499Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/0bfeff3a-c907-4b64-be0d-dc26121338cd.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="59623c0c-7e16-4942-a49e-9a4b45e51c16" type="contact data set" uri="../contacts/59623c0c-7e16-4942-a49e-9a4b45e51c16.xml" version="01.00.000">
+        <common:shortDescription>ENEA-ARCADIA</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+      <common:accessRestrictions>Type of license: Open Database Licence (ODbL)</common:accessRestrictions>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="6f63e415-0d7d-4dcc-b383-9e2cbcbb81a5" uri="../flows/6f63e415-0d7d-4dcc-b383-9e2cbcbb81a5.xml">
+        <common:shortDescription xml:lang="en">Electricity from photovoltaic, 570 kWp, open ground installation, multi-Si, production mix at plant, Low Voltage</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.6000000E+0</meanAmount>
+      <resultingAmount>3.6000000E+0</resultingAmount>
+      <generalComment>In this class (570 kWp), all photovoltaic plants larger than 200 kWp are included.
+In this study, it is assumed that large PV plants are based on policrystalline silicon and open ground installation (30° inclination).
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="6b44aad2-ffbd-4b1b-ac70-03415e6c376f" uri="../flows/6b44aad2-ffbd-4b1b-ac70-03415e6c376f.xml">
+        <common:shortDescription xml:lang="en">Photovoltaic plant, 570kWp, multi-Si, on open ground {GLO}| construction | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.8200000E-8</meanAmount>
+      <resultingAmount>6.8200000E-8</resultingAmount>
+      <generalComment>The number of panels required to produce 1 kWh was calculated according to the following formula:
+
+N. PANELS = 1/(570 kWp*T20* Ins_inclina_SI)
+
+where 570 kWp is the power of the panel considered, T20 is the lifetime of the panel (20 years), Ins_inclina_SI (=1285.46 kWh) is the parameter of the annual electrical production from photovoltaics, calculated through the Photovoltaic Geographical Information System (PVGIS), wich evaluates the insolation value received by the type of cell considered</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="684757ab-e72c-4a50-9d0a-f66f1bd55e7f" uri="../flows/684757ab-e72c-4a50-9d0a-f66f1bd55e7f.xml">
+        <common:shortDescription xml:lang="en">Tap water {Europe without Switzerland}| tap water production, underground water without treatment | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.5000000E-6</meanAmount>
+      <resultingAmount>1.5000000E-6</resultingAmount>
+      <generalComment>For panel cleaning, Ecoinvent assumes 20 L of water/year for m2 of installed panel (lifetime 30 years). 
+The average surface area of a photovoltaic panel  is assumed to be 1.65 m2 (https://www.sorgenia.it). 
+The total amount of water was calculated as follows:
+(1,65*6,82E-8)*20*(20/30)   
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="3">
+      <referenceToFlowDataSet type="flow data set" refObjectId="262861fa-e573-4c23-92b3-0f0e0413906c" uri="../flows/262861fa-e573-4c23-92b3-0f0e0413906c.xml">
+        <common:shortDescription xml:lang="en">Wastewater, from residence {CH}| treatment of, capacity 1.1E10l/year | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.5000000E-9</meanAmount>
+      <resultingAmount>1.5000000E-9</resultingAmount>
+      <generalComment>For wastewater treatment, it is assumed that the total amount of cleaning water is disposed of in a sewage system.
+</generalComment>
+    </exchange>
+  </exchanges>
+</processDataSet>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+</head>
+<body>
+<script>
+(function () {
+  function post(type, data) {
+    window.parent.postMessage(
+      Object.assign({ isStreamlitMessage: true, type: type }, data || {}),
+      "*"
+    );
+  }
+  function setValue(v) {
+    post("streamlit:setComponentValue", { value: v });
+  }
+
+  post("streamlit:componentReady", { apiVersion: 1 });
+  post("streamlit:setFrameHeight", { height: 0 });
+
+  function forwardToBrowserIframes(jsonStr) {
+    if (!jsonStr) return;
+    var msg;
+    try { msg = JSON.parse(jsonStr); } catch (e) { return; }
+    function scan(doc) {
+      if (!doc) return;
+      doc.querySelectorAll("iframe").forEach(function (fr) {
+        try { fr.contentWindow.postMessage(msg, "*"); } catch (e) {}
+      });
+    }
+    scan(document);
+    try { scan(window.parent.document); } catch (e) {}
+    try { scan(window.top.document); } catch (e) {}
+  }
+
+  function onEpdMessage(event) {
+    var d = event.data;
+    if (!d || !d.uuid) return;
+    if (d.type !== "epd:loadSource" && d.type !== "epd:fetchRequest") return;
+    setValue(d);
+  }
+
+  function onStreamlitRender(event) {
+    var data = event.data;
+    if (!data || data.type !== "streamlit:render") return;
+    var deliver = (data.args && data.args.deliver) || "";
+    if (deliver) forwardToBrowserIframes(deliver);
+  }
+
+  window.addEventListener("message", onStreamlitRender);
+  window.addEventListener("message", onEpdMessage);
+  try { window.parent.addEventListener("message", onEpdMessage); } catch (e) {}
+  try { window.top.addEventListener("message", onEpdMessage); } catch (e) {}
+})();
+</script>
+</body>
+</html>

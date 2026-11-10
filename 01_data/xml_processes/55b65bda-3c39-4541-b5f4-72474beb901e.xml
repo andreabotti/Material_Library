@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>55b65bda-3c39-4541-b5f4-72474beb901e</common:UUID>
+      <name>
+        <baseName xml:lang="en">Electricity from biogas, Anaerobic digestion and cogeneration, at plant</baseName>
+      </name>
+      <common:synonyms>Elettricità da biogas, digestione anerobica e cogenerazione, all'impianto</common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">Energy carriers and technologies</common:class>
+          <common:class level="1">Electricity</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment>Dataset developed according to Arcadia project Methodology (Report: “Metodologia per gli studi di filiera della Banca Dati italiana LCA”). LCA study of electricity production from biogas (Report: “La filiera del biogas per la produzione di energia elettrica in Italia”). &#13;
+The dataset is related to the production of 1 kWh of electricity from biogas, in Italy. The dataset consists of 3 unit processes:&#13;
+1) production of electricity from biogas derived from agricultural-forest biomass and animal manure, at plants with a nominal power of 1-700 kW (percentage contribution to the whole dataset: 22%).&#13;
+2) Production of electricity from biogas derived from agricultural-forestry biomass and animal manure, at plants with a nominal power of 701-1700 kW (percentage contribution to the whole dataset: 60%).&#13;
+3) Production of electricity from biogas derived from waste and sludge (percentage contribution to the whole dataset: 18%).&#13;
+</common:generalComment>
+      <referenceToExternalDocumentation type="source data set" refObjectId="f1b80687-86db-406a-9ccd-8140a46f65cd" version="01.00.000" uri="../sources/f1b80687-86db-406a-9ccd-8140a46f65cd.xml">
+        <common:shortDescription>Giuliana Ansanelli, Antonietta Cerbone, Gabriella Fiorentino, Alessandro Giocoli, Vincenzo Motola e Amalia Zucaro. LA FILIERA DELLE BIOGAS PER LA PRODUZIONE DI ENERGIA ELETTRICA IN ITALIA.&#13;
+Report Annexes are available at: https://www.arcadia.enea.it/settori-di-intervento/energia.html&#13;
+Background datasets from Ecoinvent database cut-off (v.3.7.1) were used for the LCA study. &#13;
+</common:shortDescription>
+      </referenceToExternalDocumentation>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2018</common:referenceYear>
+      <common:dataSetValidUntil>2026</common:dataSetValidUntil>
+      <common:timeRepresentativenessDescription>This dataset has been considered valid until 2026, since no main changes have occurred in the electricity production from biogas in the investigated years. </common:timeRepresentativenessDescription>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT"/>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>The production of electricity from biogas, used in the Italian electricity mix, includes the following sub-processes:&#13;
+&#13;
+	Energy production from waste biomass.&#13;
+	Energy production from dedicated energy crops.&#13;
+In the case of the sub-process relating to energy production from waste biomass, both agro-forestry biomass (including animal manure) and those from biowaste (mainly from urban organic fraction and public green maintenance) and sludge were considered, and the "zero burden" approach was applied, i.e. the environmental load from waste generation processes has not been considered, according to the pertinent literature. Consequently, the system boundaries, according to a Gate-to-Gate approach, include the transport of residual biomasses to the anaerobic digestion plants, for biogas production, and the biogas conversion into electricity and heat, in cogeneration (combined heat and power, CHP) plants. In particular, for the biogas deriving from agro-forestry waste biomass, two cogeneration processes have been defined, relating to plants belonging to the 1-700 kW and 701-1700 kW nominal power ranges.&#13;
+The anaerobic conversion and cogeneration processes were assumed to be energy self-sufficient, since they consume part of the electricity and heat they produce (and selling the surplus to the national grid). As regards the sub-process relating to the production of energy from dedicated crops, in addition to the aforementioned phases, in the system boundaries, the biomass production phase was also considered, according to a Cradle to Gate approach.&#13;
+Primary data (farms involved in the ENAMA project and two waste-to-energy plants) and secondary data (e.g. literature and/or data from pertinent database) representative of Italian supply chain for the geographical characteristics and used technologies (machineries, equipment, etc) were collected. Inventory data have been collected as physical quantities of materials used in the different processes. The benefits from energy self-consumption was included. Finally, for the evaluation of the impacts associated with the production of electricity and heat, separately, an exergy allocation has been performed.&#13;
+&#13;
+Background data were modelled according to EcoInvent database 3.7.1 .&#13;
+</technologyDescriptionAndIncludedProcesses>
+      <technologicalApplicability>Electricity from biogas sold to Italian electric grid.</technologicalApplicability>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Allocation - exergetic content</LCIMethodApproaches>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <dataCutOffAndCompletenessPrinciples>Production of equipment and infrastructures is not included, except for the background system</dataCutOffAndCompletenessPrinciples>
+      <referenceToDataSource type="source data set" refObjectId="fcb3cf04-d9a5-424d-a0a0-a645c7f797cd" version="01.00.000" uri="../sources/fcb3cf04-d9a5-424d-a0a0-a645c7f797cd.xml">
+        <common:shortDescription>20231004114718_La filiera del biogas per la produzione di energia elettrica inItalia.pdf</common:shortDescription>
+      </referenceToDataSource>
+      <dataCollectionPeriod>2009 - 2019</dataCollectionPeriod>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>No statement</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Independent internal review">
+        <common:reviewDetails>The review was performed in compliance with Arcadia Metodology: “Metodologia per gli studi di filiera della Banca Dati italiana LCA” and ISO 14040-44 norms. The dataset has been assessed limited to the foreground data collected during the supply chain studies.&#13;
+Each dataset has been evaluated based on the following 4 criteria:&#13;
+1. Technological Representativeness; 2. Time Representativeness; 3. Geographical Representativeness; 4. Reliability .&#13;
+In this context the Reliability is good.&#13;
+</common:reviewDetails>
+        <common:referenceToNameOfReviewerAndInstitution type="contact data set" refObjectId="149234d3-ba5f-4fe6-8d2f-9f4eee3b5a0c" version="01.00.000" uri="../sources/149234d3-ba5f-4fe6-8d2f-9f4eee3b5a0c.xml">
+          <common:shortDescription>ENEA</common:shortDescription>
+        </common:referenceToNameOfReviewerAndInstitution>
+        <common:otherReviewDetails>The study was judged by the reviewer as compliant with both ISO 14040-44 and Arcadia methodology.</common:otherReviewDetails>
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Completeness" value="Good"/>
+          <common:dataQualityIndicator name="Precision" value="Not applicable"/>
+          <common:dataQualityIndicator name="Methodological appropriateness and consistency" value="Not applicable"/>
+          <common:dataQualityIndicator name="Overall quality" value="Not applicable"/>
+        </common:dataQualityIndicators>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="88893f5f-f7d9-42d1-aa34-27d414f5df96" uri="../sources/88893f5f-f7d9-42d1-aa34-27d414f5df96.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="79e1f18c-c336-4f66-a910-6ab7722970e2" uri="../sources/79e1f18c-c336-4f66-a910-6ab7722970e2.xml">
+          <common:shortDescription xml:lang="en">ISO 14044</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Not defined</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="98738ebb-143d-4a9a-a350-2dd400493d65" uri="../sources/98738ebb-143d-4a9a-a350-2dd400493d65.xml">
+        <common:shortDescription xml:lang="en">Arcadia – PON Governance e Capacità istituzionale 2014-2020 </common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Arcadia – PON Governance e Capacità istituzionale 2014-2020</common:project>
+    </common:commissionerAndGoal>
+    <dataGenerator>
+      <common:referenceToPersonOrEntityGeneratingTheDataSet refObjectId="32133226-9f47-4a4e-ba33-1d634bef17da" type="contact data set" uri="../sources/32133226-9f47-4a4e-ba33-1d634bef17da.xml" version="01.00.000">
+        <common:shortDescription>ENEA</common:shortDescription>
+      </common:referenceToPersonOrEntityGeneratingTheDataSet>
+    </dataGenerator>
+    <dataEntryBy>
+      <common:timeStamp>2023-10-04T09:04:52.862+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="09533d15-0213-425d-9036-c6404ad0bced" uri="../sources/09533d15-0213-425d-9036-c6404ad0bced.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2022-01-14T11:53:20.791Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/55b65bda-3c39-4541-b5f4-72474beb901e.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="34909ee4-f459-4b18-9bf0-9da4606082c3" type="contact data set" uri="../contacts/34909ee4-f459-4b18-9bf0-9da4606082c3.xml" version="01.00.000">
+        <common:shortDescription>ENEA-ARCADIA</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+      <common:accessRestrictions>Type of license: Open Database Licence (ODbL)</common:accessRestrictions>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="3509032d-3336-4306-a41a-a832dcf78f3d" uri="../flows/3509032d-3336-4306-a41a-a832dcf78f3d.xml">
+        <common:shortDescription xml:lang="en">Electricity from biogas, Anaerobic digestion and cogeneration, at plant</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.6000000E+0</meanAmount>
+      <resultingAmount>3.6000000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="9c789341-c765-4658-b142-ae36d841003e" uri="../flows/9c789341-c765-4658-b142-ae36d841003e.xml">
+        <common:shortDescription xml:lang="en">Electricity from biogas_1-700 kW, Anaerobic digestion and cogeneration, at plant</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>7.9200000E-1</meanAmount>
+      <resultingAmount>7.9200000E-1</resultingAmount>
+      <generalComment>CL1 contribution to the production of 1kWh EE from biogas in Italy is 22%.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="3479a588-c4f9-438f-8623-8cdb5e4abd7b" uri="../flows/3479a588-c4f9-438f-8623-8cdb5e4abd7b.xml">
+        <common:shortDescription xml:lang="en">Electricity from biogas_701-1700 kW, Anaerobic digestion and cogeneration, at plant</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.1600000E+0</meanAmount>
+      <resultingAmount>2.1600000E+0</resultingAmount>
+      <generalComment>CL2 contribution to the production of 1kWh EE from biogas in Italy is 60%.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="3">
+      <referenceToFlowDataSet type="flow data set" refObjectId="883506e4-5895-4e04-8c2c-35d9b25c2737" uri="../flows/883506e4-5895-4e04-8c2c-35d9b25c2737.xml">
+        <common:shortDescription xml:lang="en">Electricity from biogas_waste and sludge, Anaerobic digestion and cogeneration, at plant</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.4800000E-1</meanAmount>
+      <resultingAmount>6.4800000E-1</resultingAmount>
+      <generalComment>CL3 contribution to the production of 1kWh EE from biogas in Italy is 18%.
+</generalComment>
+    </exchange>
+  </exchanges>
+</processDataSet>

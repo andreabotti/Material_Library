@@ -1,0 +1,1540 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>392b5184-38ab-4193-9e97-438a1106b792</common:UUID>
+      <name>
+        <baseName xml:lang="en">Tomato, late maturing variety, field cultivation in Northern Italy, 1 kg of Tomato</baseName>
+      </name>
+      <common:synonyms>Coltivazione del pomodoro in campo, varietà a ciclo tardivo, Nord Italia, 1 kg di pomodoro</common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">Materials production</common:class>
+          <common:class level="1">Agricultural production means</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment xml:lang="en">The dataset has been developed within the Arcadia Project. It concerns the processing of industrial tomatoes in reference to the report “Studio LCA della filiera dell’industria del pomodoro confezionato in Italia”.</common:generalComment>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2021</common:referenceYear>
+      <common:dataSetValidUntil>2028</common:dataSetValidUntil>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT">
+        <descriptionOfRestrictions>Italy. Primary data collected in the North. Representative dataset of North  talian tomato chain production.</descriptionOfRestrictions>
+      </locationOfOperationSupplyOrProduction>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>All tomatoes that ripen after 120 days are late varieties. Many crops with this ripening period begin to bear ripe fruit between 120 and 130 days. Tomatoes are grown by farms located in the northern part of the peninsula. Farms are representative of the northern area of Italy. The main energy consumption is related to tillage and irrigation of the fields and phytosanitary treatment of tomato plants. Tomato harvesting can be done manually or using mechanized means, depending on the typology of packaging, of cultivation and the variety of tomato grown. Mechanized means specialize in selecting berries that conform to the required quality.&#13;
+Background data were modelled according to Ecoinvent v. 3.8&#13;
+</technologyDescriptionAndIncludedProcesses>
+      <technologicalApplicability>Tomato is an annual herbaceous plant. It is among the most widespread horticultural plants in the world. The fruits of this plant are used in the processing industry to produce concentrates, purees, peeled tomatoes, juices.</technologicalApplicability>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Not applicable</LCIMethodApproaches>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <dataCutOffAndCompletenessPrinciples>Greenhouse not included</dataCutOffAndCompletenessPrinciples>
+      <referenceToDataSource type="source data set" refObjectId="7f1cd832-5d10-4016-9a22-3518d5bb9e21" version="01.00.000" uri="../sources/7f1cd832-5d10-4016-9a22-3518d5bb9e21.xml">
+        <common:shortDescription>20230920161228_Report _Filiera Pomodoro_DEF2023_short.pdf</common:shortDescription>
+      </referenceToDataSource>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>No statement</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Independent external review">
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Completeness" value="Very good"/>
+        </common:dataQualityIndicators>
+        <common:reviewDetails>The study is very representative from a geographical and technological point of view. From a temporal point of view, as the data refer to the two-year period 2020-2021, the representativeness is considered very good. For the North cultivation the completeness is considered very good. &#13;
+&#13;
+The inventory data relating to the various processes within the system's boundaries are therefore to be considered reasonably representative of the supply chain under study, as they can to all intents and purposes be considered average data for the same. The quality of the data used in the study is considered to be good and the data were for the most part measured; where they were calculated or came from literature, they were all checked by experts.&#13;
+Allocation was avoided as far as possible by dividing the unitary process into two or more sub-processes and collecting environmental data on these sub-processes.&#13;
+When allocation could not be avoided, as in the case of products obtained during processing, the inputs and outputs of the system were divided between its different products and by-products.&#13;
+The allocation was generally based on mass (e.g. for waste treatment, waste water and energy used).&#13;
+The review  was performed  in compliance with Arcadia Metodology: “Metodologia per gli studi di filiera della Banca Dati italiana LCA” and ISO 14040-44 norms. The dataset has been assessed limited to the foreground data collected during the supply chain studies.&#13;
+Each dataset has been evaluated based on the following 4 criteria:&#13;
+1. Technological Representativeness;  2. Time Representativeness; 3. Geographical Representativeness; 4. Reliability (A)&#13;
+In this contest the Reliability is very good&#13;
+</common:reviewDetails>
+        <common:referenceToNameOfReviewerAndInstitution type="contact data set" refObjectId="200262c7-1520-46d5-893c-03b8dc330958" version="01.00.000" uri="../sources/200262c7-1520-46d5-893c-03b8dc330958.xml">
+          <common:shortDescription>Ecoinnovazione&#13;
+Alessandra Zamagni&#13;
+a.zamagni@ecoinnovazione.it&#13;
+Nicola Ferrara&#13;
+n.ferrara@ecoinnovazione.it&#13;
+</common:shortDescription>
+        </common:referenceToNameOfReviewerAndInstitution>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="ca239436-3ee5-4d87-be8c-afdf26104244" uri="../sources/ca239436-3ee5-4d87-be8c-afdf26104244.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="0de46267-ac43-453f-93d3-c85c78280659" uri="../sources/0de46267-ac43-453f-93d3-c85c78280659.xml">
+          <common:shortDescription xml:lang="en">ISO 14044</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="01807191-e156-421a-b2f6-aa609ea534f4" uri="../contacts/01807191-e156-421a-b2f6-aa609ea534f4.xml">
+        <common:shortDescription xml:lang="en">EPLCA project team</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Arcadia – PON Governance e Capacità istituzionale 2014-2020</common:project>
+    </common:commissionerAndGoal>
+    <dataEntryBy>
+      <common:timeStamp>2023-09-20T13:54:31.245+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="a97a0155-0234-4b87-b4ce-a45da52f2a40" uri="../sources/a97a0155-0234-4b87-b4ce-a45da52f2a40.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2023-01-26T09:50:43.242Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/392b5184-38ab-4193-9e97-438a1106b792.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="393686bc-67dc-45d7-b29b-a8b3fcab61a8" type="contact data set" uri="../contacts/393686bc-67dc-45d7-b29b-a8b3fcab61a8.xml" version="01.00.000">
+        <common:shortDescription>ENEA-ARCADIA</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="a0110e00-448b-47ed-803d-8ff08649a779" uri="../flows/a0110e00-448b-47ed-803d-8ff08649a779.xml">
+        <common:shortDescription xml:lang="en">Tomato, late maturing variety, field cultivation in Northern Italy, 1 kg of Tomato</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0000000E+0</meanAmount>
+      <resultingAmount>1.0000000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="667c0ca5-4519-40ba-8308-2ea3a27e4f7f" uri="../flows/667c0ca5-4519-40ba-8308-2ea3a27e4f7f.xml">
+        <common:shortDescription xml:lang="en">Tap water {Europe without Switzerland}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.2800000E+0</meanAmount>
+      <resultingAmount>1.2800000E+0</resultingAmount>
+      <generalComment>Water use in the field
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="9e224047-5455-4a76-86bb-14a3459b9a9c" uri="../flows/9e224047-5455-4a76-86bb-14a3459b9a9c.xml">
+        <common:shortDescription xml:lang="en">Inorganic nitrogen fertiliser, as N {IT}| market for inorganic nitrogen fertiliser, as N | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.4700000E-2</meanAmount>
+      <resultingAmount>2.4700000E-2</resultingAmount>
+      <generalComment>Inorganic fertilizer
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="3">
+      <referenceToFlowDataSet type="flow data set" refObjectId="97877eff-aae6-4743-bda0-15243a061439" uri="../flows/97877eff-aae6-4743-bda0-15243a061439.xml">
+        <common:shortDescription xml:lang="en">Inorganic phosphorus fertiliser, as P2O5 {IT}| market for inorganic phosphorus fertiliser, as P2O5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.8900000E-2</meanAmount>
+      <resultingAmount>1.8900000E-2</resultingAmount>
+      <generalComment>Inorganic fertilizer
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="4">
+      <referenceToFlowDataSet type="flow data set" refObjectId="54089955-d5ec-47ee-bb16-60c7706b2859" uri="../flows/54089955-d5ec-47ee-bb16-60c7706b2859.xml">
+        <common:shortDescription xml:lang="en">Inorganic potassium fertiliser, as K2O {IT}| market for inorganic potassium fertiliser, as K2O | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>9.0400000E-4</meanAmount>
+      <resultingAmount>9.0400000E-4</resultingAmount>
+      <generalComment>Inorganic fertilizer
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="5">
+      <referenceToFlowDataSet type="flow data set" refObjectId="3928dc7d-991e-4923-a118-a7e905b9ceaf" uri="../flows/3928dc7d-991e-4923-a118-a7e905b9ceaf.xml">
+        <common:shortDescription xml:lang="en">Sulfur trioxide {RER}| market for sulfur trioxide | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.0200000E-4</meanAmount>
+      <resultingAmount>4.0200000E-4</resultingAmount>
+      <generalComment>Inorganic fertilizer
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="6">
+      <referenceToFlowDataSet type="flow data set" refObjectId="f7d9cd46-c23c-4261-9564-825825697e12" uri="../flows/f7d9cd46-c23c-4261-9564-825825697e12.xml">
+        <common:shortDescription xml:lang="en">Kaolin {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.1600000E-5</meanAmount>
+      <resultingAmount>2.1600000E-5</resultingAmount>
+      <generalComment>Inorganic fertilizer
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="7">
+      <referenceToFlowDataSet type="flow data set" refObjectId="ce520217-cc0c-4434-bd95-d6222840f458" uri="../flows/ce520217-cc0c-4434-bd95-d6222840f458.xml">
+        <common:shortDescription xml:lang="en">Quicklime, milled, loose {RoW}| market for quicklime, milled, loose | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>7.1600000E-4</meanAmount>
+      <resultingAmount>7.1600000E-4</resultingAmount>
+      <generalComment>Inorganic fertilizer
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="8">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d2f97b8d-dcc0-4371-9170-ff4e52054bac" uri="../flows/d2f97b8d-dcc0-4371-9170-ff4e52054bac.xml">
+        <common:shortDescription xml:lang="en">Zinc oxide {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.1000000E-6</meanAmount>
+      <resultingAmount>2.1000000E-6</resultingAmount>
+      <generalComment>Inorganic fertilizer
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="9">
+      <referenceToFlowDataSet type="flow data set" refObjectId="a13da857-2d42-4abe-ab15-ef21eb84c63c" uri="../flows/a13da857-2d42-4abe-ab15-ef21eb84c63c.xml">
+        <common:shortDescription xml:lang="en">Manganese dioxide {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>8.1500000E-5</meanAmount>
+      <resultingAmount>8.1500000E-5</resultingAmount>
+      <generalComment>Inorganic fertilizer
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="10">
+      <referenceToFlowDataSet type="flow data set" refObjectId="99fc9bcc-3c14-4795-9a49-a6e18fc6c406" uri="../flows/99fc9bcc-3c14-4795-9a49-a6e18fc6c406.xml">
+        <common:shortDescription xml:lang="en">Magnesium oxide {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.8500000E-5</meanAmount>
+      <resultingAmount>3.8500000E-5</resultingAmount>
+      <generalComment>Inorganic fertilizer
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="11">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4f99ed85-faa4-424c-a0af-931cdd19c888" uri="../flows/4f99ed85-faa4-424c-a0af-931cdd19c888.xml">
+        <common:shortDescription xml:lang="en">A. Compost, of green waste</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.8747100E-5</meanAmount>
+      <resultingAmount>2.8747100E-5</resultingAmount>
+      <generalComment>Organic fertilizer
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="12">
+      <referenceToFlowDataSet type="flow data set" refObjectId="07450d19-504e-4aca-8121-d0ae0bef8e32" uri="../flows/07450d19-504e-4aca-8121-d0ae0bef8e32.xml">
+        <common:shortDescription xml:lang="en">Poultry manure, fresh {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.3300000E-4</meanAmount>
+      <resultingAmount>1.3300000E-4</resultingAmount>
+      <generalComment>Organic fertilizer
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="13">
+      <referenceToFlowDataSet type="flow data set" refObjectId="db80a5be-dcba-4b44-b41f-df46117acf97" uri="../flows/db80a5be-dcba-4b44-b41f-df46117acf97.xml">
+        <common:shortDescription xml:lang="en">Manure, liquid, swine {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.0841700E-4</meanAmount>
+      <resultingAmount>6.0841700E-4</resultingAmount>
+      <generalComment>Organic fertilizer
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="14">
+      <referenceToFlowDataSet type="flow data set" refObjectId="c66f8ec6-dd30-4058-8a83-c329a3d2120a" uri="../flows/c66f8ec6-dd30-4058-8a83-c329a3d2120a.xml">
+        <common:shortDescription xml:lang="en">Organic nitrogen fertiliser, as N {GLO}| market for organic nitrogen fertiliser, as N | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>7.1900000E-3</meanAmount>
+      <resultingAmount>7.1900000E-3</resultingAmount>
+      <generalComment>Organic fertilizer
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="15">
+      <referenceToFlowDataSet type="flow data set" refObjectId="c56ae0ff-fc60-406c-ade5-3ed91f9ad9ce" uri="../flows/c56ae0ff-fc60-406c-ade5-3ed91f9ad9ce.xml">
+        <common:shortDescription xml:lang="en">Organo-mineral nitrogen fertiliser, as N {GLO}| market for organo-mineral nitrogen fertiliser, as N | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.2400000E-4</meanAmount>
+      <resultingAmount>3.2400000E-4</resultingAmount>
+      <generalComment>Organic fertilizer
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="16">
+      <referenceToFlowDataSet type="flow data set" refObjectId="6ffab04e-8cb3-42f3-8ffc-e86270ecb0a2" uri="../flows/6ffab04e-8cb3-42f3-8ffc-e86270ecb0a2.xml">
+        <common:shortDescription xml:lang="en">Acetamide-anillide-compound, unspecified {RoW}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.8380300E-5</meanAmount>
+      <resultingAmount>1.8380300E-5</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="17">
+      <referenceToFlowDataSet type="flow data set" refObjectId="010b760c-e0e1-44d6-ae50-2b0cddff30a7" uri="../flows/010b760c-e0e1-44d6-ae50-2b0cddff30a7.xml">
+        <common:shortDescription xml:lang="en">Aclonifen {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.0135900E-9</meanAmount>
+      <resultingAmount>5.0135900E-9</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="18">
+      <referenceToFlowDataSet type="flow data set" refObjectId="21b8493a-4b0e-45ec-aee3-590ebee94649" uri="../flows/21b8493a-4b0e-45ec-aee3-590ebee94649.xml">
+        <common:shortDescription xml:lang="en">Copper oxide {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.0401000E-7</meanAmount>
+      <resultingAmount>1.0401000E-7</resultingAmount>
+      <generalComment>including share for copper oxychloride
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="19">
+      <referenceToFlowDataSet type="flow data set" refObjectId="8966b34b-10bb-4044-afe1-4feb6d9bc491" uri="../flows/8966b34b-10bb-4044-afe1-4feb6d9bc491.xml">
+        <common:shortDescription xml:lang="en">Dithiocarbamate-compound {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.3227900E-7</meanAmount>
+      <resultingAmount>1.3227900E-7</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="20">
+      <referenceToFlowDataSet type="flow data set" refObjectId="17a73924-1ecc-4cc6-9882-a4f90411d01f" uri="../flows/17a73924-1ecc-4cc6-9882-a4f90411d01f.xml">
+        <common:shortDescription xml:lang="en">Glyphosate {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.3686000E-8</meanAmount>
+      <resultingAmount>5.3686000E-8</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="21">
+      <referenceToFlowDataSet type="flow data set" refObjectId="6301beb0-9bea-47ab-aefb-078c4778a9a5" uri="../flows/6301beb0-9bea-47ab-aefb-078c4778a9a5.xml">
+        <common:shortDescription xml:lang="en">Hydrochloric acid, without water, in 30% solution state {RER}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.3799000E-8</meanAmount>
+      <resultingAmount>2.3799000E-8</resultingAmount>
+      <generalComment>including share for copper oxychloride
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="22">
+      <referenceToFlowDataSet type="flow data set" refObjectId="6305f6a0-4837-4a3c-98b4-4a72bdb0050b" uri="../flows/6305f6a0-4837-4a3c-98b4-4a72bdb0050b.xml">
+        <common:shortDescription xml:lang="en">Naphthalene sulfonic acid {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.5584400E-9</meanAmount>
+      <resultingAmount>4.5584400E-9</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="23">
+      <referenceToFlowDataSet type="flow data set" refObjectId="51d21c00-9554-45e0-9be6-922124a38f08" uri="../flows/51d21c00-9554-45e0-9be6-922124a38f08.xml">
+        <common:shortDescription xml:lang="en">Pendimethalin {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.7063600E-7</meanAmount>
+      <resultingAmount>1.7063600E-7</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="24">
+      <referenceToFlowDataSet type="flow data set" refObjectId="ea197d8d-e9b9-4aef-8fd5-391ae0b5f405" uri="../flows/ea197d8d-e9b9-4aef-8fd5-391ae0b5f405.xml">
+        <common:shortDescription xml:lang="en">Pesticide, unspecified {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.4260400E-5</meanAmount>
+      <resultingAmount>1.4260400E-5</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="25">
+      <referenceToFlowDataSet type="flow data set" refObjectId="df213025-954d-4df0-848d-54383a5882cb" uri="../flows/df213025-954d-4df0-848d-54383a5882cb.xml">
+        <common:shortDescription xml:lang="en">Phenoxy-compound {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.0989400E-7</meanAmount>
+      <resultingAmount>1.0989400E-7</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="26">
+      <referenceToFlowDataSet type="flow data set" refObjectId="f6507c01-18ff-4ead-91d0-1c2b8a5c79d8" uri="../flows/f6507c01-18ff-4ead-91d0-1c2b8a5c79d8.xml">
+        <common:shortDescription xml:lang="en">Propylene glycol, liquid {RER}| market for propylene glycol, liquid | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.3583600E-10</meanAmount>
+      <resultingAmount>4.3583600E-10</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="27">
+      <referenceToFlowDataSet type="flow data set" refObjectId="8bb362a7-3d04-4be7-bed6-87d61eaddff1" uri="../flows/8bb362a7-3d04-4be7-bed6-87d61eaddff1.xml">
+        <common:shortDescription xml:lang="en">Pyrethroid-compound {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.7598000E-6</meanAmount>
+      <resultingAmount>3.7598000E-6</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="28">
+      <referenceToFlowDataSet type="flow data set" refObjectId="75936345-b00f-42df-976f-c527edc87e95" uri="../flows/75936345-b00f-42df-976f-c527edc87e95.xml">
+        <common:shortDescription xml:lang="en">Sulfur dioxide, liquid {RER}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>8.6774400E-7</meanAmount>
+      <resultingAmount>8.6774400E-7</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="29">
+      <referenceToFlowDataSet type="flow data set" refObjectId="1aedc77a-a359-4af2-90e8-ec81a49b33b1" uri="../flows/1aedc77a-a359-4af2-90e8-ec81a49b33b1.xml">
+        <common:shortDescription xml:lang="en">Water, ultrapure {RER}| market for water, ultrapure | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.7891600E-8</meanAmount>
+      <resultingAmount>1.7891600E-8</resultingAmount>
+      <generalComment>including share for copper oxychloride
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="30">
+      <referenceToFlowDataSet type="flow data set" refObjectId="901af32f-dff8-4ce9-a46b-fa3dee77827b" uri="../flows/901af32f-dff8-4ce9-a46b-fa3dee77827b.xml">
+        <common:shortDescription xml:lang="en">Packaging film, low density polyethylene {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.0000000E-5</meanAmount>
+      <resultingAmount>4.0000000E-5</resultingAmount>
+      <generalComment>Plastic - packaging
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="31">
+      <referenceToFlowDataSet type="flow data set" refObjectId="070cd878-ef14-475d-aa22-7ed2972ed749" uri="../flows/070cd878-ef14-475d-aa22-7ed2972ed749.xml">
+        <common:shortDescription xml:lang="en">Polyethylene, high density, granulate {Europe without Switzerland}| polyethylene, high density, granulate, recycled to generic market for high density PE granulate | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.7200000E-3</meanAmount>
+      <resultingAmount>2.7200000E-3</resultingAmount>
+      <generalComment>Plastic - other
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="32">
+      <referenceToFlowDataSet type="flow data set" refObjectId="0dfbb6ff-3cce-4d50-9b3a-0a8926ec6951" uri="../flows/0dfbb6ff-3cce-4d50-9b3a-0a8926ec6951.xml">
+        <common:shortDescription xml:lang="en">Kraft paper {RER}| market for kraft paper | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>9.2600000E-6</meanAmount>
+      <resultingAmount>9.2600000E-6</resultingAmount>
+      <generalComment>Packaging paper
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="33">
+      <referenceToFlowDataSet type="flow data set" refObjectId="7a26919c-c3d2-4ec5-987f-314bf46b7da3" uri="../flows/7a26919c-c3d2-4ec5-987f-314bf46b7da3.xml">
+        <common:shortDescription xml:lang="en">Aluminium, wrought alloy {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.9800000E-5</meanAmount>
+      <resultingAmount>6.9800000E-5</resultingAmount>
+      <generalComment>Metal - packaging
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="34">
+      <referenceToFlowDataSet type="flow data set" refObjectId="eca69d4d-8f2d-4304-8f80-86cc6584dcf6" uri="../flows/eca69d4d-8f2d-4304-8f80-86cc6584dcf6.xml">
+        <common:shortDescription xml:lang="en">Diesel, burned in building machine {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.4820767E-1</meanAmount>
+      <resultingAmount>1.4820767E-1</resultingAmount>
+      <generalComment>0,835 kg/l
+42,873 MJ/kg
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="35">
+      <referenceToFlowDataSet type="flow data set" refObjectId="c02e7943-c9de-4d39-aded-dc7a5cdafd46" uri="../flows/c02e7943-c9de-4d39-aded-dc7a5cdafd46.xml">
+        <common:shortDescription xml:lang="en">Electricity, low voltage {IT}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>8.1000000E-1</meanAmount>
+      <resultingAmount>8.1000000E-1</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="36">
+      <referenceToFlowDataSet type="flow data set" refObjectId="df0443b1-0ab2-47b9-a982-073bcbbd2fdd" uri="../flows/df0443b1-0ab2-47b9-a982-073bcbbd2fdd.xml">
+        <common:shortDescription xml:lang="en">Electricity, low voltage {IT}| electricity production, photovoltaic, 3kWp slanted-roof installation, multi-Si, panel, mounted | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.9480000E+0</meanAmount>
+      <resultingAmount>6.9480000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="37">
+      <referenceToFlowDataSet type="flow data set" refObjectId="8bcf78d1-9737-4fda-9e56-f32fa114033e" uri="../flows/8bcf78d1-9737-4fda-9e56-f32fa114033e.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry, unspecified {RER}| market for transport, freight, lorry, unspecified | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.4200000E-4</meanAmount>
+      <resultingAmount>1.4200000E-4</resultingAmount>
+      <generalComment>Packaging waste to recovery, 50 km from the field
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="38">
+      <referenceToFlowDataSet type="flow data set" refObjectId="805a7346-1664-4483-afe3-4b224be5e361" uri="../flows/805a7346-1664-4483-afe3-4b224be5e361.xml">
+        <common:shortDescription xml:lang="en">river water</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>IT</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.4100000E-3</meanAmount>
+      <resultingAmount>5.4100000E-3</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="39">
+      <referenceToFlowDataSet type="flow data set" refObjectId="b88d3b6d-229e-477e-bce1-e16376f75c7b" uri="../flows/b88d3b6d-229e-477e-bce1-e16376f75c7b.xml">
+        <common:shortDescription xml:lang="en">arable</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>9.2200000E-2</meanAmount>
+      <resultingAmount>9.2200000E-2</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="40">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-a2a9-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-a2a9-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">ammonia</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>IT</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>6.8000000E-4</meanAmount>
+      <resultingAmount>6.8000000E-4</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="41">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-94c3-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-94c3-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">nitrous oxide</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.8300000E-5</meanAmount>
+      <resultingAmount>2.8300000E-5</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="42">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-96ee-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-96ee-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">nitrogen monoxide</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>IT</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.7900000E-5</meanAmount>
+      <resultingAmount>1.7900000E-5</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="43">
+      <referenceToFlowDataSet type="flow data set" refObjectId="684339f9-734d-4ab4-8fee-2872a5589cce" uri="../flows/684339f9-734d-4ab4-8fee-2872a5589cce.xml">
+        <common:shortDescription xml:lang="en">abamectin (high. pop.)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.9900000E-7</meanAmount>
+      <resultingAmount>1.9900000E-7</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="44">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-93c7-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-93c7-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">acetamide</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>9.6900000E-10</meanAmount>
+      <resultingAmount>9.6900000E-10</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="45">
+      <referenceToFlowDataSet type="flow data set" refObjectId="25750f96-adad-463a-8a25-0327f594afca" uri="../flows/25750f96-adad-463a-8a25-0327f594afca.xml">
+        <common:shortDescription xml:lang="en">acetamiprid (iso); (1e)-n-[(6-chloropyridin-3-yl)methyl]-n'-cyano-n-methylethanimidamide; (e)-n1-[(6-chloro-3-pyridyl)methyl]-n2-cyano-n1-methylacetamidine</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.6500000E-6</meanAmount>
+      <resultingAmount>1.6500000E-6</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="46">
+      <referenceToFlowDataSet type="flow data set" refObjectId="3e4d9eaf-6556-11dd-ad8b-0800200c9a66" uri="../flows/3e4d9eaf-6556-11dd-ad8b-0800200c9a66.xml">
+        <common:shortDescription xml:lang="en">aclonifen</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>4.5100000E-10</meanAmount>
+      <resultingAmount>4.5100000E-10</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="47">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9c82-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9c82-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">azoxystrobin</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.3400000E-9</meanAmount>
+      <resultingAmount>2.3400000E-9</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="48">
+      <referenceToFlowDataSet type="flow data set" refObjectId="92723bc2-2807-4d2f-a814-44162ddf5d38" uri="../flows/92723bc2-2807-4d2f-a814-44162ddf5d38.xml">
+        <common:shortDescription xml:lang="en">methyl (2s)-2-[n-(2,6-dimethylphenyl)-2-phenylacetamido]propanoate</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.2700000E-9</meanAmount>
+      <resultingAmount>1.2700000E-9</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="49">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9d2a-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9d2a-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">bifenox</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.0900000E-9</meanAmount>
+      <resultingAmount>2.0900000E-9</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="50">
+      <referenceToFlowDataSet type="flow data set" refObjectId="589da229-0376-441d-9e1d-509cec49f61a" uri="../flows/589da229-0376-441d-9e1d-509cec49f61a.xml">
+        <common:shortDescription xml:lang="en">chlorantraniliprole (high. pop.)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.0200000E-9</meanAmount>
+      <resultingAmount>3.0200000E-9</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="51">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4d9a8790-3ddd-11dd-8eef-0050c2490048" uri="../flows/4d9a8790-3ddd-11dd-8eef-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">difenoconazole</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.0800000E-10</meanAmount>
+      <resultingAmount>3.0800000E-10</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="52">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9e85-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9e85-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">dimethomorph</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>5.1300000E-9</meanAmount>
+      <resultingAmount>5.1300000E-9</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="53">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d3c1cc5d-6776-4768-9133-94ea327dbdaf" uri="../flows/d3c1cc5d-6776-4768-9133-94ea327dbdaf.xml">
+        <common:shortDescription xml:lang="en">emamectin benzoate (high. pop.)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>5.7900000E-8</meanAmount>
+      <resultingAmount>5.7900000E-8</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="54">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-934f-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-934f-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">ethephon</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.2400000E-7</meanAmount>
+      <resultingAmount>2.2400000E-7</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="55">
+      <referenceToFlowDataSet type="flow data set" refObjectId="65045e7a-0df2-446a-a580-c52b12dd7807" uri="../flows/65045e7a-0df2-446a-a580-c52b12dd7807.xml">
+        <common:shortDescription xml:lang="en">hexythiazox</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>7.9800000E-9</meanAmount>
+      <resultingAmount>7.9800000E-9</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="56">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-a0b2-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-a0b2-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">flufenacet</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.4600000E-9</meanAmount>
+      <resultingAmount>2.4600000E-9</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="57">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-983b-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-983b-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">propylene glycol</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.9200000E-11</meanAmount>
+      <resultingAmount>3.9200000E-11</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="58">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-a648-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-a648-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">glyphosate</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>4.8300000E-9</meanAmount>
+      <resultingAmount>4.8300000E-9</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="59">
+      <referenceToFlowDataSet type="flow data set" refObjectId="43b9188d-f122-420e-882d-b35f88fd34cf" uri="../flows/43b9188d-f122-420e-882d-b35f88fd34cf.xml">
+        <common:shortDescription xml:lang="en">lambda-cyhalothrin</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.9500000E-7</meanAmount>
+      <resultingAmount>1.9500000E-7</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="60">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4d9a8790-3ddd-11dd-931f-0050c2490048" uri="../flows/4d9a8790-3ddd-11dd-931f-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">mefenoxam</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>4.9900000E-9</meanAmount>
+      <resultingAmount>4.9900000E-9</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="61">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-9fbd-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-9fbd-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">zineb</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.9100000E-9</meanAmount>
+      <resultingAmount>3.9100000E-9</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="62">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-afd8-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-afd8-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">metribuzin</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>7.2400000E-9</meanAmount>
+      <resultingAmount>7.2400000E-9</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="63">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4d9a8790-3ddd-11dd-8e30-0050c2490048" uri="../flows/4d9a8790-3ddd-11dd-8e30-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">oxadiazon</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>7.1700000E-11</meanAmount>
+      <resultingAmount>7.1700000E-11</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="64">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4d9a8790-3ddd-11dd-9629-0050c2490048" uri="../flows/4d9a8790-3ddd-11dd-9629-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">pendimethalin</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.5400000E-8</meanAmount>
+      <resultingAmount>1.5400000E-8</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="65">
+      <referenceToFlowDataSet type="flow data set" refObjectId="3e4d9ea6-6556-11dd-ad8b-0800200c9a66" uri="../flows/3e4d9ea6-6556-11dd-ad8b-0800200c9a66.xml">
+        <common:shortDescription xml:lang="en">fenoxaprop-p-ethyl</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>9.6500000E-9</meanAmount>
+      <resultingAmount>9.6500000E-9</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="66">
+      <referenceToFlowDataSet type="flow data set" refObjectId="04eafac0-fce5-4317-b4fc-da326116127f" uri="../flows/04eafac0-fce5-4317-b4fc-da326116127f.xml">
+        <common:shortDescription xml:lang="en">2-methyl-4-oxo-3-(penta-2,4-dienyl)cyclopent-2-enyl [1R-[1?[S*(Z)](3?)-3-(3-methoxy-2-methyl-3-oxoprop-1-enyl)-2,2-dimethylcyclopropanecarboxylate</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.3800000E-7</meanAmount>
+      <resultingAmount>3.3800000E-7</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="67">
+      <referenceToFlowDataSet type="flow data set" refObjectId="e823b884-313b-4667-8d19-ab523215b3e4" uri="../flows/e823b884-313b-4667-8d19-ab523215b3e4.xml">
+        <common:shortDescription xml:lang="en">propyl [3-(dimethylamino)propyl]carbamate monohydrochloride</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>9.0600000E-9</meanAmount>
+      <resultingAmount>9.0600000E-9</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="68">
+      <referenceToFlowDataSet type="flow data set" refObjectId="64b1ce4e-6556-11dd-ad8b-0800200c9a66" uri="../flows/64b1ce4e-6556-11dd-ad8b-0800200c9a66.xml">
+        <common:shortDescription xml:lang="en">propaquizafop</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.3700000E-10</meanAmount>
+      <resultingAmount>2.3700000E-10</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="69">
+      <referenceToFlowDataSet type="flow data set" refObjectId="504aa1b0-97ea-4a6d-8433-701217ec3306" uri="../flows/504aa1b0-97ea-4a6d-8433-701217ec3306.xml">
+        <common:shortDescription xml:lang="en">Pyraclostrobin (prop)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.0900000E-9</meanAmount>
+      <resultingAmount>2.0900000E-9</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="70">
+      <referenceToFlowDataSet type="flow data set" refObjectId="1af139f1-37d0-4203-8d8f-45b4409f5e87" uri="../flows/1af139f1-37d0-4203-8d8f-45b4409f5e87.xml">
+        <common:shortDescription xml:lang="en">copper oxychloride (high. pop.)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.2600000E-8</meanAmount>
+      <resultingAmount>1.2600000E-8</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="71">
+      <referenceToFlowDataSet type="flow data set" refObjectId="420c07fc-b9d9-4516-bfd3-ca12404ac352" uri="../flows/420c07fc-b9d9-4516-bfd3-ca12404ac352.xml">
+        <common:shortDescription xml:lang="en">copper (ii) oxide</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>9.9900000E-8</meanAmount>
+      <resultingAmount>9.9900000E-8</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="72">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-a1d7-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-a1d7-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">rimsulfuron</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>6.3200000E-10</meanAmount>
+      <resultingAmount>6.3200000E-10</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="73">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-90da-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-90da-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">metolachlor (s-isomer)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.4900000E-9</meanAmount>
+      <resultingAmount>1.4900000E-9</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="74">
+      <referenceToFlowDataSet type="flow data set" refObjectId="f19f0575-9e10-4d50-bfe7-24106853966b" uri="../flows/f19f0575-9e10-4d50-bfe7-24106853966b.xml">
+        <common:shortDescription xml:lang="en">spinosad (high. pop.)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.7900000E-7</meanAmount>
+      <resultingAmount>3.7900000E-7</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="75">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-a23c-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-a23c-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">tefluthrin</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.2200000E-8</meanAmount>
+      <resultingAmount>2.2200000E-8</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="76">
+      <referenceToFlowDataSet type="flow data set" refObjectId="2905ed32-6556-11dd-ad8b-0800200c9a66" uri="../flows/2905ed32-6556-11dd-ad8b-0800200c9a66.xml">
+        <common:shortDescription xml:lang="en">sulfur</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>7.8100000E-8</meanAmount>
+      <resultingAmount>7.8100000E-8</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="77">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d55e9be9-f3e2-4fd8-b288-853d8454cd35" uri="../flows/d55e9be9-f3e2-4fd8-b288-853d8454cd35.xml">
+        <common:shortDescription xml:lang="en">zoxamide (high. pop.)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>5.3800000E-9</meanAmount>
+      <resultingAmount>5.3800000E-9</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="78">
+      <referenceToFlowDataSet type="flow data set" refObjectId="29061472-6556-11dd-ad8b-0800200c9a66" uri="../flows/29061472-6556-11dd-ad8b-0800200c9a66.xml">
+        <common:shortDescription xml:lang="en">nitrous oxide</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>9.2900000E-6</meanAmount>
+      <resultingAmount>9.2900000E-6</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="79">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9789-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9789-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">phosphate</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.2600000E-6</meanAmount>
+      <resultingAmount>2.2600000E-6</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="80">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9789-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9789-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">phosphate</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.2590100E-6</meanAmount>
+      <resultingAmount>2.2590100E-6</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="81">
+      <referenceToFlowDataSet type="flow data set" refObjectId="410e1215-9953-46ce-a878-2079353eb801" uri="../flows/410e1215-9953-46ce-a878-2079353eb801.xml">
+        <common:shortDescription xml:lang="en">Phosphorus</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>IT</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.4827100E-5</meanAmount>
+      <resultingAmount>3.4827100E-5</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="82">
+      <referenceToFlowDataSet type="flow data set" refObjectId="39b18b44-8470-444f-a5fe-370136c6c988" uri="../flows/39b18b44-8470-444f-a5fe-370136c6c988.xml">
+        <common:shortDescription xml:lang="en">zoxamide (river)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>5.9800000E-10</meanAmount>
+      <resultingAmount>5.9800000E-10</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="83">
+      <referenceToFlowDataSet type="flow data set" refObjectId="2567639d-adaf-4d27-a288-68203dfc48d3" uri="../flows/2567639d-adaf-4d27-a288-68203dfc48d3.xml">
+        <common:shortDescription xml:lang="en">abamectin (river)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.2100000E-8</meanAmount>
+      <resultingAmount>2.2100000E-8</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="84">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-93c9-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-93c9-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">acetamide</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0800000E-10</meanAmount>
+      <resultingAmount>1.0800000E-10</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="85">
+      <referenceToFlowDataSet type="flow data set" refObjectId="9c49bc72-0715-42d5-bc16-dd3173afb9ad" uri="../flows/9c49bc72-0715-42d5-bc16-dd3173afb9ad.xml">
+        <common:shortDescription xml:lang="en">acetamiprid (iso); (1e)-n-[(6-chloropyridin-3-yl)methyl]-n'-cyano-n-methylethanimidamide; (e)-n1-[(6-chloro-3-pyridyl)methyl]-n2-cyano-n1-methylacetamidine</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.8400000E-7</meanAmount>
+      <resultingAmount>1.8400000E-7</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="86">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9a90-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9a90-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">azoxystrobin</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.6000000E-10</meanAmount>
+      <resultingAmount>2.6000000E-10</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="87">
+      <referenceToFlowDataSet type="flow data set" refObjectId="34657d1b-066e-4b24-9ff0-c7bc661a3c55" uri="../flows/34657d1b-066e-4b24-9ff0-c7bc661a3c55.xml">
+        <common:shortDescription xml:lang="en">methyl (2s)-2-[n-(2,6-dimethylphenyl)-2-phenylacetamido]propanoate</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.4100000E-10</meanAmount>
+      <resultingAmount>1.4100000E-10</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="88">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9d2c-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9d2c-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">bifenox</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.3200000E-10</meanAmount>
+      <resultingAmount>2.3200000E-10</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="89">
+      <referenceToFlowDataSet type="flow data set" refObjectId="8d897320-a1fd-49c9-a8b2-9715e30a38c4" uri="../flows/8d897320-a1fd-49c9-a8b2-9715e30a38c4.xml">
+        <common:shortDescription xml:lang="en">chlorantraniliprole (river)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.3600000E-10</meanAmount>
+      <resultingAmount>3.3600000E-10</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="90">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9e40-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9e40-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">difenoconazole</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.4200000E-11</meanAmount>
+      <resultingAmount>3.4200000E-11</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="91">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4d9a8790-3ddd-11dd-8f64-0050c2490048" uri="../flows/4d9a8790-3ddd-11dd-8f64-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">dimethomorph</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>5.7000000E-10</meanAmount>
+      <resultingAmount>5.7000000E-10</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="92">
+      <referenceToFlowDataSet type="flow data set" refObjectId="226f9337-0095-4789-90e4-c00dfa422e48" uri="../flows/226f9337-0095-4789-90e4-c00dfa422e48.xml">
+        <common:shortDescription xml:lang="en">emamectin benzoate (river)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>6.4300000E-9</meanAmount>
+      <resultingAmount>6.4300000E-9</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="93">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-a43e-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-a43e-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">ethephon</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.4800000E-8</meanAmount>
+      <resultingAmount>2.4800000E-8</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="94">
+      <referenceToFlowDataSet type="flow data set" refObjectId="ab48f3e9-042c-4ccc-bc14-cd9140fbeffc" uri="../flows/ab48f3e9-042c-4ccc-bc14-cd9140fbeffc.xml">
+        <common:shortDescription xml:lang="en">hexythiazox</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>8.8600000E-10</meanAmount>
+      <resultingAmount>8.8600000E-10</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="95">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-a0b4-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-a0b4-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">flufenacet</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.7400000E-10</meanAmount>
+      <resultingAmount>2.7400000E-10</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="96">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-983f-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-983f-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">propylene glycol</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>4.3600000E-12</meanAmount>
+      <resultingAmount>4.3600000E-12</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="97">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-a64a-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-a64a-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">glyphosate</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>5.3700000E-10</meanAmount>
+      <resultingAmount>5.3700000E-10</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="98">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4d9a8790-3ddd-11dd-8cd9-0050c2490048" uri="../flows/4d9a8790-3ddd-11dd-8cd9-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">lambda-cyhalothrin</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.1700000E-8</meanAmount>
+      <resultingAmount>2.1700000E-8</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="99">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4d9a8790-3ddd-11dd-9321-0050c2490048" uri="../flows/4d9a8790-3ddd-11dd-9321-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">mefenoxam</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>5.5500000E-10</meanAmount>
+      <resultingAmount>5.5500000E-10</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="100">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-94ef-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-94ef-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">zineb</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>4.3500000E-10</meanAmount>
+      <resultingAmount>4.3500000E-10</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="101">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4d9a8790-3ddd-11dd-8e32-0050c2490048" uri="../flows/4d9a8790-3ddd-11dd-8e32-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">oxadiazon</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>7.9700000E-12</meanAmount>
+      <resultingAmount>7.9700000E-12</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="102">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-afda-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-afda-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">metribuzin</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>8.0500000E-10</meanAmount>
+      <resultingAmount>8.0500000E-10</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="103">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-ae3b-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-ae3b-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">pendimethalin</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.7100000E-9</meanAmount>
+      <resultingAmount>1.7100000E-9</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="104">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-93af-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-93af-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">fenoxaprop-p-ethyl</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0700000E-9</meanAmount>
+      <resultingAmount>1.0700000E-9</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="105">
+      <referenceToFlowDataSet type="flow data set" refObjectId="8ea0afb6-238a-4591-a919-b68d7ce2f621" uri="../flows/8ea0afb6-238a-4591-a919-b68d7ce2f621.xml">
+        <common:shortDescription xml:lang="en">2-methyl-4-oxo-3-(penta-2,4-dienyl)cyclopent-2-enyl [1R-[1?[S*(Z)](3?)-3-(3-methoxy-2-methyl-3-oxoprop-1-enyl)-2,2-dimethylcyclopropanecarboxylate</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.7600000E-8</meanAmount>
+      <resultingAmount>3.7600000E-8</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="106">
+      <referenceToFlowDataSet type="flow data set" refObjectId="3a08b137-c6fe-4994-8f74-1c7625d772b6" uri="../flows/3a08b137-c6fe-4994-8f74-1c7625d772b6.xml">
+        <common:shortDescription xml:lang="en">propyl [3-(dimethylamino)propyl]carbamate monohydrochloride</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0100000E-9</meanAmount>
+      <resultingAmount>1.0100000E-9</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="107">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9879-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9879-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">propaquizafop</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.6400000E-11</meanAmount>
+      <resultingAmount>2.6400000E-11</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="108">
+      <referenceToFlowDataSet type="flow data set" refObjectId="2ba23224-b9af-4fdb-bb07-8f9e23c62aad" uri="../flows/2ba23224-b9af-4fdb-bb07-8f9e23c62aad.xml">
+        <common:shortDescription xml:lang="en">Pyraclostrobin (prop)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.3200000E-10</meanAmount>
+      <resultingAmount>2.3200000E-10</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="109">
+      <referenceToFlowDataSet type="flow data set" refObjectId="83e6a07a-c44d-476b-bcaf-89b72fd9f80c" uri="../flows/83e6a07a-c44d-476b-bcaf-89b72fd9f80c.xml">
+        <common:shortDescription xml:lang="en">copper oxychloride (river)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.4000000E-9</meanAmount>
+      <resultingAmount>1.4000000E-9</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="110">
+      <referenceToFlowDataSet type="flow data set" refObjectId="7059247a-aff3-48c0-8e67-e17443eadcd8" uri="../flows/7059247a-aff3-48c0-8e67-e17443eadcd8.xml">
+        <common:shortDescription xml:lang="en">copper (ii) oxide</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.1100000E-8</meanAmount>
+      <resultingAmount>1.1100000E-8</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="111">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-abbf-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-abbf-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">rimsulfuron</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>7.0200000E-11</meanAmount>
+      <resultingAmount>7.0200000E-11</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="112">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-90ed-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-90ed-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">metolachlor (s-isomer)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.6500000E-10</meanAmount>
+      <resultingAmount>1.6500000E-10</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="113">
+      <referenceToFlowDataSet type="flow data set" refObjectId="c1f415e9-62f6-4abc-9a99-06f96639f806" uri="../flows/c1f415e9-62f6-4abc-9a99-06f96639f806.xml">
+        <common:shortDescription xml:lang="en">spinosad (river)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>4.2200000E-8</meanAmount>
+      <resultingAmount>4.2200000E-8</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="114">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-a23e-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-a23e-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">tefluthrin</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.4700000E-9</meanAmount>
+      <resultingAmount>2.4700000E-9</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="115">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9926-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9926-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">sulfur</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.4700000E-9</meanAmount>
+      <resultingAmount>2.4700000E-9</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="116">
+      <referenceToFlowDataSet type="flow data set" refObjectId="f1b57453-ef21-4032-bc01-a932a88071a1" uri="../flows/f1b57453-ef21-4032-bc01-a932a88071a1.xml">
+        <common:shortDescription xml:lang="en">Abamectin</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.9900000E-6</meanAmount>
+      <resultingAmount>1.9900000E-6</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="117">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-93c3-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-93c3-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">acetamide</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>9.6900000E-9</meanAmount>
+      <resultingAmount>9.6900000E-9</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="118">
+      <referenceToFlowDataSet type="flow data set" refObjectId="0523efe9-c00c-487a-8a91-203fb9d75b50" uri="../flows/0523efe9-c00c-487a-8a91-203fb9d75b50.xml">
+        <common:shortDescription xml:lang="en">acetamiprid (iso); (1e)-n-[(6-chloropyridin-3-yl)methyl]-n'-cyano-n-methylethanimidamide; (e)-n1-[(6-chloro-3-pyridyl)methyl]-n2-cyano-n1-methylacetamidine</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.6500000E-5</meanAmount>
+      <resultingAmount>1.6500000E-5</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="119">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-abcd-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-abcd-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">aclonifen</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>4.5100000E-9</meanAmount>
+      <resultingAmount>4.5100000E-9</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="120">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9a8e-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9a8e-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">azoxystrobin</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.3400000E-8</meanAmount>
+      <resultingAmount>2.3400000E-8</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="121">
+      <referenceToFlowDataSet type="flow data set" refObjectId="a1299edc-49e8-4cdd-a9e7-589b459ae56e" uri="../flows/a1299edc-49e8-4cdd-a9e7-589b459ae56e.xml">
+        <common:shortDescription xml:lang="en">methyl n-(2,6-dimethylphenyl)-n-(phenylacetyl)-dl-alaninate</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.2700000E-8</meanAmount>
+      <resultingAmount>1.2700000E-8</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="122">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9d27-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9d27-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">bifenox</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.0900000E-8</meanAmount>
+      <resultingAmount>2.0900000E-8</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="123">
+      <referenceToFlowDataSet type="flow data set" refObjectId="e2fc1cdc-077e-470d-83e9-47cf8d69aaa5" uri="../flows/e2fc1cdc-077e-470d-83e9-47cf8d69aaa5.xml">
+        <common:shortDescription xml:lang="en">chlorantraniliprole (agricultural)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.0200000E-8</meanAmount>
+      <resultingAmount>3.0200000E-8</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="124">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4d9a8790-3ddd-11dd-9134-0050c2490048" uri="../flows/4d9a8790-3ddd-11dd-9134-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">difenoconazole</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.0800000E-9</meanAmount>
+      <resultingAmount>3.0800000E-9</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="125">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4d9a8790-3ddd-11dd-8f63-0050c2490048" uri="../flows/4d9a8790-3ddd-11dd-8f63-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">dimethomorph</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>8.4600000E-9</meanAmount>
+      <resultingAmount>8.4600000E-9</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="126">
+      <referenceToFlowDataSet type="flow data set" refObjectId="397a00f3-e46a-49d0-8ceb-2f7a124462ad" uri="../flows/397a00f3-e46a-49d0-8ceb-2f7a124462ad.xml">
+        <common:shortDescription xml:lang="en">emamectin benzoate (agricultural)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>5.7900000E-7</meanAmount>
+      <resultingAmount>5.7900000E-7</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="127">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-934c-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-934c-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">ethephon</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.2400000E-6</meanAmount>
+      <resultingAmount>2.2400000E-6</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="128">
+      <referenceToFlowDataSet type="flow data set" refObjectId="8630f9dc-9229-4783-ad76-295e65c8c5c0" uri="../flows/8630f9dc-9229-4783-ad76-295e65c8c5c0.xml">
+        <common:shortDescription xml:lang="en">hexythiazox</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>7.9800000E-8</meanAmount>
+      <resultingAmount>7.9800000E-8</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="129">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4d9a8790-3ddd-11dd-9106-0050c2490048" uri="../flows/4d9a8790-3ddd-11dd-9106-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">flufenacet</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.4600000E-8</meanAmount>
+      <resultingAmount>2.4600000E-8</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="130">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-983a-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-983a-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">propylene glycol</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.9200000E-10</meanAmount>
+      <resultingAmount>3.9200000E-10</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="131">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-a644-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-a644-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">glyphosate</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>4.8300000E-8</meanAmount>
+      <resultingAmount>4.8300000E-8</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="132">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9de7-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9de7-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">lambda-cyhalothrin</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.9500000E-6</meanAmount>
+      <resultingAmount>1.9500000E-6</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="133">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-932b-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-932b-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">mefenoxam</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>4.9900000E-8</meanAmount>
+      <resultingAmount>4.9900000E-8</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="134">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-9fba-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-9fba-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">zineb</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.9100000E-8</meanAmount>
+      <resultingAmount>3.9100000E-8</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="135">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-afd4-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-afd4-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">metribuzin</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>8.0500000E-8</meanAmount>
+      <resultingAmount>8.0500000E-8</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="136">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4d9a8790-3ddd-11dd-8e2d-0050c2490048" uri="../flows/4d9a8790-3ddd-11dd-8e2d-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">oxadiazon</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>7.1700000E-10</meanAmount>
+      <resultingAmount>7.1700000E-10</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="137">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-ae3a-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-ae3a-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">pendimethalin</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.5400000E-7</meanAmount>
+      <resultingAmount>1.5400000E-7</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="138">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-93a9-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-93a9-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">fenoxaprop-p-ethyl</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>9.6500000E-8</meanAmount>
+      <resultingAmount>9.6500000E-8</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="139">
+      <referenceToFlowDataSet type="flow data set" refObjectId="047b9922-ef6a-4e89-ae70-d8dba5cff80c" uri="../flows/047b9922-ef6a-4e89-ae70-d8dba5cff80c.xml">
+        <common:shortDescription xml:lang="en">2-methyl-4-oxo-3-(penta-2,4-dienyl)cyclopent-2-enyl [1R-[1?[S*(Z)](3?)-3-(3-methoxy-2-methyl-3-oxoprop-1-enyl)-2,2-dimethylcyclopropanecarboxylate</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.3800000E-6</meanAmount>
+      <resultingAmount>3.3800000E-6</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="140">
+      <referenceToFlowDataSet type="flow data set" refObjectId="25eded36-bad4-429e-af33-0bc5ecf66bd1" uri="../flows/25eded36-bad4-429e-af33-0bc5ecf66bd1.xml">
+        <common:shortDescription xml:lang="en">propyl [3-(dimethylamino)propyl]carbamate monohydrochloride</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>9.0600000E-8</meanAmount>
+      <resultingAmount>9.0600000E-8</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="141">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-ab3a-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-ab3a-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">propaquizafop</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.3700000E-9</meanAmount>
+      <resultingAmount>2.3700000E-9</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="142">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d5bd7d7d-552f-42c3-a531-bc51e2e67ccd" uri="../flows/d5bd7d7d-552f-42c3-a531-bc51e2e67ccd.xml">
+        <common:shortDescription xml:lang="en">Pyraclostrobin (prop)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.0900000E-8</meanAmount>
+      <resultingAmount>2.0900000E-8</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="143">
+      <referenceToFlowDataSet type="flow data set" refObjectId="5939287c-3264-4a90-be45-a0e58d2f8776" uri="../flows/5939287c-3264-4a90-be45-a0e58d2f8776.xml">
+        <common:shortDescription xml:lang="en">copper oxychloride (agricultural)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.2600000E-7</meanAmount>
+      <resultingAmount>1.2600000E-7</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="144">
+      <referenceToFlowDataSet type="flow data set" refObjectId="9a374c94-a046-40f4-8644-05d22d900aba" uri="../flows/9a374c94-a046-40f4-8644-05d22d900aba.xml">
+        <common:shortDescription xml:lang="en">copper (ii) oxide</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>9.9900000E-7</meanAmount>
+      <resultingAmount>9.9900000E-7</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="145">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-abbe-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-abbe-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">rimsulfuron</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>6.3200000E-9</meanAmount>
+      <resultingAmount>6.3200000E-9</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="146">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-90d7-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-90d7-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">metolachlor (s-isomer)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.4900000E-8</meanAmount>
+      <resultingAmount>1.4900000E-8</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="147">
+      <referenceToFlowDataSet type="flow data set" refObjectId="36730e2a-d1fb-402b-984e-57bc539033e0" uri="../flows/36730e2a-d1fb-402b-984e-57bc539033e0.xml">
+        <common:shortDescription xml:lang="en">Spinosad</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.7900000E-6</meanAmount>
+      <resultingAmount>3.7900000E-6</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="148">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-90cb-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-90cb-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">tefluthrin</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.2200000E-7</meanAmount>
+      <resultingAmount>2.2200000E-7</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="149">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9925-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9925-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">sulfur</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>7.8100000E-7</meanAmount>
+      <resultingAmount>7.8100000E-7</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="150">
+      <referenceToFlowDataSet type="flow data set" refObjectId="64c41b63-6363-4257-b6fe-6c6936f43c3f" uri="../flows/64c41b63-6363-4257-b6fe-6c6936f43c3f.xml">
+        <common:shortDescription xml:lang="en">zoxamide (agricultural)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>5.3800000E-8</meanAmount>
+      <resultingAmount>5.3800000E-8</resultingAmount>
+    </exchange>
+  </exchanges>
+</processDataSet>

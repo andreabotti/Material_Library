@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<!-- Manufacturers directory — pages/15_Manufacturers.py.
+     Visual language is the Catalogue's (catalogue_component_js2.html): same
+     tokens, card chrome, toolbar, filter bar and right detail panel with pill
+     tabs and collapsible groups. Class names keep the cat2-* prefix where the
+     rule is a straight copy, so a change to one is easy to mirror in the other.
+     Webfonts + typography vars are injected by the page (same helpers as fn336). -->
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --c-border:1px solid var(--eetra-border-card,#d1d9e6);
+  --c-radius:var(--eetra-radius-card,12px);
+  --c-bg:var(--eetra-surface,#ffffff);
+  --c-muted:var(--eetra-text-muted,#64748b);
+  --c-green:var(--eetra-green,#2a7d2e);
+  --c-active:var(--eetra-green,#2a7d2e);
+  --c-hover-shadow:var(--eetra-hover-shadow,0 6px 18px rgba(15,23,42,0.08));
+  --c-hover-border:var(--eetra-hover-border,#b8c5d8);
+  --c-grid-gap:var(--eetra-grid-gap,12px);
+}
+html,body{width:100%;max-width:100%;height:100%;overflow:hidden;}
+body{
+  font-family:var(--eetra-ff-sans,'Miranda Sans',sans-serif);
+  background:#fff;color:#111;font-size:var(--c-fs,13px);
+  line-height:var(--c-lh,1.35);
+  display:flex;flex-direction:column;
+  height:var(--mfr-viewport-h,920px);max-height:var(--mfr-viewport-h,920px);min-height:0;
+}
+#cat2-chrome{
+  flex:0 0 auto;z-index:30;background:#fff;
+  padding:6px 4px 4px;border-bottom:1px solid #e5e7eb;
+  box-shadow:0 2px 8px rgba(15,23,42,0.06);
+}
+#cat2-shell{display:flex;flex:1 1 auto;min-height:0;width:100%;overflow:hidden}
+#cat2-main{
+  flex:1 1 auto;min-width:0;min-height:0;overflow-y:auto;overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;padding:8px 4px 10px;
+}
+
+/* ── Toolbar ── */
+.rv-toolbar{
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  margin-bottom:6px;padding:0 2px;font-size:var(--c-fs);flex-wrap:wrap;
+}
+.rv-toolbar-start{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.rv-toolbar-lbl{color:#6b7280;margin-left:6px}
+.rv-toolbar-lbl:first-child{margin-left:0}
+.rv-toolbar-group{display:inline-flex;border-radius:999px;background:#f3f4f6;padding:2px}
+.rv-toolbar-group button{
+  border:none;background:transparent;font-size:var(--c-fs);padding:3px 10px;
+  border-radius:999px;cursor:pointer;color:#4b5563;font-family:inherit;
+}
+.rv-toolbar-group button.rv-active{background:#111827;color:#f9fafb}
+.rv-toolbar-group button:hover:not(.rv-active){background:#e5e7eb}
+.rv-count{font-size:var(--c-fs);color:#6b7280;white-space:nowrap}
+
+/* ── Filter bar ── */
+.filter-bar{
+  display:flex;flex-wrap:wrap;align-items:center;gap:8px;
+  padding:8px 10px;background:#f8fafc;border:1px solid #e5e7eb;border-radius:8px;
+}
+.filter-bar label{font-size:var(--js2-filter-label-fs,11px);color:#6b7280;font-weight:500;margin-right:2px;white-space:nowrap}
+.filter-input{
+  flex:1;min-width:160px;max-width:300px;padding:5px 9px;
+  border:1px solid #e5e7eb;border-radius:6px;font-size:var(--c-fs);font-family:inherit;background:#fff;
+}
+.filter-input:focus,.filter-select:focus{outline:2px solid var(--c-active);outline-offset:1px;border-color:#cbd5e1}
+.filter-select{
+  padding:5px 26px 5px 8px;border:1px solid #e5e7eb;border-radius:6px;
+  font-size:var(--c-fs);font-family:inherit;background:#fff;cursor:pointer;
+  appearance:none;-webkit-appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 8px center;min-width:110px;max-width:220px;
+}
+.filter-clear-btn{
+  border:1px solid #e5e7eb;background:#fff;border-radius:6px;padding:5px 10px;
+  font-size:var(--c-fs);cursor:pointer;color:#6b7280;white-space:nowrap;font-family:inherit;
+}
+.filter-clear-btn:hover{background:#f3f4f6;color:#374151}
+
+/* ── Grid + cards ── */
+#grid{display:grid;gap:var(--c-grid-gap);width:100%;align-items:start}
+#grid[data-size="S"]{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+#grid[data-size="M"]{grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+#grid[data-size="L"]{grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
+#grid[data-view="list"]{grid-template-columns:1fr;gap:6px}
+.empty-msg{grid-column:1/-1;text-align:center;color:#888;padding:2rem 0;font-size:var(--c-fs)}
+
+.cat2-card{
+  background:var(--c-bg);border:var(--c-border);border-radius:var(--c-radius);
+  padding:10px;cursor:pointer;user-select:none;
+  transition:box-shadow .15s ease,border-color .15s ease;
+  display:flex;flex-direction:column;gap:6px;min-width:0;overflow:hidden;
+}
+.cat2-card:hover{box-shadow:var(--c-hover-shadow);border-color:var(--c-hover-border)}
+.cat2-card.selected{border-color:#2a7d2e;box-shadow:0 0 0 2px rgba(42,125,46,0.22)}
+.cat2-hdr{display:flex;gap:8px;align-items:flex-start}
+.mfr-logo{
+  flex:0 0 auto;width:72px;height:40px;border-radius:6px;background:#f8fafc;
+  border:1px solid #f1f5f9;display:flex;align-items:center;justify-content:center;overflow:hidden;
+}
+.mfr-logo img{max-width:66px;max-height:34px;object-fit:contain;display:block}
+.mfr-logo--mono{font-size:13px;font-weight:600;color:#64748b;letter-spacing:.02em}
+#grid[data-size="S"] .mfr-logo{width:56px;height:34px}
+#grid[data-size="S"] .mfr-logo img{max-width:50px;max-height:28px}
+.cat2-hdr-text{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.cat2-name{
+  font-weight:600;line-height:var(--js2-card-name-lh,1.3);color:#111;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+  font-size:var(--js2-card-name-fs-s,13px);
+}
+#grid[data-size="L"] .cat2-name{font-size:var(--js2-card-name-fs-ml,15px)}
+.cat2-mfr{font-size:var(--js2-card-mfr-fs,11px);color:#475569;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mfr-score-row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.mfr-score{flex:1 1 auto;min-width:0}
+.mfr-score-lbl{font-size:var(--js2-card-detail-fs,11px);color:#64748b;margin-bottom:3px;font-variant-numeric:tabular-nums}
+.mfr-score-lbl b{color:#111827;font-weight:600}
+.mfr-score-bg{height:4px;border-radius:2px;background:#e2e8f0;width:100%}
+.mfr-score-fill{height:4px;border-radius:2px}
+.mfr-score--none .mfr-score-lbl{color:#94a3b8}
+.cat2-mfr-pills{display:flex;flex-wrap:wrap;gap:4px}
+.cat2-mfr-pill{
+  display:inline-block;padding:2px 8px;border-radius:999px;font-size:var(--js2-card-badge-fs,10px);font-weight:600;
+  background:#ecfdf5;color:#166534;border:1px solid #bbf7d0;line-height:1.35;white-space:nowrap;
+}
+.cat2-mfr-pill--warn{background:#fff7ed;color:#9a3412;border-color:#fed7aa}
+.cat2-mfr-pill--off{background:#f8fafc;color:#94a3b8;border-color:#e2e8f0;font-weight:500}
+.cat2-mfr-pill--fw{background:#eff6ff;color:#1d4ed8;border-color:#bfdbfe;font-weight:500}
+.cat2-footer{
+  display:flex;justify-content:space-between;align-items:center;gap:6px;
+  border-top:1px solid #f3f4f6;padding-top:5px;
+  font-size:var(--js2-card-footer-fs,10px);color:#64748b;
+}
+#grid[data-size="S"] .mfr-fw-pills{display:none}
+
+/* List view: one row per entity */
+#grid[data-view="list"] .cat2-card{flex-direction:row;align-items:center;gap:14px;padding:8px 10px}
+#grid[data-view="list"] .cat2-hdr{flex:0 0 34%;min-width:0}
+#grid[data-view="list"] .mfr-score-row{flex:0 0 26%}
+#grid[data-view="list"] .mfr-key-pills{flex:1 1 auto}
+#grid[data-view="list"] .mfr-fw-pills,
+#grid[data-view="list"] .cat2-footer{display:none}
+
+/* Maturity tier badge (soft palette, same family as the pills) */
+.tier-badge{
+  display:inline-block;border-radius:999px;padding:2px 9px;font-size:var(--js2-card-badge-fs,10px);
+  font-weight:700;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;flex:0 0 auto;border:1px solid;
+}
+.tier-Advanced   {background:#e0f2f1;color:#0f5f58;border-color:#b2dfdb}
+.tier-Good       {background:#e8f5e9;color:#1f5e23;border-color:#c8e6c9}
+.tier-Progressing{background:#fff3e0;color:#b45309;border-color:#ffe0b2}
+.tier-Developing {background:#fffbeb;color:#a16207;border-color:#fde68a}
+.tier-Early-Stage{background:#e3f2fd;color:#1565c0;border-color:#bbdefb}
+.tier-Minimal    {background:#f1f5f9;color:#64748b;border-color:#e2e8f0}
+
+/* ── Right detail panel — copied from catalogue_component_js2.html ── */
+#cat2-detail-panel{
+  flex:0 0 0;width:0;min-width:0;overflow:hidden;
+  display:flex;flex-direction:column;background:#fff;
+  border-left:1px solid transparent;
+  transition:width .2s ease, flex-basis .2s ease, border-color .2s ease;
+}
+#cat2-detail-panel.open{
+  flex:0 0 min(var(--js2-detail-panel-w,400px), var(--js2-detail-panel-max-vw,50vw));
+  width:min(var(--js2-detail-panel-w,400px), var(--js2-detail-panel-max-vw,50vw));
+  border-left-color:#e5e7eb;box-shadow:-6px 0 24px rgba(15,23,42,0.08);
+}
+.cat2-detail-hdr{flex:0 0 auto;display:flex;justify-content:flex-end;padding:8px 16px 0;background:#fff}
+.cat2-detail-close{
+  border:none;background:#f1f5f9;border-radius:999px;width:28px;height:28px;
+  font-size:var(--js2-detail-close-fs,15px);cursor:pointer;display:flex;align-items:center;justify-content:center;
+  color:#374151;flex-shrink:0;transition:background .12s;
+}
+.cat2-detail-close:hover{background:#e2e8f0}
+#cat2-detail-top{flex:0 0 auto;padding:4px 16px 12px;background:#fff}
+#cat2-detail-top:empty{display:none}
+.modal-hdr-grid--panel{display:flex;gap:12px;align-items:flex-start}
+.modal-hdr-grid--panel .mfr-logo{width:96px;height:56px}
+.modal-hdr-grid--panel .mfr-logo img{max-width:88px;max-height:48px}
+.modal-hdr-text{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}
+.modal-name--panel{font-size:var(--js2-detail-name-fs,15px);font-weight:600;line-height:1.3;color:#1f2937}
+.modal-mfr--panel{font-size:var(--js2-modal-mfr-fs,13px);color:#475569}
+.modal-name-divider{
+  width:var(--cat2-name-divider-width-ml,50%);border:none;
+  height:var(--cat2-name-divider-bottom-thickness,1px);
+  background:var(--cat2-name-divider-bottom-color,#f3f4f6);margin:2px 0;
+}
+.mfr-panel-score{display:flex;align-items:center;gap:10px;margin-top:10px}
+.mfr-panel-score .mfr-score{max-width:60%}
+#cat2-detail-tabs{
+  flex:0 0 auto;display:flex;align-items:center;gap:6px;flex-wrap:wrap;
+  padding:10px 14px 10px;background:#fff;
+  border-top:1.5px solid #d1d9e6;border-bottom:1px solid #eceef1;
+}
+.cat2-doc-tab{
+  border:none;background:transparent;cursor:pointer;white-space:nowrap;
+  display:inline-flex;align-items:center;gap:5px;padding:5px 11px;border-radius:999px;font-family:inherit;
+  font-size:var(--js2-doc-tab-fs,11.5px);font-weight:500;color:#6b7280;transition:color .12s, background .12s;
+}
+.cat2-doc-tab:hover:not(.active){background:#f4f5f7;color:#374151}
+.cat2-doc-tab.active{background:#eaf3ea;color:#1f5e23;font-weight:600}
+.cat2-doc-tab-icon{font-size:12px;line-height:1;opacity:.85}
+#cat2-detail-body{flex:1 1 auto;min-height:0;overflow-y:auto;padding:4px 16px 20px;-webkit-overflow-scrolling:touch}
+
+.cat2-sus-group{border-bottom:1px solid #eceef1}
+.cat2-sus-group > summary{
+  list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;
+  padding:14px 0 12px;font-size:13px;font-weight:600;color:#1f2937;
+}
+.cat2-sus-group > summary::-webkit-details-marker{display:none}
+.cat2-sus-group > summary::after{
+  content:"";margin-left:auto;width:7px;height:7px;
+  border-right:1.5px solid #374151;border-bottom:1.5px solid #374151;
+  transform:rotate(45deg);transition:transform .15s;
+}
+.cat2-sus-group[open] > summary::after{transform:rotate(-135deg)}
+.cat2-sus-icon{width:18px;text-align:center;font-size:14px;line-height:1}
+.cat2-sus-sub{margin-left:4px;font-size:11.5px;font-weight:500;color:#64748b;font-variant-numeric:tabular-nums}
+.cat2-sus-rows{padding:0 0 12px;display:flex;flex-direction:column;gap:var(--js2-sus-row-gap,8px)}
+.cat2-sus-row{
+  display:grid;
+  grid-template-columns:var(--js2-sus-label-col,minmax(0,1fr)) var(--js2-sus-value-col,7.2rem);
+  gap:var(--js2-sus-row-gap,8px);font-size:var(--js2-sus-fs,12px);line-height:1.45;align-items:baseline;
+}
+/* Wider value column for text-heavy rows (profile, credential notes). */
+.cat2-sus-rows--wide .cat2-sus-row{grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr)}
+.cat2-sus-lbl{color:#6b7280;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.cat2-sus-val{color:#111827;font-weight:500;text-align:right;min-width:0;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.cat2-sus-val a{color:#2563eb;text-decoration:none}
+.cat2-sus-val a:hover{text-decoration:underline}
+.cat2-sus-preamble{padding:0 0 12px}
+.cat2-sus-empty{padding:22px 0;font-size:var(--c-fs);color:#6b7280}
+.st-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;vertical-align:1px}
+.st-ok{background:#22c55e}.st-warn{background:#f59e0b}.st-no{background:#cbd5e1}
+.mfr-narrative{font-size:var(--js2-sus-fs,12px);color:#475569;line-height:1.55}
+.mfr-narrative a{color:#2563eb;text-decoration:none}
+.mfr-src{text-decoration:none;font-size:12px;margin-left:2px}
+.mfr-src:hover{opacity:.7}
+.mfr-src-list{padding:6px 0 12px;display:flex;flex-direction:column}
+.mfr-src-item{
+  display:flex;gap:12px;align-items:flex-start;padding:12px 8px;border-radius:8px;
+  text-decoration:none;color:inherit;transition:background .12s;
+}
+.mfr-src-item:hover{background:#f8fafc}
+.mfr-src-item + .mfr-src-item{border-top:1px solid #f3f4f6}
+.mfr-src-ic{font-size:14px;line-height:1.3}
+.mfr-src-info{display:flex;flex-direction:column;gap:2px;min-width:0}
+.mfr-src-host{font-size:12.5px;font-weight:600;color:#1f2937}
+.mfr-src-path{font-size:11px;color:#2563eb;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:320px}
+.mfr-src-used{font-size:11px;color:#6b7280}
+a.mfr-src-ic,a.mfr-src-host{text-decoration:none}
+a.mfr-src-host:hover{text-decoration:underline}
+.mfr-src-pages{display:flex;flex-direction:column;gap:3px;margin-top:4px}
+.mfr-src-page{
+  display:flex;gap:8px;align-items:baseline;font-size:11px;color:#2563eb;text-decoration:none;
+  padding:2px 6px;border-radius:6px;font-variant-numeric:tabular-nums;
+}
+.mfr-src-page:hover{background:#eff6ff}
+.mfr-src-page-lbl{color:#6b7280;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.mfr-src-foot{font-size:11px;color:#94a3b8;line-height:1.5;padding:4px 0 8px}
+.mfr-notes{font-size:var(--js2-sus-fs,12px);color:#64748b;line-height:1.55;font-style:italic}
+</style>
+</head>
+<body>
+<div id="cat2-chrome">
+  <div class="filter-bar">
+    <label for="f-q">Search</label>
+    <input id="f-q" class="filter-input" type="search" placeholder="Name, city, sector, notes…">
+    <label for="f-sector">Sector</label>
+    <select id="f-sector" class="filter-select"></select>
+    <label for="f-tier">Maturity</label>
+    <select id="f-tier" class="filter-select"></select>
+    <label for="f-fw">Framework</label>
+    <select id="f-fw" class="filter-select"></select>
+    <button id="f-clear" class="filter-clear-btn" type="button">Clear</button>
+  </div>
+</div>
+<div id="cat2-shell">
+  <main id="cat2-main">
+    <div class="rv-toolbar">
+      <div class="rv-toolbar-start">
+        <span class="rv-toolbar-group" id="tb-etype"></span>
+        <span class="rv-toolbar-lbl">View</span>
+        <span class="rv-toolbar-group" id="tb-view">
+          <button type="button" data-v="grid">⊞ Grid</button>
+          <button type="button" data-v="list">☰ List</button>
+        </span>
+        <span class="rv-toolbar-lbl">Size</span>
+        <span class="rv-toolbar-group" id="tb-size">
+          <button type="button" data-v="S">S</button>
+          <button type="button" data-v="M">M</button>
+          <button type="button" data-v="L">L</button>
+        </span>
+        <span class="rv-toolbar-lbl">Sort</span>
+        <span class="rv-toolbar-group" id="tb-sort">
+          <button type="button" data-v="score">Score</button>
+          <button type="button" data-v="name">A–Z</button>
+          <button type="button" data-v="products">Products</button>
+        </span>
+      </div>
+      <span class="rv-count" id="count"></span>
+    </div>
+    <div id="grid" data-size="M" data-view="grid"></div>
+  </main>
+  <aside id="cat2-detail-panel" aria-hidden="true">
+    <div class="cat2-detail-hdr">
+      <button id="cat2-detail-close" class="cat2-detail-close" type="button" aria-label="Close">✕</button>
+    </div>
+    <div id="cat2-detail-top"></div>
+    <nav id="cat2-detail-tabs" role="tablist" aria-label="Entity sections"></nav>
+    <div id="cat2-detail-body"></div>
+  </aside>
+</div>
+<script>
+const DATA = window.__MFR_DATA__ || {entities:{}, etypes:[], tiers:[], frameworks:[]};
+const ETYPES = DATA.etypes || [];
+const TIERS = DATA.tiers || [];
+const STATE = {etype: (ETYPES[0]||{}).key || "manufacturers", view:"grid", size:"M", sort:"score",
+               q:"", sector:"", tier:"", fw:"", open:null, tab:"overview"};
+
+function esc(s){
+  return String(s == null ? "" : s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function scoreColor(s){
+  if(s == null) return "#cbd5e1";
+  if(s >= 76) return "#2a7d2e";
+  if(s >= 56) return "#7cb342";
+  if(s >= 36) return "#d97706";
+  return "#9e9e9e";
+}
+function tierBadge(t){
+  if(!t) return "";
+  return `<span class="tier-badge tier-${esc(String(t).replace(/\s+/g,"-"))}">${esc(t)}</span>`;
+}
+function logoHtml(e){
+  if(e.logo) return `<div class="mfr-logo"><img src="${e.logo}" alt=""></div>`;
+  const ini = String(e.name||"").replace(/[^A-Za-z0-9 ]/g,"").split(/\s+/).filter(Boolean).slice(0,2).map(w=>w[0]).join("").toUpperCase();
+  return `<div class="mfr-logo mfr-logo--mono">${esc(ini || "·")}</div>`;
+}
+function scoreBlock(e){
+  if(e.score == null){
+    return `<div class="mfr-score mfr-score--none"><div class="mfr-score-lbl">Not in Impact Framework</div>`
+      + `<div class="mfr-score-bg"></div></div>`;
+  }
+  return `<div class="mfr-score"><div class="mfr-score-lbl">Impact score <b>${e.score.toFixed(1)}</b> / 100</div>`
+    + `<div class="mfr-score-bg"><div class="mfr-score-fill" style="width:${Math.max(0,Math.min(100,e.score))}%;background:${scoreColor(e.score)}"></div></div></div>`;
+}
+function pill(p){
+  const cls = p.state === "ok" ? "" : (p.state === "warn" ? " cat2-mfr-pill--warn" : " cat2-mfr-pill--off");
+  return `<span class="cat2-mfr-pill${cls}" title="${esc(p.title||p.label)}">${esc(p.label)}</span>`;
+}
+
+function entities(){ return (DATA.entities[STATE.etype] || []); }
+function filtered(){
+  const q = STATE.q.trim().toLowerCase();
+  let out = entities().filter(e =>
+    (!q || e.search.includes(q)) &&
+    (!STATE.sector || e.sector === STATE.sector) &&
+    (!STATE.tier || e.tier === STATE.tier) &&
+    (!STATE.fw || (e.fw||[]).includes(STATE.fw))
+  );
+  const byName = (a,b) => a.name.localeCompare(b.name);
+  if(STATE.sort === "name") out.sort(byName);
+  else if(STATE.sort === "products") out.sort((a,b)=>(b.products||0)-(a.products||0) || byName(a,b));
+  else out.sort((a,b)=>((b.score ?? -1)-(a.score ?? -1)) || (a.tierRank-b.tierRank) || byName(a,b));
+  return out;
+}
+
+function cardHtml(e){
+  const sub = [e.sector, e.hq].filter(Boolean).join(" · ");
+  const foot = [];
+  if(e.products) foot.push(`<span>${e.products} product${e.products===1?"":"s"} in library</span>`);
+  else if(STATE.etype === "manufacturers") foot.push(`<span>No products in library</span>`);
+  else foot.push(`<span></span>`);
+  if(e.hasIfw) foot.push(`<span>Impact Framework</span>`);
+  return `<div class="cat2-card${STATE.open===e.id?" selected":""}" data-id="${esc(e.id)}">
+    <div class="cat2-hdr">${logoHtml(e)}
+      <div class="cat2-hdr-text"><div class="cat2-name">${esc(e.name)}</div>
+        <div class="cat2-mfr" title="${esc(sub)}">${esc(sub)}</div></div>
+    </div>
+    <div class="mfr-score-row">${scoreBlock(e)}${tierBadge(e.tier)}</div>
+    <div class="cat2-mfr-pills mfr-key-pills">${(e.pills||[]).map(pill).join("")}</div>
+    ${(e.fw||[]).length ? `<div class="cat2-mfr-pills mfr-fw-pills">${e.fw.map(f=>`<span class="cat2-mfr-pill cat2-mfr-pill--fw">${esc(f)}</span>`).join("")}</div>` : ""}
+    <div class="cat2-footer">${foot.join("")}</div>
+  </div>`;
+}
+
+function renderGrid(){
+  const grid = document.getElementById("grid");
+  grid.dataset.size = STATE.size; grid.dataset.view = STATE.view;
+  const rows = filtered();
+  document.getElementById("count").textContent = `${rows.length} of ${entities().length} ${((ETYPES.find(t=>t.key===STATE.etype)||{}).noun||"entities")}`;
+  grid.innerHTML = rows.length ? rows.map(cardHtml).join("")
+    : `<div class="empty-msg">No entities match the current filters.</div>`;
+}
+
+function fillSelect(id, label, values){
+  const sel = document.getElementById(id);
+  const cur = sel.value;
+  sel.innerHTML = `<option value="">${esc(label)}</option>` + values.map(v=>`<option value="${esc(v)}">${esc(v)}</option>`).join("");
+  sel.value = values.includes(cur) ? cur : "";
+}
+function refreshFilters(){
+  const ents = entities();
+  const sectors = [...new Set(ents.map(e=>e.sector).filter(Boolean))].sort((a,b)=>a.localeCompare(b));
+  fillSelect("f-sector", "All sectors", sectors);
+  const tiers = TIERS.filter(t => ents.some(e=>e.tier===t));
+  fillSelect("f-tier", "All tiers", tiers);
+  const fws = (DATA.frameworks||[]).filter(f => ents.some(e=>(e.fw||[]).includes(f)));
+  fillSelect("f-fw", "All frameworks", fws);
+  STATE.sector = document.getElementById("f-sector").value;
+  STATE.tier = document.getElementById("f-tier").value;
+  STATE.fw = document.getElementById("f-fw").value;
+}
+
+function setGroup(id, key){
+  document.querySelectorAll(`#${id} button`).forEach(b=>b.classList.toggle("rv-active", b.dataset.v === STATE[key]));
+}
+
+// ── Detail panel ─────────────────────────────────────────────────────────────
+function findEntity(id){ return entities().find(e=>e.id===id); }
+// Source links — same 🔗 anchor the Catalogue puts after a value.
+function srcHost(u){ try{ return new URL(u).hostname.replace(/^www\./,""); }catch(_){ return u; } }
+function srcLinks(urls){
+  return (urls||[]).map(u =>
+    ` <a class="mfr-src" href="${esc(u)}" target="_blank" rel="noopener noreferrer" title="Source: ${esc(u)}">🔗</a>`).join("");
+}
+function rowsHtml(rows, wide){
+  const body = rows.filter(r => r && r[1] != null && String(r[1]).trim() !== "").map(([l, v, st, urls]) =>
+    `<div class="cat2-sus-row"><span class="cat2-sus-lbl" title="${esc(l)}">${esc(l)}</span>`
+    + `<span class="cat2-sus-val">${st ? `<span class="st-dot st-${st}"></span>` : ""}${v}${srcLinks(urls)}</span></div>`).join("");
+  return body ? `<div class="cat2-sus-rows${wide?" cat2-sus-rows--wide":""}">${body}</div>` : "";
+}
+function groupHtml(g, open){
+  const rows = rowsHtml((g.rows||[]).map(r=>[r[0], r[3] ? r[1] : esc(r[1]), r[2], r[4]]), g.wide);
+  const pre = g.preamble || "";
+  if(!rows && !pre) return "";
+  return `<details class="cat2-sus-group"${open===false?"":" open"}><summary>`
+    + `<span class="cat2-sus-icon">${g.icon||""}</span>${esc(g.title)}`
+    + (g.sub ? `<span class="cat2-sus-sub">${esc(g.sub)}</span>` : "") + `</summary>`
+    + (pre ? `<div class="cat2-sus-preamble">${pre}</div>` : "") + rows + `</details>`;
+}
+function tabsFor(e){
+  const t = [["overview","ⓘ","Overview"]];
+  if(e.credentials && e.credentials.length) t.push(["credentials","🏅","Credentials"]);
+  if(e.hasIfw) t.push(["impact","🌐","Impact Framework"]);
+  if(e.sources && e.sources.length) t.push(["sources","🗎",`Sources (${e.sources.length})`]);
+  return t;
+}
+function renderPanel(){
+  const panel = document.getElementById("cat2-detail-panel");
+  const e = STATE.open ? findEntity(STATE.open) : null;
+  if(!e){
+    panel.classList.remove("open"); panel.setAttribute("aria-hidden","true");
+    document.getElementById("cat2-detail-top").innerHTML = "";
+    document.getElementById("cat2-detail-tabs").innerHTML = "";
+    document.getElementById("cat2-detail-body").innerHTML = "";
+    return;
+  }
+  const tabs = tabsFor(e);
+  if(!tabs.some(t=>t[0]===STATE.tab)) STATE.tab = "overview";
+  const sub = [e.sector, e.hq].filter(Boolean).join(" · ");
+  document.getElementById("cat2-detail-top").innerHTML =
+    `<div class="modal-hdr-grid--panel">${logoHtml(e)}<div class="modal-hdr-text">`
+    + `<div class="modal-name--panel">${esc(e.name)}</div><hr class="modal-name-divider">`
+    + `<div class="modal-mfr--panel">${esc(sub)}</div></div></div>`
+    + `<div class="mfr-panel-score">${scoreBlock(e)}${tierBadge(e.tier)}</div>`;
+  const strip = document.getElementById("cat2-detail-tabs");
+  strip.innerHTML = tabs.map(([k, ic, lbl]) =>
+    `<button type="button" role="tab" class="cat2-doc-tab${k===STATE.tab?" active":""}" data-tab="${k}" aria-selected="${k===STATE.tab}">`
+    + `<span class="cat2-doc-tab-icon">${ic}</span>${esc(lbl)}</button>`).join("");
+  const body = document.getElementById("cat2-detail-body");
+  let html = "";
+  if(STATE.tab === "overview"){
+    html += groupHtml({icon:"🏢", title:"Company profile", rows:e.profile||[], wide:true});
+    if(e.narrative) html += groupHtml({icon:"📝", title:"Sustainability summary",
+      preamble:`<div class="mfr-narrative">${esc(e.narrative)}${e.reportUrl ? ` <a href="${esc(e.reportUrl)}" target="_blank" rel="noopener">Source →</a>` : ""}</div>`});
+    if(e.notes) html += groupHtml({icon:"🗒", title:"Analyst notes",
+      preamble:`<div class="mfr-notes">${esc(e.notes)}${srcLinks(e.notesUrls)}</div>`});
+    if(e.pills && e.pills.length) html += groupHtml({icon:"🏷", title:"Key credentials",
+      preamble:`<div class="cat2-mfr-pills">${e.pills.map(pill).join("")}</div>`});
+  } else if(STATE.tab === "credentials"){
+    for(const g of (e.credentials||[])) html += groupHtml(Object.assign({wide:true}, g));
+    if(e.credTier) html += `<div class="cat2-sus-rows" style="padding-top:12px">`
+      + `<div class="cat2-sus-row"><span class="cat2-sus-lbl">Credentials maturity tier</span><span class="cat2-sus-val">${esc(e.credTier)}</span></div></div>`;
+  } else if(STATE.tab === "impact"){
+    for(const g of (e.ifwGroups||[])) html += groupHtml(g);
+    if(e.fw && e.fw.length) html += groupHtml({icon:"🧭", title:"Frameworks covered",
+      preamble:`<div class="cat2-mfr-pills">${e.fw.map(f=>`<span class="cat2-mfr-pill cat2-mfr-pill--fw">${esc(f)}</span>`).join("")}</div>`});
+  } else if(STATE.tab === "sources"){
+    // Documents-tab style list: one entry per URL, with the rows it supports.
+    // One entry per document; page-anchored links into it are listed as chips.
+    html += `<div class="mfr-src-list">` + (e.sources||[]).map(s => {
+      const pages = s.pages || [];
+      const chips = pages.length
+        ? `<span class="mfr-src-pages">` + pages.map(p =>
+            `<a class="mfr-src-page" href="${esc(p.url)}" target="_blank" rel="noopener noreferrer" title="${esc((p.used||[]).join(" · "))}">`
+            + `p.&nbsp;${esc(p.page)}<span class="mfr-src-page-lbl">${esc((p.used||[]).join(" · "))}</span></a>`).join("")
+          + `</span>`
+        : "";
+      return `<div class="mfr-src-item">`
+        + `<a class="mfr-src-ic" href="${esc(s.url)}" target="_blank" rel="noopener noreferrer" title="${esc(s.url)}">🔗</a>`
+        + `<span class="mfr-src-info">`
+        + `<a class="mfr-src-host" href="${esc(s.url)}" target="_blank" rel="noopener noreferrer" title="${esc(s.url)}">${esc(s.host)}</a>`
+        + (s.path && s.path !== "/" ? `<span class="mfr-src-path" title="${esc(s.path)}">${esc(s.path)}</span>` : "")
+        + (!pages.length && (s.used||[]).length ? `<span class="mfr-src-used">${esc(s.used.join(" · "))}</span>` : "")
+        + chips
+        + `</span></div>`;
+    }).join("") + `</div>`
+      + `<div class="mfr-src-foot">🔗 after a value links the document it was checked against. `
+      + `Report-type rows fall back to the company's sustainability page when no specific source was recorded.</div>`;
+  }
+  body.innerHTML = html || `<div class="cat2-sus-empty">No data for this section.</div>`;
+  body.scrollTop = 0;
+  panel.classList.add("open"); panel.setAttribute("aria-hidden","false");
+}
+function openEntity(id){
+  STATE.open = (STATE.open === id) ? null : id;
+  renderGrid(); renderPanel();
+}
+
+// ── Wiring ───────────────────────────────────────────────────────────────────
+function init(){
+  const vh = parseInt(window.__MFR_HEIGHT__ || 920, 10);
+  document.documentElement.style.setProperty("--mfr-viewport-h", vh + "px");
+  const et = document.getElementById("tb-etype");
+  et.innerHTML = ETYPES.map(t=>`<button type="button" data-v="${esc(t.key)}">${esc(t.label)}</button>`).join("");
+  if(ETYPES.length < 2) et.style.display = "none";
+  const bind = (id, key, after) => document.getElementById(id).addEventListener("click", ev => {
+    const b = ev.target.closest("button"); if(!b) return;
+    STATE[key] = b.dataset.v; setGroup(id, key); if(after) after(); renderGrid();
+  });
+  bind("tb-etype", "etype", () => { STATE.open = null; refreshFilters(); renderPanel(); });
+  bind("tb-view", "view"); bind("tb-size", "size"); bind("tb-sort", "sort");
+  ["etype","view","size","sort"].forEach(k => setGroup("tb-" + k, k));
+  document.getElementById("f-q").addEventListener("input", ev => { STATE.q = ev.target.value; renderGrid(); });
+  for(const [id, key] of [["f-sector","sector"],["f-tier","tier"],["f-fw","fw"]]){
+    document.getElementById(id).addEventListener("change", ev => { STATE[key] = ev.target.value; renderGrid(); });
+  }
+  document.getElementById("f-clear").addEventListener("click", () => {
+    STATE.q = STATE.sector = STATE.tier = STATE.fw = "";
+    document.getElementById("f-q").value = "";
+    ["f-sector","f-tier","f-fw"].forEach(id => document.getElementById(id).value = "");
+    renderGrid();
+  });
+  document.getElementById("grid").addEventListener("click", ev => {
+    const c = ev.target.closest(".cat2-card"); if(c) openEntity(c.dataset.id);
+  });
+  document.getElementById("cat2-detail-tabs").addEventListener("click", ev => {
+    const b = ev.target.closest("button[data-tab]"); if(!b) return;
+    STATE.tab = b.dataset.tab; renderPanel();
+  });
+  document.getElementById("cat2-detail-close").addEventListener("click", () => { STATE.open = null; renderGrid(); renderPanel(); });
+  document.addEventListener("keydown", ev => { if(ev.key === "Escape" && STATE.open){ STATE.open = null; renderGrid(); renderPanel(); } });
+  refreshFilters(); renderGrid();
+}
+init();
+</script>
+</body>
+</html>

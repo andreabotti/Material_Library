@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation xmlns="">
+    <dataSetInformation>
+      <common:UUID>79141ef8-de0a-4815-88e7-45d6318bc154</common:UUID>
+      <name>
+        <baseName xml:lang="en">Autoclaved aerated concrete block, unreinforced, at plant</baseName>
+      </name>
+      <common:synonyms>Calcestruzzo Aerato Autoclavato </common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">Systems</common:class>
+          <common:class level="1">Construction</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment>Dataset developed within the ARCADIA Project and completed within the agreement between ENEA and MASE. The product was selected in collaboration with the Assobeton Association due to its widespread use in contemporary construction, thanks to features such as lightness, speed, and simplification of installation phases, which make it a more versatile product than traditional bricks used for the same purpose. 
+
+For the supply chain study, data were provided by the companies Xella Italia S.r.l. and Ekoru S.r.l. 
+
+Dataset developed according to Arcadia project methodology (Report: “Metodologia per gli studi di filiera della Banca Dati italiana LCA”). LCA study of autoclaved aerated concrete production (Report: “PRODUZIONE DI ELEMENTI DA MURATURA IN CALCESTRUZZO AERATO AUTOCLAVATO”). The dataset is representative of the national processing technologies commonly used in the unreinforced autoclaved aerated concrete block production. </common:generalComment>
+      <referenceToExternalDocumentation type="source data set" refObjectId="fcfca41c-d148-4f0a-9c78-ab8710de366d" version="01.00.000" uri="../sources/fcfca41c-d148-4f0a-9c78-ab8710de366d.xml">
+        <common:shortDescription>Viglia, S., Scrucca,F., Cellurale, M., Rinaldi, C., 2025. “PRODUZIONE DI ELEMENTI DA MURATURA IN CALCESTRUZZO AERATO AUTOCLAVATO”. Internal report. For the LCA study background datasets from Ecoinvent database cut-off (v. 3.11) were used.</common:shortDescription>
+      </referenceToExternalDocumentation>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2023</common:referenceYear>
+      <common:dataSetValidUntil>2028</common:dataSetValidUntil>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT">
+        <descriptionOfRestrictions>Italy. Dataset representative of Italian production of unreinforced autoclaved aerated concrete block. </descriptionOfRestrictions>
+      </locationOfOperationSupplyOrProduction>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>Autoclaved Aerated Concrete (AAC) elements are mineral-based blocks used in construction. The term “autoclaved” refers to the preparation process: production concludes with curing the material in autoclaves, which enable it to mature under controlled temperature and pressure. AAC is made into bricks containing a high percentage of air, distributed uniformly within small pores, giving the material its characteristic lightness.  &#13;
+&#13;
+After expansion and partial curing in maturation chambers, the material is cut and autoclaved. Sand, ground wet, is mixed with lime and cement to form a fluid paste poured into metal molds, where internal porosity develops. This is due to aluminum powder reacting with calcium hydroxide, releasing hydrogen bubbles that create a foam-like structure. The rising process stops when cementitious binders set, capturing the bubbles while hydrogen is released and replaced by air, a natural thermal insulator. &#13;
+&#13;
+Once removed from molds, the material is solid but still soft. It is cut into blocks or panels and placed in an autoclave for 11-12 hours. During steam curing quartz sand reacts with calcium hydroxide to form calcium silicate hydrate, which provides the material with its mechanical properties. After autoclaving, the material is immediately ready for use.  &#13;
+&#13;
+For this study, the production phases from grinding to curing were considered, excluding packaging. Use and end-of-life phases are excluded. &#13;
+&#13;
+Primary data , provided by the companies Xella Italia S.r.l. and Ekoru S.r.l., were collected as physical quantities of materials used in the process as a whole. Background data were modelled according to Ecoinvent v. 3.1.1 &#13;
+&#13;
+ &#13;
+&#13;
+Production of equipment and infrastructures is not included, except for the background system </technologyDescriptionAndIncludedProcesses>
+      <technologicalApplicability>Autoclaved Aerated Concrete (AAC) elements are mineral-based blocks used in construction. </technologicalApplicability>
+      <referenceToTechnologyPictogramme type="source data set" refObjectId="e5b285a1-7047-4cb8-9fd4-d9da082a6221" version="01.00.000" uri="../sources/e5b285a1-7047-4cb8-9fd4-d9da082a6221.xml">
+        <common:shortDescription>20251205101748_</common:shortDescription>
+      </referenceToTechnologyPictogramme>
+      <referenceToTechnologyFlowDiagrammOrPicture type="source data set" refObjectId="9145f4a3-e103-452a-b0be-59d25aa9c045" version="01.00.000" uri="../sources/9145f4a3-e103-452a-b0be-59d25aa9c045.xml">
+        <common:shortDescription>20251205101748_</common:shortDescription>
+      </referenceToTechnologyFlowDiagrammOrPicture>
+    </technology>
+  </processInformation>
+  <modellingAndValidation xmlns="">
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Not applicable</LCIMethodApproaches>
+      <referenceToLCAMethodDetails type="source data set" refObjectId="fd70fe99-0587-4e7d-9e4c-523c9cb2eea4" version="01.00.000" uri="../sources/fd70fe99-0587-4e7d-9e4c-523c9cb2eea4.xml">
+        <common:shortDescription>20251205101748_</common:shortDescription>
+      </referenceToLCAMethodDetails>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <dataCutOffAndCompletenessPrinciples>Production of equipment and infrastructure are not included, except for the background system. </dataCutOffAndCompletenessPrinciples>
+      <referenceToDataSource type="source data set" refObjectId="d85b880e-b899-4a3e-a146-ecb9ee242394" version="01.00.000" uri="../sources/d85b880e-b899-4a3e-a146-ecb9ee242394.xml">
+        <common:shortDescription>20251205101748_Report CAA_2_12_2025.pdf</common:shortDescription>
+      </referenceToDataSource>
+      <dataCollectionPeriod>2022</dataCollectionPeriod>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>No statement</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Independent internal review">
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Completeness" value="Very good"/>
+          <common:dataQualityIndicator name="Precision" value="Not applicable"/>
+          <common:dataQualityIndicator name="Methodological appropriateness and consistency" value="Not applicable"/>
+          <common:dataQualityIndicator name="Overall quality" value="Not applicable"/>
+        </common:dataQualityIndicators>
+        <common:reviewDetails>The review was performed in compliance with Arcadia Metodology: “Metodologia per gli studi di filiera della Banca Dati italiana LCA” and ISO 14040-44 norms. The dataset has been assessed limited to the foreground data collected during the supply chain studies. &#13;
+&#13;
+Each dataset has been evaluated based on the following 4 criteria: &#13;
+&#13;
+1. Technological Representativeness; 2. Time Representativeness; 3. Geographical Representativeness; 4. Reliability. &#13;
+&#13;
+In this contest the Reliability is “good”. </common:reviewDetails>
+        <common:referenceToNameOfReviewerAndInstitution type="contact data set" refObjectId="af602e54-b9f1-4f25-8ae2-29f73e6dece2" version="01.00.000" uri="../sources/af602e54-b9f1-4f25-8ae2-29f73e6dece2.xml">
+          <common:shortDescription>ENEA</common:shortDescription>
+        </common:referenceToNameOfReviewerAndInstitution>
+        <common:otherReviewDetails>The study was judged by the reviewer as compliant with both ISO 14040-44 and Arcadia methodology. </common:otherReviewDetails>
+        <common:referenceToCompleteReviewReport type="source data set" refObjectId="37b48622-e1a9-4e5c-a797-31cf37df619e" version="01.00.000" uri="../sources/37b48622-e1a9-4e5c-a797-31cf37df619e.xml">
+          <common:shortDescription>20251205101748_</common:shortDescription>
+        </common:referenceToCompleteReviewReport>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="1b05ee03-6e1c-4706-9a3a-489bb5822c1a" uri="../sources/1b05ee03-6e1c-4706-9a3a-489bb5822c1a.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="1958ebd4-2e33-410c-824b-a6edb6bc4e7b" uri="../sources/1958ebd4-2e33-410c-824b-a6edb6bc4e7b.xml">
+          <common:shortDescription xml:lang="en">ISO 14044</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Not defined</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation xmlns="">
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="27e15f4a-c89b-4cc8-8031-8c0b6705130f" uri="../sources/27e15f4a-c89b-4cc8-8031-8c0b6705130f.xml">
+        <common:shortDescription xml:lang="en">ENEA - Arcadia</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Arcadia – PON Governance e Capacità istituzionale 2014-2020 </common:project>
+    </common:commissionerAndGoal>
+    <dataGenerator>
+      <common:referenceToPersonOrEntityGeneratingTheDataSet refObjectId="dc96b792-0ff9-49ea-ad15-d6b4d2ebd053" type="contact data set" uri="../sources/dc96b792-0ff9-49ea-ad15-d6b4d2ebd053.xml" version="01.00.000">
+        <common:shortDescription>ENEA</common:shortDescription>
+      </common:referenceToPersonOrEntityGeneratingTheDataSet>
+    </dataGenerator>
+    <dataEntryBy>
+      <common:timeStamp>2025-12-05T10:07:42.118+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="a97a0155-0234-4b87-b4ce-a45da52f2a40" uri="../sources/a97a0155-0234-4b87-b4ce-a45da52f2a40.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2025-10-16T12:54:03.121Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/79141ef8-de0a-4815-88e7-45d6318bc154.xml</common:permanentDataSetURI>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+      <common:accessRestrictions>Type of license: Open Database Licence (ODbL) </common:accessRestrictions>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges xmlns="">
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="350de2cf-f9f2-47ef-87ff-9a2d665cd9bb" uri="../flows/350de2cf-f9f2-47ef-87ff-9a2d665cd9bb.xml">
+        <common:shortDescription xml:lang="en">Autoclaved aerated concrete block, unreinforced, at plant</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0000000E+0</meanAmount>
+      <resultingAmount>1.0000000E+0</resultingAmount>
+      <generalComment>Autoclaved aerated concrete (density 455 kg/m3)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="e24cc60c-6e34-472f-ab5d-03362d52607a" uri="../flows/e24cc60c-6e34-472f-ab5d-03362d52607a.xml">
+        <common:shortDescription xml:lang="en">Sand {RoW}| market for sand | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.6000000E+2</meanAmount>
+      <resultingAmount>2.6000000E+2</resultingAmount>
+      <generalComment>Sand for autoclaved aerated concrete block production (average value of the range 230-290 kg)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="927e96eb-db17-479a-a007-cb14b2b02d3a" uri="../flows/927e96eb-db17-479a-a007-cb14b2b02d3a.xml">
+        <common:shortDescription xml:lang="en">Quicklime, milled, packed {RER}| market for quicklime, milled, packed | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.5000000E+1</meanAmount>
+      <resultingAmount>4.5000000E+1</resultingAmount>
+      <generalComment>Quicklime for autoclaved aerated concrete block production (average value of the range 40-50 kg)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="3">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4b19264f-f35a-4ce3-84b7-6b6908b45855" uri="../flows/4b19264f-f35a-4ce3-84b7-6b6908b45855.xml">
+        <common:shortDescription xml:lang="en">Gypsum, mineral {RER}| market for gypsum, mineral | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.5000000E+1</meanAmount>
+      <resultingAmount>1.5000000E+1</resultingAmount>
+      <generalComment>Gypsum for autoclaved aerated concrete block production (average value of the range 10-20 kg)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="4">
+      <referenceToFlowDataSet type="flow data set" refObjectId="6b0386f1-4425-4266-9818-4447ab42bbe2" uri="../flows/6b0386f1-4425-4266-9818-4447ab42bbe2.xml">
+        <common:shortDescription xml:lang="en">Cement, Portland {Europe without Switzerland}| market for cement, Portland | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.0000000E+2</meanAmount>
+      <resultingAmount>1.0000000E+2</resultingAmount>
+      <generalComment>Cement for autoclaved aerated concrete block production (average value of the range 80-120 kg)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="5">
+      <referenceToFlowDataSet type="flow data set" refObjectId="f4348160-4598-4626-9810-70050e24904a" uri="../flows/f4348160-4598-4626-9810-70050e24904a.xml">
+        <common:shortDescription xml:lang="en">Aluminium, cast alloy {GLO}| market for aluminium, cast alloy | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>7.5000000E-1</meanAmount>
+      <resultingAmount>7.5000000E-1</resultingAmount>
+      <generalComment>Aluminium for autoclaved aerated concrete block production (average value of the range 0,5-1 kg)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="6">
+      <referenceToFlowDataSet type="flow data set" refObjectId="8947f821-31ea-421a-a07f-d8760a36136b" uri="../flows/8947f821-31ea-421a-a07f-d8760a36136b.xml">
+        <common:shortDescription xml:lang="en">Hydrochloric acid, without water, in 30% solution state {RER}| market for hydrochloric acid, without water, in 30% solution state | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.9000000E-2</meanAmount>
+      <resultingAmount>2.9000000E-2</resultingAmount>
+      <generalComment>Hydrochloric acid 32% for autoclaved aerated concrete block production
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="7">
+      <referenceToFlowDataSet type="flow data set" refObjectId="e780941a-3aad-4f4d-8872-b295ada2dcd0" uri="../flows/e780941a-3aad-4f4d-8872-b295ada2dcd0.xml">
+        <common:shortDescription xml:lang="en">Lubricating oil {RER}| market for lubricating oil | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>7.7000000E-2</meanAmount>
+      <resultingAmount>7.7000000E-2</resultingAmount>
+      <generalComment>Moulding oil for autoclaved aerated concrete block production
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="8">
+      <referenceToFlowDataSet type="flow data set" refObjectId="637158e6-cc88-493b-87c0-ffba2a47f702" uri="../flows/637158e6-cc88-493b-87c0-ffba2a47f702.xml">
+        <common:shortDescription xml:lang="en">Chemical, inorganic {GLO}| market for chemical, inorganic | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.1000000E-2</meanAmount>
+      <resultingAmount>1.1000000E-2</resultingAmount>
+      <generalComment>Hydrophobic agent for autoclaved aerated concrete block production
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="9">
+      <referenceToFlowDataSet type="flow data set" refObjectId="7bec0c50-21a5-45d7-8d86-ae19eea3ed7e" uri="../flows/7bec0c50-21a5-45d7-8d86-ae19eea3ed7e.xml">
+        <common:shortDescription xml:lang="en">Sodium chloride, powder {GLO}| market for sodium chloride, powder | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>7.2000000E-2</meanAmount>
+      <resultingAmount>7.2000000E-2</resultingAmount>
+      <generalComment>Sodium chloride (NaCl) for autoclaved aerated concrete block production
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="10">
+      <referenceToFlowDataSet type="flow data set" refObjectId="17c00043-8b72-45ae-873a-c4dee04c4c5c" uri="../flows/17c00043-8b72-45ae-873a-c4dee04c4c5c.xml">
+        <common:shortDescription xml:lang="en">Sodium hydroxide, without water, in 50% solution state {RER}| market for sodium hydroxide, without water, in 50% solution state | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.9000000E-2</meanAmount>
+      <resultingAmount>2.9000000E-2</resultingAmount>
+      <generalComment>Sodium hydroxide (NaOH) for autoclaved aerated concrete block production
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="11">
+      <referenceToFlowDataSet type="flow data set" refObjectId="8bd770ba-d45c-4353-a2e7-ec9b7d9ea285" uri="../flows/8bd770ba-d45c-4353-a2e7-ec9b7d9ea285.xml">
+        <common:shortDescription xml:lang="en">Reinforcing steel {GLO}| market for reinforcing steel | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.9900000E-1</meanAmount>
+      <resultingAmount>2.9900000E-1</resultingAmount>
+      <generalComment>Steel (reinforcement) for autoclaved aerated concrete block production
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="12">
+      <referenceToFlowDataSet type="flow data set" refObjectId="e0503b6b-6dd0-4efb-b4a6-afecf2654587" uri="../flows/e0503b6b-6dd0-4efb-b4a6-afecf2654587.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry, diesel, unspecified {RER}| market for transport, freight, lorry, unspecified | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.5840000E+1</meanAmount>
+      <resultingAmount>3.5840000E+1</resultingAmount>
+      <generalComment>Transport of input materials	
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="13">
+      <referenceToFlowDataSet type="flow data set" refObjectId="e0503b6b-6dd0-4efb-b4a6-afecf2654587" uri="../flows/e0503b6b-6dd0-4efb-b4a6-afecf2654587.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry, diesel, unspecified {RER}| market for transport, freight, lorry, unspecified | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.3100000E-1</meanAmount>
+      <resultingAmount>1.3100000E-1</resultingAmount>
+      <generalComment>Transport of waste (50 km)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="14">
+      <referenceToFlowDataSet type="flow data set" refObjectId="0c56076d-423f-4cd5-8ffa-3738742afb23" uri="../flows/0c56076d-423f-4cd5-8ffa-3738742afb23.xml">
+        <common:shortDescription xml:lang="en">Wood chipping, industrial residual wood, stationary electric chipper {RER}| wood chipping, industrial residual wood, stationary electric chipper | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.9600000E-1</meanAmount>
+      <resultingAmount>1.9600000E-1</resultingAmount>
+      <generalComment>Wood packaging waste to chipping treatment
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="15">
+      <referenceToFlowDataSet type="flow data set" refObjectId="675115bb-87cc-4761-8e05-30f415dc460b" uri="../flows/675115bb-87cc-4761-8e05-30f415dc460b.xml">
+        <common:shortDescription xml:lang="en">Ferrous metal, in mixed metal scrap {Europe without Switzerland}| market for ferrous metal, in mixed metal scrap | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.6000000E-2</meanAmount>
+      <resultingAmount>2.6000000E-2</resultingAmount>
+      <generalComment>Metal packaging and steel/iron scraps from autoclaved aerated concrete block production
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="16">
+      <referenceToFlowDataSet type="flow data set" refObjectId="2f60bfa4-526f-4012-bcc5-81353fa612f8" uri="../flows/2f60bfa4-526f-4012-bcc5-81353fa612f8.xml">
+        <common:shortDescription xml:lang="en">Electricity, medium voltage {IT}| market for electricity, medium voltage | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.9400000E+1</meanAmount>
+      <resultingAmount>5.9400000E+1</resultingAmount>
+      <generalComment>Electricity for autoclaved aerated concrete block production
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="17">
+      <referenceToFlowDataSet type="flow data set" refObjectId="a19f7252-d190-46ec-a345-a6d574ba87f6" uri="../flows/a19f7252-d190-46ec-a345-a6d574ba87f6.xml">
+        <common:shortDescription xml:lang="en">Heat, district or industrial, natural gas {Europe without Switzerland}| heat production, natural gas, at boiler modulating &gt;100kW MODIFIED WITHOUT ELECTRICITY | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.1385300E+2</meanAmount>
+      <resultingAmount>4.1385300E+2</resultingAmount>
+      <generalComment>Heat from methane for autoclaved aerated concrete block production (the LHV of natural gas (1 sm3) is 38.5 MJ). The original dataset "Heat, district or industrial, natural gas {Europe without Switzerland}| heat production, natural gas, at boiler modulating &gt;100kW | Cut-off, U" was modified as follows: the electricity consumption was eliminated because it is already included in the total electricity consumption of the autoclaved aerated concrete block manufacturing company.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="18">
+      <referenceToFlowDataSet type="flow data set" refObjectId="427f3b09-9e1c-4dc7-9689-eb3a65480c23" uri="../flows/427f3b09-9e1c-4dc7-9689-eb3a65480c23.xml">
+        <common:shortDescription xml:lang="en">Wastewater from concrete production {RoW}| market for wastewater from concrete production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.0000000E-5</meanAmount>
+      <resultingAmount>2.0000000E-5</resultingAmount>
+      <generalComment>Liquid waste (0.014 kg/m3) and wastewater from autoclaved aerated concrete block production
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="19">
+      <referenceToFlowDataSet type="flow data set" refObjectId="a35f4d3f-84f8-4fe6-ba22-42fd4aca9427" uri="../flows/a35f4d3f-84f8-4fe6-ba22-42fd4aca9427.xml">
+        <common:shortDescription xml:lang="en">Waste mineral oil {Europe without Switzerland}| market for waste mineral oil | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.7000000E-2</meanAmount>
+      <resultingAmount>1.7000000E-2</resultingAmount>
+      <generalComment>Waste mineral oil and exhausted fats from autoclaved aerated concrete block production
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="20">
+      <referenceToFlowDataSet type="flow data set" refObjectId="dd9ac03b-c94d-4f06-8a1e-1f6368a203ec" uri="../flows/dd9ac03b-c94d-4f06-8a1e-1f6368a203ec.xml">
+        <common:shortDescription xml:lang="en">Hazardous waste, for incineration {Europe without Switzerland}| market for hazardous waste, for incineration | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.2000000E-2</meanAmount>
+      <resultingAmount>2.2000000E-2</resultingAmount>
+      <generalComment>Hazardous packaging and insulating materials (hazardous waste) from autoclaved aerated concrete block production
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="21">
+      <referenceToFlowDataSet type="flow data set" refObjectId="c0aac52c-5566-4117-8c1e-55369bc79648" uri="../flows/c0aac52c-5566-4117-8c1e-55369bc79648.xml">
+        <common:shortDescription xml:lang="en">Inert waste {RER}| market for inert waste | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.1810000E+0</meanAmount>
+      <resultingAmount>2.1810000E+0</resultingAmount>
+      <generalComment>Inert waste from autoclaved aerated concrete block production
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="22">
+      <referenceToFlowDataSet type="flow data set" refObjectId="1834d28a-db22-4c6c-b99b-9488e4ddbcaf" uri="../flows/1834d28a-db22-4c6c-b99b-9488e4ddbcaf.xml">
+        <common:shortDescription xml:lang="en">Municipal solid waste {IT}| market for municipal solid waste | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.7700000E-1</meanAmount>
+      <resultingAmount>1.7700000E-1</resultingAmount>
+      <generalComment>Mixed packaging waste and mixed urban waste from autoclaved aerated concrete block production
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="23">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4f462198-40cd-4184-8733-86648a20dc3f" uri="../flows/4f462198-40cd-4184-8733-86648a20dc3f.xml">
+        <common:shortDescription xml:lang="en">ground water</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>IT</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.9430000E-1</meanAmount>
+      <resultingAmount>2.9430000E-1</resultingAmount>
+      <generalComment>Water from well for autoclaved aerated concrete block production
+</generalComment>
+    </exchange>
+  </exchanges>
+</processDataSet>

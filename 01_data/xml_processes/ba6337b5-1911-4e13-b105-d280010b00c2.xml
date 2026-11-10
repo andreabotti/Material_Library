@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>ba6337b5-1911-4e13-b105-d280010b00c2</common:UUID>
+      <name>
+        <baseName xml:lang="en">Electricity from photovoltaic, 3 kWp, all types of cells and installations, production mix at plant, Low Voltage</baseName>
+      </name>
+      <common:synonyms>Elettricità da fotovoltaico, 3 kWp, tutti i tipi di celle e installazioni, produzione all’impianto, Basso Voltaggio </common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">Energy carriers and technologies</common:class>
+          <common:class level="1">Electricity</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment>Dataset developed according to Arcadia project Methodology (Report: “Metodologia per gli studi di filiera della Banca Dati italiana LCA”). LCA study of electricity production from photovoltaic systems with 3 kWp plant&#13;
+ (Report: “Filiera di produzione del mix elettrico italiano”). &#13;
+The dataset refers to the production of 1 kWh of electricity from photovoltaic systems in 3 kWp plants, in Italy, and it is representative of the processing technologies commonly used for this purpose.&#13;
+The dataset consists of 8 unit processes: &#13;
+1) Electricity production from 3 kWp photovoltaic, in monocrystalline silicon installed on the façade (percentage contribution to the whole dataset: 3%).&#13;
+2) Electricity production from from 3 kWp photovoltaic, in monocrystalline silicon installed on a flat roof (percentage contribution to the whole dataset: 14%).&#13;
+3) Electricity production from from 3 kWp photovoltaic, in monocrystalline silicon installed on a slanted roof (percentage contribution to the whole dataset: 4%).&#13;
+4) Electricity production from from 3 kWp photovoltaic, in polycrystalline silicon installed on the facade&#13;
+ (percentage contribution to the whole dataset: 9%).&#13;
+5) Electricity production from from 3 kWp photovoltaic, in polycrystalline silicon installed on a flat roof&#13;
+ (percentage contribution to the whole dataset: 51%).&#13;
+6) Electricity production from from 3 kWp photovoltaic, in polycrystalline silicon installed on a slanted roof&#13;
+ (percentage contribution to the whole dataset: 15%).&#13;
+7) Electricity production from from 3 kWp photovoltaic, in amorphous silicon installed on a slanted roof (percentage contribution to the whole dataset: 1%).&#13;
+8) Electricity production from from 3 kWp photovoltaic, in thin film installed on a slanted roof (percentage contribution to the whole dataset: 3%).&#13;
+</common:generalComment>
+      <referenceToExternalDocumentation type="source data set" refObjectId="2361c687-d833-40cc-88ce-87a81ddf4010" version="01.00.000" uri="../sources/2361c687-d833-40cc-88ce-87a81ddf4010.xml">
+        <common:shortDescription>Gabriella Fiorentino, Simona Scalbi, Antonietta Cerbone, Giuliana Ansanelli, Marco Giammartini, Amalia Zucaro. Filiera di produzione del mix elettrico italiano.&#13;
+&#13;
+Background datasets from EcoInvent database cut-off (v.3.7.1) were used for the LCA study. &#13;
+</common:shortDescription>
+      </referenceToExternalDocumentation>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2018</common:referenceYear>
+      <common:dataSetValidUntil>2026</common:dataSetValidUntil>
+      <common:timeRepresentativenessDescription>This dataset has been considered valid until 2026, since no main changes have occurred in the electricity production from photovoltaic in the investigated years.</common:timeRepresentativenessDescription>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT"/>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>The dataset (1 kWh of electricity from photovoltaic IT, 3 kWp) refers to a system that includes all processes, from the extraction of raw materials to produce the photovoltaic panels up to the production of 1 kWh of electricity (cradle-to-gate approach), taking into account the 20-year life time of the system and the insolation received in the reference year (primary data).&#13;
+The primary data were provided by photovoltaic solar statistical report from GSE (Gestore Servizi Energetici, 2019), and by PVGIS software that calculates the insolation received.&#13;
+For the LCA study, background datasets from EcoInvent database 3.7.1 cut-off were used.&#13;
+</technologyDescriptionAndIncludedProcesses>
+      <technologicalApplicability>Electricity from Italian electricity mix  sold to Italian electric grid.</technologicalApplicability>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <deviationsFromLCIMethodPrinciple>None</deviationsFromLCIMethodPrinciple>
+      <LCIMethodApproaches>Not applicable</LCIMethodApproaches>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <dataCutOffAndCompletenessPrinciples>Production of equipment and infrastructures is not included, except for the background system</dataCutOffAndCompletenessPrinciples>
+      <dataCollectionPeriod>2018 - 2019</dataCollectionPeriod>
+      <referenceToDataSource type="source data set" refObjectId="4d4ab35f-dc08-445a-b492-90e007463994" version="01.00.000" uri="../sources/4d4ab35f-dc08-445a-b492-90e007463994.xml">
+        <common:shortDescription>20231031170222_Filiera di produzione del mix elettrico italiano.pdf</common:shortDescription>
+      </referenceToDataSource>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>No statement</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Independent external review">
+        <common:reviewDetails>The review was performed in compliance with Arcadia Metodology: “Metodologia per gli studi di filiera della Banca Dati italiana LCA” and ISO 14040-44 norms. The dataset has been assessed limited to the foreground data collected during the supply chain studies.&#13;
+Each dataset has been evaluated based on the following 4 criteria:&#13;
+1. Technological Representativeness; 2. Time Representativeness; 3. Geographical Representativeness; 4. Reliability (A)&#13;
+In this context, the Reliability is very good.&#13;
+</common:reviewDetails>
+        <common:referenceToNameOfReviewerAndInstitution type="contact data set" refObjectId="db6ffc38-0876-4892-83e6-53c0c8745112" version="01.00.000" uri="../sources/db6ffc38-0876-4892-83e6-53c0c8745112.xml">
+          <common:shortDescription>Ecoinnovazione</common:shortDescription>
+        </common:referenceToNameOfReviewerAndInstitution>
+        <common:otherReviewDetails>The study was judged by the reviewer as compliant with both ISO 14040-44 and Arcadia methodology.</common:otherReviewDetails>
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Completeness" value="Good"/>
+          <common:dataQualityIndicator name="Precision" value="Not applicable"/>
+          <common:dataQualityIndicator name="Methodological appropriateness and consistency" value="Not applicable"/>
+          <common:dataQualityIndicator name="Overall quality" value="Not applicable"/>
+        </common:dataQualityIndicators>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="2d52e348-ead4-4801-8626-6cd4af56c210" uri="../sources/2d52e348-ead4-4801-8626-6cd4af56c210.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="fd32c428-9d35-4236-903d-4fbb6a3d1b18" uri="../sources/fd32c428-9d35-4236-903d-4fbb6a3d1b18.xml">
+          <common:shortDescription xml:lang="en">ISO 14044</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Not defined</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="2467a1bd-6157-4843-8132-d9d067179ff8" uri="../sources/2467a1bd-6157-4843-8132-d9d067179ff8.xml">
+        <common:shortDescription xml:lang="en">Arcadia – PON Governance e Capacità istituzionale 2014-2020</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Arcadia – PON Governance e Capacità istituzionale 2014-2020</common:project>
+    </common:commissionerAndGoal>
+    <dataGenerator>
+      <common:referenceToPersonOrEntityGeneratingTheDataSet refObjectId="763574d5-7c85-4c6e-90e8-f346a5513756" type="contact data set" uri="../sources/763574d5-7c85-4c6e-90e8-f346a5513756.xml" version="01.00.000">
+        <common:shortDescription>ENEA</common:shortDescription>
+      </common:referenceToPersonOrEntityGeneratingTheDataSet>
+    </dataGenerator>
+    <dataEntryBy>
+      <common:timeStamp>2023-10-26T11:55:14.977+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="f12fe827-3322-4ccf-b87a-ad3126d95bca" uri="../sources/f12fe827-3322-4ccf-b87a-ad3126d95bca.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2023-04-19T10:45:42.139Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/ba6337b5-1911-4e13-b105-d280010b00c2.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="2c7f96d1-0f5d-4390-8881-afc0067cb08a" type="contact data set" uri="../contacts/2c7f96d1-0f5d-4390-8881-afc0067cb08a.xml" version="01.00.000">
+        <common:shortDescription>ENEA-ARCADIA</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+      <common:accessRestrictions>Type of license: Open Database Licence (ODbL)</common:accessRestrictions>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="67db024c-a1d1-4735-98ca-005a983d9cbd" uri="../flows/67db024c-a1d1-4735-98ca-005a983d9cbd.xml">
+        <common:shortDescription xml:lang="en">Electricity from photovoltaic, 3 kWp, all types of cells and installations, production mix at plant, Low Voltage</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.6000000E+0</meanAmount>
+      <resultingAmount>3.6000000E+0</resultingAmount>
+      <generalComment>In this class (3 kWp), all photovoltaic plants under 200 kWp are included, considering all types of installations and all types of cells.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="5c06aa1f-a6b0-46de-9361-7eacf40c3a00" uri="../flows/5c06aa1f-a6b0-46de-9361-7eacf40c3a00.xml">
+        <common:shortDescription xml:lang="en">Electricity production, photovoltaic, 3kWp slanted-roof installation, single-Si</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.5120000E-1</meanAmount>
+      <resultingAmount>1.5120000E-1</resultingAmount>
+      <generalComment>21%*20%, where 21% represents the percentage of the monocrystalline silicon cell type on the Italian territory (2018 GSE data), while 20% is the percentage of the installation type (slanted roof), which was obtained using data at the European level (Ecoinvent - Life Cycle Inventories of Photovoltaic, 2012).
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="8ea3b78b-1c94-43cf-9644-f191f103c337" uri="../flows/8ea3b78b-1c94-43cf-9644-f191f103c337.xml">
+        <common:shortDescription xml:lang="en">Electricity production, photovoltaic, 3 kWp flat roof installation, single-Si</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.0400000E-1</meanAmount>
+      <resultingAmount>5.0400000E-1</resultingAmount>
+      <generalComment>21%*67.5%, where 21% represents the percentage of the monocrystalline silicon cell type on the Italian territory (2018 GSE data), while 67.5% is the percentage of the installation type (flat roof), which was obtained using data at the European level (Ecoinvent - Life Cycle Inventories of Photovoltaic, 2012).
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="3">
+      <referenceToFlowDataSet type="flow data set" refObjectId="e824c5f6-abcc-4c30-8965-2b4f9543ec0f" uri="../flows/e824c5f6-abcc-4c30-8965-2b4f9543ec0f.xml">
+        <common:shortDescription xml:lang="en">Electricity production, photovoltaic, 3 kWp facade installation, single-Si</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>9.3600000E-2</meanAmount>
+      <resultingAmount>9.3600000E-2</resultingAmount>
+      <generalComment>21%*12.5%, where 21% represents the percentage of the monocrystalline silicon cell type on the Italian territory (2018 GSE data), while 20% is the percentage of the installation type (facade), which was obtained using data at the European level (Ecoinvent - Life Cycle Inventories of Photovoltaic, 2012).
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="4">
+      <referenceToFlowDataSet type="flow data set" refObjectId="8f751438-31a6-4cef-91aa-3b8ebd0c9cdc" uri="../flows/8f751438-31a6-4cef-91aa-3b8ebd0c9cdc.xml">
+        <common:shortDescription xml:lang="en">Electricity production, photovoltaic, 3 kWp slanted roof installation, multi-Si</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.4000000E-1</meanAmount>
+      <resultingAmount>5.4000000E-1</resultingAmount>
+      <generalComment>75%*20%, where 75% represents the percentage of the polycrystalline silicon cell type on the Italian territory (2018 GSE data), while 67.5% is the percentage of the installation type (slanted roof), which was obtained using data at the European level (Ecoinvent - Life Cycle Inventories of Photovoltaic, 2012).
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="5">
+      <referenceToFlowDataSet type="flow data set" refObjectId="9160baac-6478-4622-93fd-fd4e4d4533d4" uri="../flows/9160baac-6478-4622-93fd-fd4e4d4533d4.xml">
+        <common:shortDescription xml:lang="en">Electricity production, photovoltaic, 3 kWp flat roof installation, multi-Si</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.8360000E+0</meanAmount>
+      <resultingAmount>1.8360000E+0</resultingAmount>
+      <generalComment>75%*67.5%, where 75% represents the percentage of the polycrystalline silicon cell type on the Italian territory (2018 GSE data), while 67.5% is the percentage of the installation type (flat roof), which was obtained using data at the European level (Ecoinvent - Life Cycle Inventories of Photovoltaic, 2012).
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="6">
+      <referenceToFlowDataSet type="flow data set" refObjectId="7dd8d108-302b-47ba-a13a-bd492954b26c" uri="../flows/7dd8d108-302b-47ba-a13a-bd492954b26c.xml">
+        <common:shortDescription xml:lang="en">Electricity production, photovoltaic, 3kWp facade installation, multi-Si</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.2400000E-1</meanAmount>
+      <resultingAmount>3.2400000E-1</resultingAmount>
+      <generalComment>75%*12.5%, where 75% represents the percentage of the polycrystalline silicon cell type on the Italian territory (2018 GSE data), while 12.5% is the percentage of the installation type (facade), which was obtained using data at the European level(Ecoinvent - Life Cycle Inventories of Photovoltaic, 2012).
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="7">
+      <referenceToFlowDataSet type="flow data set" refObjectId="a51f59b6-a6b9-4bb4-8414-07e7aef8be55" uri="../flows/a51f59b6-a6b9-4bb4-8414-07e7aef8be55.xml">
+        <common:shortDescription xml:lang="en">Electricity production, photovoltaic, 3 kWp slanted roof installation, a-Si</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.6000000E-2</meanAmount>
+      <resultingAmount>3.6000000E-2</resultingAmount>
+      <generalComment>1%*100%, where 1% represents the percentage of the amorphous silicon cell type on the Italian territory (2018 GSE data), while 100%  indicates that only slanted roof installation was considered.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="8">
+      <referenceToFlowDataSet type="flow data set" refObjectId="64f5c8d1-1144-4a39-a162-bcbc2d959920" uri="../flows/64f5c8d1-1144-4a39-a162-bcbc2d959920.xml">
+        <common:shortDescription xml:lang="en">Electricity production, photovoltaic, 3 kWp slanted roof installation, CdTe</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.0800000E-1</meanAmount>
+      <resultingAmount>1.0800000E-1</resultingAmount>
+      <generalComment>3%*100%, where 3% represents the percentage of the thin film  cell type (made with CdTe) on the Italian territory (2018 GSE data), while 100%  indicates that only slanted roof installation was considered.
+</generalComment>
+    </exchange>
+  </exchanges>
+</processDataSet>

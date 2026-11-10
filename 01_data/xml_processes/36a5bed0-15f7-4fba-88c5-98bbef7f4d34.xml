@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>36a5bed0-15f7-4fba-88c5-98bbef7f4d34</common:UUID>
+      <name>
+        <baseName xml:lang="en">Electricity grid mix, technology mix, consumption mix at consumer, High Voltage</baseName>
+      </name>
+      <common:synonyms>Rete mix elettrico, mix tecnologico, consumo al consumatore, Alto Voltaggio</common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">Energy carriers and technologies</common:class>
+          <common:class level="1">Electricity</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment>Dataset developed according to Arcadia project Methodology (Report: “Metodologia per gli studi di filiera della Banca Dati italiana LCA”). LCA study of electricity consumption from Italian electric mix (Report: “Filiera di produzione del mix elettrico italiano”). &#13;
+The dataset refers to the consumption of 1 kWh of electricity from electrical mix in high voltage, in Italy, and it is representative of the processing technologies commonly used for this purpose.&#13;
+The dataset consists of 6 processes: &#13;
+1) Electricity production from the Italian high-voltage electricity mix (percentage contribution to the whole dataset: 86,5%).&#13;
+2) Electricity imported from France (percentage contribution to the whole dataset: 4,7%).&#13;
+3) Electricity imported from Switzerland (percentage contribution to the whole dataset: 6,8%).&#13;
+4) Electricity imported from Austria (percentage contribution to the whole dataset: 0,4%).&#13;
+5) Electricity imported from Slovenia (percentage contribution to the whole dataset: 1,6%).&#13;
+6) High voltage electricity transmission network.&#13;
+</common:generalComment>
+      <referenceToExternalDocumentation type="source data set" refObjectId="b6f7a3bc-3e3f-49e6-ab8e-da6fc4d2cad0" version="01.00.000" uri="../sources/b6f7a3bc-3e3f-49e6-ab8e-da6fc4d2cad0.xml">
+        <common:shortDescription>Gabriella Fiorentino, Simona Scalbi, Antonietta Cerbone, Giuliana Ansanelli, Marco Giammartini, Amalia Zucaro. Filiera di produzione del mix elettrico italiano.&#13;
+&#13;
+Background datasets from EcoInvent database cut-off (v.3.7.1) were used for the LCA study. &#13;
+</common:shortDescription>
+      </referenceToExternalDocumentation>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2019</common:referenceYear>
+      <common:dataSetValidUntil>2026</common:dataSetValidUntil>
+      <common:timeRepresentativenessDescription>This dataset has been considered valid until 2026, since no main changes have occurred in the electricity mix in Italy in the investigated years</common:timeRepresentativenessDescription>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT"/>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>The dataset refers to a system that includes domestic electricity production for consumption (primary data - TERNA), and the share received from abroad (from France, Switzerland, Austria and Slovenia) (primary data - TERNA). The system also includes the length of the electricity transmission grid (primary data - TERNA), and network and transmission losses of high-voltage lines are taken into account (primary data from Regulatory Authority for Energy Networks and Environment - ARERA). &#13;
+For the LCA study, background datasets from EcoInvent database 3.7.1 cut-off were used.&#13;
+</technologyDescriptionAndIncludedProcesses>
+      <technologicalApplicability>Electricity from Italian electricity mix sold to the Italian electric grid.</technologicalApplicability>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <deviationsFromLCIMethodPrinciple>None</deviationsFromLCIMethodPrinciple>
+      <LCIMethodApproaches>Not applicable</LCIMethodApproaches>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <dataCutOffAndCompletenessPrinciples>Production of equipment and infrastructures is not included, except for the background system</dataCutOffAndCompletenessPrinciples>
+      <dataCollectionPeriod>2019</dataCollectionPeriod>
+      <referenceToDataSource type="source data set" refObjectId="f93b83a5-05e7-4d40-a6ad-b41471805634" version="01.00.000" uri="../sources/f93b83a5-05e7-4d40-a6ad-b41471805634.xml">
+        <common:shortDescription>20231031171129_Filiera di produzione del mix elettrico italiano.pdf</common:shortDescription>
+      </referenceToDataSource>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>No statement</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Independent external review">
+        <common:reviewDetails>The review was performed in compliance with Arcadia Metodology: “Metodologia per gli studi di filiera della Banca Dati italiana LCA” and ISO 14040-44 norms. The dataset has been assessed limited to the foreground data collected during the supply chain studies.&#13;
+Each dataset has been evaluated based on the following 4 criteria:&#13;
+1. Technological Representativeness; 2. Time Representativeness; 3. Geographical Representativeness; 4. Reliability (A)&#13;
+In this context, the Reliability is very good.&#13;
+</common:reviewDetails>
+        <common:referenceToNameOfReviewerAndInstitution type="contact data set" refObjectId="1b00d3fe-e2c7-4af2-8d25-b1d74d0c0a44" version="01.00.000" uri="../sources/1b00d3fe-e2c7-4af2-8d25-b1d74d0c0a44.xml">
+          <common:shortDescription>Ecoinnovazione</common:shortDescription>
+        </common:referenceToNameOfReviewerAndInstitution>
+        <common:otherReviewDetails>The study was judged by the reviewer as compliant with both ISO 14040-44 and Arcadia methodology.</common:otherReviewDetails>
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Completeness" value="Good"/>
+          <common:dataQualityIndicator name="Precision" value="Not applicable"/>
+          <common:dataQualityIndicator name="Methodological appropriateness and consistency" value="Not applicable"/>
+          <common:dataQualityIndicator name="Overall quality" value="Not applicable"/>
+        </common:dataQualityIndicators>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="a8fcf066-51e4-4f6a-86b4-c21ada511c95" uri="../sources/a8fcf066-51e4-4f6a-86b4-c21ada511c95.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="7aa4cd79-acfe-4c86-9f86-31d793de5c13" uri="../sources/7aa4cd79-acfe-4c86-9f86-31d793de5c13.xml">
+          <common:shortDescription xml:lang="en">ISO 14044</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Not defined</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="16a0769c-57cd-4dab-83e5-524d9eae46ca" uri="../sources/16a0769c-57cd-4dab-83e5-524d9eae46ca.xml">
+        <common:shortDescription xml:lang="en">Arcadia – PON Governance e Capacità istituzionale 2014-2020</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Arcadia – PON Governance e Capacità istituzionale 2014-2020</common:project>
+    </common:commissionerAndGoal>
+    <dataGenerator>
+      <common:referenceToPersonOrEntityGeneratingTheDataSet refObjectId="0f9d4443-06c7-4847-a114-5caaa71c3f1a" type="contact data set" uri="../sources/0f9d4443-06c7-4847-a114-5caaa71c3f1a.xml" version="01.00.000">
+        <common:shortDescription>ENEA</common:shortDescription>
+      </common:referenceToPersonOrEntityGeneratingTheDataSet>
+    </dataGenerator>
+    <dataEntryBy>
+      <common:timeStamp>2023-10-26T11:37:06.472+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="00da60b1-f47f-4ed0-80e4-e94fc8f30480" uri="../sources/00da60b1-f47f-4ed0-80e4-e94fc8f30480.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2022-02-07T14:46:19.497Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/36a5bed0-15f7-4fba-88c5-98bbef7f4d34.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="2c9c46b7-a481-4fe7-8cdd-68c1bec30247" type="contact data set" uri="../contacts/2c9c46b7-a481-4fe7-8cdd-68c1bec30247.xml" version="01.00.000">
+        <common:shortDescription>ENEA-ARCADIA</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+      <common:accessRestrictions>Type of license: Open Database Licence (ODbL)</common:accessRestrictions>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="245d8f84-bef1-4e61-a627-4df6e537fe5c" uri="../flows/245d8f84-bef1-4e61-a627-4df6e537fe5c.xml">
+        <common:shortDescription xml:lang="en">Electricity grid mix, technology mix, consumption mix at consumer, High Voltage</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.6000000E+0</meanAmount>
+      <resultingAmount>3.6000000E+0</resultingAmount>
+      <generalComment>National production intended for consumption amounts to 2.81E+05 GWh (Terna, 2021), while imports from abroad amount to 4.39E+04 GWh, for a total of 3.25E+05 GWh (Terna, 2021)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="150fc4af-86da-42b1-889a-97a5cc7cadbd" uri="../flows/150fc4af-86da-42b1-889a-97a5cc7cadbd.xml">
+        <common:shortDescription xml:lang="en">Electricity grid mix, technology mix, production mix at plant, High Voltage</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.1680000E+0</meanAmount>
+      <resultingAmount>3.1680000E+0</resultingAmount>
+      <generalComment>This process contributes to 86.5% of the total High Voltage consumption mix (Terna, 2021). The network and trasmission losses that characterize high voltage lines are also included (1.018 - Terna, 2022)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4c04e0a7-4cee-4f39-a8ef-eb109c5f91ed" uri="../flows/4c04e0a7-4cee-4f39-a8ef-eb109c5f91ed.xml">
+        <common:shortDescription xml:lang="en">Electricity, high voltage {IT}| import from FR | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.7172000E-1</meanAmount>
+      <resultingAmount>1.7172000E-1</resultingAmount>
+      <generalComment>This process contributes to 4.7% of the total High Voltage consumption mix (Terna, 2021). The network and trasmission losses that characterize high voltage lines are also included (1.018 - Terna, 2022)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="3">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4add607c-8af4-4f22-907e-8f5199945c82" uri="../flows/4add607c-8af4-4f22-907e-8f5199945c82.xml">
+        <common:shortDescription xml:lang="en">Electricity, high voltage {IT}| import from CH | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.4984000E-1</meanAmount>
+      <resultingAmount>2.4984000E-1</resultingAmount>
+      <generalComment>This process contributes to 6.8% of the total High Voltage consumption mix (Terna, 2021). The network and trasmission losses that characterize high voltage lines are also included (1.018 - Terna, 2022)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="4">
+      <referenceToFlowDataSet type="flow data set" refObjectId="543bea37-7f55-4200-afad-fa5024f296e4" uri="../flows/543bea37-7f55-4200-afad-fa5024f296e4.xml">
+        <common:shortDescription xml:lang="en">Electricity, high voltage {IT}| import from AT | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.3860000E-2</meanAmount>
+      <resultingAmount>1.3860000E-2</resultingAmount>
+      <generalComment>This process contributes to 0.4% of the total High Voltage consumption mix (Terna, 2021). The network and trasmission losses that characterize high voltage lines are also included (1.018 - Terna, 2022)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="5">
+      <referenceToFlowDataSet type="flow data set" refObjectId="0babcde1-1c8c-4fdd-af40-6d0c1225e36b" uri="../flows/0babcde1-1c8c-4fdd-af40-6d0c1225e36b.xml">
+        <common:shortDescription xml:lang="en">Electricity, high voltage {IT}| import from SI | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.8320000E-2</meanAmount>
+      <resultingAmount>5.8320000E-2</resultingAmount>
+      <generalComment>This process contributes to 1.6% of the total High Voltage consumption mix (Terna, 2021). The network and trasmission losses that characterize high voltage lines are also included (1.018 - Terna, 2022)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="6">
+      <referenceToFlowDataSet type="flow data set" refObjectId="375529a2-0807-4e81-a935-d82b81ddd8c7" uri="../flows/375529a2-0807-4e81-a935-d82b81ddd8c7.xml">
+        <common:shortDescription xml:lang="en">Transmission network, electricity, high voltage {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.6500000E-4</meanAmount>
+      <resultingAmount>2.6500000E-4</resultingAmount>
+      <generalComment>The national high voltage network extends for 74,723 km (Terna, 2022)
+</generalComment>
+    </exchange>
+  </exchanges>
+</processDataSet>

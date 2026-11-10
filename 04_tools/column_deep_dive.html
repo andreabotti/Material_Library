@@ -1,0 +1,1618 @@
+<!DOCTYPE html><html><head><meta charset='utf-8'>
+<title>EETRA MatLib — Column Deep Dive 2026-05-22 15:23</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;font-size:12.5px;background:#f4f5f9;color:#222;padding:20px}
+h1{font-size:19px;margin-bottom:4px;color:#1a1a2e}
+h2{font-size:13px;font-weight:700;color:#2d3561;margin:30px 0 6px;
+   border-bottom:3px solid #2d3561;padding-bottom:3px}
+h3{font-size:12px;font-weight:700;color:#555;margin:18px 0 4px}
+.meta{color:#888;font-size:11px;margin-bottom:18px}
+.group-badge{display:inline-block;background:#e8eaf6;color:#3949ab;border-radius:10px;
+             padding:1px 8px;font-size:11px;margin-left:6px;vertical-align:middle}
+.role{color:#777;font-size:11px;font-style:italic;margin-bottom:8px}
+
+/* card per column */
+.col-card{background:#fff;border-radius:6px;box-shadow:0 1px 3px rgba(0,0,0,.1);
+           margin-bottom:10px;padding:12px 16px;border-left:4px solid #ccc}
+.col-card.good{border-left-color:#34a853}
+.col-card.warn{border-left-color:#fbbc04}
+.col-card.bad {border-left-color:#ea4335}
+.col-title{font-weight:700;font-size:13px;margin-bottom:2px}
+.fill-bar-wrap{background:#eee;border-radius:3px;height:8px;width:200px;display:inline-block;vertical-align:middle;margin-left:8px}
+.fill-bar{height:8px;border-radius:3px;display:block}
+.fg{background:#34a853}.fw{background:#fbbc04}.fb{background:#ea4335}
+
+/* tables */
+table{border-collapse:collapse;width:100%;margin:6px 0}
+th{background:#2d3561;color:#fff;padding:5px 8px;text-align:left;font-size:11px;white-space:nowrap}
+td{padding:4px 8px;border-bottom:1px solid #eee;font-size:11px;white-space:nowrap}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:#f0f4ff}
+.pct-bar{display:inline-block;background:#4285f4;height:7px;border-radius:2px;
+          vertical-align:middle;margin-right:4px}
+.neg-bar{background:#ea4335}
+.num-stat{display:inline-grid;grid-template-columns:repeat(4,auto);gap:2px 16px;
+           font-size:11px;margin:4px 0}
+.num-label{color:#888;font-size:10px}
+
+/* cross-checks */
+.issue-card{background:#fff3e0;border-left:4px solid #f57c00;border-radius:4px;
+             padding:8px 12px;margin-bottom:8px}
+.issue-title{font-weight:700;color:#e65100;font-size:12px}
+.issue-count{font-size:11px;color:#555;margin-left:8px}
+.ex-table td{font-size:10.5px;color:#444}
+
+/* toc */
+#toc{position:fixed;top:0;right:0;width:220px;height:100vh;overflow-y:auto;
+     background:#fff;border-left:1px solid #ddd;padding:12px;font-size:11px;z-index:99}
+#toc h4{font-size:12px;font-weight:700;color:#2d3561;margin-bottom:8px}
+#toc a{display:block;color:#555;text-decoration:none;padding:2px 0;
+       border-bottom:1px solid #f0f0f0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#toc a:hover{color:#2d3561}
+.toc-group{font-weight:700;color:#2d3561;margin-top:6px;margin-bottom:2px;font-size:11px}
+body{margin-right:230px}
+details summary{cursor:pointer;font-weight:600;color:#2d3561;padding:2px 0}
+</style>
+
+</head><body>
+<div id="toc"><h4>Columns</h4>
+<div class="toc-group">Identifiers</div>
+<a href="#0__EETRA_ID">🟢 0__EETRA_ID</a>
+<a href="#0__NUM">🟢 0__NUM</a>
+<div class="toc-group">Product info</div>
+<a href="#A__Manufacturer">🟢 A__Manufacturer</a>
+<a href="#A__ProductName">🟢 A__ProductName</a>
+<a href="#A__ProductDescription">🔴 A__ProductDescription</a>
+<a href="#A__Map_yn">🟢 A__Map_yn</a>
+<div class="toc-group">Classification</div>
+<a href="#D__ProductType_ENG">🟢 D__ProductType_ENG</a>
+<a href="#D__MaterialType_ENG">🟢 D__MaterialType_ENG</a>
+<a href="#D__MaterialType_ITA">🟢 D__MaterialType_ITA</a>
+<a href="#D__Int/Ext">🔴 D__Int/Ext</a>
+<a href="#D__Application">🔴 D__Application</a>
+<a href="#D__Content">🟢 D__Content</a>
+<a href="#D__Size">🔴 D__Size</a>
+<a href="#D__TechDetails">🔴 D__TechDetails</a>
+<a href="#D__EN197-1">🔴 D__EN197-1</a>
+<a href="#D__EN206">🔴 D__EN206</a>
+<a href="#D__DataComments">🟢 D__DataComments</a>
+<div class="toc-group">Status</div>
+<a href="#S__Comments">🟡 S__Comments</a>
+<a href="#S__Status">🟢 S__Status</a>
+<div class="toc-group">URLs</div>
+<a href="#U__ProductInfo_URL">🔴 U__ProductInfo_URL</a>
+<a href="#U__TechDetails_URL">🔴 U__TechDetails_URL</a>
+<a href="#U__Img_URL">🟢 U__Img_URL</a>
+<div class="toc-group">Physical</div>
+<a href="#P__U_Wm2K">🔴 P__U_Wm2K</a>
+<a href="#P__L_WmK">🔴 P__L_WmK</a>
+<a href="#P__Thick_mm">🔴 P__Thick_mm</a>
+<a href="#P__Mass_kgm3">🔴 P__Mass_kgm3</a>
+<a href="#P__Mass_kgm2">🔴 P__Mass_kgm2</a>
+<a href="#P__Mass_kg">🔴 P__Mass_kg</a>
+<a href="#P__FireRating">🔴 P__FireRating</a>
+<div class="toc-group">Environmental/EPD</div>
+<a href="#E__ManuCountry">🟢 E__ManuCountry</a>
+<a href="#E__ManuPlant">🟢 E__ManuPlant</a>
+<a href="#E__EPD_Y/N">🟡 E__EPD_Y/N</a>
+<a href="#E__EPD_Programme">🟢 E__EPD_Programme</a>
+<a href="#E__EPD_URL">🟢 E__EPD_URL</a>
+<a href="#E__EPD_DecNumber">🟡 E__EPD_DecNumber</a>
+<a href="#E__EPD_RegNumber">🟡 E__EPD_RegNumber</a>
+<a href="#E__EPD_Product_Name">🟢 E__EPD_Product Name</a>
+<a href="#E__EPD_ExpDate">🟢 E__EPD_ExpDate</a>
+<a href="#E__ServiceLife">🔴 E__ServiceLife</a>
+<a href="#E__EPD_Density">🔴 E__EPD_Density</a>
+<a href="#E__L_WmK">🔴 E__L_WmK</a>
+<a href="#E__EPD_Thick_mm">🔴 E__EPD_Thick_mm</a>
+<a href="#E__Rvalue">🔴 E__Rvalue</a>
+<a href="#E__EPD_MultFactor">🔴 E__EPD_MultFactor</a>
+<a href="#E__EPDRef">🔴 E__EPDRef</a>
+<div class="toc-group">GWP</div>
+<a href="#G__GWP_Metric">🟢 G__GWP_Metric</a>
+<a href="#G__GWP_A1A3_kg">🔴 G__GWP_A1A3_kg</a>
+<a href="#G__GWP_A1A3_m2">🔴 G__GWP_A1A3_m2</a>
+<a href="#G__GWP_A1A3_m3">🟡 G__GWP_A1A3_m3</a>
+<a href="#G__GWP_A1A3_m2R1">🔴 G__GWP_A1A3_m2R1</a>
+<a href="#G__GWP_FU">🟢 G__GWP_FU</a>
+<a href="#G__GWP_A1A3">🟢 G__GWP_A1A3</a>
+<a href="#G__GWP_A1">🟢 G__GWP_A1</a>
+<a href="#G__GWP_A2">🟢 G__GWP_A2</a>
+<a href="#G__GWP_A3">🟢 G__GWP_A3</a>
+<a href="#G__GWP_A4">🟢 G__GWP_A4</a>
+<a href="#G__GWP_A5">🟢 G__GWP_A5</a>
+<a href="#G__GWP_B1">🟢 G__GWP_B1</a>
+<a href="#G__GWP_B2">🟢 G__GWP_B2</a>
+<a href="#G__GWP_B3">🟢 G__GWP_B3</a>
+<a href="#G__GWP_B4">🟢 G__GWP_B4</a>
+<a href="#G__GWP_B5">🟢 G__GWP_B5</a>
+<a href="#G__GWP_B6">🟢 G__GWP_B6</a>
+<a href="#G__GWP_B7">🟢 G__GWP_B7</a>
+<a href="#G__GWP_C1">🟢 G__GWP_C1</a>
+<a href="#G__GWP_C2">🟢 G__GWP_C2</a>
+<a href="#G__GWP_C3">🟢 G__GWP_C3</a>
+<a href="#G__GWP_C4">🟢 G__GWP_C4</a>
+<a href="#G__GWP_D">🟢 G__GWP_D</a>
+<div class="toc-group">Recycling</div>
+<a href="#R__Rec_Reco_ByProd_URL">🟡 R__Rec_Reco_ByProd_URL</a>
+<a href="#R__Rec_Pre_%">🔴 R__Rec_Pre_%</a>
+<a href="#R__Rec_Post_%">🟡 R__Rec_Post_%</a>
+<a href="#R__Rec_Tot_%">🟡 R__Rec_Tot_%</a>
+<a href="#R__Reco_Tot_%">🔴 R__Reco_Tot_%</a>
+<div class="toc-group">Unknown</div>
+<a href="#R__ByProd_Tot_%">🔴 R__ByProd_Tot_%</a>
+<div class="toc-group">Recycling</div>
+<a href="#R__Rec_Reco_ByProd_%">🟡 R__Rec_Reco_ByProd_%</a>
+<div class="toc-group">VOC / CAM / DOP</div>
+<a href="#V__VOC_Cert">🔴 V__VOC_Cert</a>
+<a href="#V__VOC_URL">🔴 V__VOC_URL</a>
+<a href="#V__Other">🔴 V__Other</a>
+<a href="#V__CAM_Compliance">🔴 V__CAM_Compliance</a>
+<a href="#V__DOP">🔴 V__DOP</a>
+</div>
+<h1>EETRA MatLib — Column Deep Dive</h1>
+<p class='meta'>Generated 2026-05-22 15:23 &nbsp;|&nbsp; <strong>1,555</strong> products &nbsp;|&nbsp; <strong>81</strong> columns</p>
+<h2>Cross-field quality checks</h2>
+<div class="issue-card"><span class="issue-title">EPD flagged Y but no registration number</span><span class="issue-count">148 rows (9.5%)</span><details><summary>Show examples</summary><table class="ex-table"><tr><th>0__EETRA_ID</th><th>A__ProductName</th><th>E__EPD_Y/N</th><th>E__EPD_RegNumber</th></tr><tr><td>BBW__GYP__0059</td><td>Pregydur I BA13</td><td>Y</td><td>None</td></tr><tr><td>BBW__GYP__0060</td><td>Pregysoundboard BA13</td><td>Y</td><td>None</td></tr><tr><td>BBW__GYP__0061</td><td>Pregydro BA13</td><td>Y</td><td>None</td></tr><tr><td>BBW__GYP__0062</td><td>Pregyflam BA13</td><td>Y</td><td>None</td></tr><tr><td>BBW__GYP__0063</td><td>Pregyflam BA15</td><td>Y</td><td>None</td></tr></table></details></div>
+<div class="issue-card"><span class="issue-title">Has EPD URL but no registration number</span><span class="issue-count">206 rows (13.2%)</span><details><summary>Show examples</summary><table class="ex-table"><tr><th>0__EETRA_ID</th><th>A__ProductName</th><th>E__EPD_URL</th><th>E__EPD_RegNumber</th></tr><tr><td>BBW__GYP__0059</td><td>Pregydur I BA13</td><td>https://media.siniat.it/pi731860/original/-1631268897/epd_siniat_pregydur_i_ba13_hub-1416_exp-29-05.pdf</td><td>None</td></tr><tr><td>BBW__GYP__0060</td><td>Pregysoundboard BA13</td><td>https://media.siniat.it/pi731864/original/-1425236023/epd_siniat_pregysoundboard_ba13_hub-1417_exp-29-05.pdf</td><td>None</td></tr><tr><td>BBW__GYP__0061</td><td>Pregydro BA13</td><td>https://media.siniat.it/pi731856/original/-1631268897/epd_siniat_pregydro_ba13_hub-1418_exp-29-05.pdf</td><td>None</td></tr><tr><td>BBW__GYP__0062</td><td>Pregyflam BA13</td><td>https://media.siniat.it/pi731858/original/-1631268897/epd_siniat_pregyflam_ba13_hub-1419_exp-29-05.pdf</td><td>None</td></tr><tr><td>BBW__GYP__0063</td><td>Pregyflam BA15</td><td>https://media.siniat.it/pi731855/original/-683631259/epd_siniat_pregyflam_ba15_hub-1420_exo-29-05.pdf</td><td>None</td></tr></table></details></div>
+<div class="issue-card"><span class="issue-title">GWP A1+A2+A3 deviates &gt;5% from A1A3 total</span><span class="issue-count">10 rows (0.6%)</span><details><summary>Show examples</summary><table class="ex-table"><tr><th>0__EETRA_ID</th><th>A__ProductName</th></tr><tr><td>INS__PHE__0213</td><td>VITRUM</td></tr><tr><td>INS__PHE__0214</td><td>ALUMEN</td></tr><tr><td>INS__PHE__0215</td><td>PAPYRUS</td></tr><tr><td>INS__PHE__0216</td><td>FLAMMA</td></tr><tr><td>INS__EPS__0291</td><td>DIAMANTE 200 SL</td></tr></table></details></div>
+<div class="issue-card"><span class="issue-title">Has VOC cert label but no URL</span><span class="issue-count">4 rows (0.3%)</span><details><summary>Show examples</summary><table class="ex-table"><tr><th>0__EETRA_ID</th><th>A__ProductName</th><th>V__VOC_Cert</th></tr><tr><td>MAB__CLA__0142</td><td>Blocchi modul</td><td>ICMQ</td></tr><tr><td>MAB__CLA__0143</td><td>Poroton klima</td><td>ICMQ</td></tr><tr><td>MAB__CLA__0144</td><td>Poroton acustic</td><td>ICMQ</td></tr><tr><td>None</td><td>Silsonic</td><td>?????</td></tr></table></details></div>
+<div class="issue-card"><span class="issue-title">GWP module D is positive (expected ≤ 0 for net benefit)</span><span class="issue-count">94 rows (6.0%)</span><details><summary>Show examples</summary><table class="ex-table"><tr><th>0__EETRA_ID</th><th>A__ProductName</th></tr><tr><td>BBW__GYP__0050</td><td>Idrolastra GKI</td></tr><tr><td>BBW__GYP__0058</td><td>Lastra GKB Advanced</td></tr><tr><td>BBW__GYP__0073</td><td>Gypsotech STD TIPO A - 6</td></tr><tr><td>BBW__GYP__0074</td><td>Gypsotech STD TIPO A - 10</td></tr><tr><td>BBW__GYP__0075</td><td>Gypsotech STD TIPO A - 13</td></tr></table></details></div>
+<div class="issue-card"><span class="issue-title">Duplicate EETRA_IDs</span><span class="issue-count">1 rows (0.1%)</span><details><summary>Show examples</summary><table class="ex-table"><tr><th>0__EETRA_ID</th><th>count</th></tr><tr><td>INS__MIW__0422</td><td>2</td></tr></table></details></div>
+<div class="issue-card"><span class="issue-title">EETRA_ID does not match expected format XX__YY__NNNN</span><span class="issue-count">6 rows (0.4%)</span><details><summary>Show examples</summary><table class="ex-table"><tr><th>0__EETRA_ID</th></tr><tr><td>Steel Profile</td></tr><tr><td>Ceiling Tile</td></tr><tr><td>Blockwork</td></tr><tr><td>AGG__AGG__638</td></tr><tr><td>Hilti</td></tr></table></details></div>
+<div class="issue-card"><span class="issue-title">EPD expired (date &lt; today 2026-05-22)</span><span class="issue-count">22 rows (1.4%)</span><details><summary>Show examples</summary><table class="ex-table"><tr><th>0__EETRA_ID</th><th>A__ProductName</th><th>E__EPD_ExpDate</th></tr><tr><td>BBW__GYP__0014</td><td>Glasroc GTX 9</td><td>2026-03-26 00:00:00</td></tr><tr><td>BBW__GYP__0047</td><td>Lastra GKB (A) 9.5</td><td>2025-04-22 00:00:00</td></tr><tr><td>BBW__GYP__0048</td><td>Lastra GKB- 12.5</td><td>2025-04-22 00:00:00</td></tr><tr><td>BBW__GYP__0049</td><td>Lastra GKB - 15</td><td>2025-04-22 00:00:00</td></tr><tr><td>BBW__GYP__0051</td><td>Lastra GKF - 12.5</td><td>2025-04-22 00:00:00</td></tr></table></details></div>
+<div class="issue-card"><span class="issue-title">Lambda P__L_WmK vs E__L_WmK mismatch &gt; 10%</span><span class="issue-count">2 rows (0.1%)</span><details><summary>Show examples</summary><table class="ex-table"><tr><th>0__EETRA_ID</th><th>A__ProductName</th><th>P__L_WmK</th><th>E__L_WmK</th></tr><tr><td>BBW__GYP__0011</td><td>Glasroc X 13</td><td>0.25</td><td>0.186</td></tr><tr><td>INS__PIR__0432</td><td>RP</td><td>0.022</td><td>0.026</td></tr></table></details></div>
+<h2>Identifiers</h2>
+<div class="col-card good" id="0__EETRA_ID">
+<div class="col-title">0__EETRA_ID<span class="group-badge">Identifiers</span></div>
+<div class="role">Primary key — format {PT}__{MT}__{NNNN}</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fg" style="width:194px"></span></span> <strong class="good">97.2%</strong></td>
+<td>Filled: <strong>1,511</strong> / 1,555</td>
+<td>Empty: <strong>44</strong></td>
+<td>Unique values: <strong>1,510</strong></td>
+</tr></table>
+<p style="color:#c00;font-size:11px">⚠ 1 duplicate values: INS__MIW__0422</p>
+<p style="font-size:11px;color:#666">Free text — length: min 5, median 14, max 14 chars</p>
+<p style="font-size:11px;color:#888">Samples: BBW__GYP__0002; BBW__GYP__0003; BBW__GYP__0004; BBW__GYP__0005; BBW__GYP__0006</p>
+</div>
+<div class="col-card good" id="0__NUM">
+<div class="col-title">0__NUM<span class="group-badge">Identifiers</span></div>
+<div class="role">4-digit sequential number (global)</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fg" style="width:194px"></span></span> <strong class="good">96.8%</strong></td>
+<td>Filled: <strong>1,506</strong> / 1,555</td>
+<td>Empty: <strong>49</strong></td>
+<td>Unique values: <strong>1,505</strong></td>
+</tr></table>
+<p style="color:#c00;font-size:11px">⚠ 1 duplicate values: 422.0</p>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>2</td><td>77.25</td><td>381.2</td><td>757.5</td><td>757.4</td><td>1134</td><td>1437</td><td>1513</td><td>435.4</td></tr></table>
+</div>
+<h2>Product info</h2>
+<div class="col-card good" id="A__Manufacturer">
+<div class="col-title">A__Manufacturer<span class="group-badge">Product info</span></div>
+<div class="role">Brand / manufacturer name</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fg" style="width:199px"></span></span> <strong class="good">99.7%</strong></td>
+<td>Filled: <strong>1,550</strong> / 1,555</td>
+<td>Empty: <strong>5</strong></td>
+<td>Unique values: <strong>97</strong></td>
+</tr></table>
+<p style="font-size:11px;color:#666">Free text — length: min 3, median 6, max 35 chars</p>
+<p style="font-size:11px;color:#888">Samples: Gyproc; Gyproc; Gyproc; Gyproc; Gyproc</p>
+</div>
+<div class="col-card good" id="A__ProductName">
+<div class="col-title">A__ProductName<span class="group-badge">Product info</span></div>
+<div class="role">Commercial product name</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fg" style="width:200px"></span></span> <strong class="good">100.0%</strong></td>
+<td>Filled: <strong>1,555</strong> / 1,555</td>
+<td>Empty: <strong>0</strong></td>
+<td>Unique values: <strong>1,509</strong></td>
+</tr></table>
+<p style="font-size:11px;color:#666">Free text — length: min 2, median 23, max 89 chars</p>
+<p style="font-size:11px;color:#888">Samples: DuraGyp 13 Activ&#x27;Air; DuraGyp 15 Activ&#x27;Air; DuraGyp ECO 13 Activ&#x27;Air; Easy2 13 Activ&#x27;Air; Fireline 13</p>
+</div>
+<div class="col-card bad" id="A__ProductDescription">
+<div class="col-title">A__ProductDescription<span class="group-badge">Product info</span></div>
+<div class="role">Free-text description</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fb" style="width:0px"></span></span> <strong class="bad">0.2%</strong></td>
+<td>Filled: <strong>3</strong> / 1,555</td>
+<td>Empty: <strong>1,552</strong></td>
+<td>Unique values: <strong>2</strong></td>
+</tr></table>
+<details open><summary>Value distribution</summary>
+<table><tr><th>Value</th><th>Count</th><th style="width:180px">%</th></tr>
+<tr><td>Lastra prestazionale in gesso rivestito con incrementata densità del nucleo additivato con fibre di vetro e fibre di legno.</td><td>2</td><td><span class="pct-bar" style="width:80px"></span> 66.7%</td></tr>
+<tr><td>Lastra (Tipo DFI secondo EN 520) a coesione del nucleo di gesso migliorata nei confronti dell’incendio, grazie alla presenza di additivi speciali nel nucleo di gesso, fibra di vetro e vermiculite.
+Strato di gesso (Solfato di Calcio bi-idrato CaSO4∙2H2O) additivato con fibre di vetro che ne aumentano la capacità di resistenza al fuoco, ed additivi specifici, incorporato fra due fogli di cartone speciale ad alta resistenza.</td><td>1</td><td><span class="pct-bar" style="width:40px"></span> 33.3%</td></tr>
+</table></details>
+</div>
+<div class="col-card good" id="A__Map_yn">
+<div class="col-title">A__Map_yn<span class="group-badge">Product info</span></div>
+<div class="role">Mapped to project flag (Y/N)</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fg" style="width:192px"></span></span> <strong class="good">96.2%</strong></td>
+<td>Filled: <strong>1,496</strong> / 1,555</td>
+<td>Empty: <strong>59</strong></td>
+<td>Unique values: <strong>4</strong></td>
+</tr></table>
+<details open><summary>Value distribution</summary>
+<table><tr><th>Value</th><th>Count</th><th style="width:180px">%</th></tr>
+<tr><td style="color:#c00">Y</td><td>1,429</td><td><span class="pct-bar" style="width:115px"></span> 95.5%</td></tr>
+<tr><td style="color:#c00">N</td><td>65</td><td><span class="pct-bar" style="width:5px"></span> 4.3%</td></tr>
+<tr><td>Hilti</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+<tr><td>Floor Resin</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+</table></details>
+<p style="color:#c00;font-size:11px">⚠ Suspicious values: Y, N</p>
+</div>
+<h2>Classification</h2>
+<div class="col-card good" id="D__ProductType_ENG">
+<div class="col-title">D__ProductType_ENG<span class="group-badge">Classification</span></div>
+<div class="role">Functional product type (English)</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fg" style="width:195px"></span></span> <strong class="good">97.7%</strong></td>
+<td>Filled: <strong>1,520</strong> / 1,555</td>
+<td>Empty: <strong>35</strong></td>
+<td>Unique values: <strong>34</strong></td>
+</tr></table>
+<details open><summary>Value distribution</summary>
+<table><tr><th>Value</th><th>Count</th><th style="width:180px">%</th></tr>
+<tr><td>In situ Concrete</td><td>635</td><td><span class="pct-bar" style="width:50px"></span> 41.8%</td></tr>
+<tr><td>Insulation</td><td>333</td><td><span class="pct-bar" style="width:26px"></span> 21.9%</td></tr>
+<tr><td>Building boards</td><td>102</td><td><span class="pct-bar" style="width:8px"></span> 6.7%</td></tr>
+<tr><td>Binder</td><td>85</td><td><span class="pct-bar" style="width:7px"></span> 5.6%</td></tr>
+<tr><td>Tiles</td><td>76</td><td><span class="pct-bar" style="width:6px"></span> 5.0%</td></tr>
+<tr><td>Masonry (Block)</td><td>48</td><td><span class="pct-bar" style="width:4px"></span> 3.2%</td></tr>
+<tr><td>Glazing (Doors &amp; Windows)</td><td>27</td><td><span class="pct-bar" style="width:2px"></span> 1.8%</td></tr>
+<tr><td>Metal accessories</td><td>25</td><td><span class="pct-bar" style="width:2px"></span> 1.6%</td></tr>
+<tr><td>Screed</td><td>25</td><td><span class="pct-bar" style="width:2px"></span> 1.6%</td></tr>
+<tr><td>Cable trays</td><td>23</td><td><span class="pct-bar" style="width:2px"></span> 1.5%</td></tr>
+<tr><td>Masonry (Other)</td><td>20</td><td><span class="pct-bar" style="width:2px"></span> 1.3%</td></tr>
+<tr><td>Framing profiles (Other)</td><td>17</td><td><span class="pct-bar" style="width:1px"></span> 1.1%</td></tr>
+<tr><td>Rebar</td><td>15</td><td><span class="pct-bar" style="width:1px"></span> 1.0%</td></tr>
+<tr><td>Suspended ceiling</td><td>14</td><td><span class="pct-bar" style="width:1px"></span> 0.9%</td></tr>
+<tr><td>Adhesives</td><td>13</td><td><span class="pct-bar" style="width:1px"></span> 0.9%</td></tr>
+<tr><td>Coil</td><td>12</td><td><span class="pct-bar" style="width:1px"></span> 0.8%</td></tr>
+<tr><td>Filler</td><td>8</td><td><span class="pct-bar" style="width:1px"></span> 0.5%</td></tr>
+<tr><td>Structural components</td><td>6</td><td><span class="pct-bar" style="width:0px"></span> 0.4%</td></tr>
+<tr><td>Coatings</td><td>5</td><td><span class="pct-bar" style="width:0px"></span> 0.3%</td></tr>
+<tr><td>Sandwich panel</td><td>5</td><td><span class="pct-bar" style="width:0px"></span> 0.3%</td></tr>
+<tr><td colspan="3" style="color:#888">… 14 more values not shown</td></tr>
+</table></details>
+</div>
+<div class="col-card good" id="D__MaterialType_ENG">
+<div class="col-title">D__MaterialType_ENG<span class="group-badge">Classification</span></div>
+<div class="role">Primary material (English)</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fg" style="width:196px"></span></span> <strong class="good">98.0%</strong></td>
+<td>Filled: <strong>1,524</strong> / 1,555</td>
+<td>Empty: <strong>31</strong></td>
+<td>Unique values: <strong>37</strong></td>
+</tr></table>
+<details open><summary>Value distribution</summary>
+<table><tr><th>Value</th><th>Count</th><th style="width:180px">%</th></tr>
+<tr><td>Concrete</td><td>694</td><td><span class="pct-bar" style="width:55px"></span> 45.5%</td></tr>
+<tr><td>Gypsum</td><td>101</td><td><span class="pct-bar" style="width:8px"></span> 6.6%</td></tr>
+<tr><td>Cement</td><td>86</td><td><span class="pct-bar" style="width:7px"></span> 5.6%</td></tr>
+<tr><td>Mineral wool (Stone, Rock)</td><td>71</td><td><span class="pct-bar" style="width:6px"></span> 4.7%</td></tr>
+<tr><td>Fibreglass (Glass wool, Mineral fibre)</td><td>66</td><td><span class="pct-bar" style="width:5px"></span> 4.3%</td></tr>
+<tr><td>XPS (Extruded Polystyrene)</td><td>62</td><td><span class="pct-bar" style="width:5px"></span> 4.1%</td></tr>
+<tr><td>EPS (Expanded Polystyrene)</td><td>56</td><td><span class="pct-bar" style="width:4px"></span> 3.7%</td></tr>
+<tr><td>Porcelain</td><td>54</td><td><span class="pct-bar" style="width:4px"></span> 3.5%</td></tr>
+<tr><td>Wood wool</td><td>42</td><td><span class="pct-bar" style="width:3px"></span> 2.8%</td></tr>
+<tr><td>Galvanized steel</td><td>41</td><td><span class="pct-bar" style="width:3px"></span> 2.7%</td></tr>
+<tr><td>Aluminium</td><td>41</td><td><span class="pct-bar" style="width:3px"></span> 2.7%</td></tr>
+<tr><td>Steel</td><td>33</td><td><span class="pct-bar" style="width:3px"></span> 2.2%</td></tr>
+<tr><td>Composite (Other)</td><td>29</td><td><span class="pct-bar" style="width:2px"></span> 1.9%</td></tr>
+<tr><td>Mortar</td><td>28</td><td><span class="pct-bar" style="width:2px"></span> 1.8%</td></tr>
+<tr><td>Polyurethane Foam</td><td>27</td><td><span class="pct-bar" style="width:2px"></span> 1.8%</td></tr>
+<tr><td>PIR (Polyisocyanurate)</td><td>26</td><td><span class="pct-bar" style="width:2px"></span> 1.7%</td></tr>
+<tr><td>Synthetic resin</td><td>23</td><td><span class="pct-bar" style="width:2px"></span> 1.5%</td></tr>
+<tr><td>Clay</td><td>12</td><td><span class="pct-bar" style="width:1px"></span> 0.8%</td></tr>
+<tr><td>Fibre cement</td><td>5</td><td><span class="pct-bar" style="width:0px"></span> 0.3%</td></tr>
+<tr><td>Phenolic Foam</td><td>4</td><td><span class="pct-bar" style="width:0px"></span> 0.3%</td></tr>
+<tr><td colspan="3" style="color:#888">… 17 more values not shown</td></tr>
+</table></details>
+</div>
+<div class="col-card good" id="D__MaterialType_ITA">
+<div class="col-title">D__MaterialType_ITA<span class="group-badge">Classification</span></div>
+<div class="role">Primary material (Italian)</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fg" style="width:189px"></span></span> <strong class="good">94.6%</strong></td>
+<td>Filled: <strong>1,471</strong> / 1,555</td>
+<td>Empty: <strong>84</strong></td>
+<td>Unique values: <strong>83</strong></td>
+</tr></table>
+<p style="font-size:11px;color:#666">Free text — length: min 5, median 12, max 64 chars</p>
+<p style="font-size:11px;color:#888">Samples: Lastra in gesso; Lastra in gesso; Lastra in gesso; Lastra in gesso; Lastra in gesso</p>
+</div>
+<div class="col-card bad" id="D__Int/Ext">
+<div class="col-title">D__Int/Ext<span class="group-badge">Classification</span></div>
+<div class="role">Interior / Exterior / Both application scope</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fb" style="width:86px"></span></span> <strong class="bad">43.0%</strong></td>
+<td>Filled: <strong>669</strong> / 1,555</td>
+<td>Empty: <strong>886</strong></td>
+<td>Unique values: <strong>8</strong></td>
+</tr></table>
+<details open><summary>Value distribution</summary>
+<table><tr><th>Value</th><th>Count</th><th style="width:180px">%</th></tr>
+<tr><td>Both</td><td>353</td><td><span class="pct-bar" style="width:63px"></span> 52.8%</td></tr>
+<tr><td>Exterior</td><td>174</td><td><span class="pct-bar" style="width:31px"></span> 26.0%</td></tr>
+<tr><td>Interior</td><td>124</td><td><span class="pct-bar" style="width:22px"></span> 18.5%</td></tr>
+<tr><td>Indoor</td><td>13</td><td><span class="pct-bar" style="width:2px"></span> 1.9%</td></tr>
+<tr><td>Indoor/Outdoor</td><td>2</td><td><span class="pct-bar" style="width:0px"></span> 0.3%</td></tr>
+<tr><td>Hilti</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+<tr><td>Floor Resin</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+<tr><td>Outdoor</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+</table></details>
+</div>
+<div class="col-card bad" id="D__Application">
+<div class="col-title">D__Application<span class="group-badge">Classification</span></div>
+<div class="role">Specific application context</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fb" style="width:53px"></span></span> <strong class="bad">26.6%</strong></td>
+<td>Filled: <strong>414</strong> / 1,555</td>
+<td>Empty: <strong>1,141</strong></td>
+<td>Unique values: <strong>29</strong></td>
+</tr></table>
+<details open><summary>Value distribution</summary>
+<table><tr><th>Value</th><th>Count</th><th style="width:180px">%</th></tr>
+<tr><td>Roof-Floor-Wall</td><td>71</td><td><span class="pct-bar" style="width:21px"></span> 17.1%</td></tr>
+<tr><td>Floor- wall</td><td>69</td><td><span class="pct-bar" style="width:20px"></span> 16.7%</td></tr>
+<tr><td>wall &amp; partition &amp; ceiling finishes</td><td>63</td><td><span class="pct-bar" style="width:18px"></span> 15.2%</td></tr>
+<tr><td>External walls</td><td>58</td><td><span class="pct-bar" style="width:17px"></span> 14.0%</td></tr>
+<tr><td>Wall -Ceiling</td><td>50</td><td><span class="pct-bar" style="width:15px"></span> 12.1%</td></tr>
+<tr><td>Internal walls</td><td>19</td><td><span class="pct-bar" style="width:6px"></span> 4.6%</td></tr>
+<tr><td>Wall and ceiling</td><td>17</td><td><span class="pct-bar" style="width:5px"></span> 4.1%</td></tr>
+<tr><td>wall &amp; partition finishes</td><td>16</td><td><span class="pct-bar" style="width:5px"></span> 3.9%</td></tr>
+<tr><td>Ceiling</td><td>14</td><td><span class="pct-bar" style="width:4px"></span> 3.4%</td></tr>
+<tr><td>Facade- Wall cladding-Floor Finishes-Furniture-Kitchen countertop</td><td>6</td><td><span class="pct-bar" style="width:2px"></span> 1.4%</td></tr>
+<tr><td>wall &amp; ceiling &amp; floor finishes</td><td>4</td><td><span class="pct-bar" style="width:1px"></span> 1.0%</td></tr>
+<tr><td>floor</td><td>3</td><td><span class="pct-bar" style="width:1px"></span> 0.7%</td></tr>
+<tr><td>Roof</td><td>3</td><td><span class="pct-bar" style="width:1px"></span> 0.7%</td></tr>
+<tr><td>Wall &amp; Ceiling finishes</td><td>3</td><td><span class="pct-bar" style="width:1px"></span> 0.7%</td></tr>
+<tr><td>Ceiling finishes</td><td>2</td><td><span class="pct-bar" style="width:1px"></span> 0.5%</td></tr>
+<tr><td>Int, &amp; Ext, Walls</td><td>2</td><td><span class="pct-bar" style="width:1px"></span> 0.5%</td></tr>
+<tr><td>Floor finishes</td><td>2</td><td><span class="pct-bar" style="width:1px"></span> 0.5%</td></tr>
+<tr><td>Hilti</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.2%</td></tr>
+<tr><td>Floor-Wall-Facade-Interior</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.2%</td></tr>
+<tr><td>Floor</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.2%</td></tr>
+<tr><td colspan="3" style="color:#888">… 9 more values not shown</td></tr>
+</table></details>
+</div>
+<div class="col-card good" id="D__Content">
+<div class="col-title">D__Content<span class="group-badge">Classification</span></div>
+<div class="role">Component / ingredient description</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fg" style="width:190px"></span></span> <strong class="good">95.2%</strong></td>
+<td>Filled: <strong>1,481</strong> / 1,555</td>
+<td>Empty: <strong>74</strong></td>
+<td>Unique values: <strong>877</strong></td>
+</tr></table>
+<p style="font-size:11px;color:#666">Free text — length: min 5, median 88, max 333 chars</p>
+<p style="font-size:11px;color:#888">Samples: 90-93% Gypsum; 1-3% Cardboard; 5-8% Additives; 90-93% Gypsum; 1-3% Cardboard; 5-8% Additives; 90-95% Gypsum; 1-5% Cardboard; 1-5% Additives; 90-93% Gypsum; 5-8 % Cardboard; 1-2% Additives; 90-93% Gypsum; 5-8 % Cardboard; 1-2% Additives</p>
+</div>
+<div class="col-card bad" id="D__Size">
+<div class="col-title">D__Size<span class="group-badge">Classification</span></div>
+<div class="role">Typical product dimensions or range</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fb" style="width:72px"></span></span> <strong class="bad">36.1%</strong></td>
+<td>Filled: <strong>561</strong> / 1,555</td>
+<td>Empty: <strong>994</strong></td>
+<td>Unique values: <strong>162</strong></td>
+</tr></table>
+<p style="font-size:11px;color:#666">Free text — length: min 5, median 29, max 209 chars</p>
+<p style="font-size:11px;color:#888">Samples: Length = 2000,3000 mm ; Width = 600,1200,1250 mm; Length = 2000 mm ;  Width = 1200 mm; Length = 1200,2000,2400 mm ; Width = 900,1200 mm; Length = 900,2000,2400 mm ; Width = 1200 mm; Length = 2000,2400 mm ; Width = 1200 mm</p>
+</div>
+<div class="col-card bad" id="D__TechDetails">
+<div class="col-title">D__TechDetails<span class="group-badge">Classification</span></div>
+<div class="role">Key technical detail free text</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fb" style="width:117px"></span></span> <strong class="bad">58.6%</strong></td>
+<td>Filled: <strong>912</strong> / 1,555</td>
+<td>Empty: <strong>643</strong></td>
+<td>Unique values: <strong>203</strong></td>
+</tr></table>
+<p style="font-size:11px;color:#666">Free text — length: min 5, median 28, max 140 chars</p>
+<p style="font-size:11px;color:#888">Samples: Fire Resistance;Moisture Resistance;Acoustic insulation;Shock Resistance;Active Air; Fire Resistance;Moisture Resistance;Acoustic insulation;Shock Resistance;Active Air;Anti-baker; Fire Resistance;Moisture Resistance;Acoustic insulation;Shock Resistance;Active Air; Fire Resistance;Acoustic insulation;Shock Resistance;ActiveAir; Fire Resistance</p>
+</div>
+<div class="col-card bad" id="D__EN197-1">
+<div class="col-title">D__EN197-1<span class="group-badge">Classification</span></div>
+<div class="role">Cement strength class (EN 197-1)</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fb" style="width:11px"></span></span> <strong class="bad">5.7%</strong></td>
+<td>Filled: <strong>89</strong> / 1,555</td>
+<td>Empty: <strong>1,466</strong></td>
+<td>Unique values: <strong>55</strong></td>
+</tr></table>
+<details open><summary>Value distribution</summary>
+<table><tr><th>Value</th><th>Count</th><th style="width:180px">%</th></tr>
+<tr><td>CEM III/A 42.5 N</td><td>8</td><td><span class="pct-bar" style="width:11px"></span> 9.0%</td></tr>
+<tr><td>CEM II/B-LL 32.5 R</td><td>8</td><td><span class="pct-bar" style="width:11px"></span> 9.0%</td></tr>
+<tr><td>CEM I 52.5 R</td><td>8</td><td><span class="pct-bar" style="width:11px"></span> 9.0%</td></tr>
+<tr><td>CEM II/A-LL 42.5 R</td><td>3</td><td><span class="pct-bar" style="width:4px"></span> 3.4%</td></tr>
+<tr><td>CEM IV/A(V) 42.5 R-SR</td><td>3</td><td><span class="pct-bar" style="width:4px"></span> 3.4%</td></tr>
+<tr><td>CEM II/B-LL 42.5 R</td><td>3</td><td><span class="pct-bar" style="width:4px"></span> 3.4%</td></tr>
+<tr><td>CEM IV/A(P) 42.5 N</td><td>2</td><td><span class="pct-bar" style="width:3px"></span> 2.2%</td></tr>
+<tr><td>CEM IV/B (P) 32.5 R</td><td>2</td><td><span class="pct-bar" style="width:3px"></span> 2.2%</td></tr>
+<tr><td>CEM  II / B-LL 32.5 R – LH</td><td>2</td><td><span class="pct-bar" style="width:3px"></span> 2.2%</td></tr>
+<tr><td>CEM IV/B (V-Q) 32.5 N-LH</td><td>2</td><td><span class="pct-bar" style="width:3px"></span> 2.2%</td></tr>
+<tr><td>CEM IV/A (P) 42.5 N</td><td>2</td><td><span class="pct-bar" style="width:3px"></span> 2.2%</td></tr>
+<tr><td>CEM  II /A-LL 42.5 R</td><td>2</td><td><span class="pct-bar" style="width:3px"></span> 2.2%</td></tr>
+<tr><td>CEM II/B-LL 32.5 R EXPERT</td><td>2</td><td><span class="pct-bar" style="width:3px"></span> 2.2%</td></tr>
+<tr><td>CEM IV/A (V) 42.5 R - SR/IAS</td><td>1</td><td><span class="pct-bar" style="width:1px"></span> 1.1%</td></tr>
+<tr><td>CEM II/B-LL 42.5R</td><td>1</td><td><span class="pct-bar" style="width:1px"></span> 1.1%</td></tr>
+<tr><td>CEM II/A-LL 52.5R</td><td>1</td><td><span class="pct-bar" style="width:1px"></span> 1.1%</td></tr>
+<tr><td>CEM IV/A (V) 32.5 N - LH/SR</td><td>1</td><td><span class="pct-bar" style="width:1px"></span> 1.1%</td></tr>
+<tr><td>CEM IIB4 CEM II/B-LL 42.5R</td><td>1</td><td><span class="pct-bar" style="width:1px"></span> 1.1%</td></tr>
+<tr><td>CEM II / B-LL 42.5 R</td><td>1</td><td><span class="pct-bar" style="width:1px"></span> 1.1%</td></tr>
+<tr><td>CEM IV/A (P-V) 42.5 R - SR</td><td>1</td><td><span class="pct-bar" style="width:1px"></span> 1.1%</td></tr>
+<tr><td colspan="3" style="color:#888">… 35 more values not shown</td></tr>
+</table></details>
+</div>
+<div class="col-card bad" id="D__EN206">
+<div class="col-title">D__EN206<span class="group-badge">Classification</span></div>
+<div class="role">Concrete exposure class (EN 206)</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fb" style="width:81px"></span></span> <strong class="bad">40.6%</strong></td>
+<td>Filled: <strong>632</strong> / 1,555</td>
+<td>Empty: <strong>923</strong></td>
+<td>Unique values: <strong>14</strong></td>
+</tr></table>
+<details open><summary>Value distribution</summary>
+<table><tr><th>Value</th><th>Count</th><th style="width:180px">%</th></tr>
+<tr><td>C30/37</td><td>148</td><td><span class="pct-bar" style="width:28px"></span> 23.4%</td></tr>
+<tr><td>C25/30</td><td>84</td><td><span class="pct-bar" style="width:16px"></span> 13.3%</td></tr>
+<tr><td>C35/45</td><td>81</td><td><span class="pct-bar" style="width:15px"></span> 12.8%</td></tr>
+<tr><td>C12/15</td><td>72</td><td><span class="pct-bar" style="width:14px"></span> 11.4%</td></tr>
+<tr><td>C16/20</td><td>56</td><td><span class="pct-bar" style="width:11px"></span> 8.9%</td></tr>
+<tr><td>C28/35</td><td>55</td><td><span class="pct-bar" style="width:10px"></span> 8.7%</td></tr>
+<tr><td>C20/25</td><td>51</td><td><span class="pct-bar" style="width:10px"></span> 8.1%</td></tr>
+<tr><td>C40/50</td><td>49</td><td><span class="pct-bar" style="width:9px"></span> 7.8%</td></tr>
+<tr><td>C32/40</td><td>16</td><td><span class="pct-bar" style="width:3px"></span> 2.5%</td></tr>
+<tr><td>C8/10</td><td>15</td><td><span class="pct-bar" style="width:3px"></span> 2.4%</td></tr>
+<tr><td>C37/45</td><td>2</td><td><span class="pct-bar" style="width:0px"></span> 0.3%</td></tr>
+<tr><td>LC35/38</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.2%</td></tr>
+<tr><td>Hilti</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.2%</td></tr>
+<tr><td>Floor Resin</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.2%</td></tr>
+</table></details>
+</div>
+<div class="col-card good" id="D__DataComments">
+<div class="col-title">D__DataComments<span class="group-badge">Classification</span></div>
+<div class="role">Data entry provenance / audit note</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fg" style="width:188px"></span></span> <strong class="good">94.0%</strong></td>
+<td>Filled: <strong>1,462</strong> / 1,555</td>
+<td>Empty: <strong>93</strong></td>
+<td>Unique values: <strong>6</strong></td>
+</tr></table>
+<details open><summary>Value distribution</summary>
+<table><tr><th>Value</th><th>Count</th><th style="width:180px">%</th></tr>
+<tr><td>Manual input FM</td><td>1,340</td><td><span class="pct-bar" style="width:110px"></span> 91.7%</td></tr>
+<tr><td>Interpolated via AI</td><td>93</td><td><span class="pct-bar" style="width:8px"></span> 6.4%</td></tr>
+<tr><td>Manual input FM, TGU</td><td>23</td><td><span class="pct-bar" style="width:2px"></span> 1.6%</td></tr>
+<tr><td>Manual input FM, DGU</td><td>4</td><td><span class="pct-bar" style="width:0px"></span> 0.3%</td></tr>
+<tr><td>Hilti</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+<tr><td>Floor Resin</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+</table></details>
+</div>
+<h2>Status</h2>
+<div class="col-card warn" id="S__Comments">
+<div class="col-title">S__Comments<span class="group-badge">Status</span></div>
+<div class="role">Free-text notes</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fw" style="width:134px"></span></span> <strong class="warn">67.1%</strong></td>
+<td>Filled: <strong>1,043</strong> / 1,555</td>
+<td>Empty: <strong>512</strong></td>
+<td>Unique values: <strong>159</strong></td>
+</tr></table>
+<p style="font-size:11px;color:#666">Free text — length: min 2, median 27, max 509 chars</p>
+<p style="font-size:11px;color:#888">Samples: Type D E F H1 I R; Type D E F H1 I R; Type D E F H1 I R; Type D F H2 I; Type  D F</p>
+</div>
+<div class="col-card good" id="S__Status">
+<div class="col-title">S__Status<span class="group-badge">Status</span></div>
+<div class="role">Data completeness status</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fg" style="width:195px"></span></span> <strong class="good">97.4%</strong></td>
+<td>Filled: <strong>1,515</strong> / 1,555</td>
+<td>Empty: <strong>40</strong></td>
+<td>Unique values: <strong>10</strong></td>
+</tr></table>
+<details open><summary>Value distribution</summary>
+<table><tr><th>Value</th><th>Count</th><th style="width:180px">%</th></tr>
+<tr><td>Missing Some Data</td><td>660</td><td><span class="pct-bar" style="width:52px"></span> 43.6%</td></tr>
+<tr><td>Complete</td><td>537</td><td><span class="pct-bar" style="width:42px"></span> 35.4%</td></tr>
+<tr><td>VOC Data Missing</td><td>136</td><td><span class="pct-bar" style="width:11px"></span> 9.0%</td></tr>
+<tr><td>Tech.Sheet Missing</td><td>121</td><td><span class="pct-bar" style="width:10px"></span> 8.0%</td></tr>
+<tr><td>EPD missing</td><td>47</td><td><span class="pct-bar" style="width:4px"></span> 3.1%</td></tr>
+<tr><td>Missing Key Data</td><td>10</td><td><span class="pct-bar" style="width:1px"></span> 0.7%</td></tr>
+<tr><td>Not started</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+<tr><td>In Progress</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+<tr><td>Hilti</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+<tr><td>Floor Resin</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+</table></details>
+</div>
+<h2>URLs</h2>
+<div class="col-card bad" id="U__ProductInfo_URL">
+<div class="col-title">U__ProductInfo_URL<span class="group-badge">URLs</span></div>
+<div class="role">Manufacturer product page</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fb" style="width:116px"></span></span> <strong class="bad">57.9%</strong></td>
+<td>Filled: <strong>901</strong> / 1,555</td>
+<td>Empty: <strong>654</strong></td>
+<td>Unique values: <strong>535</strong></td>
+</tr></table>
+<table><tr><th>Scheme</th><th>Count</th></tr>
+<tr><td>https://</td><td>884</td></tr>
+<tr><td>http:// (insecure)</td><td>12</td></tr>
+<tr><td style="color:#c00">Invalid format</td><td style="color:#c00">5</td></tr>
+</table>
+<details><summary>Domain breakdown</summary><table><tr><th>Domain</th><th>Count</th></tr>
+<tr><td>knauf.com</td><td>78</td></tr>
+<tr><td>ursa.it</td><td>66</td></tr>
+<tr><td>hilti.it</td><td>60</td></tr>
+<tr><td>xella-italia.it</td><td>58</td></tr>
+<tr><td>polisette.it</td><td>49</td></tr>
+<tr><td>italy.ediltec.com</td><td>48</td></tr>
+<tr><td>gyproc.it</td><td>41</td></tr>
+<tr><td>celenit.com</td><td>33</td></tr>
+<tr><td>isover.it</td><td>32</td></tr>
+<tr><td>heidelbergmaterials.it</td><td>31</td></tr>
+<tr><td>fassabortolo.it</td><td>25</td></tr>
+<tr><td>buzziunicem.it</td><td>22</td></tr>
+<tr><td>agglobaghin.it</td><td>19</td></tr>
+<tr><td>mapei.com</td><td>18</td></tr>
+<tr><td>metrabuilding.com</td><td>17</td></tr>
+<tr><td>ipmitalia.it</td><td>16</td></tr>
+<tr><td>betonlana.com</td><td>15</td></tr>
+<tr><td>rockwool.com</td><td>15</td></tr>
+<tr><td>stiferite.com</td><td>14</td></tr>
+<tr><td>siniat.it</td><td>14</td></tr>
+</table></details>
+</div>
+<div class="col-card bad" id="U__TechDetails_URL">
+<div class="col-title">U__TechDetails_URL<span class="group-badge">URLs</span></div>
+<div class="role">Technical data sheet PDF</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fb" style="width:102px"></span></span> <strong class="bad">50.9%</strong></td>
+<td>Filled: <strong>791</strong> / 1,555</td>
+<td>Empty: <strong>764</strong></td>
+<td>Unique values: <strong>498</strong></td>
+</tr></table>
+<table><tr><th>Scheme</th><th>Count</th></tr>
+<tr><td>https://</td><td>789</td></tr>
+<tr><td>http:// (insecure)</td><td>0</td></tr>
+<tr><td style="color:#c00">Invalid format</td><td style="color:#c00">2</td></tr>
+</table>
+<details><summary>Domain breakdown</summary><table><tr><th>Domain</th><th>Count</th></tr>
+<tr><td>knauf.com</td><td>78</td></tr>
+<tr><td>etex.azureedge.net</td><td>66</td></tr>
+<tr><td>storefrontapi.commerce.xella.com</td><td>58</td></tr>
+<tr><td>polisette.it</td><td>49</td></tr>
+<tr><td>italy.ediltec.com</td><td>48</td></tr>
+<tr><td>gyproc.it</td><td>40</td></tr>
+<tr><td>heidelbergmaterials.it</td><td>34</td></tr>
+<tr><td>celenit.com</td><td>33</td></tr>
+<tr><td>isover.it</td><td>32</td></tr>
+<tr><td>fassabortolo.it</td><td>25</td></tr>
+<tr><td>productdata.hilti.com</td><td>21</td></tr>
+<tr><td>agglobaghin.it</td><td>19</td></tr>
+<tr><td>cdnmedia.mapei.com</td><td>18</td></tr>
+<tr><td>metrabuilding.com</td><td>17</td></tr>
+<tr><td>ipmitalia.it</td><td>16</td></tr>
+<tr><td>media.siniat.it</td><td>14</td></tr>
+<tr><td>brandcommunity.rockwool.com</td><td>14</td></tr>
+<tr><td>stiferite.com</td><td>14</td></tr>
+<tr><td>cementirossi.it</td><td>13</td></tr>
+<tr><td>dop-xps.com</td><td>12</td></tr>
+</table></details>
+</div>
+<div class="col-card good" id="U__Img_URL">
+<div class="col-title">U__Img_URL<span class="group-badge">URLs</span></div>
+<div class="role">Product photograph</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fg" style="width:194px"></span></span> <strong class="good">96.8%</strong></td>
+<td>Filled: <strong>1,505</strong> / 1,555</td>
+<td>Empty: <strong>50</strong></td>
+<td>Unique values: <strong>489</strong></td>
+</tr></table>
+<table><tr><th>Scheme</th><th>Count</th></tr>
+<tr><td>https://</td><td>1,503</td></tr>
+<tr><td>http:// (insecure)</td><td>0</td></tr>
+<tr><td style="color:#c00">Invalid format</td><td style="color:#c00">2</td></tr>
+</table>
+<details><summary>Domain breakdown</summary><table><tr><th>Domain</th><th>Count</th></tr>
+<tr><td>unicalcestruzzi.it</td><td>588</td></tr>
+<tr><td>etex.azureedge.net</td><td>66</td></tr>
+<tr><td>productdata.hilti.com</td><td>60</td></tr>
+<tr><td>italy.ediltec.com</td><td>59</td></tr>
+<tr><td>polisette.it</td><td>54</td></tr>
+<tr><td>storefrontapi.commerce.xella.com</td><td>51</td></tr>
+<tr><td>celenit.com</td><td>42</td></tr>
+<tr><td>gyproc.it</td><td>41</td></tr>
+<tr><td>s7g10.scene7.com</td><td>40</td></tr>
+<tr><td>media.knauf.com</td><td>38</td></tr>
+<tr><td>isover.it</td><td>32</td></tr>
+<tr><td>fassabortolo.it</td><td>25</td></tr>
+<tr><td>img.rockwool.com</td><td>22</td></tr>
+<tr><td>buzziunicem.it</td><td>22</td></tr>
+<tr><td>agglobaghin.it</td><td>19</td></tr>
+<tr><td>cdnmedia.mapei.com</td><td>18</td></tr>
+<tr><td>metrabuilding.com</td><td>17</td></tr>
+<tr><td>heidelbergmaterials.it</td><td>17</td></tr>
+<tr><td>ipmitalia.it</td><td>16</td></tr>
+<tr><td>master-of-machine.it</td><td>15</td></tr>
+</table></details>
+</div>
+<h2>Physical</h2>
+<div class="col-card bad" id="P__U_Wm2K">
+<div class="col-title">P__U_Wm2K<span class="group-badge">Physical</span></div>
+<div class="role">Thermal transmittance U [W/m²K]</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fb" style="width:8px"></span></span> <strong class="bad">4.1%</strong></td>
+<td>Filled: <strong>63</strong> / 1,555</td>
+<td>Empty: <strong>1,492</strong></td>
+<td>Unique values: <strong>36</strong></td>
+</tr></table>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>0.14</td><td>0.158</td><td>0.44</td><td>0.9</td><td>0.994</td><td>1.2</td><td>1.54</td><td>10</td><td>1.295</td></tr></table>
+<p style="font-size:11px;color:#666;margin-top:4px">1 IQR outliers</p>
+</div>
+<div class="col-card bad" id="P__L_WmK">
+<div class="col-title">P__L_WmK<span class="group-badge">Physical</span></div>
+<div class="role">Thermal conductivity λ [W/mK]</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fb" style="width:67px"></span></span> <strong class="bad">33.3%</strong></td>
+<td>Filled: <strong>518</strong> / 1,555</td>
+<td>Empty: <strong>1,037</strong></td>
+<td>Unique values: <strong>77</strong></td>
+</tr></table>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>0.002</td><td>0.022</td><td>0.033</td><td>0.037</td><td>0.46</td><td>0.2</td><td>0.25</td><td>48</td><td>4.145</td></tr></table>
+<p style="font-size:11px;color:#666;margin-top:4px">7 IQR outliers &nbsp;|&nbsp; <span style="color:#c00">4 outside plausible range (0.01, 5.0)</span></p>
+</div>
+<div class="col-card bad" id="P__Thick_mm">
+<div class="col-title">P__Thick_mm<span class="group-badge">Physical</span></div>
+<div class="role">Declared thickness [mm]</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fb" style="width:89px"></span></span> <strong class="bad">44.4%</strong></td>
+<td>Filled: <strong>690</strong> / 1,555</td>
+<td>Empty: <strong>865</strong></td>
+<td>Unique values: <strong>174</strong></td>
+</tr></table>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>0.6</td><td>6</td><td>12.5</td><td>20</td><td>64</td><td>80</td><td>279</td><td>480</td><td>87.72</td></tr></table>
+<p style="font-size:11px;color:#666;margin-top:4px">36 IQR outliers &nbsp;|&nbsp; <span style="color:#c00">7 outside plausible range (1, 5000)</span></p>
+</div>
+<div class="col-card bad" id="P__Mass_kgm3">
+<div class="col-title">P__Mass_kgm3<span class="group-badge">Physical</span></div>
+<div class="role">Bulk density [kg/m³]</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fb" style="width:42px"></span></span> <strong class="bad">21.0%</strong></td>
+<td>Filled: <strong>326</strong> / 1,555</td>
+<td>Empty: <strong>1,229</strong></td>
+<td>Unique values: <strong>130</strong></td>
+</tr></table>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>10</td><td>13</td><td>32</td><td>70</td><td>442.1</td><td>575</td><td>1700</td><td>7850</td><td>941.2</td></tr></table>
+<p style="font-size:11px;color:#666;margin-top:4px">21 IQR outliers</p>
+</div>
+<div class="col-card bad" id="P__Mass_kgm2">
+<div class="col-title">P__Mass_kgm2<span class="group-badge">Physical</span></div>
+<div class="role">Surface mass [kg/m²]</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fb" style="width:35px"></span></span> <strong class="bad">17.7%</strong></td>
+<td>Filled: <strong>275</strong> / 1,555</td>
+<td>Empty: <strong>1,280</strong></td>
+<td>Unique values: <strong>178</strong></td>
+</tr></table>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>0.418</td><td>5.235</td><td>8.7</td><td>13.35</td><td>49.88</td><td>21.01</td><td>165.4</td><td>2635</td><td>208.7</td></tr></table>
+<p style="font-size:11px;color:#666;margin-top:4px">39 IQR outliers &nbsp;|&nbsp; <span style="color:#c00">7 outside plausible range (0.01, 200)</span></p>
+</div>
+<div class="col-card bad" id="P__Mass_kg">
+<div class="col-title">P__Mass_kg<span class="group-badge">Physical</span></div>
+<div class="role">Mass per declared unit [kg]</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fb" style="width:17px"></span></span> <strong class="bad">8.6%</strong></td>
+<td>Filled: <strong>133</strong> / 1,555</td>
+<td>Empty: <strong>1,422</strong></td>
+<td>Unique values: <strong>112</strong></td>
+</tr></table>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>0.41</td><td>7.06</td><td>14.15</td><td>20</td><td>30.62</td><td>31.2</td><td>101.6</td><td>152</td><td>29.85</td></tr></table>
+<p style="font-size:11px;color:#666;margin-top:4px">13 IQR outliers</p>
+</div>
+<div class="col-card bad" id="P__FireRating">
+<div class="col-title">P__FireRating<span class="group-badge">Physical</span></div>
+<div class="role">Euroclass fire rating (EN 13501-1)</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fb" style="width:87px"></span></span> <strong class="bad">43.7%</strong></td>
+<td>Filled: <strong>680</strong> / 1,555</td>
+<td>Empty: <strong>875</strong></td>
+<td>Unique values: <strong>15</strong></td>
+</tr></table>
+<details open><summary>Value distribution</summary>
+<table><tr><th>Value</th><th>Count</th><th style="width:180px">%</th></tr>
+<tr><td>A1</td><td>283</td><td><span class="pct-bar" style="width:50px"></span> 41.6%</td></tr>
+<tr><td style="color:#c00">E</td><td>162</td><td><span class="pct-bar" style="width:29px"></span> 23.8%</td></tr>
+<tr><td>A2-s1,d0</td><td>106</td><td><span class="pct-bar" style="width:19px"></span> 15.6%</td></tr>
+<tr><td>B-s1,d0</td><td>53</td><td><span class="pct-bar" style="width:9px"></span> 7.8%</td></tr>
+<tr><td>A1-A1 fl</td><td>24</td><td><span class="pct-bar" style="width:4px"></span> 3.5%</td></tr>
+<tr><td style="color:#c00">F</td><td>19</td><td><span class="pct-bar" style="width:3px"></span> 2.8%</td></tr>
+<tr><td>B fl-s1</td><td>13</td><td><span class="pct-bar" style="width:2px"></span> 1.9%</td></tr>
+<tr><td>A2-s1.d0</td><td>6</td><td><span class="pct-bar" style="width:1px"></span> 0.9%</td></tr>
+<tr><td>A2-s1</td><td>5</td><td><span class="pct-bar" style="width:1px"></span> 0.7%</td></tr>
+<tr><td>A1 fl</td><td>3</td><td><span class="pct-bar" style="width:0px"></span> 0.4%</td></tr>
+<tr><td>A2 fl -s1</td><td>2</td><td><span class="pct-bar" style="width:0px"></span> 0.3%</td></tr>
+<tr><td>A2</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+<tr><td>C, s1-d0</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+<tr><td>Hilti</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+<tr><td>Floor Resin</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+</table></details>
+<p style="color:#c00;font-size:11px">⚠ Suspicious values: E, F</p>
+</div>
+<h2>Environmental/EPD</h2>
+<div class="col-card good" id="E__ManuCountry">
+<div class="col-title">E__ManuCountry<span class="group-badge">Environmental/EPD</span></div>
+<div class="role">Country of manufacture</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fg" style="width:191px"></span></span> <strong class="good">95.4%</strong></td>
+<td>Filled: <strong>1,484</strong> / 1,555</td>
+<td>Empty: <strong>71</strong></td>
+<td>Unique values: <strong>35</strong></td>
+</tr></table>
+<details open><summary>Value distribution</summary>
+<table><tr><th>Value</th><th>Count</th><th style="width:180px">%</th></tr>
+<tr><td>Italy</td><td>1,285</td><td><span class="pct-bar" style="width:104px"></span> 86.6%</td></tr>
+<tr><td>Liechtenstein</td><td>46</td><td><span class="pct-bar" style="width:4px"></span> 3.1%</td></tr>
+<tr><td>Germany</td><td>44</td><td><span class="pct-bar" style="width:4px"></span> 3.0%</td></tr>
+<tr><td>Croatia</td><td>27</td><td><span class="pct-bar" style="width:2px"></span> 1.8%</td></tr>
+<tr><td>Slovenia</td><td>23</td><td><span class="pct-bar" style="width:2px"></span> 1.5%</td></tr>
+<tr><td>Slovakia</td><td>8</td><td><span class="pct-bar" style="width:1px"></span> 0.5%</td></tr>
+<tr><td>Poland,Netherland,France</td><td>7</td><td><span class="pct-bar" style="width:1px"></span> 0.5%</td></tr>
+<tr><td>Finland</td><td>5</td><td><span class="pct-bar" style="width:0px"></span> 0.3%</td></tr>
+<tr><td>Belgium; Germany; Czech Republic; France</td><td>4</td><td><span class="pct-bar" style="width:0px"></span> 0.3%</td></tr>
+<tr><td>Hungry</td><td>4</td><td><span class="pct-bar" style="width:0px"></span> 0.3%</td></tr>
+<tr><td>Belgium; France</td><td>3</td><td><span class="pct-bar" style="width:0px"></span> 0.2%</td></tr>
+<tr><td>Belgium</td><td>2</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+<tr><td>Belgium; Germany; Czech Republic</td><td>2</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+<tr><td>Slovakia; Serbia; Slovenia; Germany</td><td>2</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+<tr><td>Poland</td><td>2</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+<tr><td>Belgium; Turkey</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+<tr><td>Germany; Poland</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+<tr><td>Czech Republic</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+<tr><td>Hilti</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+<tr><td>Mexico</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+<tr><td colspan="3" style="color:#888">… 15 more values not shown</td></tr>
+</table></details>
+</div>
+<div class="col-card good" id="E__ManuPlant">
+<div class="col-title">E__ManuPlant<span class="group-badge">Environmental/EPD</span></div>
+<div class="role">Manufacturing plant name/location</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fg" style="width:184px"></span></span> <strong class="good">92.2%</strong></td>
+<td>Filled: <strong>1,434</strong> / 1,555</td>
+<td>Empty: <strong>121</strong></td>
+<td>Unique values: <strong>194</strong></td>
+</tr></table>
+<p style="font-size:11px;color:#666">Free text — length: min 4, median 13, max 141 chars</p>
+<p style="font-size:11px;color:#888">Samples: Termoli (CB); Termoli (CB); Termoli (CB); Termoli (CB); Termoli (CB)</p>
+</div>
+<div class="col-card warn" id="E__EPD_Y/N">
+<div class="col-title">E__EPD_Y/N<span class="group-badge">Environmental/EPD</span></div>
+<div class="role">EPD available flag (Y/N)</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fw" style="width:158px"></span></span> <strong class="warn">78.8%</strong></td>
+<td>Filled: <strong>1,225</strong> / 1,555</td>
+<td>Empty: <strong>330</strong></td>
+<td>Unique values: <strong>4</strong></td>
+</tr></table>
+<details open><summary>Value distribution</summary>
+<table><tr><th>Value</th><th>Count</th><th style="width:180px">%</th></tr>
+<tr><td style="color:#c00">Y</td><td>1,196</td><td><span class="pct-bar" style="width:117px"></span> 97.6%</td></tr>
+<tr><td style="color:#c00">N</td><td>27</td><td><span class="pct-bar" style="width:3px"></span> 2.2%</td></tr>
+<tr><td>Hilti</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+<tr><td>Floor Resin</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+</table></details>
+<p style="color:#c00;font-size:11px">⚠ Suspicious values: Y, N</p>
+</div>
+<div class="col-card good" id="E__EPD_Programme">
+<div class="col-title">E__EPD_Programme<span class="group-badge">Environmental/EPD</span></div>
+<div class="role">EPD programme operator</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fg" style="width:188px"></span></span> <strong class="good">93.9%</strong></td>
+<td>Filled: <strong>1,460</strong> / 1,555</td>
+<td>Empty: <strong>95</strong></td>
+<td>Unique values: <strong>19</strong></td>
+</tr></table>
+<details open><summary>Value distribution</summary>
+<table><tr><th>Value</th><th>Count</th><th style="width:180px">%</th></tr>
+<tr><td>EPD Italy</td><td>943</td><td><span class="pct-bar" style="width:78px"></span> 64.6%</td></tr>
+<tr><td>Environdec</td><td>312</td><td><span class="pct-bar" style="width:26px"></span> 21.4%</td></tr>
+<tr><td>IBU</td><td>153</td><td><span class="pct-bar" style="width:13px"></span> 10.5%</td></tr>
+<tr><td>EPD Hub</td><td>14</td><td><span class="pct-bar" style="width:1px"></span> 1.0%</td></tr>
+<tr><td>One click LCA</td><td>13</td><td><span class="pct-bar" style="width:1px"></span> 0.9%</td></tr>
+<tr><td>The Norwegian EPD Foundation</td><td>7</td><td><span class="pct-bar" style="width:1px"></span> 0.5%</td></tr>
+<tr><td>IBU – Institut Bauen und Umwelt e,V</td><td>6</td><td><span class="pct-bar" style="width:0px"></span> 0.4%</td></tr>
+<tr><td>MRPI</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+<tr><td>Floor Resin</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+<tr><td>Statical</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+<tr><td>Hilti</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+<tr><td>Blockwork</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+<tr><td>ITB</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+<tr><td>Ceiling Tile</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+<tr><td>Steel Profile</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+<tr><td>DAPHABITAT</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+<tr><td>Building Research Institute (ITB)</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+<tr><td>IBU – Institut Bauen und Umwelt e,V, (https://ibu-epd,com)</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+<tr><td>IBU – Institut Bauen und Umwelt e,V</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+</table></details>
+</div>
+<div class="col-card good" id="E__EPD_URL">
+<div class="col-title">E__EPD_URL<span class="group-badge">Environmental/EPD</span></div>
+<div class="role">EPD document URL</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fg" style="width:189px"></span></span> <strong class="good">94.5%</strong></td>
+<td>Filled: <strong>1,469</strong> / 1,555</td>
+<td>Empty: <strong>86</strong></td>
+<td>Unique values: <strong>462</strong></td>
+</tr></table>
+<table><tr><th>Scheme</th><th>Count</th></tr>
+<tr><td>https://</td><td>1,409</td></tr>
+<tr><td>http:// (insecure)</td><td>0</td></tr>
+<tr><td style="color:#c00">Invalid format</td><td style="color:#c00">60</td></tr>
+</table>
+<details><summary>Domain breakdown</summary><table><tr><th>Domain</th><th>Count</th></tr>
+<tr><td>epditaly.it</td><td>853</td></tr>
+<tr><td>api.environdec.com</td><td>196</td></tr>
+<tr><td>environdec.com</td><td>92</td></tr>
+<tr><td>epd-online.com</td><td>62</td></tr>
+<tr><td>cdnmedia.mapei.com</td><td>21</td></tr>
+<tr><td>buzziunicem.it</td><td>19</td></tr>
+<tr><td>brandcommunity.rockwool.com</td><td>15</td></tr>
+<tr><td>gyproc.it</td><td>14</td></tr>
+<tr><td>media.siniat.it</td><td>14</td></tr>
+<tr><td>sostenibilita.knauf.it</td><td>11</td></tr>
+<tr><td>stiferite.com</td><td>11</td></tr>
+<tr><td>productdata.hilti.com</td><td>9</td></tr>
+<tr><td>holcim.it</td><td>9</td></tr>
+<tr><td>etex.azureedge.net</td><td>9</td></tr>
+<tr><td>pittini.com</td><td>7</td></tr>
+<tr><td>cementicostantinopoli.it</td><td>7</td></tr>
+<tr><td>p-cdn.rockfon.com</td><td>7</td></tr>
+<tr><td>constructalia.arcelormittal.com</td><td>6</td></tr>
+<tr><td>schueco.com</td><td>6</td></tr>
+<tr><td>gyproc.lt</td><td>5</td></tr>
+</table></details>
+</div>
+<div class="col-card warn" id="E__EPD_DecNumber">
+<div class="col-title">E__EPD_DecNumber<span class="group-badge">Environmental/EPD</span></div>
+<div class="role">EPD declaration number</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fw" style="width:145px"></span></span> <strong class="warn">72.3%</strong></td>
+<td>Filled: <strong>1,125</strong> / 1,555</td>
+<td>Empty: <strong>430</strong></td>
+<td>Unique values: <strong>295</strong></td>
+</tr></table>
+<p style="font-size:11px;color:#666">Free text — length: min 5, median 10, max 79 chars</p>
+<p style="font-size:11px;color:#888">Samples: HUB-1416; HUB-1417; HUB-1418; HUB-1419; HUB-1420</p>
+</div>
+<div class="col-card warn" id="E__EPD_RegNumber">
+<div class="col-title">E__EPD_RegNumber<span class="group-badge">Environmental/EPD</span></div>
+<div class="role">EPD registration / programme number</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fw" style="width:162px"></span></span> <strong class="warn">81.2%</strong></td>
+<td>Filled: <strong>1,263</strong> / 1,555</td>
+<td>Empty: <strong>292</strong></td>
+<td>Unique values: <strong>369</strong></td>
+</tr></table>
+<p style="font-size:11px;color:#666">Free text — length: min 2, median 12, max 19 chars</p>
+<p style="font-size:11px;color:#888">Samples: S-P-00935; S-P-00935; EPD-IES-0019548:001; S-P-00936; S-P-00936</p>
+</div>
+<div class="col-card good" id="E__EPD_Product_Name">
+<div class="col-title">E__EPD_Product Name<span class="group-badge">Environmental/EPD</span></div>
+<div class="role">Product name as stated in EPD</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fg" style="width:192px"></span></span> <strong class="good">95.9%</strong></td>
+<td>Filled: <strong>1,491</strong> / 1,555</td>
+<td>Empty: <strong>64</strong></td>
+<td>Unique values: <strong>1,450</strong></td>
+</tr></table>
+<p style="font-size:11px;color:#666">Free text — length: min 2, median 23, max 89 chars</p>
+<p style="font-size:11px;color:#888">Samples: DuraGyp 13 Activ&#x27;Air; DuraGyp 15 Activ&#x27;Air; DuraGyp ECO 13 Activ&#x27;Air; Fireline 13; Fireline 15</p>
+</div>
+<div class="col-card good" id="E__EPD_ExpDate">
+<div class="col-title">E__EPD_ExpDate<span class="group-badge">Environmental/EPD</span></div>
+<div class="role">EPD expiry / valid-until date</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fg" style="width:186px"></span></span> <strong class="good">93.1%</strong></td>
+<td>Filled: <strong>1,447</strong> / 1,555</td>
+<td>Empty: <strong>108</strong></td>
+<td>Unique values: <strong>190</strong></td>
+</tr></table>
+<p style="font-size:11px;color:#666">Free text — length: min 5, median 19, max 20 chars</p>
+<p style="font-size:11px;color:#888">Samples: 2027-02-26 00:00:00; 2027-02-26 00:00:00; 2030-02-12 00:00:00; 2027-02-26 00:00:00; 2027-02-27 00:00:00</p>
+</div>
+<div class="col-card bad" id="E__ServiceLife">
+<div class="col-title">E__ServiceLife<span class="group-badge">Environmental/EPD</span></div>
+<div class="role">Declared service life</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fb" style="width:59px"></span></span> <strong class="bad">29.3%</strong></td>
+<td>Filled: <strong>455</strong> / 1,555</td>
+<td>Empty: <strong>1,100</strong></td>
+<td>Unique values: <strong>19</strong></td>
+</tr></table>
+<details open><summary>Value distribution</summary>
+<table><tr><th>Value</th><th>Count</th><th style="width:180px">%</th></tr>
+<tr><td>50 Years</td><td>165</td><td><span class="pct-bar" style="width:44px"></span> 36.3%</td></tr>
+<tr><td>60 Years</td><td>65</td><td><span class="pct-bar" style="width:17px"></span> 14.3%</td></tr>
+<tr><td>50 years</td><td>55</td><td><span class="pct-bar" style="width:15px"></span> 12.1%</td></tr>
+<tr><td>&gt;80 Years</td><td>40</td><td><span class="pct-bar" style="width:11px"></span> 8.8%</td></tr>
+<tr><td>&gt; 50 years</td><td>38</td><td><span class="pct-bar" style="width:10px"></span> 8.4%</td></tr>
+<tr><td>&gt;60 Years</td><td>23</td><td><span class="pct-bar" style="width:6px"></span> 5.1%</td></tr>
+<tr><td>&gt;50 Years</td><td>17</td><td><span class="pct-bar" style="width:4px"></span> 3.7%</td></tr>
+<tr><td>60 years</td><td>14</td><td><span class="pct-bar" style="width:4px"></span> 3.1%</td></tr>
+<tr><td>35 years</td><td>13</td><td><span class="pct-bar" style="width:3px"></span> 2.9%</td></tr>
+<tr><td>150 Years</td><td>6</td><td><span class="pct-bar" style="width:2px"></span> 1.3%</td></tr>
+<tr><td>10-30 Years</td><td>5</td><td><span class="pct-bar" style="width:1px"></span> 1.1%</td></tr>
+<tr><td>Based on EN 15804 should be = 50 years</td><td>4</td><td><span class="pct-bar" style="width:1px"></span> 0.9%</td></tr>
+<tr><td>25 Years</td><td>3</td><td><span class="pct-bar" style="width:1px"></span> 0.7%</td></tr>
+<tr><td>10-60 Years</td><td>2</td><td><span class="pct-bar" style="width:0px"></span> 0.4%</td></tr>
+<tr><td>75 years</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.2%</td></tr>
+<tr><td>50 year</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.2%</td></tr>
+<tr><td>Hilti</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.2%</td></tr>
+<tr><td>100 years</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.2%</td></tr>
+<tr><td>Floor Resin</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.2%</td></tr>
+</table></details>
+</div>
+<div class="col-card bad" id="E__EPD_Density">
+<div class="col-title">E__EPD_Density<span class="group-badge">Environmental/EPD</span></div>
+<div class="role">Density as stated in EPD [kg/m³]</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fb" style="width:29px"></span></span> <strong class="bad">14.3%</strong></td>
+<td>Filled: <strong>222</strong> / 1,555</td>
+<td>Empty: <strong>1,333</strong></td>
+<td>Unique values: <strong>79</strong></td>
+</tr></table>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>2.7</td><td>16.02</td><td>61.25</td><td>589.5</td><td>2518</td><td>2888</td><td>7850</td><td>7850</td><td>3187</td></tr></table>
+<p style="font-size:11px;color:#666;margin-top:4px">51 IQR outliers</p>
+</div>
+<div class="col-card bad" id="E__L_WmK">
+<div class="col-title">E__L_WmK<span class="group-badge">Environmental/EPD</span></div>
+<div class="role">λ as stated in EPD [W/mK]</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fb" style="width:62px"></span></span> <strong class="bad">31.2%</strong></td>
+<td>Filled: <strong>485</strong> / 1,555</td>
+<td>Empty: <strong>1,070</strong></td>
+<td>Unique values: <strong>56</strong></td>
+</tr></table>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>0.019</td><td>0.022</td><td>0.032</td><td>0.036</td><td>0.1878</td><td>0.12</td><td>0.25</td><td>48</td><td>2.186</td></tr></table>
+<p style="font-size:11px;color:#666;margin-top:4px">10 IQR outliers &nbsp;|&nbsp; <span style="color:#c00">1 outside plausible range (0.01, 5.0)</span></p>
+</div>
+<div class="col-card bad" id="E__EPD_Thick_mm">
+<div class="col-title">E__EPD_Thick_mm<span class="group-badge">Environmental/EPD</span></div>
+<div class="role">Thickness as stated in EPD [mm]</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fb" style="width:79px"></span></span> <strong class="bad">39.7%</strong></td>
+<td>Filled: <strong>618</strong> / 1,555</td>
+<td>Empty: <strong>937</strong></td>
+<td>Unique values: <strong>111</strong></td>
+</tr></table>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>0.6</td><td>3.275</td><td>12.5</td><td>39</td><td>65.76</td><td>100</td><td>200</td><td>480</td><td>76.11</td></tr></table>
+<p style="font-size:11px;color:#666;margin-top:4px">28 IQR outliers</p>
+</div>
+<div class="col-card bad" id="E__Rvalue">
+<div class="col-title">E__Rvalue<span class="group-badge">Environmental/EPD</span></div>
+<div class="role">Thermal resistance R [m²K/W]</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fb" style="width:21px"></span></span> <strong class="bad">10.5%</strong></td>
+<td>Filled: <strong>164</strong> / 1,555</td>
+<td>Empty: <strong>1,391</strong></td>
+<td>Unique values: <strong>94</strong></td>
+</tr></table>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>0.15</td><td>0.23</td><td>1.25</td><td>2.703</td><td>4.935</td><td>3.125</td><td>5.34</td><td>380</td><td>30.56</td></tr></table>
+<p style="font-size:11px;color:#666;margin-top:4px">4 IQR outliers</p>
+</div>
+<div class="col-card bad" id="E__EPD_MultFactor">
+<div class="col-title">E__EPD_MultFactor<span class="group-badge">Environmental/EPD</span></div>
+<div class="role">Multiplication factor to reach FU</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fb" style="width:14px"></span></span> <strong class="bad">6.8%</strong></td>
+<td>Filled: <strong>105</strong> / 1,555</td>
+<td>Empty: <strong>1,450</strong></td>
+<td>Unique values: <strong>71</strong></td>
+</tr></table>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>0.215</td><td>0.2859</td><td>0.785</td><td>1</td><td>1.314</td><td>1.514</td><td>3.264</td><td>5.63</td><td>0.9538</td></tr></table>
+<p style="font-size:11px;color:#666;margin-top:4px">10 IQR outliers</p>
+</div>
+<div class="col-card bad" id="E__EPDRef">
+<div class="col-title">E__EPDRef<span class="group-badge">Environmental/EPD</span></div>
+<div class="role">Internal EPD reference</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fb" style="width:14px"></span></span> <strong class="bad">6.9%</strong></td>
+<td>Filled: <strong>108</strong> / 1,555</td>
+<td>Empty: <strong>1,447</strong></td>
+<td>Unique values: <strong>5</strong></td>
+</tr></table>
+<details open><summary>Value distribution</summary>
+<table><tr><th>Value</th><th>Count</th><th style="width:180px">%</th></tr>
+<tr><td style="color:#c00">N</td><td>89</td><td><span class="pct-bar" style="width:99px"></span> 82.4%</td></tr>
+<tr><td style="color:#c00">Y</td><td>13</td><td><span class="pct-bar" style="width:14px"></span> 12.0%</td></tr>
+<tr><td>2.85</td><td>4</td><td><span class="pct-bar" style="width:4px"></span> 3.7%</td></tr>
+<tr><td>Hilti</td><td>1</td><td><span class="pct-bar" style="width:1px"></span> 0.9%</td></tr>
+<tr><td>Floor Resin</td><td>1</td><td><span class="pct-bar" style="width:1px"></span> 0.9%</td></tr>
+</table></details>
+<p style="color:#c00;font-size:11px">⚠ Suspicious values: N, Y</p>
+</div>
+<h2>GWP</h2>
+<div class="col-card good" id="G__GWP_Metric">
+<div class="col-title">G__GWP_Metric<span class="group-badge">GWP</span></div>
+<div class="role">GWP metric type (e.g. GWP-total)</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fg" style="width:186px"></span></span> <strong class="good">93.2%</strong></td>
+<td>Filled: <strong>1,449</strong> / 1,555</td>
+<td>Empty: <strong>106</strong></td>
+<td>Unique values: <strong>7</strong></td>
+</tr></table>
+<details open><summary>Value distribution</summary>
+<table><tr><th>Value</th><th>Count</th><th style="width:180px">%</th></tr>
+<tr><td>GWP-T</td><td>1,443</td><td><span class="pct-bar" style="width:120px"></span> 99.6%</td></tr>
+<tr><td>Steel Profile</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+<tr><td>Ceiling Tile</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+<tr><td>Blockwork</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+<tr><td>Hilti</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+<tr><td>Floor Resin</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+<tr><td>GWP-T (kgCO2e /FU)</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+</table></details>
+</div>
+<div class="col-card bad" id="G__GWP_A1A3_kg">
+<div class="col-title">G__GWP_A1A3_kg<span class="group-badge">GWP</span></div>
+<div class="role">GWP A1-A3 per kg [kg CO₂eq/kg]</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fb" style="width:17px"></span></span> <strong class="bad">8.4%</strong></td>
+<td>Filled: <strong>131</strong> / 1,555</td>
+<td>Empty: <strong>1,424</strong></td>
+<td>Unique values: <strong>91</strong></td>
+</tr></table>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>0.172</td><td>0.18</td><td>0.462</td><td>0.6969</td><td>1.619</td><td>2.83</td><td>5.437</td><td>10.3</td><td>1.84</td></tr></table>
+<p style="font-size:11px;color:#666;margin-top:4px">6 IQR outliers</p>
+</div>
+<div class="col-card bad" id="G__GWP_A1A3_m2">
+<div class="col-title">G__GWP_A1A3_m2<span class="group-badge">GWP</span></div>
+<div class="role">GWP A1-A3 per m² [kg CO₂eq/m²]</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fb" style="width:51px"></span></span> <strong class="bad">25.3%</strong></td>
+<td>Filled: <strong>394</strong> / 1,555</td>
+<td>Empty: <strong>1,161</strong></td>
+<td>Unique values: <strong>337</strong></td>
+</tr></table>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>-1.81</td><td>0.2383</td><td>2.617</td><td>6.628</td><td>18.78</td><td>16.95</td><td>95.11</td><td>176.3</td><td>33.9</td></tr></table>
+<p style="font-size:11px;color:#666;margin-top:4px">50 IQR outliers &nbsp;|&nbsp; 19 negative values</p>
+</div>
+<div class="col-card warn" id="G__GWP_A1A3_m3">
+<div class="col-title">G__GWP_A1A3_m3<span class="group-badge">GWP</span></div>
+<div class="role">GWP A1-A3 per m³ [kg CO₂eq/m³]</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fw" style="width:146px"></span></span> <strong class="warn">73.1%</strong></td>
+<td>Filled: <strong>1,136</strong> / 1,555</td>
+<td>Empty: <strong>419</strong></td>
+<td>Unique values: <strong>929</strong></td>
+</tr></table>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>-52.72</td><td>10</td><td>101.6</td><td>209.8</td><td>300.5</td><td>309.5</td><td>848.5</td><td>2.64e+04</td><td>937.7</td></tr></table>
+<p style="font-size:11px;color:#666;margin-top:4px">61 IQR outliers &nbsp;|&nbsp; 18 negative values</p>
+</div>
+<div class="col-card bad" id="G__GWP_A1A3_m2R1">
+<div class="col-title">G__GWP_A1A3_m2R1<span class="group-badge">GWP</span></div>
+<div class="role">GWP A1-A3 per m² at R=1 [kg CO₂eq/m²·(m²K/W)]</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fb" style="width:43px"></span></span> <strong class="bad">21.7%</strong></td>
+<td>Filled: <strong>338</strong> / 1,555</td>
+<td>Empty: <strong>1,217</strong></td>
+<td>Unique values: <strong>275</strong></td>
+</tr></table>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>-3.691</td><td>-1.085</td><td>1.442</td><td>2.889</td><td>2.984</td><td>3.903</td><td>5.787</td><td>54.4</td><td>3.819</td></tr></table>
+<p style="font-size:11px;color:#666;margin-top:4px">18 IQR outliers &nbsp;|&nbsp; 18 negative values</p>
+</div>
+<div class="col-card good" id="G__GWP_FU">
+<div class="col-title">G__GWP_FU<span class="group-badge">GWP</span></div>
+<div class="role">Functional unit description</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fg" style="width:185px"></span></span> <strong class="good">92.4%</strong></td>
+<td>Filled: <strong>1,437</strong> / 1,555</td>
+<td>Empty: <strong>118</strong></td>
+<td>Unique values: <strong>10</strong></td>
+</tr></table>
+<details open><summary>Value distribution</summary>
+<table><tr><th>Value</th><th>Count</th><th style="width:180px">%</th></tr>
+<tr><td>m3</td><td>769</td><td><span class="pct-bar" style="width:64px"></span> 53.5%</td></tr>
+<tr><td>m2</td><td>368</td><td><span class="pct-bar" style="width:31px"></span> 25.6%</td></tr>
+<tr><td>ton</td><td>115</td><td><span class="pct-bar" style="width:10px"></span> 8.0%</td></tr>
+<tr><td>kg</td><td>100</td><td><span class="pct-bar" style="width:8px"></span> 7.0%</td></tr>
+<tr><td>m2_R1</td><td>48</td><td><span class="pct-bar" style="width:4px"></span> 3.3%</td></tr>
+<tr><td style="color:#c00">m</td><td>21</td><td><span class="pct-bar" style="width:2px"></span> 1.5%</td></tr>
+<tr><td>unit</td><td>7</td><td><span class="pct-bar" style="width:1px"></span> 0.5%</td></tr>
+<tr><td>1.5 pcs/m²</td><td>7</td><td><span class="pct-bar" style="width:1px"></span> 0.5%</td></tr>
+<tr><td>Hilti</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+<tr><td>Floor Resin</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.1%</td></tr>
+</table></details>
+<p style="color:#c00;font-size:11px">⚠ Suspicious values: m</p>
+</div>
+<div class="col-card good" id="G__GWP_A1A3">
+<div class="col-title">G__GWP_A1A3<span class="group-badge">GWP</span></div>
+<div class="role">GWP A1-A3 per declared FU [kg CO₂eq/FU]  ← primary</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fg" style="width:185px"></span></span> <strong class="good">92.7%</strong></td>
+<td>Filled: <strong>1,441</strong> / 1,555</td>
+<td>Empty: <strong>114</strong></td>
+<td>Unique values: <strong>1,215</strong></td>
+</tr></table>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>-1.81</td><td>0.659</td><td>6.54</td><td>161</td><td>185.4</td><td>289.2</td><td>573.5</td><td>2510</td><td>201.7</td></tr></table>
+<p style="font-size:11px;color:#666;margin-top:4px">41 IQR outliers &nbsp;|&nbsp; 19 negative values</p>
+</div>
+<div class="col-card good" id="G__GWP_A1">
+<div class="col-title">G__GWP_A1<span class="group-badge">GWP</span></div>
+<div class="role">GWP module A1 (raw material extraction)</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fg" style="width:191px"></span></span> <strong class="good">95.6%</strong></td>
+<td>Filled: <strong>1,486</strong> / 1,555</td>
+<td>Empty: <strong>69</strong></td>
+<td>Unique values: <strong>228</strong></td>
+</tr></table>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>-1.07</td><td>0.167</td><td>3.47</td><td>97.85</td><td>116.9</td><td>142.5</td><td>378</td><td>938</td><td>149.8</td></tr></table>
+<p style="font-size:11px;color:#666;margin-top:4px">18 IQR outliers &nbsp;|&nbsp; 11 negative values</p>
+</div>
+<div class="col-card good" id="G__GWP_A2">
+<div class="col-title">G__GWP_A2<span class="group-badge">GWP</span></div>
+<div class="role">GWP module A2 (transport to factory)</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fg" style="width:191px"></span></span> <strong class="good">95.6%</strong></td>
+<td>Filled: <strong>1,486</strong> / 1,555</td>
+<td>Empty: <strong>69</strong></td>
+<td>Unique values: <strong>241</strong></td>
+</tr></table>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>0.00227</td><td>0.0292</td><td>0.2015</td><td>0.798</td><td>5.068</td><td>4.91</td><td>22.2</td><td>154</td><td>11.62</td></tr></table>
+<p style="font-size:11px;color:#666;margin-top:4px">46 IQR outliers</p>
+</div>
+<div class="col-card good" id="G__GWP_A3">
+<div class="col-title">G__GWP_A3<span class="group-badge">GWP</span></div>
+<div class="role">GWP module A3 (manufacturing)</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fg" style="width:191px"></span></span> <strong class="good">95.6%</strong></td>
+<td>Filled: <strong>1,486</strong> / 1,555</td>
+<td>Empty: <strong>69</strong></td>
+<td>Unique values: <strong>187</strong></td>
+</tr></table>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>-7.03</td><td>-0.0206</td><td>0.28</td><td>2.48</td><td>22.32</td><td>8.1</td><td>116.2</td><td>1709</td><td>106.3</td></tr></table>
+<p style="font-size:11px;color:#666;margin-top:4px">40 IQR outliers &nbsp;|&nbsp; 29 negative values &nbsp;|&nbsp; 6 zeros</p>
+</div>
+<div class="col-card good" id="G__GWP_A4">
+<div class="col-title">G__GWP_A4<span class="group-badge">GWP</span></div>
+<div class="role">GWP module A4 (transport to site)</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fg" style="width:192px"></span></span> <strong class="good">96.1%</strong></td>
+<td>Filled: <strong>1,494</strong> / 1,555</td>
+<td>Empty: <strong>61</strong></td>
+<td>Unique values: <strong>324</strong></td>
+</tr></table>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>0</td><td>0.0506</td><td>0.7125</td><td>4.74</td><td>5.8</td><td>9.58</td><td>15.17</td><td>79.7</td><td>6.361</td></tr></table>
+<p style="font-size:11px;color:#666;margin-top:4px">12 IQR outliers &nbsp;|&nbsp; 2 zeros</p>
+</div>
+<div class="col-card good" id="G__GWP_A5">
+<div class="col-title">G__GWP_A5<span class="group-badge">GWP</span></div>
+<div class="role">GWP module A5 (installation)</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fg" style="width:192px"></span></span> <strong class="good">96.1%</strong></td>
+<td>Filled: <strong>1,495</strong> / 1,555</td>
+<td>Empty: <strong>60</strong></td>
+<td>Unique values: <strong>228</strong></td>
+</tr></table>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>0</td><td>0.002837</td><td>0.127</td><td>0.275</td><td>2.214</td><td>0.9715</td><td>6.428</td><td>248</td><td>13.13</td></tr></table>
+<p style="font-size:11px;color:#666;margin-top:4px">78 IQR outliers &nbsp;|&nbsp; 9 zeros</p>
+</div>
+<div class="col-card good" id="G__GWP_B1">
+<div class="col-title">G__GWP_B1<span class="group-badge">GWP</span></div>
+<div class="role">GWP module B1 (in-use emissions)</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fg" style="width:191px"></span></span> <strong class="good">95.6%</strong></td>
+<td>Filled: <strong>1,486</strong> / 1,555</td>
+<td>Empty: <strong>69</strong></td>
+<td>Unique values: <strong>7</strong></td>
+</tr></table>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>-222</td><td>0</td><td>0</td><td>0</td><td>-1.212</td><td>0</td><td>0</td><td>0</td><td>14.06</td></tr></table>
+<p style="font-size:11px;color:#666;margin-top:4px">3 IQR outliers &nbsp;|&nbsp; 3 negative values &nbsp;|&nbsp; 289 zeros</p>
+</div>
+<div class="col-card good" id="G__GWP_B2">
+<div class="col-title">G__GWP_B2<span class="group-badge">GWP</span></div>
+<div class="role">GWP module B2 (maintenance)</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fg" style="width:191px"></span></span> <strong class="good">95.6%</strong></td>
+<td>Filled: <strong>1,486</strong> / 1,555</td>
+<td>Empty: <strong>69</strong></td>
+<td>Unique values: <strong>17</strong></td>
+</tr></table>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0.01413</td><td>0</td><td>0.0451</td><td>1.42</td><td>0.101</td></tr></table>
+<p style="font-size:11px;color:#666;margin-top:4px">53 IQR outliers &nbsp;|&nbsp; 238 zeros</p>
+</div>
+<div class="col-card good" id="G__GWP_B3">
+<div class="col-title">G__GWP_B3<span class="group-badge">GWP</span></div>
+<div class="role">GWP module B3 (repair)</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fg" style="width:191px"></span></span> <strong class="good">95.6%</strong></td>
+<td>Filled: <strong>1,486</strong> / 1,555</td>
+<td>Empty: <strong>69</strong></td>
+<td>Unique values: <strong>6</strong></td>
+</tr></table>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr></table>
+<p style="font-size:11px;color:#666;margin-top:4px">289 zeros</p>
+</div>
+<div class="col-card good" id="G__GWP_B4">
+<div class="col-title">G__GWP_B4<span class="group-badge">GWP</span></div>
+<div class="role">GWP module B4 (replacement)</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fg" style="width:191px"></span></span> <strong class="good">95.6%</strong></td>
+<td>Filled: <strong>1,486</strong> / 1,555</td>
+<td>Empty: <strong>69</strong></td>
+<td>Unique values: <strong>6</strong></td>
+</tr></table>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr></table>
+<p style="font-size:11px;color:#666;margin-top:4px">289 zeros</p>
+</div>
+<div class="col-card good" id="G__GWP_B5">
+<div class="col-title">G__GWP_B5<span class="group-badge">GWP</span></div>
+<div class="role">GWP module B5 (refurbishment)</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fg" style="width:191px"></span></span> <strong class="good">95.6%</strong></td>
+<td>Filled: <strong>1,486</strong> / 1,555</td>
+<td>Empty: <strong>69</strong></td>
+<td>Unique values: <strong>6</strong></td>
+</tr></table>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr></table>
+<p style="font-size:11px;color:#666;margin-top:4px">289 zeros</p>
+</div>
+<div class="col-card good" id="G__GWP_B6">
+<div class="col-title">G__GWP_B6<span class="group-badge">GWP</span></div>
+<div class="role">GWP module B6 (operational energy)</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fg" style="width:191px"></span></span> <strong class="good">95.6%</strong></td>
+<td>Filled: <strong>1,486</strong> / 1,555</td>
+<td>Empty: <strong>69</strong></td>
+<td>Unique values: <strong>5</strong></td>
+</tr></table>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr></table>
+<p style="font-size:11px;color:#666;margin-top:4px">295 zeros</p>
+</div>
+<div class="col-card good" id="G__GWP_B7">
+<div class="col-title">G__GWP_B7<span class="group-badge">GWP</span></div>
+<div class="role">GWP module B7 (operational water)</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fg" style="width:191px"></span></span> <strong class="good">95.3%</strong></td>
+<td>Filled: <strong>1,482</strong> / 1,555</td>
+<td>Empty: <strong>73</strong></td>
+<td>Unique values: <strong>5</strong></td>
+</tr></table>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr></table>
+<p style="font-size:11px;color:#666;margin-top:4px">288 zeros</p>
+</div>
+<div class="col-card good" id="G__GWP_C1">
+<div class="col-title">G__GWP_C1<span class="group-badge">GWP</span></div>
+<div class="role">GWP module C1 (deconstruction)</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fg" style="width:192px"></span></span> <strong class="good">96.1%</strong></td>
+<td>Filled: <strong>1,495</strong> / 1,555</td>
+<td>Empty: <strong>60</strong></td>
+<td>Unique values: <strong>153</strong></td>
+</tr></table>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>0</td><td>0</td><td>0</td><td>9.64</td><td>5.532</td><td>9.64</td><td>9.64</td><td>52.9</td><td>6.659</td></tr></table>
+<p style="font-size:11px;color:#666;margin-top:4px">13 IQR outliers &nbsp;|&nbsp; 315 zeros</p>
+</div>
+<div class="col-card good" id="G__GWP_C2">
+<div class="col-title">G__GWP_C2<span class="group-badge">GWP</span></div>
+<div class="role">GWP module C2 (transport to waste)</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fg" style="width:192px"></span></span> <strong class="good">96.2%</strong></td>
+<td>Filled: <strong>1,496</strong> / 1,555</td>
+<td>Empty: <strong>59</strong></td>
+<td>Unique values: <strong>390</strong></td>
+</tr></table>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>0</td><td>0.00442</td><td>0.04195</td><td>7.04</td><td>4.916</td><td>7.21</td><td>9.479</td><td>42.2</td><td>6.869</td></tr></table>
+<p style="font-size:11px;color:#666;margin-top:4px">43 IQR outliers &nbsp;|&nbsp; 1 zeros</p>
+</div>
+<div class="col-card good" id="G__GWP_C3">
+<div class="col-title">G__GWP_C3<span class="group-badge">GWP</span></div>
+<div class="role">GWP module C3 (waste processing)</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fg" style="width:192px"></span></span> <strong class="good">96.1%</strong></td>
+<td>Filled: <strong>1,495</strong> / 1,555</td>
+<td>Empty: <strong>60</strong></td>
+<td>Unique values: <strong>207</strong></td>
+</tr></table>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>0</td><td>0</td><td>0</td><td>0.76</td><td>1.011</td><td>0.76</td><td>3.24</td><td>55.4</td><td>3.548</td></tr></table>
+<p style="font-size:11px;color:#666;margin-top:4px">78 IQR outliers &nbsp;|&nbsp; 311 zeros</p>
+</div>
+<div class="col-card good" id="G__GWP_C4">
+<div class="col-title">G__GWP_C4<span class="group-badge">GWP</span></div>
+<div class="role">GWP module C4 (disposal)</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fg" style="width:192px"></span></span> <strong class="good">95.9%</strong></td>
+<td>Filled: <strong>1,492</strong> / 1,555</td>
+<td>Empty: <strong>63</strong></td>
+<td>Unique values: <strong>350</strong></td>
+</tr></table>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>-8.17</td><td>0.000299</td><td>0.01</td><td>0.01</td><td>0.8177</td><td>0.111</td><td>4.26</td><td>89.9</td><td>5.968</td></tr></table>
+<p style="font-size:11px;color:#666;margin-top:4px">243 IQR outliers &nbsp;|&nbsp; 12 negative values &nbsp;|&nbsp; 31 zeros</p>
+</div>
+<div class="col-card good" id="G__GWP_D">
+<div class="col-title">G__GWP_D<span class="group-badge">GWP</span></div>
+<div class="role">GWP module D (beyond system boundary — reuse/recovery)</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fg" style="width:191px"></span></span> <strong class="good">95.6%</strong></td>
+<td>Filled: <strong>1,486</strong> / 1,555</td>
+<td>Empty: <strong>69</strong></td>
+<td>Unique values: <strong>324</strong></td>
+</tr></table>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>-200</td><td>-13.8</td><td>-3.79</td><td>-3.66</td><td>11.17</td><td>-0.035</td><td>0.201</td><td>1.59e+04</td><td>470.5</td></tr></table>
+<p style="font-size:11px;color:#666;margin-top:4px">94 IQR outliers &nbsp;|&nbsp; 937 negative values &nbsp;|&nbsp; 113 zeros</p>
+</div>
+<h2>Recycling</h2>
+<div class="col-card warn" id="R__Rec_Reco_ByProd_URL">
+<div class="col-title">R__Rec_Reco_ByProd_URL<span class="group-badge">Recycling</span></div>
+<div class="role">Recycling / recovery documentation URL</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fw" style="width:152px"></span></span> <strong class="warn">76.1%</strong></td>
+<td>Filled: <strong>1,183</strong> / 1,555</td>
+<td>Empty: <strong>372</strong></td>
+<td>Unique values: <strong>274</strong></td>
+</tr></table>
+<table><tr><th>Scheme</th><th>Count</th></tr>
+<tr><td>https://</td><td>1,177</td></tr>
+<tr><td>http:// (insecure)</td><td>0</td></tr>
+<tr><td style="color:#c00">Invalid format</td><td style="color:#c00">6</td></tr>
+</table>
+<details><summary>Domain breakdown</summary><table><tr><th>Domain</th><th>Count</th></tr>
+<tr><td>epditaly.it</td><td>719</td></tr>
+<tr><td>api.environdec.com</td><td>108</td></tr>
+<tr><td>etex.azureedge.net</td><td>54</td></tr>
+<tr><td>environdec.com</td><td>49</td></tr>
+<tr><td>storefrontapi.commerce.xella.com</td><td>39</td></tr>
+<tr><td>productdata.hilti.com</td><td>38</td></tr>
+<tr><td>gyproc.it</td><td>33</td></tr>
+<tr><td>fassabortolo.it</td><td>24</td></tr>
+<tr><td>brandcommunity.rockwool.com</td><td>15</td></tr>
+<tr><td>media.siniat.it</td><td>14</td></tr>
+<tr><td>sostenibilita.knauf.it</td><td>12</td></tr>
+<tr><td>pittini.it</td><td>10</td></tr>
+<tr><td>holcim.it</td><td>9</td></tr>
+<tr><td>cementicostantinopoli.it</td><td>7</td></tr>
+<tr><td>panaria.it</td><td>6</td></tr>
+<tr><td>constructalia.arcelormittal.com</td><td>6</td></tr>
+<tr><td>alfaacciai.it</td><td>4</td></tr>
+<tr><td>feralpigroup.com</td><td>4</td></tr>
+<tr><td>giussanilaterizi.it</td><td>3</td></tr>
+<tr><td>beton-eisack.it</td><td>3</td></tr>
+</table></details>
+</div>
+<div class="col-card bad" id="R__Rec_Pre_%">
+<div class="col-title">R__Rec_Pre_%<span class="group-badge">Recycling</span></div>
+<div class="role">Pre-consumer recycled content [%]</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fb" style="width:119px"></span></span> <strong class="bad">59.7%</strong></td>
+<td>Filled: <strong>929</strong> / 1,555</td>
+<td>Empty: <strong>626</strong></td>
+<td>Unique values: <strong>146</strong></td>
+</tr></table>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>0</td><td>0</td><td>0</td><td>0.07</td><td>3.988</td><td>3.5</td><td>30</td><td>65.3</td><td>9.707</td></tr></table>
+<p style="font-size:11px;color:#666;margin-top:4px">120 IQR outliers &nbsp;|&nbsp; 257 zeros</p>
+</div>
+<div class="col-card warn" id="R__Rec_Post_%">
+<div class="col-title">R__Rec_Post_%<span class="group-badge">Recycling</span></div>
+<div class="role">Post-consumer recycled content [%]</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fw" style="width:121px"></span></span> <strong class="warn">60.6%</strong></td>
+<td>Filled: <strong>943</strong> / 1,555</td>
+<td>Empty: <strong>612</strong></td>
+<td>Unique values: <strong>265</strong></td>
+</tr></table>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>0</td><td>0</td><td>1.455</td><td>3.78</td><td>6.863</td><td>6.1</td><td>46.1</td><td>84</td><td>12.1</td></tr></table>
+<p style="font-size:11px;color:#666;margin-top:4px">84 IQR outliers &nbsp;|&nbsp; 170 zeros</p>
+</div>
+<div class="col-card warn" id="R__Rec_Tot_%">
+<div class="col-title">R__Rec_Tot_%<span class="group-badge">Recycling</span></div>
+<div class="role">Total recycled content [%] (pre+post)</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fw" style="width:131px"></span></span> <strong class="warn">65.4%</strong></td>
+<td>Filled: <strong>1,017</strong> / 1,555</td>
+<td>Empty: <strong>538</strong></td>
+<td>Unique values: <strong>374</strong></td>
+</tr></table>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>0</td><td>0.04</td><td>2.46</td><td>6.24</td><td>14.03</td><td>13.5</td><td>66</td><td>100</td><td>20.78</td></tr></table>
+<p style="font-size:11px;color:#666;margin-top:4px">141 IQR outliers &nbsp;|&nbsp; 26 zeros</p>
+</div>
+<div class="col-card bad" id="R__Reco_Tot_%">
+<div class="col-title">R__Reco_Tot_%<span class="group-badge">Recycling</span></div>
+<div class="role">Total recoverable content [%]</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fb" style="width:116px"></span></span> <strong class="bad">57.9%</strong></td>
+<td>Filled: <strong>901</strong> / 1,555</td>
+<td>Empty: <strong>654</strong></td>
+<td>Unique values: <strong>164</strong></td>
+</tr></table>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>0</td><td>0</td><td>0.02</td><td>0.07</td><td>1.928</td><td>0.5702</td><td>17</td><td>30.35</td><td>4.646</td></tr></table>
+<p style="font-size:11px;color:#666;margin-top:4px">179 IQR outliers &nbsp;|&nbsp; 189 zeros</p>
+</div>
+<div class="col-card warn" id="R__Rec_Reco_ByProd_%">
+<div class="col-title">R__Rec_Reco_ByProd_%<span class="group-badge">Recycling</span></div>
+<div class="role">Combined recycled+recoverable+by-product [%]</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fw" style="width:156px"></span></span> <strong class="warn">77.9%</strong></td>
+<td>Filled: <strong>1,212</strong> / 1,555</td>
+<td>Empty: <strong>343</strong></td>
+<td>Unique values: <strong>515</strong></td>
+</tr></table>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>0</td><td>2</td><td>6.99</td><td>8.3</td><td>21.2</td><td>28.82</td><td>80</td><td>100</td><td>24.63</td></tr></table>
+<p style="font-size:11px;color:#666;margin-top:4px">134 IQR outliers &nbsp;|&nbsp; 47 zeros</p>
+</div>
+<h2>Unknown</h2>
+<div class="col-card bad" id="R__ByProd_Tot_%">
+<div class="col-title">R__ByProd_Tot_%<span class="group-badge">Unknown</span></div>
+<div class="role">R__ByProd_Tot_%</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fb" style="width:110px"></span></span> <strong class="bad">55.0%</strong></td>
+<td>Filled: <strong>855</strong> / 1,555</td>
+<td>Empty: <strong>700</strong></td>
+<td>Unique values: <strong>313</strong></td>
+</tr></table>
+<table><tr><th>Min</th><th>P5</th><th>P25</th><th>Median</th><th>Mean</th><th>P75</th><th>P95</th><th>Max</th><th>Std</th></tr><tr><td>0</td><td>0.278</td><td>0.7</td><td>1.2</td><td>5.458</td><td>5.785</td><td>27</td><td>83.68</td><td>9.571</td></tr></table>
+<p style="font-size:11px;color:#666;margin-top:4px">83 IQR outliers &nbsp;|&nbsp; 31 zeros</p>
+</div>
+<h2>VOC / CAM / DOP</h2>
+<div class="col-card bad" id="V__VOC_Cert">
+<div class="col-title">V__VOC_Cert<span class="group-badge">VOC / CAM / DOP</span></div>
+<div class="role">VOC certification label / scheme name</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fb" style="width:41px"></span></span> <strong class="bad">20.6%</strong></td>
+<td>Filled: <strong>320</strong> / 1,555</td>
+<td>Empty: <strong>1,235</strong></td>
+<td>Unique values: <strong>17</strong></td>
+</tr></table>
+<details open><summary>Value distribution</summary>
+<table><tr><th>Value</th><th>Count</th><th style="width:180px">%</th></tr>
+<tr><td>Indoor Air Comfort Gold</td><td>143</td><td><span class="pct-bar" style="width:54px"></span> 44.7%</td></tr>
+<tr><td>ICMQ</td><td>79</td><td><span class="pct-bar" style="width:30px"></span> 24.7%</td></tr>
+<tr><td>Eurofins</td><td>57</td><td><span class="pct-bar" style="width:21px"></span> 17.8%</td></tr>
+<tr><td>BCCA</td><td>14</td><td><span class="pct-bar" style="width:5px"></span> 4.4%</td></tr>
+<tr><td>EC1Plus</td><td>10</td><td><span class="pct-bar" style="width:4px"></span> 3.1%</td></tr>
+<tr><td>ECO</td><td>3</td><td><span class="pct-bar" style="width:1px"></span> 0.9%</td></tr>
+<tr><td>autocertificazione</td><td>2</td><td><span class="pct-bar" style="width:1px"></span> 0.6%</td></tr>
+<tr><td>https://www.buzziunicem.it/documents/90625/2978004/Certificato+24677EPD_AUG.pdf/9d014a70-f4d8-7b51-5461-c3192a4441fc</td><td>2</td><td><span class="pct-bar" style="width:1px"></span> 0.6%</td></tr>
+<tr><td>SCS Global Services</td><td>2</td><td><span class="pct-bar" style="width:1px"></span> 0.6%</td></tr>
+<tr><td>naturalmente non emissivo</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.3%</td></tr>
+<tr><td>attestazione</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.3%</td></tr>
+<tr><td>Hilti</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.3%</td></tr>
+<tr><td>?????</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.3%</td></tr>
+<tr><td>Floor Resin</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.3%</td></tr>
+<tr><td>EUCEB</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.3%</td></tr>
+<tr><td>Eurofin</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.3%</td></tr>
+<tr><td>https://www.rockfon.com/syssiteassets/documents-it/conformit%C3%A0-e-sostenibilit%C3%A0/sostenibilita/rockwool-iso-14001-2023-cigacice-factory.pdf?f=20241210093519</td><td>1</td><td><span class="pct-bar" style="width:0px"></span> 0.3%</td></tr>
+</table></details>
+</div>
+<div class="col-card bad" id="V__VOC_URL">
+<div class="col-title">V__VOC_URL<span class="group-badge">VOC / CAM / DOP</span></div>
+<div class="role">VOC certificate document URL</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fb" style="width:57px"></span></span> <strong class="bad">28.7%</strong></td>
+<td>Filled: <strong>446</strong> / 1,555</td>
+<td>Empty: <strong>1,109</strong></td>
+<td>Unique values: <strong>166</strong></td>
+</tr></table>
+<table><tr><th>Scheme</th><th>Count</th></tr>
+<tr><td>https://</td><td>441</td></tr>
+<tr><td>http:// (insecure)</td><td>0</td></tr>
+<tr><td style="color:#c00">Invalid format</td><td style="color:#c00">5</td></tr>
+</table>
+<details><summary>Domain breakdown</summary><table><tr><th>Domain</th><th>Count</th></tr>
+<tr><td>etex.azureedge.net</td><td>46</td></tr>
+<tr><td>storefrontapi.commerce.xella.com</td><td>40</td></tr>
+<tr><td>gyproc.it</td><td>39</td></tr>
+<tr><td>knauf.com</td><td>39</td></tr>
+<tr><td>celenit.com</td><td>25</td></tr>
+<tr><td>fassabortolo.it</td><td>24</td></tr>
+<tr><td>cdnmedia.mapei.com</td><td>23</td></tr>
+<tr><td>buzziunicem.it</td><td>20</td></tr>
+<tr><td>isover.it</td><td>18</td></tr>
+<tr><td>betonlana.freshcms.it</td><td>15</td></tr>
+<tr><td>productdata.hilti.com</td><td>15</td></tr>
+<tr><td>media.siniat.it</td><td>14</td></tr>
+<tr><td>cementirossi.it</td><td>13</td></tr>
+<tr><td>sostenibilita.knauf.it</td><td>12</td></tr>
+<tr><td>stiferite.com</td><td>11</td></tr>
+<tr><td>betonrossi.it</td><td>10</td></tr>
+<tr><td>nuovademi.com</td><td>10</td></tr>
+<tr><td>holcim.it</td><td>10</td></tr>
+<tr><td>fiandre.com</td><td>8</td></tr>
+<tr><td>cementicostantinopoli.it</td><td>7</td></tr>
+</table></details>
+</div>
+<div class="col-card bad" id="V__Other">
+<div class="col-title">V__Other<span class="group-badge">VOC / CAM / DOP</span></div>
+<div class="role">Other certifications / notes</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fb" style="width:29px"></span></span> <strong class="bad">14.5%</strong></td>
+<td>Filled: <strong>226</strong> / 1,555</td>
+<td>Empty: <strong>1,329</strong></td>
+<td>Unique values: <strong>84</strong></td>
+</tr></table>
+<p style="font-size:11px;color:#666">Free text — length: min 5, median 109, max 231 chars</p>
+<p style="font-size:11px;color:#888">Samples: https://www.gyproc.it/Documenti%20correlati/cataloghi/brochure-gyproc-thermotop27.pdf; https://media.siniat.it/cert_168794_it/original/-490367278/certificato-riciclato-p217_ebp-siniat_25-04.pdf; https://media.siniat.it/cert_168794_it/original/-490367278/certificato-riciclato-p217_ebp-siniat_25-04.pdf; https://media.siniat.it/cert_168794_it/original/-490367278/certificato-riciclato-p217_ebp-siniat_25-04.pdf; https://media.siniat.it/cert_168794_it/original/-490367278/certificato-riciclato-p217_ebp-siniat_25-04.pdf</p>
+</div>
+<div class="col-card bad" id="V__CAM_Compliance">
+<div class="col-title">V__CAM_Compliance<span class="group-badge">VOC / CAM / DOP</span></div>
+<div class="role">Italian CAM (Green Public Procurement) compliance status</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fb" style="width:14px"></span></span> <strong class="bad">6.8%</strong></td>
+<td>Filled: <strong>105</strong> / 1,555</td>
+<td>Empty: <strong>1,450</strong></td>
+<td>Unique values: <strong>49</strong></td>
+</tr></table>
+<details open><summary>Value distribution</summary>
+<table><tr><th>Value</th><th>Count</th><th style="width:180px">%</th></tr>
+<tr><td>https://www.heidelbergmaterials.it/system/files/2025-05/DVV_EPDprocess_HM%20ITALIA%20CEMENTI%20luglio%202024.pdf</td><td>30</td><td><span class="pct-bar" style="width:34px"></span> 28.6%</td></tr>
+<tr><td>https://www.pittini.it/wp-content/uploads/Gruppo-Pittini-dichiarazione-CAM-edilizia-ferriere-nord.pdf</td><td>7</td><td><span class="pct-bar" style="width:8px"></span> 6.7%</td></tr>
+<tr><td>https://www.gyproc.it/Documenti%20correlati/certificati/saint-gobain-gyproc-cam-contenuto-di-materiale-riciclato-recuperato-sottoprodotto-lastre-e-accoppiati-icmq-iso-14021-std-eco.pdf</td><td>6</td><td><span class="pct-bar" style="width:7px"></span> 5.7%</td></tr>
+<tr><td>https://mirage-cdn.thron.com/delivery/public/document/mirage/465f828d-76c2-42b9-a014-6e5a1225a830/9pkhty/WEB/MRG_CERT_CAM_032024</td><td>4</td><td><span class="pct-bar" style="width:5px"></span> 3.8%</td></tr>
+<tr><td>https://www.resineisolanti.com/_files/ugd/069286_5c89fae399d44a4cbf24bf1ed4cd5dd8.pdf</td><td>4</td><td><span class="pct-bar" style="width:5px"></span> 3.8%</td></tr>
+<tr><td>https://giussanilaterizi.it/download/ICMQ-P227.pdf</td><td>3</td><td><span class="pct-bar" style="width:3px"></span> 2.9%</td></tr>
+<tr><td>https://www.paver.it/wp-content/uploads/2025/03/01-94058-UNI-EN-ISO-9001-Progettazione-Paver-2023.pdf</td><td>3</td><td><span class="pct-bar" style="width:3px"></span> 2.9%</td></tr>
+<tr><td>https://fra1.digitaloceanspaces.com/fondovalle-media/filer_public/b2/ec/b2ec4fda-781c-44c5-aa46-de5d781b2ab6/qb32-6673d3fdf25edb91195f3e25.pdf?AWSAccessKeyId=DO00H3NFMXEDE46D4FEA&amp;Signature=ZJEpQ8nikDSvemVOePRWWtDu8dI%3D&amp;Expires=1767182633</td><td>2</td><td><span class="pct-bar" style="width:2px"></span> 1.9%</td></tr>
+<tr><td>https://www.pittini.it/wp-content/uploads/Gruppo-Pittini-dichiarazione-CAM-edilizia-siderpotenza.pdf</td><td>2</td><td><span class="pct-bar" style="width:2px"></span> 1.9%</td></tr>
+<tr><td>https://brandcommunity.rockwool.com/asset/CfjMGqSftj42qXZtdQIYBw/asset.pdf?quality=10</td><td>2</td><td><span class="pct-bar" style="width:2px"></span> 1.9%</td></tr>
+<tr><td>https://www.feralpigroup.com/sites/default/files/DIC-EMAS-2026%20FERALPI%20ITA%20REV.0.pdf</td><td>2</td><td><span class="pct-bar" style="width:2px"></span> 1.9%</td></tr>
+<tr><td>https://www.gyproc.it/Documenti%20correlati/dichiarazione-di-prestazione/dop-la-duragypaa-02-rev-02-it.pdf</td><td>2</td><td><span class="pct-bar" style="width:2px"></span> 1.9%</td></tr>
+<tr><td>https://brandcommunity.rockwool.com/asset/d-xjfLoTnwxoMWEomvubfA/asset.pdf?quality=10</td><td>2</td><td><span class="pct-bar" style="width:2px"></span> 1.9%</td></tr>
+<tr><td>https://www.emilgroup.it/emil/prodotti/caratteristiche_emil/documentazione/CAM%20EMILCERAMICA%20FIORANO%20ceramic%20tiles_2024.pdf?_gl=1*9khpu7*_up*MQ..*_ga*MTA5MDQ4ODk1NS4xNzY3MDE0OTY5*_ga_MDY5WWHLQZ*czE3NjcwMTQ5NjckbzEkZzEkdDE3NjcwMTUxNDEkajYwJGwwJGgxNTcxMDIwNzY5</td><td>1</td><td><span class="pct-bar" style="width:1px"></span> 1.0%</td></tr>
+<tr><td>Hilti</td><td>1</td><td><span class="pct-bar" style="width:1px"></span> 1.0%</td></tr>
+<tr><td>https://www.marazzi.it/app/uploads/2025/04/Marazzi_Group_CAM_Fiorano.pdf</td><td>1</td><td><span class="pct-bar" style="width:1px"></span> 1.0%</td></tr>
+<tr><td>https://www.energieker.it/wp-content/uploads/2025/05/CAM-Criteri-Ambientali-Minimi-ITA-ENG.pdf</td><td>1</td><td><span class="pct-bar" style="width:1px"></span> 1.0%</td></tr>
+<tr><td>https://florim-cdn.thron.com/delivery/public/document/florim/1158a1fe-dabf-48f3-896a-9c9db0fea0ba/rf8vac/WEB/TUV-722356615-240709-PUG-M028_signed.pdf</td><td>1</td><td><span class="pct-bar" style="width:1px"></span> 1.0%</td></tr>
+<tr><td>https://media.kerakoll.com/systems/zips/cams-150431-it-IT-20251203102742.zip</td><td>1</td><td><span class="pct-bar" style="width:1px"></span> 1.0%</td></tr>
+<tr><td>https://productdata.hilti.com/APQ_HC_RAW/SUS_7003140_000.pdf?_gl=1*1333ul7*_gcl_au*NDY2MzE2NDczLjE3Njk1MTEyMTc.*_ga*MTYzNDI0MDk2LjE3Njk1MTEyMTc.*_ga_EWPGKCHLCH*czE3Njk1MTEyMTckbzEkZzEkdDE3Njk1MTM2NDAkajYwJGwwJGgw</td><td>1</td><td><span class="pct-bar" style="width:1px"></span> 1.0%</td></tr>
+<tr><td colspan="3" style="color:#888">… 29 more values not shown</td></tr>
+</table></details>
+</div>
+<div class="col-card bad" id="V__DOP">
+<div class="col-title">V__DOP<span class="group-badge">VOC / CAM / DOP</span></div>
+<div class="role">Declaration of Performance (DoP) URL</div>
+<table><tr>
+<td>Fill: <span class="fill-bar-wrap"><span class="fill-bar fb" style="width:55px"></span></span> <strong class="bad">27.7%</strong></td>
+<td>Filled: <strong>431</strong> / 1,555</td>
+<td>Empty: <strong>1,124</strong></td>
+<td>Unique values: <strong>270</strong></td>
+</tr></table>
+<table><tr><th>Scheme</th><th>Count</th></tr>
+<tr><td>https://</td><td>428</td></tr>
+<tr><td>http:// (insecure)</td><td>1</td></tr>
+<tr><td style="color:#c00">Invalid format</td><td style="color:#c00">2</td></tr>
+</table>
+<details><summary>Domain breakdown</summary><table><tr><th>Domain</th><th>Count</th></tr>
+<tr><td>etex.azureedge.net</td><td>56</td></tr>
+<tr><td>productdata.hilti.com</td><td>41</td></tr>
+<tr><td>celenit.com</td><td>41</td></tr>
+<tr><td>dopki.com</td><td>40</td></tr>
+<tr><td>gyproc.it</td><td>26</td></tr>
+<tr><td>heidelbergmaterials.it</td><td>22</td></tr>
+<tr><td>knauf.com</td><td>21</td></tr>
+<tr><td>isover.it</td><td>20</td></tr>
+<tr><td>rw-doptool.webhotel.net</td><td>16</td></tr>
+<tr><td>cdnmedia.mapei.com</td><td>15</td></tr>
+<tr><td>betonlana.freshcms.it</td><td>15</td></tr>
+<tr><td>cementirossi.it</td><td>13</td></tr>
+<tr><td>stiferite.com</td><td>11</td></tr>
+<tr><td>holcim.it</td><td>11</td></tr>
+<tr><td>italcementi.it</td><td>8</td></tr>
+<tr><td>cementicostantinopoli.it</td><td>7</td></tr>
+<tr><td>p-cdn.rockfon.com</td><td>7</td></tr>
+<tr><td>cipagres.it</td><td>7</td></tr>
+<tr><td>panaria.it</td><td>6</td></tr>
+<tr><td>agglobaghin.it</td><td>6</td></tr>
+</table></details>
+</div>
+</body></html>

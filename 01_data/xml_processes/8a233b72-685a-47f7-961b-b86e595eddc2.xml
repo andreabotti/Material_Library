@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>8a233b72-685a-47f7-961b-b86e595eddc2</common:UUID>
+      <name>
+        <baseName xml:lang="en">Sheep milk, production mix, at farm, IT</baseName>
+      </name>
+      <common:synonyms>Latte di pecora, produzione in azienda ovina, IT</common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">Materials production</common:class>
+          <common:class level="1">Other materials</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment>Dataset developed within LIFE MAGIS - "Made Green in Italy Scheme" Project. The dataset refers to the production of sheep milk, including low and high productive level farms, and it is representative of the Italian sheep milk production.</common:generalComment>
+      <referenceToExternalDocumentation type="source data set" refObjectId="1a4b4a3c-2442-450e-b825-4df5f4ebe954" version="01.00.000" uri="../sources/1a4b4a3c-2442-450e-b825-4df5f4ebe954.xml">
+        <common:shortDescription>LIFE MAGIS project - hard sheep milk cheeses production report.&#13;
+Background dataset from Ecoinvent database cut-off 3.6 were used for the LCA study</common:shortDescription>
+      </referenceToExternalDocumentation>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2017</common:referenceYear>
+      <common:dataSetValidUntil>2028</common:dataSetValidUntil>
+      <common:timeRepresentativenessDescription>dataset developed in 2023 with data collected in 2016/2017</common:timeRepresentativenessDescription>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT">
+        <descriptionOfRestrictions>primary data collected in Sardinia (IT)</descriptionOfRestrictions>
+      </locationOfOperationSupplyOrProduction>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>Sheep milk production. 18 Sardinian farms (IT) with different productivity rates were selected in order to define an environmental profile of the average sheep milk production at farm. Allocation criteria:: energetic. Evaluation method: Environmental Footprint (EF) 2.0. Background data: Ecoinvent 3.6.</technologyDescriptionAndIncludedProcesses>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Not applicable</LCIMethodApproaches>
+    </LCIMethodAndAllocation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="88d4f8d9-60f9-43d1-9ea3-329c10d7d727" uri="../sources/88d4f8d9-60f9-43d1-9ea3-329c10d7d727.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Not defined</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="d92a1a12-2545-49e2-a585-55c259997756" uri="../sources/d92a1a12-2545-49e2-a585-55c259997756.xml">
+          <common:shortDescription xml:lang="en">ISO 14044</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Not defined</common:methodologicalCompliance>
+        <common:reviewCompliance>Not defined</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+    <completeness>
+      <completenessProductModel>No statement</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Independent external review">
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Not applicable"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Not applicable"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Not applicable"/>
+          <common:dataQualityIndicator name="Completeness" value="Not applicable"/>
+          <common:dataQualityIndicator name="Precision" value="Not applicable"/>
+          <common:dataQualityIndicator name="Methodological appropriateness and consistency" value="Not applicable"/>
+          <common:dataQualityIndicator name="Overall quality" value="Not applicable"/>
+        </common:dataQualityIndicators>
+        <common:reviewDetails>the review was performed in compliance with ISO 14040-44</common:reviewDetails>
+        <common:otherReviewDetails>ENEA, Valentina Castellani</common:otherReviewDetails>
+      </review>
+    </validation>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="01807191-e156-421a-b2f6-aa609ea534f4" uri="../contacts/01807191-e156-421a-b2f6-aa609ea534f4.xml">
+        <common:shortDescription xml:lang="en">LIFE MAGIS "Made Green in Italy Scheme" (LIFE 18 GIE/IT/000735)</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>LIFE MAGIS "Made Green in Italy Scheme" (LIFE 18 GIE/IT/000735)</common:project>
+    </common:commissionerAndGoal>
+    <dataGenerator>
+      <common:referenceToPersonOrEntityGeneratingTheDataSet refObjectId="119f00d0-f51f-4fde-8be0-81ee76669d7c" type="contact data set" uri="../sources/119f00d0-f51f-4fde-8be0-81ee76669d7c.xml" version="01.00.000">
+        <common:shortDescription>CNR - IBE</common:shortDescription>
+      </common:referenceToPersonOrEntityGeneratingTheDataSet>
+    </dataGenerator>
+    <dataEntryBy>
+      <common:timeStamp>2023-03-02T17:35:00.979+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="a97a0155-0234-4b87-b4ce-a45da52f2a40" uri="../sources/a97a0155-0234-4b87-b4ce-a45da52f2a40.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2021-01-19T16:03:53.721Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/8a233b72-685a-47f7-961b-b86e595eddc2.xml</common:permanentDataSetURI>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+      <common:accessRestrictions>Open database licence (ODbL)</common:accessRestrictions>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="c9e004fe-83d0-4be3-8ce6-766296807367" uri="../flows/c9e004fe-83d0-4be3-8ce6-766296807367.xml">
+        <common:shortDescription xml:lang="en">Sheep milk, production mix, at farm, IT_UF</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0000000E+0</meanAmount>
+      <resultingAmount>1.0000000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="707ad766-85f2-4169-9a66-68bf7babc08e" uri="../flows/707ad766-85f2-4169-9a66-68bf7babc08e.xml">
+        <common:shortDescription xml:lang="en">Raw_milk_&lt;130L_kg</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.5000000E-1</meanAmount>
+      <resultingAmount>3.5000000E-1</resultingAmount>
+      <generalComment>35% della produzione totale di FPCM delle aziende StS
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="41251fa8-7372-41a7-999e-57d702b8cdbb" uri="../flows/41251fa8-7372-41a7-999e-57d702b8cdbb.xml">
+        <common:shortDescription xml:lang="en">Raw_milk_&gt;130L_kg</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.5000000E-1</meanAmount>
+      <resultingAmount>6.5000000E-1</resultingAmount>
+      <generalComment>65% della produzione totale di FPCM delle aziende StS
+</generalComment>
+    </exchange>
+  </exchanges>
+</processDataSet>

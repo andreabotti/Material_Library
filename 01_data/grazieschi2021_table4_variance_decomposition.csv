@@ -1,0 +1,11 @@
+Material,Source_of_variability,PER_explained_variance_pct,PER_p_value,PENR_explained_variance_pct,PENR_p_value,GWP_explained_variance_pct,GWP_p_value
+EPS,Program operator,85,0.0,41,0.005,45,0.0014
+EPS,Density,9,0.3979,70,0.0,55,0.0
+XPS,Program operator,99,0.0008,50,0.7543,50,0.7632
+XPS,Density,58,0.2727,89,0.0071,62,0.2205
+PUR/PIR,Program operator,63,0.0096,71,0.0022,71,0.0021
+PUR/PIR,Density,2,0.9437,49,0.014,52,0.0077
+Stone wool,Program operator,76,0.0014,42,0.299,48,0.1702
+Stone wool,Density,64,0.0027,84,0.0,83,0.0
+Glass wool,Program operator,14,0.9127,32,0.4311,26,0.5922
+Glass wool,Density,83,0.0,78,0.0001,76,0.0002

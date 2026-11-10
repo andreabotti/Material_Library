@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>735ebdc1-3221-4ea2-8c79-885e83ea7c17</common:UUID>
+      <name>
+        <baseName xml:lang="en">Cement, at production, IT</baseName>
+      </name>
+      <common:synonyms>Cemento, alla produzione, IT</common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">Systems</common:class>
+          <common:class level="1">Construction</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment>Dataset developed according to Arcadia project Methodology (Report: “Metodologia per gli studi di filiera della Banca Dati italiana LCA”). LCA study of Cement production (report: “STUDIO LCA DELLA FILIERA DEL CEMENTO”).The dataset refers to the national average cement representative of the main types of cement defined by the UNI EN 197-1 produced in Italy, in particular: Portland cement (CEM I) and blended Portland cement (CEM II) (with total of 86%), pozzolanic cements (12%) and blast furnace cement (2%.). Data have been provided by AITEC/Federbeton and collected for the development of the EPD (Environmental Product Declaration) of the Italian medium gray cement. </common:generalComment>
+      <referenceToExternalDocumentation type="source data set" refObjectId="a2b7ce21-8c82-45c1-84c9-d03086ed6139" version="01.00.000" uri="../sources/a2b7ce21-8c82-45c1-84c9-d03086ed6139.xml">
+        <common:shortDescription>Sposato P., Luciano A., Corrado S., Altamura P., Rinaldi C., 2023. “STUDIO LCA DELLA FILIERA DEL CEMENTO”. Internal report ARCADIA Project. &#13;
+Background datasets from Ecoinvent database cut-off (v.3.7.1) were used for the LCA study&#13;
+</common:shortDescription>
+      </referenceToExternalDocumentation>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2020</common:referenceYear>
+      <common:dataSetValidUntil>2025</common:dataSetValidUntil>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT">
+        <descriptionOfRestrictions>Data collected from Italian average cement production</descriptionOfRestrictions>
+      </locationOfOperationSupplyOrProduction>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>1t of average cement produced in Italy.&#13;
+The cement production process includes the clinker and cement production stages. Clinker is produced from natural raw materials (such as limestone, clay, gypsum, marl and others) which are crushed, finely ground, homogenised and fired in a blast furnace. Once out, the clinker is cooled and ground in the mills with the addition of other natural raw materials (mainly gypsum and limestone) and other materials/additives to obtain the final homogeneous powder (the cement). &#13;
+All the processes of the clinker and cement production stages, including transports and emissions to air, are foreground processes, modelled using primary data. &#13;
+&#13;
+Particularly:&#13;
+•	Average data provided by the Italian Cement Techno-Economic Association (AITEC) for the years 2019 and 2020, representing 16.4% and 17% of national production respectively. Data provided by AITEC/Federbeton have been collected for the development of the EPD (Environmental Product Declaration) of the italian medium gray cement. &#13;
+•	National average emission factors for the year 2019 (ISPRA, 2019) relating to clinker production (blast furnace process).&#13;
+•	The study by Rigamonti et al. (2012) for modeling secondary solid fuel (SSF) production&#13;
+•	Water consumption is modelled using primary data provided by a company part of the working group&#13;
+For the background processes (raw material in input) EcoInvent database (v. 3.7.1) cut-off datasets were used. &#13;
+&#13;
+</technologyDescriptionAndIncludedProcesses>
+      <technologicalApplicability>Production of italian average cement for construction sector</technologicalApplicability>
+      <referenceToTechnologyFlowDiagrammOrPicture type="source data set" refObjectId="ac6d0ad3-5a51-460a-8429-e3a7bb3f6eee" version="01.00.000" uri="../sources/ac6d0ad3-5a51-460a-8429-e3a7bb3f6eee.xml">
+        <common:shortDescription>20231106122852_diagramma_confine_sistema.jpg</common:shortDescription>
+      </referenceToTechnologyFlowDiagrammOrPicture>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Not applicable</LCIMethodApproaches>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <dataCutOffAndCompletenessPrinciples>Production of equipment and infrastructure are not included, except for the background system.</dataCutOffAndCompletenessPrinciples>
+      <referenceToDataSource type="source data set" refObjectId="d1f64c0d-653c-48a4-9678-d5e9f766ab13" version="01.00.000" uri="../sources/d1f64c0d-653c-48a4-9678-d5e9f766ab13.xml">
+        <common:shortDescription>20231122102023_Report della filiera del cemento medio italiano.pdf</common:shortDescription>
+      </referenceToDataSource>
+      <dataCollectionPeriod>2019-2020</dataCollectionPeriod>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>No statement</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Independent external review">
+        <common:reviewDetails>The review was performed in compliance with Arcadia Metodology: “Metodologia per gli studi di filiera della Banca Dati italiana LCA” and ISO 14040-44 norms. The dataset has been assessed limited to the foreground data collected during the supply chain studies.&#13;
+Each dataset has been evaluated based on the following 4 criteria:&#13;
+1. Technological Representativeness; &#13;
+2. Time Representativeness; &#13;
+3. Geographical Representativeness; &#13;
+4. Reliability &#13;
+In this contest the Reliability is “good”&#13;
+</common:reviewDetails>
+        <common:referenceToNameOfReviewerAndInstitution type="contact data set" refObjectId="a7a5303f-8b89-4e5c-a3ff-50e58816aef2" version="01.00.000" uri="../sources/a7a5303f-8b89-4e5c-a3ff-50e58816aef2.xml">
+          <common:shortDescription>Ecoinnovazione S.r.l&#13;
+e-mail: eco@ecoinnovazione.it&#13;
+</common:shortDescription>
+        </common:referenceToNameOfReviewerAndInstitution>
+        <common:otherReviewDetails>The study was judged by the reviewer as compliant with both ISO 14040-44 and Arcadia methodology</common:otherReviewDetails>
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Completeness" value="Good"/>
+          <common:dataQualityIndicator name="Precision" value="Not applicable"/>
+          <common:dataQualityIndicator name="Methodological appropriateness and consistency" value="Not applicable"/>
+          <common:dataQualityIndicator name="Overall quality" value="Not applicable"/>
+        </common:dataQualityIndicators>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="c5d17e1a-4a20-49ba-86ad-941bdfa124b7" uri="../sources/c5d17e1a-4a20-49ba-86ad-941bdfa124b7.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="5978a35c-0067-4f03-95f5-21371f9b0455" uri="../sources/5978a35c-0067-4f03-95f5-21371f9b0455.xml">
+          <common:shortDescription xml:lang="en">ISO14044</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Not defined</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="0add3668-6f6f-42c2-bb76-f24da73f2145" uri="../sources/0add3668-6f6f-42c2-bb76-f24da73f2145.xml">
+        <common:shortDescription xml:lang="en">Arcadia – PON Governance e Capacità istituzionale 2014-2020</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Arcadia – PON Governance e Capacità istituzionale 2014-2020</common:project>
+    </common:commissionerAndGoal>
+    <dataGenerator>
+      <common:referenceToPersonOrEntityGeneratingTheDataSet refObjectId="9eed7b88-74e0-4ee8-b43c-7972bc7c53d3" type="contact data set" uri="../sources/9eed7b88-74e0-4ee8-b43c-7972bc7c53d3.xml" version="01.00.000">
+        <common:shortDescription>ENEA</common:shortDescription>
+      </common:referenceToPersonOrEntityGeneratingTheDataSet>
+    </dataGenerator>
+    <dataEntryBy>
+      <common:timeStamp>2023-11-06T11:16:42.51+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="a97a0155-0234-4b87-b4ce-a45da52f2a40" uri="../sources/a97a0155-0234-4b87-b4ce-a45da52f2a40.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2021-07-27T09:54:28.392Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/735ebdc1-3221-4ea2-8c79-885e83ea7c17.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="29292767-03c4-4645-b601-cb9891421915" type="contact data set" uri="../contacts/29292767-03c4-4645-b601-cb9891421915.xml" version="01.00.000">
+        <common:shortDescription>ENEA_ARCADIA</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+      <common:accessRestrictions>Open Database Licence (ODbL)</common:accessRestrictions>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fbcdebf9-063b-48c9-816c-d1c1ee284868" uri="../flows/fbcdebf9-063b-48c9-816c-d1c1ee284868.xml">
+        <common:shortDescription xml:lang="en">Cement, at production, IT</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0000000E+3</meanAmount>
+      <resultingAmount>1.0000000E+3</resultingAmount>
+      <generalComment>Baseline scenario (50% petcoke and 50% hardcoal)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="326811c4-445c-4c1f-b809-f66404b96099" uri="../flows/326811c4-445c-4c1f-b809-f66404b96099.xml">
+        <common:shortDescription xml:lang="en">Cement factory {CH}| construction | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.3600000E-11</meanAmount>
+      <resultingAmount>5.3600000E-11</resultingAmount>
+      <generalComment>Source: Kellenberger D., Althaus H.-J., Jungbluth N., Künniger T., Lehmann M. and Thalmann P. (2007) Life Cycle Inventories of Building Products. Final report ecoinvent Data v2.0 No. 7. 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="2370c778-4e97-42f5-8be2-13a7fda71c1f" uri="../flows/2370c778-4e97-42f5-8be2-13a7fda71c1f.xml">
+        <common:shortDescription xml:lang="en">Limestone, crushed, for mill {CH}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.1200000E+2</meanAmount>
+      <resultingAmount>1.1200000E+2</resultingAmount>
+      <generalComment>Limestone
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="3">
+      <referenceToFlowDataSet type="flow data set" refObjectId="eb1432fa-bf38-4aaf-a9f5-ecea19b80f50" uri="../flows/eb1432fa-bf38-4aaf-a9f5-ecea19b80f50.xml">
+        <common:shortDescription xml:lang="en">Gypsum, mineral {CH}| gypsum quarry operation | Cut-off, U_E MIX ITALY</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.6100000E+1</meanAmount>
+      <resultingAmount>2.6100000E+1</resultingAmount>
+      <generalComment>Gypsum
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="4">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d776e7dd-5095-4aec-9bbc-6b6f54dde4bf" uri="../flows/d776e7dd-5095-4aec-9bbc-6b6f54dde4bf.xml">
+        <common:shortDescription xml:lang="en">Sand {CH}| gravel and quarry operation | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.4600000E+1</meanAmount>
+      <resultingAmount>3.4600000E+1</resultingAmount>
+      <generalComment>Sand assumed as a proxy for pozzolan
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="5">
+      <referenceToFlowDataSet type="flow data set" refObjectId="118cd4c6-c852-4497-b7e0-ad16060197c8" uri="../flows/118cd4c6-c852-4497-b7e0-ad16060197c8.xml">
+        <common:shortDescription xml:lang="en">Calcareous marl {CH}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.1200000E+0</meanAmount>
+      <resultingAmount>1.1200000E+0</resultingAmount>
+      <generalComment>Calcareous marl
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="6">
+      <referenceToFlowDataSet type="flow data set" refObjectId="601863d3-50a8-47e1-8460-d5a1ba35d047" uri="../flows/601863d3-50a8-47e1-8460-d5a1ba35d047.xml">
+        <common:shortDescription xml:lang="en">Sodium chloride, powder {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.0000000E-2</meanAmount>
+      <resultingAmount>5.0000000E-2</resultingAmount>
+      <generalComment>Sodium Chloride
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="7">
+      <referenceToFlowDataSet type="flow data set" refObjectId="7ff33a28-0e9b-4b9c-bc33-8b94a90e25a4" uri="../flows/7ff33a28-0e9b-4b9c-bc33-8b94a90e25a4.xml">
+        <common:shortDescription xml:lang="en">Clinker_at production, IT</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>7.6300000E+2</meanAmount>
+      <resultingAmount>7.6300000E+2</resultingAmount>
+      <generalComment>Clinker
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="8">
+      <referenceToFlowDataSet type="flow data set" refObjectId="9c2d9441-04fa-4618-8482-55b76e338e43" uri="../flows/9c2d9441-04fa-4618-8482-55b76e338e43.xml">
+        <common:shortDescription xml:lang="en">Iron sulfate {RER}| market for iron sulfate | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.6400000E+1</meanAmount>
+      <resultingAmount>1.6400000E+1</resultingAmount>
+      <generalComment>Solfato ferroso
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="9">
+      <referenceToFlowDataSet type="flow data set" refObjectId="da9e506a-c788-497c-9c08-9cf9d2693e73" uri="../flows/da9e506a-c788-497c-9c08-9cf9d2693e73.xml">
+        <common:shortDescription xml:lang="en">Trasporto MIX camion 16-32t</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.1200000E+0</meanAmount>
+      <resultingAmount>1.1200000E+0</resultingAmount>
+      <generalComment>Transport: limestone
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="10">
+      <referenceToFlowDataSet type="flow data set" refObjectId="da9e506a-c788-497c-9c08-9cf9d2693e73" uri="../flows/da9e506a-c788-497c-9c08-9cf9d2693e73.xml">
+        <common:shortDescription xml:lang="en">Trasporto MIX camion 16-32t</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.3000000E+0</meanAmount>
+      <resultingAmount>1.3000000E+0</resultingAmount>
+      <generalComment>Transport: gypsum
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="11">
+      <referenceToFlowDataSet type="flow data set" refObjectId="da9e506a-c788-497c-9c08-9cf9d2693e73" uri="../flows/da9e506a-c788-497c-9c08-9cf9d2693e73.xml">
+        <common:shortDescription xml:lang="en">Trasporto MIX camion 16-32t</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.0400000E+0</meanAmount>
+      <resultingAmount>1.0400000E+0</resultingAmount>
+      <generalComment>Transport: pozzolan
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="12">
+      <referenceToFlowDataSet type="flow data set" refObjectId="da9e506a-c788-497c-9c08-9cf9d2693e73" uri="../flows/da9e506a-c788-497c-9c08-9cf9d2693e73.xml">
+        <common:shortDescription xml:lang="en">Trasporto MIX camion 16-32t</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.0200000E+0</meanAmount>
+      <resultingAmount>1.0200000E+0</resultingAmount>
+      <generalComment>Transport: travertine
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="13">
+      <referenceToFlowDataSet type="flow data set" refObjectId="da9e506a-c788-497c-9c08-9cf9d2693e73" uri="../flows/da9e506a-c788-497c-9c08-9cf9d2693e73.xml">
+        <common:shortDescription xml:lang="en">Trasporto MIX camion 16-32t</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.3600000E-2</meanAmount>
+      <resultingAmount>3.3600000E-2</resultingAmount>
+      <generalComment>Transport: marl
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="14">
+      <referenceToFlowDataSet type="flow data set" refObjectId="da9e506a-c788-497c-9c08-9cf9d2693e73" uri="../flows/da9e506a-c788-497c-9c08-9cf9d2693e73.xml">
+        <common:shortDescription xml:lang="en">Trasporto MIX camion 16-32t</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.0000000E-3</meanAmount>
+      <resultingAmount>4.0000000E-3</resultingAmount>
+      <generalComment>Transport:  sodium chloride
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="15">
+      <referenceToFlowDataSet type="flow data set" refObjectId="da9e506a-c788-497c-9c08-9cf9d2693e73" uri="../flows/da9e506a-c788-497c-9c08-9cf9d2693e73.xml">
+        <common:shortDescription xml:lang="en">Trasporto MIX camion 16-32t</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>0.0000000E+0</meanAmount>
+      <resultingAmount>0.0000000E+0</resultingAmount>
+      <generalComment>Transport:  clinker
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="16">
+      <referenceToFlowDataSet type="flow data set" refObjectId="da9e506a-c788-497c-9c08-9cf9d2693e73" uri="../flows/da9e506a-c788-497c-9c08-9cf9d2693e73.xml">
+        <common:shortDescription xml:lang="en">Trasporto MIX camion 16-32t</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.1000000E+0</meanAmount>
+      <resultingAmount>4.1000000E+0</resultingAmount>
+      <generalComment>Transport: additives
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="17">
+      <referenceToFlowDataSet type="flow data set" refObjectId="da9e506a-c788-497c-9c08-9cf9d2693e73" uri="../flows/da9e506a-c788-497c-9c08-9cf9d2693e73.xml">
+        <common:shortDescription xml:lang="en">Trasporto MIX camion 16-32t</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.0200000E+0</meanAmount>
+      <resultingAmount>1.0200000E+0</resultingAmount>
+      <generalComment>Trasport: recovered waste
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="18">
+      <referenceToFlowDataSet type="flow data set" refObjectId="9e1bab91-dd35-4bd3-a17c-5209586d5c8e" uri="../flows/9e1bab91-dd35-4bd3-a17c-5209586d5c8e.xml">
+        <common:shortDescription xml:lang="en">Electricity, medium voltage {IT}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.4400000E+2</meanAmount>
+      <resultingAmount>1.4400000E+2</resultingAmount>
+      <generalComment>Electricity
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="19">
+      <referenceToFlowDataSet type="flow data set" refObjectId="419682fe-60fb-4b43-be89-bf2824b51104" uri="../flows/419682fe-60fb-4b43-be89-bf2824b51104.xml">
+        <common:shortDescription xml:lang="en">water</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>IT</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.5700000E-1</meanAmount>
+      <resultingAmount>2.5700000E-1</resultingAmount>
+      <generalComment>water
+</generalComment>
+    </exchange>
+  </exchanges>
+</processDataSet>

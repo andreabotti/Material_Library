@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:hidden;max-width:100%}
+:root{
+  --cat-border:1px solid var(--eetra-border-card,#d1d9e6);
+  --cat-radius:var(--eetra-radius-card,12px);
+  --cat-bg:var(--eetra-surface,#ffffff);
+  --cat-pad-x:10px;
+  --cat-pad-bottom:10px;
+  --cat-img-h:100px;
+  --cat-img-bg:#ffffff;
+  --cat-img-fit:cover;
+  --cat-img-pos:center;
+  --cat-title-fs:16px;
+  --cat-title-lh:1.35;
+  --cat-body-fs:13px;
+  --cat-body-lh:1.35;
+  --cat-gwp-lh:1.25;
+  --cat-brand-color:var(--eetra-brand-muted,#666);
+  --cat-tab-border:#e5e7eb;
+  --cat-tab-active:var(--eetra-green,#2a7d2e);
+  --cat-hover-shadow:var(--eetra-hover-shadow,0 6px 18px rgba(15, 23, 42, 0.08));
+  --cat-hover-border:var(--eetra-hover-border,#b8c5d8);
+  --cat-card-min-h:0px;
+  --cat-card-max-h:none;
+  --cat-grid-gap:var(--eetra-grid-gap,12px);
+  --cat-co2-green:var(--eetra-green,#2a7d2e);
+}
+body{font-family:var(--eetra-ff-sans,'Inter','Roboto',sans-serif);background:transparent;color:#111}
+#grid{display:grid;gap:var(--cat-grid-gap);width:100%;align-items:stretch}
+.empty-grid{color:#888;font-size:var(--cat-body-fs);text-align:center;padding:2rem 0;grid-column:1/-1}
+/* Shell — mirrors Streamlit _CATALOGUE_CARD_BLOCK chrome */
+.card-wrap{
+  perspective:900px;
+  cursor:pointer;
+  user-select:none;
+  display:flex;
+  flex-direction:column;
+  margin:2px; /* minimal non-zero card margin */
+  border:var(--cat-border);
+  border-radius:var(--cat-radius);
+  background:var(--cat-bg);
+  transition:box-shadow .15s ease,border-color .15s ease;
+  min-height:0;
+}
+.card-wrap:hover{
+  box-shadow:var(--cat-hover-shadow);
+  border-color:var(--cat-hover-border);
+}
+.card-inner{
+  position:relative;
+  width:100%;
+  flex:1 1 auto;
+  transform-style:preserve-3d;
+  transition:transform 0.55s cubic-bezier(0.4,0,0.2,1);
+  min-height:max(260px, var(--cat-card-min-h));
+  max-height:var(--cat-card-max-h);
+}
+.card-inner.flipped{transform:rotateY(180deg)}
+.face{
+  position:absolute;
+  inset:0;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  padding:0;
+  border-radius:var(--cat-radius);
+  background:var(--cat-bg);
+}
+.face-back{transform:rotateY(180deg)}
+/* Streamlit fn329: .brand + .product-title */
+.brand{
+  font-size:var(--cat-body-fs);
+  line-height:var(--cat-body-lh);
+  color:var(--cat-brand-color);
+  padding-left:var(--cat-pad-x);
+  padding-right:var(--cat-pad-x);
+  display:block;
+}
+.product-title{
+  font-size:var(--cat-title-fs);
+  font-weight:600;
+  line-height:var(--cat-title-lh);
+  color:#111;
+  margin:2px 0; /* minimal non-zero vertical margin */
+  padding-left:var(--cat-pad-x);
+  padding-right:var(--cat-pad-x);
+  display:block;
+}
+.product-title a{color:inherit;text-decoration:none}
+.product-title a:hover{text-decoration:underline}
+/* Image band — matches .eetra-cat-img-band / fn329 */
+.eetra-cat-img-band{
+  position:relative;
+  width:100%;
+  height:var(--cat-img-h);
+  flex-shrink:0;
+  overflow:hidden;
+  margin:0 0 6px 0;
+  background:var(--cat-img-bg);
+  border-radius:var(--cat-radius) var(--cat-radius) 0 0;
+}
+.eetra-cat-img-band.img-fallback{
+  background:#f3f4f6;
+}
+.eetra-cat-img-band.img-fallback::after{
+  content:"Image unavailable";
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#9ca3af;
+  font-size:var(--cat-body-fs);
+  font-weight:500;
+  letter-spacing:.01em;
+}
+/* :root --cat-mat-* injected by fn336 from aux_01__catalogue_layout.json material_type_band */
+.eetra-cat-material-band{
+  position:var(--cat-mat-position,absolute)!important;
+  top:var(--cat-mat-top,auto)!important;
+  bottom:var(--cat-mat-bottom,0)!important;
+  left:var(--cat-mat-left,0)!important;
+  z-index:var(--cat-mat-z,2)!important;
+  max-width:var(--cat-mat-maxw,92%)!important;
+  background-color:var(--cat-mat-bg,#e8eaed)!important;
+  color:var(--cat-mat-color,#374151)!important;
+  font-size:var(--cat-mat-fs,9px)!important;
+  font-weight:var(--cat-mat-weight,500)!important;
+  font-style:var(--cat-mat-style,italic)!important;
+  line-height:var(--cat-mat-lh,1.2)!important;
+  padding:var(--cat-mat-pad,0 1px)!important;
+  margin:var(--cat-mat-margin,0)!important;
+  border-radius:var(--cat-mat-radius,0)!important;
+  pointer-events:var(--cat-mat-pe,none)!important;
+  white-space:var(--cat-mat-ws,nowrap)!important;
+  overflow:var(--cat-mat-ov,hidden)!important;
+  text-overflow:var(--cat-mat-to,ellipsis)!important;
+  box-sizing:var(--cat-mat-box,border-box)!important;
+  font-family:var(--cat-mat-ff,inherit)!important;
+}
+.eetra-cat-img-band img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:var(--cat-img-fit);
+  object-position:var(--cat-img-pos);
+}
+/* Streamlit .co2-value */
+.co2-value{
+  font-family:'Source Serif Pro',Georgia,serif!important;
+  font-style:italic;
+  font-weight:600;
+  font-size:calc(var(--cat-body-fs) + 3px);
+  color:var(--cat-co2-green);
+  margin:0 0 8px;
+  padding:0 var(--cat-pad-x);
+  line-height:var(--cat-gwp-lh);
+}
+.product-details{
+  font-size:var(--cat-body-fs);
+  line-height:var(--cat-body-lh);
+  padding:0 var(--cat-pad-x) var(--cat-pad-bottom);
+  flex:1 1 auto;
+  min-height:0;
+  overflow:auto;
+}
+.compact-row{display:flex;justify-content:space-between;align-items:center;gap:4px;padding:1px 0}
+.compact-k{font-size:var(--cat-body-fs);color:var(--cat-brand-color);flex-shrink:0}
+.compact-v{font-size:var(--cat-body-fs);color:#111;font-weight:500;text-align:right}
+.detail-row{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;padding:2px 0}
+.detail-k{font-size:var(--cat-body-fs);line-height:var(--cat-body-lh);color:#111;font-weight:600;flex-shrink:0}
+.detail-v{font-size:var(--cat-body-fs);line-height:var(--cat-body-lh);color:#111;font-weight:400;text-align:right;word-break:break-word}
+.epd-link{color:#1a56a8;text-decoration:underline;word-break:break-all;font-weight:500}
+.epd-link:hover{color:#0d47a1}
+.detail-block{margin-top:4px;padding-top:4px;border-top:1px solid var(--cat-tab-border)}
+.lc-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;padding-top:8px;border-top:1px solid var(--cat-tab-border)}
+.lc-cell{font-size:calc(var(--cat-body-fs) - 2px);color:#6b7280}
+.lc-cell b{color:#374151;font-weight:600}
+/* Tab bar — matches lib_header .cat-tab-bar / .cat-tab-c / .cat-tab-e */
+.cat-tab-bar{
+  display:flex;
+  border-top:1px solid var(--cat-tab-border);
+  flex-shrink:0;
+  margin-top:auto;
+}
+.cat-tab-c,.cat-tab-e{
+  flex:1;
+  text-align:center;
+  padding:4px 2px;
+  font-size:calc(var(--cat-body-fs) - 2px);
+  font-weight:600;
+  letter-spacing:0.03em;
+  line-height:1.3;
+  transition:background .12s,color .12s,border-top-width .12s;
+  pointer-events:none;
+}
+.tags-strip{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:6px;
+  padding:0 var(--cat-pad-x) 8px var(--cat-pad-x);
+}
+.tag-chip{
+  border-radius:999px;
+  background:#F4F1EA;
+  color:#374151;
+  font-size:var(--cat-body-fs);
+  line-height:1.2;
+  padding:4px 10px;
+}
+.tag-more{
+  font-size:var(--cat-body-fs);
+  color:#6b7280;
+}
+.tag-add-btn{
+  border:1px dashed #cbd5e1;
+  background:transparent;
+  border-radius:999px;
+  font-size:var(--cat-body-fs);
+  line-height:1.2;
+  padding:4px 10px;
+  color:#374151;
+  cursor:pointer;
+}
+.tag-add-btn:hover{background:#f8fafc}
+.face-front .cat-tab-c{
+  background:#fff;
+  color:#111;
+  border-top:2px solid var(--cat-tab-active);
+}
+.face-front .cat-tab-e{
+  background:#f9fafb;
+  color:#6b7280;
+  border-top:1px solid var(--cat-tab-border);
+}
+.face-back .cat-tab-c{
+  background:#f9fafb;
+  color:#6b7280;
+  border-top:1px solid var(--cat-tab-border);
+}
+.face-back .cat-tab-e{
+  background:#fff;
+  color:#111;
+  border-top:2px solid var(--cat-tab-active);
+}
+/* Never show material type band on Extended/back face. */
+.face-back .eetra-cat-material-band{
+  display:none !important;
+}
+.rv-toolbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  margin-bottom:8px;
+  font-size:var(--cat-body-fs);
+}
+.rv-toolbar-group{
+  display:inline-flex;
+  border-radius:999px;
+  background:#f3f4f6;
+  padding:2px;
+}
+.rv-toolbar-group button{
+  border:none;
+  background:transparent;
+  font-size:var(--cat-body-fs);
+  padding:3px 10px;
+  border-radius:999px;
+  cursor:pointer;
+  color:#4b5563;
+}
+.rv-toolbar-group button.rv-active{
+  background:#111827;
+  color:#f9fafb;
+}
+.rv-toolbar-group button:hover:not(:disabled):not(.rv-disabled){
+  background:#e5e7eb;
+}
+.rv-toolbar-group button:disabled,
+.rv-toolbar-group button.rv-disabled{
+  opacity:0.42;
+  cursor:not-allowed;
+  pointer-events:none;
+}
+.rv-toolbar-group button.rv-view-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  padding:4px 10px;
+}
+.rv-view-icon{
+  display:inline-block;
+  flex-shrink:0;
+  color:currentColor;
+}
+.rv-icon-grid{
+  width:14px;
+  height:14px;
+  display:grid;
+  grid-template-columns:repeat(2,5px);
+  grid-template-rows:repeat(2,5px);
+  gap:2px;
+}
+.rv-icon-grid span{
+  display:block;
+  background:currentColor;
+  border-radius:1px;
+}
+.rv-icon-list{
+  width:14px;
+  height:14px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:2.5px;
+}
+.rv-icon-list span{
+  display:block;
+  height:2px;
+  background:currentColor;
+  border-radius:1px;
+}
+.rv-count{
+  font-size:var(--cat-body-fs);
+  color:#6b7280;
+  text-align:right;
+}
+.rv-list-panel{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  width:100%;
+}
+.rv-list-filter-bar{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.rv-list-filter-input{
+  flex:1;
+  min-width:180px;
+  max-width:420px;
+  padding:6px 10px;
+  border:1px solid #e5e7eb;
+  border-radius:8px;
+  font-size:var(--cat-body-fs);
+  font-family:inherit;
+  background:#fff;
+}
+.rv-list-filter-input:focus{
+  outline:2px solid var(--cat-tab-active,#2a7d2e);
+  outline-offset:1px;
+  border-color:#cbd5e1;
+}
+.rv-list-filter-hint{
+  font-size:calc(var(--cat-body-fs) - 1px);
+  color:#6b7280;
+  white-space:nowrap;
+}
+.rv-table-wrap{
+  width:100%;
+  overflow:auto;
+  background:#fff;
+}
+.rv-table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:1340px;
+  font-size:var(--cat-body-fs);
+  table-layout:fixed;
+}
+.rv-td-symbol,
+.rv-td-image{
+  width:72px;
+  padding:6px 8px;
+  vertical-align:middle;
+}
+.rv-list-symbol{
+  position:relative;
+  width:56px;
+  height:56px;
+  border-radius:8px;
+  overflow:hidden;
+  background:var(--cat-img-bg,#f3f4f6);
+  border:1px solid #e5e7eb;
+}
+.rv-list-symbol img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:var(--cat-img-fit,cover);
+  object-position:var(--cat-img-pos,center);
+}
+.rv-list-symbol .eetra-cat-material-band{
+  font-size:8px!important;
+  max-width:100%!important;
+}
+.eetra-cat-img-band--symbol-only{
+  display:flex;
+  align-items:flex-end;
+  background:var(--cat-img-bg,#f3f4f6);
+}
+.eetra-cat-img-band--symbol-only .eetra-cat-material-band{
+  position:relative!important;
+  width:100%;
+  max-width:100%!important;
+}
+.rv-mfr-flag{margin-left:4px}
+.rv-td-cam{
+  white-space:nowrap;
+  text-align:center;
+}
+.rv-cam-cell{
+  display:inline-flex;
+  flex-direction:column;
+  align-items:center;
+  gap:2px;
+}
+.rv-cam-label{
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.04em;
+  color:#374151;
+  line-height:1;
+}
+.rv-cam-star{
+  height:18px;
+  width:auto;
+  display:block;
+}
+.rv-cam-warn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:14px;
+  height:14px;
+  border-radius:999px;
+  border:1px solid #d4a429;
+  background:#fffbeb;
+  color:#854d0e;
+  font-size:10px;
+  font-weight:700;
+  line-height:1;
+  vertical-align:middle;
+  cursor:help;
+  margin-left:2px;
+}
+.rv-table thead th{
+  position:sticky;
+  top:0;
+  z-index:2;
+  background:#f9fafb;
+  color:#374151;
+  text-align:left;
+  font-size:calc(var(--cat-body-fs) - 1px);
+  font-weight:600;
+  letter-spacing:.01em;
+  border-bottom:1px solid #e5e7eb;
+  padding:8px 10px;
+  white-space:normal;
+  word-wrap:break-word;
+  overflow-wrap:anywhere;
+  vertical-align:bottom;
+}
+.rv-th-sort{
+  cursor:pointer;
+  user-select:none;
+}
+.rv-th-sort:hover{
+  background:#f3f4f6;
+}
+.rv-th-sort.rv-sort-active{
+  color:#111827;
+  background:#eef2ff;
+}
+.rv-sort-ind{
+  display:inline-block;
+  margin-left:4px;
+  font-size:10px;
+  opacity:.75;
+  vertical-align:middle;
+}
+.rv-table tbody td{
+  border-bottom:1px solid #f1f5f9;
+  padding:8px 10px;
+  vertical-align:top;
+  color:#111827;
+  white-space:normal;
+  word-wrap:break-word;
+  overflow-wrap:anywhere;
+  line-height:1.4;
+}
+.rv-td-symbol,
+.rv-td-image,
+.rv-td-cam{
+  white-space:nowrap;
+}
+.rv-table tbody tr:hover td{
+  background:#fafafa;
+}
+.rv-td-num{
+  text-align:right;
+  white-space:normal;
+  font-variant-numeric:tabular-nums;
+}
+.rv-td-muted{
+  color:#6b7280;
+  font-size:calc(var(--cat-body-fs) - 1px);
+}
+.rv-td-voc{
+  line-height:1.35;
+}
+.rv-voc-badge{
+  display:inline-block;
+  vertical-align:middle;
+  height:32px;
+  width:auto;
+  max-width:140px;
+  margin:0;
+  padding:0;
+  border:none;
+  background:transparent;
+  object-fit:contain;
+}
+.rv-voc-text{
+  vertical-align:middle;
+}
+.rv-voc-link{
+  margin-left:4px;
+  text-decoration:none;
+  color:var(--cat-tab-active);
+  font-size:calc(var(--cat-body-fs) + 1px);
+}
+.rv-voc-link:hover{
+  text-decoration:underline;
+}
+/* GWP peer pill / bar classes (Streamlit-aligned) */
+.eetra-gwp-peer-pill{
+  margin:var(--cat-gwp-pill-mt,7)px var(--cat-gwp-pill-mr,0)px var(--cat-gwp-pill-mb,4)px var(--cat-gwp-pill-ml,0)px;
+}
+.eetra-gwp-peer-bar{
+  position:relative;
+  height:7px;
+  border-radius:3.5px;
+  background:linear-gradient(to right,#2a7d2e,#7cb87e,#d4c84a,#e8742a,#c0392b);
+  overflow:visible;
+}
+/* Extended back-panel fields */
+.ext-field-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:6px;
+  padding:2px 0;
+}
+.ext-field-label{
+  font-size:var(--cat-body-fs);
+  color:var(--cat-brand-color);
+  font-weight:600;
+  flex-shrink:0;
+}
+.ext-field-value{
+  font-size:var(--cat-body-fs);
+  color:#111;
+  text-align:right;
+  word-break:break-word;
+}
+.ext-field-value a{color:#1a56a8;text-decoration:underline}
+.ext-field-value a:hover{color:#0d47a1}
+.ext-field-content{
+  margin-top:4px;
+  padding-top:4px;
+  border-top:1px solid var(--cat-tab-border);
+}
+.ext-field-content .ext-field-label{
+  display:block;
+  margin-bottom:3px;
+}
+.ext-field-box{
+  font-size:var(--cat-body-fs);
+  color:#111;
+  border:1px solid var(--cat-tab-border);
+  border-radius:4px;
+  padding:4px 6px;
+  max-height:80px;
+  overflow-y:auto;
+  width:100%;
+  word-break:break-word;
+}
+.ext-back-panel{
+  flex:1 1 auto;
+  overflow-y:auto;
+  min-height:0;
+  padding:0 var(--cat-pad-x) var(--cat-pad-bottom);
+}
+/* VOC certification footer strip on card front */
+.voc-cert-footer{
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+  padding:2px var(--cat-pad-x);
+  border:none;
+  background:transparent;
+  flex-wrap:wrap;
+}
+.voc-cert-footer img{
+  height:32px;
+  width:auto;
+  max-width:140px;
+  object-fit:contain;
+  border:none;
+  background:transparent;
+  padding:0;
+  margin:0;
+}
+</style>
+</head>
+<body>
+<div class="rv-toolbar">
+  <div>
+    <span style="margin-right:6px;color:#6b7280;">View</span>
+    <span class="rv-toolbar-group">
+      <button id="rv-btn-grid" type="button" class="rv-active rv-view-btn" title="Grid view" aria-pressed="true">
+        <span class="rv-view-icon rv-icon-grid" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+        <span>Grid</span>
+      </button>
+      <button id="rv-btn-list" type="button" class="rv-view-btn" title="List view" aria-pressed="false">
+        <span class="rv-view-icon rv-icon-list" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span>List</span>
+      </button>
+    </span>
+    <span style="margin-left:10px;margin-right:6px;color:#6b7280;">Size</span>
+    <span class="rv-toolbar-group">
+      <button id="rv-size-s" type="button">S</button>
+      <button id="rv-size-m" type="button" class="rv-active">M</button>
+      <button id="rv-size-l" type="button">L</button>
+    </span>
+  </div>
+  <div class="rv-count" id="rv-count"></div>
+</div>
+<div id="grid"></div>
+
+<script>
+const PRODUCTS = (window.__DATA__ && window.__DATA__.length)
+  ? window.__DATA__
+  : [
+    {id:1,name:"CROMATECH 50 T",manufacturer:"ROLLTECH A/S",productType:"Cladding",gwp:1.24,gwpUnit:"kg CO₂e/kg",epdDeclaredNumber:"—",epdNumber:"EPD-RLT-20240012-CBB1",country:"DK",thickness:"50 mm",density:"180 kg/m³",recyclingRate:"98%",certifications:["EN 15804","ISO 14025"],declaredUnit:"1 kg",lifespanYears:50,a1a3:1.24,a4:0.03,a5:0.01,c4:0.02,d:-0.18},
+    {id:2,name:"Multipor WI",manufacturer:"Ytong",productType:"Insulation",gwp:0.31,gwpUnit:"kg CO₂e/kg",epdDeclaredNumber:"—",epdNumber:"EPD-YTG-20210088-IBA",country:"DE",thickness:"100 mm",density:"115 kg/m³",recyclingRate:"100%",certifications:["EN 15804","IBU"],declaredUnit:"1 m³",lifespanYears:50,a1a3:0.31,a4:0.06,a5:0.01,c4:0.01,d:0.0},
+  ];
+
+const INIT_COLS = (window.__COLS__ && Number.isInteger(window.__COLS__)) ? window.__COLS__ : 4;
+/** Matches Streamlit sidebar "Detail Level" — all cards start on this face after each rerun. */
+const DEFAULT_FLIPPED = (window.__INITIAL_DETAIL__ === "Extended");
+const FLAGS={DK:"🇩🇰",DE:"🇩🇪",IT:"🇮🇹",BE:"🇧🇪",PL:"🇵🇱",SE:"🇸🇪",FR:"🇫🇷",GB:"🇬🇧",NL:"🇳🇱",ES:"🇪🇸",AT:"🇦🇹",CH:"🇨🇭",FI:"🇫🇮",NO:"🇳🇴",PT:"🇵🇹"};
+const COUNTRY_NAME_TO_ISO={"ITALY":"IT","GERMANY":"DE","FRANCE":"FR","SPAIN":"ES","DENMARK":"DK","BELGIUM":"BE","POLAND":"PL","SWEDEN":"SE","UNITED KINGDOM":"GB","UK":"GB","AUSTRIA":"AT","SWITZERLAND":"CH","NETHERLANDS":"NL","NORWAY":"NO","FINLAND":"FI","PORTUGAL":"PT"};
+function flagForCountry(raw){
+  const s=String(raw||"").trim();
+  if(!s||s==="-") return "";
+  const up=s.toUpperCase();
+  if(up.length===2&&FLAGS[up]) return FLAGS[up];
+  const iso=COUNTRY_NAME_TO_ISO[up.replace(/\s+/g," ")];
+  if(iso&&FLAGS[iso]) return FLAGS[iso];
+  return "🌍";
+}
+
+let cols=INIT_COLS;
+let viewMode="grid"; // "grid" | "list"
+let sizeMode="M";    // "S" | "M" | "L"
+const CAT_CFG = window.__CAT_CFG__ || {};
+if(typeof window.__STELLA_IMG__==="undefined") window.__STELLA_IMG__="";
+const RV_SIZE_COLS = {};
+const RV_SIZE_IMG = {};
+(function applyCatCfg(){
+  // Apply bodyPaddingX / bodyPaddingBottom from Python config (JS fallback)
+  if(CAT_CFG.bodyPaddingX){
+    document.documentElement.style.setProperty("--cat-pad-x", CAT_CFG.bodyPaddingX);
+  }
+  if(CAT_CFG.bodyPaddingBottom){
+    document.documentElement.style.setProperty("--cat-pad-bottom", CAT_CFG.bodyPaddingBottom);
+  }
+  const presets = CAT_CFG.gridSizePresets || {};
+  const keys = Object.keys(presets);
+  if (keys.length) {
+    keys.forEach(function(k){
+      const p = presets[k] || {};
+      const delta = Number(p.colsDelta) || 0;
+      RV_SIZE_COLS[k] = Math.max(1, INIT_COLS + delta);
+      RV_SIZE_IMG[k] = Number(p.imageHeightPx) || 100;
+    });
+    return;
+  }
+  RV_SIZE_COLS.S = Math.max(2, INIT_COLS + 1);
+  RV_SIZE_COLS.M = INIT_COLS;
+  RV_SIZE_COLS.L = Math.max(1, INIT_COLS - 1);
+  RV_SIZE_IMG.S = 80;
+  RV_SIZE_IMG.M = 100;
+  RV_SIZE_IMG.L = 120;
+})();
+
+/* Minimum card width per size — caps columns so cards don't overflow the iframe */
+const MIN_CARD_PX_BY_SIZE = {S:120, M:150, L:180};
+function effectiveGridCols(){
+  const gridEl=document.getElementById("grid");
+  const w=(gridEl?gridEl.clientWidth:0)||window.innerWidth||600;
+  const minPx=MIN_CARD_PX_BY_SIZE[sizeMode]||150;
+  return Math.max(1, Math.min(cols, Math.floor(w/minPx)));
+}
+/** Per-card flip after user click; undefined → use DEFAULT_FLIPPED. */
+const flipped={};
+
+function isCardFlipped(id){
+  return Object.prototype.hasOwnProperty.call(flipped, id) ? flipped[id] : DEFAULT_FLIPPED;
+}
+
+function escAttr(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/'/g,"&#39;").replace(/</g,"&lt;");}
+function escHtml(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+
+function _gwpPct(gwpVal, productType){
+  const ranges=(window.__GWP_RANGES__&&window.__GWP_RANGES__[productType])||null;
+  if(!ranges||ranges.max===ranges.min) return null;
+  return Math.max(0,Math.min(1,(gwpVal-ranges.min)/(ranges.max-ranges.min)));
+}
+function _gwpColor(pct){
+  if(pct<0.20) return '#2a7d2e';
+  if(pct<0.45) return '#5a9e3a';
+  if(pct<0.65) return '#c8a020';
+  if(pct<0.85) return '#d97706';
+  return '#c0392b';
+}
+function gwpTextColor(gwpVal,productType){
+  const pct=_gwpPct(gwpVal,productType);
+  return pct===null?'var(--cat-co2-green)':_gwpColor(pct);
+}
+/* GWP gradient pill — margins come from injected CSS vars */
+const GWP_NEEDLE_WIDTH_PX       = 4;
+const GWP_NEEDLE_HEIGHT_PX      = 14;
+const GWP_NEEDLE_COLOR          = "#444444";
+const GWP_LABEL_FONT_SIZE_PX    = 10;
+const GWP_LABEL_COLOR           = "#94a3b8";
+
+function gwpIndicatorHTML(gwpVal,productType){
+  const ranges=(window.__GWP_RANGES__&&window.__GWP_RANGES__[productType])||null;
+  if(!ranges||ranges.max===ranges.min) return '';
+  const pct=Math.max(0,Math.min(1,(gwpVal-ranges.min)/(ranges.max-ranges.min)));
+  const needlePct=(pct*100).toFixed(1);
+  const fmtMin=ranges.min.toFixed(2);
+  const fmtMax=ranges.max.toFixed(2);
+  const cs=getComputedStyle(document.documentElement);
+  const mt=(cs.getPropertyValue("--cat-gwp-pill-mt")||"7").trim();
+  const mr=(cs.getPropertyValue("--cat-gwp-pill-mr")||"0").trim();
+  const mb=(cs.getPropertyValue("--cat-gwp-pill-mb")||"4").trim();
+  const ml=(cs.getPropertyValue("--cat-gwp-pill-ml")||"0").trim();
+  const m=`${mt}px ${mr}px ${mb}px ${ml}px`;
+  return`<div style="margin:${m}">
+    <div style="font-size:calc(var(--cat-body-fs) - 3px);color:#94a3b8;margin-bottom:3px;letter-spacing:.02em">GWP · peer group percentile</div>
+    <div style="position:relative;height:7px;border-radius:3.5px;background:linear-gradient(to right,#2a7d2e,#7cb87e,#d4c84a,#e8742a,#c0392b);overflow:visible">
+      <div style="position:absolute;top:50%;left:${needlePct}%;width:${GWP_NEEDLE_WIDTH_PX}px;height:${GWP_NEEDLE_HEIGHT_PX}px;border-radius:2px;background:${GWP_NEEDLE_COLOR};transform:translate(-50%,-50%);pointer-events:none"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-top:2px">
+      <span style="font-size:calc(var(--cat-body-fs) - 2px);color:${GWP_LABEL_COLOR}">${fmtMin}</span>
+      <span style="font-size:calc(var(--cat-body-fs) - 2px);color:${GWP_LABEL_COLOR}">${fmtMax}</span>
+    </div>
+  </div>`;
+}
+
+function formatGwpLine(p){
+  const isInSitu = String(p.productType||"").toLowerCase().includes("in situ");
+  if(isInSitu && p.gwpM3){
+    const v=Number(p.gwpM3);
+    const num=Number.isFinite(v)?v.toFixed(2):"n/a";
+    return escHtml(num+" kgCO₂e/m³");
+  }
+  const v=Number(p.gwp);
+  const num=(Number.isFinite(v)?v:0).toFixed(2);
+  let u=String(p.gwpUnit||"").trim();
+  u=u.replace(/\bco2\b/gi,"CO₂").replace(/\bCO2\b/g,"CO₂");
+  u=u.replace(/\bm2\b/gi,"m²").replace(/\bm3\b/gi,"m³");
+  u=u.replace(/^1\s+/,"").trim();
+  if(!u||u==="-") return escHtml(num+" kgCO₂e");
+  if(/^kg\s*CO₂e/i.test(u)||/^kgCO₂e/i.test(u)) return escHtml(num+" "+u.replace(/\s+/g," ").trim());
+  const clean=u.replace(/^\/+/,"").trim();
+  return escHtml(num+" kgCO₂e/"+clean);
+}
+
+function epdLineHtml(p){
+  const dec=String(p.epdDeclaredNumber||"").trim();
+  const reg=String(p.epdNumber||"").trim();
+  const url=String(p.epdUrl||"").trim();
+  const urlOk=url && url!=="-" && !/^(n\/a|na|n\/r|nr)$/i.test(url);
+  const decShown=(dec&&dec!=="-")?escHtml(dec):"—";
+  let regShown;
+  if(urlOk){
+    const inner=(reg&&reg!=="-")?escHtml(reg):"Open EPD ↗";
+    regShown=`<a class="epd-link" href="${escAttr(url)}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">${inner}</a>`;
+  }else{
+    regShown=(reg&&reg!=="-")?escHtml(reg):"—";
+  }
+  return `<div class="epd-dual" style="display:flex;flex-direction:column;gap:4px;text-align:right">`
+    +`<div><span class="detail-k">EPD Dec. num</span> ${decShown}</div>`
+    +`<div><span class="detail-k">EPD Reg. num</span> ${regShown}</div>`
+    +`</div>`;
+}
+
+function materialTypeLabel(p){
+  const mt=String(p.materialType||"").trim();
+  if(!mt||mt==="-"||/^(n\/a|na|n\/r|nr)$/i.test(mt)) return "";
+  return mt;
+}
+function materialBandHTML(label){
+  if(!label) return "";
+  return `<div class="eetra-cat-material-band" aria-hidden="true">${escHtml(label)}</div>`;
+}
+function binderImgStyleAttr(p){
+  const isBinder=/^binder$/i.test(String(p.productType||"").trim());
+  if(!isBinder) return "";
+  const cfg=window.__CAT_IMG_BINDER__||{fit:"contain",zoom:0.88};
+  const fit=String(cfg.fit||"contain").trim().toLowerCase();
+  const z=Number(cfg.zoom);
+  const oz=(Number.isFinite(z)?z:0.88);
+  const parts=[`object-fit:${fit}`];
+  if(Math.abs(oz-1)>0.001){
+    parts.push(`transform:scale(${oz})`);
+    parts.push("transform-origin:center center");
+  }
+  return ` style="${parts.join(";")}"`;
+}
+/** Streamlit-style image band; material-type band when no product image */
+function imgBandHTML(p){
+  const url=(p.imageUrl&&String(p.imageUrl).trim())||"";
+  const label=materialTypeLabel(p);
+  const mtBand=materialBandHTML(label);
+  const h = getComputedStyle(document.documentElement).getPropertyValue("--cat-img-h").trim();
+  const bandPx = parseInt(h,10) || 0;
+  if(bandPx<=0) return "";
+  const isBinder=/^binder$/i.test(String(p.productType||"").trim());
+  let imgStyle="";
+  if(isBinder){
+    const cfg=window.__CAT_IMG_BINDER__||{fit:"contain",zoom:0.88};
+    const fit=String(cfg.fit||"contain").trim().toLowerCase();
+    const z=Number(cfg.zoom);
+    const oz=(Number.isFinite(z)?z:0.88);
+    const parts=[`object-fit:${fit}`];
+    if(Math.abs(oz-1)>0.001){
+      parts.push(`transform:scale(${oz})`);
+      parts.push("transform-origin:center center");
+    }
+    imgStyle=` style="${parts.join(";")}"`;
+  }
+  return `<div class="eetra-cat-img-band">${mtBand}<img src="${escAttr(url)}" alt="" loading="lazy" decoding="async"${imgStyle} onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback');"/></div>`;
+}
+
+function brandLineHtml(p){
+  const flag=flagForCountry(p.country);
+  const mfr=escHtml(p.manufacturer||"—");
+  const fl=flag?`<span title="Manufacturing country" style="margin-left:6px">${flag}</span>`:"";
+  return `<div class="brand">${mfr}${fl}</div>`;
+}
+
+function compactFieldsHtml(p){
+  const rows=[];
+  if(p.thickness&&String(p.thickness).trim()&&String(p.thickness).trim()!=="-")
+    rows.push([`Thickness`,String(p.thickness)]);
+  if(p.density&&String(p.density).trim()&&String(p.density).trim()!=="-")
+    rows.push([`Vol. Density`,String(p.density)]);
+  if(!rows.length) return "";
+  return rows.map(([k,v])=>`<div class="compact-row"><span class="compact-k">${escHtml(k)}</span><span class="compact-v">${escHtml(v)}</span></div>`).join("");
+}
+
+function backDetailRows(p){
+  const rows=[];
+  if(p.productType&&p.productType!=="-") rows.push(["Type",p.productType]);
+  if(p.thickness&&p.thickness!=="-")     rows.push(["Thickness",String(p.thickness)]);
+  if(p.density&&p.density!=="-")         rows.push(["Vol. Density",String(p.density)]);
+  if(p.recyclingRate&&String(p.recyclingRate).trim()&&p.recyclingRate!=="-"){
+    const rate=String(p.recyclingRate);
+    const u=p.recyclingUrl&&String(p.recyclingUrl).trim();
+    if(u&&u!=="-"){
+      rows.push(["Recycled",{_rich:true,html:`${escHtml(rate)} <a href="${escAttr(u)}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">🔗</a>`}]);
+    }else{
+      rows.push(["Recycled",rate]);
+    }
+  }
+  if(p.content&&p.content!=="-")         rows.push(["Content",String(p.content)]);
+  if(p.strength&&p.strength!=="-")       rows.push(["Strength",String(p.strength)]);
+  if(p.country&&p.country!=="-")         rows.push(["Country",String(p.country)]);
+  if(p.plant&&p.plant!=="-")             rows.push(["Plant",String(p.plant)]);
+  if(Array.isArray(p.certifications)&&p.certifications.length)
+    rows.push(["Certif.",p.certifications.join(", ")]);
+  const detailHtml=rows.map(([k,v])=>{
+    const vcel=(v&&typeof v==="object"&&v._rich)?v.html:escHtml(String(v));
+    return `<div class="detail-row"><span class="detail-k">${escHtml(k)}</span><span class="detail-v">${vcel}</span></div>`;
+  }).join("");
+
+  return detailHtml;
+}
+
+function extendedBackPanelHtml(p){
+  /* Use Python-built HTML when available; fall back to JS backDetailRows */
+  if(p.extendedPanelHtml&&String(p.extendedPanelHtml).trim()){
+    return p.extendedPanelHtml;
+  }
+  const det=backDetailRows(p);
+  const epd=`<div class="detail-row"><span class="detail-k">EPD</span><span class="detail-v">${epdLineHtml(p)}</span></div>`;
+  return `<div class="product-details"><div class="detail-block">${det}${epd}</div></div>`;
+}
+
+function vocFooterHtml(p){
+  const badge=p.vocCertBadge&&String(p.vocCertBadge).trim();
+  if(!badge) return "";
+  return `<div class="voc-cert-footer"><img src="${escAttr(badge)}" alt="VOC certification"></div>`;
+}
+
+function tabBarHtml(){
+  return `<div class="cat-tab-bar" aria-hidden="true">`
+    + `<span class="cat-tab-c">Compact</span>`
+    + `<span class="cat-tab-e">Extended</span>`
+    + `</div>`;
+}
+
+function tagsStripHtml(p){
+  const raw = Array.isArray(p.tags) ? p.tags : [];
+  const shown = raw.slice(0,4);
+  const chips = shown.map(t=>`<span class="tag-chip">${escHtml((t&&t.label)||"")}</span>`).join("");
+  const extra = raw.length>4 ? `<span class="tag-more">+${raw.length-4} more</span>` : "";
+  const canTag = String(p.eetraId||"").trim() !== "";
+  const addBtn = canTag
+    ? `<button class="tag-add-btn" onclick="openTagEditor(event,'${escAttr(p.eetraId)}')">+ Tag</button>`
+    : "";
+  return `<div class="tags-strip">${chips}${extra}${addBtn}</div>`;
+}
+
+function openTagEditor(ev, eetraId){
+  ev.preventDefault();
+  ev.stopPropagation();
+  window.parent.postMessage({type:'eetra:openTagEditor', eetraId:String(eetraId||"")}, '*');
+  try{
+    const parentUrl = new URL(window.parent.location.href);
+    parentUrl.searchParams.set("edit_tag_for", String(eetraId||""));
+    window.parent.history.replaceState({}, "", parentUrl.toString());
+    window.parent.location.reload();
+  }catch(_e){
+    // Fallback handled in Streamlit tab; JS chips remain read-only.
+  }
+}
+
+function cardHTML(p){
+  const bandHtml=imgBandHTML(p);
+
+  const titleHtml=p.productUrl&&String(p.productUrl).trim()&&p.productUrl!=="-"
+    ?`<p class="product-title"><a href="${escAttr(p.productUrl)}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">${escHtml(p.name||"—")}</a></p>`
+    :`<p class="product-title">${escHtml(p.name||"—")}</p>`;
+
+  const epdBackHtml=`<div class="detail-row"><span class="detail-k">EPD</span><span class="detail-v">${epdLineHtml(p)}</span></div>`;
+  const compact=compactFieldsHtml(p);
+  const compactBlock=compact?`<div class="product-details">${compact}</div>`:`<div class="product-details"></div>`;
+
+  /* fn329 order: brand → title → compact panel (image → GWP → fields) → tab bar */
+  const _flip=isCardFlipped(p.id);
+  return`<div class="card-wrap" role="button" tabindex="0" aria-label="Flip product card" onclick="toggleFlip(${p.id})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleFlip(${p.id});}">
+    <div class="card-inner${_flip?" flipped":""}" id="ci-${p.id}">
+      <div class="face face-front">
+        ${brandLineHtml(p)}
+        ${titleHtml}
+        ${bandHtml}
+        <div class="co2-value" style="color:${gwpTextColor(p.gwp||0,p.productType||'')}">${formatGwpLine(p)}</div>
+        ${gwpIndicatorHTML(p.gwp||0,p.productType||'')}
+        ${compactBlock}
+        ${tagsStripHtml(p)}
+        ${vocFooterHtml(p)}
+        ${tabBarHtml()}
+      </div>
+      <div class="face face-back">
+        ${brandLineHtml(p)}
+        <p class="product-title">${escHtml(p.name||"—")}</p>
+        ${extendedBackPanelHtml(p)}
+        ${tabBarHtml()}
+      </div>
+    </div>
+  </div>`;
+}
+
+window.toggleFlip=function(id){
+  flipped[id]=!isCardFlipped(id);
+  const el=document.getElementById("ci-"+id);
+  if(el) el.classList.toggle("flipped", !!flipped[id]);
+};
+
+const LIST_FIELDS = window.__LIST_FIELDS__ || {};
+const LIST_OPTIONAL = new Set((CAT_CFG.listOptionalColumns || []));
+let listFilterQuery="";
+let listSortCol="product";
+let listSortAsc=true;
+const LIST_NUMERIC_SORT_KEYS=new Set(["gwp","thickness","density","conductivity","recycled"]);
+
+function listColumnsActive(){
+  const cols = (CAT_CFG.listColumns && CAT_CFG.listColumns.length)
+    ? CAT_CFG.listColumns.slice()
+    : ["product_manufacturer","gwp","thickness","density","epd_number","epd_programme","voc"];
+  return cols.filter(function(key){
+    if (!LIST_OPTIONAL.has(key)) return true;
+    return LIST_FIELDS[key] === true;
+  });
+}
+function listColumnLabel(key){
+  const labels = CAT_CFG.listColumnLabels || {};
+  return labels[key] || key;
+}
+function listCellSortText(p, key){
+  switch(key){
+    case "image":
+    case "symbol":
+      return materialTypeLabel(p)||String(p.name||"").trim();
+    case "product":
+      return String(p.name||"").trim();
+    case "manufacturer":
+      return String(p.manufacturer||"").trim();
+    case "gwp": {
+      const pre=String(p.gwpDisplay||"").trim();
+      if(pre) return pre;
+      return String(p.gwp!=null?p.gwp:"").trim();
+    }
+    case "thickness":
+      return String(p.thickness||"").trim();
+    case "density":
+      return String(p.density||"").trim();
+    case "conductivity":
+      return String(p.conductivity||"").trim();
+    case "recycled":
+      return String(p.recyclingRate||"").trim();
+    case "cam":
+      return String(p.camCompliance||"").trim();
+    case "epd_number":
+      return String(p.epdNumber||p.epdDeclaredNumber||"").trim();
+    case "epd_programme":
+      return String(p.epdProgramme||p.programme||"").trim();
+    case "voc":
+      return String(p.vocText||"").trim();
+    case "product_manufacturer":
+      return (String(p.name||"").trim()+" "+String(p.manufacturer||"").trim()).trim();
+    default:
+      return "";
+  }
+}
+function parseListSortNumber(text, key){
+  if(!LIST_NUMERIC_SORT_KEYS.has(key)) return null;
+  const s=String(text||"").trim();
+  if(!s||s==="—"||s==="-") return null;
+  const m=s.replace(/,/g,".").match(/-?\d+(?:\.\d+)?/);
+  if(!m) return null;
+  const n=parseFloat(m[0]);
+  return Number.isFinite(n)?n:null;
+}
+function listCompareRows(a, b, key){
+  const av=listCellSortText(a, key);
+  const bv=listCellSortText(b, key);
+  const an=parseListSortNumber(av, key);
+  const bn=parseListSortNumber(bv, key);
+  let cmp=0;
+  if(an!==null&&bn!==null) cmp=an-bn;
+  else if(an!==null) cmp=-1;
+  else if(bn!==null) cmp=1;
+  else cmp=String(av).localeCompare(String(bv), undefined, {numeric:true, sensitivity:"base"});
+  if(!cmp&&key!=="product"){
+    cmp=String(listCellSortText(a,"product")).localeCompare(
+      String(listCellSortText(b,"product")), undefined, {numeric:true, sensitivity:"base"}
+    );
+  }
+  return listSortAsc?cmp:-cmp;
+}
+function listFilteredSortedProducts(){
+  const cols=listColumnsActive();
+  let rows=PRODUCTS.slice();
+  const q=listFilterQuery.trim().toLowerCase();
+  if(q){
+    rows=rows.filter(function(p){
+      const hay=cols.map(function(k){ return listCellSortText(p, k); }).join(" ").toLowerCase();
+      return hay.indexOf(q)!==-1;
+    });
+  }
+  if(listSortCol&&cols.indexOf(listSortCol)!==-1){
+    rows.sort(function(a, b){ return listCompareRows(a, b, listSortCol); });
+  }
+  return rows;
+}
+function listSymbolHTML(p){
+  const url=(p.imageUrl&&String(p.imageUrl).trim())||"";
+  const mtRaw=String(p.materialType||"").trim();
+  const mt=(mtRaw&&mtRaw!=="-")?escHtml(mtRaw):"";
+  if(url){
+    return `<td class="rv-td-image rv-td-symbol"><div class="rv-list-symbol"><img src="${escAttr(url)}" alt="" loading="lazy" decoding="async" onerror="this.style.display='none';this.parentElement.classList.add('eetra-cat-img-band--symbol-only');"/></div></td>`;
+  }
+  if(mt){
+    return `<td class="rv-td-image rv-td-symbol"><div class="rv-list-symbol eetra-cat-img-band--symbol-only"><div class="eetra-cat-material-band">${mt}</div></div></td>`;
+  }
+  return `<td class="rv-td-image rv-td-symbol">—</td>`;
+}
+function listCellHTML(p, key){
+  switch(key){
+    case "image":
+    case "symbol":
+      return listSymbolHTML(p);
+    case "product": {
+      const name=String(p.name||"").trim()||"—";
+      const purl=(p.productUrl&&String(p.productUrl).trim())||"";
+      if(purl&&purl!=="-"){
+        return `<td><a href="${escAttr(purl)}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">${escHtml(name)}</a></td>`;
+      }
+      return `<td>${escHtml(name)}</td>`;
+    }
+    case "manufacturer": {
+      const mfr=String(p.manufacturer||"").trim()||"—";
+      const flag=flagForCountry(p.country);
+      const fl=flag?`<span class="rv-mfr-flag" title="Manufacturing country">${flag}</span>`:"";
+      return `<td>${escHtml(mfr)}${fl}</td>`;
+    }
+    case "recycled": {
+      const rate=String(p.recyclingRate||"").trim();
+      if(!rate||rate==="-") return `<td>—</td>`;
+      const u=(p.recyclingUrl&&String(p.recyclingUrl).trim())||"";
+      if(u&&u!=="-"){
+        return `<td>${escHtml(rate)} <a class="rv-voc-link" href="${escAttr(u)}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" title="Recycled content documentation">🔗</a></td>`;
+      }
+      return `<td>${escHtml(rate)}</td>`;
+    }
+    case "cam": {
+      const raw=String(p.camCompliance||"").trim();
+      if(!raw||raw==="-"||/^nan$/i.test(raw)||/^no$/i.test(raw)) return `<td class="rv-td-cam">–</td>`;
+      const isCompliant=raw==="✓"||/^y(es)?$/i.test(raw)||/^compliant$/i.test(raw)||/^ok$/i.test(raw)||/below|warn|!/i.test(raw);
+      if(isCompliant){
+        const stellaSrc=window.__STELLA_IMG__||"";
+        if(stellaSrc){
+          return `<td class="rv-td-cam" title="CAM compliant"><div class="rv-cam-cell"><span class="rv-cam-label">CAM</span><img class="rv-cam-star" src="${escAttr(stellaSrc)}" alt="CAM compliant"></div></td>`;
+        }
+        return `<td class="rv-td-cam" title="CAM compliant"><div class="rv-cam-cell"><span class="rv-cam-label">CAM</span><span style="font-size:16px">★</span></div></td>`;
+      }
+      return `<td class="rv-td-cam">${escHtml(raw)}</td>`;
+    }
+    case "product_manufacturer":
+      return `<td><div>${escHtml(p.name||"—")}</div><div class="rv-td-muted">${escHtml(p.manufacturer||"—")}</div></td>`;
+    case "gwp": {
+      const pre=String(p.gwpDisplay||"").trim();
+      if (pre) return `<td class="rv-td-num">${escHtml(pre)}</td>`;
+      return `<td class="rv-td-num">${formatGwpLine(p)}</td>`;
+    }
+    case "thickness":
+      return `<td>${escHtml(String(p.thickness||"").trim()||"—")}</td>`;
+    case "density":
+      return `<td>${escHtml(String(p.density||"").trim()||"—")}</td>`;
+    case "conductivity":
+      return `<td class="rv-td-num">${escHtml(String(p.conductivity||"").trim()||"—")}</td>`;
+    case "epd_number": {
+      const epdNum=String(p.epdNumber||p.epdDeclaredNumber||"").trim();
+      const urlRaw=(p.epdUrl&&String(p.epdUrl).trim())||"";
+      const urlOk=urlRaw && urlRaw!=="-" && !/^(n\/a|na|n\/r|nr)$/i.test(urlRaw);
+      if (urlOk && epdNum){
+        return `<td><a href="${escAttr(urlRaw)}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">${escHtml(epdNum)}</a></td>`;
+      }
+      return `<td>${escHtml(epdNum||"—")}</td>`;
+    }
+    case "epd_programme":
+      return `<td>${escHtml(String(p.epdProgramme||p.programme||"").trim()||"—")}</td>`;
+    case "voc": {
+      const badge=(p.vocCertBadge&&String(p.vocCertBadge).trim())
+        ? `<img class="rv-voc-badge" src="${escAttr(p.vocCertBadge)}" alt="" title="${escAttr(String(p.vocText||"VOC certification"))}" />`
+        : "";
+      const vurl=(p.vocUrl&&String(p.vocUrl).trim())||"";
+      const link=vurl
+        ? `<a class="rv-voc-link" href="${escAttr(vurl)}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" title="VOC documentation">🔗</a>`
+        : "";
+      return `<td class="rv-td-voc">${badge||"—"}${link}</td>`;
+    }
+    default:
+      return `<td>—</td>`;
+  }
+}
+function listTableHTML(products){
+  const cols=listColumnsActive();
+  const rows=(products||[]).map(function(p){
+    return "<tr>"+cols.map(function(k){ return listCellHTML(p,k); }).join("")+"</tr>";
+  }).join("");
+  const head=cols.map(function(k){
+    const lbl=listColumnLabel(k);
+    const active=listSortCol===k;
+    const ind=active?(listSortAsc?"▲":"▼"):"⇅";
+    const cls=active?" rv-sort-active":"";
+    return `<th class="rv-th-sort${cls}" data-sort="${escAttr(k)}" scope="col" title="Sort by ${escAttr(lbl)}">${escHtml(lbl)}<span class="rv-sort-ind" aria-hidden="true">${ind}</span></th>`;
+  }).join("");
+  const empty=`<tr><td colspan="${cols.length}" style="text-align:center;color:#6b7280;padding:2rem 10px">No matching products.</td></tr>`;
+  return `<div class="rv-table-wrap">
+    <table class="rv-table">
+      <thead><tr>${head}</tr></thead>
+      <tbody>${rows||empty}</tbody>
+    </table>
+  </div>`;
+}
+function listViewHTML(){
+  const rows=listFilteredSortedProducts();
+  const hint=rows.length<PRODUCTS.length
+    ? `<span class="rv-list-filter-hint">${rows.length} of ${PRODUCTS.length} shown</span>`
+    : "";
+  return `<div class="rv-list-panel">
+    <div class="rv-list-filter-bar">
+      <input type="search" id="rv-list-filter" class="rv-list-filter-input" placeholder="Filter table…" value="${escAttr(listFilterQuery)}" autocomplete="off" />
+      ${hint}
+    </div>
+    ${listTableHTML(rows)}
+  </div>`;
+}
+function updateListCount(shown, total){
+  const countEl=document.getElementById("rv-count");
+  if(!countEl) return;
+  if(!total){ countEl.textContent=""; return; }
+  countEl.textContent=(shown<total)?`${shown} of ${total} items`:`${total} items`;
+}
+function bindListTableEvents(){
+  const inp=document.getElementById("rv-list-filter");
+  if(inp&&!inp._rvBound){
+    inp._rvBound=true;
+    inp.addEventListener("input",function(){
+      listFilterQuery=inp.value;
+      renderListView(true);
+    });
+  }
+  const table=document.querySelector(".rv-table");
+  if(table&&!table._rvSortBound){
+    table._rvSortBound=true;
+    table.addEventListener("click",function(e){
+      const th=e.target.closest("th[data-sort]");
+      if(!th) return;
+      const key=th.getAttribute("data-sort");
+      if(!key) return;
+      if(listSortCol===key) listSortAsc=!listSortAsc;
+      else { listSortCol=key; listSortAsc=true; }
+      renderListView(false);
+    });
+    table.addEventListener("keydown",function(e){
+      if(e.key!=="Enter"&&e.key!==" ") return;
+      const th=e.target.closest("th[data-sort]");
+      if(!th) return;
+      e.preventDefault();
+      th.click();
+    });
+  }
+}
+function renderListView(preserveFilterFocus){
+  const gridEl=document.getElementById("grid");
+  if(!gridEl) return;
+  const active=document.activeElement;
+  const wasFilter=!!(preserveFilterFocus&&active&&active.id==="rv-list-filter");
+  const selStart=wasFilter?active.selectionStart:null;
+  const selEnd=wasFilter?active.selectionEnd:null;
+  const rows=listFilteredSortedProducts();
+  gridEl.style.gridTemplateColumns="minmax(0,1fr)";
+  gridEl.innerHTML=PRODUCTS.length===0
+    ?`<p class="empty-grid">No products to display.</p>`
+    :listViewHTML();
+  if(PRODUCTS.length) bindListTableEvents();
+  updateListCount(rows.length, PRODUCTS.length);
+  if(wasFilter){
+    const inp=document.getElementById("rv-list-filter");
+    if(inp){
+      inp.focus();
+      try{ if(selStart!=null) inp.setSelectionRange(selStart, selEnd); }catch(_e){}
+    }
+  }
+  setTimeout(_notifyStreamlitHeight, 60);
+}
+function updateToolbar(){
+  const gridBtn=document.getElementById("rv-btn-grid");
+  const listBtn=document.getElementById("rv-btn-list");
+  const sBtn=document.getElementById("rv-size-s");
+  const mBtn=document.getElementById("rv-size-m");
+  const lBtn=document.getElementById("rv-size-l");
+  if(!gridBtn||!listBtn||!sBtn||!mBtn||!lBtn) return;
+  const isList=viewMode==="list";
+  gridBtn.classList.toggle("rv-active", !isList);
+  listBtn.classList.toggle("rv-active", isList);
+  gridBtn.setAttribute("aria-pressed", String(!isList));
+  listBtn.setAttribute("aria-pressed", String(isList));
+  [sBtn,mBtn,lBtn].forEach(function(btn){
+    btn.disabled=isList;
+    btn.classList.toggle("rv-disabled", isList);
+  });
+  sBtn.classList.toggle("rv-active", !isList&&sizeMode==="S");
+  mBtn.classList.toggle("rv-active", !isList&&sizeMode==="M");
+  lBtn.classList.toggle("rv-active", !isList&&sizeMode==="L");
+  const imgH=RV_SIZE_IMG[sizeMode]||100;
+  document.documentElement.style.setProperty("--cat-img-h", imgH+"px");
+  cols=RV_SIZE_COLS[sizeMode]||INIT_COLS;
+}
+
+function _notifyStreamlitHeight(){
+  try{
+    const h=Math.max(
+      document.body.scrollHeight,
+      document.documentElement.scrollHeight,
+      document.body.offsetHeight
+    )+8; /* +8 avoids a 1px scroll trigger */
+    window.parent.postMessage(
+      {isStreamlitMessage:true, type:"streamlit:setFrameHeight", height:h},
+      "*"
+    );
+  }catch(e){}
+}
+/* Incremental grid rendering: cards are appended in batches as the user
+   scrolls (IntersectionObserver sentinel), instead of building the full DOM
+   up front. Big win for catalogues with hundreds of products. */
+let __incIO=null;
+function renderCardsIncremental(grid, items, htmlFn, opts){
+  opts=opts||{};
+  const BATCH=opts.batch||40;
+  if(__incIO){ __incIO.disconnect(); __incIO=null; }
+  grid.innerHTML="";
+  if(items.length<=BATCH*1.5){
+    grid.insertAdjacentHTML("beforeend", items.map(htmlFn).join(""));
+    if(opts.onAppend) opts.onAppend(grid);
+    if(opts.onDone) opts.onDone();
+    return;
+  }
+  let idx=0;
+  const sentinel=document.createElement("div");
+  sentinel.style.cssText="grid-column:1/-1;height:1px;";
+  function append(){
+    const slice=items.slice(idx, idx+BATCH);
+    idx+=slice.length;
+    sentinel.insertAdjacentHTML("beforebegin", slice.map(htmlFn).join(""));
+    if(opts.onAppend) opts.onAppend(grid);
+    if(idx>=items.length && __incIO){ __incIO.disconnect(); __incIO=null; sentinel.remove(); }
+    if(opts.onDone) opts.onDone();
+  }
+  grid.appendChild(sentinel);
+  __incIO=new IntersectionObserver(function(entries){
+    if(entries.some(e=>e.isIntersecting)) append();
+  },{root:opts.root||null, rootMargin:"800px 0px"});
+  append();
+  if(__incIO) __incIO.observe(sentinel);
+}
+function render(){
+  const gridEl=document.getElementById("grid");
+  if(!gridEl) return;
+  updateToolbar();
+  if(viewMode==="grid"){
+    gridEl.style.gridTemplateColumns=`repeat(${effectiveGridCols()},minmax(0,1fr))`;
+    if(PRODUCTS.length===0){
+      gridEl.innerHTML=`<p class="empty-grid">No products to display.</p>`;
+    }else{
+      renderCardsIncremental(gridEl, PRODUCTS, cardHTML, {
+        onDone:function(){ setTimeout(_notifyStreamlitHeight, 60); }
+      });
+    }
+  }else{
+    renderListView(false);
+    return;
+  }
+  const countEl=document.getElementById("rv-count");
+  if(countEl){
+    countEl.textContent = PRODUCTS.length ? `${PRODUCTS.length} items` : "";
+  }
+  setTimeout(_notifyStreamlitHeight, 60);
+}
+
+document.getElementById("rv-btn-grid").addEventListener("click",function(e){
+  e.preventDefault(); viewMode="grid"; render();
+});
+document.getElementById("rv-btn-list").addEventListener("click",function(e){
+  e.preventDefault(); viewMode="list"; render();
+});
+document.getElementById("rv-size-s").addEventListener("click",function(e){
+  e.preventDefault(); if(viewMode==="list") return; sizeMode="S"; render();
+});
+document.getElementById("rv-size-m").addEventListener("click",function(e){
+  e.preventDefault(); if(viewMode==="list") return; sizeMode="M"; render();
+});
+document.getElementById("rv-size-l").addEventListener("click",function(e){
+  e.preventDefault(); if(viewMode==="list") return; sizeMode="L"; render();
+});
+
+render();
+/* On first load, images and fonts may still be loading — notify again once settled */
+window.addEventListener("load", function(){ setTimeout(_notifyStreamlitHeight, 200); });
+</script>
+</body>
+</html>

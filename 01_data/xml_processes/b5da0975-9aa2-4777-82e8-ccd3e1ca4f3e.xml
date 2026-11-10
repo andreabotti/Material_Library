@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>b5da0975-9aa2-4777-82e8-ccd3e1ca4f3e</common:UUID>
+      <name>
+        <baseName xml:lang="en">Insulated Glass Unit, triple glazing, float-float-laminated</baseName>
+        <treatmentStandardsRoutes></treatmentStandardsRoutes>
+        <mixAndLocationTypes></mixAndLocationTypes>
+        <functionalUnitFlowProperties></functionalUnitFlowProperties>
+      </name>
+      <common:synonyms>Vetrocamera, triplo vetro, float-float-stratificato</common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">Systems</common:class>
+          <common:class level="1">Construction</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment>Dataset developed within the ARCADIA Project (production chain study regarding glass products for windows “PRODUZIONE DI LASTRE E SISTEMI IN VETRO PER INFISSI E SERRAMENTI”). The dataset refers to the production of insulated glass unit triple glazing composed of float-float-laminated, representative of the Italian average processing technologies commonly used for glass production. &#13;
+The data set covers relevant process steps / technologies over the supply chain of the represented cradle to gate inventory with a good overall data quality. The inventory is based on primary data for the Float glass production, and on secondary data (literature and/or LCI datasets)  representative of Italian supply chain.&#13;
+Triple glazing insulated glass unit is used as components (joined with various material profiles) for the production of windows to be applied into building sector. Dimensions and mass: surface 1 m2, thickness 42 mm (4-14-4-14-33.1), weight 36,9 kg/m2.</common:generalComment>
+      <referenceToExternalDocumentation type="source data set" refObjectId="7c070593-cf87-4cde-ad8d-13042fa78bbd" version="01.00.000" uri="../sources/7c070593-cf87-4cde-ad8d-13042fa78bbd.xml">
+        <common:shortDescription>Dalla Valle A., Lavagna M., Campioli A., 2023. “PRODUZIONE DI LASTRE E SISTEMI IN VETRO PER INFISSI E SERRAMENTI”. Internal report ARCADIA Project. &#13;
+Primary data of the main production processes (foreground data) collected from representative producers.&#13;
+Background dataset from Ecoinvent database cut-off (v. 3.6) were used for the LCA study.</common:shortDescription>
+      </referenceToExternalDocumentation>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2021</common:referenceYear>
+      <common:dataSetValidUntil>2026</common:dataSetValidUntil>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT">
+        <descriptionOfRestrictions>Italy. Primary data collected from leading glass producers active on national context. Dataset representative of Italian production of insulated glass unit triple glazing composed of float-float-laminated.</descriptionOfRestrictions>
+      </locationOfOperationSupplyOrProduction>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>Triple glazing insulated glass unit consist of three sheets of glass sealed at the edges with a perimeter spacer that creates intermediate cavities forming a single unit. The reference unit is 4-14-4-14-33.1, made externally and in the middle of float glass (4 mm), while internally of laminated glass (3+3 mm). It obtains insulation properties mainly from the cavities introduced between the panes of glass (14 mm), that are filled by argon gas. The production process takes place after the manufacturing of float glass (see “Float Glass, at production” dataset) and laminated glass (see “Laminated Safety Glass, at production” dataset). Once collected the different glass panes, the sheets are first washed and dried to remove all dirty particles. They are then separated by an aluminium spacerbar and sealed around the perimeter using organic seals. The spacer bar is filled with desiccant to dry the air in the cavity and a secondary seal is then applied to hermetically seal the double glazing.  All the process is done a second time, to create a triple glazing. The insulated glass unit is finally packed and stored in the warehouse, ready to be installed into window assembly.&#13;
+The system boundary considers A1 “procurement of raw materials”, A2 “transport”, A3 “production”, according to EN15804:2012+A1:2013 standard. The Cradle-to-gate analysis includes the input of materials, energy, water and the outputs of waste, emissions and transport related to the considered system boundary. Production of equipment and infrastructures is not included, except for the background system. &#13;
+Primary data (from leading glass producers) and secondary data (from established database) representative of Italian supply chain for the geographical characteristics and technologies used were collected. Inventory data have been collected as physical quantities of resources (materials and energy) used in the different processes. &#13;
+The benefits from the production and use of energy from incineration and landfill were excluded, as well as those deriving from the use of secondary materials produced from recycling of waste materials.&#13;
+Background data were modelled according to Ecoinvent v.3.6.</technologyDescriptionAndIncludedProcesses>
+      <technologicalApplicability>Triple glazing insulated glass unit composed of float-float-laminated can be used as components (joined with various material profiles) for the production of windows to be applied into building sector. </technologicalApplicability>
+      <referenceToTechnologyFlowDiagrammOrPicture type="source data set" refObjectId="235cb035-ed46-466a-a82a-210129684de5" version="01.00.000" uri="../sources/235cb035-ed46-466a-a82a-210129684de5.xml">
+        <common:shortDescription>20230927170223_Diagramma IGU.jpeg</common:shortDescription>
+      </referenceToTechnologyFlowDiagrammOrPicture>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Allocation - mass</LCIMethodApproaches>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <dataCutOffAndCompletenessPrinciples>Production of equipment and infrastructures is not included, except for the background system.</dataCutOffAndCompletenessPrinciples>
+      <deviationsFromCutOffAndCompletenessPrinciples>None for the inventory. &#13;
+Completeness related to elementary flows cannot be evaluated.</deviationsFromCutOffAndCompletenessPrinciples>
+      <dataSelectionAndCombinationPrinciples>Good consistency of data sources regarding data, modelling, adequacy of float glass, as basic material for all glass products. The related primary data are highly reliable and representative both in geographical, technological and temporal terms. The inventory data of subsequent processing (e.g. assembly) are secondary as retrieved from established database. &#13;
+The LCA study is based on the following assumptions:&#13;
+ - electricity entirely from national grid;&#13;
+ - water entirely from tap water;&#13;
+ - packaging includes wooden pallets and paper;&#13;
+ - wastes include a share of packaging materials;&#13;
+ - output transports consider a distance of 20 km for waste intended for landfill and a distance of 160 km for waste intended for recycling plant.</dataSelectionAndCombinationPrinciples>
+      <deviationsFromSelectionAndCombinationPrinciples>None.</deviationsFromSelectionAndCombinationPrinciples>
+      <deviationsFromTreatmentAndExtrapolationPrinciples>None.</deviationsFromTreatmentAndExtrapolationPrinciples>
+      <referenceToDataSource type="source data set" refObjectId="62be5f5d-f304-42fa-a87e-9cc40eb39074" version="01.00.000" uri="../sources/62be5f5d-f304-42fa-a87e-9cc40eb39074.xml">
+        <common:shortDescription>20230913125630_Report LCA filiera VETRO.pdf</common:shortDescription>
+      </referenceToDataSource>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>No statement</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Independent external review">
+        <common:reviewDetails>The review was performed in compliance with Arcadia Metodology “Metodologia per gli studi di filiera della Banca Dati italiana LCA” and ISO 14040-44. The dataset has been assessed limited to the foreground data collected during the supply chain studies. &#13;
+Each dataset has been evaluated on the basis of the following 4 criteria:&#13;
+1. Technological Representative;&#13;
+2. Time Representative;&#13;
+3. Geographic Representative;&#13;
+4. Reliability.&#13;
+In this context the Reliability is very good. &#13;
+The data used are consistent, appropriate and reasonable in view of the goal and scope of the study. The system boundaries include all relevant processes and activity types from cradle to gate. A cut-off has been applied to production of equipment and infrastructure and to the processes involved in the recycling of glass. These are in line with the requirements of the “Metodologia per gli studi di filiera della Banca Dati italiana LCA” (Buttol et al., v2, November 2021).  &#13;
+The LCI modelling choices follow the requirements of Buttol et al. (2021), such as allocation, consistency of included processes, and LCI methodology in general. It has been consistently applied along the whole dataset. &#13;
+The representativeness of the dataset (time-related, geographical, technology) is well documented and very good, thanks also to the involvement of relevant market operators.  &#13;
+The precision and completeness of the dataset cannot be evaluated.</common:reviewDetails>
+        <common:referenceToNameOfReviewerAndInstitution type="contact data set" refObjectId="dabb2a7c-7598-472e-819a-862d5787ff24" version="01.00.000" uri="../sources/dabb2a7c-7598-472e-819a-862d5787ff24.xml">
+          <common:shortDescription>Ecoinnovazione srl</common:shortDescription>
+        </common:referenceToNameOfReviewerAndInstitution>
+        <common:otherReviewDetails>The study was judged by the reviewer as compliant with both ISO 14040-44 and Arcadia methodology.</common:otherReviewDetails>
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Completeness" value="Not evaluated / unknown"/>
+          <common:dataQualityIndicator name="Precision" value="Not applicable"/>
+          <common:dataQualityIndicator name="Methodological appropriateness and consistency" value="Not applicable"/>
+          <common:dataQualityIndicator name="Overall quality" value="Not applicable"/>
+        </common:dataQualityIndicators>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="8f2f40a0-50a2-419d-abfb-e704d3527ed2" uri="../sources/8f2f40a0-50a2-419d-abfb-e704d3527ed2.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="ed7ee7da-c69a-40cc-996e-1f93661d0527" uri="../sources/ed7ee7da-c69a-40cc-996e-1f93661d0527.xml">
+          <common:shortDescription xml:lang="en">ISO 14044</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Not defined</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="bf2a5d97-e99f-4a10-9d03-fa87edbfcf19" uri="../sources/bf2a5d97-e99f-4a10-9d03-fa87edbfcf19.xml">
+        <common:shortDescription xml:lang="en">Arcadia – PON Governance e Capacità istituzionali 2014-2020.</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Arcadia – PON Governance e Capacità istituzionali 2014-2020.</common:project>
+      <common:intendedApplications>None.</common:intendedApplications>
+    </common:commissionerAndGoal>
+    <dataGenerator>
+      <common:referenceToPersonOrEntityGeneratingTheDataSet refObjectId="4bc7ab83-886e-4676-bc6e-3eabc598bb3c" type="contact data set" uri="../sources/4bc7ab83-886e-4676-bc6e-3eabc598bb3c.xml" version="01.00.000">
+        <common:shortDescription>Politecnico di Milano, DABC, LifeCycleTEAM.</common:shortDescription>
+      </common:referenceToPersonOrEntityGeneratingTheDataSet>
+    </dataGenerator>
+    <dataEntryBy>
+      <common:timeStamp>2023-04-26T15:31:45.446+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="a97a0155-0234-4b87-b4ce-a45da52f2a40" uri="../sources/a97a0155-0234-4b87-b4ce-a45da52f2a40.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2022-10-27T14:25:41.197Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/b5da0975-9aa2-4777-82e8-ccd3e1ca4f3e.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="deaf97fb-1f25-480b-a652-bba131baa072" type="contact data set" uri="../contacts/deaf97fb-1f25-480b-a652-bba131baa072.xml" version="01.00.000">
+        <common:shortDescription>ENEA-ARCADIA</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+      <common:accessRestrictions>Type of license: Open Database License (ODbL)</common:accessRestrictions>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="25ec18fc-d3d4-4c3f-8b01-554ea640c243" uri="../flows/25ec18fc-d3d4-4c3f-8b01-554ea640c243.xml">
+        <common:shortDescription xml:lang="en">Insulated Glass Unit, triple glazing, float-float-laminated</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0000000E+0</meanAmount>
+      <resultingAmount>1.0000000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="8134d5e9-a89c-4d67-a0bf-c8b574da110b" uri="../flows/8134d5e9-a89c-4d67-a0bf-c8b574da110b.xml">
+        <common:shortDescription xml:lang="en">Float Glass, at production</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.0000000E+0</meanAmount>
+      <resultingAmount>2.0000000E+0</resultingAmount>
+      <generalComment>Production of float glass pane, from Italian context, used as primary product to be subjected to assembly and further processing (external and intermediate pane of insulating glass unit).
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="3a7d1cda-f84b-4848-bf94-8aba0a1dfc83" uri="../flows/3a7d1cda-f84b-4848-bf94-8aba0a1dfc83.xml">
+        <common:shortDescription xml:lang="en">Laminated Safety Glass, at production</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.0000000E+0</meanAmount>
+      <resultingAmount>1.0000000E+0</resultingAmount>
+      <generalComment>Production of laminated glass pane, from Italian context, used as primary product to be subjected to assembly and further processing (internal pane of insulating glass unit).
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="3">
+      <referenceToFlowDataSet type="flow data set" refObjectId="15d9da82-a235-43e1-82ae-90be7c8712a4" uri="../flows/15d9da82-a235-43e1-82ae-90be7c8712a4.xml">
+        <common:shortDescription xml:lang="en">Aluminium, wrought alloy {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.1983000E-1</meanAmount>
+      <resultingAmount>5.1983000E-1</resultingAmount>
+      <generalComment>Procurement of aluminum, from Global context, used as raw material for the production of spacerbar. Production and transports are both included.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="4">
+      <referenceToFlowDataSet type="flow data set" refObjectId="b6093b91-7619-4bd9-a6ef-2ef7ec40a31b" uri="../flows/b6093b91-7619-4bd9-a6ef-2ef7ec40a31b.xml">
+        <common:shortDescription xml:lang="en">Sheet rolling, aluminium {RER}| processing | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.1983000E-1</meanAmount>
+      <resultingAmount>5.1983000E-1</resultingAmount>
+      <generalComment>Process of metalworking, from European context, intended for the production of spacerbar.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="5">
+      <referenceToFlowDataSet type="flow data set" refObjectId="0b20a490-0a24-48a5-bcc2-7965aef4023e" uri="../flows/0b20a490-0a24-48a5-bcc2-7965aef4023e.xml">
+        <common:shortDescription xml:lang="en">Zeolite, powder {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.9290000E-1</meanAmount>
+      <resultingAmount>1.9290000E-1</resultingAmount>
+      <generalComment>Procurement of zeolite powder, from Global context, used as filling dessicant of spacerbar to dry the air in the cavity. Production and transports are both included.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="6">
+      <referenceToFlowDataSet type="flow data set" refObjectId="340fe24f-e66d-4354-a47e-8f6a37913488" uri="../flows/340fe24f-e66d-4354-a47e-8f6a37913488.xml">
+        <common:shortDescription xml:lang="en">Argon, liquid {RER}| market for argon, liquid | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>7.7024000E-2</meanAmount>
+      <resultingAmount>7.7024000E-2</resultingAmount>
+      <generalComment>Procurement of liquid argon, from European context, used as filling gas of the cavity between glass panes to increase thermal performance. Production and transports are both included.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="7">
+      <referenceToFlowDataSet type="flow data set" refObjectId="0d03cc39-481a-498f-8b83-07417d5e2385" uri="../flows/0d03cc39-481a-498f-8b83-07417d5e2385.xml">
+        <common:shortDescription xml:lang="en">Polybutadiene {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.8748000E-2</meanAmount>
+      <resultingAmount>1.8748000E-2</resultingAmount>
+      <generalComment>Procurement of polybutadiene, from Global context, used as seal around the perimeter to hermetically seal the glazing unit. Production and transports are both included.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="8">
+      <referenceToFlowDataSet type="flow data set" refObjectId="cf26fc07-bcf3-47ce-884a-d95ac51676ac" uri="../flows/cf26fc07-bcf3-47ce-884a-d95ac51676ac.xml">
+        <common:shortDescription xml:lang="en">Polysulfide, sealing compound {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.5737000E-1</meanAmount>
+      <resultingAmount>6.5737000E-1</resultingAmount>
+      <generalComment>Procurement of polysulfide, from Global context, used as seal around the perimeter to hermetically seal the glazing unit. Production and transports are both included.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="9">
+      <referenceToFlowDataSet type="flow data set" refObjectId="6199f870-8ef7-443a-8ca3-3e1439909fb5" uri="../flows/6199f870-8ef7-443a-8ca3-3e1439909fb5.xml">
+        <common:shortDescription xml:lang="en">Sawnwood, softwood, raw, dried (u=20%) {RoW}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.0254500E-4</meanAmount>
+      <resultingAmount>4.0254500E-4</resultingAmount>
+      <generalComment>Production of sawing softwoods, from European context, used as primary material of EUR pallets. Allocation by mass and negligible transports.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="10">
+      <referenceToFlowDataSet type="flow data set" refObjectId="8dbe9d7b-9ece-4092-9f79-062e8e0ab7c0" uri="../flows/8dbe9d7b-9ece-4092-9f79-062e8e0ab7c0.xml">
+        <common:shortDescription xml:lang="en">Kraft paper, unbleached {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.1070000E-2</meanAmount>
+      <resultingAmount>1.1070000E-2</resultingAmount>
+      <generalComment>Production of kraft paper, from European context, used as packaging for glass pane. Allocation by mass and negligible transports.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="11">
+      <referenceToFlowDataSet type="flow data set" refObjectId="177cd89f-c97c-446a-84e5-b9980364952d" uri="../flows/177cd89f-c97c-446a-84e5-b9980364952d.xml">
+        <common:shortDescription xml:lang="en">Tap water {Europe without Switzerland}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.5870400E-1</meanAmount>
+      <resultingAmount>3.5870400E-1</resultingAmount>
+      <generalComment>Water consumption, from European context, used as water source for insulating glass unit process. Production and supply chain are both included.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="12">
+      <referenceToFlowDataSet type="flow data set" refObjectId="8ccaeda5-5065-4a10-b2fb-85968b69aeae" uri="../flows/8ccaeda5-5065-4a10-b2fb-85968b69aeae.xml">
+        <common:shortDescription xml:lang="en">Water, completely softened {RER}| market for water, completely softened | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.4946000E+0</meanAmount>
+      <resultingAmount>1.4946000E+0</resultingAmount>
+      <generalComment>Softened water consumption, from European context, used as water source for insulating glass unit process. Production and supply chain are both included.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="13">
+      <referenceToFlowDataSet type="flow data set" refObjectId="1af2a06f-5838-4a76-a4a4-07482fee7c2b" uri="../flows/1af2a06f-5838-4a76-a4a4-07482fee7c2b.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry 16-32 metric ton, EURO5 {RER}| transport, freight, lorry 16-32 metric ton, EURO5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.5400000E+0</meanAmount>
+      <resultingAmount>3.5400000E+0</resultingAmount>
+      <generalComment>Transport in input by road, from European context, of float and laminated glass panes.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="14">
+      <referenceToFlowDataSet type="flow data set" refObjectId="1af2a06f-5838-4a76-a4a4-07482fee7c2b" uri="../flows/1af2a06f-5838-4a76-a4a4-07482fee7c2b.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry 16-32 metric ton, EURO5 {RER}| transport, freight, lorry 16-32 metric ton, EURO5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.0000000E-3</meanAmount>
+      <resultingAmount>1.0000000E-3</resultingAmount>
+      <generalComment>Transport in output by road of packaging waste.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="15">
+      <referenceToFlowDataSet type="flow data set" refObjectId="652e1433-2429-405a-bf8a-a3e0a509db96" uri="../flows/652e1433-2429-405a-bf8a-a3e0a509db96.xml">
+        <common:shortDescription xml:lang="en">Electricity, low voltage {IT}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.7331120E+1</meanAmount>
+      <resultingAmount>1.7331120E+1</resultingAmount>
+      <generalComment>Electricity consumption, from Italian context, used as energy source for insulating glass unit process. Production and supply chain are both included.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="16">
+      <referenceToFlowDataSet type="flow data set" refObjectId="24cb4c2e-d406-4e1c-95c6-1fafdb0c1397" uri="../flows/24cb4c2e-d406-4e1c-95c6-1fafdb0c1397.xml">
+        <common:shortDescription xml:lang="en">Waste glass {IT}| market for waste glass | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.0335420E+0</meanAmount>
+      <resultingAmount>2.0335420E+0</resultingAmount>
+      <generalComment>Disposal mix of waste glass using Italy country-specific data. The mix is composed by the following technologies: 1% of open burning, 55% of sanitary landfill, 44% of municipal incineration. Transports are included.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="17">
+      <referenceToFlowDataSet type="flow data set" refObjectId="1af3decd-1e34-482c-b092-e89458ddd4ed" uri="../flows/1af3decd-1e34-482c-b092-e89458ddd4ed.xml">
+        <common:shortDescription xml:lang="en">Waste paperboard {CH}| treatment of, municipal incineration | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>5.5202400E-3</meanAmount>
+      <resultingAmount>5.5202400E-3</resultingAmount>
+      <generalComment>Inceneration process of packaging paper. Allocation by mass.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="18">
+      <referenceToFlowDataSet type="flow data set" refObjectId="00995eff-ebfa-428c-bfb4-8afb3549f29c" uri="../flows/00995eff-ebfa-428c-bfb4-8afb3549f29c.xml">
+        <common:shortDescription xml:lang="en">Waste wood, untreated {CH}| treatment of, municipal incineration with fly ash extraction | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.8376000E-3</meanAmount>
+      <resultingAmount>3.8376000E-3</resultingAmount>
+      <generalComment>Inceneration process of wood pallets. Allocation by mass.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="19">
+      <referenceToFlowDataSet type="flow data set" refObjectId="534d8050-c4a4-43a6-987b-015c3261d4a0" uri="../flows/534d8050-c4a4-43a6-987b-015c3261d4a0.xml">
+        <common:shortDescription xml:lang="en">Wastewater, unpolluted {CH}| market for wastewater, unpolluted | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.4946000E-3</meanAmount>
+      <resultingAmount>1.4946000E-3</resultingAmount>
+      <generalComment>Wastewater from glass production processes.
+</generalComment>
+    </exchange>
+  </exchanges>
+</processDataSet>

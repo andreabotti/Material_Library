@@ -1,0 +1,1592 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#ffffff;
+  --surface:var(--eetra-surface-alt,#f8fafc);
+  --surface2:var(--eetra-surface-alt2,#f1f5f9);
+  --border:var(--eetra-border,#e2e8f0);
+  --border2:var(--eetra-border-strong,#cbd5e1);
+  --text:var(--eetra-text,#1e293b);
+  --text2:var(--eetra-text-muted,#64748b);
+  --text3:var(--eetra-text-faint,#94a3b8);
+  --green:var(--eetra-green,#2a7d2e);
+  --green-light:var(--eetra-green-light,#e8f5e9);
+  --ok:var(--eetra-ok,#16a34a);
+  --warn:var(--eetra-warn,#d97706);
+  --warn-light:var(--eetra-warn-light,#fff8e1);
+  --error:var(--eetra-error,#dc2626);
+  --info:var(--eetra-info,#185FA5);
+  --info-light:var(--eetra-info-light,#E6F1FB);
+  --radius:var(--eetra-radius-md,8px);
+  --radius-sm:var(--eetra-radius-sm,4px);
+  --radius-pill:var(--eetra-radius-pill,999px);
+  --c-border:1px solid var(--border);
+  --c-radius:var(--eetra-radius-card,12px);
+  --c-bg:var(--bg);
+  --c-pad:14px;
+  --c-fs:13px;
+  --c-lh:1.35;
+  --c-muted:var(--text2);
+  --c-green:var(--ok);
+  --c-blue:var(--info);
+  --c-orange:var(--warn);
+  --c-red:var(--error);
+  --c-active:var(--green);
+  --c-hover-shadow:0 6px 18px rgba(15,23,42,0.08);
+  --c-hover-border:var(--green);
+  --c-tab-border:var(--border);
+  --c-grid-gap:12px;
+  --ff-serif:var(--eetra-ff-serif,'Source Serif Pro',Georgia,serif);
+  --ff-sans:var(--eetra-ff-sans,'Inter',system-ui,sans-serif);
+  --ff-mono:var(--eetra-ff-mono,'IBM Plex Mono',monospace);
+}
+html,body{
+  width:100%;max-width:100%;height:100%;overflow:hidden;
+}
+body{
+  font-family:var(--ff-sans);font-weight:400;
+  background:var(--bg);color:var(--text);font-size:var(--c-fs);
+  display:flex;flex-direction:column;
+  height:var(--epd-viewport-h,860px);
+  max-height:var(--epd-viewport-h,860px);
+  min-height:0;
+}
+#epd-shell{
+  display:flex;flex:1 1 auto;min-height:0;width:100%;overflow:hidden;
+}
+#epd-app{
+  flex:1 1 auto;min-width:0;display:flex;flex-direction:column;min-height:0;
+}
+#epd-chrome{
+  flex:0 0 auto;z-index:20;background:#fff;
+  padding:6px 4px 0;border-bottom:1px solid #e5e7eb;
+  box-shadow:0 2px 8px rgba(15,23,42,0.04);
+}
+#epd-main{
+  flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;padding:0 4px 10px;
+}
+
+/* ── Toolbar ── */
+.rv-toolbar{
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  margin-bottom:8px;padding:0 2px;font-size:var(--c-fs);
+  flex-wrap:wrap;max-width:100%;min-width:0;
+}
+.rv-toolbar-group{
+  display:inline-flex;border-radius:999px;background:#f3f4f6;padding:2px;
+}
+.rv-toolbar-group button{
+  border:none;background:transparent;font-size:var(--c-fs);padding:3px 10px;
+  border-radius:999px;cursor:pointer;color:#4b5563;
+}
+.rv-toolbar-group button.rv-active{background:#111827;color:#f9fafb}
+.rv-toolbar-group button:hover:not(.rv-active){background:#e5e7eb}
+.rv-count{font-size:var(--c-fs);color:#6b7280}
+
+/* ── Filter bar ── */
+.filter-bar{
+  display:flex;flex-wrap:wrap;align-items:center;gap:8px;
+  margin-bottom:10px;padding:8px 10px;
+  background:#f8fafc;border:1px solid #e5e7eb;border-radius:8px;
+}
+.filter-bar label{font-size:11px;color:#6b7280;font-weight:500;margin-right:2px;white-space:nowrap}
+.filter-input{
+  flex:1;min-width:160px;max-width:300px;padding:5px 9px;
+  border:1px solid #e5e7eb;border-radius:6px;font-size:var(--c-fs);
+  font-family:inherit;background:#fff;
+}
+.filter-input:focus{outline:2px solid var(--c-active);outline-offset:1px;border-color:#cbd5e1}
+.filter-select{
+  padding:5px 26px 5px 8px;border:1px solid #e5e7eb;border-radius:6px;
+  font-size:var(--c-fs);font-family:inherit;background:#fff;cursor:pointer;
+  appearance:none;-webkit-appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 8px center;
+  min-width:110px;max-width:200px;
+}
+.filter-select:focus{outline:2px solid var(--c-active);outline-offset:1px}
+.filter-clear-btn{
+  border:1px solid #e5e7eb;background:#fff;border-radius:6px;padding:5px 10px;
+  font-size:var(--c-fs);cursor:pointer;color:#6b7280;white-space:nowrap;
+}
+.filter-clear-btn:hover{background:#f3f4f6;color:#374151}
+
+/* ── Grid ── */
+#grid{
+  display:grid;gap:var(--c-grid-gap);width:100%;max-width:100%;
+  min-width:0;align-items:start;box-sizing:border-box;
+}
+.empty-msg{grid-column:1/-1;text-align:center;color:#888;padding:2rem 0;font-size:var(--c-fs)}
+
+/* ── EPD Card (EETRA Impact Framework style) ── */
+.epd-card{
+  background:var(--bg);border:1px solid var(--border);border-radius:10px;
+  padding:14px 16px;cursor:pointer;user-select:none;
+  transition:border-color 150ms ease,box-shadow 150ms ease;
+  display:flex;flex-direction:column;gap:10px;
+  min-width:0;max-width:100%;overflow:hidden;box-sizing:border-box;
+}
+.epd-card:hover{border-color:var(--green);box-shadow:var(--c-hover-shadow)}
+.epd-card.selected{border-color:var(--green);border-width:1.5px;box-shadow:0 0 0 1px rgba(42,125,46,0.12)}
+.epd-card.in-matlib{border-color:#86efac;background:var(--green-light)}
+.card-head{
+  display:flex;justify-content:space-between;align-items:flex-start;gap:10px;
+}
+.card-name-block{min-width:0;flex:1}
+.card-name{
+  font-family:var(--ff-serif);font-style:italic;font-weight:600;
+  font-size:14px;color:var(--text);line-height:1.25;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
+}
+.card-meta{
+  font-size:11px;color:var(--text2);margin-top:2px;line-height:1.3;
+  overflow:hidden;text-overflow:ellipsis;
+}
+.card-owner{display:none}
+.card-tier{
+  font-size:10px;font-weight:600;padding:3px 9px;border-radius:var(--radius-pill);
+  white-space:nowrap;letter-spacing:0.02em;flex-shrink:0;text-transform:capitalize;
+}
+.card-indicators{
+  display:grid;grid-template-columns:1fr 1fr;gap:6px;
+}
+.card-ind{
+  background:var(--surface);border-radius:var(--radius-sm);padding:6px 8px;min-width:0;
+}
+.card-ind-label{
+  font-size:10px;color:var(--text2);text-transform:uppercase;
+  letter-spacing:0.04em;margin-bottom:2px;
+}
+.card-ind-val{
+  font-family:var(--ff-mono);font-size:11px;font-weight:400;color:var(--text);
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.card-ind-val--ok{color:var(--green)}
+.card-ind-val--no{color:var(--text3)}
+.card-ind-val--warn{color:var(--warn)}
+.card-badges{display:none}
+.badge{
+  display:inline-block;border-radius:var(--radius-pill);padding:2px 7px;
+  font-size:10px;font-weight:500;line-height:1.35;white-space:nowrap;
+}
+.badge-prod,.badge-mat{background:var(--surface);color:var(--text);border:1px solid var(--border)}
+.badge-conf-high{background:var(--green-light);color:var(--green);border:1px solid #86efac}
+.badge-conf-medium{background:var(--warn-light);color:var(--warn);border:1px solid #fdba74}
+.badge-conf-none{background:#fef2f2;color:var(--error);border:1px solid #fca5a5}
+.badge-conf-other{background:var(--surface);color:var(--text2);border:1px solid var(--border)}
+.badge-matlib{background:var(--green-light);color:var(--green);border:1px solid #86efac;font-weight:600}
+a.badge-matlib{text-decoration:none;cursor:pointer}
+a.badge-matlib:hover{background:#dcfce7;border-color:#4ade80}
+.badge-matlib-name{background:var(--info-light);color:var(--info);border:1px solid #93c5fd;font-weight:600}
+.badge-cert{background:var(--warn-light);color:var(--warn);border:1px solid #fde68a}
+.card-epd{font-size:10px;color:var(--text2);font-family:var(--ff-mono);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card-cls{font-size:10px;color:var(--text3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card-footer{
+  display:flex;justify-content:space-between;align-items:center;
+  padding-top:2px;border-top:1px solid var(--surface2);gap:8px;
+}
+.card-uuid{font-size:10px;color:var(--text3);font-family:var(--ff-mono)}
+.card-operator{
+  font-size:10px;color:var(--text2);font-weight:500;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.card-fw-pills{display:flex;flex-wrap:wrap;gap:4px}
+.card-fw-pill{
+  font-size:10px;font-weight:500;padding:2px 7px;border-radius:var(--radius-pill);
+  background:var(--info-light);color:var(--info);letter-spacing:0.02em;
+}
+.card-view-btn-row{display:flex;flex-wrap:wrap;gap:4px;margin-top:0}
+.card-view-btn{
+  display:inline-flex;align-items:center;gap:4px;font-size:10px;color:var(--green);
+  text-decoration:none;font-weight:500;padding:2px 7px;
+  border:1px solid var(--border);border-radius:var(--radius-pill);background:var(--surface);
+  transition:background .12s,border-color .12s;
+}
+.card-view-btn:hover{background:var(--green-light);border-color:#86efac}
+
+/* ── List table ── */
+.rv-list-panel{display:flex;flex-direction:column;gap:8px;width:100%;max-width:100%;min-width:0}
+.rv-list-filter-hint{font-size:12px;color:#6b7280}
+.rv-table-wrap{width:100%;max-width:100%;min-width:0;overflow-x:auto;overflow-y:visible;background:#fff;border:1px solid #e5e7eb;border-radius:8px}
+.rv-table{width:100%;border-collapse:collapse;font-size:var(--c-fs);min-width:min(900px,100%)}
+.rv-table thead th{
+  position:sticky;top:0;z-index:2;background:#f9fafb;color:#374151;text-align:left;
+  font-size:calc(var(--c-fs) - 1px);font-weight:600;border-bottom:1px solid #e5e7eb;
+  padding:8px 10px;white-space:nowrap;
+}
+.rv-th-sort{cursor:pointer;user-select:none}
+.rv-th-sort:hover{background:#f3f4f6}
+.rv-th-sort.rv-sort-active{color:#111827;background:#eef2ff}
+.rv-sort-ind{display:inline-block;margin-left:4px;font-size:10px;opacity:.75}
+.rv-table tbody td{
+  border-bottom:1px solid #f1f5f9;padding:7px 10px;vertical-align:top;
+  color:#111827;word-break:break-word;line-height:1.4;
+}
+.rv-table tbody tr{cursor:pointer}
+.rv-table tbody tr:hover td{background:#f8fafc}
+.rv-table tbody tr.selected td{background:#f0fdf4}
+.rv-table tbody tr.in-matlib td:first-child{border-left:3px solid #86efac}
+.rv-td-muted{color:#6b7280;font-size:calc(var(--c-fs) - 1px)}
+.rv-td-mono{font-family:monospace;font-size:11px;color:#475569}
+
+/* ── Right detail panel (fixed in iframe viewport) ── */
+#detail-panel{
+  flex:0 0 0;width:0;min-width:0;overflow:hidden;
+  display:flex;flex-direction:column;background:#fff;
+  border-left:1px solid transparent;
+  transition:width .2s ease, flex-basis .2s ease, border-color .2s ease;
+}
+#detail-panel.open{
+  flex:0 0 min(400px, 42vw);
+  width:min(400px, 42vw);
+  border-left-color:#e5e7eb;
+  box-shadow:-6px 0 24px rgba(15,23,42,0.08);
+}
+.detail-panel-hdr{
+  flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;
+  gap:8px;padding:10px 12px;border-bottom:1px solid #f1f5f9;background:#fafafa;
+}
+.detail-panel-title{
+  font-size:11px;font-weight:600;color:#64748b;
+  text-transform:uppercase;letter-spacing:.05em;
+}
+.detail-close{
+  border:none;background:#f1f5f9;border-radius:999px;width:30px;height:30px;
+  font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  color:#374151;flex-shrink:0;transition:background .12s;
+}
+.detail-close:hover{background:#e2e8f0}
+#detail-body{
+  flex:1 1 auto;min-height:0;overflow-y:auto;padding:16px 16px 20px;
+  -webkit-overflow-scrolling:touch;
+}
+#detail-body .modal-name{font-size:17px;font-weight:700;line-height:1.3;margin-bottom:6px}
+.modal-section{margin-top:14px;padding-top:12px;border-top:1px solid #f1f5f9}
+.modal-label{font-size:11px;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+.modal-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 20px;margin-top:8px}
+.modal-kv{display:flex;flex-direction:column;gap:2px}
+.modal-k{font-size:11px;color:#6b7280;font-weight:500}
+.modal-v{font-size:var(--c-fs);color:#111;font-weight:600}
+.modal-v.mono{font-family:monospace;font-size:12px;font-weight:400}
+.modal-epd-chip{
+  display:inline-block;background:#f1f5f9;border-radius:6px;padding:3px 8px;
+  font-family:monospace;font-size:12px;color:#1e293b;margin:2px;
+}
+.modal-btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.modal-btn{
+  border:1px solid #e5e7eb;background:#fff;border-radius:8px;padding:7px 14px;
+  font-size:var(--c-fs);cursor:pointer;color:#374151;text-decoration:none;
+  display:inline-flex;align-items:center;gap:5px;
+  transition:background .12s,border-color .12s;
+}
+.modal-btn:hover{background:#f8fafc;border-color:#cbd5e1}
+.modal-btn.primary{background:#16a34a;color:#fff;border-color:#16a34a}
+.modal-btn.primary:hover{background:#15803d;border-color:#15803d}
+.modal-uuid-row{display:flex;align-items:center;gap:6px;margin-top:4px}
+.modal-copy-btn{
+  border:1px solid #e5e7eb;background:#f8fafc;border-radius:4px;padding:2px 7px;
+  font-size:11px;cursor:pointer;color:#475569;
+}
+.modal-copy-btn:hover{background:#f1f5f9}
+.modal-cls-path{
+  font-size:12px;color:#475569;background:#f8fafc;border-radius:6px;
+  padding:6px 10px;margin-top:4px;line-height:1.5;
+}
+
+/* ── Source-data popup (Output / Raw tabs) ── */
+#source-popup{
+  position:fixed;inset:0;z-index:100;display:none;
+  align-items:center;justify-content:center;padding:16px;
+}
+#source-popup.open{display:flex}
+.epd-src-backdrop{
+  position:absolute;inset:0;background:rgba(15,23,42,0.45);
+}
+.epd-src-panel{
+  position:relative;z-index:1;width:min(920px,96vw);max-height:min(88vh,860px);
+  display:flex;flex-direction:column;background:#fff;border-radius:12px;
+  box-shadow:0 24px 48px rgba(15,23,42,0.22);overflow:hidden;
+}
+.epd-src-hdr{
+  flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;
+  gap:10px;padding:12px 16px;border-bottom:1px solid #e5e7eb;background:#fafafa;
+}
+.epd-src-title{font-size:14px;font-weight:700;color:#111;line-height:1.3;min-width:0}
+.epd-src-sub{font-size:11px;color:#64748b;font-weight:500;margin-top:2px}
+.epd-src-close{
+  border:none;background:#f1f5f9;border-radius:999px;width:32px;height:32px;
+  font-size:16px;cursor:pointer;color:#374151;flex-shrink:0;
+}
+.epd-src-close:hover{background:#e2e8f0}
+.epd-src-tabs{
+  flex:0 0 auto;display:flex;gap:0;border-bottom:1px solid #e5e7eb;background:#fff;
+  padding:0 12px;
+}
+.epd-src-tab{
+  border:none;background:transparent;padding:10px 14px;font-size:12px;font-weight:600;
+  color:#64748b;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;
+}
+.epd-src-tab:hover{color:#334155;background:#f8fafc}
+.epd-src-tab.active{color:#16a34a;border-bottom-color:#16a34a}
+.epd-src-body{
+  flex:1 1 auto;min-height:0;overflow:auto;padding:0;background:#f8fafc;
+}
+.epd-src-pane{display:none;padding:12px 14px}
+.epd-src-pane.active{display:block}
+.epd-src-section{margin:0 0 14px}
+.epd-src-section-h{
+  font-size:11px;font-weight:700;color:#64748b;text-transform:uppercase;
+  letter-spacing:.03em;margin:0 0 6px;
+}
+.epd-src-table{width:100%;border-collapse:collapse;font-size:11px;background:#fff;border:1px solid #e5e7eb;border-radius:6px}
+.epd-src-table th,.epd-src-table td{border:1px solid #f1f5f9;padding:5px 8px;text-align:left;vertical-align:top;word-break:break-word}
+.epd-src-table th{background:#f9fafb;color:#475569;font-weight:600}
+.epd-src-table-kv th{width:34%;white-space:nowrap}
+.epd-src-table-wrap{overflow:auto;max-height:300px;margin-bottom:4px}
+.epd-src-text{font-size:11px;line-height:1.45;white-space:pre-wrap;background:#fff;border:1px solid #e5e7eb;border-radius:6px;padding:8px 10px}
+.epd-src-hint{font-size:11px;color:#64748b;margin:4px 0 0}
+.ilcd-table th{white-space:nowrap;font-size:10px}
+.ilcd-table td{font-size:10px}
+.ilcd-num{text-align:right;white-space:nowrap;font-family:ui-monospace,monospace;font-size:10px}
+.ilcd-gwp{background:#f0fdf4}
+.ilcd-badges{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px}
+.ilcd-badge{display:inline-block;font-size:10px;padding:2px 7px;border-radius:10px;font-weight:600}
+.ilcd-badge-blue{background:#dbeafe;color:#1d4ed8}
+.ilcd-badge-green{background:#dcfce7;color:#15803d}
+.ilcd-badge-orange{background:#ffedd5;color:#c2410c}
+.ilcd-badge-grey{background:#f1f5f9;color:#475569}
+.epd-src-empty{padding:12px 0;color:#64748b;font-size:13px}
+</style>
+</head>
+<body>
+
+<div id="epd-shell">
+<div id="epd-app">
+<div id="epd-chrome">
+<!-- Toolbar -->
+<div class="rv-toolbar">
+  <div>
+    <span style="margin-right:6px;color:#6b7280">View</span>
+    <span class="rv-toolbar-group">
+      <button id="rv-btn-grid" type="button" class="rv-active" title="Grid view">⊞ Grid</button>
+      <button id="rv-btn-list" type="button" title="List view">☰ List</button>
+    </span>
+    <span style="margin-left:10px;margin-right:6px;color:#6b7280">Size</span>
+    <span class="rv-toolbar-group">
+      <button id="rv-size-s" type="button">S</button>
+      <button id="rv-size-m" type="button" class="rv-active">M</button>
+      <button id="rv-size-l" type="button">L</button>
+    </span>
+  </div>
+  <div class="rv-count" id="rv-count"></div>
+</div>
+
+<!-- Filter bar -->
+<div class="filter-bar" id="filter-bar">
+  <label>Search</label>
+  <input id="f-search" class="filter-input" type="search" placeholder="name…">
+  <label>Country</label>
+  <select id="f-country" class="filter-select"></select>
+  <label>Programme</label>
+  <select id="f-prog" class="filter-select"><option value="">(all)</option></select>
+  <label>Product</label>
+  <select id="f-prod" class="filter-select"></select>
+  <label>Material</label>
+  <select id="f-mat" class="filter-select"></select>
+  <label>Confidence</label>
+  <select id="f-conf" class="filter-select"></select>
+  <label>In MatLib</label>
+  <select id="f-matlib" class="filter-select">
+    <option value="">(all)</option>
+    <option value="yes">✓ In MatLib</option>
+    <option value="no">Not in MatLib</option>
+  </select>
+  <button id="f-clear" class="filter-clear-btn" type="button">✕ Clear</button>
+</div>
+</div>
+
+<!-- Main content (scrolls inside iframe viewport) -->
+<main id="epd-main">
+<div id="grid"></div>
+</main>
+</div>
+
+<!-- Detail panel — fixed on the right, independent of catalogue scroll -->
+<aside id="detail-panel" aria-hidden="true">
+  <div class="detail-panel-hdr">
+    <span class="detail-panel-title">EPD details</span>
+    <button id="detail-close" class="detail-close" type="button" aria-label="Close">✕</button>
+  </div>
+  <div id="detail-body"></div>
+</aside>
+</div>
+
+<div id="source-popup" aria-hidden="true">
+  <div class="epd-src-backdrop" id="source-popup-backdrop"></div>
+  <div class="epd-src-panel" role="dialog" aria-modal="true" aria-labelledby="source-popup-title">
+    <div class="epd-src-hdr">
+      <div style="min-width:0">
+        <div class="epd-src-title" id="source-popup-title">Source data</div>
+        <div class="epd-src-sub" id="source-popup-sub"></div>
+      </div>
+      <button type="button" class="epd-src-close" id="source-popup-close" aria-label="Close">✕</button>
+    </div>
+    <div class="epd-src-tabs">
+      <button type="button" class="epd-src-tab active" data-tab="overview">🔍 Overview</button>
+      <button type="button" class="epd-src-tab" data-tab="lci">⚡ LCI</button>
+      <button type="button" class="epd-src-tab" data-tab="lcia-gwp">🌡 GWP</button>
+      <button type="button" class="epd-src-tab" data-tab="lcia-other">🌍 Other impacts</button>
+      <button type="button" class="epd-src-tab" data-tab="output">🗺 Mapping</button>
+      <button type="button" class="epd-src-tab" data-tab="raw">📋 Raw JSON</button>
+    </div>
+    <div class="epd-src-body">
+      <div id="epd-src-pane-overview" class="epd-src-pane active"></div>
+      <div id="epd-src-pane-lci" class="epd-src-pane"></div>
+      <div id="epd-src-pane-lcia-gwp" class="epd-src-pane"></div>
+      <div id="epd-src-pane-lcia-other" class="epd-src-pane"></div>
+      <div id="epd-src-pane-output" class="epd-src-pane"></div>
+      <div id="epd-src-pane-raw" class="epd-src-pane"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* INJECT_DATA_HERE */
+
+// ── Defaults if not injected ──
+if (!window.__EPD_DATA__) window.__EPD_DATA__ = [];
+if (!window.__PROD_LABELS__) window.__PROD_LABELS__ = {};
+if (!window.__MAT_LABELS__) window.__MAT_LABELS__ = {};
+if (!window.__COUNTRY_LABELS__) window.__COUNTRY_LABELS__ = {};
+if (!window.__MATLIB_NUMS__) window.__MATLIB_NUMS__ = [];
+if (!window.__MATLIB_NAMES_LC__) window.__MATLIB_NAMES_LC__ = [];
+if (!window.__MATLIB_NORM_TO_ID__) window.__MATLIB_NORM_TO_ID__ = {};
+if (!window.__MATLIB_NAME_TO_ID__) window.__MATLIB_NAME_TO_ID__ = {};
+if (!window.__EPD_OUTPUT_MAP__) window.__EPD_OUTPUT_MAP__ = {};
+if (!window.__EPD_PENDING_BUNDLE__) window.__EPD_PENDING_BUNDLE__ = null;
+if (window.__EPD_PENDING_UI__ === undefined) window.__EPD_PENDING_UI__ = null;
+
+/* Optional gzipped payload (window.__EPD_DATA_GZ__, base64): decompress
+   client-side and fill the (shared-reference) __EPD_DATA__ array in place.
+   App init below waits on __EPD_DATA_READY__ when present. */
+if (window.__EPD_DATA_GZ__ && !window.__EPD_DATA__.length) {
+  window.__EPD_DATA_READY__ = (async function(){
+    try{
+      const b64 = window.__EPD_DATA_GZ__;
+      const bin = Uint8Array.from(atob(b64), c=>c.charCodeAt(0));
+      const ds = new DecompressionStream("gzip");
+      const txt = await new Response(new Blob([bin]).stream().pipeThrough(ds)).text();
+      const rows = JSON.parse(txt);
+      const arr = window.__EPD_DATA__;
+      for (const r of rows) arr.push(r);
+    }catch(e){
+      console.error("EPD payload decompression failed:", e);
+    }finally{
+      delete window.__EPD_DATA_GZ__;
+    }
+  })();
+}
+
+const DATA = window.__EPD_DATA__;
+const EPD_OUTPUT_MAP = window.__EPD_OUTPUT_MAP__;
+const sourceCache = {};
+const PROD_LABELS = window.__PROD_LABELS__;
+const MAT_LABELS = window.__MAT_LABELS__;
+const COUNTRY_LABELS = window.__COUNTRY_LABELS__;
+const MATLIB_SET = new Set(window.__MATLIB_NUMS__);
+const MATLIB_NAMES = new Set(window.__MATLIB_NAMES_LC__);
+const MATLIB_NORM_TO_ID = window.__MATLIB_NORM_TO_ID__;
+const MATLIB_NAME_TO_ID = window.__MATLIB_NAME_TO_ID__;
+
+// ── Constants ──
+/** Max columns per size; actual count is capped to fit the iframe width. */
+const COLS_BY_SIZE = {S: 8, M: 6, L: 3};
+const MIN_CARD_PX_BY_SIZE = {S: 118, M: 150, L: 240};
+const FLAGS = {
+  IT:"🇮🇹",DE:"🇩🇪",FR:"🇫🇷",ES:"🇪🇸",PL:"🇵🇱",DK:"🇩🇰",SE:"🇸🇪",NO:"🇳🇴",FI:"🇫🇮",
+  GB:"🇬🇧",NL:"🇳🇱",AT:"🇦🇹",CH:"🇨🇭",BE:"🇧🇪",PT:"🇵🇹",CZ:"🇨🇿",SK:"🇸🇰",
+  HU:"🇭🇺",RO:"🇷🇴",BG:"🇧🇬",HR:"🇭🇷",SI:"🇸🇮",GR:"🇬🇷",TR:"🇹🇷",
+  US:"🇺🇸",CA:"🇨🇦",AU:"🇦🇺",NZ:"🇳🇿",JP:"🇯🇵",KR:"🇰🇷",CN:"🇨🇳",
+};
+
+// Default country filter — always Italy when available and no country is selected.
+const DEFAULT_COUNTRY = "IT";
+const IFRAME_HEIGHT = Math.max(480, Number(window.__IFRAME_HEIGHT__) || 860);
+
+// ── State ──
+let viewMode = "grid";
+let sizeMode = "M";
+let sortField = "name";
+let sortDir = 1; // 1=asc, -1=desc
+let filters = {search:"", country:"", prog:"", prod:"", mat:"", conf:"", matlib:""};
+let modalOpen = null; // uuid of open detail panel
+let sourcePopupOpen = null; // uuid of open source popup
+
+// ── Helpers ──
+function esc(s){
+  return String(s==null?"":s)
+    .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+function flag(code){
+  const c = (code||"").trim().toUpperCase();
+  return c.length===2 && FLAGS[c] ? FLAGS[c] : (c?"🌍":"");
+}
+function countryLabel(code){
+  if(!code) return "—";
+  const n = COUNTRY_LABELS[code];
+  return n ? `${n} (${code})` : code;
+}
+function prodLabel(code){
+  if(!code) return "—";
+  const n = PROD_LABELS[code];
+  return n ? `${n} (${code})` : code;
+}
+function matLabel(code){
+  if(!code) return "—";
+  const n = MAT_LABELS[code];
+  return n ? `${n} (${code})` : code;
+}
+function confBadgeClass(conf){
+  if(conf==="high") return "badge-conf-high";
+  if(conf==="medium") return "badge-conf-medium";
+  if(conf==="none") return "badge-conf-none";
+  return "badge-conf-other";
+}
+function normEpdNum(s){
+  s = String(s == null ? "" : s).trim();
+  if(s.length < 4) return "";
+  return s.toUpperCase().replace(/[\s:.]+/g, "-").replace(/-+$/g, "");
+}
+function epdMatlibMatch(row){
+  const nums = row.epd_nums || [];
+  for(const n of nums){
+    const norm = normEpdNum(n);
+    if(norm && MATLIB_SET.has(norm)) return true;
+    if(MATLIB_SET.has(n)) return true;
+  }
+  return false;
+}
+function nameMatlibMatch(row){
+  const nameLc = (row.name || "").trim().toLowerCase();
+  return MATLIB_NAMES.size > 0 && !!nameLc && MATLIB_NAMES.has(nameLc);
+}
+function isInMatlib(row){
+  if(row.in_matlib === true) return true;
+  return epdMatlibMatch(row);
+}
+function isNameMatch(row){
+  if(isInMatlib(row)) return false;
+  return nameMatlibMatch(row);
+}
+/** Filter dropdown: EPD match, stamped flag, or name-only match. */
+function isMatlibForFilter(row){
+  return isInMatlib(row) || isNameMatch(row);
+}
+function matlibEetraId(row){
+  const nums = row.epd_nums||[];
+  for(let n of nums){
+    const norm = normEpdNum(n);
+    if(norm && MATLIB_NORM_TO_ID[norm]) return MATLIB_NORM_TO_ID[norm];
+    if(MATLIB_NORM_TO_ID[n]) return MATLIB_NORM_TO_ID[n];
+  }
+  const nameLc = (row.name||"").trim().toLowerCase();
+  return MATLIB_NAME_TO_ID[nameLc] || null;
+}
+function navToMatlib(eetraId){
+  try{
+    const parentUrl = new URL(window.parent.location.href);
+    const seg = parentUrl.pathname.replace(/\/[^/]*$/, "");
+    parentUrl.pathname = (seg||"") + "/Catalogue";
+    parentUrl.search = "";
+    parentUrl.searchParams.set("open_product", eetraId);
+    window.parent.location.href = parentUrl.toString();
+  }catch(e){
+    window.open("/Catalogue?open_product="+encodeURIComponent(eetraId), "_blank");
+  }
+}
+
+function effectiveGridCols(mode){
+  const requested = COLS_BY_SIZE[mode] || COLS_BY_SIZE.M;
+  const gridEl = document.getElementById("grid");
+  const w = gridEl && gridEl.clientWidth > 0
+    ? gridEl.clientWidth
+    : document.documentElement.clientWidth;
+  if(!w || w < 1) return requested;
+  let gap = 12;
+  if(gridEl){
+    const gs = getComputedStyle(gridEl);
+    const g = parseFloat(gs.columnGap || gs.gap);
+    if(Number.isFinite(g) && g >= 0) gap = g;
+  }
+  const minCard = MIN_CARD_PX_BY_SIZE[mode] || MIN_CARD_PX_BY_SIZE.M;
+  const maxFit = Math.max(1, Math.floor((w + gap) / (minCard + gap)));
+  return Math.min(requested, maxFit);
+}
+function dispField(val){
+  if(val == null) return "—";
+  if(Array.isArray(val)) return val.length ? val.join(" · ") : "—";
+  const s = String(val).trim();
+  return s && s !== "-" ? s : "—";
+}
+function jsonPretty(obj){
+  if(obj == null) return "";
+  try { return JSON.stringify(obj, null, 2); }
+  catch(e){ return String(obj); }
+}
+function formatCell(v){
+  if(v == null || v === "") return "—";
+  if(typeof v === "boolean") return v ? "true" : "false";
+  if(typeof v === "number") return String(v);
+  if(typeof v === "string") return v;
+  if(Array.isArray(v)) return v.length ? jsonPretty(v) : "—";
+  if(typeof v === "object") return jsonPretty(v);
+  return String(v);
+}
+function flattenObj(obj, prefix){
+  const out = {};
+  if(!obj || typeof obj !== "object") return out;
+  for(const [k,v] of Object.entries(obj)){
+    const key = prefix ? `${prefix}.${k}` : k;
+    if(v && typeof v === "object" && !Array.isArray(v)){
+      Object.assign(out, flattenObj(v, key));
+    } else {
+      out[key] = v;
+    }
+  }
+  return out;
+}
+function sectionTitle(label){
+  return `<div class="epd-src-section"><div class="epd-src-section-h">${esc(label)}</div>`;
+}
+function closeSection(){ return "</div>"; }
+function renderKvTable(obj, label){
+  if(!obj || typeof obj !== "object" || !Object.keys(obj).length){
+    return `<p class="epd-src-empty">${esc(label ? `No ${label}.` : "No data.")}</p>`;
+  }
+  const rows = Object.entries(obj).map(([k,v]) =>
+    `<tr><th>${esc(k)}</th><td>${esc(formatCell(v))}</td></tr>`
+  ).join("");
+  return `<table class="epd-src-table epd-src-table-kv"><tbody>${rows}</tbody></table>`;
+}
+function renderArrayTable(arr, maxRows){
+  if(!Array.isArray(arr) || !arr.length){
+    return `<p class="epd-src-empty">No rows.</p>`;
+  }
+  const slice = arr.slice(0, maxRows);
+  const cols = [];
+  const seen = new Set();
+  for(const row of slice){
+    if(!row || typeof row !== "object") continue;
+    for(const k of Object.keys(row)){
+      if(!seen.has(k)){ seen.add(k); cols.push(k); }
+    }
+  }
+  if(!cols.length){
+    return `<p class="epd-src-empty">No tabular fields.</p>`;
+  }
+  const thead = cols.map(k=>`<th>${esc(k)}</th>`).join("");
+  const tbody = slice.map(row =>
+    `<tr>${cols.map(k=>`<td>${esc(formatCell(row?.[k]))}</td>`).join("")}</tr>`
+  ).join("");
+  const more = arr.length > maxRows
+    ? `<p class="epd-src-hint">Showing first ${maxRows} of ${arr.length} rows.</p>` : "";
+  return `<div class="epd-src-table-wrap"><table class="epd-src-table"><thead><tr>${thead}</tr></thead><tbody>${tbody}</tbody></table></div>${more}`;
+}
+function renderMappingTable(obj){
+  return renderKvTable(obj, "mapping output");
+}
+function renderRawTables(raw){
+  if(!raw || typeof raw !== "object"){
+    return `<p class="epd-src-empty">No raw processes.json entry.</p>`;
+  }
+  const skip = new Set(["owner","classification","exchanges","lciaResults","reviews","compliance","technology"]);
+  const scalars = {};
+  for(const [k,v] of Object.entries(raw)){
+    if(!skip.has(k)) scalars[k] = v;
+  }
+  let html = sectionTitle("Process fields") + renderKvTable(scalars) + closeSection();
+  if(raw.owner){
+    html += sectionTitle("Owner") + renderKvTable(flattenObj(raw.owner)) + closeSection();
+  }
+  if(Array.isArray(raw.classification) && raw.classification.length){
+    html += sectionTitle("Classification") + renderArrayTable(raw.classification, 50) + closeSection();
+  }
+  if(Array.isArray(raw.exchanges) && raw.exchanges.length){
+    html += sectionTitle("Exchanges") + renderArrayTable(raw.exchanges, 150) + closeSection();
+  }
+  if(Array.isArray(raw.lciaResults) && raw.lciaResults.length){
+    html += sectionTitle("LCIA results") + renderArrayTable(raw.lciaResults, 100) + closeSection();
+  }
+  if(Array.isArray(raw.reviews) && raw.reviews.length){
+    html += sectionTitle("Reviews") + renderArrayTable(raw.reviews, 50) + closeSection();
+  }
+  if(raw.technology){
+    html += sectionTitle("Technology") + `<div class="epd-src-text">${esc(String(raw.technology))}</div>` + closeSection();
+  }
+  return html;
+}
+const MODULES_ORDER = ["A1","A2","A3","A1-A3","A4","A5","B1","B2","B3","B4","B5","B6","B7","C1","C2","C3","C4","D"];
+function fmtNum(v){
+  if(v===null||v===undefined) return "—";
+  const n=Number(v);
+  if(isNaN(n)) return String(v);
+  if(n===0) return "0";
+  const a=Math.abs(n);
+  if(a>=1e4||a<1e-3) return n.toExponential(2);
+  return n.toPrecision(3);
+}
+function renderOverviewPane(ilcd, raw){
+  // ilcd = parsed XML (full module data); raw = per-UUID process JSON (metadata only)
+  if(!ilcd && !raw) return `<p class="epd-src-empty">No data available.</p>`;
+  const d = ilcd || {};
+  const r = raw || {};
+  const loc      = d.location   || r.location   || "";
+  const refYear  = d.ref_year   || r.referenceYear || "";
+  const validUnt = d.valid_until|| r.validUntil  || "";
+  const epdType  = d.epd_type   || r.type        || "";
+  const subtype  = d.subtype    || "";
+  const owner    = d.owner      || r.owner?.shortName || "";
+  const reviewer = d.reviewer   || r.reviews?.[0]?.reviewer?.shortName || "";
+  const regNum   = d.reg_number || "";
+  const version  = d.version    || r.version     || "";
+  const comment  = d.comment    || r.technology  || "";
+
+  let html="";
+  const badges=[];
+  if(loc)     badges.push(`<span class="ilcd-badge ilcd-badge-blue">📍 ${esc(loc)}</span>`);
+  if(refYear) badges.push(`<span class="ilcd-badge ilcd-badge-grey">📅 ${esc(refYear)}${validUnt?"–"+esc(validUnt):""}</span>`);
+  if(epdType) badges.push(`<span class="ilcd-badge ilcd-badge-green">${esc(epdType)}</span>`);
+  if(subtype) badges.push(`<span class="ilcd-badge ilcd-badge-orange">${esc(subtype)}</span>`);
+  if(badges.length) html+=`<div class="ilcd-badges">${badges.join("")}</div>`;
+
+  const kv=[];
+  if(owner)    kv.push(["Owner", owner]);
+  if(regNum)   kv.push(["Registration No.", regNum]);
+  if(version)  kv.push(["Version", version]);
+  if(reviewer) kv.push(["Reviewer", reviewer]);
+  // Compliance standards from raw JSON
+  if(Array.isArray(r.compliance)){
+    const stds=r.compliance.map(c=>c.system?.shortName).filter(Boolean).join(", ");
+    if(stds) kv.push(["Standards", stds]);
+  }
+  if(kv.length){
+    const rows=kv.map(([k,v])=>`<tr><th>${esc(k)}</th><td>${esc(v)}</td></tr>`).join("");
+    html+=sectionTitle("General")+`<table class="epd-src-table epd-src-table-kv"><tbody>${rows}</tbody></table>`+closeSection();
+  }
+  if(comment) html+=sectionTitle("Comment / scope")+`<div class="epd-src-text">${esc(comment)}</div>`+closeSection();
+
+  // Classifications: prefer ilcd (already joined paths), fall back to raw JSON
+  const clsList = d.classifications?.length ? d.classifications
+    : (r.classification||[]).map(c=>({
+        system: c.system||"",
+        path: (c.classes||[]).map(x=>x.name).join(" › ")
+      }));
+  if(clsList.length){
+    const rows=clsList.map(c=>`<tr><th>${esc(c.system||"")}</th><td>${esc(c.path||"")}</td></tr>`).join("");
+    html+=sectionTitle("Classification")+`<table class="epd-src-table epd-src-table-kv"><tbody>${rows}</tbody></table>`+closeSection();
+  }
+  return html||`<p class="epd-src-empty">No overview data.</p>`;
+}
+function renderLciPane(ilcd){
+  if(!ilcd||!ilcd.exchanges) return `<p class="epd-src-empty">No LCI data available.</p>`;
+  const exchs=ilcd.exchanges.filter(e=>e.modules&&Object.keys(e.modules).length);
+  if(!exchs.length) return `<p class="epd-src-empty">No LCI module data in this file.</p>`;
+  const allMods=MODULES_ORDER.filter(m=>exchs.some(e=>m in e.modules));
+  const extra=[...new Set(exchs.flatMap(e=>Object.keys(e.modules)))].filter(m=>!MODULES_ORDER.includes(m)).sort();
+  const cols=[...allMods,...extra];
+  const thead=`<tr><th>Flow</th><th>Dir</th>${cols.map(m=>`<th>${esc(m)}</th>`).join("")}</tr>`;
+  const tbody=exchs.map(e=>{
+    const cells=cols.map(m=>`<td class="ilcd-num">${m in e.modules?esc(fmtNum(e.modules[m])):"—"}</td>`).join("");
+    return `<tr><td>${esc(e.flow||"")}</td><td>${esc(e.dir||"")}</td>${cells}</tr>`;
+  }).join("");
+  return `<p class="epd-src-hint">${exchs.length} flows · ${cols.length} modules</p><div class="epd-src-table-wrap" style="max-height:440px"><table class="epd-src-table ilcd-table"><thead>${thead}</thead><tbody>${tbody}</tbody></table></div>`;
+}
+function isGwpIndicator(method){
+  return /gwp|global.warm|climate.change|greenhouse|warming potential/i.test(method||"");
+}
+function renderLciaTable(rows, emptyMsg){
+  if(!rows.length) return `<p class="epd-src-empty">${esc(emptyMsg)}</p>`;
+  const allMods=MODULES_ORDER.filter(m=>rows.some(r=>m in r.modules));
+  const extra=[...new Set(rows.flatMap(r=>Object.keys(r.modules)))].filter(m=>!MODULES_ORDER.includes(m)).sort();
+  const cols=[...allMods,...extra];
+  const thead=`<tr><th>Indicator</th>${cols.map(m=>`<th>${esc(m)}</th>`).join("")}</tr>`;
+  const tbody=rows.map(r=>{
+    const gwp=isGwpIndicator(r.method);
+    const cells=cols.map(m=>`<td class="ilcd-num">${m in r.modules?esc(fmtNum(r.modules[m])):"—"}</td>`).join("");
+    return `<tr${gwp?' class="ilcd-gwp"':''}><td>${esc(r.method||"")}</td>${cells}</tr>`;
+  }).join("");
+  return `<p class="epd-src-hint">${rows.length} indicator${rows.length===1?"":"s"} · ${cols.length} modules</p><div class="epd-src-table-wrap" style="max-height:440px"><table class="epd-src-table ilcd-table"><thead>${thead}</thead><tbody>${tbody}</tbody></table></div>`;
+}
+function renderLciaGwpPane(ilcd){
+  if(!ilcd||!ilcd.lcia) return `<p class="epd-src-empty">No LCIA data available.</p>`;
+  const rows=ilcd.lcia.filter(r=>isGwpIndicator(r.method));
+  return renderLciaTable(rows, "No GWP indicators in this file.");
+}
+function renderLciaOtherPane(ilcd){
+  if(!ilcd||!ilcd.lcia) return `<p class="epd-src-empty">No LCIA data available.</p>`;
+  const rows=ilcd.lcia.filter(r=>!isGwpIndicator(r.method));
+  return renderLciaTable(rows, "No other LCIA indicators in this file.");
+}
+function renderSourcePopupContent(data){
+  const loading=`<p class="epd-src-empty">Loading…</p>`;
+  const noXml=`<p class="epd-src-empty">No ILCD XML found for this EPD.</p>`;
+  document.getElementById("epd-src-pane-output").innerHTML=data?.output?renderMappingTable(data.output):`<p class="epd-src-empty">No mapping output.</p>`;
+  document.getElementById("epd-src-pane-raw").innerHTML=data?.raw?renderRawTables(data.raw):data?.raw_fetched?`<p class="epd-src-empty">No local EPD data available.</p>`:loading;
+  const ilcdReady=data?.raw_fetched;
+  const noModules=`<p class="epd-src-empty">No module data in XML.</p>`;
+  // Overview: works from raw JSON alone (no XML needed)
+  document.getElementById("epd-src-pane-overview").innerHTML=
+    ilcdReady?renderOverviewPane(data.ilcd||null,data.raw||null):loading;
+  // LCI / LCIA: require parsed XML
+  document.getElementById("epd-src-pane-lci").innerHTML=data?.ilcd?renderLciPane(data.ilcd):(ilcdReady?noModules:loading);
+  document.getElementById("epd-src-pane-lcia-gwp").innerHTML=data?.ilcd?renderLciaGwpPane(data.ilcd):(ilcdReady?noModules:loading);
+  document.getElementById("epd-src-pane-lcia-other").innerHTML=data?.ilcd?renderLciaOtherPane(data.ilcd):(ilcdReady?noModules:loading);
+}
+function updateSourceButton(uuid){
+  if(modalOpen !== uuid) return;
+  const body = document.getElementById("detail-body");
+  if(!body) return;
+  const btn = body.querySelector(".modal-btn[data-src]");
+  if(!btn) return;
+  btn.disabled = false;
+  btn.textContent = sourceCache[uuid]?.raw_fetched ? "View source data" : "Load source data";
+}
+function applyPendingUi(pending){
+  if(!pending || typeof pending !== "object") return null;
+  if(pending.viewMode) viewMode = pending.viewMode;
+  if(pending.sizeMode) sizeMode = pending.sizeMode;
+  if(typeof pending.sortField === "string") sortField = pending.sortField;
+  if(typeof pending.sortDir === "number") sortDir = pending.sortDir;
+  if(pending.filters && typeof pending.filters === "object") filters = Object.assign(filters, pending.filters);
+  setViewModeButtons(viewMode==="list" ? "rv-btn-list" : "rv-btn-grid");
+  for(const sz of ["s","m","l"]){
+    const el = document.getElementById("rv-size-"+sz);
+    if(el) el.classList.toggle("rv-active", sz.toUpperCase()===sizeMode);
+  }
+  document.getElementById("f-search").value = filters.search || "";
+  document.getElementById("f-country").value = filters.country || "";
+  document.getElementById("f-prog").value = filters.prog || "";
+  document.getElementById("f-prod").value = filters.prod || "";
+  document.getElementById("f-mat").value = filters.mat || "";
+  document.getElementById("f-conf").value = filters.conf || "";
+  document.getElementById("f-matlib").value = filters.matlib || "";
+  syncFiltersFromDom();
+  return pending;
+}
+function applyPendingBundle(){
+  const b = window.__EPD_PENDING_BUNDLE__;
+  if(!b || !b.uuid) return;
+  const uuid = String(b.uuid);
+  sourceCache[uuid] = {
+    output: (EPD_OUTPUT_MAP || {})[uuid] || b.output || null,
+    raw: b.raw || null,
+    raw_fetched: !!b.raw_fetched,
+    ilcd: b.ilcd || null,
+  };
+}
+function onSourceBundleMessage(event){
+  const d = event.data;
+  if(!d || d.type !== "epd:sourceBundle" || !d.uuid) return;
+  const uuid = String(d.uuid);
+  const data = d.data || {};
+  sourceCache[uuid] = {
+    output: (EPD_OUTPUT_MAP || {})[uuid] || data.output || null,
+    raw: data.raw || null,
+    raw_fetched: data.raw_fetched !== false && (!!data.raw || !!data.raw_fetched),
+    ilcd: data.ilcd || null,
+  };
+  if(sourcePopupOpen === uuid || d.uiState?.openSourcePopup){
+    if(!sourcePopupOpen) openSourcePopup(uuid);
+    else {
+      document.getElementById("source-popup-sub").textContent = uuid ? `UUID ${uuid}` : "";
+      renderSourcePopupContent(sourceCache[uuid]);
+    }
+  }
+  updateSourceButton(uuid);
+}
+function onViewSourceClick(uuid, ev){
+  if(ev){ ev.preventDefault(); ev.stopPropagation(); }
+  if(!uuid) return;
+  if(sourceCache[uuid]?.raw_fetched){
+    openSourcePopup(uuid);
+    return;
+  }
+  requestSourceData(uuid, ev && ev.currentTarget);
+}
+function requestSourceData(uuid, btn){
+  if(!uuid) return;
+  if(btn){
+    btn.disabled = true;
+    btn.textContent = "Loading…";
+  }
+  const output = (EPD_OUTPUT_MAP || {})[uuid] || null;
+  openSourcePopupLoading(uuid, output);
+  try{
+    const msg = {
+      type:"epd:loadSource",
+      uuid:String(uuid),
+      uiState:{ openSourcePopup: true, _ts: Date.now() },
+    };
+    let w = window;
+    while(w){
+      try { w.postMessage(msg, "*"); } catch(e) {}
+      if(!w.parent || w.parent === w) break;
+      w = w.parent;
+    }
+    try { window.top.postMessage(msg, "*"); } catch(e) {}
+  }catch(e){
+    if(btn){ btn.disabled = false; btn.textContent = "Load source data"; }
+    closeSourcePopup();
+    alert("Could not load source data.");
+  }
+}
+function setViewModeButtons(active){
+  for(const id of ["rv-btn-grid","rv-btn-list"]){
+    const el = document.getElementById(id);
+    if(el) el.classList.toggle("rv-active", id===active);
+  }
+}
+function applyItalyDefaultIfUnset(avail){
+  if(filters.country || !avail.country.has(DEFAULT_COUNTRY)) return avail;
+  document.getElementById("f-country").value = DEFAULT_COUNTRY;
+  filters.country = DEFAULT_COUNTRY;
+  syncFiltersFromDom();
+  avail = buildOptions();
+  rebuildSelects(avail);
+  syncFiltersFromDom();
+  return avail;
+}
+function setSourceTab(tab){
+  for(const btn of document.querySelectorAll(".epd-src-tab"))
+    btn.classList.toggle("active", btn.dataset.tab===tab);
+  for(const pane of document.querySelectorAll(".epd-src-pane"))
+    pane.classList.toggle("active", pane.id==="epd-src-pane-"+tab);
+}
+function openSourcePopup(uuid){
+  const row = DATA.find(r=>r.uuid===uuid);
+  const cached = sourceCache[uuid];
+  if(!cached) return;
+  sourcePopupOpen = uuid;
+  document.getElementById("source-popup-title").textContent = row?.name || "Source data";
+  document.getElementById("source-popup-sub").textContent = uuid ? `UUID ${uuid}` : "";
+  renderSourcePopupContent(cached);
+  setSourceTab("overview");
+  const popup = document.getElementById("source-popup");
+  popup.classList.add("open");
+  popup.setAttribute("aria-hidden", "false");
+}
+function openSourcePopupLoading(uuid, output){
+  const row = DATA.find(r=>r.uuid===uuid);
+  sourcePopupOpen = uuid;
+  document.getElementById("source-popup-title").textContent = row?.name || "Source data";
+  document.getElementById("source-popup-sub").textContent = "Loading…";
+  renderSourcePopupContent({output, raw: null});
+  setSourceTab("overview");
+  const popup = document.getElementById("source-popup");
+  popup.classList.add("open");
+  popup.setAttribute("aria-hidden", "false");
+}
+function closeSourcePopup(){
+  sourcePopupOpen = null;
+  const popup = document.getElementById("source-popup");
+  popup.classList.remove("open");
+  popup.setAttribute("aria-hidden", "true");
+}
+
+// ── URL derivation ──
+function italyUrl(uuid, version){
+  if(uuid && version)
+    return `https://node.epditaly.it/datasetdetail/process.xhtml?uuid=${uuid}&version=${version}&stock=PUBLIC&lang=en`;
+  if(uuid)
+    return `https://node.epditaly.it/datasetdetail/process.xhtml?uuid=${uuid}&stock=PUBLIC&lang=en`;
+  return "https://www.epditaly.it/en/digi-epd/";
+}
+
+function deriveEpdUrls(regNumber, uuid, version){
+  const rn = (regNumber||"").trim();
+  const uid = (uuid||"").trim();
+  const ver = (version||"").trim();
+  const res = {page_url:"", operator:""};
+  if(!rn) return res;
+
+  let m;
+  m = rn.match(/^EPD-IES-0*(\d+)/);
+  if(!m) m = rn.match(/^S-P-0*(\d+)/);
+  if(m){ res.page_url=`https://www.environdec.com/library/epd${parseInt(m[1],10)}`; res.operator="IES"; return res; }
+
+  if(/^NEPD-[\d]+-[\d]+/.test(rn)){ res.page_url="https://www.epd-norge.no/"; res.operator="EPD Norway"; return res; }
+  if(/^(EPD-IBU-|IBU-)/.test(rn)){
+    res.page_url = uid
+      ? `https://ibudata.lca-data.com/datasetdetail/process.xhtml?uuid=${uid}`
+      : "https://ibu-epd.com/en/epd-online/";
+    res.operator="IBU"; return res;
+  }
+  if(/^(FDES|PEP|DAP)-/i.test(rn)){ res.page_url="https://www.inies.fr/"; res.operator="INIES"; return res; }
+  if(/^(EPD-EHI-|EPDITALY\d)/i.test(rn)){
+    res.page_url = italyUrl(uid, ver);
+    res.operator="EPD Italy"; return res;
+  }
+  if(/^MD-/.test(rn)){ res.page_url="https://www.mdepd.com/"; res.operator="ModuL Deklaracji"; return res; }
+  if(/^DAPcons/i.test(rn)){ res.page_url="https://dapcons.com/"; res.operator="DAPcons"; return res; }
+  return res;
+}
+const NODE_FALLBACKS = {
+  ibu:        (uuid)          => uuid
+    ? {page_url:`https://ibudata.lca-data.com/datasetdetail/process.xhtml?uuid=${uuid}`, operator:"IBU"}
+    : {page_url:"https://ibu-epd.com/en/epd-online/", operator:"IBU"},
+  norway:     ()              => ({page_url:"https://www.epd-norge.no/", operator:"EPD Norway"}),
+  italy:      (uuid, version) => ({page_url:italyUrl(uuid, version), operator:"EPD Italy"}),
+  ies:        ()              => ({page_url:"https://www.environdec.com/library/", operator:"IES"}),
+  inies:      ()              => ({page_url:"https://www.inies.fr/", operator:"INIES"}),
+  oekobaudat: ()              => ({page_url:"https://www.oekobaudat.de/", operator:"ÖKOBAUDAT"}),
+};
+
+function bestUrl(epd_nums, uuid, node, version){
+  for(let n of (epd_nums||[])){
+    const u = deriveEpdUrls(n, uuid, version);
+    if(u.page_url) return u;
+  }
+  // Fallback: use source node when no EPD number pattern matched
+  if(node && NODE_FALLBACKS[node]){
+    return NODE_FALLBACKS[node](uuid, version);
+  }
+  return {page_url:"", operator:""};
+}
+
+// ── Filtering ──
+function passesFilter(row){
+  const s = filters.search.toLowerCase().trim();
+  if(s && !(row.name||"").toLowerCase().includes(s)) return false;
+  if(filters.country && row.loc !== filters.country) return false;
+  if(filters.prog && bestUrl(row.epd_nums, row.uuid, row.node||"").operator !== filters.prog) return false;
+  if(filters.prod){
+    if(filters.prod==="(none)"){ if(row.prod) return false; }
+    else if(row.prod !== filters.prod) return false;
+  }
+  if(filters.mat){
+    if(filters.mat==="(none)"){ if(row.mat) return false; }
+    else if(row.mat !== filters.mat) return false;
+  }
+  if(filters.conf && row.conf !== filters.conf) return false;
+  if(filters.matlib==="yes" && !isMatlibForFilter(row)) return false;
+  if(filters.matlib==="no" && isMatlibForFilter(row)) return false;
+  return true;
+}
+
+function getFiltered(){
+  return DATA.filter(passesFilter);
+}
+
+// ── Sorting ──
+const SORT_KEYS = {
+  name: r=>((r.name||"").toLowerCase()),
+  owner: r=>((r.owner||"").toLowerCase()),
+  loc: r=>(r.loc||""),
+  year: r=>(r.year||""),
+  prod: r=>(prodLabel(r.prod).toLowerCase()),
+  mat: r=>(matLabel(r.mat).toLowerCase()),
+  conf: r=>({high:0,medium:1,none:2}[r.conf]??9),
+};
+
+function getSorted(rows){
+  const keyFn = SORT_KEYS[sortField] || SORT_KEYS.name;
+  return [...rows].sort((a,b)=>{
+    const ka=keyFn(a), kb=keyFn(b);
+    if(ka<kb) return -1*sortDir;
+    if(ka>kb) return 1*sortDir;
+    return 0;
+  });
+}
+
+// ── Cascading dropdown options ──
+function syncFiltersFromDom(){
+  filters.search = document.getElementById("f-search").value;
+  filters.country = document.getElementById("f-country").value;
+  filters.prog = document.getElementById("f-prog").value;
+  filters.prod = document.getElementById("f-prod").value;
+  filters.mat = document.getElementById("f-mat").value;
+  filters.conf = document.getElementById("f-conf").value;
+  filters.matlib = document.getElementById("f-matlib").value;
+}
+
+function buildOptions(){
+  // Each menu shows values compatible with all *other* active filters.
+  const avail = {country:new Set(), prog:new Set(), prod:new Set(), mat:new Set(), conf:new Set(), prodNone:false, matNone:false};
+  const q = filters.search.toLowerCase().trim();
+  for(const row of DATA){
+    const ok_s = !q || (row.name||"").toLowerCase().includes(q);
+    const ok_c = !filters.country || row.loc===filters.country;
+    const op = bestUrl(row.epd_nums, row.uuid, row.node||"").operator;
+    const ok_pg = !filters.prog || op===filters.prog;
+    const ok_p = !filters.prod || (filters.prod==="(none)" ? !row.prod : row.prod===filters.prod);
+    const ok_m = !filters.mat || (filters.mat==="(none)" ? !row.mat : row.mat===filters.mat);
+    const ok_f = !filters.conf || row.conf===filters.conf;
+    const ok_ml = !filters.matlib || (filters.matlib==="yes" ? isMatlibForFilter(row) : !isMatlibForFilter(row));
+
+    if(row.loc && ok_s && ok_pg && ok_p && ok_m && ok_f && ok_ml) avail.country.add(row.loc);
+    if(op && ok_s && ok_c && ok_p && ok_m && ok_f && ok_ml) avail.prog.add(op);
+    if(ok_s && ok_c && ok_pg && ok_m && ok_f && ok_ml){
+      if(row.prod) avail.prod.add(row.prod);
+      else avail.prodNone = true;
+    }
+    if(ok_s && ok_c && ok_pg && ok_p && ok_f && ok_ml){
+      if(row.mat) avail.mat.add(row.mat);
+      else avail.matNone = true;
+    }
+    if(row.conf && ok_s && ok_c && ok_pg && ok_p && ok_m && ok_ml) avail.conf.add(row.conf);
+  }
+  return avail;
+}
+
+function rebuildSelects(avail){
+  const selCountry = document.getElementById("f-country");
+  const selProd = document.getElementById("f-prod");
+  const selMat = document.getElementById("f-mat");
+  const selConf = document.getElementById("f-conf");
+
+  // Country
+  const prevC = selCountry.value;
+  selCountry.innerHTML = '<option value="">(all)</option>';
+  const sortedC = [...avail.country].sort((a,b)=>{
+    const la=countryLabel(a).toLowerCase(), lb=countryLabel(b).toLowerCase();
+    return la<lb?-1:la>lb?1:0;
+  });
+  for(const c of sortedC){ selCountry.appendChild(new Option(countryLabel(c),c)); }
+  if(avail.country.has(prevC)) selCountry.value=prevC;
+  else { selCountry.value=""; filters.country=""; }
+
+  // Prod
+  const prevP = selProd.value;
+  selProd.innerHTML = '<option value="">(all)</option>';
+  if(avail.prodNone) selProd.appendChild(new Option("(not mapped)", "(none)"));
+  const sortedP = [...avail.prod].sort((a,b)=>prodLabel(a).localeCompare(prodLabel(b)));
+  for(const p of sortedP){ selProd.appendChild(new Option(prodLabel(p),p)); }
+  if(prevP==="(none)" && avail.prodNone) selProd.value=prevP;
+  else if(avail.prod.has(prevP)) selProd.value=prevP;
+  else { selProd.value=""; filters.prod=""; }
+
+  // Mat
+  const prevM = selMat.value;
+  selMat.innerHTML = '<option value="">(all)</option>';
+  if(avail.matNone) selMat.appendChild(new Option("(not mapped)", "(none)"));
+  const sortedM = [...avail.mat].sort((a,b)=>matLabel(a).localeCompare(matLabel(b)));
+  for(const m of sortedM){ selMat.appendChild(new Option(matLabel(m),m)); }
+  if(prevM==="(none)" && avail.matNone) selMat.value=prevM;
+  else if(avail.mat.has(prevM)) selMat.value=prevM;
+  else { selMat.value=""; filters.mat=""; }
+
+  // Conf
+  const prevF = selConf.value;
+  selConf.innerHTML = '<option value="">(all)</option>';
+  const confOrder = {high:0,medium:1,none:2};
+  const sortedF = [...avail.conf].sort((a,b)=>(confOrder[a]??9)-(confOrder[b]??9));
+  for(const f of sortedF){ selConf.appendChild(new Option(f,f)); }
+  if(avail.conf.has(prevF)) selConf.value=prevF;
+  else { selConf.value=""; filters.conf=""; }
+
+  // Programme
+  const selProg = document.getElementById("f-prog");
+  const prevPg = selProg.value;
+  selProg.innerHTML = '<option value="">(all)</option>';
+  const sortedPg = [...avail.prog].sort((a,b)=>a.localeCompare(b));
+  for(const pg of sortedPg){ selProg.appendChild(new Option(pg, pg)); }
+  if(avail.prog.has(prevPg)) selProg.value=prevPg;
+  else { selProg.value=""; filters.prog=""; }
+}
+
+// ── Card HTML ──
+function matlibBadge(row, inML){
+  if(!inML) return "";
+  const eid = matlibEetraId(row);
+  if(eid) return `<a class="badge badge-matlib" href="#" onclick="navToMatlib('${esc(eid)}');return false;" title="Open in MatLib Catalogue">✓ In MatLib ↗</a>`;
+  return `<span class="badge badge-matlib">✓ In MatLib</span>`;
+}
+function cardInd(label, val, extraClass){
+  const cls = extraClass ? ` ${extraClass}` : "";
+  return `<div class="card-ind"><div class="card-ind-label">${esc(label)}</div><div class="card-ind-val${cls}">${esc(val)}</div></div>`;
+}
+function cardHTML(row){
+  const inML = isInMatlib(row);
+  const nameMatch = isNameMatch(row);
+  const cls = inML ? "epd-card in-matlib" : "epd-card";
+  const f = flag(row.loc);
+  const year = row.year ? (row.valid_until && row.valid_until!==row.year ? `${row.year}–${row.valid_until}` : row.year) : "";
+  const metaParts = [];
+  if(row.owner) metaParts.push(row.owner);
+  if(f && row.loc) metaParts.push(`${f} ${row.loc}`);
+  if(year) metaParts.push(year);
+  const meta = metaParts.join(" · ");
+  const confCls = confBadgeClass(row.conf);
+  const uuidShort = (row.uuid||"").slice(0,8);
+  const url = bestUrl(row.epd_nums, row.uuid, row.node||"", row.version||"");
+  const matlibVal = inML ? "✓ In MatLib" : nameMatch ? "~ Name match" : "—";
+  const matlibCls = inML || nameMatch ? "card-ind-val--ok" : "card-ind-val--no";
+  const certs = (row.certs||[]).slice(0,4);
+
+  return `<div class="${cls}" data-uuid="${esc(row.uuid)}">
+  <div class="card-head">
+    <div class="card-name-block">
+      <div class="card-name">${esc(row.name||"—")}</div>
+      ${meta?`<div class="card-meta">${esc(meta)}</div>`:""}
+    </div>
+    ${row.conf?`<span class="card-tier ${confCls}">${esc(row.conf)}</span>`:""}
+  </div>
+  <div class="card-indicators">
+    ${cardInd("Product", row.prod ? prodLabel(row.prod) : "—", row.prod ? "" : "card-ind-val--no")}
+    ${cardInd("Material", row.mat ? matLabel(row.mat) : "—", row.mat ? "" : "card-ind-val--no")}
+    ${cardInd("Programme", url.operator || "—", url.operator ? "" : "card-ind-val--no")}
+    ${cardInd("MatLib", matlibVal, matlibCls)}
+  </div>
+  ${certs.length?`<div class="card-fw-pills">${certs.map(c=>`<span class="card-fw-pill">${esc(c.toUpperCase())}</span>`).join("")}</div>`:""}
+  ${row.cls_path?`<div class="card-cls" title="${esc(row.cls_path)}">${esc(row.cls_path)}</div>`:""}
+  <div class="card-footer">
+    <span class="card-operator">${url.operator ? esc(url.operator) : "EPD"}</span>
+    <span class="card-uuid">${esc(uuidShort)}…</span>
+  </div>
+  ${(url.page_url||row.pdf_url) && sizeMode!=="S"?`<div class="card-view-btn-row">
+    ${url.page_url?`<a class="card-view-btn" href="${esc(url.page_url)}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">View on ${esc(url.operator||"operator")}</a>`:""}
+    ${row.pdf_url?`<a class="card-view-btn" href="${esc(row.pdf_url)}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">PDF</a>`:""}
+  </div>`:""}
+</div>`;
+}
+
+// ── Modal HTML ──
+function modalHTML(row){
+  const inML = isInMatlib(row);
+  const nameMatch = isNameMatch(row);
+  const f = flag(row.loc);
+  const year = row.year ? (row.valid_until && row.valid_until!==row.year ? `${row.year}–${row.valid_until}` : row.year) : "—";
+  const confCls = confBadgeClass(row.conf);
+  const url = bestUrl(row.epd_nums, row.uuid, row.node||"", row.version||"");
+
+  const epdChips = (row.epd_nums||[]).map(n=>`<span class="modal-epd-chip">${esc(n)}</span>`).join("");
+  const certBadges = (row.certs||[]).map(c=>`<span class="badge badge-cert">${esc(c.toUpperCase())}</span>`).join(" ");
+
+  let btns = "";
+  if(url.page_url){
+    btns += `<a class="modal-btn primary" href="${esc(url.page_url)}" target="_blank" rel="noopener">
+      🌐 View on ${esc(url.operator||"operator website")}
+    </a>`;
+  }
+  if(row.pdf_url){
+    btns += `<a class="modal-btn" href="${esc(row.pdf_url)}" target="_blank" rel="noopener">
+      📄 Download original EPD (PDF)
+    </a>`;
+  }
+  const srcLabel = sourceCache[row.uuid]?.raw ? "View source data" : "Load source data";
+  btns += `<button type="button" class="modal-btn" data-src="1" onclick="onViewSourceClick('${esc(row.uuid)}', event)">${srcLabel}</button>`;
+
+  return `
+  <div class="modal-name">${esc(row.name||"—")}</div>
+  <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;flex-wrap:wrap">
+    ${inML?matlibBadge(row,inML):nameMatch?`<span class="badge badge-matlib-name">~ Name match</span>`:""}
+    ${row.conf?`<span class="badge ${confCls}">${esc(row.conf)}</span>`:""}
+    ${(row.certs||[]).length?certBadges:""}
+  </div>
+
+  <div class="modal-section">
+    <div class="modal-label">Details</div>
+    <div class="modal-grid">
+      <div class="modal-kv"><span class="modal-k">Owner / Manufacturer</span><span class="modal-v">${esc(row.owner||"—")}</span></div>
+      <div class="modal-kv"><span class="modal-k">Country</span><span class="modal-v">${f?f+" ":""} ${esc(countryLabel(row.loc))}</span></div>
+      <div class="modal-kv"><span class="modal-k">Reference year</span><span class="modal-v">${esc(year)}</span></div>
+      <div class="modal-kv"><span class="modal-k">Product type</span><span class="modal-v">${esc(prodLabel(row.prod))}</span></div>
+      <div class="modal-kv"><span class="modal-k">Material type</span><span class="modal-v">${esc(matLabel(row.mat))}</span></div>
+      ${url.operator?`<div class="modal-kv"><span class="modal-k">Programme operator</span><span class="modal-v">${esc(url.operator)}</span></div>`:""}
+    </div>
+  </div>
+
+  ${row.cls_path?`<div class="modal-section">
+    <div class="modal-label">Classification</div>
+    <div class="modal-cls-path">${esc(row.cls_path)}</div>
+  </div>`:""}
+
+  ${(row.epd_nums||[]).length?`<div class="modal-section">
+    <div class="modal-label">EPD Numbers</div>
+    <div style="margin-top:4px">${epdChips}</div>
+  </div>`:""}
+
+  <div class="modal-section">
+    <div class="modal-label">UUID</div>
+    <div class="modal-uuid-row">
+      <span class="modal-v mono">${esc(row.uuid||"—")}</span>
+      ${row.uuid?`<button class="modal-copy-btn" onclick="navigator.clipboard.writeText('${esc(row.uuid)}').then(()=>{this.textContent='✓ Copied';setTimeout(()=>{this.textContent='Copy'},1500)})">Copy</button>`:""}
+    </div>
+  </div>
+
+  ${btns?`<div class="modal-btns">${btns}</div>`:""}
+  `;
+}
+
+// ── Render ──
+/* Incremental grid rendering: cards appended in batches as the user scrolls
+   (#epd-main is the scroll root) — critical at 10k+ EPDs. */
+let __incIO = null;
+function renderCardsIncremental(grid, items, htmlFn, opts){
+  opts = opts || {};
+  const BATCH = opts.batch || 60;
+  if(__incIO){ __incIO.disconnect(); __incIO = null; }
+  grid.innerHTML = "";
+  if(items.length <= BATCH*1.5){
+    grid.insertAdjacentHTML("beforeend", items.map(htmlFn).join(""));
+    if(opts.onAppend) opts.onAppend(grid);
+    if(opts.onDone) opts.onDone();
+    return;
+  }
+  let idx = 0;
+  const sentinel = document.createElement("div");
+  sentinel.style.cssText = "grid-column:1/-1;height:1px;";
+  function append(){
+    const slice = items.slice(idx, idx+BATCH);
+    idx += slice.length;
+    sentinel.insertAdjacentHTML("beforebegin", slice.map(htmlFn).join(""));
+    if(opts.onAppend) opts.onAppend(grid);
+    if(idx >= items.length && __incIO){ __incIO.disconnect(); __incIO = null; sentinel.remove(); }
+    if(opts.onDone) opts.onDone();
+  }
+  grid.appendChild(sentinel);
+  __incIO = new IntersectionObserver(function(entries){
+    if(entries.some(e=>e.isIntersecting)) append();
+  }, {root: opts.root || null, rootMargin: "800px 0px"});
+  append();
+  if(__incIO) __incIO.observe(sentinel);
+}
+function bindNewEpdCards(grid){
+  for(const el of grid.querySelectorAll(".epd-card:not([data-inc-bound])")){
+    el.setAttribute("data-inc-bound","1");
+    el.addEventListener("click",()=>openModal(el.dataset.uuid));
+  }
+}
+function render(){
+  const filtered = getFiltered();
+  const sorted = getSorted(filtered);
+  const grid = document.getElementById("grid");
+  const countEl = document.getElementById("rv-count");
+  const total = DATA.length;
+  countEl.textContent = filtered.length===total
+    ? `${total.toLocaleString()} EPDs`
+    : `${filtered.length.toLocaleString()} of ${total.toLocaleString()} EPDs`;
+
+  if(viewMode==="grid"){
+    const ncol = effectiveGridCols(sizeMode);
+    grid.style.gridTemplateColumns = `repeat(${ncol}, minmax(0, 1fr))`;
+    grid.className = "";
+    grid.dataset.size = sizeMode;
+    delete grid.dataset.fullSize;
+    delete grid.dataset.cols;
+    if(!sorted.length){ grid.innerHTML=`<div class="empty-msg">No EPDs match the current filters.</div>`; notifyHeight(); return; }
+    renderCardsIncremental(grid, sorted, cardHTML, {
+      root: document.getElementById("epd-main"),
+      onAppend: bindNewEpdCards,
+      onDone: notifyHeight
+    });
+  } else {
+    grid.style.gridTemplateColumns = "";
+    grid.className = "rv-list-panel";
+    delete grid.dataset.size;
+    delete grid.dataset.fullSize;
+    delete grid.dataset.cols;
+    if(!sorted.length){ grid.innerHTML=`<div class="empty-msg">No EPDs match the current filters.</div>`; return; }
+    const colDefs = [
+      {key:"name",label:"Name"},
+      {key:"owner",label:"Owner"},
+      {key:"loc",label:"Country"},
+      {key:"year",label:"Year"},
+      {key:"prod",label:"Product type"},
+      {key:"mat",label:"Material type"},
+      {key:"conf",label:"Confidence"},
+      {key:"epd",label:"EPD Numbers"},
+      {key:"matlib",label:"MatLib"},
+      {key:"uuid",label:"UUID"},
+    ];
+    const thead = colDefs.map(c=>{
+      const isSort = c.key===sortField;
+      const ind = isSort ? (sortDir===1?"▲":"▼") : "";
+      const sortKeys = ["name","owner","loc","year","prod","mat","conf"];
+      if(sortKeys.includes(c.key)){
+        return `<th class="rv-th-sort${isSort?" rv-sort-active":""}" data-key="${c.key}">${esc(c.label)}<span class="rv-sort-ind">${ind}</span></th>`;
+      }
+      return `<th>${esc(c.label)}</th>`;
+    }).join("");
+
+    const tbody = sorted.map(row=>{
+      const inML = isInMatlib(row);
+      const nameMatch = isNameMatch(row);
+      const f = flag(row.loc);
+      const epd = (row.epd_nums||[]).slice(0,2).join(" · ")||"—";
+      const confCls = confBadgeClass(row.conf);
+      return `<tr data-uuid="${esc(row.uuid)}" class="${inML?"in-matlib":""}">
+        <td>${esc(row.name||"—")}</td>
+        <td class="rv-td-muted">${esc(row.owner||"—")}</td>
+        <td>${f?f+" ":""}<span class="rv-td-muted">${esc(row.loc||"—")}</span></td>
+        <td class="rv-td-muted">${esc(row.year||"—")}</td>
+        <td><span class="badge badge-prod" style="white-space:nowrap">${row.prod?esc(prodLabel(row.prod)):"—"}</span></td>
+        <td><span class="badge badge-mat" style="white-space:nowrap">${row.mat?esc(matLabel(row.mat)):"—"}</span></td>
+        <td>${row.conf?`<span class="badge ${confCls}">${esc(row.conf)}</span>`:"—"}</td>
+        <td class="rv-td-mono">${esc(epd)}</td>
+        <td>${inML?matlibBadge(row,inML):nameMatch?`<span class="badge badge-matlib-name">~</span>`:"—"}</td>
+        <td class="rv-td-mono" style="font-size:10px">${esc((row.uuid||"").slice(0,12))}…</td>
+      </tr>`;
+    }).join("");
+
+    grid.innerHTML = `<div class="rv-table-wrap">
+      <table class="rv-table">
+        <thead><tr>${thead}</tr></thead>
+        <tbody>${tbody}</tbody>
+      </table>
+    </div>`;
+
+    for(const th of grid.querySelectorAll(".rv-th-sort")){
+      th.addEventListener("click",()=>{
+        const k = th.dataset.key;
+        if(sortField===k) sortDir*=-1; else { sortField=k; sortDir=1; }
+        render();
+      });
+    }
+    for(const tr of grid.querySelectorAll("tbody tr")){
+      tr.addEventListener("click",()=>openModal(tr.dataset.uuid));
+    }
+  }
+  if(modalOpen){
+    const visible = getFiltered().some(r=>r.uuid===modalOpen);
+    if(!visible) closeModal();
+    else {
+      clearDetailSelection();
+      const el = document.querySelector(
+        `.epd-card[data-uuid="${modalOpen}"], .rv-table tbody tr[data-uuid="${modalOpen}"]`
+      );
+      if(el) el.classList.add("selected");
+    }
+  }
+  notifyHeight();
+}
+
+// ── Detail panel ──
+function clearDetailSelection(){
+  document.querySelectorAll(".epd-card.selected, .rv-table tbody tr.selected")
+    .forEach(el=>el.classList.remove("selected"));
+}
+function openModal(uuid){
+  const row = DATA.find(r=>r.uuid===uuid);
+  if(!row) return;
+  modalOpen = uuid;
+  document.getElementById("detail-body").innerHTML = modalHTML(row);
+  const panel = document.getElementById("detail-panel");
+  panel.classList.add("open");
+  panel.setAttribute("aria-hidden", "false");
+  clearDetailSelection();
+  const el = document.querySelector(
+    `.epd-card[data-uuid="${uuid}"], .rv-table tbody tr[data-uuid="${uuid}"]`
+  );
+  if(el) el.classList.add("selected");
+  notifyHeight();
+}
+function closeModal(){
+  closeSourcePopup();
+  modalOpen = null;
+  const panel = document.getElementById("detail-panel");
+  panel.classList.remove("open");
+  panel.setAttribute("aria-hidden", "true");
+  document.getElementById("detail-body").innerHTML = "";
+  clearDetailSelection();
+  notifyHeight();
+}
+
+// ── notifyHeight (fixed iframe — scroll inside #epd-main) ──
+function notifyHeight(){
+  try{
+    window.parent.postMessage(
+      {isStreamlitMessage:true, type:"streamlit:setFrameHeight", height:IFRAME_HEIGHT}, "*"
+    );
+  }catch(e){}
+}
+
+// ── Event wiring ──
+document.getElementById("rv-btn-grid").addEventListener("click",()=>{
+  viewMode="grid";
+  setViewModeButtons("rv-btn-grid");
+  render();
+});
+document.getElementById("rv-btn-list").addEventListener("click",()=>{
+  viewMode="list";
+  setViewModeButtons("rv-btn-list");
+  render();
+});
+
+for(const sz of ["s","m","l"]){
+  document.getElementById(`rv-size-${sz}`).addEventListener("click",()=>{
+    sizeMode=sz.toUpperCase();
+    document.querySelectorAll(".rv-toolbar-group button[id^='rv-size']").forEach(b=>b.classList.remove("rv-active"));
+    document.getElementById(`rv-size-${sz}`).classList.add("rv-active");
+    render();
+  });
+}
+
+function onFilterChange(){
+  syncFiltersFromDom();
+  const avail = buildOptions();
+  rebuildSelects(avail);
+  syncFiltersFromDom();
+  render();
+}
+
+document.getElementById("f-search").addEventListener("input", onFilterChange);
+document.getElementById("f-country").addEventListener("change", onFilterChange);
+document.getElementById("f-prog").addEventListener("change", onFilterChange);
+document.getElementById("f-prod").addEventListener("change", onFilterChange);
+document.getElementById("f-mat").addEventListener("change", onFilterChange);
+document.getElementById("f-conf").addEventListener("change", onFilterChange);
+document.getElementById("f-matlib").addEventListener("change", onFilterChange);
+document.getElementById("f-clear").addEventListener("click",()=>{
+  filters={search:"",country:"",prog:"",prod:"",mat:"",conf:"",matlib:""};
+  document.getElementById("f-search").value="";
+  document.getElementById("f-country").value="";
+  document.getElementById("f-prog").value="";
+  document.getElementById("f-prod").value="";
+  document.getElementById("f-mat").value="";
+  document.getElementById("f-conf").value="";
+  document.getElementById("f-matlib").value="";
+  onFilterChange();
+});
+
+document.getElementById("detail-close").addEventListener("click", closeModal);
+document.getElementById("source-popup-close").addEventListener("click", closeSourcePopup);
+document.getElementById("source-popup-backdrop").addEventListener("click", closeSourcePopup);
+for(const tabBtn of document.querySelectorAll(".epd-src-tab")){
+  tabBtn.addEventListener("click", ()=> setSourceTab(tabBtn.dataset.tab));
+}
+document.addEventListener("keydown",(e)=>{
+  if(e.key!=="Escape") return;
+  if(sourcePopupOpen){ closeSourcePopup(); return; }
+  if(modalOpen) closeModal();
+});
+window.addEventListener("message", onSourceBundleMessage);
+
+// ── Init ──
+function __startApp(){
+  document.documentElement.style.setProperty("--epd-viewport-h", IFRAME_HEIGHT + "px");
+  let avail = buildOptions();
+  rebuildSelects(avail);
+  avail = applyItalyDefaultIfUnset(avail);
+  render();
+  let resizeTimer;
+  window.addEventListener("resize", ()=>{
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(()=>{
+      if(viewMode==="grid") render();
+      notifyHeight();
+    }, 120);
+  });
+}
+if (window.__EPD_DATA_READY__) { window.__EPD_DATA_READY__.then(__startApp); }
+else { __startApp(); }
+</script>
+</body>
+</html>

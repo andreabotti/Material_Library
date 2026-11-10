@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>f3513417-0f96-43dd-a00b-45c57c2542aa</common:UUID>
+      <name>
+        <baseName xml:lang="en">1 mq  monogenic breccia slab thickness 30 mm, natural, at production, density 2400 kg/m3</baseName>
+      </name>
+      <common:synonyms>1 mq di lastra in breccia monogenica spessore 30 mm, naturale, alla produzione, densità 2400 kg/m3</common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">Systems</common:class>
+          <common:class level="1">Construction</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment>Dataset developed according to Arcadia project Methodology (Report: “Metodologia per gli studi di filiera della Banca Dati italiana LCA”). LCA study of ornamental stone (Report: “Studio LCA della filiera delle pietre ornamentali”). The dataset refers to the production average monogenic breccia slab.</common:generalComment>
+      <referenceToExternalDocumentation type="source data set" refObjectId="1be353e3-5ae1-423d-9397-59fb30a6fd19" version="01.00.000" uri="../sources/1be353e3-5ae1-423d-9397-59fb30a6fd19.xml">
+        <common:shortDescription>Background datasets from Ecoinvent database cut-off (v.3.8) were used for the LCA study.</common:shortDescription>
+      </referenceToExternalDocumentation>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2022</common:referenceYear>
+      <common:dataSetValidUntil>2027</common:dataSetValidUntil>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT"/>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>The ornamental stone slab production process includes extraction in the quarry, transported to the manufacturing company and processing in the factory. The production process begins with the extraction the stone block in the quarry using various methods and machinery (explosive, chain saw, diamond wire), then they are squared and transported to the factory where the blocks are cut into slabs and cut to size according to customer requirements. Inventory data have been collected as physical quantities of materials used in the different processes.</technologyDescriptionAndIncludedProcesses>
+      <referenceToIncludedProcesses type="process data set" refObjectId="0867633b-01ea-4eed-a85d-f8f720d1b25d" version="01.00.000" uri="../sources/0867633b-01ea-4eed-a85d-f8f720d1b25d.xml">
+        <common:shortDescription>Background datasets from Ecoinvent database cut-off (v.3.8) were used for the LCA study.</common:shortDescription>
+      </referenceToIncludedProcesses>
+      <technologicalApplicability>The product can be used for cladding walls and floors</technologicalApplicability>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Not applicable</LCIMethodApproaches>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <dataCutOffAndCompletenessPrinciples>Production of equipment and infrastructures is not included, except for the background system</dataCutOffAndCompletenessPrinciples>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>No statement</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Independent external review">
+        <common:reviewDetails>The review was performed in compliance with Arcadia Metodology: “Metodologia per gli studi di filiera della Banca Dati italiana LCA” and ISO 14040-44 norms. The dataset has been assessed limited to the foreground data collected during the supply chain studies. &#13;
+Each dataset has been evaluated based on the following 4 criteria: &#13;
+1. Technological Representativeness;&#13;
+2. Time Representativeness;&#13;
+3. Geographical Representativeness;&#13;
+4. Reliability&#13;
+In this contest the Reliability is Acceptable (data are all calculated/from literature and have been checked by experts)</common:reviewDetails>
+        <common:referenceToNameOfReviewerAndInstitution type="contact data set" refObjectId="807fdf57-4295-43ac-af19-f40d23706a6b" version="01.00.000" uri="../sources/807fdf57-4295-43ac-af19-f40d23706a6b.xml">
+          <common:shortDescription>Ecoinnovazione S.r.L.</common:shortDescription>
+        </common:referenceToNameOfReviewerAndInstitution>
+        <common:otherReviewDetails>The study was judged by the reviewer as compliant with both ISO 14040-44 and Arcadia methodology</common:otherReviewDetails>
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Completeness" value="Very good"/>
+        </common:dataQualityIndicators>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="806cd3b0-4b20-4396-ac92-8b22239d8c79" uri="../sources/806cd3b0-4b20-4396-ac92-8b22239d8c79.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Fully compliant</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="16b01403-6165-4fba-865a-d4d7971faf03" uri="../sources/16b01403-6165-4fba-865a-d4d7971faf03.xml">
+          <common:shortDescription xml:lang="en">ISO 14044</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Not defined</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="3f5e7352-e4f9-4fc1-b7a7-03155870d5ee" uri="../sources/3f5e7352-e4f9-4fc1-b7a7-03155870d5ee.xml">
+        <common:shortDescription xml:lang="en">Arcadia – PON Governance e Capacità istituzionale 2014-2020</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Arcadia – PON Governance e Capacità istituzionale 2014-2020</common:project>
+    </common:commissionerAndGoal>
+    <dataGenerator>
+      <common:referenceToPersonOrEntityGeneratingTheDataSet refObjectId="a76bf9d6-1393-493f-95c3-75f459192e4d" type="contact data set" uri="../sources/a76bf9d6-1393-493f-95c3-75f459192e4d.xml" version="01.00.000">
+        <common:shortDescription>Università degli Studi di Bergamo, Dipartimento di Ingegneria e Scienze Applicate (Elisabetta Palumbo, Chiara Panozzo).&#13;
+</common:shortDescription>
+      </common:referenceToPersonOrEntityGeneratingTheDataSet>
+    </dataGenerator>
+    <dataEntryBy>
+      <common:timeStamp>2023-11-06T09:19:30.379+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="a97a0155-0234-4b87-b4ce-a45da52f2a40" uri="../sources/a97a0155-0234-4b87-b4ce-a45da52f2a40.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2023-09-01T16:41:04.804Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/f3513417-0f96-43dd-a00b-45c57c2542aa.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="65284142-db47-4266-bd50-71997a8302ef" type="contact data set" uri="../contacts/65284142-db47-4266-bd50-71997a8302ef.xml" version="01.00.000">
+        <common:shortDescription>ENEA-Arcadia</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+      <common:accessRestrictions>Type of license: Open Database Licence (ODbL)</common:accessRestrictions>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="8d9792d2-c34c-4fe7-96fd-8354af83afad" uri="../flows/8d9792d2-c34c-4fe7-96fd-8354af83afad.xml">
+        <common:shortDescription xml:lang="en">1 mq  monogenic breccia slab thickness 30 mm, natural, at production, density 2400 kg/m3</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0000000E+0</meanAmount>
+      <resultingAmount>1.0000000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="e99ad7f6-75e6-4051-a0e3-2ebb2535a1e5" uri="../flows/e99ad7f6-75e6-4051-a0e3-2ebb2535a1e5.xml">
+        <common:shortDescription xml:lang="en">Monogenic breccia, density 2400 kg/m3, Quarry operation</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>7.2000000E+1</meanAmount>
+      <resultingAmount>7.2000000E+1</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4f7d9ef1-ef07-435b-a182-88d1171608b3" uri="../flows/4f7d9ef1-ef07-435b-a182-88d1171608b3.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry 16-32 metric ton, euro5 {RER}| market for transport, freight, lorry 16-32 metric ton, EURO5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.1200000E-2</meanAmount>
+      <resultingAmount>6.1200000E-2</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="3">
+      <referenceToFlowDataSet type="flow data set" refObjectId="9218265b-65ca-4851-863a-617c814c47c9" uri="../flows/9218265b-65ca-4851-863a-617c814c47c9.xml">
+        <common:shortDescription xml:lang="en">Monogenic breccia, density 2400 kg/m3, thickness 3 cm, natural, at production</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.0000000E+0</meanAmount>
+      <resultingAmount>1.0000000E+0</resultingAmount>
+    </exchange>
+  </exchanges>
+</processDataSet>

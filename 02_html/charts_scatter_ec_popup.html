@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+<style>
+:root{--c-fs:13px}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden}
+body{
+  font-family:'Inter',sans-serif;background:#fff;color:#111;font-size:var(--c-fs);
+  display:flex;flex-direction:column;height:var(--chart-viewport-h,520px);
+}
+#chart-shell{
+  display:flex;flex:1 1 auto;min-height:0;width:100%;overflow:hidden;
+}
+#chart-main{flex:1 1 auto;min-width:0;min-height:0;overflow:hidden}
+#ec_sc{width:100%;height:100%}
+
+/* Right detail panel — catalogue_component_js2.html */
+#cat2-detail-panel{
+  flex:0 0 0;width:0;min-width:0;overflow:hidden;
+  display:flex;flex-direction:column;background:#fff;
+  border-left:1px solid transparent;
+  transition:width .2s ease, flex-basis .2s ease, border-color .2s ease;
+}
+#cat2-detail-panel.open{
+  flex:0 0 min(420px, 44vw);
+  width:min(420px, 44vw);
+  border-left-color:#e5e7eb;
+  box-shadow:-6px 0 24px rgba(15,23,42,0.08);
+}
+.cat2-detail-hdr{
+  flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;
+  gap:8px;padding:10px 12px;border-bottom:1px solid #f1f5f9;background:#fafafa;
+}
+.cat2-detail-title{
+  font-size:11px;font-weight:600;color:#64748b;
+  text-transform:uppercase;letter-spacing:.05em;
+}
+.cat2-detail-close{
+  border:none;background:#f1f5f9;border-radius:999px;width:30px;height:30px;
+  font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  color:#374151;flex-shrink:0;transition:background .12s;
+}
+.cat2-detail-close:hover{background:#e2e8f0}
+#cat2-detail-body{
+  flex:1 1 auto;min-height:0;overflow-y:auto;padding:16px 16px 20px;
+  -webkit-overflow-scrolling:touch;
+}
+#cat2-detail-body .modal-name{padding-right:0}
+
+/* Product detail content — same as JS catalogue right panel */
+.modal-name{font-size:17px;font-weight:700;line-height:1.3;margin-bottom:2px;padding-right:40px}
+.modal-mfr{font-size:13px;color:#475569;margin-bottom:6px}
+.modal-section{margin-top:16px;padding-top:14px;border-top:1.5px solid #d1d9e6}
+.modal-label{
+  font-size:11px;font-weight:600;color:#64748b;
+  text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;
+}
+.modal-hdr-grid{
+  display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;
+  margin:12px 0 0;
+}
+.modal-hdr-img img{
+  display:block;max-width:180px;max-height:130px;object-fit:contain;
+  border-radius:8px;border:1px solid #f1f5f9;background:#f8fafc;
+}
+.modal-gwp-value{
+  font-family:'Source Serif Pro',Georgia,serif;font-style:italic;font-weight:600;
+  font-size:20px;margin-bottom:6px;
+}
+.modal-detail-2col{
+  display:grid;grid-template-columns:1fr 1fr;
+  column-gap:var(--cat2-popup-col-gap,20px);row-gap:0;align-items:start;
+}
+.modal-col-title{
+  font-size:11px;font-weight:600;color:#64748b;
+  text-transform:uppercase;letter-spacing:.05em;
+  margin-bottom:6px;padding-bottom:4px;border-bottom:1px solid #e5e7eb;
+}
+.modal-detail-col .ext-field-row{border-top:1px solid #f1f5f9;padding:4px 0}
+.modal-btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;padding-top:14px;border-top:1.5px solid #d1d9e6}
+.modal-btn{
+  border:1px solid #e5e7eb;background:#fff;border-radius:8px;padding:7px 14px;
+  font-size:var(--c-fs);cursor:pointer;color:#374151;text-decoration:none;
+  display:inline-flex;align-items:center;gap:5px;
+  transition:background .12s,border-color .12s;
+}
+.modal-btn:hover{background:#f8fafc;border-color:#cbd5e1}
+.modal-btn.primary{background:#2a7d2e;color:#fff;border-color:#2a7d2e}
+.modal-btn.primary:hover{background:#1e5f21;border-color:#1e5f21}
+.modal-text-block{
+  font-size:var(--c-fs);color:#111;line-height:1.45;
+  white-space:pre-wrap;word-break:break-word;
+  max-height:160px;overflow-y:auto;
+}
+.modal-copy-group .modal-text-item{margin-top:12px;padding-top:0;border-top:none}
+.modal-copy-group .modal-text-item:first-child{margin-top:0}
+.modal-copy-group .modal-text-item .modal-label{margin-bottom:4px}
+.ext-field-row{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  gap:6px;padding:2px 0;
+}
+.ext-field-label{font-size:var(--c-fs);color:#64748b;font-weight:600;flex-shrink:0}
+.ext-field-value{font-size:var(--c-fs);color:#111;text-align:right;word-break:break-word}
+.ext-field-value a{color:#2563eb;text-decoration:underline}
+.ext-field-value a:hover{color:#1d4ed8}
+.cat2-dv-na{color:#94a3b8;font-style:normal}
+.badge{
+  display:inline-block;border-radius:3px;padding:0 4px;
+  font-size:10px;font-weight:500;line-height:1.35;white-space:nowrap;
+}
+.badge-prod,.badge-mat{background:#f4f4f5;color:#52525b;border:1px solid #e4e4e7}
+.badge-cam{background:#fef9c3;color:#a16207;border:1px solid #fde68a}
+</style>
+</head>
+<body>
+<div id="chart-shell">
+  <main id="chart-main">
+    <div id="ec_sc"></div>
+  </main>
+  <aside id="cat2-detail-panel" aria-hidden="true">
+    <div class="cat2-detail-hdr">
+      <span class="cat2-detail-title">Product details</span>
+      <button id="cat2-detail-close" class="cat2-detail-close" type="button" aria-label="Close">✕</button>
+    </div>
+    <div id="cat2-detail-body"></div>
+  </aside>
+</div>
+<script>
+const PRODUCTS = window.__PRODUCTS__ || [];
+const GWP_RANGES = window.__GWP_RANGES__ || {};
+const STELLA_IMG = window.__STELLA_IMG__ || "";
+const FIELD_VIS = window.__FIELD_VIS__ || {};
+let chartInstance = null;
+let panelOpen = false;
+
+function esc(s){
+  return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+function escAttr(s){
+  return String(s==null?"":s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");
+}
+function fieldVisible(p,key){
+  const fv = FIELD_VIS[p.id];
+  if(!fv || typeof fv[key] !== "boolean") return true;
+  return fv[key];
+}
+const FLAGS = {
+  DK:"🇩🇰",DE:"🇩🇪",IT:"🇮🇹",BE:"🇧🇪",PL:"🇵🇱",SE:"🇸🇪",FR:"🇫🇷",GB:"🇬🇧",
+  NL:"🇳🇱",ES:"🇪🇸",AT:"🇦🇹",CH:"🇨🇭",FI:"🇫🇮",NO:"🇳🇴",PT:"🇵🇹",CZ:"🇨🇿",SK:"🇸🇰",
+};
+const COUNTRY_ISO = {
+  "ITALY":"IT","GERMANY":"DE","FRANCE":"FR","SPAIN":"ES","DENMARK":"DK",
+  "BELGIUM":"BE","POLAND":"PL","SWEDEN":"SE","UNITED KINGDOM":"GB","UK":"GB",
+};
+function flagFor(raw){
+  const s = String(raw||"").trim().toUpperCase();
+  if(s.length===2 && FLAGS[s]) return FLAGS[s];
+  const iso = COUNTRY_ISO[s.replace(/\s+/g," ")];
+  return (iso && FLAGS[iso]) ? FLAGS[iso] : (s ? "🌍" : "");
+}
+function gwpPct(p){
+  const r = GWP_RANGES[p.productType||""] || null;
+  if(!r || r.max === r.min) return null;
+  return Math.max(0, Math.min(1, (p.gwp - r.min) / (r.max - r.min)));
+}
+function gwpColor(pct){
+  if(pct === null) return "#2a7d2e";
+  if(pct < 0.20) return "#2a7d2e";
+  if(pct < 0.45) return "#5a9e3a";
+  if(pct < 0.65) return "#c8a020";
+  if(pct < 0.85) return "#d97706";
+  return "#c0392b";
+}
+function gwpColorFor(p){ return gwpColor(gwpPct(p)); }
+function formatGwp(p){
+  const isInSitu = String(p.productType||"").toLowerCase().includes("in situ");
+  if(isInSitu && p.gwpM3){
+    const v = Number(p.gwpM3);
+    return Number.isFinite(v) ? v.toFixed(2)+" kgCO₂e/m³" : "n/a";
+  }
+  const pre = String(p.gwpDisplay||"").trim();
+  if(pre) return pre;
+  const v = Number(p.gwp);
+  const num = (Number.isFinite(v)?v:0).toFixed(2);
+  let u = String(p.gwpUnit||"").trim()
+    .replace(/\bco2\b/gi,"CO₂").replace(/\bm2\b/gi,"m²").replace(/\bm3\b/gi,"m³")
+    .replace(/^1\s+/,"").trim();
+  if(!u||u==="-") return num+" kgCO₂e";
+  if(/^kg\s*CO₂e/i.test(u)||/^kgCO₂e/i.test(u)) return num+" "+u.replace(/\s+/g," ").trim();
+  return num+" kgCO₂e/"+u.replace(/^\/+/,"").trim();
+}
+function gwpModalBar(p){
+  const pct = gwpPct(p);
+  if(pct === null) return "";
+  const r = GWP_RANGES[p.productType||""];
+  const np = (pct*100).toFixed(1);
+  return `<div style="margin:6px 0 4px">
+    <div style="font-size:11px;color:#94a3b8;margin-bottom:4px;letter-spacing:.02em">
+      Peer-group percentile · ${esc(p.productType||"")}
+    </div>
+    <div style="position:relative;height:8px;border-radius:4px;overflow:visible;
+      background:linear-gradient(to right,#2a7d2e,#7cb87e,#d4c84a,#e8742a,#c0392b)">
+      <div style="position:absolute;top:50%;left:${np}%;width:4px;height:16px;
+        border-radius:2px;background:#333;transform:translate(-50%,-50%);pointer-events:none"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-top:3px">
+      <span style="font-size:10px;color:#94a3b8">${r.min.toFixed(2)}</span>
+      <span style="font-size:10px;color:#94a3b8">${r.max.toFixed(2)}</span>
+    </div>
+  </div>`;
+}
+function camBadge(p){
+  const raw = String(p.camCompliance||"").trim();
+  if(!raw||raw==="-"||/^(no|nan)$/i.test(raw)) return "";
+  const ok = raw==="✓"||/^y(es)?$/i.test(raw)||/^(compliant|ok)$/i.test(raw)||/below|warn/i.test(raw);
+  if(!ok) return "";
+  if(STELLA_IMG)
+    return `<span class="badge badge-cam" title="CAM compliant"><img src="${escAttr(STELLA_IMG)}" style="height:11px;width:auto;vertical-align:middle"> CAM</span>`;
+  return `<span class="badge badge-cam" title="CAM compliant">★ CAM</span>`;
+}
+function modalTextItem(label, value){
+  const t = String(value||"").trim();
+  if(!t || t==="-") return "";
+  return `<div class="modal-text-item">
+    <div class="modal-label">${esc(label)}</div>
+    <div class="modal-text-block">${esc(t)}</div>
+  </div>`;
+}
+function modalCopyBlock(p){
+  const items = [
+    modalTextItem("Product description", p.productDescription),
+    modalTextItem("Content", p.content),
+    modalTextItem("Comments", p.comments),
+  ].filter(Boolean);
+  if(!items.length) return "";
+  return `<div class="modal-section modal-copy-group">${items.join("")}</div>`;
+}
+function cat2DvNa(){ return '<span class="cat2-dv-na">N/A</span>'; }
+function cat2DvNr(){ return '<span class="cat2-dv-na">N/R</span>'; }
+function cat2HrefVal(href){
+  const u = String(href||"").trim();
+  if(!u || u === "-" || /^(n\/a|na|n\/r|nr)$/i.test(u)) return "";
+  return u;
+}
+function modalDetailRow(label, valueHtml){
+  return `<div class="ext-field-row"><span class="ext-field-label">${esc(label)}</span><span class="ext-field-value">${valueHtml}</span></div>`;
+}
+function modalDetailValue(p, visKey, raw){
+  if(!fieldVisible(p, visKey)) return cat2DvNr();
+  const v = String(raw||"").trim();
+  if(!v || v==="-") return cat2DvNa();
+  return esc(v);
+}
+function modalProductDetailsCol(p){
+  return [
+    modalDetailRow("Thickness", modalDetailValue(p, "thickness", p.thickness)),
+    modalDetailRow("Vol. Density", modalDetailValue(p, "density", p.density)),
+    modalDetailRow("Conductivity", modalDetailValue(p, "conductivity", p.conductivity)),
+    modalDetailRow("Fire rating", modalDetailValue(p, "fireRating", p.fireRating)),
+    modalDetailRow("Manuf. plant", modalPlantRow(p)),
+  ].join("");
+}
+function modalEpdDec(p){
+  const dec = String(p.epdDeclaredNumber||"").trim();
+  return (dec && dec!=="-") ? esc(dec) : cat2DvNa();
+}
+function modalEpdReg(p){
+  const reg = String(p.epdNumber||"").trim();
+  const url = cat2HrefVal(p.epdUrl);
+  if(!reg || reg==="-") return cat2DvNa();
+  if(url){
+    return `<a href="${escAttr(url)}" target="_blank" rel="noopener noreferrer">${esc(reg)}</a>`;
+  }
+  return esc(reg);
+}
+function modalRecycled(p){
+  const val = String(p.recyclingRate||"").trim();
+  const url = cat2HrefVal(p.recyclingUrl);
+  if(!val || val==="-") return cat2DvNa();
+  const link = url
+    ? ` <a href="${escAttr(url)}" target="_blank" rel="noopener noreferrer" title="Recycled content declaration">🔗</a>`
+    : "";
+  return esc(val) + link;
+}
+function modalVocDisplayText(raw){
+  // Drop ``Cat. …`` category segments; keep lab name + certification (+ link separately).
+  return String(raw||"").split(/\s*·\s*/)
+    .map(s => s.trim())
+    .filter(s => s && !/^Cat\.\s/i.test(s))
+    .join(" · ");
+}
+function modalVocRow(p){
+  const text = modalVocDisplayText(p.vocText);
+  const url = cat2HrefVal(p.vocUrl);
+  if(!text && !url) return cat2DvNa();
+  const link = url
+    ? ` <a href="${escAttr(url)}" target="_blank" rel="noopener noreferrer" title="VOC documentation">🔗</a>`
+    : "";
+  return (text ? esc(text) : "") + link;
+}
+function modalCamRow(p){
+  const badge = camBadge(p);
+  if(badge) return badge;
+  const raw = String(p.camCompliance||"").trim();
+  if(!raw || raw==="-" || /^(no|nan)$/i.test(raw)) return cat2DvNa();
+  return esc(raw);
+}
+function modalPlantRow(p){
+  const plant = String(p.plant||"").trim();
+  const country = String(p.country||"").trim();
+  const bits = [plant, country].filter(x => x && x!=="-");
+  if(!bits.length) return cat2DvNa();
+  const f = flagFor(p.country);
+  return `${f ? f+" " : ""}${esc(bits.join(" · "))}`;
+}
+function modalSustainabilityCol(p){
+  return [
+    modalDetailRow("EPD Dec.", modalEpdDec(p)),
+    modalDetailRow("EPD Reg.", modalEpdReg(p)),
+    modalDetailRow("Recycled Content", modalRecycled(p)),
+    modalDetailRow("VOC", modalVocRow(p)),
+    modalDetailRow("CAM", modalCamRow(p)),
+  ].join("");
+}
+function modalDetailPanelHTML(p){
+  return `<div class="modal-detail-2col">
+    <div class="modal-detail-col">
+      <div class="modal-col-title">Product Details</div>
+      ${modalProductDetailsCol(p)}
+    </div>
+    <div class="modal-detail-col">
+      <div class="modal-col-title">Sustainability</div>
+      ${modalSustainabilityCol(p)}
+    </div>
+  </div>`;
+}
+function modalHTML(p){
+  const color = gwpColorFor(p);
+  const gwpStr = formatGwp(p);
+  const f = flagFor(p.country);
+  const barHtml = gwpModalBar(p);
+  const plant = (p.plant && p.plant!=="-") ? ` · ${esc(p.plant)}` : "";
+  const hasImg = p.imageUrl && String(p.imageUrl).trim();
+  const gwpBlock = `
+    <div class="modal-label">GWP A1–A3</div>
+    <div class="modal-gwp-value" style="color:${color}">${esc(gwpStr)}</div>
+    ${barHtml}`;
+  const topBlock = hasImg
+    ? `<div class="modal-hdr-grid">
+        <div class="modal-hdr-img">
+          <img src="${escAttr(p.imageUrl)}" alt="${escAttr(p.name||"")}" loading="lazy" decoding="async">
+        </div>
+        <div>${gwpBlock}</div>
+       </div>`
+    : `<div class="modal-section">${gwpBlock}</div>`;
+  const detailPanel = modalDetailPanelHTML(p);
+  const badges = [
+    (p.productType && p.productType!=="-") ? `<span class="badge badge-prod">${esc(p.productType)}</span>` : "",
+    (p.materialType && p.materialType!=="-") ? `<span class="badge badge-mat">${esc(p.materialType)}</span>` : "",
+  ].filter(Boolean).join("");
+  let btns = "";
+  if(p.productUrl && String(p.productUrl).trim() && p.productUrl!=="-")
+    btns += `<a class="modal-btn primary" href="${escAttr(p.productUrl)}" target="_blank" rel="noopener noreferrer">🌐 Product page</a>`;
+  if(cat2HrefVal(p.epdUrl))
+    btns += `<a class="modal-btn" href="${escAttr(cat2HrefVal(p.epdUrl))}" target="_blank" rel="noopener noreferrer">📄 Open EPD</a>`;
+  const copyBlock = modalCopyBlock(p);
+  return `
+    <div class="modal-name">${esc(p.name||"—")}</div>
+    <div class="modal-mfr">${f ? f+" " : ""}${esc(p.manufacturer||"—")}${plant}</div>
+    ${badges ? `<div style="display:flex;flex-wrap:wrap;gap:2px;margin-bottom:6px">${badges}</div>` : ""}
+    ${topBlock}
+    ${copyBlock}
+    <div class="modal-section">${detailPanel}</div>
+    ${btns ? `<div class="modal-btns">${btns}</div>` : ""}
+  `;
+}
+function resizeChart(){
+  if(chartInstance) chartInstance.resize();
+}
+function openCardPanel(pid){
+  const products = window.__PRODUCTS__ || PRODUCTS || [];
+  const p = products.find(r => Number(r.id) === Number(pid));
+  if(!p) return;
+  document.getElementById("cat2-detail-body").innerHTML = modalHTML(p);
+  const panel = document.getElementById("cat2-detail-panel");
+  panel.classList.add("open");
+  panel.setAttribute("aria-hidden", "false");
+  panelOpen = true;
+  resizeChart();
+  setTimeout(resizeChart, 220);
+}
+function closeCardPanel(){
+  const panel = document.getElementById("cat2-detail-panel");
+  panel.classList.remove("open");
+  panel.setAttribute("aria-hidden", "true");
+  document.getElementById("cat2-detail-body").innerHTML = "";
+  panelOpen = false;
+  resizeChart();
+  setTimeout(resizeChart, 220);
+}
+function initScatterChart(optionJson, chartHeight){
+  document.documentElement.style.setProperty("--chart-viewport-h", chartHeight + "px");
+  const el = document.getElementById("ec_sc");
+  chartInstance = echarts.init(el, null, {renderer:"canvas"});
+  chartInstance.setOption(optionJson);
+  chartInstance.on("click", function(params){
+    if(!params.data || params.seriesName === "") return;
+    const pid = params.data.pid;
+    if(pid != null) openCardPanel(pid);
+  });
+  window.addEventListener("resize", resizeChart);
+  document.getElementById("cat2-detail-close").addEventListener("click", closeCardPanel);
+  document.addEventListener("keydown", function(e){
+    if(e.key === "Escape" && panelOpen) closeCardPanel();
+  });
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<script>
+initScatterChart(window.__ECHARTS_OPTION__ || {}, window.__CHART_HEIGHT__ || 520);
+</script>
+</body>
+</html>

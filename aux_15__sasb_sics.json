@@ -1,0 +1,155 @@
+{
+  "_meta": {
+    "system": "SASB Sustainable Industry Classification System (SICS)",
+    "industries": 77,
+    "sectors": 11,
+    "source": "https://www.ifrs.org/content/dam/ifrs/sasb/general/sics-industry-list-10102025.pdf",
+    "source_label": "IFRS / SASB SICS industry list (10 Oct 2025)",
+    "note": "SICS groups companies by business model and sustainability exposure. Used here as the opening industry classification for the supplier questionnaire."
+  },
+  "sectors": [
+    {
+      "key": "consumer_goods",
+      "label": "Consumer Goods",
+      "industries": [
+        "Apparel, Accessories & Footwear",
+        "Appliance Manufacturing",
+        "Building Products & Furnishings",
+        "E-Commerce",
+        "Household & Personal Products",
+        "Multiline and Specialty Retailers & Distributors",
+        "Toys & Sporting Goods"
+      ]
+    },
+    {
+      "key": "extractives_minerals",
+      "label": "Extractives & Minerals Processing",
+      "industries": [
+        "Coal Operations",
+        "Construction Materials",
+        "Iron & Steel Producers",
+        "Metals & Mining",
+        "Oil & Gas - Exploration & Production",
+        "Oil & Gas - Midstream",
+        "Oil & Gas - Refining & Marketing",
+        "Oil & Gas - Services"
+      ]
+    },
+    {
+      "key": "financials",
+      "label": "Financials",
+      "industries": [
+        "Asset Management & Custody Activities",
+        "Commercial Banks",
+        "Consumer Finance",
+        "Insurance",
+        "Investment Banking & Brokerage",
+        "Mortgage Finance",
+        "Security & Commodity Exchanges"
+      ]
+    },
+    {
+      "key": "food_beverage",
+      "label": "Food & Beverage",
+      "industries": [
+        "Agricultural Products",
+        "Alcoholic Beverages",
+        "Food Retailers & Distributors",
+        "Meat, Poultry & Dairy",
+        "Non-Alcoholic Beverages",
+        "Processed Foods",
+        "Restaurants",
+        "Tobacco"
+      ]
+    },
+    {
+      "key": "health_care",
+      "label": "Health Care",
+      "industries": [
+        "Biotechnology & Pharmaceuticals",
+        "Drug Retailers",
+        "Health Care Delivery",
+        "Health Care Distributors",
+        "Managed Care",
+        "Medical Equipment & Supplies"
+      ]
+    },
+    {
+      "key": "infrastructure",
+      "label": "Infrastructure",
+      "industries": [
+        "Electric Utilities & Power Generators",
+        "Engineering & Construction Services",
+        "Gas Utilities & Distributors",
+        "Home Builders",
+        "Real Estate",
+        "Real Estate Services",
+        "Waste Management",
+        "Water Utilities & Services"
+      ]
+    },
+    {
+      "key": "renewable_resources",
+      "label": "Renewable Resources & Alternative Energy",
+      "industries": [
+        "Biofuels",
+        "Forestry Management",
+        "Fuel Cells & Industrial Batteries",
+        "Pulp & Paper Products",
+        "Solar Technology & Project Developers",
+        "Wind Technology & Project Developers"
+      ]
+    },
+    {
+      "key": "resource_transformation",
+      "label": "Resource Transformation",
+      "industries": [
+        "Aerospace & Defense",
+        "Chemicals",
+        "Containers & Packaging",
+        "Electrical & Electronic Equipment",
+        "Industrial Machinery & Goods"
+      ]
+    },
+    {
+      "key": "services",
+      "label": "Services",
+      "industries": [
+        "Advertising & Marketing",
+        "Casinos & Gaming",
+        "Education",
+        "Hotels & Lodging",
+        "Leisure Facilities",
+        "Media & Entertainment",
+        "Professional & Commercial Services"
+      ]
+    },
+    {
+      "key": "technology_communications",
+      "label": "Technology & Communications",
+      "industries": [
+        "Electronic Manufacturing Services & Original Design Manufacturing",
+        "Hardware",
+        "Internet Media & Services",
+        "Semiconductors",
+        "Software & IT Services",
+        "Telecommunication Services"
+      ]
+    },
+    {
+      "key": "transportation",
+      "label": "Transportation",
+      "industries": [
+        "Air Freight & Logistics",
+        "Airlines",
+        "Auto Parts",
+        "Automobiles",
+        "Car Rental & Leasing",
+        "Cruise Lines",
+        "Marine Transportation",
+        "Rail Transportation",
+        "Road Transportation"
+      ]
+    }
+  ]
+}

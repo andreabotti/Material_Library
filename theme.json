@@ -1,0 +1,817 @@
+{
+  "_comment": "EETRA MatLib — single source of truth for all visual settings (colors, typography, layout, catalogue, Streamlit theme). Edit here; Python loads via libs/lib_tokens.py and regenerates 02_html/_tokens.css and .streamlit/config.toml [theme] on change. RESTART REQUIRED for anything under \"catalogue\": those values are copied into module globals once, when libs/lib_ui is imported (init_catalogue_layout_globals), so a running server keeps the old ones. Editing this file does not trigger runOnSave either — that watches .py files. Stop and restart Streamlit to see catalogue changes.",
+
+  "brand": {
+    "_comment": "One canonical product name. Used by the browser tab title, the masthead and every page header.",
+    "app_name": "EETRA Material Library",
+    "masthead_title": "Material Library",
+    "browser_tab_title": "EETRA Material Library",
+    "tagline": "Low-Carbon, Circular Materials for a Regenerative Future.",
+    "credit_label": "AB.S.RD",
+    "credit_url": "https://absrd.xyz/"
+  },
+
+  "colors": {
+    "green": "#2a7d2e",
+    "green_light": "#e8f5e9",
+    "ok": "#16a34a",
+    "warn": "#d97706",
+    "warn_light": "#fff8e1",
+    "error": "#dc2626",
+    "info": "#185FA5",
+    "info_light": "#E6F1FB",
+    "text": "#1e293b",
+    "text_muted": "#64748b",
+    "text_faint": "#94a3b8",
+    "surface": "#ffffff",
+    "surface_alt": "#f8fafc",
+    "surface_alt2": "#f1f5f9",
+    "border": "#e2e8f0",
+    "border_strong": "#cbd5e1",
+    "border_card": "#d1d9e6",
+    "hover_border": "#b8c5d8",
+    "brand_muted": "#666666",
+    "green_mid": "#4caf50",
+    "chip_text": "#475569"
+  },
+
+  "palette": {
+    "_comment": "Role-named secondary palette. Every hex that used to be hard-coded in Python CSS strings (lib_header.fn005, ECOportal badges, Revalu page, catalogue card actions) now lives here and is substituted for var(--eetra-p-*) automatically by lib_tokens.css_hex_to_var().",
+
+    "grey_50": "#f9fafb",
+    "grey_100": "#f3f4f6",
+    "grey_200": "#e5e7eb",
+    "grey_300": "#d1d5db",
+    "grey_400": "#9ca3af",
+    "grey_600": "#6b7280",
+    "grey_700": "#374151",
+    "grey_800": "#1f2937",
+    "grey_900": "#111111",
+    "white": "#ffffff",
+    "hr_line": "#cccccc",
+
+    "ok_bg": "#dcfce7",
+    "ok_border": "#86efac",
+    "ok_fg_strong": "#15803d",
+    "warn_bg": "#fff7ed",
+    "warn_fg": "#ea580c",
+    "warn_border": "#fdba74",
+    "error_bg": "#fef2f2",
+    "error_border": "#fca5a5",
+    "error_bg_soft": "#fee2e2",
+    "info_bg": "#eff6ff",
+    "info_fg": "#2563eb",
+    "info_border": "#93c5fd",
+
+    "code_bg": "#0d1117",
+    "code_border": "#21262d",
+    "code_fg": "#8b949e",
+
+    "epd_btn_bg_from": "#fff6e8",
+    "epd_btn_bg_to": "#ffe8cc",
+    "epd_btn_border": "#e0b878",
+    "epd_btn_fg": "#6a3d00",
+    "epd_btn_border_hover": "#cc9a3c",
+    "epd_btn_fg_hover": "#4a2800",
+
+    "revalu_navy": "#0d1f3c",
+    "revalu_navy_mid": "#1a3a6b",
+    "revalu_teal": "#00b4d8",
+    "revalu_violet": "#8c66e0",
+    "_revalu_violet_comment": "Sampled from Revalu brand CTA (Perform Early-Stage LCAs). Used for Add/Edit Revalu R-badge.",
+    "status_expired": "#9333ea",
+    "status_expired_bg": "#f3e8ff",
+    "status_number_bg": "#fef9c3",
+    "status_number_fg": "#854d0e",
+
+    "reg_epdi_bg": "#e0f2fe",
+    "reg_epdi_fg": "#0369a1",
+    "reg_epdi_border": "#bae6fd",
+    "reg_italy_bg": "#dcfce7",
+    "reg_italy_fg": "#166534",
+    "reg_italy_border": "#bbf7d0",
+    "reg_ibu_bg": "#f0fdf4",
+    "reg_ibu_border": "#d1fae5",
+    "reg_inies_fg": "#c2410c",
+    "reg_inies_border": "#fed7aa",
+    "reg_revalu_bg": "#f5f3ff",
+    "reg_revalu_fg": "#5b21b6",
+    "reg_revalu_border": "#ddd6fe",
+    "reg_open_bg": "#f0f9ff",
+    "reg_open_fg": "#0c4a6e"
+  },
+
+  "typography": {
+    "font_sans": "'Miranda Sans', 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif",
+    "font_serif": "'Source Serif Pro', Georgia, serif",
+    "font_mono": "'IBM Plex Mono', 'JetBrains Mono', monospace",
+    "base_size": "13px",
+    "google_font_links": [
+      "https://fonts.googleapis.com/css2?family=Miranda+Sans:wght@400;500;600;700&display=swap",
+      "https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap",
+      "https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap",
+      "https://fonts.googleapis.com/icon?family=Material+Icons"
+    ],
+    "local_fonts": []
+  },
+
+  "borders": {
+    "radius_card": "12px",
+    "radius_md": "8px",
+    "radius_sm": "4px",
+    "radius_pill": "999px"
+  },
+
+  "spacing": {
+    "grid_gap": "12px"
+  },
+
+  "layout": {
+    "_comment": "Shared iframe heights. 'default' applies to any component without its own entry; keys match the names passed to lib_ui.fn359_iframe_height().",
+    "iframe_height_default": 860,
+    "cards_max_embedded": 60,
+    "_cards_max_embedded_comment": "Page size for the Catalogue 'Cards' view. Each card's image is base64-embedded into one iframe payload (~190 KB per product measured), so this is a payload budget, not a style choice: 60 cards is roughly 11 MB per rerun, and Streamlit's websocket limit is 200 MB. Raise only if you have measured the payload.",
+    "iframe_heights": {
+      "catalogue_js": 920,
+      "catalogue_grid": 1200,
+      "manufacturers": 920,
+      "ecoportal": 860,
+      "ice_db": 860,
+      "bdilca": 860,
+      "filter_summary": 48
+    }
+  },
+
+  "shadows": {
+    "sm": "0 1px 3px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.04)",
+    "md": "0 4px 12px rgba(0,0,0,0.08)",
+    "lg": "0 8px 24px rgba(0,0,0,0.10)",
+    "hover": "0 6px 18px rgba(15, 23, 42, 0.08)"
+  },
+
+  "streamlit_theme": {
+    "primaryColor": "#2a7d2e",
+    "backgroundColor": "#ffffff",
+    "secondaryBackgroundColor": "#f8fafc",
+    "textColor": "#1e293b",
+    "font": "sans serif"
+  },
+
+  "chrome": {
+    "page_title": {
+      "_comment": "Per-page titles (Catalogue, Charts, …). Use px (not rem) for font_size so Windows text-scaling / browser root font-size cannot shrink titles on some PCs. margin_top + scroll_margin_top keep titles clear of the sticky top nav when landing and when scrolling. Clearance under the bar on non-Welcome pages also uses chrome.shell.sticky_clearance. margin_bottom + first_block_gap set the shared title→content whitespace (Catalogue title → View/Grid/List/Size toolbar).",
+      "font_size": "24px",
+      "font_weight": "500",
+      "line_height": "1.15",
+      "margin_top": "0.35rem",
+      "margin_bottom": "12px",
+      "_margin_bottom_comment": "Title wrap bottom margin. 12px ≈ Catalogue title→toolbar (6px wrap + 6px #cat2-chrome padding-top) so Charts/Developer/etc. align without the iframe chrome.",
+      "scroll_margin_top": "4.5rem",
+      "subtitle_font_size": "13px",
+      "subtitle_line_height": "1.25",
+      "subtitle_margin_top": "10px",
+      "embedded_font_size": "18px",
+      "embedded_margin_bottom": "12px",
+      "first_block_gap": "0.15rem",
+      "_first_block_gap_comment": "Streamlit VerticalBlock gap between the title ElementContainer and the next sibling (content). Keep tiny so margin_bottom owns the visible whitespace.",
+      "subtitle_tooltip_gap_em": "0.35em",
+      "subtitle_tooltip_icon_size": "0.72rem",
+      "subtitle_tooltip_icon_size_em": "0.72em",
+      "subtitle_tooltip_icon_color": "var(--eetra-text-muted, #64748b)",
+      "subtitle_tooltip_icon_border": "1px solid rgba(100,116,139,0.45)",
+      "subtitle_tooltip_bubble_max_width": "22rem",
+      "subtitle_tooltip_bubble_font_size": "12px",
+      "subtitle_tooltip_bubble_line_height": "1.4"
+    },
+    "layout": {
+      "_padding_top_comment": "Whitespace above page body. Keep modest — sticky top-nav clearance is owned by chrome.shell.sticky_clearance + page_title.scroll_margin_top.",
+      "_horizontal_comment": "block_container L/R = 0 so page body lines up with top-nav labels; main_padding_* is the shared inset from the sidebar/right edge.",
+      "block_container_padding_top": "0.25rem",
+      "block_container_padding_bottom": "0.5rem",
+      "block_container_padding_left": "0",
+      "block_container_padding_right": "0",
+      "sidebar_block_container_padding_top": "0rem",
+      "main_block_container_padding_top": "0.25rem",
+      "main_padding_left": "1rem",
+      "main_padding_right": "1rem",
+      "content_inset_x": "1rem"
+    },
+    "sidebar": {
+      "_used_by": "Sidebar width via st.set_page_config(initial_sidebar_state) in fn001; H-key toggle in sidebar_keyboard_shortcut_script. collapse_header + user_content_padding_top pull 'Signed in as' up toward the top-nav band.",
+      "width_px": 250,
+      "_width_px_comment": "Initial sidebar width (200–600). Streamlit handles collapse/expand natively — do not override with fixed CSS.",
+      "collapse_header": true,
+      "user_content_padding_top": "0.35rem",
+      "keyboard_shortcut": {
+        "enabled": true,
+        "key": "h",
+        "_key_comment": "Press this key (case-insensitive) to toggle sidebar visibility; ignored while typing in inputs"
+      }
+    },
+    "header_divider": {
+      "_comment": "Full Welcome masthead chrome in fn001b_render_app_masthead(compact=False). show/show_above/show_below control the rule; margin_top = whitespace ABOVE the masthead; space_below = whitespace BELOW the divider. Compact bar for other pages: chrome.masthead_compact.",
+      "show": true,
+      "show_above": false,
+      "show_below": true,
+      "color": "var(--border)",
+      "thickness": "1px",
+      "width": "100%",
+      "align": "center",
+      "margin_top": "20px",
+      "space_below": "50px",
+      "margin_above_top": "0px",
+      "margin_above_bottom": "6px",
+      "margin_below_top": "6px",
+      "margin_below_bottom": "0px"
+    },
+    "shell": {
+      "_comment": "Revalu-style top nav: white fill + thin bottom rule. border_* = rule + whitespace above/below. sticky_clearance = space under sticky bar before page titles (non-Welcome). Sidebar stays light grey (paint_sidebar false).",
+      "background": "#ffffff",
+      "background_opacity": 1,
+      "nav_text_color": "#1e293b",
+      "paint_sidebar": false,
+      "border_bottom_show": true,
+      "border_bottom_color": "#e5e7eb",
+      "border_bottom_thickness": "1px",
+      "border_space_above": "0px",
+      "border_space_below": "0px",
+      "sticky_clearance": "4.25rem"
+    },
+    "masthead_compact": {
+      "_comment": "PARKED — enabled:false so the compact green bar is not shown. Flip enabled to true to revive. Non-Welcome clearance now uses chrome.shell.sticky_clearance.",
+      "enabled": false,
+      "background": "#2a7d2e",
+      "background_opacity": 0.88,
+      "title_color": "#ffffff",
+      "nav_text_color": "#ffffff",
+      "content_height": "22px",
+      "logo_height": "22px",
+      "title_font_size": "1.25rem",
+      "padding_y": "0.4rem",
+      "gap": "0.55rem",
+      "margin_top": "3.25rem",
+      "margin_bottom": "0.75rem",
+      "logo_filter": "brightness(0) invert(1)"
+    },
+    "horizontal_divider": {
+      "_comment": "App-wide in-content divider via render_horizontal_divider() / fn304_slim_divider(). Defaults apply unless overridden by kwargs or a named preset under presets.",
+      "color": "#2a7d2e",
+      "thickness": "1.5px",
+      "width": "60%",
+      "align": "left",
+      "margin_top": "12px",
+      "margin_bottom": "12px",
+      "presets": {
+        "add_edit_section_above_title": {
+          "_used_by": "Add/Edit Identity + Details — full-width light-grey rule ABOVE all-caps section labels (Product Info URLs, Physical properties). Title colour matches this rule; margin_bottom keeps the label tight under it.",
+          "color": "#d1d5db",
+          "thickness": "1px",
+          "width": "100%",
+          "align": "left",
+          "margin_top": "20px",
+          "margin_bottom": "2px"
+        },
+        "add_edit_before_product_info": {
+          "_used_by": "Deprecated alias — same as add_edit_section_above_title",
+          "color": "#d1d5db",
+          "thickness": "1px",
+          "width": "100%",
+          "align": "left",
+          "margin_top": "20px",
+          "margin_bottom": "2px"
+        }
+      }
+    },
+    "serif_headings": {
+      "selectors": [
+        ".stMarkdown h1",
+        ".stMarkdown h2",
+        ".stMarkdown h3",
+        ".stMarkdown h4",
+        ".eetra-page-title",
+        "h2.custom-title",
+        ".custom-title",
+        ".eetra-masthead-compact-title",
+        ".co2-value",
+        ".co2-value span"
+      ],
+      "font_style": "italic",
+      "font_weight": "400"
+    },
+    "sans_ui": {
+      "selectors": [
+        "[data-testid='stNavigation']",
+        "[data-testid='stNavigation'] *",
+        "[data-testid='stHeader']",
+        "[data-testid='stHeader'] *",
+        "[data-testid='stToolbar']",
+        "[data-testid='stToolbar'] *",
+        "[data-testid='stSidebarNav']",
+        "[data-testid='stSidebarNav'] *",
+        "[data-testid='stSelectbox']",
+        "[data-testid='stSelectbox'] *",
+        "[data-testid='stMultiSelect']",
+        "[data-testid='stMultiSelect'] *",
+        "[data-testid='stTextInput']",
+        "[data-testid='stTextInput'] *",
+        "[data-testid='stTextArea']",
+        "[data-testid='stTextArea'] *",
+        "[data-testid='stNumberInput']",
+        "[data-testid='stNumberInput'] *",
+        "[data-testid='stWidgetLabel']",
+        "[data-testid='stWidgetLabel'] *",
+        "[data-testid='stCaptionContainer']",
+        "[data-testid='stCaptionContainer'] *",
+        "[data-testid='stButtonGroup']",
+        "[data-testid='stButtonGroup'] *",
+        "[data-testid='stButton']",
+        "[data-testid='stButton'] *",
+        "[data-testid='stDownloadButton']",
+        "[data-testid='stDownloadButton'] *",
+        "[data-testid='stFormSubmitButton']",
+        "[data-testid='stFormSubmitButton'] *",
+        "[data-testid='stRadio']",
+        "[data-testid='stRadio'] *",
+        "[data-testid='stCheckbox']",
+        "[data-testid='stCheckbox'] *",
+        "[data-testid='stToggle']",
+        "[data-testid='stToggle'] *",
+        "[data-testid='stPills']",
+        "[data-testid='stPills'] *",
+        "[data-testid='stSlider']",
+        "[data-testid='stSlider'] *",
+        "[data-testid='stDateInput']",
+        "[data-testid='stDateInput'] *",
+        "[data-testid='stTimeInput']",
+        "[data-testid='stTimeInput'] *",
+        "[data-testid='stFileUploader']",
+        "[data-testid='stFileUploader'] *",
+        "[data-testid='stExpander']",
+        "[data-testid='stExpander'] *",
+        "[data-testid='stAlert']",
+        "[data-testid='stAlert'] *",
+        "[data-testid='stProgress']",
+        "[data-testid='stProgress'] *",
+        "[data-testid='stMetric']",
+        "[data-testid='stMetric'] *",
+        "[data-testid='stTabs']",
+        "[data-testid='stTabs'] *",
+        "div[data-baseweb='select']",
+        "div[data-baseweb='select'] *",
+        "div[data-baseweb='popover']",
+        "div[data-baseweb='popover'] *",
+        "div[data-baseweb='menu']",
+        "div[data-baseweb='menu'] *",
+        "[role='listbox']",
+        "[role='listbox'] *",
+        "[role='option']",
+        "[role='option'] *"
+      ]
+    },
+    "custom_title": {
+      "color": "#2a7d2e",
+      "margin": "0 0 -20px 0",
+      "padding": "0",
+      "line_height": "1.15"
+    },
+    "custom_caption": {
+      "font_size": "0.8rem",
+      "color": "gray",
+      "margin": "0",
+      "padding": "15px 0 2px 0",
+      "line_height": "1.35"
+    },
+    "co2_value": {
+      "font_weight": "600",
+      "font_size": "16px",
+      "color": "#2a7d2e",
+      "margin": "0 0 8px 0",
+      "padding": "0",
+      "span_padding": "1px 3px"
+    },
+    "header_branding": {
+      "margin_bottom": "0",
+      "padding_bottom": "5px",
+      "padding_top": "38px"
+    },
+    "header_logo": {
+      "margin": "60px 0 4px 0",
+      "padding": "0"
+    },
+    "sidebar_collapsed_control": {
+      "_used_by": "Streamlit sidebar expand/collapse chevron (1.59+: stExpandSidebarButton / stSidebarCollapseButton)",
+      "mode": "icon_fix",
+      "selectors": [
+        "[data-testid='stExpandSidebarButton'] [data-testid='stIconMaterial']",
+        "[data-testid='stSidebarCollapseButton'] [data-testid='stIconMaterial']",
+        "[data-testid='stHeader'] [data-testid='stExpandSidebarButton']",
+        "[data-testid='stHeader'] [data-testid='stExpandSidebarButton'] *",
+        "[data-testid='stHeader'] [data-testid='stSidebarCollapseButton']",
+        "[data-testid='stHeader'] [data-testid='stSidebarCollapseButton'] *",
+        "[data-testid='stToolbar'] [data-testid='stExpandSidebarButton']",
+        "[data-testid='stToolbar'] [data-testid='stExpandSidebarButton'] *",
+        "[data-testid='stToolbar'] [data-testid='stSidebarCollapseButton']",
+        "[data-testid='stToolbar'] [data-testid='stSidebarCollapseButton'] *",
+        "[data-testid='stIconMaterial']",
+        "[data-testid='collapsedControl']",
+        "[data-testid='collapsedControl'] *"
+      ],
+      "hide_selectors": [
+        "[data-testid='stExpandSidebarButton']",
+        "[data-testid='stSidebarCollapseButton']",
+        "[data-testid='collapsedControl']"
+      ],
+      "icon_font_family": "'Material Symbols Rounded', 'Material Icons'",
+      "icon_font_size": "1.35rem"
+    },
+    "auth_gate": {
+      "_used_by": "Startup login screen (libs/lib_data.py fn112a · auth_gate_typography_css · _auth_gate_background_css)",
+      "background_image_opacity": 0.82,
+      "_background_image_opacity_comment": "Library-wall overlay on [data-testid=stMain]::after (0–1). Higher = stronger photo / less milky wash. Served from static/login/MatLib__login_bground.jpg when present.",
+      "background_image_path": "03_img/MatLib__login_bground.png",
+      "show_logo": false,
+      "wordmark": "EETRA",
+      "wordmark_font_size": "0.95rem",
+      "logo_path": "03_img/EETRA_logo_rect.png",
+      "logo_height_px": 40,
+      "_logo_height_px_comment": "Rect logo height on login masthead (px)",
+      "brand_padding_top_px": 195,
+      "brand_margin_bottom_px": 50,
+      "_brand_spacing_comment": "White space above logo/title block; gap before login card",
+      "title_color": "#3B3B3B",
+      "tagline_color": "#3B3B3B",
+      "title_font_size": "1.75rem",
+      "title_margin": "0.12rem 0 0.08rem 0",
+      "_title_margin_comment": "Space between EETRA logo and Material Library title",
+      "text_shadow": "0 0 10px rgba(255,255,255,0.95), 0 0 22px rgba(255,255,255,0.75), 0 1px 0 rgba(255,255,255,0.9)"
+    }
+  },
+
+  "developer_dashboard": {
+    "picker_caption": {
+      "_used_by": "Developer Dashboard · 'Viewing N / M items' line above the active-filters strip in the left rail",
+      "margin_top": "10px",
+      "font_size": "0.8rem",
+      "line_height": "1.25",
+      "color": "var(--text-color, inherit)",
+      "opacity": "0.75",
+      "paragraph_gap": "0.15rem"
+    },
+    "field_group_section": {
+      "_used_by": "Add/Edit form · subheader above grouped fields. ``page_title_scale`` sizes ``section_title_style: page_title`` like ``chrome.page_title`` (Developer Dashboard title) at that fraction.",
+      "font_size": "0.85rem",
+      "font_weight": "600",
+      "line_height": "1.25",
+      "margin_top": "0.65rem",
+      "margin_bottom": "0.1rem",
+      "color": "var(--text-color, inherit)",
+      "opacity": "0.88",
+      "page_title_scale": 0.6,
+      "page_title_margin_bottom": "0.35rem"
+    },
+    "add_edit_form": {
+      "_used_by": "Developer Dashboard → ➕ Add New Item & ✏️ Edit Existing Item (embedded pages/13_Add_Edit_Item.py). Controls vertical rhythm inside category tabs and between the edit picker row and those tabs.",
+      "widget_row_gap_px": 30,
+      "_widget_row_gap_px_comment": "Vertical gap between each horizontal field row inside Identity / Details / EPD / GWP / … tab panels (classic form). The default editor uses the same 30px in libs/item_editor/item_editor.css (--ie-row-gap).",
+      "widget_columns_gap_px": 25,
+      "_widget_columns_gap_px_comment": "Passed to st.columns(..., gap=) as pixel int (Streamlit 1.60+). Horizontal spacing between widgets in Add/Edit field rows.",
+      "edit_picker_to_tabs_gap_px": 30,
+      "_edit_picker_to_tabs_gap_px_comment": "Space below the Search + Select item to edit row and above the category tabs when editing a product.",
+      "widget_label_font_size": "12px",
+      "widget_label_font_weight": "400",
+      "widget_input_font_size": "12px",
+      "_widget_font_comment": "Single font family (typography.font_sans) + size for ALL Add/Edit tab content: labels, inputs, C/M, status, Revalu captions, section titles, summary. Scoped to the form block only (see add_edit_form_css) so it does not shrink the Developer content column."
+    },
+    "left_nav": {
+      "_used_by": "Developer Dashboard · vertical left-column section navigation (st.radio styled as a tab rail)",
+      "col_ratio_nav": 1,
+      "col_ratio_content": 5,
+      "columns_gap": "small",
+      "columns_gap_css": "0.25rem",
+      "content_align_spacer": "0",
+      "content_column_padding_top": "0",
+      "option_font_size": "0.9rem",
+      "option_line_height": "1.25",
+      "option_padding_y": "0.5rem",
+      "option_padding_x": "0.7rem",
+      "option_gap": "0.15rem",
+      "option_radius": "0.5rem",
+      "section_gap_after": "0.85rem",
+      "_section_gap_after_comment": "Padding/margin under the horizontal divider after Edit Item and Edit Manufacturer in the left rail.",
+      "section_divider_color": "#94a3b8",
+      "section_divider_thickness": "2px",
+      "_section_divider_comment": "Hairlines after Edit Item / Edit Manufacturer. Prefer 2px (not 1px): 1px borders often disappear under Windows display scaling (125%/150%).",
+      "label_color": "var(--text-color, inherit)",
+      "hover_bg": "rgba(128,128,128,0.10)",
+      "active_bg": "rgba(42,125,46,0.12)",
+      "active_color": "var(--eetra-green, #2a7d2e)",
+      "active_bar_width": "3px",
+      "active_bar_color": "var(--eetra-green, #2a7d2e)",
+      "rail_padding": "0.4rem",
+      "rail_border": "none",
+      "rail_radius": "0.75rem",
+      "sticky_top": "3.5rem",
+      "keyboard_shortcut": {
+        "enabled": true,
+        "key": "hh",
+        "default_visible": true,
+        "_key_comment": "Double-press H within ~400ms (case-insensitive) to show/hide the left Nav Menu; ignored while typing in inputs. Avoids clashing with the sidebar single-H shortcut. default_visible: rail starts shown until the user hides it.",
+        "_default_visible_comment": "When true, the Developer left Nav Menu is visible until the user presses HH to hide it."
+      }
+    },
+    "app_documentation": {
+      "_used_by": "Developer Dashboard → App Documentation tab · APP_DOCUMENTATION.md rendered markdown",
+      "h1_font_size": "1.25rem",
+      "h2_font_size": "1.05rem",
+      "h3_font_size": "0.95rem",
+      "h4_font_size": "0.9rem",
+      "heading_line_height": "1.2",
+      "h1_margin_top": "0.5rem",
+      "h1_margin_bottom": "0.4rem",
+      "h2_margin_top": "0.85rem",
+      "h2_margin_bottom": "0.3rem",
+      "h3_margin_top": "0.65rem",
+      "h3_margin_bottom": "0.25rem"
+    },
+    "database_schema": {
+      "_used_by": "Developer Dashboard → App Documentation → Database Schema tab · DATABASE_COLUMNS.md tables",
+      "table_cell_padding_y": "0.2rem",
+      "table_cell_padding_x": "0.45rem",
+      "table_font_size": "0.85rem",
+      "table_line_height": "1.25",
+      "table_margin_top": "0.25rem",
+      "table_margin_bottom": "0.35rem"
+    }
+  },
+
+  "catalogue": {
+    "_comment": "Product catalogue layout & typography per UI surface. Loaded by libs/lib_ui_catalogues.py → CATALOGUE_* module globals → fn329 (Streamlit) / fn336 (JavaScript iframe).",
+
+    "page_controls": {
+      "_used_by": "pages/2_Catalogue.py · Streamlit search / tag filter / display settings row above tabs",
+      "_comment": "Set show false when the JS catalogue owns search and display (Cards tab).",
+      "show": false
+    },
+
+    "streamlit": {
+      "_used_by": "pages/2_Catalogue.py · Streamlit tab · fn329 native cards · lib_header .product-title / .product-details CSS",
+      "typography": {
+        "body_font_size_px": 12,
+        "body_line_height": 1.25,
+        "title_line_height": 1.3,
+        "gwp_line_height": 1.30
+      }
+    },
+
+    "js2": {
+      "_used_by": "pages/2_Catalogue.py · JavaScript tab · 02_html/catalogue_component_js2.html · fn336_render_catalogue_flipcard",
+      "filter_bar": {
+        "_comment": "In-iframe filter bar = view-local refinement only. 'hidden' removes dimensions the sidebar owns globally (prod = product type, mat = material type) so the same question is not asked twice with two different answers. Valid ids: search, prod, mat, country, prog, voc, fu, group, sort. Set scope_label to \"\" to hide the label.",
+        "hidden": ["prod", "mat"],
+        "scope_label": ""
+      },      "typography": {
+        "_font_families_note": "Sans → theme.typography.font_sans via 02_html/_tokens.css (--eetra-ff-sans). Serif GWP/rec values → theme.typography.font_serif (--eetra-ff-serif).",
+        "base_font_size_px": 13,
+        "_base_font_size_used_by": "body, toolbar, filters, list table root (--c-fs)",
+        "base_line_height": 1.35,
+        "_base_line_height_used_by": "body default line height (--c-lh)",
+        "filter_label_font_size_px": 11,
+        "_filter_label_used_by": ".filter-bar label",
+        "card_name_line_height": 1.3,
+        "_card_name_line_height_used_by": ".cat2-name default",
+        "card_name_font_size_px_s": 13,
+        "_card_name_font_size_px_s_used_by": "#grid[data-size=S|M] .cat2-name",
+        "card_name_font_size_px_ml": 15,
+        "_card_name_font_size_px_ml_used_by": "#grid[data-size=L|XL] .cat2-name",
+        "card_name_line_height_size_m": 1.04,
+        "_card_name_line_height_m_used_by": "#grid[data-size=M] .cat2-name",
+        "card_manufacturer_font_size_px": 11,
+        "_card_manufacturer_used_by": ".cat2-mfr",
+        "card_detail_row_font_size_px": 11,
+        "card_detail_row_line_height": 1.3,
+        "_card_detail_row_used_by": ".cat2-detail-row",
+        "card_content_text_font_size_px": 10,
+        "card_content_text_line_height": 1.4,
+        "_card_content_text_used_by": ".cat2-content-text",
+        "card_metric_serif_offset_px": 1,
+        "card_metric_serif_line_height": 1.2,
+        "_card_metric_serif_used_by": ".cat2-gwp, .cat2-rc (GWP & recycled-content values)",
+        "card_gwp_label_font_size_px": 9,
+        "_card_gwp_label_used_by": ".cat2-gwp-lbl",
+        "card_badge_font_size_px": 10,
+        "_card_badge_used_by": ".badge, .badge-prod, .badge-mat, .badge-cam",
+        "card_footer_font_size_px": 10,
+        "_card_footer_used_by": ".cat2-footer",
+        "card_xl_tabs_font_size_px": 11,
+        "_card_xl_tabs_used_by": ".cat2-xl-tabs container",
+        "card_xl_tab_font_size_px": 10,
+        "_card_xl_tab_used_by": ".cat2-xl-tab buttons (XL grid field tabs)",
+        "list_header_font_size_offset_px": -1,
+        "_list_header_used_by": ".rv-table thead th (calc --c-fs + offset)",
+        "list_cell_line_height": 1.4,
+        "_list_cell_used_by": ".rv-table tbody td",
+        "list_mono_font_size_px": 11,
+        "_list_mono_used_by": ".rv-td-mono",
+        "list_placeholder_font_size_px": 9,
+        "_list_placeholder_used_by": ".rv-list-symbol (missing image placeholder)",
+        "detail_panel_title_font_size_px": 11,
+        "_detail_panel_title_used_by": ".cat2-detail-title (right panel header)",
+        "detail_panel_close_font_size_px": 15,
+        "_detail_panel_close_used_by": ".cat2-detail-close",
+        "modal_close_font_size_px": 16,
+        "_modal_close_used_by": ".modal-close (centre overlay mode)",
+        "modal_name_font_size_px": 17,
+        "_modal_name_used_by": ".modal-name",
+        "modal_manufacturer_font_size_px": 13,
+        "_modal_manufacturer_used_by": ".modal-mfr",
+        "modal_gwp_font_size_px": 18,
+        "_modal_gwp_used_by": ".modal-gwp-value — full GWP line in the right-hand detail panel ('GWP = 13.27 kgCO₂e/m²').",
+        "modal_section_label_font_size_px": 11,
+        "_modal_section_label_used_by": ".modal-label"
+      },
+      "detail_panel": {
+        "_used_by": "Right product detail panel (Info / Tech. Details / Sustainability / Documents) · catalogue_component_js2.html · --js2-detail-* CSS vars via js2_typography_root_css()",
+        "width_px": 440,
+        "_width_px_used_by": "#cat2-detail-panel.open flex-basis / width (capped by width_max_vw)",
+        "width_max_vw": 50,
+        "_width_max_vw_used_by": "#cat2-detail-panel.open max() with width_px",
+        "sus_label_column": "minmax(0, 38fr)",
+        "_sus_label_column_used_by": ".cat2-sus-row grid track 1 — field labels (GWP, thickness, …). Paired with sus_value_column as 38fr/62fr (38%/62%). A 1px vertical rule sits between the tracks.",
+        "sus_value_column": "minmax(0, 62fr)",
+        "_sus_value_column_used_by": ".cat2-sus-row grid track 3 — values (track 2 is the vertical rule). 62fr of the 38fr+62fr pair ≈ 62%.",
+        "sus_row_gap_px": 5,
+        "_sus_row_gap_px_used_by": ".cat2-sus-row column-gap between label and value",
+        "sus_font_size_px": 12,
+        "_sus_font_size_px_used_by": ".cat2-sus-row font-size"
+      },
+      "theme": {
+        "_used_by": "JS2 iframe :root chrome · js_catalogue_theme_root_css() · --cat-tab-border, --cat-grid-gap, etc.",
+        "brand_color": "#666666",
+        "tab_border": "#e5e7eb",
+        "tab_active": "#2a7d2e",
+        "grid_gap": "12px",
+        "co2_green": "#2a7d2e",
+        "img_fit": "cover"
+      },
+      "card_name_divider": {
+        "_used_by": "Horizontal rules above/below the product name (.cat2-name) in Cards view sizes M, L, XL · card_name_divider_root_css() · hidden entirely for size S.",
+        "width_pct_ml": 50,
+        "_width_pct_ml_used_by": "#grid[data-size=M|L] .cat2-name-divider · .modal-name-divider in detail panel",
+        "top": {
+          "color": "#f3f4f6",
+          "thickness_px": 1,
+          "margin_top_px": 2,
+          "margin_bottom_px": 2
+        },
+        "bottom": {
+          "color": "#f3f4f6",
+          "thickness_px": 1,
+          "margin_top_px": 2,
+          "margin_bottom_px": 2
+        }
+      }
+    },
+
+    "legacy_js": {
+      "_used_by": "pages/2_Catalogue.py · _render_catalogue_old_js_tab (hidden) · 02_html/catalogue_component.html · --cat-title-fs / --cat-body-fs injection",
+      "typography": {
+        "title_font_size_px": 13,
+        "_title_font_size_used_by": ".product-title (--cat-title-fs)",
+        "title_line_height": 1.2,
+        "_title_line_height_used_by": ".product-title (--cat-title-lh)",
+        "body_font_size_px": 11,
+        "_body_font_size_used_by": ".brand, .product-details (--cat-body-fs)",
+        "body_line_height": 1.2,
+        "_body_line_height_used_by": ".brand, .product-details (--cat-body-lh)",
+        "gwp_line_height": 1.15,
+        "_gwp_line_height_used_by": "GWP / CO₂ blocks (--cat-gwp-lh)"
+      }
+    },
+
+    "grid": {
+      "_used_by": "Streamlit catalogue grid height · JS2 iframe height baseline · row spacing between card groups",
+      "streamlit_grid_height_px": 1200,
+      "row_spacing_px": 50,
+      "gwp_to_data_spacing_px": -5
+    },
+    "card_surface": {
+      "_used_by": "Streamlit fn329 card min/max height · JS2 --cat-card-min-h / --cat-card-max-h",
+      "min_height_px": 380,
+      "max_height_px": 380,
+      "js_min_height_px": 380
+    },
+    "material_type_band": {
+      "_used_by": "Material-type strip on card image · Streamlit fn329 + JS2 · --cat-mat-* CSS vars",
+      "append_important": true,
+      "position": "absolute",
+      "top": "auto",
+      "bottom": "0",
+      "left": "0",
+      "z_index": 2,
+      "max_width_pct": 92,
+      "background_color": "#1e1e1e",
+      "color": "#fafafa",
+      "font_size_px": 10,
+      "font_style": "italic",
+      "font_weight": "500",
+      "line_height": 1.2,
+      "padding": "0 2px",
+      "margin": "0",
+      "border_radius": "0",
+      "pointer_events": "none",
+      "white_space": "nowrap",
+      "overflow": "hidden",
+      "text_overflow": "ellipsis",
+      "box_sizing": "border-box",
+      "font_family": "inherit"
+    },
+    "image_band": {
+      "card_image_height_px": 100,
+      "_cache_tiers_note": "Two served sizes, both derived from the untouched originals in 01_data/img. Measured display sizes: grid cards top out at 98x94 CSS px, the detail panel at 180x130. Each tier is ~2x that, so it stays sharp on a HiDPI screen without shipping a 300px file for a 78px slot.",
+      "cache_card_max_px": 200,
+      "cache_detail_max_px": 400,
+      "fetch_max_width": 400,
+      "fetch_max_height": 400,
+      "aspect_ratio": "2",
+      "object_fit": "contain",
+      "object_position": "center",
+      "zoom": 1.0,
+      "binder_object_fit": "contain",
+      "binder_zoom": 0.88,
+      "zoom_origin": "center center",
+      "band_background": "#ffffff",
+      "min_height": "100",
+      "max_height": ""
+    },
+    "card_chrome": {
+      "border_width": "1px",
+      "border_style": "solid",
+      "border_color": "#d1d9e6",
+      "border_radius": "12px",
+      "background": "#ffffff",
+      "body_padding_x": "8px",
+      "body_padding_bottom": "10px",
+      "hover_box_shadow": "0 6px 18px rgba(15, 23, 42, 0.08)",
+      "hover_border_color": "#b8c5d8"
+    },
+    "gwp_pill": {
+      "_used_by": "GWP gradient pill under cards · Streamlit fn329 · JS2 --cat-gwp-pill-* vars · _GWP_LABEL_FONT_SIZE_PX",
+      "margin_top_px": 10,
+      "margin_bottom_px": -5,
+      "margin_left_px": 0,
+      "margin_right_px": 0,
+      "needle_width_px": 4,
+      "needle_height_px": 16,
+      "needle_color": "#444444",
+      "label_font_size_px": 11,
+      "label_color": "#94a3b8"
+    },
+    "streamlit_page": {
+      "_used_by": "Streamlit catalogue tab only · group headings (#####) spacing in pages/2_Catalogue.py CSS",
+      "group_title_spacing_top_px": 100,
+      "group_title_spacing_bottom_px": 30,
+      "group_separator_line_px": 2,
+      "group_separator_width_pct": 25,
+      "group_separator_color": "#e5e7eb",
+      "group_separator_spacing_top_px": 6,
+      "group_separator_spacing_bottom_px": 6
+    },
+    "charts": {
+      "_used_by": "pages/3_Charts.py · Plotly / Altair / ECharts JS typography & axis labels (single source)",
+      "box_chart_height_px": 420,
+      "bar_chart_height_scale": 0.9,
+      "bar_chart_line_height_px": 18,
+      "bar_chart_max_rows": 120,
+      "correlation_plotly_height_px": 504,
+      "correlation_altair_height_px": 468,
+      "correlation_fullscreen_plotly_height_px": 640,
+      "correlation_fullscreen_altair_height_px": 600,
+      "font_family": "Miranda Sans, Source Sans Pro, sans-serif",
+      "font_size": 11,
+      "title_font_size": 16,
+      "axis_title_font_size": 12,
+      "annotation_font_size": 10,
+      "small_font_size": 9,
+      "legend_font_size": 10,
+      "tick_font_size": 10,
+      "tick_label_angle_deg": 0,
+      "tick_label_wrap_chars": 16,
+      "strip_tick_wrap_chars": 9,
+      "strip_tick_max_lines": 4,
+      "epd_programme_colors": {
+        "_comment": "Brand greens from 03_img/epd_italy_logo.png and 03_img/epd_international_logo.png",
+        "epditaly": "#009040",
+        "environdec": "#186050",
+        "ibu": "#2e7d32",
+        "dap": "#e65100",
+        "inies": "#00695c",
+        "breeam": "#c62828",
+        "unknown": "#90a4ae"
+      },
+      "epd_programme_logos": {
+        "epditaly": "03_img/epd_italy_logo.png",
+        "environdec": "03_img/epd_international_logo.png"
+      }
+    }
+  }
+}

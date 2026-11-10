@@ -1,0 +1,669 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>c3cf7ba4-b9bb-4382-8153-713166eef2cc</common:UUID>
+      <name>
+        <baseName xml:lang="en">Polyvinylchloride frame for a window of 1,23 m x 1,48 m</baseName>
+        <treatmentStandardsRoutes></treatmentStandardsRoutes>
+        <mixAndLocationTypes></mixAndLocationTypes>
+        <functionalUnitFlowProperties></functionalUnitFlowProperties>
+      </name>
+      <common:synonyms>Telaio per finestre in PVC, alla produzione</common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">Systems</common:class>
+          <common:class level="1">Construction</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment>Dataset developed within the ARCADIA Project (production chain study regarding PVC frame for windows “PRODUZIONE&#13;
+DI TELAI IN PVC PER INFISSI E SERRAMENTI E PRODUZIONE DI FINESTRE IN PVC CON VETROCAMERA A DOPPIO O TRIPLO VETRO”). The dataset is representative of the Italian average processing technologies commonly used for the production of PVC frame for windows. &#13;
+The data set covers relevant process steps / technologies over the supply chain of the represented cradle to gate inventory with a good overall data quality. The inventory is based on primary data for PVC-U compounding and window assembly, and on secondary data (literature and/or LCI datasets) &#13;
+representative of Italian supply chain.&#13;
+The PVC frame for the production of windows is completed with reinforcement, hardware, gaskets, glazing blocks, screws. Dimensions: frame depth 76 mm; frame length 5.42 m; window’s dimension 1.23 m x 1.48 m.</common:generalComment>
+      <referenceToExternalDocumentation type="source data set" refObjectId="0f0b847f-b693-48f8-a6a0-2df3c8c0394a" version="01.00.000" uri="../sources/0f0b847f-b693-48f8-a6a0-2df3c8c0394a.xml">
+        <common:shortDescription>Giorgi S., Lavagna M., Campioli A., 2023 “PRODUZIONE&#13;
+DI TELAI IN PVC PER INFISSI E SERRAMENTI E PRODUZIONE DI FINESTRE IN PVC CON VETROCAMERA A DOPPIO O TRIPLO VETRO”. Internal report ARCADIA Project.  &#13;
+Primary data of the main production processes (foreground data) collected from representative producers. &#13;
+Background datasets from Ecoinvent database cut-off (v.3.6) were used for the LCA study. &#13;
+</common:shortDescription>
+      </referenceToExternalDocumentation>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2021</common:referenceYear>
+      <common:dataSetValidUntil>2026</common:dataSetValidUntil>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT">
+        <descriptionOfRestrictions>Italy. Primary data collected at Italian compounding PVC-U plant and window PVC production plant. Dataset representative of Italian production of PVC-U frame for windows. </descriptionOfRestrictions>
+      </locationOfOperationSupplyOrProduction>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>The production of PVC frame begins with the production of PVC resin (in Europe), from suspension polymerisation and emulsion polymerization processes. The PVC resin is mixed with additives in the compounding process, to obtain PVC-U compound, which is extruded, cooled and cut. The PVCs frame are covered with protection film. &#13;
+Finally, PVC frame and all components (reinforcement, hardware, gaskets, glazing blocks and screws) are assembled to produce windows.&#13;
+Use and end of life of the PVC frame are excluded. Scraps from extrusion process are recycled back into the system. 20% of recycled PVC is accounted for in the compound mix. Scraps from PVC-U compounding and assembly are recycled externally.  &#13;
+Transport of the PVC resin to Italian manufacturing companies is included. &#13;
+Equipment and infrastructures, are not included in the foreground but are accounted for in the background datasets.&#13;
+Primary data (from Italian compounding PVC-U plant and window PVC production plant) and secondary data (literature and/or sector data) representative of Italian supply chain for the geographical characteristics and technologies used (machineries, equipment, etc) were collected. Inventory data have been collected as physical quantities of materials used in the different processes.&#13;
+The Dataset includes all window’s elements (reinforcement, hardware, gaskets, glazing blocks, screws), excluding the glass and spacer. &#13;
+The System Boundary of LCA is cradle-to-gate. The system boundary considers A1 “procurement of raw materials”, A2 “transport”, A3 “production”, in compliance with the EN15804:2012+A1:2013 standard. &#13;
+The production of machinery and infrastructure (and related maintenance waste), used for window and door production activities, is excluded from the system boundaries, except for those already contained in the Ecoinvent datasets used to model the background data. &#13;
+In accordance with EN 15804:2012+A1:2013, any electric motors and connected electric devices for opening/closing windows are excluded from the system boundary.&#13;
+The Cradle-to-gate analysis includes the input of raw materials, energy, water and the outputs of solid waste, air emissions, water emissions, and transport related to the considered system boundary.&#13;
+Background data were modelled according to Ecoinvent v. 3.6.</technologyDescriptionAndIncludedProcesses>
+      <technologicalApplicability>The PVC frame is for the production of windows, used as a transparent vertical closure of buildings.</technologicalApplicability>
+      <referenceToTechnologyFlowDiagrammOrPicture type="source data set" refObjectId="173ba8be-d8c3-4351-9327-d7bf9bf2148d" version="01.00.000" uri="../sources/173ba8be-d8c3-4351-9327-d7bf9bf2148d.xml">
+        <common:shortDescription>20230927174416_Flowchart PVC.jpg</common:shortDescription>
+      </referenceToTechnologyFlowDiagrammOrPicture>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Allocation - mass</LCIMethodApproaches>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <dataCutOffAndCompletenessPrinciples>Production of equipment and infrastructures is not included, except for the background system.</dataCutOffAndCompletenessPrinciples>
+      <deviationsFromCutOffAndCompletenessPrinciples>None for the inventory.&#13;
+Completeness related to elementary flows cannot be evaluated.</deviationsFromCutOffAndCompletenessPrinciples>
+      <dataSelectionAndCombinationPrinciples>Good consistency of data and LCI modeling. &#13;
+Cases where average values have been used:&#13;
+- definition of the weights of the representative product, through weighted average among different products evaluated in the LCA studies present in the literature and in the available EPDs;&#13;
+- primary data are re-proportioned with respect to the weights of the average product representative of the Italian supply chain; &#13;
+- the recycled content of 20% represents the average percentage of PVC-U recycled content in Italy, confirmed also by primary data collected; &#13;
+- a worst-case primary (average) transport distance was used among the primary data collected;&#13;
+- distances for the transportation: 20 km for the transport of process waste to landfill, 160 km for the transport of waste to the recycling plant (according to Stichnothe and Azapagic, 2014);&#13;
+- for steel production: European average production (EUROFER, 2020), consisting of 60% steel from blast furnaces and 40% from electric furnaces.</dataSelectionAndCombinationPrinciples>
+      <deviationsFromSelectionAndCombinationPrinciples>None</deviationsFromSelectionAndCombinationPrinciples>
+      <deviationsFromTreatmentAndExtrapolationPrinciples>None</deviationsFromTreatmentAndExtrapolationPrinciples>
+      <referenceToDataSource type="source data set" refObjectId="bd9f8178-4395-4091-be47-ceab95047e2b" version="01.00.000" uri="../sources/bd9f8178-4395-4091-be47-ceab95047e2b.xml">
+        <common:shortDescription>20230912175652_REPORT LCA FILIERA PVC.pdf</common:shortDescription>
+      </referenceToDataSource>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>No statement</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Independent external review">
+        <common:reviewDetails>The review was performed in compliance with Arcadia Metodology “Metodologia per gli studi di filiera della Banca Dati italiana LCA” and ISO 14040-44 norms. The dataset has been assessed limited to the foreground data collected during the supply chain studies.&#13;
+Each dataset has been evaluated on the basis of the following 4 criteria:&#13;
+1. Technological Representative;&#13;
+2. Time Representativeness;&#13;
+3. Geographic Representative;&#13;
+4. Reliability.&#13;
+In this context reliability is very good.&#13;
+The data used are consistent, appropriate and reasonable in view of the goal and scope of the study. The system boundaries include all relevant processes and activity types from cradle to gate. A cut-off has been applied to production of equipment and infrastructure and to the processes involved in the recycling of PVC (only energy consumption for shredding has been accounted for). These are in line with the requirements of the “Metodologia per gli studi di filiera della Banca Dati italiana LCA” (Buttol et al., v2, November 2021). &#13;
+The LCI modelling choices follow the requirements of Buttol et al. (2021), such as allocation, consistency of included processes, and LCI methodology in general. It has been consistently applied along the whole dataset.&#13;
+The representativeness of the dataset (time-related, geographical, technology) is well documented and very good, thanks also to the involvement of relevant market operators. &#13;
+The precision and completeness of the dataset cannot be evaluated. </common:reviewDetails>
+        <common:referenceToNameOfReviewerAndInstitution type="contact data set" refObjectId="4dbdbeee-132c-4b0d-b601-06ea94429693" version="01.00.000" uri="../sources/4dbdbeee-132c-4b0d-b601-06ea94429693.xml">
+          <common:shortDescription>Ecoinnovazione srl</common:shortDescription>
+        </common:referenceToNameOfReviewerAndInstitution>
+        <common:otherReviewDetails>The study was judged by the reviewer as compliant with both ISO 14040-44 and Arcadia methodology.</common:otherReviewDetails>
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Completeness" value="Not evaluated / unknown"/>
+          <common:dataQualityIndicator name="Precision" value="Not applicable"/>
+          <common:dataQualityIndicator name="Methodological appropriateness and consistency" value="Not applicable"/>
+          <common:dataQualityIndicator name="Overall quality" value="Not applicable"/>
+        </common:dataQualityIndicators>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="d0ae468d-f825-4f92-81d6-bc4a2d06d04b" uri="../sources/d0ae468d-f825-4f92-81d6-bc4a2d06d04b.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Not compliant</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="997ef26d-9afb-4cbb-ba4e-5be9c0be97cc" uri="../sources/997ef26d-9afb-4cbb-ba4e-5be9c0be97cc.xml">
+          <common:shortDescription xml:lang="en">ISO 14044</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Not defined</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="79c5ddd5-0221-4bfe-be82-60161b3ea319" uri="../sources/79c5ddd5-0221-4bfe-be82-60161b3ea319.xml">
+        <common:shortDescription xml:lang="en">Arcadia – PON Governance e Capacità istituzionale 2014-2020</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Arcadia – PON Governance e Capacità istituzionali 2014-2020.</common:project>
+      <common:intendedApplications>None</common:intendedApplications>
+    </common:commissionerAndGoal>
+    <dataGenerator>
+      <common:referenceToPersonOrEntityGeneratingTheDataSet refObjectId="efd9c8db-da7c-4912-9a6b-2bd2f179bb39" type="contact data set" uri="../sources/efd9c8db-da7c-4912-9a6b-2bd2f179bb39.xml" version="01.00.000">
+        <common:shortDescription>Politecnico di Milano, DABC, LifeCycleTEAM</common:shortDescription>
+      </common:referenceToPersonOrEntityGeneratingTheDataSet>
+    </dataGenerator>
+    <dataEntryBy>
+      <common:timeStamp>2023-03-31T12:24:15.530+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="a97a0155-0234-4b87-b4ce-a45da52f2a40" uri="../sources/a97a0155-0234-4b87-b4ce-a45da52f2a40.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2022-10-05T13:37:56.43Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/c3cf7ba4-b9bb-4382-8153-713166eef2cc.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="61476c4f-dd26-4f81-9912-4ee756c1f89d" type="contact data set" uri="../contacts/61476c4f-dd26-4f81-9912-4ee756c1f89d.xml" version="01.00.000">
+        <common:shortDescription>ENEA-ARCADIA</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+      <common:accessRestrictions>Type of license: Open Database Licence (ODbL).</common:accessRestrictions>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="5be368e0-d759-4b86-be42-4949fe9f5485" uri="../flows/5be368e0-d759-4b86-be42-4949fe9f5485.xml">
+        <common:shortDescription xml:lang="en">Polyvinylchloride frame for a window of 1,23 m x 1,48 m</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0000000E+0</meanAmount>
+      <resultingAmount>1.0000000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="9edcea41-1bfd-4220-9fa4-56b20baa11eb" uri="../flows/9edcea41-1bfd-4220-9fa4-56b20baa11eb.xml">
+        <common:shortDescription xml:lang="en">Polyvinylchloride, emulsion polymerised {RER}| polyvinylchloride production, emulsion polymerisation | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>9.1000000E-1</meanAmount>
+      <resultingAmount>9.1000000E-1</resultingAmount>
+      <generalComment>Production of polyvininchloride with emulsion process, from European context. The PVC production is related to emulsion process (10%) and suspension process (90%), from European context (80%) and global context (20%). This data is equal to 80% of 10% of total PVC quantity used in compounding process.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="6d7787a6-a1d9-4e8a-9d3c-0fe067216e5c" uri="../flows/6d7787a6-a1d9-4e8a-9d3c-0fe067216e5c.xml">
+        <common:shortDescription xml:lang="en">Polyvinylchloride, emulsion polymerised {RoW}| polyvinylchloride production, emulsion polymerisation | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.2800000E-1</meanAmount>
+      <resultingAmount>2.2800000E-1</resultingAmount>
+      <generalComment>Production of polyvininchloride with emulsion process, from Global context. The PVC production is related to emulsion process (10%) and suspension process (90%), from European context (80%) and global context (20%). This data is equal to 20% of 10% of total PVC quantity used in compounding process.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="3">
+      <referenceToFlowDataSet type="flow data set" refObjectId="db5057b7-dd42-4a2a-aa79-c3c18767ef27" uri="../flows/db5057b7-dd42-4a2a-aa79-c3c18767ef27.xml">
+        <common:shortDescription xml:lang="en">Polyvinylchloride, suspension polymerised {RER}| polyvinylchloride production, suspension polymerisation | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>8.1910000E+0</meanAmount>
+      <resultingAmount>8.1910000E+0</resultingAmount>
+      <generalComment>Production of polyvininchloride with suspension process, from European context. The PVC production is related to emulsion process (10%) and suspension process (90%), from European context (80%) and global context (20%). This data is equal to 80% of 90% of total PVC quantity used in compounding process.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="4">
+      <referenceToFlowDataSet type="flow data set" refObjectId="b95a8495-8e80-40b5-a517-01617a12b3dc" uri="../flows/b95a8495-8e80-40b5-a517-01617a12b3dc.xml">
+        <common:shortDescription xml:lang="en">Polyvinylchloride, suspension polymerised {RoW}| polyvinylchloride production, suspension polymerisation | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.0480000E+0</meanAmount>
+      <resultingAmount>2.0480000E+0</resultingAmount>
+      <generalComment>Production of polyvininchloride with suspension process, from Global context. The PVC production is related to emulsion process (10%) and suspension process (90%), from European context (80%) and global context (20%). This data is equal to 20% of 90% of total PVC quantity used in compounding process.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="5">
+      <referenceToFlowDataSet type="flow data set" refObjectId="669fc0fb-be7d-4a2d-bf13-81805ebe0d18" uri="../flows/669fc0fb-be7d-4a2d-bf13-81805ebe0d18.xml">
+        <common:shortDescription xml:lang="en">Calcium carbonate, precipitated {RER}| calcium carbonate production, precipitated | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.2610000E+0</meanAmount>
+      <resultingAmount>1.2610000E+0</resultingAmount>
+      <generalComment>Production of filler additives based on calcium carbonate, from European context. Filler additives used in compounding process.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="6">
+      <referenceToFlowDataSet type="flow data set" refObjectId="ef991090-8a3a-4638-84a5-738823cd9d0e" uri="../flows/ef991090-8a3a-4638-84a5-738823cd9d0e.xml">
+        <common:shortDescription xml:lang="en">Chemical, inorganic {GLO}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.9300000E-1</meanAmount>
+      <resultingAmount>5.9300000E-1</resultingAmount>
+      <generalComment>Production of organic-based stabilizator additives, from European context. Stabilizator additives used in compounding process.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="7">
+      <referenceToFlowDataSet type="flow data set" refObjectId="99701966-4948-40c5-ab12-30c396423e6f" uri="../flows/99701966-4948-40c5-ab12-30c396423e6f.xml">
+        <common:shortDescription xml:lang="en">Titanium dioxide {RER}| production, chloride process | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>7.8800000E-1</meanAmount>
+      <resultingAmount>7.8800000E-1</resultingAmount>
+      <generalComment>Production of titanium dioxide, from European context. Titanium dioxides used in compounding process. 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="8">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fd980cc0-5cb9-4902-925c-298cf5047f7e" uri="../flows/fd980cc0-5cb9-4902-925c-298cf5047f7e.xml">
+        <common:shortDescription xml:lang="en">Acrylic binder, without water, in 34% solution state {RER}| acrylic binder production, product in 34% solution state | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>7.2700000E-1</meanAmount>
+      <resultingAmount>7.2700000E-1</resultingAmount>
+      <generalComment>Production of modifier based on acrylic polymers, from European context. Acrylic polymers used in compounding process.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="9">
+      <referenceToFlowDataSet type="flow data set" refObjectId="b87774c2-bdfb-40df-b060-f49ac4ea7076" uri="../flows/b87774c2-bdfb-40df-b060-f49ac4ea7076.xml">
+        <common:shortDescription xml:lang="en">Polyethylene, low density, granulate {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.1000000E-2</meanAmount>
+      <resultingAmount>3.1000000E-2</resultingAmount>
+      <generalComment>Production of LDPE, from European context, used as protection film applied on windows frame after that exstrusion process.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="10">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d5e83bc1-17e4-47d6-83b3-c5a848aafa06" uri="../flows/d5e83bc1-17e4-47d6-83b3-c5a848aafa06.xml">
+        <common:shortDescription xml:lang="en">Steel, unalloyed {RER}| steel production, converter, unalloyed | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.6210000E+0</meanAmount>
+      <resultingAmount>6.6210000E+0</resultingAmount>
+      <generalComment>Production of steel reinforcement with blast oxygen steelmaking, from European context. The steel production is related to blast oxygen process (60%) and electric arc process (40%) at European level. This data is equal to 60% of total window reinforcement steel quantity. Steel used for window frame reinforcement.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="11">
+      <referenceToFlowDataSet type="flow data set" refObjectId="ff1ece3e-5f44-4171-8d07-a1335d0bf606" uri="../flows/ff1ece3e-5f44-4171-8d07-a1335d0bf606.xml">
+        <common:shortDescription xml:lang="en">Steel, low-alloyed {RER}| steel production, electric, low-alloyed | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.4140000E+0</meanAmount>
+      <resultingAmount>4.4140000E+0</resultingAmount>
+      <generalComment>Production of steel reinforcement with elctric arc steelmaking, from European context. The steel production is related to blast oxygen process (60%) and electric arc process (40%) at European level. This data is equal to 40% of total window reinforcement steel quantity. Steel used for window frame reinforcement. 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="12">
+      <referenceToFlowDataSet type="flow data set" refObjectId="319bfcae-b9ce-48fc-8a0e-cc116c1a6853" uri="../flows/319bfcae-b9ce-48fc-8a0e-cc116c1a6853.xml">
+        <common:shortDescription xml:lang="en">Hot rolling, steel {RER}| processing | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.1036000E+1</meanAmount>
+      <resultingAmount>1.1036000E+1</resultingAmount>
+      <generalComment>Hot rolling process for steel window-frame-reinforcement making.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="13">
+      <referenceToFlowDataSet type="flow data set" refObjectId="79a817a0-e826-482e-b43c-5bfff7e3b509" uri="../flows/79a817a0-e826-482e-b43c-5bfff7e3b509.xml">
+        <common:shortDescription xml:lang="en">Sheet rolling, steel {RER}| processing | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.1036000E+1</meanAmount>
+      <resultingAmount>1.1036000E+1</resultingAmount>
+      <generalComment>Sheet rolling process for steel window-frame-reinforcement making.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="14">
+      <referenceToFlowDataSet type="flow data set" refObjectId="2b0793c5-3d29-4797-aa82-4e4ef26f543f" uri="../flows/2b0793c5-3d29-4797-aa82-4e4ef26f543f.xml">
+        <common:shortDescription xml:lang="en">Zinc coat, coils {RER}| zinc coating, coils | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.8400000E+0</meanAmount>
+      <resultingAmount>1.8400000E+0</resultingAmount>
+      <generalComment>Zinc coating of steel window-frame-reinforcement. The data considers the steel reinforcement of mobile frame and fix frame. 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="15">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d5e83bc1-17e4-47d6-83b3-c5a848aafa06" uri="../flows/d5e83bc1-17e4-47d6-83b3-c5a848aafa06.xml">
+        <common:shortDescription xml:lang="en">Steel, unalloyed {RER}| steel production, converter, unalloyed | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.4470000E+0</meanAmount>
+      <resultingAmount>1.4470000E+0</resultingAmount>
+      <generalComment>Production of steel hardware with blast oxygen steelmaking, from European context. The steel production is related to blast oxygen process (60%) and electric arc process (40%) at European level. This data is equal to 60% of total window hardware quantity. Steel used for window hardware.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="16">
+      <referenceToFlowDataSet type="flow data set" refObjectId="ff1ece3e-5f44-4171-8d07-a1335d0bf606" uri="../flows/ff1ece3e-5f44-4171-8d07-a1335d0bf606.xml">
+        <common:shortDescription xml:lang="en">Steel, low-alloyed {RER}| steel production, electric, low-alloyed | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>9.6500000E-1</meanAmount>
+      <resultingAmount>9.6500000E-1</resultingAmount>
+      <generalComment>Production of steel hardware with electric arc steelmaking, from European context. The steel production is related to blast oxygen process (60%) and electric arc process (40%) at European level. This data is equal to 40% of total window hardware quantity.  Steel used for window hardware. 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="17">
+      <referenceToFlowDataSet type="flow data set" refObjectId="e95fb240-e4e8-4586-a58f-564be7da3275" uri="../flows/e95fb240-e4e8-4586-a58f-564be7da3275.xml">
+        <common:shortDescription xml:lang="en">Metal working, average for steel product manufacturing {RER}| processing | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.4120000E+0</meanAmount>
+      <resultingAmount>2.4120000E+0</resultingAmount>
+      <generalComment>Metal working process for hardware production.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="18">
+      <referenceToFlowDataSet type="flow data set" refObjectId="cef7d2c2-bf91-4d47-a2fc-b94191d52e50" uri="../flows/cef7d2c2-bf91-4d47-a2fc-b94191d52e50.xml">
+        <common:shortDescription xml:lang="en">Zinc coat, pieces {RER}| zinc coating, pieces | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.0000000E-2</meanAmount>
+      <resultingAmount>5.0000000E-2</resultingAmount>
+      <generalComment>Zinc coating of steel window hardware.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="19">
+      <referenceToFlowDataSet type="flow data set" refObjectId="8a1ad430-320a-46c1-9bea-ded38a2ee1db" uri="../flows/8a1ad430-320a-46c1-9bea-ded38a2ee1db.xml">
+        <common:shortDescription xml:lang="en">Aluminium, wrought alloy {GLO}| aluminium ingot, primary, to market | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.4000000E-1</meanAmount>
+      <resultingAmount>1.4000000E-1</resultingAmount>
+      <generalComment>Production of alluminium, used for window handle.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="20">
+      <referenceToFlowDataSet type="flow data set" refObjectId="e95fb240-e4e8-4586-a58f-564be7da3275" uri="../flows/e95fb240-e4e8-4586-a58f-564be7da3275.xml">
+        <common:shortDescription xml:lang="en">Metal working, average for steel product manufacturing {RER}| processing | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.4000000E-1</meanAmount>
+      <resultingAmount>1.4000000E-1</resultingAmount>
+      <generalComment>Metal working process for handle production.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="21">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d5e83bc1-17e4-47d6-83b3-c5a848aafa06" uri="../flows/d5e83bc1-17e4-47d6-83b3-c5a848aafa06.xml">
+        <common:shortDescription xml:lang="en">Steel, unalloyed {RER}| steel production, converter, unalloyed | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>8.6000000E-2</meanAmount>
+      <resultingAmount>8.6000000E-2</resultingAmount>
+      <generalComment>Production of steel screws with blast oxygen steelmaking, from European context. The steel production is related to blast oxygen process (60%) and electric arc process (40%) at European level. This data is equal to 60% of total window screw quantity. Steel used for window screws.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="22">
+      <referenceToFlowDataSet type="flow data set" refObjectId="ff1ece3e-5f44-4171-8d07-a1335d0bf606" uri="../flows/ff1ece3e-5f44-4171-8d07-a1335d0bf606.xml">
+        <common:shortDescription xml:lang="en">Steel, low-alloyed {RER}| steel production, electric, low-alloyed | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.7000000E-2</meanAmount>
+      <resultingAmount>5.7000000E-2</resultingAmount>
+      <generalComment>Production of steel screws with electric arc steelmaking, from European context. The steel production is related to blast oxygen process (60%) and electric arc process (40%) at European level. Thid data is equal to 40% of total window screw quantity. Steel used for window screws.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="23">
+      <referenceToFlowDataSet type="flow data set" refObjectId="e95fb240-e4e8-4586-a58f-564be7da3275" uri="../flows/e95fb240-e4e8-4586-a58f-564be7da3275.xml">
+        <common:shortDescription xml:lang="en">Metal working, average for steel product manufacturing {RER}| processing | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.4300000E-1</meanAmount>
+      <resultingAmount>1.4300000E-1</resultingAmount>
+      <generalComment>Metal working for window screws production.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="24">
+      <referenceToFlowDataSet type="flow data set" refObjectId="3ef8b385-c4a5-4ce7-87d8-f491231fef5c" uri="../flows/3ef8b385-c4a5-4ce7-87d8-f491231fef5c.xml">
+        <common:shortDescription xml:lang="en">Synthetic rubber {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>8.3400000E-1</meanAmount>
+      <resultingAmount>8.3400000E-1</resultingAmount>
+      <generalComment>Production of EPDM, from European context, used as window gaskets, joined to window during assembling process.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="25">
+      <referenceToFlowDataSet type="flow data set" refObjectId="2e86f24c-50ad-4564-a796-3570c2cf5307" uri="../flows/2e86f24c-50ad-4564-a796-3570c2cf5307.xml">
+        <common:shortDescription xml:lang="en">Polypropylene, granulate {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.4000000E-1</meanAmount>
+      <resultingAmount>1.4000000E-1</resultingAmount>
+      <generalComment>Production of polypropilene, from European context, used as window glazing blocks, joined to window during assembling process. 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="26">
+      <referenceToFlowDataSet type="flow data set" refObjectId="177cd89f-c97c-446a-84e5-b9980364952d" uri="../flows/177cd89f-c97c-446a-84e5-b9980364952d.xml">
+        <common:shortDescription xml:lang="en">Tap water {Europe without Switzerland}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.1470000E+0</meanAmount>
+      <resultingAmount>5.1470000E+0</resultingAmount>
+      <generalComment>Water consumption for PVC compounding and extrusion process.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="27">
+      <referenceToFlowDataSet type="flow data set" refObjectId="8dbe9d7b-9ece-4092-9f79-062e8e0ab7c0" uri="../flows/8dbe9d7b-9ece-4092-9f79-062e8e0ab7c0.xml">
+        <common:shortDescription xml:lang="en">Kraft paper, unbleached {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>8.0000000E-3</meanAmount>
+      <resultingAmount>8.0000000E-3</resultingAmount>
+      <generalComment>Production of kraft unbleached paper, from global context, used as bags packaging for the procurement of filled additives for compounding process.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="28">
+      <referenceToFlowDataSet type="flow data set" refObjectId="115750d1-e29b-4d59-88ce-e3ca88782a85" uri="../flows/115750d1-e29b-4d59-88ce-e3ca88782a85.xml">
+        <common:shortDescription xml:lang="en">Polyethylene terephthalate, granulate, amorphous {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.6000000E-2</meanAmount>
+      <resultingAmount>5.6000000E-2</resultingAmount>
+      <generalComment>Production of polyester, from global context, used as bags packaging for the procurement of polivinylchloride,organic-based stabilizator additives, titanium dioxide, modifier based on acrylic polymers used by compounding process, and the procurement of PVC-U compound used by extrusion process. 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="29">
+      <referenceToFlowDataSet type="flow data set" refObjectId="618799d0-198f-4404-99be-f4e1c82801b7" uri="../flows/618799d0-198f-4404-99be-f4e1c82801b7.xml">
+        <common:shortDescription xml:lang="en">Sawnwood, softwood, raw, dried (u=20%) {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.0000000E-5</meanAmount>
+      <resultingAmount>1.0000000E-5</resultingAmount>
+      <generalComment>Production of pallet used as pakaging of matirial in input. 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="30">
+      <referenceToFlowDataSet type="flow data set" refObjectId="1af2a06f-5838-4a76-a4a4-07482fee7c2b" uri="../flows/1af2a06f-5838-4a76-a4a4-07482fee7c2b.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry 16-32 metric ton, EURO5 {RER}| transport, freight, lorry 16-32 metric ton, EURO5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.8293000E+1</meanAmount>
+      <resultingAmount>2.8293000E+1</resultingAmount>
+      <generalComment>Transport by track for procurement of all input materials (from European countries). The transport includes the procurement of: PVC, filler additives, organic-based stabilizator additives, titanium dioxide, modifier, PVC-U compound, protection film, steel reinforcement, hardware, handle, screws, gaskets, glasing blocks.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="31">
+      <referenceToFlowDataSet type="flow data set" refObjectId="e259e060-bdc0-4c09-8077-f7a1362edca7" uri="../flows/e259e060-bdc0-4c09-8077-f7a1362edca7.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, sea, container ship {GLO}| transport, freight, sea, container ship | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.4543000E+1</meanAmount>
+      <resultingAmount>1.4543000E+1</resultingAmount>
+      <generalComment>Transport by sea for procurement of input modifiers based on acrylic polymers (from China). The transport includes the procurement of modifiers, from China. 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="32">
+      <referenceToFlowDataSet type="flow data set" refObjectId="1af2a06f-5838-4a76-a4a4-07482fee7c2b" uri="../flows/1af2a06f-5838-4a76-a4a4-07482fee7c2b.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry 16-32 metric ton, EURO5 {RER}| transport, freight, lorry 16-32 metric ton, EURO5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.5400000E-1</meanAmount>
+      <resultingAmount>2.5400000E-1</resultingAmount>
+      <generalComment>Transport by track for disposal of all output materials (from European countries). The transport includes the disposal of waste from compounding and exstrusion processes and the trasport of PVC and Metal scaps to recycling plant. 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="33">
+      <referenceToFlowDataSet type="flow data set" refObjectId="864d702f-2b07-4e16-9d25-9a48e809897d" uri="../flows/864d702f-2b07-4e16-9d25-9a48e809897d.xml">
+        <common:shortDescription xml:lang="en">Electricity, medium voltage {IT}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.6012800E+2</meanAmount>
+      <resultingAmount>1.6012800E+2</resultingAmount>
+      <generalComment>Energy consumption (electricity) for compounding, extrusion and window assembling. 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="34">
+      <referenceToFlowDataSet type="flow data set" refObjectId="e21fefb8-81e5-49e8-a07a-74e7756e0d82" uri="../flows/e21fefb8-81e5-49e8-a07a-74e7756e0d82.xml">
+        <common:shortDescription xml:lang="en">Heat, district or industrial, natural gas {RER}| market group for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.8700000E-1</meanAmount>
+      <resultingAmount>6.8700000E-1</resultingAmount>
+      <generalComment>Energy consumption (natural gas) for compounding process.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="35">
+      <referenceToFlowDataSet type="flow data set" refObjectId="3d67c478-0e31-40b5-b3fe-397c6b21b78b" uri="../flows/3d67c478-0e31-40b5-b3fe-397c6b21b78b.xml">
+        <common:shortDescription xml:lang="en">Raw sewage sludge {CH}| treatment of, municipal incineration | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>8.5000000E-3</meanAmount>
+      <resultingAmount>8.5000000E-3</resultingAmount>
+      <generalComment>Sludge, waste from compounding process.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="36">
+      <referenceToFlowDataSet type="flow data set" refObjectId="cc9bb78f-2464-400d-84d0-1f8dae9dc77c" uri="../flows/cc9bb78f-2464-400d-84d0-1f8dae9dc77c.xml">
+        <common:shortDescription xml:lang="en">Waste plastic, mixture {CH}| treatment of, municipal incineration | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>5.5500000E-2</meanAmount>
+      <resultingAmount>5.5500000E-2</resultingAmount>
+      <generalComment>Plastic waste from compounding process. 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="37">
+      <referenceToFlowDataSet type="flow data set" refObjectId="1af3decd-1e34-482c-b092-e89458ddd4ed" uri="../flows/1af3decd-1e34-482c-b092-e89458ddd4ed.xml">
+        <common:shortDescription xml:lang="en">Waste paperboard {CH}| treatment of, municipal incineration | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.5200000E-2</meanAmount>
+      <resultingAmount>3.5200000E-2</resultingAmount>
+      <generalComment>Paper waste derived by packaging, from compounding process. 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="38">
+      <referenceToFlowDataSet type="flow data set" refObjectId="06ffc4e8-8c6a-4889-ab85-e2904c3b4243" uri="../flows/06ffc4e8-8c6a-4889-ab85-e2904c3b4243.xml">
+        <common:shortDescription xml:lang="en">Waste wood, untreated {CH}| treatment of, municipal incineration | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>4.9000000E-3</meanAmount>
+      <resultingAmount>4.9000000E-3</resultingAmount>
+      <generalComment>Wood waste derived by packaging, from compounding process.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="39">
+      <referenceToFlowDataSet type="flow data set" refObjectId="79ed1706-46bc-4f0e-b5c0-32617534bcfa" uri="../flows/79ed1706-46bc-4f0e-b5c0-32617534bcfa.xml">
+        <common:shortDescription xml:lang="en">Waste plastic, mixture {CH}| treatment of, sanitary landfill | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.7000000E-2</meanAmount>
+      <resultingAmount>1.7000000E-2</resultingAmount>
+      <generalComment>Hazardouse waste derived by packaging, from compounding process.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="40">
+      <referenceToFlowDataSet type="flow data set" refObjectId="3d67c478-0e31-40b5-b3fe-397c6b21b78b" uri="../flows/3d67c478-0e31-40b5-b3fe-397c6b21b78b.xml">
+        <common:shortDescription xml:lang="en">Raw sewage sludge {CH}| treatment of, municipal incineration | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>8.8000000E-3</meanAmount>
+      <resultingAmount>8.8000000E-3</resultingAmount>
+      <generalComment>Sludge waste from extrusion process.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="41">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9501-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9501-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">particles (PM2.5 - PM10)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.1520000E-4</meanAmount>
+      <resultingAmount>3.1520000E-4</resultingAmount>
+      <generalComment>Particules from compounding process.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="42">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9501-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9501-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">particles (PM2.5 - PM10)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.1560000E-4</meanAmount>
+      <resultingAmount>3.1560000E-4</resultingAmount>
+      <generalComment>Particules from assembling process.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="43">
+      <referenceToFlowDataSet type="flow data set" refObjectId="afdd9df8-60bf-4117-8206-0732ef3e1bee" uri="../flows/afdd9df8-60bf-4117-8206-0732ef3e1bee.xml">
+        <common:shortDescription xml:lang="en">COD, Chemical Oxygen Demand (groundwater)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>6.1390000E-5</meanAmount>
+      <resultingAmount>6.1390000E-5</resultingAmount>
+      <generalComment>COD from compounding, extrusion and assembly process.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="44">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d86bc57b-6555-11dd-ad8b-0800200c9a66" uri="../flows/d86bc57b-6555-11dd-ad8b-0800200c9a66.xml">
+        <common:shortDescription xml:lang="en">particles (PM10)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.7540000E-5</meanAmount>
+      <resultingAmount>1.7540000E-5</resultingAmount>
+      <generalComment>Particulates from compounding, extrusion and assembly process.
+</generalComment>
+    </exchange>
+  </exchanges>
+</processDataSet>

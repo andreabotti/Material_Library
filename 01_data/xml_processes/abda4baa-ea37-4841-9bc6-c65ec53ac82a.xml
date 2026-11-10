@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>abda4baa-ea37-4841-9bc6-c65ec53ac82a</common:UUID>
+      <name>
+        <baseName xml:lang="en">Electricity from biogas_waste and sludge, Anaerobic digestion and cogeneration, at plant</baseName>
+      </name>
+      <common:synonyms>Elettricità da biogas_rifiuti e fanghi, digestione anerobica e cogenerazione, all'impianto</common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">Energy carriers and technologies</common:class>
+          <common:class level="1">Electricity</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment>Dataset developed according to Arcadia project Methodology (Report: “Metodologia per gli studi di filiera della Banca Dati italiana LCA”). LCA study of electricity production from biogas (Report: “La filiera del biogas per la produzione di energia elettrica in Italia”).&#13;
+The dataset refers to the production of 1 kWh of electricity from biogas generated starting from biowaste and sludge, at plants with a nominal power between 800 and 1000 kW.&#13;
+</common:generalComment>
+      <referenceToExternalDocumentation type="source data set" refObjectId="b0f9bfed-323b-47ff-a868-2ba053330a44" version="01.00.000" uri="../sources/b0f9bfed-323b-47ff-a868-2ba053330a44.xml">
+        <common:shortDescription>Giuliana Ansanelli, Antonietta Cerbone, Gabriella Fiorentino, Alessandro Giocoli, Vincenzo Motola e Amalia Zucaro. LA FILIERA DEL BIOGAS PER LA PRODUZIONE DI ENERGIA ELETTRICA IN ITALIA.&#13;
+Report Annexes are available at: https://www.arcadia.enea.it/settori-di-intervento/energia.html&#13;
+Background datasets from Ecoinvent database cut-off (v.3.7.1) were used for the LCA study. &#13;
+</common:shortDescription>
+      </referenceToExternalDocumentation>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2018</common:referenceYear>
+      <common:dataSetValidUntil>2026</common:dataSetValidUntil>
+      <common:timeRepresentativenessDescription>This dataset has been considered valid until 2026, since no main changes have occurred in the electricity production from biogas in the investigated years.</common:timeRepresentativenessDescription>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT"/>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>This dataset refers to the production of energy from biogas produced starting from biowaste (mainly from the organic fraction of urban waste and from the maintenance of public green areas) and sludges. The dataset includes, according to a Gate-to-Gate approach, the transport of residual biomasses to the anaerobic digestion plants, for biogas production, and the biogas conversion into electricity and heat, in cogeneration plants (CHP plants), with a nominal power between 800-1000 kW. The environmental load from waste generation processes has not been considered, according to the pertinent literature (“zero burden approach”).&#13;
+The anaerobic conversion and cogeneration processes were assumed to be energy self-sufficient, since they use some of the self-produced electricity (25%) and heat (10%) (and sell the remaining part to the national grid).&#13;
+Primary data (farms involved in the ENAMA project) and secondary data (literature and/or sector data) representative of Italian supply chain for the geographical characteristics and technologies used (machineries, equipment, etc) were collected. Inventory data have been collected as physical quantities of materials used in the different processes. The benefits from energy self-consumption was included. Finally, For the evaluation of the impacts associated with the production of electricity and the production of heat, an exergy allocation has been made.&#13;
+&#13;
+Background data were modelled according to EcoInvent database 3.7.1.&#13;
+</technologyDescriptionAndIncludedProcesses>
+      <technologicalApplicability>Electricity from biogas sold to Italian electric grid.</technologicalApplicability>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Allocation - exergetic content</LCIMethodApproaches>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <dataCutOffAndCompletenessPrinciples>Production of equipment and infrastructures is not included, except for the background system</dataCutOffAndCompletenessPrinciples>
+      <referenceToDataSource type="source data set" refObjectId="1c544b0a-7b7a-4062-a3e7-9666b4d87fa0" version="01.00.000" uri="../sources/1c544b0a-7b7a-4062-a3e7-9666b4d87fa0.xml">
+        <common:shortDescription>20231004132629_La filiera del biogas per la produzione di energia elettrica inItalia.pdf</common:shortDescription>
+      </referenceToDataSource>
+      <dataCollectionPeriod>2009 - 2019</dataCollectionPeriod>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>No statement</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Independent internal review">
+        <common:reviewDetails>The review was performed in compliance with Arcadia Metodology: “Metodologia per gli studi di filiera della Banca Dati italiana LCA” and ISO 14040-44 norms. The dataset has been assessed limited to the foreground data collected during the supply chain studies.&#13;
+Each dataset has been evaluated based on the following 4 criteria:&#13;
+1. Technological Representativeness; 2. Time Representativeness; 3. Geographical Representativeness; 4. Reliability (A)&#13;
+In this context the Reliability is good.&#13;
+</common:reviewDetails>
+        <common:referenceToNameOfReviewerAndInstitution type="contact data set" refObjectId="1124fb0a-1315-4175-9491-a6c3a1a245ce" version="01.00.000" uri="../sources/1124fb0a-1315-4175-9491-a6c3a1a245ce.xml">
+          <common:shortDescription>ENEA</common:shortDescription>
+        </common:referenceToNameOfReviewerAndInstitution>
+        <common:otherReviewDetails>The study was judged by the reviewer as compliant with both ISO 14040-44 and Arcadia methodology</common:otherReviewDetails>
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Completeness" value="Good"/>
+          <common:dataQualityIndicator name="Precision" value="Not applicable"/>
+          <common:dataQualityIndicator name="Methodological appropriateness and consistency" value="Not applicable"/>
+          <common:dataQualityIndicator name="Overall quality" value="Not applicable"/>
+        </common:dataQualityIndicators>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="0df715ad-3fb0-414e-a816-2af36636ab25" uri="../sources/0df715ad-3fb0-414e-a816-2af36636ab25.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="b95459bb-fe7e-4437-9548-4f8469820b3c" uri="../sources/b95459bb-fe7e-4437-9548-4f8469820b3c.xml">
+          <common:shortDescription xml:lang="en">ISO 14044</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Not defined</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="68c2e789-6291-4c6a-8a54-455a53abe2fa" uri="../sources/68c2e789-6291-4c6a-8a54-455a53abe2fa.xml">
+        <common:shortDescription xml:lang="en">Arcadia – PON Governance e Capacità istituzionale 2014-2020 </common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Arcadia – PON Governance e Capacità istituzionale 2014-2020</common:project>
+    </common:commissionerAndGoal>
+    <dataGenerator>
+      <common:referenceToPersonOrEntityGeneratingTheDataSet refObjectId="f5b6c03c-c0a9-45ae-b267-26023b6d7624" type="contact data set" uri="../sources/f5b6c03c-c0a9-45ae-b267-26023b6d7624.xml" version="01.00.000">
+        <common:shortDescription>ENEA</common:shortDescription>
+      </common:referenceToPersonOrEntityGeneratingTheDataSet>
+    </dataGenerator>
+    <dataEntryBy>
+      <common:timeStamp>2023-09-18T15:23:49.823+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="efde0143-e700-4d8e-a933-fee914427414" uri="../sources/efde0143-e700-4d8e-a933-fee914427414.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2021-10-01T17:42:20.428Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/abda4baa-ea37-4841-9bc6-c65ec53ac82a.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="df9dec5a-a435-4677-9c4b-fa3aafaf508b" type="contact data set" uri="../contacts/df9dec5a-a435-4677-9c4b-fa3aafaf508b.xml" version="01.00.000">
+        <common:shortDescription>ENEA-ARCADIA</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+      <common:accessRestrictions>Type of license: Open Database Licence (ODbL)</common:accessRestrictions>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d162c62c-b9b2-4584-a747-27010d9e4745" uri="../flows/d162c62c-b9b2-4584-a747-27010d9e4745.xml">
+        <common:shortDescription xml:lang="en">Electricity from biogas_waste and sludge, Anaerobic digestion and cogeneration, at plant</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.6000000E+0</meanAmount>
+      <resultingAmount>3.6000000E+0</resultingAmount>
+      <generalComment>The amount was calculated net of self-consumption (10%).  Exergy allocation 77%.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="cacef270-28ed-4e96-a09d-0cd5369c539f" uri="../flows/cacef270-28ed-4e96-a09d-0cd5369c539f.xml">
+        <common:shortDescription xml:lang="en">Heat from biogas_waste and sludge, Anaerobic digestion and cogeneration, at plant EN</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>6.3100000E+0</meanAmount>
+      <resultingAmount>6.3100000E+0</resultingAmount>
+      <generalComment>The amount was calculated net of self-consumption (15%).  Exergy allocation 23%.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="b263a118-3cd7-4b17-9506-fb46345e7746" uri="../flows/b263a118-3cd7-4b17-9506-fb46345e7746.xml">
+        <common:shortDescription xml:lang="en">Anaerobic digestion plant, agricultural {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.7000000E-8</meanAmount>
+      <resultingAmount>6.7000000E-8</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.770"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.230"/>
+      </allocations>
+      <generalComment>Average lifetime of the anaerobic digestion plant was set equal to 20 years.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="3">
+      <referenceToFlowDataSet type="flow data set" refObjectId="115175c1-1e77-4dd4-aeeb-a384415cdf30" uri="../flows/115175c1-1e77-4dd4-aeeb-a384415cdf30.xml">
+        <common:shortDescription xml:lang="en">Electricity_ARCADIA, high voltage {IT}| heat and power co-generation, biogas, gas engine |Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.7880000E+0</meanAmount>
+      <resultingAmount>4.7880000E+0</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.770"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.230"/>
+      </allocations>
+      <generalComment>This flow represents the cogeneration plant modeled according to the corresponding EcoInvent process, without biogas input and without emissions.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="4">
+      <referenceToFlowDataSet type="flow data set" refObjectId="c0733976-b451-415f-aff1-16538fb48c55" uri="../flows/c0733976-b451-415f-aff1-16538fb48c55.xml">
+        <common:shortDescription xml:lang="en">Biomassa da Rifiuti e fanghi</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.0800000E+0</meanAmount>
+      <resultingAmount>5.0800000E+0</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.770"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.230"/>
+      </allocations>
+      <generalComment>"Zero burden" approach 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="5">
+      <referenceToFlowDataSet type="flow data set" refObjectId="222b9aba-5ab3-4a7d-9af8-ab96fb790e50" uri="../flows/222b9aba-5ab3-4a7d-9af8-ab96fb790e50.xml">
+        <common:shortDescription xml:lang="en">Heat,_ ARCADIA_central or small-scale, other than natural gas {IT}| heat and power co-generation, biogas, gas engine | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.9900000E+0</meanAmount>
+      <resultingAmount>6.9900000E+0</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.770"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.230"/>
+      </allocations>
+      <generalComment>This flow represents the cogeneration plant modeled according to the corresponding EcoInvent process, without biogas input and without emissions.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="6">
+      <referenceToFlowDataSet type="flow data set" refObjectId="871ee521-9db2-4c60-be0d-320dda5d40d4" uri="../flows/871ee521-9db2-4c60-be0d-320dda5d40d4.xml">
+        <common:shortDescription xml:lang="en">Lubricating oil {RER}| market for lubricating oil | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>8.4000000E-4</meanAmount>
+      <resultingAmount>8.4000000E-4</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.770"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.230"/>
+      </allocations>
+      <generalComment>The value was calculated according to the EcoInvent process "Electricity, high voltage {IT} | heat and power co-generation, biogas, gas engine | Cut-off, U".
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="7">
+      <referenceToFlowDataSet type="flow data set" refObjectId="579e321d-cb97-4097-8c54-e79b94edc229" uri="../flows/579e321d-cb97-4097-8c54-e79b94edc229.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry &gt;32 metric ton, euro6 {RER}| market for transport, freight, lorry &gt;32 metric ton, EURO6 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.5600000E-1</meanAmount>
+      <resultingAmount>3.5600000E-1</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.770"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.230"/>
+      </allocations>
+      <generalComment>Average distance 70 km in accordance with the DM 02/03/2010.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="8">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-a8e8-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-a8e8-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">methane (biogenic)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>4.5300000E-3</meanAmount>
+      <resultingAmount>4.5300000E-3</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.770"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.230"/>
+      </allocations>
+      <generalComment>Reichhalter H., 2011 and Herambiente, 2020. 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="9">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9c15-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9c15-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">carbon dioxide (biogenic)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>5.9500000E-1</meanAmount>
+      <resultingAmount>5.9500000E-1</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.770"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.230"/>
+      </allocations>
+      <generalComment>ISPRA, 2019 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="10">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-a8e8-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-a8e8-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">methane (biogenic)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.8000000E-3</meanAmount>
+      <resultingAmount>1.8000000E-3</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.770"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.230"/>
+      </allocations>
+      <generalComment>ISPRA, 2019 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="11">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-94c3-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-94c3-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">nitrous oxide</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.5300000E-5</meanAmount>
+      <resultingAmount>3.5300000E-5</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.770"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.230"/>
+      </allocations>
+      <generalComment>ISPRA, 2019 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="12">
+      <referenceToFlowDataSet type="flow data set" refObjectId="f79d0f8f-2b0e-49cb-bed0-b1ea0fbd8625" uri="../flows/f79d0f8f-2b0e-49cb-bed0-b1ea0fbd8625.xml">
+        <common:shortDescription xml:lang="en">Nitrogen oxides</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>IT</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.1800000E-2</meanAmount>
+      <resultingAmount>1.1800000E-2</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.770"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.230"/>
+      </allocations>
+      <generalComment>ISPRA, 2019 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="13">
+      <referenceToFlowDataSet type="flow data set" refObjectId="8a313a02-e251-11e6-bf01-fe55135034f3" uri="../flows/8a313a02-e251-11e6-bf01-fe55135034f3.xml">
+        <common:shortDescription xml:lang="en">carbon monoxide (biogenic)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.5300000E-3</meanAmount>
+      <resultingAmount>3.5300000E-3</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.770"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.230"/>
+      </allocations>
+      <generalComment>ISPRA, 2019 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="14">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-a302-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-a302-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">non-methane volatile organic compounds</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0500000E-3</meanAmount>
+      <resultingAmount>1.0500000E-3</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.770"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.230"/>
+      </allocations>
+      <generalComment>ISPRA, 2019 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="15">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-91be-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-91be-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">particles (PM10)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.1800000E-4</meanAmount>
+      <resultingAmount>1.1800000E-4</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.770"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.230"/>
+      </allocations>
+      <generalComment>ISPRA, 2019 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="16">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9293-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9293-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">particles (PM2.5)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.1800000E-4</meanAmount>
+      <resultingAmount>1.1800000E-4</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.770"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.230"/>
+      </allocations>
+      <generalComment>ISPRA, 2019 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="17">
+      <referenceToFlowDataSet type="flow data set" refObjectId="b6b87f0b-4ddf-4bbf-9bcf-72fca5637469" uri="../flows/b6b87f0b-4ddf-4bbf-9bcf-72fca5637469.xml">
+        <common:shortDescription xml:lang="en">carbon black (unspecified)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>4.7100000E-6</meanAmount>
+      <resultingAmount>4.7100000E-6</resultingAmount>
+      <allocations>
+        <allocation internalReferenceToCoProduct="0" allocatedFraction="0.770"/>
+        <allocation internalReferenceToCoProduct="1" allocatedFraction="0.230"/>
+      </allocations>
+      <generalComment>ISPRA, 2019 
+</generalComment>
+    </exchange>
+  </exchanges>
+</processDataSet>

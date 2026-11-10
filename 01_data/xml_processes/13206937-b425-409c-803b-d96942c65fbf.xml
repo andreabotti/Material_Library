@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>13206937-b425-409c-803b-d96942c65fbf</common:UUID>
+      <name>
+        <baseName xml:lang="en">Single-seater school desk, at production</baseName>
+      </name>
+      <common:synonyms>Banco scolastico monoposto, alla produzione</common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">Systems</common:class>
+          <common:class level="1">Textiles, furniture and other interiors</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment xml:lang="en">Dataset developed within the ARCADIA Project (production chain study regarding single- seater school desk: "STUDIO DI FILIERA DEL BANCO SCOLASTICO MONOPOSTO”), in compliance with the technical report “Metodologia per gli studi di filiera della Banca Dati italiana LCA”.&#13;
+The dataset refers to the production of a single-seater school desk and is representative of the Italian average processing technologies commonly used for the production of single-seater school desk. &#13;
+</common:generalComment>
+      <referenceToExternalDocumentation type="source data set" refObjectId="bb0a5ea7-6e62-4e06-9b2a-b5648ceac36a" version="01.00.000" uri="../sources/bb0a5ea7-6e62-4e06-9b2a-b5648ceac36a.xml">
+        <common:shortDescription>Fantin V., Frisone F., Rinaldi C., Cecchini A., Petti L., Arzoumanidis I., 2023. STUDIO DI FILIERA DEL BANCO SCOLASTICO MONOPOSTO. Internal report ARCADIA Project. Background datasets from Ecoinvent database cut-off (v.3.7.1) were used for the LCA study. </common:shortDescription>
+      </referenceToExternalDocumentation>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2021</common:referenceYear>
+      <common:dataSetValidUntil>2026</common:dataSetValidUntil>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT">
+        <descriptionOfRestrictions>Italy. Primary data collected in Veneto and Abruzzo. Dataset representative of Italian production of single - seater school desks.</descriptionOfRestrictions>
+      </locationOfOperationSupplyOrProduction>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>The functional unit is 1 p (1 unit) single seater school desk; the total weight of the school desk is 12.60 kg (its dimensions are 50 cm*70 cm*76 cm (height)).&#13;
+The production process begins with the arrival of steel bars, particleboards panels, sheets of HPL laminates and beech slats at the manufacturing company. Steel bars are cut and welded to form the raw frame, then the steel frames are pre-treated, kiln dried, painted and polymerized. At the same time, particleboards panels and HPL laminate sheets are cut and glued together. The beech slats are glued around the edge of the wooden top. The iron steel and the wooden top are finally assembled. No final packaging is used.&#13;
+The production of equipment and infrastructure is not included, except for the background system. Primary data (Veneto and Abruzzo supply chain) representative of the Italian supply chain for geographical characteristics and technologies used (machinery, equipment, etc.) were collected. Inventory data were collected as physical quantities of materials used in different processes. The benefits derived from the production and use of energy from incineration and landfill, as well as from the use of secondary materials produced by the recycling of waste materials (such as plastic and cardboard) were excluded. Background data were modelled according to Ecoinvent v. 3.7.1</technologyDescriptionAndIncludedProcesses>
+      <technologicalApplicability>The product is used in schools, especially in classrooms for primary and secondary schools as well as in common areas such as libraries, study rooms, teachers' rooms, etc.</technologicalApplicability>
+      <referenceToTechnologyPictogramme type="source data set" refObjectId="0f04ce54-2d31-46bc-8bf1-e055496e8cb5" version="01.00.000" uri="../sources/0f04ce54-2d31-46bc-8bf1-e055496e8cb5.xml">
+        <common:shortDescription>20230717111455_banco monoposto.jpg</common:shortDescription>
+      </referenceToTechnologyPictogramme>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Allocation - mass</LCIMethodApproaches>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <dataCutOffAndCompletenessPrinciples>Production of equipment and infrastructure are not included, except for the background system.</dataCutOffAndCompletenessPrinciples>
+      <referenceToDataSource type="source data set" refObjectId="90529afb-923b-4bb0-aef8-c8e0dc87ef33" version="01.00.000" uri="../sources/90529afb-923b-4bb0-aef8-c8e0dc87ef33.xml">
+        <common:shortDescription>20230717111455_REPORT DIFILIERA Banco PUBBLICO-ACCESSIBILE.pdf</common:shortDescription>
+      </referenceToDataSource>
+      <dataCollectionPeriod>2022</dataCollectionPeriod>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>No statement</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Independent internal review">
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Technological representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Completeness" value="Good"/>
+          <common:dataQualityIndicator name="Precision" value="Not applicable"/>
+          <common:dataQualityIndicator name="Methodological appropriateness and consistency" value="Not applicable"/>
+          <common:dataQualityIndicator name="Overall quality" value="Not applicable"/>
+        </common:dataQualityIndicators>
+        <common:reviewDetails>The review was performed in compliance with Arcadia Metodology “Metodologia per gli studi di filiera della Banca Dati italiana LCA” and ISO 14040-44norms. The dataset has been assessed limited to the foreground data collected during the supply chain studies.&#13;
+Each dataset has been evaluated on the basis of the following 4 criteria:&#13;
+1. TechnologicalRepresentativeness &#13;
+2. Time Representativeness &#13;
+3. Geographic Representativeness&#13;
+4. Reliability (Affidabilità)&#13;
+In this contest the Reliability is good.</common:reviewDetails>
+        <common:referenceToNameOfReviewerAndInstitution type="contact data set" refObjectId="e413d349-ab9b-4848-adb0-19c1c303f844" version="01.00.000" uri="../sources/e413d349-ab9b-4848-adb0-19c1c303f844.xml">
+          <common:shortDescription>ENEA</common:shortDescription>
+        </common:referenceToNameOfReviewerAndInstitution>
+        <common:otherReviewDetails>The study was judged by the reviewer as compliant with both ISO 14040-44 and Arcadia methodology</common:otherReviewDetails>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="88d4f8d9-60f9-43d1-9ea3-329c10d7d727" uri="../sources/88d4f8d9-60f9-43d1-9ea3-329c10d7d727.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="d92a1a12-2545-49e2-a585-55c259997756" uri="../sources/d92a1a12-2545-49e2-a585-55c259997756.xml">
+          <common:shortDescription xml:lang="en">ISO 14044</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Not defined</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="01807191-e156-421a-b2f6-aa609ea534f4" uri="../contacts/01807191-e156-421a-b2f6-aa609ea534f4.xml">
+        <common:shortDescription xml:lang="en">ENEA - Arcadia</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Arcadia - PON Governance e Capacità istituzionale 2014-2020</common:project>
+    </common:commissionerAndGoal>
+    <dataGenerator>
+      <common:referenceToPersonOrEntityGeneratingTheDataSet refObjectId="ac689995-928a-47e5-9cf4-a07a9b11185c" type="contact data set" uri="../sources/ac689995-928a-47e5-9cf4-a07a9b11185c.xml" version="01.00.000">
+        <common:shortDescription>ENEA</common:shortDescription>
+      </common:referenceToPersonOrEntityGeneratingTheDataSet>
+    </dataGenerator>
+    <dataEntryBy>
+      <common:timeStamp>2023-06-14T15:17:28.87+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="a97a0155-0234-4b87-b4ce-a45da52f2a40" uri="../sources/a97a0155-0234-4b87-b4ce-a45da52f2a40.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2022-06-16T16:05:32.576Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/13206937-b425-409c-803b-d96942c65fbf.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="959c0176-1309-4e57-8a22-c659d5129552" type="contact data set" uri="../contacts/959c0176-1309-4e57-8a22-c659d5129552.xml" version="01.00.000">
+        <common:shortDescription>ENEA-ARCADIA</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+      <common:accessRestrictions>Type of license: Open Database Licence (ODbL)</common:accessRestrictions>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="1df05e18-683a-451e-950d-44814a4eeaad" uri="../flows/1df05e18-683a-451e-950d-44814a4eeaad.xml">
+        <common:shortDescription xml:lang="en">Single-seater school desk, at production</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0000000E+0</meanAmount>
+      <resultingAmount>1.0000000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="be7931d0-8351-4a6b-819a-b77f729f421b" uri="../flows/be7931d0-8351-4a6b-819a-b77f729f421b.xml">
+        <common:shortDescription xml:lang="en">Steel, unalloyed {RER}| steel production, converter, unalloyed | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.3900000E+0</meanAmount>
+      <resultingAmount>6.3900000E+0</resultingAmount>
+      <generalComment>Tubular steel for school desk legs 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="b50ae8a4-f920-46ec-bcee-ed37f9079d5d" uri="../flows/b50ae8a4-f920-46ec-bcee-ed37f9079d5d.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry 16-32 metric ton, euro5 {RER}| market for transport, freight, lorry 16-32 metric ton, EURO5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.4000000E+0</meanAmount>
+      <resultingAmount>3.4000000E+0</resultingAmount>
+      <generalComment>Transport of the  steel for school desk frame, raw particleboard, laminate sheet,  beech border, including packaging. 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="3">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fc83a26a-0ba7-4430-933d-a747ba16d3dd" uri="../flows/fc83a26a-0ba7-4430-933d-a747ba16d3dd.xml">
+        <common:shortDescription xml:lang="en">Lubricating oil {RER}| market for lubricating oil | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.3700000E-4</meanAmount>
+      <resultingAmount>1.3700000E-4</resultingAmount>
+      <generalComment>Emulsified oil for steel cutting 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="4">
+      <referenceToFlowDataSet type="flow data set" refObjectId="04fe1324-c8f5-4de3-a509-c32978e979e8" uri="../flows/04fe1324-c8f5-4de3-a509-c32978e979e8.xml">
+        <common:shortDescription xml:lang="en">Polyethylene, high density, granulate {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.3900000E-3</meanAmount>
+      <resultingAmount>3.3900000E-3</resultingAmount>
+      <generalComment>Packaging for emulsified oil,  phosphodegreasing liquid, glue for laminate
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="5">
+      <referenceToFlowDataSet type="flow data set" refObjectId="9cb46f25-68f1-4036-b5d5-db4a484b01f4" uri="../flows/9cb46f25-68f1-4036-b5d5-db4a484b01f4.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry 3.5-7.5 metric ton, euro5 {RER}| market for transport, freight, lorry 3.5-7.5 metric ton, EURO5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.7400000E-2</meanAmount>
+      <resultingAmount>5.7400000E-2</resultingAmount>
+      <generalComment>Transport of the phosphodegreasing liquid, electrostatic paint, beech border glue, steel screws and rubber seals, including packaging 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="6">
+      <referenceToFlowDataSet type="flow data set" refObjectId="9cb46f25-68f1-4036-b5d5-db4a484b01f4" uri="../flows/9cb46f25-68f1-4036-b5d5-db4a484b01f4.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry 3.5-7.5 metric ton, euro5 {RER}| market for transport, freight, lorry 3.5-7.5 metric ton, EURO5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.4000000E-3</meanAmount>
+      <resultingAmount>6.4000000E-3</resultingAmount>
+      <generalComment>Transport of the emulsified oil, welding wire, glue for laminate sheet
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="7">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d4a5c3be-e951-4e7c-9789-de2ef8aecd3a" uri="../flows/d4a5c3be-e951-4e7c-9789-de2ef8aecd3a.xml">
+        <common:shortDescription xml:lang="en">Tap water {RER}| market group for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.7100000E-3</meanAmount>
+      <resultingAmount>1.7100000E-3</resultingAmount>
+      <generalComment>Water for emulsified oil
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="8">
+      <referenceToFlowDataSet type="flow data set" refObjectId="e28f83be-49c4-46f9-a760-efece6b707bb" uri="../flows/e28f83be-49c4-46f9-a760-efece6b707bb.xml">
+        <common:shortDescription xml:lang="en">Iron pellet {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.3100000E-2</meanAmount>
+      <resultingAmount>2.3100000E-2</resultingAmount>
+      <generalComment>Iron content of the welding wire
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="9">
+      <referenceToFlowDataSet type="flow data set" refObjectId="f68991e4-44f6-4c88-947f-665041c67b33" uri="../flows/f68991e4-44f6-4c88-947f-665041c67b33.xml">
+        <common:shortDescription xml:lang="en">Manganese {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.8100000E-4</meanAmount>
+      <resultingAmount>3.8100000E-4</resultingAmount>
+      <generalComment>Manganese content of the welding wire 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="10">
+      <referenceToFlowDataSet type="flow data set" refObjectId="1db1274f-4f7c-4633-8a53-a751ae9dd22b" uri="../flows/1db1274f-4f7c-4633-8a53-a751ae9dd22b.xml">
+        <common:shortDescription xml:lang="en">Silicone product {RoW}| market for silicone product | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.3300000E-4</meanAmount>
+      <resultingAmount>3.3300000E-4</resultingAmount>
+      <generalComment>Silicon content of the welding wire 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="11">
+      <referenceToFlowDataSet type="flow data set" refObjectId="ff54f2d3-8d26-4dad-bf62-0b5134ffc584" uri="../flows/ff54f2d3-8d26-4dad-bf62-0b5134ffc584.xml">
+        <common:shortDescription xml:lang="en">Corrugated board box {RER}| market for corrugated board box | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.0700000E-3</meanAmount>
+      <resultingAmount>4.0700000E-3</resultingAmount>
+      <generalComment>Cardboard packaging for welding wire, eletrostatic paint, beech border glue, steel screws 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="12">
+      <referenceToFlowDataSet type="flow data set" refObjectId="2fc54092-bc8e-4159-b611-58a89fbdee0a" uri="../flows/2fc54092-bc8e-4159-b611-58a89fbdee0a.xml">
+        <common:shortDescription xml:lang="en">Phosphoric acid, industrial grade, without water, in 85% solution state {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.3957100E-4</meanAmount>
+      <resultingAmount>4.3957100E-4</resultingAmount>
+      <generalComment>Phosphoric acid content of the phosphodecreasing liquid
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="13">
+      <referenceToFlowDataSet type="flow data set" refObjectId="ba9a6b3c-ecb7-4ef1-ab51-63d66ced9b3c" uri="../flows/ba9a6b3c-ecb7-4ef1-ab51-63d66ced9b3c.xml">
+        <common:shortDescription xml:lang="en">Sodium cumenesulphonate {GLO}| market for sodium cumenesulphonate | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.5500000E-4</meanAmount>
+      <resultingAmount>1.5500000E-4</resultingAmount>
+      <generalComment>Sodium and potassium cumenesulfonate content of the phosphodecreasing liquid
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="14">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d4a5c3be-e951-4e7c-9789-de2ef8aecd3a" uri="../flows/d4a5c3be-e951-4e7c-9789-de2ef8aecd3a.xml">
+        <common:shortDescription xml:lang="en">Tap water {RER}| market group for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.5767140E-3</meanAmount>
+      <resultingAmount>4.5767140E-3</resultingAmount>
+      <generalComment>Water content of the  phosphodegreasing liquid 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="15">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d4a5c3be-e951-4e7c-9789-de2ef8aecd3a" uri="../flows/d4a5c3be-e951-4e7c-9789-de2ef8aecd3a.xml">
+        <common:shortDescription xml:lang="en">Tap water {RER}| market group for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.2900000E-2</meanAmount>
+      <resultingAmount>6.2900000E-2</resultingAmount>
+      <generalComment>Water for cleaning process during painting phase
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="16">
+      <referenceToFlowDataSet type="flow data set" refObjectId="2e593a6b-beb0-4f67-987f-656a04ccf8fd" uri="../flows/2e593a6b-beb0-4f67-987f-656a04ccf8fd.xml">
+        <common:shortDescription xml:lang="en">Electrostatic paint {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>7.2500000E-2</meanAmount>
+      <resultingAmount>7.2500000E-2</resultingAmount>
+      <generalComment>Resin for frame painting
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="17">
+      <referenceToFlowDataSet type="flow data set" refObjectId="bfecffdb-ead8-4015-bf66-764640a2e5db" uri="../flows/bfecffdb-ead8-4015-bf66-764640a2e5db.xml">
+        <common:shortDescription xml:lang="en">Polypropylene, granulate {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.0100000E-3</meanAmount>
+      <resultingAmount>1.0100000E-3</resultingAmount>
+      <generalComment>Plastic packaging for electrostatic paint and  rubber seals 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="18">
+      <referenceToFlowDataSet type="flow data set" refObjectId="085fc129-4c08-48ed-934a-874a5637c6fc" uri="../flows/085fc129-4c08-48ed-934a-874a5637c6fc.xml">
+        <common:shortDescription xml:lang="en">particleboard, uncoated {RER}| market for particleboard, uncoated | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.6300000E-3</meanAmount>
+      <resultingAmount>6.6300000E-3</resultingAmount>
+      <generalComment>Raw particleboard 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="19">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d1b1b01f-efec-4b98-a837-45e5cae8a52b" uri="../flows/d1b1b01f-efec-4b98-a837-45e5cae8a52b.xml">
+        <common:shortDescription xml:lang="en">kraft paper {RER}| kraft paper production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>7.4700000E-1</meanAmount>
+      <resultingAmount>7.4700000E-1</resultingAmount>
+      <generalComment>Kraft paper for laminate sheet
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="20">
+      <referenceToFlowDataSet type="flow data set" refObjectId="a6b4d199-ea86-4c2b-806e-bd351e120bfe" uri="../flows/a6b4d199-ea86-4c2b-806e-bd351e120bfe.xml">
+        <common:shortDescription xml:lang="en">Melamine formaldehyde resin {RER}| market for melamine formaldehyde resin | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.2200000E-1</meanAmount>
+      <resultingAmount>1.2200000E-1</resultingAmount>
+      <generalComment>Melamine formaldehyde resin for laminate sheet
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="21">
+      <referenceToFlowDataSet type="flow data set" refObjectId="2a30c1dc-69d1-4f5e-9a33-203412d1aed4" uri="../flows/2a30c1dc-69d1-4f5e-9a33-203412d1aed4.xml">
+        <common:shortDescription xml:lang="en">Phenolic resin {RER}| market for phenolic resin | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.7100000E-1</meanAmount>
+      <resultingAmount>2.7100000E-1</resultingAmount>
+      <generalComment>Phenolic resin for laminate sheet
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="22">
+      <referenceToFlowDataSet type="flow data set" refObjectId="c5d1724a-b7c2-47a6-8bc5-e6adffb4971e" uri="../flows/c5d1724a-b7c2-47a6-8bc5-e6adffb4971e.xml">
+        <common:shortDescription xml:lang="en">Vinyl acetate {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.5000000E-2</meanAmount>
+      <resultingAmount>2.5000000E-2</resultingAmount>
+      <generalComment>Glue for laminate sheet 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="23">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d4a5c3be-e951-4e7c-9789-de2ef8aecd3a" uri="../flows/d4a5c3be-e951-4e7c-9789-de2ef8aecd3a.xml">
+        <common:shortDescription xml:lang="en">Tap water {RER}| market group for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.5000000E-2</meanAmount>
+      <resultingAmount>2.5000000E-2</resultingAmount>
+      <generalComment>Water for glue for laminate sheet
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="24">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d4a5c3be-e951-4e7c-9789-de2ef8aecd3a" uri="../flows/d4a5c3be-e951-4e7c-9789-de2ef8aecd3a.xml">
+        <common:shortDescription xml:lang="en">Tap water {RER}| market group for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.0000000E-2</meanAmount>
+      <resultingAmount>1.0000000E-2</resultingAmount>
+      <generalComment>Water for cleaning
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="25">
+      <referenceToFlowDataSet type="flow data set" refObjectId="f28f41db-a7bc-4872-829d-a9086b8b6bd7" uri="../flows/f28f41db-a7bc-4872-829d-a9086b8b6bd7.xml">
+        <common:shortDescription xml:lang="en">sawnwood, lath, hardwood, dried (u=10%), planed {CH}| market for sawnwood, lath, hardwood, dried (u=10%), planed | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.3100000E-4</meanAmount>
+      <resultingAmount>3.3100000E-4</resultingAmount>
+      <generalComment>Beech border
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="26">
+      <referenceToFlowDataSet type="flow data set" refObjectId="7649dc05-489c-49b5-ae39-ab871bd1d705" uri="../flows/7649dc05-489c-49b5-ae39-ab871bd1d705.xml">
+        <common:shortDescription xml:lang="en">Ethylene vinyl acetate copolymer {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.5800000E-3</meanAmount>
+      <resultingAmount>4.5800000E-3</resultingAmount>
+      <generalComment>Glue for beech border 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="27">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d28abeee-b575-47de-afec-f205f55e1755" uri="../flows/d28abeee-b575-47de-afec-f205f55e1755.xml">
+        <common:shortDescription xml:lang="en">Steel, low-alloyed {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.1600000E-1</meanAmount>
+      <resultingAmount>1.1600000E-1</resultingAmount>
+      <generalComment>Steel screws for school desk assembling 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="28">
+      <referenceToFlowDataSet type="flow data set" refObjectId="26693778-d414-48ee-897b-5e4c8e2104be" uri="../flows/26693778-d414-48ee-897b-5e4c8e2104be.xml">
+        <common:shortDescription xml:lang="en">Polyethylene, high density, granulate {RoW}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.7000000E-2</meanAmount>
+      <resultingAmount>5.7000000E-2</resultingAmount>
+      <generalComment>Rubber seals for school desk assembling
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="29">
+      <referenceToFlowDataSet type="flow data set" refObjectId="9cb46f25-68f1-4036-b5d5-db4a484b01f4" uri="../flows/9cb46f25-68f1-4036-b5d5-db4a484b01f4.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry 3.5-7.5 metric ton, euro5 {RER}| market for transport, freight, lorry 3.5-7.5 metric ton, EURO5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.2300000E-4</meanAmount>
+      <resultingAmount>4.2300000E-4</resultingAmount>
+      <generalComment>Transport of cardboard and plastic waste
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="30">
+      <referenceToFlowDataSet type="flow data set" refObjectId="9cb46f25-68f1-4036-b5d5-db4a484b01f4" uri="../flows/9cb46f25-68f1-4036-b5d5-db4a484b01f4.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry 3.5-7.5 metric ton, euro5 {RER}| market for transport, freight, lorry 3.5-7.5 metric ton, EURO5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.7300000E-2</meanAmount>
+      <resultingAmount>2.7300000E-2</resultingAmount>
+      <generalComment>Transport of waste wood 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="31">
+      <referenceToFlowDataSet type="flow data set" refObjectId="9cb46f25-68f1-4036-b5d5-db4a484b01f4" uri="../flows/9cb46f25-68f1-4036-b5d5-db4a484b01f4.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry 3.5-7.5 metric ton, euro5 {RER}| market for transport, freight, lorry 3.5-7.5 metric ton, EURO5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.7700000E-3</meanAmount>
+      <resultingAmount>2.7700000E-3</resultingAmount>
+      <generalComment>Transport of waste water from cleaning process
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="32">
+      <referenceToFlowDataSet type="flow data set" refObjectId="99024499-3535-43c5-8049-6233795698dd" uri="../flows/99024499-3535-43c5-8049-6233795698dd.xml">
+        <common:shortDescription xml:lang="en">Electricity, medium voltage {IT}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.7600000E+0</meanAmount>
+      <resultingAmount>5.7600000E+0</resultingAmount>
+      <generalComment>Energy consumption for: steel tube and semi-oval cutting, frame welding, application of phosphodecreasing liquid, painting, partcleboard cutting, laminate cutting, contouring border desk, laminate gluing, beech border gluing, assembling and internal transportation with forklifts
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="33">
+      <referenceToFlowDataSet type="flow data set" refObjectId="589144c8-f094-4e69-888f-a07e0b2eba9f" uri="../flows/589144c8-f094-4e69-888f-a07e0b2eba9f.xml">
+        <common:shortDescription xml:lang="en">Heat, district or industrial, natural gas {Europe without Switzerland}| heat production, natural gas, at boiler modulating &gt;100kW | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.7600000E+1</meanAmount>
+      <resultingAmount>1.7600000E+1</resultingAmount>
+      <generalComment>Heat consumption for drying and painting of the chair frame. The LHV of natural gas was considered equal to 35,3 MJ/m3.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="34">
+      <referenceToFlowDataSet type="flow data set" refObjectId="9663dabc-3333-4133-aa69-ad29d90907a3" uri="../flows/9663dabc-3333-4133-aa69-ad29d90907a3.xml">
+        <common:shortDescription xml:lang="en">Waste polyethylene terephthalate, for recycling, sorted {RoW}| market for waste polyethylene terephthalate, for recycling, sorted | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.0000000E-3</meanAmount>
+      <resultingAmount>2.0000000E-3</resultingAmount>
+      <generalComment>Recycling of plastic waste
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="35">
+      <referenceToFlowDataSet type="flow data set" refObjectId="63c680d4-eccf-4bc1-9bc5-1b4cd9506eec" uri="../flows/63c680d4-eccf-4bc1-9bc5-1b4cd9506eec.xml">
+        <common:shortDescription xml:lang="en">waste paperboard, sorted {Europe without Switzerland}| treatment of waste paperboard, unsorted, sorting | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.3000000E-3</meanAmount>
+      <resultingAmount>3.3000000E-3</resultingAmount>
+      <generalComment>Recycling of carboard waste 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="36">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d9f981ad-b4dc-406f-8381-fe0df48b8cfa" uri="../flows/d9f981ad-b4dc-406f-8381-fe0df48b8cfa.xml">
+        <common:shortDescription xml:lang="en">Wood chipping, industrial residual wood, stationary electric chipper {RER}| processing | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.7337256E-1</meanAmount>
+      <resultingAmount>2.7337256E-1</resultingAmount>
+      <generalComment>Waste wood for sectioning of the particleboard, for sectioning border and contouring desk top
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="37">
+      <referenceToFlowDataSet type="flow data set" refObjectId="ce48c141-7d08-477c-b48f-51f31dc6a66e" uri="../flows/ce48c141-7d08-477c-b48f-51f31dc6a66e.xml">
+        <common:shortDescription xml:lang="en">Wastewater, average {Europe without Switzerland}| market for wastewater, average | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>7.4600000E-5</meanAmount>
+      <resultingAmount>7.4600000E-5</resultingAmount>
+      <generalComment>Wastewater from phosphodecreasing washing painting, emulsified oil application and washing after gluing laminate
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="38">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08e2fad3-1c5c-43e2-85ad-43d51064f649" uri="../flows/08e2fad3-1c5c-43e2-85ad-43d51064f649.xml">
+        <common:shortDescription xml:lang="en">Waste plastic, mixture {RoW}| treatment of waste plastic, mixture, sanitary landfill | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>4.4400000E-4</meanAmount>
+      <resultingAmount>4.4400000E-4</resultingAmount>
+      <generalComment>Landfill treatment of plastic waste
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="39">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08d4ebde-0cb9-4708-9170-be44cef2b6d4" uri="../flows/08d4ebde-0cb9-4708-9170-be44cef2b6d4.xml">
+        <common:shortDescription xml:lang="en">Waste plastic, mixture {RoW}| treatment of waste plastic, mixture, municipal incineration | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.9520000E-3</meanAmount>
+      <resultingAmount>1.9520000E-3</resultingAmount>
+      <generalComment>Incineration of plastic waste
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="40">
+      <referenceToFlowDataSet type="flow data set" refObjectId="ab7f2173-9a2e-4cb8-bc82-1585aa800b1b" uri="../flows/ab7f2173-9a2e-4cb8-bc82-1585aa800b1b.xml">
+        <common:shortDescription xml:lang="en">Waste paperboard {RoW}| treatment of, sanitary landfill | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>4.7270000E-4</meanAmount>
+      <resultingAmount>4.7270000E-4</resultingAmount>
+      <generalComment>Landfill treatment of cardboard waste 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="41">
+      <referenceToFlowDataSet type="flow data set" refObjectId="61c94ab3-e5a9-4d48-9508-5f8d169c02de" uri="../flows/61c94ab3-e5a9-4d48-9508-5f8d169c02de.xml">
+        <common:shortDescription xml:lang="en">Waste paperboard {RoW}| treatment of, municipal incineration | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.0970000E-4</meanAmount>
+      <resultingAmount>3.0970000E-4</resultingAmount>
+      <generalComment>Incineration of cardboard waste
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="42">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9783-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9783-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">phosphate</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>8.1500000E-5</meanAmount>
+      <resultingAmount>8.1500000E-5</resultingAmount>
+      <generalComment>Phosphate emissions during phosphodegreasing washing phase
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="43">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9501-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9501-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">particles (PM2.5 - PM10)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>5.2400000E-4</meanAmount>
+      <resultingAmount>5.2400000E-4</resultingAmount>
+      <generalComment>Particulate emissions during welding, phosphodegreasing washing phase and painting
+</generalComment>
+    </exchange>
+  </exchanges>
+</processDataSet>

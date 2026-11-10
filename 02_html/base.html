@@ -1,0 +1,195 @@
+<!--
+  components/base.html — EETRA MatLib shared component styles.
+
+  Design TOKENS are NOT defined here. They live in theme.json and are emitted
+  into 02_html/_tokens.css by libs/lib_tokens.sync_tokens_css(), which also
+  publishes the legacy alias names used below (--green, --surface, --radius, …).
+  _tokens.css is prepended to every iframe component (lib_html.read_iframe_component)
+  and injected into the main document by lib_header.fn005_inject_global_css().
+  To change a colour, radius or font: edit theme.json.
+
+  NOTE: the reset below is for IFRAME documents only. It reaches the main
+  Streamlit document only if some caller injects this file there — page headers
+  deliberately no longer do (see lib_header.fn003_render_page_header).
+-->
+<style id="eetra-base">
+/* ── Reset (iframe documents) ───────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--font);
+  font-size: var(--base-size);
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Layout helpers ─────────────────────────────────────────────── */
+.eetra-container { max-width: 100%; padding: 0; }
+.eetra-grid { display: grid; gap: 12px; }
+.eetra-flex { display: flex; gap: 8px; align-items: center; }
+.eetra-flex-wrap { display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* ── Card ────────────────────────────────────────────────────────── */
+.eetra-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.eetra-card:hover {
+  box-shadow: var(--shadow);
+  border-color: var(--border2);
+}
+
+/* ── Chip / badge ────────────────────────────────────────────────── */
+.eetra-chip {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  background: var(--chip-bg);
+  color: var(--chip-text);
+  border: 1px solid var(--border);
+}
+.eetra-chip.green  { background: #dcfce7; color: #15803d; border-color: #bbf7d0; }
+.eetra-chip.amber  { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+.eetra-chip.red    { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+.eetra-chip.blue   { background: #dbeafe; color: #1e40af; border-color: #bfdbfe; }
+.eetra-chip.purple { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+.eetra-chip.grey   { background: #f1f5f9; color: #475569; border-color: #e2e8f0; }
+
+/* ── Stats card ─────────────────────────────────────────────────── */
+.eetra-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 16px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+.eetra-stat .stat-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--green);
+  line-height: 1;
+  font-family: var(--font-serif);
+  font-style: italic;
+}
+.eetra-stat .stat-label {
+  font-size: 11px;
+  color: var(--text2);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.eetra-stat .stat-sub {
+  font-size: 11px;
+  color: var(--text3);
+  margin-top: 4px;
+}
+
+/* ── Table ───────────────────────────────────────────────────────── */
+.eetra-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+.eetra-table th {
+  background: var(--surface2);
+  color: var(--text2);
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.eetra-table td {
+  padding: 7px 12px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  vertical-align: middle;
+}
+.eetra-table tr:last-child td { border-bottom: none; }
+.eetra-table tr:hover td { background: var(--surface); }
+
+/* ── Section header ─────────────────────────────────────────────── */
+.eetra-section-title {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--green);
+  margin-bottom: 12px;
+}
+
+/* ── Divider ────────────────────────────────────────────────────── */
+.eetra-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 12px 0;
+}
+
+/* ── GWP value ──────────────────────────────────────────────────── */
+.gwp-value {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 600;
+  color: var(--green);
+  font-size: 14px;
+}
+
+/* ── Product card (catalogue) ───────────────────────────────────── */
+.product-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.15s ease;
+}
+.product-card:hover { box-shadow: var(--shadow); }
+.product-card .card-img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: contain;
+  padding: 8px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+.product-card .card-body { padding: 8px 10px; flex: 1; display: flex; flex-direction: column; gap: 3px; }
+.product-card .card-brand { font-size: 11px; color: var(--text2); font-weight: 500; }
+.product-card .card-name  { font-size: 12px; font-weight: 600; color: var(--text); line-height: 1.3; }
+.product-card .card-gwp   { font-family: var(--font-serif); font-style: italic; font-weight: 600; font-size: 13px; color: var(--green); margin-top: 2px; }
+.product-card .card-detail { font-size: 11px; color: var(--text2); line-height: 1.35; }
+
+/* ── Search / filter bar ─────────────────────────────────────────── */
+.eetra-search {
+  width: 100%;
+  padding: 7px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 13px;
+  color: var(--text);
+  background: var(--bg);
+  outline: none;
+  transition: border-color 0.15s;
+}
+.eetra-search:focus { border-color: var(--green); }
+
+/* ── Scrollable container ────────────────────────────────────────── */
+.eetra-scroll { overflow-y: auto; overflow-x: hidden; }
+.eetra-scroll::-webkit-scrollbar { width: 6px; }
+.eetra-scroll::-webkit-scrollbar-track { background: transparent; }
+.eetra-scroll::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+</style>

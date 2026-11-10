@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>867712be-a2bd-45f0-88ad-c51efaf41a7c</common:UUID>
+      <name>
+        <baseName xml:lang="en">Wood window, 80 mm, pine, at plant</baseName>
+      </name>
+      <common:synonyms>Produzione di 1 m2 di serramento in legno di pino. Telaio con spessore 80 mm.</common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">Materials production</common:class>
+          <common:class level="1">Wood</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment>Dataset developed within "LIFE MAGIS - Made Green in Italy Scheme" project. The process includes pine wood used for the frame, rubber for the gasket, paint and related supply transportation. Glass is excluded.</common:generalComment>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2020</common:referenceYear>
+      <common:dataSetValidUntil>2025</common:dataSetValidUntil>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT">
+        <descriptionOfRestrictions>Primary data collected in Lombardy (IT)</descriptionOfRestrictions>
+      </locationOfOperationSupplyOrProduction>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>The product analyzed is 1m2 of wooden windows. The process begins with a supply of wood to create the profiles and mobile frame of the window and its pre-processing, as well as a supply of additional elements such as the aluminium drip tray, gasket and paint (glass is excluded). Window manufacturing at the plant includes products, energy use and waste.</technologyDescriptionAndIncludedProcesses>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Not applicable</LCIMethodPrinciple>
+      <LCIMethodApproaches>Not applicable</LCIMethodApproaches>
+    </LCIMethodAndAllocation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="f0b4470d-4dd8-4251-9cae-bb22ef2ecf6e" uri="../sources/f0b4470d-4dd8-4251-9cae-bb22ef2ecf6e.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="983f4592-3272-4ff7-b877-aff627446d88" uri="../sources/983f4592-3272-4ff7-b877-aff627446d88.xml">
+          <common:shortDescription xml:lang="en">ISO 14044</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Not defined</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+    <completeness>
+      <completenessProductModel>No statement</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Independent external review">
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Overall quality" value="Not applicable"/>
+          <common:dataQualityIndicator name="Methodological appropriateness and consistency" value="Not applicable"/>
+          <common:dataQualityIndicator name="Precision" value="Not applicable"/>
+          <common:dataQualityIndicator name="Completeness" value="Not evaluated / unknown"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Not evaluated / unknown"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Not evaluated / unknown"/>
+          <common:dataQualityIndicator name="Technological representativeness" value="Not evaluated / unknown"/>
+        </common:dataQualityIndicators>
+      </review>
+    </validation>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="7d0d4cdf-74ca-4cdd-91a2-839efeadc6fc" uri="../sources/7d0d4cdf-74ca-4cdd-91a2-839efeadc6fc.xml">
+        <common:shortDescription xml:lang="en">LIFE MAGIS - Made Green in Italy Project. LIFE 18 GIE/IT/00735</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>LIFE MAGIS - Made Green in Italy Project. LIFE 18 GIE/IT/00735</common:project>
+    </common:commissionerAndGoal>
+    <dataGenerator>
+      <common:referenceToPersonOrEntityGeneratingTheDataSet refObjectId="019f7b47-2b53-4bb0-b4b1-464bbdb40bbb" type="contact data set" uri="../sources/019f7b47-2b53-4bb0-b4b1-464bbdb40bbb.xml" version="01.00.000">
+        <common:shortDescription>Consorzio Legnolegno, Arch-Ph.D Elisabetta Palumbo, Arch. Chiara Panozzo</common:shortDescription>
+      </common:referenceToPersonOrEntityGeneratingTheDataSet>
+    </dataGenerator>
+    <dataEntryBy>
+      <common:timeStamp>2023-10-05T17:45:37.84+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="a97a0155-0234-4b87-b4ce-a45da52f2a40" uri="../sources/a97a0155-0234-4b87-b4ce-a45da52f2a40.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2023-07-13T15:40:27.209Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/867712be-a2bd-45f0-88ad-c51efaf41a7c.xml</common:permanentDataSetURI>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+      <common:accessRestrictions>Type of license: Open Database Licence (ODbL)</common:accessRestrictions>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4d20620a-62fb-489c-b45f-39fadcfe86f2" uri="../flows/4d20620a-62fb-489c-b45f-39fadcfe86f2.xml">
+        <common:shortDescription xml:lang="en">Wood window, 80 mm, pine, at plant</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0000000E+0</meanAmount>
+      <resultingAmount>1.0000000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="0a891ccd-5ee2-4294-99d1-de26bdccc30a" uri="../flows/0a891ccd-5ee2-4294-99d1-de26bdccc30a.xml">
+        <common:shortDescription xml:lang="en">Synthetic rubber {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.8080400E-1</meanAmount>
+      <resultingAmount>3.8080400E-1</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="f3fdd8b7-c8d7-4e47-a72f-751357bfce71" uri="../flows/f3fdd8b7-c8d7-4e47-a72f-751357bfce71.xml">
+        <common:shortDescription xml:lang="en">Alkyd paint, white, without water, in 60% solution state {RER}| alkyd paint production, white, water-based, product in 60% solution state | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.1919500E-1</meanAmount>
+      <resultingAmount>6.1919500E-1</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="3">
+      <referenceToFlowDataSet type="flow data set" refObjectId="2b0aed5a-3371-49eb-9277-0301dbda1d81" uri="../flows/2b0aed5a-3371-49eb-9277-0301dbda1d81.xml">
+        <common:shortDescription xml:lang="en">Sawlog and veneer log, softwood, measured as solid wood under bark {SE}| softwood forestry, pine, sustainable forest management | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.4056000E-2</meanAmount>
+      <resultingAmount>3.4056000E-2</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="4">
+      <referenceToFlowDataSet type="flow data set" refObjectId="45bd7d65-c347-4fe9-87d6-f154aee7f637" uri="../flows/45bd7d65-c347-4fe9-87d6-f154aee7f637.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry 3.5-7.5 metric ton, EURO6 {RER}| transport, freight, lorry 3.5-7.5 metric ton, EURO6 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.1919000E-3</meanAmount>
+      <resultingAmount>6.1919000E-3</resultingAmount>
+      <generalComment>For gasket
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="5">
+      <referenceToFlowDataSet type="flow data set" refObjectId="45bd7d65-c347-4fe9-87d6-f154aee7f637" uri="../flows/45bd7d65-c347-4fe9-87d6-f154aee7f637.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry 3.5-7.5 metric ton, EURO6 {RER}| transport, freight, lorry 3.5-7.5 metric ton, EURO6 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.3312700E-2</meanAmount>
+      <resultingAmount>1.3312700E-2</resultingAmount>
+      <generalComment>For paint
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="6">
+      <referenceToFlowDataSet type="flow data set" refObjectId="2cc873bb-76fc-4baf-95b8-5211dd3df303" uri="../flows/2cc873bb-76fc-4baf-95b8-5211dd3df303.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry 7.5-16 metric ton, EURO6 {RER}| transport, freight, lorry 7.5-16 metric ton, EURO6 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.1764710E-1</meanAmount>
+      <resultingAmount>1.1764710E-1</resultingAmount>
+      <generalComment>For paint
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="7">
+      <referenceToFlowDataSet type="flow data set" refObjectId="2cc873bb-76fc-4baf-95b8-5211dd3df303" uri="../flows/2cc873bb-76fc-4baf-95b8-5211dd3df303.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry 7.5-16 metric ton, EURO6 {RER}| transport, freight, lorry 7.5-16 metric ton, EURO6 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.2724460E-1</meanAmount>
+      <resultingAmount>4.2724460E-1</resultingAmount>
+      <generalComment>For wood
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="8">
+      <referenceToFlowDataSet type="flow data set" refObjectId="2b19009a-b00f-4546-a052-2b9f491eb372" uri="../flows/2b19009a-b00f-4546-a052-2b9f491eb372.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry 16-32 metric ton, EURO6 {RER}| transport, freight, lorry 16-32 metric ton, EURO6 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.9886811E+1</meanAmount>
+      <resultingAmount>2.9886811E+1</resultingAmount>
+      <generalComment>For wood
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="9">
+      <referenceToFlowDataSet type="flow data set" refObjectId="a2a772e4-f176-433f-b2fa-2543f12c7eb9" uri="../flows/a2a772e4-f176-433f-b2fa-2543f12c7eb9.xml">
+        <common:shortDescription xml:lang="en">Electricity, high voltage {IT}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.8978328E+1</meanAmount>
+      <resultingAmount>2.8978328E+1</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="10">
+      <referenceToFlowDataSet type="flow data set" refObjectId="ddef2507-2108-4283-99ef-2568942c761c" uri="../flows/ddef2507-2108-4283-99ef-2568942c761c.xml">
+        <common:shortDescription xml:lang="en">Water, completely softened {RER}| water production, completely softened | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.6440000E-4</meanAmount>
+      <resultingAmount>4.6440000E-4</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="11">
+      <referenceToFlowDataSet type="flow data set" refObjectId="8fd9a479-83fd-43b6-9c73-7450fca12f80" uri="../flows/8fd9a479-83fd-43b6-9c73-7450fca12f80.xml">
+        <common:shortDescription xml:lang="en">Waste paperboard {CH}| treatment of, inert material landfill | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.7151700E-1</meanAmount>
+      <resultingAmount>3.7151700E-1</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="12">
+      <referenceToFlowDataSet type="flow data set" refObjectId="ddacb88d-be4c-4bb3-9670-701adb1ab175" uri="../flows/ddacb88d-be4c-4bb3-9670-701adb1ab175.xml">
+        <common:shortDescription xml:lang="en">Aluminium (waste treatment) {GLO}| recycling of aluminium | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>6.1919000E-3</meanAmount>
+      <resultingAmount>6.1919000E-3</resultingAmount>
+    </exchange>
+  </exchanges>
+</processDataSet>

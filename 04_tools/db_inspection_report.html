@@ -1,0 +1,558 @@
+<!DOCTYPE html><html><head><meta charset='utf-8'>
+<title>EETRA MatLib — DB Inspection 2026-05-20 19:45</title>
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px;
+       background: #f5f6fa; color: #222; padding: 24px; }
+h1 { font-size: 20px; margin-bottom: 4px; color: #1a1a2e; }
+h2 { font-size: 14px; font-weight: 600; color: #444; margin: 28px 0 8px;
+     border-bottom: 2px solid #ddd; padding-bottom: 4px; }
+.meta { color: #777; font-size: 12px; margin-bottom: 20px; }
+table { border-collapse: collapse; width: 100%; margin-bottom: 16px;
+        background: #fff; border-radius: 6px; overflow: hidden;
+        box-shadow: 0 1px 3px rgba(0,0,0,.1); }
+th { background: #2d3561; color: #fff; padding: 7px 10px; text-align: left;
+     font-weight: 600; white-space: nowrap; }
+td { padding: 5px 10px; border-bottom: 1px solid #eee; white-space: nowrap; }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: #f0f4ff; }
+.good { color: #1a7f37; font-weight: 600; }
+.warn { color: #b08000; font-weight: 600; }
+.bad  { color: #cc2200; font-weight: 600; }
+.opt  { color: #888; font-style: italic; }
+.bar-wrap { background: #eee; border-radius: 4px; height: 10px; width: 120px; display:inline-block; vertical-align:middle; }
+.bar-fill { height: 10px; border-radius: 4px; display:block; }
+.bar-good { background: #34a853; }
+.bar-warn { background: #fbbc04; }
+.bar-bad  { background: #ea4335; }
+.freq-bar { display:inline-block; background:#4285f4; height:8px; border-radius:2px; vertical-align:middle; margin-right:4px; }
+.section { margin-bottom: 8px; }
+.cross-good { background: #e6f4ea; }
+.cross-warn { background: #fef9e7; }
+.cross-bad  { background: #fce8e6; }
+details summary { cursor: pointer; padding: 4px 0; font-weight: 600; color: #2d3561; }
+details[open] summary { margin-bottom: 6px; }
+</style>
+
+</head><body>
+<h1>EETRA MatLib — Database Inspection</h1>
+<p class='meta'>Generated 2026-05-20 19:45 &nbsp;|&nbsp; Source: Excel &nbsp;|&nbsp; <strong>1,657</strong> products &nbsp;|&nbsp; <strong>89</strong> columns</p>
+<h2>Group Completeness</h2>
+<table><tr><th>Prefix</th><th>Group</th><th>Columns</th><th>Required fill</th><th>Optional fill</th></tr>
+<tr><td>0</td><td>Identifiers</td><td>2</td><td><span class="bar-wrap"><span class="bar-fill bar-good" style="width:117px"></span></span> <span class="good">97.3%</span></td><td>—</td></tr>
+<tr><td>A</td><td>Product / Manufacturer</td><td>4</td><td><span class="bar-wrap"><span class="bar-fill bar-good" style="width:120px"></span></span> <span class="good">99.9%</span></td><td><span class="bar-wrap"><span class="bar-fill bar-good" style="width:117px"></span></span> <span class="good">97.5%</span></td></tr>
+<tr><td>D</td><td>Classification</td><td>11</td><td><span class="bar-wrap"><span class="bar-fill bar-good" style="width:108px"></span></span> <span class="good">90.1%</span></td><td>—</td></tr>
+<tr><td>E</td><td>Environmental / EPD</td><td>17</td><td><span class="bar-wrap"><span class="bar-fill bar-warn" style="width:94px"></span></span> <span class="warn">78.5%</span></td><td><span class="bar-wrap"><span class="bar-fill bar-warn" style="width:102px"></span></span> <span class="warn">84.8%</span></td></tr>
+<tr><td>G</td><td>GWP Lifecycle</td><td>24</td><td><span class="bar-wrap"><span class="bar-fill bar-good" style="width:112px"></span></span> <span class="good">93.0%</span></td><td><span class="bar-wrap"><span class="bar-fill bar-warn" style="width:108px"></span></span> <span class="warn">89.9%</span></td></tr>
+<tr><td>P</td><td>Physical Properties</td><td>7</td><td><span class="bar-wrap"><span class="bar-fill bar-warn" style="width:85px"></span></span> <span class="warn">70.8%</span></td><td><span class="bar-wrap"><span class="bar-fill bar-warn" style="width:95px"></span></span> <span class="warn">79.6%</span></td></tr>
+<tr><td>R</td><td>Recycling</td><td>7</td><td><span class="bar-wrap"><span class="bar-fill bar-warn" style="width:75px"></span></span> <span class="warn">62.6%</span></td><td><span class="bar-wrap"><span class="bar-fill bar-warn" style="width:89px"></span></span> <span class="warn">74.0%</span></td></tr>
+<tr><td>S</td><td>Comments</td><td>2</td><td><span class="bar-wrap"><span class="bar-fill bar-good" style="width:117px"></span></span> <span class="good">97.5%</span></td><td><span class="bar-wrap"><span class="bar-fill bar-warn" style="width:79px"></span></span> <span class="warn">66.0%</span></td></tr>
+<tr><td>U</td><td>URLs &amp; Units</td><td>3</td><td><span class="bar-wrap"><span class="bar-fill bar-warn" style="width:82px"></span></span> <span class="warn">68.7%</span></td><td>—</td></tr>
+<tr><td>V</td><td>VOC / CAM / DOP / LEED</td><td>12</td><td><span class="bar-wrap"><span class="bar-fill bar-bad" style="width:41px"></span></span> <span class="bad">34.5%</span></td><td><span class="bar-wrap"><span class="bar-fill bar-bad" style="width:48px"></span></span> <span class="bad">39.8%</span></td></tr>
+</table>
+<h2>Per-Column Completeness</h2>
+<table><tr><th>Column</th><th>Fill rate</th><th>Filled / Total</th><th>Unique values</th><th>Notes</th></tr>
+<tr><td class=''>0__EETRA_ID</td><td><span class="bar-wrap"><span class="bar-fill bar-good" style="width:117px"></span></span> <span class="good">97.3%</span></td><td>1,613 / 1,657</td><td>1,585</td><td class='opt'></td></tr>
+<tr><td class=''>0__NUM</td><td><span class="bar-wrap"><span class="bar-fill bar-good" style="width:117px"></span></span> <span class="good">97.2%</span></td><td>1,610 / 1,657</td><td>1,581</td><td class='opt'></td></tr>
+<tr><td class=''>A__Manufacturer</td><td><span class="bar-wrap"><span class="bar-fill bar-good" style="width:120px"></span></span> <span class="good">99.8%</span></td><td>1,653 / 1,657</td><td>110</td><td class='opt'></td></tr>
+<tr><td class=''>A__ProductName</td><td><span class="bar-wrap"><span class="bar-fill bar-good" style="width:120px"></span></span> <span class="good">100.0%</span></td><td>1,657 / 1,657</td><td>1,605</td><td class='opt'></td></tr>
+<tr><td class='opt'>A__ProductDescription</td><td><span class="opt">96.6%</span></td><td>1,601 / 1,657</td><td>559</td><td class='opt'>optional</td></tr>
+<tr><td class='opt'>A__Map_yn</td><td><span class="opt">98.3%</span></td><td>1,629 / 1,657</td><td>5</td><td class='opt'>optional</td></tr>
+<tr><td class=''>D__ProductType_ENG</td><td><span class="bar-wrap"><span class="bar-fill bar-good" style="width:118px"></span></span> <span class="good">97.9%</span></td><td>1,623 / 1,657</td><td>33</td><td class='opt'></td></tr>
+<tr><td class=''>D__MaterialType_ENG</td><td><span class="bar-wrap"><span class="bar-fill bar-good" style="width:118px"></span></span> <span class="good">98.0%</span></td><td>1,624 / 1,657</td><td>41</td><td class='opt'></td></tr>
+<tr><td class=''>D__MaterialType_ITA</td><td><span class="bar-wrap"><span class="bar-fill bar-good" style="width:111px"></span></span> <span class="good">92.6%</span></td><td>1,535 / 1,657</td><td>84</td><td class='opt'></td></tr>
+<tr><td class=''>D__Int/Ext</td><td><span class="bar-wrap"><span class="bar-fill bar-good" style="width:116px"></span></span> <span class="good">96.7%</span></td><td>1,602 / 1,657</td><td>10</td><td class='opt'></td></tr>
+<tr><td class=''>D__Application</td><td><span class="bar-wrap"><span class="bar-fill bar-warn" style="width:101px"></span></span> <span class="warn">84.4%</span></td><td>1,398 / 1,657</td><td>33</td><td class='opt'></td></tr>
+<tr><td class=''>D__Content</td><td><span class="bar-wrap"><span class="bar-fill bar-good" style="width:115px"></span></span> <span class="good">96.0%</span></td><td>1,591 / 1,657</td><td>936</td><td class='opt'></td></tr>
+<tr><td class=''>D__Size</td><td><span class="bar-wrap"><span class="bar-fill bar-warn" style="width:100px"></span></span> <span class="warn">83.3%</span></td><td>1,381 / 1,657</td><td>183</td><td class='opt'></td></tr>
+<tr><td class=''>D__TechDetails</td><td><span class="bar-wrap"><span class="bar-fill bar-bad" style="width:67px"></span></span> <span class="bad">55.8%</span></td><td>924 / 1,657</td><td>190</td><td class='opt'></td></tr>
+<tr><td class=''>D__EN197-1</td><td><span class="bar-wrap"><span class="bar-fill bar-good" style="width:117px"></span></span> <span class="good">97.4%</span></td><td>1,614 / 1,657</td><td>70</td><td class='opt'></td></tr>
+<tr><td class=''>D__EN206</td><td><span class="bar-wrap"><span class="bar-fill bar-good" style="width:114px"></span></span> <span class="good">94.7%</span></td><td>1,569 / 1,657</td><td>17</td><td class='opt'></td></tr>
+<tr><td class=''>D__DataComments</td><td><span class="bar-wrap"><span class="bar-fill bar-good" style="width:113px"></span></span> <span class="good">94.3%</span></td><td>1,562 / 1,657</td><td>8</td><td class='opt'></td></tr>
+<tr><td class='opt'>S__Comments</td><td><span class="opt">66.0%</span></td><td>1,094 / 1,657</td><td>195</td><td class='opt'>optional</td></tr>
+<tr><td class=''>S__Status</td><td><span class="bar-wrap"><span class="bar-fill bar-good" style="width:117px"></span></span> <span class="good">97.5%</span></td><td>1,616 / 1,657</td><td>11</td><td class='opt'></td></tr>
+<tr><td class=''>U__ProductInfo_URL</td><td><span class="bar-wrap"><span class="bar-fill bar-bad" style="width:72px"></span></span> <span class="bad">60.0%</span></td><td>994 / 1,657</td><td>586</td><td class='opt'>⚠ 5 invalid URLs</td></tr>
+<tr><td class=''>U__TechDetails_URL</td><td><span class="bar-wrap"><span class="bar-fill bar-bad" style="width:59px"></span></span> <span class="bad">49.5%</span></td><td>820 / 1,657</td><td>514</td><td class='opt'>⚠ 3 invalid URLs</td></tr>
+<tr><td class=''>U__Img_URL</td><td><span class="bar-wrap"><span class="bar-fill bar-good" style="width:116px"></span></span> <span class="good">96.6%</span></td><td>1,601 / 1,657</td><td>545</td><td class='opt'>⚠ 3 invalid URLs</td></tr>
+<tr><td class=''>P__U_Wm2K</td><td><span class="bar-wrap"><span class="bar-fill bar-bad" style="width:71px"></span></span> <span class="bad">59.6%</span></td><td>987 / 1,657</td><td>38</td><td class='opt'></td></tr>
+<tr><td class=''>P__L_WmK</td><td><span class="bar-wrap"><span class="bar-fill bar-warn" style="width:105px"></span></span> <span class="warn">87.1%</span></td><td>1,444 / 1,657</td><td>80</td><td class='opt'></td></tr>
+<tr><td class='opt'>P__Thick_mm</td><td><span class="opt">91.6%</span></td><td>1,517 / 1,657</td><td>194</td><td class='opt'>optional</td></tr>
+<tr><td class=''>P__Mass_kgm3</td><td><span class="bar-wrap"><span class="bar-fill bar-warn" style="width:78px"></span></span> <span class="warn">64.8%</span></td><td>1,073 / 1,657</td><td>137</td><td class='opt'></td></tr>
+<tr><td class='opt'>P__Mass_kgm2</td><td><span class="opt">67.6%</span></td><td>1,120 / 1,657</td><td>199</td><td class='opt'>optional</td></tr>
+<tr><td class=''>P__Mass_kg</td><td><span class="bar-wrap"><span class="bar-fill bar-bad" style="width:66px"></span></span> <span class="bad">55.2%</span></td><td>915 / 1,657</td><td>120</td><td class='opt'></td></tr>
+<tr><td class=''>P__FireRating</td><td><span class="bar-wrap"><span class="bar-fill bar-warn" style="width:105px"></span></span> <span class="warn">87.5%</span></td><td>1,450 / 1,657</td><td>17</td><td class='opt'></td></tr>
+<tr><td class=''>E__ManuCountry</td><td><span class="bar-wrap"><span class="bar-fill bar-good" style="width:114px"></span></span> <span class="good">94.8%</span></td><td>1,571 / 1,657</td><td>40</td><td class='opt'></td></tr>
+<tr><td class='opt'>E__ManuPlant</td><td><span class="opt">92.1%</span></td><td>1,526 / 1,657</td><td>226</td><td class='opt'>optional</td></tr>
+<tr><td class=''>E__EPD_Y/N</td><td><span class="bar-wrap"><span class="bar-fill bar-warn" style="width:93px"></span></span> <span class="warn">77.2%</span></td><td>1,280 / 1,657</td><td>5</td><td class='opt'></td></tr>
+<tr><td class=''>E__EPD_Programme</td><td><span class="bar-wrap"><span class="bar-fill bar-good" style="width:113px"></span></span> <span class="good">94.4%</span></td><td>1,565 / 1,657</td><td>18</td><td class='opt'></td></tr>
+<tr><td class=''>E__EPD_URL</td><td><span class="bar-wrap"><span class="bar-fill bar-good" style="width:114px"></span></span> <span class="good">94.9%</span></td><td>1,572 / 1,657</td><td>530</td><td class='opt'>⚠ 67 invalid URLs</td></tr>
+<tr><td class='opt'>E__EPD_DecNumber</td><td><span class="opt">71.8%</span></td><td>1,189 / 1,657</td><td>312</td><td class='opt'>optional</td></tr>
+<tr><td class=''>E__EPD_RegNumber</td><td><span class="bar-wrap"><span class="bar-fill bar-warn" style="width:102px"></span></span> <span class="warn">85.3%</span></td><td>1,413 / 1,657</td><td>430</td><td class='opt'></td></tr>
+<tr><td class=''>E__EPD_Product Name</td><td><span class="bar-wrap"><span class="bar-fill bar-good" style="width:115px"></span></span> <span class="good">95.8%</span></td><td>1,587 / 1,657</td><td>1,540</td><td class='opt'></td></tr>
+<tr><td class=''>E__EPD_ExpDate</td><td><span class="bar-wrap"><span class="bar-fill bar-good" style="width:111px"></span></span> <span class="good">92.6%</span></td><td>1,535 / 1,657</td><td>223</td><td class='opt'></td></tr>
+<tr><td class=''>E__ServiceLife</td><td><span class="bar-wrap"><span class="bar-fill bar-bad" style="width:43px"></span></span> <span class="bad">36.1%</span></td><td>599 / 1,657</td><td>24</td><td class='opt'></td></tr>
+<tr><td class=''>E__EPD_Density</td><td><span class="bar-wrap"><span class="bar-fill bar-bad" style="width:29px"></span></span> <span class="bad">24.2%</span></td><td>401 / 1,657</td><td>114</td><td class='opt'></td></tr>
+<tr><td class='opt'>E__L_WmK</td><td><span class="opt">83.1%</span></td><td>1,377 / 1,657</td><td>59</td><td class='opt'>optional</td></tr>
+<tr><td class=''>E__EPD_Thick_mm</td><td><span class="bar-wrap"><span class="bar-fill bar-warn" style="width:108px"></span></span> <span class="warn">89.6%</span></td><td>1,485 / 1,657</td><td>122</td><td class='opt'></td></tr>
+<tr><td class='opt'>E__Rvalue</td><td><span class="opt">85.2%</span></td><td>1,412 / 1,657</td><td>97</td><td class='opt'>optional</td></tr>
+<tr><td class='opt'>E__EPD_MultFactor</td><td><span class="opt">85.1%</span></td><td>1,410 / 1,657</td><td>85</td><td class='opt'>optional</td></tr>
+<tr><td class='opt'>E__EPD_ConvFactor</td><td><span class="opt">87.4%</span></td><td>1,449 / 1,657</td><td>11</td><td class='opt'>optional</td></tr>
+<tr><td class='opt'>E__EPD_kg-FU</td><td><span class="opt">88.7%</span></td><td>1,470 / 1,657</td><td>68</td><td class='opt'>optional</td></tr>
+<tr><td class=''>G__GWP_Metric</td><td><span class="bar-wrap"><span class="bar-fill bar-good" style="width:111px"></span></span> <span class="good">92.8%</span></td><td>1,537 / 1,657</td><td>7</td><td class='opt'></td></tr>
+<tr><td class='opt'>G__GWP_A1A3_kg</td><td><span class="opt">94.7%</span></td><td>1,570 / 1,657</td><td>107</td><td class='opt'>optional</td></tr>
+<tr><td class='opt'>G__GWP_A1A3_m2</td><td><span class="opt">26.6%</span></td><td>441 / 1,657</td><td>365</td><td class='opt'>optional</td></tr>
+<tr><td class='opt'>G__GWP_A1A3_m3</td><td><span class="opt">74.0%</span></td><td>1,226 / 1,657</td><td>946</td><td class='opt'>optional</td></tr>
+<tr><td class='opt'>G__GWP_A1A3_m2R1</td><td><span class="opt">89.4%</span></td><td>1,481 / 1,657</td><td>281</td><td class='opt'>optional</td></tr>
+<tr><td class=''>G__GWP_FU</td><td><span class="bar-wrap"><span class="bar-fill bar-good" style="width:110px"></span></span> <span class="good">91.6%</span></td><td>1,518 / 1,657</td><td>11</td><td class='opt'></td></tr>
+<tr><td class=''>G__GWP_A1A3</td><td><span class="bar-wrap"><span class="bar-fill bar-good" style="width:114px"></span></span> <span class="good">94.7%</span></td><td>1,570 / 1,657</td><td>1,270</td><td class='opt'></td></tr>
+<tr><td class='opt'>G__GWP_A1</td><td><span class="opt">94.0%</span></td><td>1,558 / 1,657</td><td>236</td><td class='opt'>optional</td></tr>
+<tr><td class='opt'>G__GWP_A2</td><td><span class="opt">94.0%</span></td><td>1,558 / 1,657</td><td>249</td><td class='opt'>optional</td></tr>
+<tr><td class='opt'>G__GWP_A3</td><td><span class="opt">94.0%</span></td><td>1,558 / 1,657</td><td>195</td><td class='opt'>optional</td></tr>
+<tr><td class='opt'>G__GWP_A4</td><td><span class="opt">94.6%</span></td><td>1,568 / 1,657</td><td>344</td><td class='opt'>optional</td></tr>
+<tr><td class='opt'>G__GWP_A5</td><td><span class="opt">94.7%</span></td><td>1,569 / 1,657</td><td>246</td><td class='opt'>optional</td></tr>
+<tr><td class='opt'>G__GWP_B1</td><td><span class="opt">94.1%</span></td><td>1,560 / 1,657</td><td>9</td><td class='opt'>optional</td></tr>
+<tr><td class='opt'>G__GWP_B2</td><td><span class="opt">94.1%</span></td><td>1,560 / 1,657</td><td>20</td><td class='opt'>optional</td></tr>
+<tr><td class='opt'>G__GWP_B3</td><td><span class="opt">94.1%</span></td><td>1,560 / 1,657</td><td>7</td><td class='opt'>optional</td></tr>
+<tr><td class='opt'>G__GWP_B4</td><td><span class="opt">94.1%</span></td><td>1,560 / 1,657</td><td>7</td><td class='opt'>optional</td></tr>
+<tr><td class='opt'>G__GWP_B5</td><td><span class="opt">94.1%</span></td><td>1,560 / 1,657</td><td>7</td><td class='opt'>optional</td></tr>
+<tr><td class='opt'>G__GWP_B6</td><td><span class="opt">94.1%</span></td><td>1,560 / 1,657</td><td>6</td><td class='opt'>optional</td></tr>
+<tr><td class='opt'>G__GWP_B7</td><td><span class="opt">93.9%</span></td><td>1,556 / 1,657</td><td>6</td><td class='opt'>optional</td></tr>
+<tr><td class='opt'>G__GWP_C1</td><td><span class="opt">94.7%</span></td><td>1,569 / 1,657</td><td>157</td><td class='opt'>optional</td></tr>
+<tr><td class='opt'>G__GWP_C2</td><td><span class="opt">94.7%</span></td><td>1,570 / 1,657</td><td>415</td><td class='opt'>optional</td></tr>
+<tr><td class='opt'>G__GWP_C3</td><td><span class="opt">94.7%</span></td><td>1,569 / 1,657</td><td>217</td><td class='opt'>optional</td></tr>
+<tr><td class='opt'>G__GWP_C4</td><td><span class="opt">94.5%</span></td><td>1,566 / 1,657</td><td>381</td><td class='opt'>optional</td></tr>
+<tr><td class='opt'>G__GWP_D</td><td><span class="opt">94.1%</span></td><td>1,560 / 1,657</td><td>351</td><td class='opt'>optional</td></tr>
+<tr><td class='opt'>R__Rec_Reco_ByProd_URL</td><td><span class="opt">74.0%</span></td><td>1,226 / 1,657</td><td>310</td><td class='opt'>optional; ⚠ 6 invalid URLs</td></tr>
+<tr><td class=''>R__Rec_Pre_%</td><td><span class="bar-wrap"><span class="bar-fill bar-warn" style="width:72px"></span></span> <span class="warn">60.4%</span></td><td>1,001 / 1,657</td><td>159</td><td class='opt'></td></tr>
+<tr><td class=''>R__Rec_Post_%</td><td><span class="bar-wrap"><span class="bar-fill bar-warn" style="width:72px"></span></span> <span class="warn">60.4%</span></td><td>1,001 / 1,657</td><td>272</td><td class='opt'></td></tr>
+<tr><td class=''>R__Rec_Tot_%</td><td><span class="bar-wrap"><span class="bar-fill bar-warn" style="width:77px"></span></span> <span class="warn">64.4%</span></td><td>1,067 / 1,657</td><td>390</td><td class='opt'></td></tr>
+<tr><td class=''>R__Reco_Tot_%</td><td><span class="bar-wrap"><span class="bar-fill bar-bad" style="width:69px"></span></span> <span class="bad">57.5%</span></td><td>953 / 1,657</td><td>185</td><td class='opt'></td></tr>
+<tr><td class=''>R__ByProd_Tot_%</td><td><span class="bar-wrap"><span class="bar-fill bar-bad" style="width:68px"></span></span> <span class="bad">56.8%</span></td><td>941 / 1,657</td><td>331</td><td class='opt'></td></tr>
+<tr><td class=''>R__Rec_Reco_ByProd_%</td><td><span class="bar-wrap"><span class="bar-fill bar-warn" style="width:91px"></span></span> <span class="warn">76.0%</span></td><td>1,260 / 1,657</td><td>546</td><td class='opt'></td></tr>
+<tr><td class='opt'>V__LEED_MR_RawMat</td><td><span class="opt">1.1%</span></td><td>18 / 1,657</td><td>4</td><td class='opt'>optional</td></tr>
+<tr><td class=''>V__VOC_Body</td><td><span class="bar-wrap"><span class="bar-fill bar-warn" style="width:75px"></span></span> <span class="warn">62.8%</span></td><td>1,041 / 1,657</td><td>29</td><td class='opt'></td></tr>
+<tr><td class='opt'>V__VOC_Cert</td><td><span class="opt">62.8%</span></td><td>1,041 / 1,657</td><td>33</td><td class='opt'>optional</td></tr>
+<tr><td class='opt'>V__VOC_URL</td><td><span class="opt">62.5%</span></td><td>1,036 / 1,657</td><td>92</td><td class='opt'>optional; ⚠ 655 invalid URLs</td></tr>
+<tr><td class='opt'>V__Exp_Date</td><td><span class="opt">52.6%</span></td><td>872 / 1,657</td><td>26</td><td class='opt'>optional</td></tr>
+<tr><td class='opt'>V__Application_Scope</td><td><span class="opt">61.4%</span></td><td>1,017 / 1,657</td><td>5</td><td class='opt'>optional</td></tr>
+<tr><td class='opt'>V__Product_Category</td><td><span class="opt">61.0%</span></td><td>1,011 / 1,657</td><td>5</td><td class='opt'>optional</td></tr>
+<tr><td class='opt'>V__Other</td><td><span class="opt">54.4%</span></td><td>901 / 1,657</td><td>121</td><td class='opt'>optional</td></tr>
+<tr><td class='opt'>V__SDS__URL</td><td><span class="opt">0.0%</span></td><td>0 / 1,657</td><td>0</td><td class='opt'>optional</td></tr>
+<tr><td class=''>V__CAM__Status</td><td><span class="bar-wrap"><span class="bar-fill bar-bad" style="width:7px"></span></span> <span class="bad">6.2%</span></td><td>102 / 1,657</td><td>2</td><td class='opt'></td></tr>
+<tr><td class='opt'>V__CAM__Evidence</td><td><span class="opt">5.4%</span></td><td>89 / 1,657</td><td>1</td><td class='opt'>optional</td></tr>
+<tr><td class='opt'>V__DOP</td><td><span class="opt">36.4%</span></td><td>603 / 1,657</td><td>380</td><td class='opt'>optional; ⚠ 3 invalid URLs</td></tr>
+</table>
+<h2>Categorical Value Frequencies</h2>
+<details class='section'><summary>A__Map_yn &nbsp;<small>(5 top values shown)</small></summary>
+<table><tr><th>Value</th><th>Frequency</th><th>%</th></tr>
+<tr><td>Y</td><td><span class="freq-bar" style="width:192px"></span></td><td>95.8%</td></tr>
+<tr><td>N</td><td><span class="freq-bar" style="width:8px"></span></td><td>4.0%</td></tr>
+<tr><td>Floor Resin</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>Hilti</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>Space Bar</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+</table></details>
+<details class='section'><summary>D__ProductType_ENG &nbsp;<small>(12 top values shown)</small></summary>
+<table><tr><th>Value</th><th>Frequency</th><th>%</th></tr>
+<tr><td>In situ Concrete</td><td><span class="freq-bar" style="width:78px"></span></td><td>39.1%</td></tr>
+<tr><td>Insulation</td><td><span class="freq-bar" style="width:42px"></span></td><td>20.8%</td></tr>
+<tr><td>Binder (Cement)</td><td><span class="freq-bar" style="width:15px"></span></td><td>7.3%</td></tr>
+<tr><td>Building boards</td><td><span class="freq-bar" style="width:13px"></span></td><td>6.3%</td></tr>
+<tr><td>Tiles</td><td><span class="freq-bar" style="width:11px"></span></td><td>5.6%</td></tr>
+<tr><td>Masonry (Block)</td><td><span class="freq-bar" style="width:8px"></span></td><td>3.8%</td></tr>
+<tr><td>Suspended ceiling</td><td><span class="freq-bar" style="width:3px"></span></td><td>1.7%</td></tr>
+<tr><td>Glazing (Doors &amp; Windows)</td><td><span class="freq-bar" style="width:3px"></span></td><td>1.7%</td></tr>
+<tr><td>Screed</td><td><span class="freq-bar" style="width:3px"></span></td><td>1.6%</td></tr>
+<tr><td>Cable trays</td><td><span class="freq-bar" style="width:3px"></span></td><td>1.4%</td></tr>
+<tr><td>Metal accessories</td><td><span class="freq-bar" style="width:3px"></span></td><td>1.4%</td></tr>
+<tr><td>Masonry (Other)</td><td><span class="freq-bar" style="width:2px"></span></td><td>1.2%</td></tr>
+</table></details>
+<details class='section'><summary>D__MaterialType_ENG &nbsp;<small>(12 top values shown)</small></summary>
+<table><tr><th>Value</th><th>Frequency</th><th>%</th></tr>
+<tr><td>Concrete</td><td><span class="freq-bar" style="width:85px"></span></td><td>42.7%</td></tr>
+<tr><td>Cement</td><td><span class="freq-bar" style="width:15px"></span></td><td>7.4%</td></tr>
+<tr><td>Gypsum</td><td><span class="freq-bar" style="width:12px"></span></td><td>6.2%</td></tr>
+<tr><td>Fibreglass (Glass wool, Mineral fibre)</td><td><span class="freq-bar" style="width:8px"></span></td><td>4.2%</td></tr>
+<tr><td>Mineral wool (Stone, Rock)</td><td><span class="freq-bar" style="width:8px"></span></td><td>4.2%</td></tr>
+<tr><td>XPS (Extruded Polystyrene)</td><td><span class="freq-bar" style="width:8px"></span></td><td>3.8%</td></tr>
+<tr><td>Porcelain</td><td><span class="freq-bar" style="width:7px"></span></td><td>3.5%</td></tr>
+<tr><td>EPS (Expanded Polystyrene)</td><td><span class="freq-bar" style="width:7px"></span></td><td>3.4%</td></tr>
+<tr><td>Aluminium</td><td><span class="freq-bar" style="width:6px"></span></td><td>2.8%</td></tr>
+<tr><td>Galvanized steel</td><td><span class="freq-bar" style="width:6px"></span></td><td>2.8%</td></tr>
+<tr><td>Wood wool</td><td><span class="freq-bar" style="width:5px"></span></td><td>2.6%</td></tr>
+<tr><td>Composite (Other)</td><td><span class="freq-bar" style="width:5px"></span></td><td>2.3%</td></tr>
+</table></details>
+<details class='section'><summary>D__Int/Ext &nbsp;<small>(10 top values shown)</small></summary>
+<table><tr><th>Value</th><th>Frequency</th><th>%</th></tr>
+<tr><td>n/r</td><td><span class="freq-bar" style="width:111px"></span></td><td>55.4%</td></tr>
+<tr><td>Both</td><td><span class="freq-bar" style="width:47px"></span></td><td>23.7%</td></tr>
+<tr><td>Exterior</td><td><span class="freq-bar" style="width:22px"></span></td><td>11.0%</td></tr>
+<tr><td>Interior</td><td><span class="freq-bar" style="width:17px"></span></td><td>8.7%</td></tr>
+<tr><td>Indoor</td><td><span class="freq-bar" style="width:2px"></span></td><td>0.8%</td></tr>
+<tr><td>Indoor/Outdoor</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>Floor Resin</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>Outdoor</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>Hilti</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>Space Bar</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+</table></details>
+<details class='section'><summary>D__Application &nbsp;<small>(12 top values shown)</small></summary>
+<table><tr><th>Value</th><th>Frequency</th><th>%</th></tr>
+<tr><td>n/r</td><td><span class="freq-bar" style="width:134px"></span></td><td>66.8%</td></tr>
+<tr><td>Floor- wall</td><td><span class="freq-bar" style="width:11px"></span></td><td>5.6%</td></tr>
+<tr><td>wall &amp; partition &amp; ceiling finishes</td><td><span class="freq-bar" style="width:11px"></span></td><td>5.5%</td></tr>
+<tr><td>Roof-Floor-Wall</td><td><span class="freq-bar" style="width:10px"></span></td><td>5.1%</td></tr>
+<tr><td>External walls</td><td><span class="freq-bar" style="width:8px"></span></td><td>4.1%</td></tr>
+<tr><td>Wall -Ceiling</td><td><span class="freq-bar" style="width:7px"></span></td><td>3.5%</td></tr>
+<tr><td>Ceiling</td><td><span class="freq-bar" style="width:4px"></span></td><td>1.9%</td></tr>
+<tr><td>Internal walls</td><td><span class="freq-bar" style="width:3px"></span></td><td>1.4%</td></tr>
+<tr><td>Wall and ceiling </td><td><span class="freq-bar" style="width:3px"></span></td><td>1.3%</td></tr>
+<tr><td>wall &amp; partition finishes</td><td><span class="freq-bar" style="width:2px"></span></td><td>1.1%</td></tr>
+<tr><td>Floor</td><td><span class="freq-bar" style="width:2px"></span></td><td>0.8%</td></tr>
+<tr><td>Facade- Wall cladding-Floor Finishes-Furniture-Kitchen countertop</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.4%</td></tr>
+</table></details>
+<details class='section'><summary>D__EN206 &nbsp;<small>(12 top values shown)</small></summary>
+<table><tr><th>Value</th><th>Frequency</th><th>%</th></tr>
+<tr><td>n/r</td><td><span class="freq-bar" style="width:119px"></span></td><td>59.5%</td></tr>
+<tr><td>C30/37</td><td><span class="freq-bar" style="width:19px"></span></td><td>9.4%</td></tr>
+<tr><td>C25/30</td><td><span class="freq-bar" style="width:11px"></span></td><td>5.4%</td></tr>
+<tr><td>C35/45</td><td><span class="freq-bar" style="width:10px"></span></td><td>5.2%</td></tr>
+<tr><td>C12/15</td><td><span class="freq-bar" style="width:9px"></span></td><td>4.6%</td></tr>
+<tr><td>C16/20</td><td><span class="freq-bar" style="width:7px"></span></td><td>3.6%</td></tr>
+<tr><td>C28/35</td><td><span class="freq-bar" style="width:7px"></span></td><td>3.5%</td></tr>
+<tr><td>C20/25</td><td><span class="freq-bar" style="width:7px"></span></td><td>3.3%</td></tr>
+<tr><td>C40/50</td><td><span class="freq-bar" style="width:6px"></span></td><td>3.1%</td></tr>
+<tr><td>C32/40</td><td><span class="freq-bar" style="width:2px"></span></td><td>1.0%</td></tr>
+<tr><td>C8/10</td><td><span class="freq-bar" style="width:2px"></span></td><td>1.0%</td></tr>
+<tr><td>?</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.2%</td></tr>
+</table></details>
+<details class='section'><summary>D__DataComments &nbsp;<small>(8 top values shown)</small></summary>
+<table><tr><th>Value</th><th>Frequency</th><th>%</th></tr>
+<tr><td>Manual input FM</td><td><span class="freq-bar" style="width:181px"></span></td><td>90.7%</td></tr>
+<tr><td>Interpolated via AI</td><td><span class="freq-bar" style="width:12px"></span></td><td>6.1%</td></tr>
+<tr><td>Manual input FM, TGU</td><td><span class="freq-bar" style="width:3px"></span></td><td>1.5%</td></tr>
+<tr><td>?</td><td><span class="freq-bar" style="width:3px"></span></td><td>1.3%</td></tr>
+<tr><td>Manual input FM, DGU</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.3%</td></tr>
+<tr><td>Floor Resin</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>Hilti</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>Space Bar</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+</table></details>
+<details class='section'><summary>S__Status &nbsp;<small>(11 top values shown)</small></summary>
+<table><tr><th>Value</th><th>Frequency</th><th>%</th></tr>
+<tr><td>Missing Some Data</td><td><span class="freq-bar" style="width:83px"></span></td><td>41.3%</td></tr>
+<tr><td>Complete</td><td><span class="freq-bar" style="width:75px"></span></td><td>37.4%</td></tr>
+<tr><td>Tech.Sheet Missing</td><td><span class="freq-bar" style="width:15px"></span></td><td>7.7%</td></tr>
+<tr><td>VOC Data Missing</td><td><span class="freq-bar" style="width:15px"></span></td><td>7.7%</td></tr>
+<tr><td>EPD missing</td><td><span class="freq-bar" style="width:7px"></span></td><td>3.7%</td></tr>
+<tr><td>In Progress</td><td><span class="freq-bar" style="width:3px"></span></td><td>1.3%</td></tr>
+<tr><td>Missing Key Data</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.6%</td></tr>
+<tr><td>Not started</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>Floor Resin</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>Hilti</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>Space Bar</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+</table></details>
+<details class='section'><summary>P__U_Wm2K &nbsp;<small>(12 top values shown)</small></summary>
+<table><tr><th>Value</th><th>Frequency</th><th>%</th></tr>
+<tr><td>n/r</td><td><span class="freq-bar" style="width:187px"></span></td><td>93.6%</td></tr>
+<tr><td>1.1</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.7%</td></tr>
+<tr><td>1.2</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.5%</td></tr>
+<tr><td>1.4</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.4%</td></tr>
+<tr><td>1</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.3%</td></tr>
+<tr><td>0.54</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.3%</td></tr>
+<tr><td>0.44</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.3%</td></tr>
+<tr><td>1.3</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.3%</td></tr>
+<tr><td>0.8</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.3%</td></tr>
+<tr><td>0.9</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.2%</td></tr>
+<tr><td>0.34</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.2%</td></tr>
+<tr><td>0.15</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.2%</td></tr>
+</table></details>
+<details class='section'><summary>P__FireRating &nbsp;<small>(12 top values shown)</small></summary>
+<table><tr><th>Value</th><th>Frequency</th><th>%</th></tr>
+<tr><td>n/r</td><td><span class="freq-bar" style="width:101px"></span></td><td>50.6%</td></tr>
+<tr><td>A1</td><td><span class="freq-bar" style="width:41px"></span></td><td>20.7%</td></tr>
+<tr><td>E</td><td><span class="freq-bar" style="width:22px"></span></td><td>11.2%</td></tr>
+<tr><td>A2-s1,d0</td><td><span class="freq-bar" style="width:15px"></span></td><td>7.7%</td></tr>
+<tr><td>B-s1,d0</td><td><span class="freq-bar" style="width:8px"></span></td><td>3.8%</td></tr>
+<tr><td>A1-A1 fl</td><td><span class="freq-bar" style="width:3px"></span></td><td>1.7%</td></tr>
+<tr><td>B fl-s1</td><td><span class="freq-bar" style="width:3px"></span></td><td>1.4%</td></tr>
+<tr><td>F</td><td><span class="freq-bar" style="width:3px"></span></td><td>1.3%</td></tr>
+<tr><td>A2-s1.d0</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.4%</td></tr>
+<tr><td>A2-s1</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.3%</td></tr>
+<tr><td>A2 fl -s1</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.3%</td></tr>
+<tr><td>A1 fl</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.2%</td></tr>
+</table></details>
+<details class='section'><summary>E__ManuCountry &nbsp;<small>(12 top values shown)</small></summary>
+<table><tr><th>Value</th><th>Frequency</th><th>%</th></tr>
+<tr><td>Italy</td><td><span class="freq-bar" style="width:172px"></span></td><td>85.9%</td></tr>
+<tr><td>Germany</td><td><span class="freq-bar" style="width:6px"></span></td><td>3.0%</td></tr>
+<tr><td>Liechtenstein</td><td><span class="freq-bar" style="width:6px"></span></td><td>2.9%</td></tr>
+<tr><td>Croatia</td><td><span class="freq-bar" style="width:4px"></span></td><td>1.8%</td></tr>
+<tr><td>Slovenia</td><td><span class="freq-bar" style="width:3px"></span></td><td>1.5%</td></tr>
+<tr><td>Slovakia</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.5%</td></tr>
+<tr><td>Netherland</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.4%</td></tr>
+<tr><td>Poland; Netherland; France</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.4%</td></tr>
+<tr><td>Finland</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.3%</td></tr>
+<tr><td>Belgium; Germany; Czech Republic; France</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.3%</td></tr>
+<tr><td>Hungary</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.3%</td></tr>
+<tr><td>Belgium; France</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.2%</td></tr>
+</table></details>
+<details class='section'><summary>E__EPD_Y/N &nbsp;<small>(5 top values shown)</small></summary>
+<table><tr><th>Value</th><th>Frequency</th><th>%</th></tr>
+<tr><td>Y</td><td><span class="freq-bar" style="width:195px"></span></td><td>97.7%</td></tr>
+<tr><td>N</td><td><span class="freq-bar" style="width:4px"></span></td><td>2.1%</td></tr>
+<tr><td>Floor Resin</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>Hilti</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>Space Bar</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+</table></details>
+<details class='section'><summary>E__EPD_Programme &nbsp;<small>(12 top values shown)</small></summary>
+<table><tr><th>Value</th><th>Frequency</th><th>%</th></tr>
+<tr><td>EPD Italy</td><td><span class="freq-bar" style="width:118px"></span></td><td>59.0%</td></tr>
+<tr><td>Environdec</td><td><span class="freq-bar" style="width:53px"></span></td><td>26.6%</td></tr>
+<tr><td>IBU</td><td><span class="freq-bar" style="width:20px"></span></td><td>10.2%</td></tr>
+<tr><td>EPD Hub</td><td><span class="freq-bar" style="width:2px"></span></td><td>0.9%</td></tr>
+<tr><td>One click LCA</td><td><span class="freq-bar" style="width:2px"></span></td><td>0.8%</td></tr>
+<tr><td>EPD Norway</td><td><span class="freq-bar" style="width:2px"></span></td><td>0.8%</td></tr>
+<tr><td>ZAG</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.6%</td></tr>
+<tr><td>IBU – Institut Bauen und Umwelt e,V</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.4%</td></tr>
+<tr><td>ITB</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>MPRI</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>DAP Habitat</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>Ceiling Tile</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+</table></details>
+<details class='section'><summary>E__ServiceLife &nbsp;<small>(12 top values shown)</small></summary>
+<table><tr><th>Value</th><th>Frequency</th><th>%</th></tr>
+<tr><td>50 Years</td><td><span class="freq-bar" style="width:59px"></span></td><td>29.4%</td></tr>
+<tr><td>n/r</td><td><span class="freq-bar" style="width:40px"></span></td><td>20.0%</td></tr>
+<tr><td>60 Years</td><td><span class="freq-bar" style="width:23px"></span></td><td>11.7%</td></tr>
+<tr><td>&gt;80 Years</td><td><span class="freq-bar" style="width:13px"></span></td><td>6.7%</td></tr>
+<tr><td>&gt; 50 years</td><td><span class="freq-bar" style="width:13px"></span></td><td>6.3%</td></tr>
+<tr><td>50 years</td><td><span class="freq-bar" style="width:13px"></span></td><td>6.3%</td></tr>
+<tr><td>&gt;60 Years</td><td><span class="freq-bar" style="width:8px"></span></td><td>3.8%</td></tr>
+<tr><td>&gt;50 Years</td><td><span class="freq-bar" style="width:6px"></span></td><td>2.8%</td></tr>
+<tr><td> 50 years</td><td><span class="freq-bar" style="width:6px"></span></td><td>2.8%</td></tr>
+<tr><td>60 years</td><td><span class="freq-bar" style="width:5px"></span></td><td>2.3%</td></tr>
+<tr><td>35 years</td><td><span class="freq-bar" style="width:4px"></span></td><td>2.2%</td></tr>
+<tr><td>150 Years</td><td><span class="freq-bar" style="width:2px"></span></td><td>1.2%</td></tr>
+</table></details>
+<details class='section'><summary>E__L_WmK &nbsp;<small>(12 top values shown)</small></summary>
+<table><tr><th>Value</th><th>Frequency</th><th>%</th></tr>
+<tr><td>n/r</td><td><span class="freq-bar" style="width:129px"></span></td><td>64.3%</td></tr>
+<tr><td>0.032</td><td><span class="freq-bar" style="width:7px"></span></td><td>3.6%</td></tr>
+<tr><td>0.035</td><td><span class="freq-bar" style="width:5px"></span></td><td>2.5%</td></tr>
+<tr><td>0.034</td><td><span class="freq-bar" style="width:5px"></span></td><td>2.4%</td></tr>
+<tr><td>0.037</td><td><span class="freq-bar" style="width:5px"></span></td><td>2.3%</td></tr>
+<tr><td>0.033</td><td><span class="freq-bar" style="width:4px"></span></td><td>2.2%</td></tr>
+<tr><td>0.21</td><td><span class="freq-bar" style="width:4px"></span></td><td>2.0%</td></tr>
+<tr><td>0.25</td><td><span class="freq-bar" style="width:4px"></span></td><td>1.8%</td></tr>
+<tr><td>0.022</td><td><span class="freq-bar" style="width:3px"></span></td><td>1.7%</td></tr>
+<tr><td>0.16</td><td><span class="freq-bar" style="width:3px"></span></td><td>1.4%</td></tr>
+<tr><td>0.031</td><td><span class="freq-bar" style="width:3px"></span></td><td>1.3%</td></tr>
+<tr><td>0.036</td><td><span class="freq-bar" style="width:3px"></span></td><td>1.3%</td></tr>
+</table></details>
+<details class='section'><summary>E__EPD_ConvFactor &nbsp;<small>(11 top values shown)</small></summary>
+<table><tr><th>Value</th><th>Frequency</th><th>%</th></tr>
+<tr><td>n/r</td><td><span class="freq-bar" style="width:184px"></span></td><td>92.1%</td></tr>
+<tr><td>N</td><td><span class="freq-bar" style="width:12px"></span></td><td>6.2%</td></tr>
+<tr><td>Y</td><td><span class="freq-bar" style="width:2px"></span></td><td>1.0%</td></tr>
+<tr><td>1</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>1.2</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>0.8</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>0.004940000000000001</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>0.00695</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>Floor Resin</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>Hilti</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>Space Bar</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+</table></details>
+<details class='section'><summary>G__GWP_Metric &nbsp;<small>(7 top values shown)</small></summary>
+<table><tr><th>Value</th><th>Frequency</th><th>%</th></tr>
+<tr><td>GWP-T</td><td><span class="freq-bar" style="width:199px"></span></td><td>99.6%</td></tr>
+<tr><td>Ceiling Tile</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>Blockwork</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>Floor Resin</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>Hilti</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>Space Bar</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>GWP-T (kgCO2e /FU)</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+</table></details>
+<details class='section'><summary>G__GWP_FU &nbsp;<small>(11 top values shown)</small></summary>
+<table><tr><th>Value</th><th>Frequency</th><th>%</th></tr>
+<tr><td>m3</td><td><span class="freq-bar" style="width:101px"></span></td><td>50.7%</td></tr>
+<tr><td>m2</td><td><span class="freq-bar" style="width:51px"></span></td><td>25.3%</td></tr>
+<tr><td>ton</td><td><span class="freq-bar" style="width:20px"></span></td><td>10.0%</td></tr>
+<tr><td>kg</td><td><span class="freq-bar" style="width:15px"></span></td><td>7.7%</td></tr>
+<tr><td>m2_R1</td><td><span class="freq-bar" style="width:7px"></span></td><td>3.4%</td></tr>
+<tr><td>m</td><td><span class="freq-bar" style="width:4px"></span></td><td>1.8%</td></tr>
+<tr><td>unit</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.5%</td></tr>
+<tr><td>1.5 pcs/m²</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.5%</td></tr>
+<tr><td>Floor Resin</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>Hilti</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>Space Bar</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+</table></details>
+<details class='section'><summary>G__GWP_B1 &nbsp;<small>(9 top values shown)</small></summary>
+<table><tr><th>Value</th><th>Frequency</th><th>%</th></tr>
+<tr><td>mnd</td><td><span class="freq-bar" style="width:160px"></span></td><td>79.8%</td></tr>
+<tr><td>0</td><td><span class="freq-bar" style="width:39px"></span></td><td>19.4%</td></tr>
+<tr><td>ND</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.3%</td></tr>
+<tr><td>-65.9</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>-22.2</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>-222</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>Floor Resin</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>Hilti</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>Space Bar</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+</table></details>
+<details class='section'><summary>G__GWP_B2 &nbsp;<small>(12 top values shown)</small></summary>
+<table><tr><th>Value</th><th>Frequency</th><th>%</th></tr>
+<tr><td>mnd</td><td><span class="freq-bar" style="width:160px"></span></td><td>79.9%</td></tr>
+<tr><td>0</td><td><span class="freq-bar" style="width:32px"></span></td><td>16.0%</td></tr>
+<tr><td>0.0118</td><td><span class="freq-bar" style="width:3px"></span></td><td>1.5%</td></tr>
+<tr><td>0.0451</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.5%</td></tr>
+<tr><td>0.0463</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.4%</td></tr>
+<tr><td>ND</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.3%</td></tr>
+<tr><td>0.0132</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.2%</td></tr>
+<tr><td>0.289</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>0.0127</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>0.126</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>0.684</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>0.0122</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+</table></details>
+<details class='section'><summary>G__GWP_B3 &nbsp;<small>(7 top values shown)</small></summary>
+<table><tr><th>Value</th><th>Frequency</th><th>%</th></tr>
+<tr><td>mnd</td><td><span class="freq-bar" style="width:160px"></span></td><td>80.1%</td></tr>
+<tr><td>0</td><td><span class="freq-bar" style="width:39px"></span></td><td>19.4%</td></tr>
+<tr><td>MNR</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.3%</td></tr>
+<tr><td>ND</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>Floor Resin</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>Hilti</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>Space Bar</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+</table></details>
+<details class='section'><summary>G__GWP_B4 &nbsp;<small>(7 top values shown)</small></summary>
+<table><tr><th>Value</th><th>Frequency</th><th>%</th></tr>
+<tr><td>mnd</td><td><span class="freq-bar" style="width:160px"></span></td><td>80.1%</td></tr>
+<tr><td>0</td><td><span class="freq-bar" style="width:39px"></span></td><td>19.4%</td></tr>
+<tr><td>MNR</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.3%</td></tr>
+<tr><td>ND</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>Floor Resin</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>Hilti</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>Space Bar</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+</table></details>
+<details class='section'><summary>G__GWP_B5 &nbsp;<small>(7 top values shown)</small></summary>
+<table><tr><th>Value</th><th>Frequency</th><th>%</th></tr>
+<tr><td>mnd</td><td><span class="freq-bar" style="width:160px"></span></td><td>80.1%</td></tr>
+<tr><td>0</td><td><span class="freq-bar" style="width:39px"></span></td><td>19.4%</td></tr>
+<tr><td>MNR</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.3%</td></tr>
+<tr><td>ND</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>Floor Resin</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>Hilti</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>Space Bar</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+</table></details>
+<details class='section'><summary>G__GWP_B6 &nbsp;<small>(6 top values shown)</small></summary>
+<table><tr><th>Value</th><th>Frequency</th><th>%</th></tr>
+<tr><td>mnd</td><td><span class="freq-bar" style="width:159px"></span></td><td>79.6%</td></tr>
+<tr><td>0</td><td><span class="freq-bar" style="width:40px"></span></td><td>19.8%</td></tr>
+<tr><td>ND</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.4%</td></tr>
+<tr><td>Floor Resin</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>Hilti</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>Space Bar</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+</table></details>
+<details class='section'><summary>G__GWP_B7 &nbsp;<small>(6 top values shown)</small></summary>
+<table><tr><th>Value</th><th>Frequency</th><th>%</th></tr>
+<tr><td>mnd</td><td><span class="freq-bar" style="width:160px"></span></td><td>80.0%</td></tr>
+<tr><td>0</td><td><span class="freq-bar" style="width:39px"></span></td><td>19.4%</td></tr>
+<tr><td>ND</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.4%</td></tr>
+<tr><td>Floor Resin</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>Hilti</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+<tr><td>Space Bar</td><td><span class="freq-bar" style="width:0px"></span></td><td>0.1%</td></tr>
+</table></details>
+<details class='section'><summary>V__LEED_MR_RawMat &nbsp;<small>(4 top values shown)</small></summary>
+<table><tr><th>Value</th><th>Frequency</th><th>%</th></tr>
+<tr><td>https://www.ipmitalia.it/wp-content/uploads/2022/03/Leed_IPM-GeoDrena.pdf</td><td><span class="freq-bar" style="width:111px"></span></td><td>55.6%</td></tr>
+<tr><td>https://www.ipmitalia.it/wp-content/uploads/2022/03/Leed_IPM-Aquaperm.pdf</td><td><span class="freq-bar" style="width:67px"></span></td><td>33.3%</td></tr>
+<tr><td>v cert no:BS-056/24 (rev.22)</td><td><span class="freq-bar" style="width:11px"></span></td><td>5.6%</td></tr>
+<tr><td>https://www.isover.it/Scaricare-Documentazione/dichiarazioni-e-certificati/leed-dichiarazione-contenuto-riciclato-climcover-roll-alu1.pdf</td><td><span class="freq-bar" style="width:11px"></span></td><td>5.6%</td></tr>
+</table></details>
+<details class='section'><summary>V__VOC_Body &nbsp;<small>(12 top values shown)</small></summary>
+<table><tr><th>Value</th><th>Frequency</th><th>%</th></tr>
+<tr><td>n/r</td><td><span class="freq-bar" style="width:122px"></span></td><td>61.0%</td></tr>
+<tr><td>Eurofin</td><td><span class="freq-bar" style="width:44px"></span></td><td>21.9%</td></tr>
+<tr><td>Eurofins</td><td><span class="freq-bar" style="width:11px"></span></td><td>5.7%</td></tr>
+<tr><td>RAL gGmbH</td><td><span class="freq-bar" style="width:7px"></span></td><td>3.3%</td></tr>
+<tr><td>UL Solutions</td><td><span class="freq-bar" style="width:4px"></span></td><td>1.9%</td></tr>
+<tr><td>GEV</td><td><span class="freq-bar" style="width:2px"></span></td><td>1.2%</td></tr>
+<tr><td>EC1Plus</td><td><span class="freq-bar" style="width:2px"></span></td><td>1.0%</td></tr>
+<tr><td>Cipa Gres S.p.A.</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.7%</td></tr>
+<tr><td>Mapei</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.5%</td></tr>
+<tr><td>Building Information Foundation RTS sr</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.5%</td></tr>
+<tr><td>eco-INSTITUT Germany GmbH</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.3%</td></tr>
+<tr><td>Indoor Air Comfort Gold</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.3%</td></tr>
+</table></details>
+<details class='section'><summary>V__VOC_Cert &nbsp;<small>(12 top values shown)</small></summary>
+<table><tr><th>Value</th><th>Frequency</th><th>%</th></tr>
+<tr><td>n/r</td><td><span class="freq-bar" style="width:122px"></span></td><td>61.0%</td></tr>
+<tr><td>Indoor Air Comfort Gold</td><td><span class="freq-bar" style="width:45px"></span></td><td>22.3%</td></tr>
+<tr><td>LEED v4 / v4.1 BETA Low-Emitting Materials Attestation</td><td><span class="freq-bar" style="width:9px"></span></td><td>4.5%</td></tr>
+<tr><td>Blue Angel (DE-UZ 132)</td><td><span class="freq-bar" style="width:7px"></span></td><td>3.3%</td></tr>
+<tr><td>GREENGUARD GOLD</td><td><span class="freq-bar" style="width:4px"></span></td><td>1.9%</td></tr>
+<tr><td>EMICODE EC1 Plus</td><td><span class="freq-bar" style="width:2px"></span></td><td>1.2%</td></tr>
+<tr><td>EC1Plus</td><td><span class="freq-bar" style="width:2px"></span></td><td>1.0%</td></tr>
+<tr><td>VOC Self-Declaration</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.7%</td></tr>
+<tr><td>LEED v4.1 BETA Low-Emitting Materials Attestation</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.6%</td></tr>
+<tr><td>M1 Emission Classification</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.5%</td></tr>
+<tr><td>VOC Content Declaration</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.5%</td></tr>
+<tr><td>French VOC Attestation (A+)</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.3%</td></tr>
+</table></details>
+<details class='section'><summary>V__Exp_Date &nbsp;<small>(12 top values shown)</small></summary>
+<table><tr><th>Value</th><th>Frequency</th><th>%</th></tr>
+<tr><td>n/r</td><td><span class="freq-bar" style="width:146px"></span></td><td>72.8%</td></tr>
+<tr><td>2027-02-28 00:00:00</td><td><span class="freq-bar" style="width:9px"></span></td><td>4.6%</td></tr>
+<tr><td>2028-09-25 00:00:00</td><td><span class="freq-bar" style="width:7px"></span></td><td>3.7%</td></tr>
+<tr><td>2026-12-16 00:00:00</td><td><span class="freq-bar" style="width:6px"></span></td><td>3.0%</td></tr>
+<tr><td>2030-06-12 00:00:00</td><td><span class="freq-bar" style="width:6px"></span></td><td>2.8%</td></tr>
+<tr><td>2026-07-17 00:00:00</td><td><span class="freq-bar" style="width:5px"></span></td><td>2.3%</td></tr>
+<tr><td>2029-08-14 00:00:00</td><td><span class="freq-bar" style="width:3px"></span></td><td>1.6%</td></tr>
+<tr><td>2029-12-12 00:00:00</td><td><span class="freq-bar" style="width:3px"></span></td><td>1.5%</td></tr>
+<tr><td>2030-09-08 00:00:00</td><td><span class="freq-bar" style="width:3px"></span></td><td>1.5%</td></tr>
+<tr><td>2027-06-23 00:00:00</td><td><span class="freq-bar" style="width:3px"></span></td><td>1.4%</td></tr>
+<tr><td>2029-09-27 00:00:00</td><td><span class="freq-bar" style="width:3px"></span></td><td>1.3%</td></tr>
+<tr><td>2026-12-02 00:00:00</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.6%</td></tr>
+</table></details>
+<details class='section'><summary>V__Application_Scope &nbsp;<small>(5 top values shown)</small></summary>
+<table><tr><th>Value</th><th>Frequency</th><th>%</th></tr>
+<tr><td>n/r</td><td><span class="freq-bar" style="width:125px"></span></td><td>62.4%</td></tr>
+<tr><td>Wall</td><td><span class="freq-bar" style="width:60px"></span></td><td>30.2%</td></tr>
+<tr><td>Floor</td><td><span class="freq-bar" style="width:7px"></span></td><td>3.6%</td></tr>
+<tr><td>Ceiling</td><td><span class="freq-bar" style="width:5px"></span></td><td>2.3%</td></tr>
+<tr><td>Othar</td><td><span class="freq-bar" style="width:3px"></span></td><td>1.5%</td></tr>
+</table></details>
+<details class='section'><summary>V__Product_Category &nbsp;<small>(5 top values shown)</small></summary>
+<table><tr><th>Value</th><th>Frequency</th><th>%</th></tr>
+<tr><td>n/r</td><td><span class="freq-bar" style="width:126px"></span></td><td>62.8%</td></tr>
+<tr><td>Ceilings/Walls/Insulation</td><td><span class="freq-bar" style="width:65px"></span></td><td>32.7%</td></tr>
+<tr><td>Flooring</td><td><span class="freq-bar" style="width:6px"></span></td><td>2.8%</td></tr>
+<tr><td>Adhesives &amp; Sealants</td><td><span class="freq-bar" style="width:2px"></span></td><td>1.2%</td></tr>
+<tr><td>Paints &amp; Coatings</td><td><span class="freq-bar" style="width:1px"></span></td><td>0.5%</td></tr>
+</table></details>
+<details class='section'><summary>V__CAM__Status &nbsp;<small>(2 top values shown)</small></summary>
+<table><tr><th>Value</th><th>Frequency</th><th>%</th></tr>
+<tr><td>Supported by Evidence</td><td><span class="freq-bar" style="width:175px"></span></td><td>87.3%</td></tr>
+<tr><td>Not Verified</td><td><span class="freq-bar" style="width:25px"></span></td><td>12.7%</td></tr>
+</table></details>
+<details class='section'><summary>V__CAM__Evidence &nbsp;<small>(1 top values shown)</small></summary>
+<table><tr><th>Value</th><th>Frequency</th><th>%</th></tr>
+<tr><td>VOC; ICMQ </td><td><span class="freq-bar" style="width:200px"></span></td><td>100.0%</td></tr>
+</table></details>
+<h2>Cross-Field Coverage</h2>
+<table><tr><th>Metric</th><th>Coverage</th><th>Count</th><th>Notes</th></tr>
+<tr class='cross-good'><td>Has image URL</td><td><span class="bar-wrap"><span class="bar-fill bar-good" style="width:116px"></span></span> <span class="good">96.6%</span></td><td>1,601 / 1,657</td><td class='opt'></td></tr>
+<tr class='cross-warn'><td>Has EPD (any number)</td><td><span class="bar-wrap"><span class="bar-fill bar-warn" style="width:102px"></span></span> <span class="warn">85.3%</span></td><td>1,413 / 1,657</td><td class='opt'></td></tr>
+<tr class='cross-good'><td>Has EPD URL</td><td><span class="bar-wrap"><span class="bar-fill bar-good" style="width:114px"></span></span> <span class="good">94.9%</span></td><td>1,572 / 1,657</td><td class='opt'></td></tr>
+<tr class='cross-good'><td>Has GWP A1-A3</td><td><span class="bar-wrap"><span class="bar-fill bar-good" style="width:114px"></span></span> <span class="good">94.7%</span></td><td>1,570 / 1,657</td><td class='opt'></td></tr>
+<tr class='cross-good'><td>Has full GWP (A1-A3+A4+A5+C4+D)</td><td><span class="bar-wrap"><span class="bar-fill bar-good" style="width:113px"></span></span> <span class="good">93.8%</span></td><td>1,554 / 1,657</td><td class='opt'></td></tr>
+<tr class='cross-warn'><td>Has lambda (conductivity)</td><td><span class="bar-wrap"><span class="bar-fill bar-warn" style="width:105px"></span></span> <span class="warn">87.1%</span></td><td>1,444 / 1,657</td><td class='opt'></td></tr>
+<tr class='cross-warn'><td>Has density (kg/m³)</td><td><span class="bar-wrap"><span class="bar-fill bar-warn" style="width:78px"></span></span> <span class="warn">64.8%</span></td><td>1,073 / 1,657</td><td class='opt'></td></tr>
+<tr class='cross-bad'><td>Has tech-sheet PDF</td><td><span class="bar-wrap"><span class="bar-fill bar-bad" style="width:59px"></span></span> <span class="bad">49.5%</span></td><td>820 / 1,657</td><td class='opt'></td></tr>
+<tr class='cross-warn'><td>Has VOC data</td><td><span class="bar-wrap"><span class="bar-fill bar-warn" style="width:75px"></span></span> <span class="warn">62.8%</span></td><td>1,041 / 1,657</td><td class='opt'></td></tr>
+<tr class='cross-warn'><td>Has VOC cert URL</td><td><span class="bar-wrap"><span class="bar-fill bar-warn" style="width:75px"></span></span> <span class="warn">62.5%</span></td><td>1,036 / 1,657</td><td class='opt'></td></tr>
+<tr class='cross-bad'><td>Has CAM compliance</td><td><span class="bar-wrap"><span class="bar-fill bar-bad" style="width:7px"></span></span> <span class="bad">6.2%</span></td><td>102 / 1,657</td><td class='opt'></td></tr>
+<tr class='cross-bad'><td>Has product URL</td><td><span class="bar-wrap"><span class="bar-fill bar-bad" style="width:72px"></span></span> <span class="bad">60.0%</span></td><td>994 / 1,657</td><td class='opt'></td></tr>
+<tr class='cross-good'><td>Has manufacturer country</td><td><span class="bar-wrap"><span class="bar-fill bar-good" style="width:114px"></span></span> <span class="good">94.8%</span></td><td>1,571 / 1,657</td><td class='opt'></td></tr>
+<tr class='cross-warn'><td>EPD + image + GWP (complete card)</td><td><span class="bar-wrap"><span class="bar-fill bar-warn" style="width:101px"></span></span> <span class="warn">83.9%</span></td><td>1,390 / 1,657</td><td class='opt'></td></tr>
+</table>
+</body></html>

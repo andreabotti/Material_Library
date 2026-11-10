@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>c3022a34-cd83-4c1f-ac0a-e546cb9ad40b</common:UUID>
+      <name>
+        <baseName xml:lang="en">Electricity grid mix, technology mix, consumption mix at consumer, Low Voltage</baseName>
+      </name>
+      <common:synonyms>Rete mix elettrico, mix tecnologico, consumo al consumatore, Basso Voltaggio</common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">Energy carriers and technologies</common:class>
+          <common:class level="1">Electricity</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment>Dataset developed according to Arcadia project Methodology (Report: “Metodologia per gli studi di filiera della Banca Dati italiana LCA”). LCA study of electricity consumption from Italian electric mix (Report: “Filiera di produzione del mix elettrico italiano”). &#13;
+&#13;
+The dataset refers to the consumption of 1 kWh of electricity from electrical mix in low voltage, in Italy, and it is representative of the processing technologies commonly used for this purpose.&#13;
+The dataset consists of 2 processes: &#13;
+1) Electricity grid mix, technology mix, consumption mix at consumer, High Voltage (percentage contribution to the whole dataset: 92%).&#13;
+2) Electricity production, low voltage, photovoltaic, IT (percentage contribution to the whole dataset: 8%).&#13;
+</common:generalComment>
+      <referenceToExternalDocumentation type="source data set" refObjectId="09603cd8-d81d-4b8b-8a17-a6856b6f164b" version="01.00.000" uri="../sources/09603cd8-d81d-4b8b-8a17-a6856b6f164b.xml">
+        <common:shortDescription>Gabriella Fiorentino, Simona Scalbi, Antonietta Cerbone, Giuliana Ansanelli, Marco Giammartini, Amalia Zucaro. Filiera di produzione del mix elettrico italiano.&#13;
+&#13;
+Background datasets from EcoInvent database cut-off (v.3.7.1) were used for the LCA study. &#13;
+</common:shortDescription>
+      </referenceToExternalDocumentation>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2019</common:referenceYear>
+      <common:dataSetValidUntil>2026</common:dataSetValidUntil>
+      <common:timeRepresentativenessDescription>This dataset has been considered valid until 2026, since no main changes have occurred in the electricity mix in Italy in the investigated year.</common:timeRepresentativenessDescription>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT"/>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>The dataset (1 kWh of electricity from electrical mix in low voltage, in Italy) refers to a system that includes high voltage electricity consumption multiplied by high to medium and medium to low grid losses, and low voltage electricity production (from photovoltaic mix) that is multiplied by low voltage losses only. The primary data come from Terna and ARERA.&#13;
+&#13;
+For the LCA study, background datasets from EcoInvent database 3.7.1 cut-off were used. &#13;
+</technologyDescriptionAndIncludedProcesses>
+      <technologicalApplicability>Electricity from Italian electricity mix sold to the Italian electric grid.</technologicalApplicability>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <deviationsFromLCIMethodPrinciple>None</deviationsFromLCIMethodPrinciple>
+      <LCIMethodApproaches>Not applicable</LCIMethodApproaches>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <dataCutOffAndCompletenessPrinciples>Production of equipment and infrastructures is not included, except for the background system</dataCutOffAndCompletenessPrinciples>
+      <dataCollectionPeriod>2019</dataCollectionPeriod>
+      <referenceToDataSource type="source data set" refObjectId="e1929cf8-95f1-44ce-827f-52b232a122c2" version="01.00.000" uri="../sources/e1929cf8-95f1-44ce-827f-52b232a122c2.xml">
+        <common:shortDescription>20231031165958_Filiera di produzione del mix elettrico italiano.pdf</common:shortDescription>
+      </referenceToDataSource>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>No statement</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Independent external review">
+        <common:reviewDetails>The review was performed in compliance with Arcadia Metodology: “Metodologia per gli studi di filiera della Banca Dati italiana LCA” and ISO 14040-44 norms. The dataset has been assessed limited to the foreground data collected during the supply chain studies.&#13;
+Each dataset has been evaluated based on the following 4 criteria:&#13;
+1. Technological Representativeness; 2. Time Representativeness; 3. Geographical Representativeness; 4. Reliability (A)&#13;
+In this contest the Reliability is very good.&#13;
+</common:reviewDetails>
+        <common:referenceToNameOfReviewerAndInstitution type="contact data set" refObjectId="012b1158-7bb0-420d-bfe6-c4eace43a76c" version="01.00.000" uri="../sources/012b1158-7bb0-420d-bfe6-c4eace43a76c.xml">
+          <common:shortDescription>Ecoinnovazione</common:shortDescription>
+        </common:referenceToNameOfReviewerAndInstitution>
+        <common:otherReviewDetails>The study was judged by the reviewer as compliant with both ISO 14040-44 and Arcadia methodology.</common:otherReviewDetails>
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Completeness" value="Good"/>
+          <common:dataQualityIndicator name="Precision" value="Not applicable"/>
+          <common:dataQualityIndicator name="Methodological appropriateness and consistency" value="Not applicable"/>
+          <common:dataQualityIndicator name="Overall quality" value="Not applicable"/>
+        </common:dataQualityIndicators>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="4cbee49d-b8e9-4013-a5ad-8daaba12fc98" uri="../sources/4cbee49d-b8e9-4013-a5ad-8daaba12fc98.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="fe184600-7bc6-431c-a42e-ef655c19bec2" uri="../sources/fe184600-7bc6-431c-a42e-ef655c19bec2.xml">
+          <common:shortDescription xml:lang="en">ISO 14044</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Not defined</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="42b488d8-8857-416b-a41b-9ed8b9c9e890" uri="../sources/42b488d8-8857-416b-a41b-9ed8b9c9e890.xml">
+        <common:shortDescription xml:lang="en">Arcadia – PON Governance e Capacità istituzionale 2014-2020</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Arcadia – PON Governance e Capacità istituzionale 2014-2020</common:project>
+    </common:commissionerAndGoal>
+    <dataGenerator>
+      <common:referenceToPersonOrEntityGeneratingTheDataSet refObjectId="760990aa-57b7-4437-b549-5d7bb7f9f11d" type="contact data set" uri="../sources/760990aa-57b7-4437-b549-5d7bb7f9f11d.xml" version="01.00.000">
+        <common:shortDescription>ENEA</common:shortDescription>
+      </common:referenceToPersonOrEntityGeneratingTheDataSet>
+    </dataGenerator>
+    <dataEntryBy>
+      <common:timeStamp>2023-10-26T12:03:26.527+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="6404d559-7538-46ab-81b7-e2646613f88c" uri="../sources/6404d559-7538-46ab-81b7-e2646613f88c.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2022-02-07T16:54:11.47Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/c3022a34-cd83-4c1f-ac0a-e546cb9ad40b.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="25a653f9-fdf1-46d2-8265-1cb6f8b5dd6f" type="contact data set" uri="../contacts/25a653f9-fdf1-46d2-8265-1cb6f8b5dd6f.xml" version="01.00.000">
+        <common:shortDescription>ENEA-ARCADIA</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+      <common:accessRestrictions>Type of license: Open Database Licence (ODbL)</common:accessRestrictions>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="29d30381-118a-4296-8eb7-56534634ad82" uri="../flows/29d30381-118a-4296-8eb7-56534634ad82.xml">
+        <common:shortDescription xml:lang="en">Electricity grid mix, technology mix, consumption mix at consumer, Low Voltage</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.6000000E+0</meanAmount>
+      <resultingAmount>3.6000000E+0</resultingAmount>
+      <generalComment>This dataset includes the production of electricity,  both high voltage and low voltage (photovoltaic), as well as the consumption of high voltage electricity, in Italy, including the imports from other countries, the transmission network and the losses from high to medium and from medium to low voltage
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="63ebf455-a544-4661-bf94-3c75fdee7d34" uri="../flows/63ebf455-a544-4661-bf94-3c75fdee7d34.xml">
+        <common:shortDescription xml:lang="en">Electricity grid mix, technology mix, consumption mix at consumer, High Voltage</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.7756800E+0</meanAmount>
+      <resultingAmount>3.7756800E+0</resultingAmount>
+      <generalComment>This dataset includes the production of high voltage electricity in Italy as well as imports from other countries, the transmission network and the transmission losses
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="c25757b6-a5f9-4530-82e8-2d8f55ade118" uri="../flows/c25757b6-a5f9-4530-82e8-2d8f55ade118.xml">
+        <common:shortDescription xml:lang="en">Electricity grid mix, photovoltaic technology mix, production mix at plant, Low Voltage</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.1737600E-1</meanAmount>
+      <resultingAmount>3.1737600E-1</resultingAmount>
+      <generalComment>This dataset corresponds to the photovoltaic production of low voltage electricity in Italy, including two different classes (Electricity production, photovoltaic IT, 3 kWp and 570 kWp)
+</generalComment>
+    </exchange>
+  </exchanges>
+</processDataSet>

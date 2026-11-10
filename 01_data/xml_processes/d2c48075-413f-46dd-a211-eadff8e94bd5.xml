@@ -1,0 +1,621 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>d2c48075-413f-46dd-a211-eadff8e94bd5</common:UUID>
+      <name>
+        <baseName xml:lang="en">Poplar plywood panel, at production</baseName>
+      </name>
+      <common:synonyms>Pannello in compensato di tutto pioppo, alla produzione </common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">Materials production</common:class>
+          <common:class level="1">Wood</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment>Dataset developed according to Arcadia project Methodology (Report: “Metodologia per gli studi di filiera della Banca Dati italiana LCA”). Production chain study of poplar plywood panel production (Report: “STUDIO DI FILIERA DEI PANNELLI IN COMPENSATO DI TUTTO PIOPPO”). The dataset refers to the production of an average poplar plywood panel, including the use of mechanical means for felling, and is representative of the Italian average processing technologies commonly used for the production of poplar plywood panels.</common:generalComment>
+      <referenceToExternalDocumentation type="source data set" refObjectId="b592b91e-0dec-451d-a0fb-1958a1c88463" version="01.00.000" uri="../sources/b592b91e-0dec-451d-a0fb-1958a1c88463.xml">
+        <common:shortDescription>Fantin V., Rinaldi C., Frisone F., Cecchini A., Balducci F., Carzaniga A., Missaglia M., 2022. STUDIO DI FILIERA DEI PANNELLI IN COMPENSATO DI TUTTO PIOPPO. Internal report of ARCADIA Project. Background datasets from Ecoinvent database cut-off (v.3.7.1) were used for the LCA study.</common:shortDescription>
+      </referenceToExternalDocumentation>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2021</common:referenceYear>
+      <common:dataSetValidUntil>2026</common:dataSetValidUntil>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT">
+        <descriptionOfRestrictions>Primary data collected in Lombardia. Dataset representative of Italian production of poplar plywood panels.</descriptionOfRestrictions>
+      </locationOfOperationSupplyOrProduction>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>Poplar plywood panels, obtained from poplar virgin wood, transported to the manufacturing company. The production process begins with the cutting and debarking of the logs. The logs are then peeled using a special lathe, which produces very thin layers of wood. The thin layers of wood are cut, dried and then glued with resins and hot-pressed into a panel. The final panel is cut to size, finished and packed. Production of equipment and infrastructures is not included, except for the background system. Primary data (supply chain Lombardia) and secondary data (literature and/or sector data) representative of Italian supply chain for the geographical characteristics and technologies used (machineries, equipment, etc) were collected. Inventory data have been collected as physical quantities of materials used in the different processes. The benefits from the production and use of energy from incineration and landfill were excluded, as well as those deriving from the use of secondary materials produced from recycling of waste materials (i.e. plastic and cardboard). Background data were modelled according to Ecoinvent v. 3.7.1.</technologyDescriptionAndIncludedProcesses>
+      <technologicalApplicability>The product can be used as a component of household and school/office furniture as well as for recreational vehicles (caravans, campers).</technologicalApplicability>
+      <referenceToTechnologyPictogramme type="source data set" refObjectId="0eb4b2c1-1a3d-457d-aa19-a0f2a7f5b902" version="01.00.000" uri="../sources/0eb4b2c1-1a3d-457d-aa19-a0f2a7f5b902.xml">
+        <common:shortDescription>20230918160136_Poplar plywood.png</common:shortDescription>
+      </referenceToTechnologyPictogramme>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Allocation - mass</LCIMethodApproaches>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <dataCutOffAndCompletenessPrinciples>Production of equipment and infrastructure are not included, except for the background system.</dataCutOffAndCompletenessPrinciples>
+      <referenceToDataSource type="source data set" refObjectId="da021319-e283-486e-b1d5-f25788b24f87" version="01.00.000" uri="../sources/da021319-e283-486e-b1d5-f25788b24f87.xml">
+        <common:shortDescription>20230918160136_Pannelli compensato di pioppo-finale-pubblico-accessibile.pdf</common:shortDescription>
+      </referenceToDataSource>
+      <dataCollectionPeriod>2021</dataCollectionPeriod>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>No statement</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Independent internal review">
+        <common:reviewDetails>The review was performed in compliance with Arcadia Methodology “Metodologia per gli studi di filiera della Banca Dati italiana LCA” and ISO 14040-44 norms. The dataset has been assessed limited to the foreground data collected during the supply chain studies.&#13;
+Each dataset has been evaluated on the basis of the following 4 criteria:&#13;
+1. Temporal Representativeness&#13;
+2. Geographic Representativeness&#13;
+3. Technological Representativeness&#13;
+4. Reliability. &#13;
+In this context the Reliability is good.</common:reviewDetails>
+        <common:referenceToNameOfReviewerAndInstitution type="contact data set" refObjectId="d6974b8a-54ee-40ae-8119-ecabd41df91b" version="01.00.000" uri="../sources/d6974b8a-54ee-40ae-8119-ecabd41df91b.xml">
+          <common:shortDescription>ENEA</common:shortDescription>
+        </common:referenceToNameOfReviewerAndInstitution>
+        <common:otherReviewDetails>The study was judged by the reviewer as compliant with both ISO 14040-44 and Arcadia methodology.</common:otherReviewDetails>
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Technological representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Completeness" value="Good"/>
+          <common:dataQualityIndicator name="Precision" value="Not applicable"/>
+          <common:dataQualityIndicator name="Methodological appropriateness and consistency" value="Not applicable"/>
+          <common:dataQualityIndicator name="Overall quality" value="Not applicable"/>
+        </common:dataQualityIndicators>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="e96530af-e334-477d-a1c8-2499be0afbff" uri="../sources/e96530af-e334-477d-a1c8-2499be0afbff.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="7ae3401d-98b2-4db8-89da-bfca76421dda" uri="../sources/7ae3401d-98b2-4db8-89da-bfca76421dda.xml">
+          <common:shortDescription xml:lang="en">ISO 14044</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Not defined</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="f8b27c8e-1fef-4d4f-bf1e-5b85ec3221d3" uri="../sources/f8b27c8e-1fef-4d4f-bf1e-5b85ec3221d3.xml">
+        <common:shortDescription xml:lang="en">Arcadia – PON Governance e Capacità istituzionale 2014-2020</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Arcadia – PON Governance e Capacità istituzionale 2014-2020</common:project>
+    </common:commissionerAndGoal>
+    <dataGenerator>
+      <common:referenceToPersonOrEntityGeneratingTheDataSet refObjectId="f1794305-2281-40b9-9781-b7ec5b67a5c4" type="contact data set" uri="../sources/f1794305-2281-40b9-9781-b7ec5b67a5c4.xml" version="01.00.000">
+        <common:shortDescription>ENEA</common:shortDescription>
+      </common:referenceToPersonOrEntityGeneratingTheDataSet>
+    </dataGenerator>
+    <dataEntryBy>
+      <common:timeStamp>2023-09-13T16:08:32.332+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="a97a0155-0234-4b87-b4ce-a45da52f2a40" uri="../sources/a97a0155-0234-4b87-b4ce-a45da52f2a40.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2021-07-08T15:26:16.210Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/d2c48075-413f-46dd-a211-eadff8e94bd5.xml</common:permanentDataSetURI>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+      <common:accessRestrictions>Free of charge for all users and uses</common:accessRestrictions>
+      <common:referenceToOwnershipOfDataSet refObjectId="508d5782-7f35-495a-8586-a4870153fc47" type="contact data set" uri="../contacts/508d5782-7f35-495a-8586-a4870153fc47.xml" version="01.00.000">
+        <common:shortDescription>ENEA - ARCADIA</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="ba29bc8b-e302-4850-9684-a16c35be2e3c" uri="../flows/ba29bc8b-e302-4850-9684-a16c35be2e3c.xml">
+        <common:shortDescription xml:lang="en">Poplar plywood panel, at production</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0000000E+0</meanAmount>
+      <resultingAmount>1.0000000E+0</resultingAmount>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="cb4c8e55-fc8d-4d86-8413-694dd0e797c2" uri="../flows/cb4c8e55-fc8d-4d86-8413-694dd0e797c2.xml">
+        <common:shortDescription xml:lang="en">Melamine formaldehyde resin {RER}| market for melamine formaldehyde resin | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.3900000E+1</meanAmount>
+      <resultingAmount>2.3900000E+1</resultingAmount>
+      <generalComment>Melamine resin for plywood production
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="28159afa-4a94-45a8-9ef2-efca29cd86b8" uri="../flows/28159afa-4a94-45a8-9ef2-efca29cd86b8.xml">
+        <common:shortDescription xml:lang="en">Urea formaldehyde resin {RER}| market for urea formaldehyde resin | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.4300000E+1</meanAmount>
+      <resultingAmount>5.4300000E+1</resultingAmount>
+      <generalComment>Urea formaldehyde resin for plywood production
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="3">
+      <referenceToFlowDataSet type="flow data set" refObjectId="538ce7eb-4de8-4682-b146-8d902efb7e1f" uri="../flows/538ce7eb-4de8-4682-b146-8d902efb7e1f.xml">
+        <common:shortDescription xml:lang="en">Tap water {RER}| market group for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.6400000E+1</meanAmount>
+      <resultingAmount>2.6400000E+1</resultingAmount>
+      <generalComment>Tap water for resins and for industrial boiler 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="4">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d4368f5c-60f8-4a8a-ad08-3bfd9bf5a61b" uri="../flows/d4368f5c-60f8-4a8a-ad08-3bfd9bf5a61b.xml">
+        <common:shortDescription xml:lang="en">Sawlog and veneer log, hardwood, measured as solid wood under bark {SE}| hardwood forestry, birch, sustainable forest management | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.1700000E+0</meanAmount>
+      <resultingAmount>2.1700000E+0</resultingAmount>
+      <generalComment>Poplar logs = 1,678 t. Average density of poplar logs = 775 kg/m3. 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="5">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08bf9fa3-6ba0-4564-82f4-2840cd3b3825" uri="../flows/08bf9fa3-6ba0-4564-82f4-2840cd3b3825.xml">
+        <common:shortDescription xml:lang="en">Hydrogen peroxide, without water, in 50% solution state {RER}| market for hydrogen peroxide, without water, in 50% solution state | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.6100000E-2</meanAmount>
+      <resultingAmount>3.6100000E-2</resultingAmount>
+      <generalComment>Hydrogen peroxide for plywood bleaching. The hydrogen peroxide content in the solution is  35% (from the safety data sheet of the product). The value  (0,1032 kg) must therefore be multiplied by 0,35 since the dataset refers to the production of 100% Hydrogen peroxide.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="6">
+      <referenceToFlowDataSet type="flow data set" refObjectId="30aabafa-5d02-4694-8cac-83af0313513a" uri="../flows/30aabafa-5d02-4694-8cac-83af0313513a.xml">
+        <common:shortDescription xml:lang="en">ammonium sulfate {RER}| market for ammonium sulfate | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.9000000E+0</meanAmount>
+      <resultingAmount>4.9000000E+0</resultingAmount>
+      <generalComment>Ammonium sulfate (additive for resins)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="7">
+      <referenceToFlowDataSet type="flow data set" refObjectId="e139d36f-bf76-4fd0-88cd-d4382620c625" uri="../flows/e139d36f-bf76-4fd0-88cd-d4382620c625.xml">
+        <common:shortDescription xml:lang="en">Carbon black {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.5000000E+0</meanAmount>
+      <resultingAmount>1.5000000E+0</resultingAmount>
+      <generalComment>Black paint for plywood painting
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="8">
+      <referenceToFlowDataSet type="flow data set" refObjectId="dea54f33-3a47-4074-b079-ff6c1b02e7d5" uri="../flows/dea54f33-3a47-4074-b079-ff6c1b02e7d5.xml">
+        <common:shortDescription xml:lang="en">wheat flour {RoW}| market for wheat flour | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.2500000E+1</meanAmount>
+      <resultingAmount>2.2500000E+1</resultingAmount>
+      <generalComment>Wheat flour (additive for resins)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="9">
+      <referenceToFlowDataSet type="flow data set" refObjectId="2ee3e0b5-d05d-4015-8351-f1cae4d46086" uri="../flows/2ee3e0b5-d05d-4015-8351-f1cae4d46086.xml">
+        <common:shortDescription xml:lang="en">Polyethylene, high density, granulate {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.1300000E-2</meanAmount>
+      <resultingAmount>6.1300000E-2</resultingAmount>
+      <generalComment>Plastic tank for storage of resins, wheat flour, black paint
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="10">
+      <referenceToFlowDataSet type="flow data set" refObjectId="9e70f1dc-3b89-411d-b83e-54e42142ac43" uri="../flows/9e70f1dc-3b89-411d-b83e-54e42142ac43.xml">
+        <common:shortDescription xml:lang="en">Chemical, organic {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.7800000E-2</meanAmount>
+      <resultingAmount>2.7800000E-2</resultingAmount>
+      <generalComment>Pigment for resins
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="11">
+      <referenceToFlowDataSet type="flow data set" refObjectId="f27af88b-2f3c-44e8-8313-c8706b45112d" uri="../flows/f27af88b-2f3c-44e8-8313-c8706b45112d.xml">
+        <common:shortDescription xml:lang="en">Joist, engineered wood {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.0556000E+0</meanAmount>
+      <resultingAmount>1.0556000E+0</resultingAmount>
+      <generalComment>Wood joists for finished plywood panel
+ packaging
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="12">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4a9e95d7-33df-49dd-a80a-21878fb0bced" uri="../flows/4a9e95d7-33df-49dd-a80a-21878fb0bced.xml">
+        <common:shortDescription xml:lang="en">Polyethylene terephthalate, granulate, amorphous, recycled {Europe without Switzerland}| market for polyethylene terephthalate, granulate, amorphous, recycled | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>8.3700000E-2</meanAmount>
+      <resultingAmount>8.3700000E-2</resultingAmount>
+      <generalComment>Plastic strap for finished plywood panel packaging
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="13">
+      <referenceToFlowDataSet type="flow data set" refObjectId="7177d4df-0e76-4e13-b70b-d088a75adbe8" uri="../flows/7177d4df-0e76-4e13-b70b-d088a75adbe8.xml">
+        <common:shortDescription xml:lang="en">Corrugated board box {RER}| market for corrugated board box | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.8190000E-1</meanAmount>
+      <resultingAmount>3.8190000E-1</resultingAmount>
+      <generalComment>Cardboard for finished plywood panel packaging
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="14">
+      <referenceToFlowDataSet type="flow data set" refObjectId="b8073e02-5ab9-41e8-be19-c8463522b9a6" uri="../flows/b8073e02-5ab9-41e8-be19-c8463522b9a6.xml">
+        <common:shortDescription xml:lang="en">Polyethylene, low density, granulate {RER}| production | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.7600000E-2</meanAmount>
+      <resultingAmount>2.7600000E-2</resultingAmount>
+      <generalComment>Plastic film for finished plywood panel packaging
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="15">
+      <referenceToFlowDataSet type="flow data set" refObjectId="52ca26ce-456f-4c20-83e6-6c7ef7f5f03f" uri="../flows/52ca26ce-456f-4c20-83e6-6c7ef7f5f03f.xml">
+        <common:shortDescription xml:lang="en">Stucco {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.0000000E-1</meanAmount>
+      <resultingAmount>6.0000000E-1</resultingAmount>
+      <generalComment>Stucco (auxiliary material for plywood production)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="16">
+      <referenceToFlowDataSet type="flow data set" refObjectId="3ae7bd3a-78df-440a-be1d-5648bd430981" uri="../flows/3ae7bd3a-78df-440a-be1d-5648bd430981.xml">
+        <common:shortDescription xml:lang="en">Waste polyethylene terephthalate, for recycling, sorted {Europe without Switzerland}| market for waste polyethylene terephthalate, for recycling, sorted | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>8.5600000E-2</meanAmount>
+      <resultingAmount>8.5600000E-2</resultingAmount>
+      <generalComment>Recycling of plastic waste
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="17">
+      <referenceToFlowDataSet type="flow data set" refObjectId="11f02bb7-51bb-4cdc-931b-bd6c3cfdf585" uri="../flows/11f02bb7-51bb-4cdc-931b-bd6c3cfdf585.xml">
+        <common:shortDescription xml:lang="en">Waste paper, sorted {Europe without Switzerland}| treatment of waste paper, unsorted, sorting | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.0800000E-2</meanAmount>
+      <resultingAmount>6.0800000E-2</resultingAmount>
+      <generalComment>Recycling of paper and cardboard waste
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="18">
+      <referenceToFlowDataSet type="flow data set" refObjectId="7177d4df-0e76-4e13-b70b-d088a75adbe8" uri="../flows/7177d4df-0e76-4e13-b70b-d088a75adbe8.xml">
+        <common:shortDescription xml:lang="en">Corrugated board box {RER}| market for corrugated board box | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>9.7300000E-2</meanAmount>
+      <resultingAmount>9.7300000E-2</resultingAmount>
+      <generalComment>Cardboard angular profile for finished plywood panel packaging
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="19">
+      <referenceToFlowDataSet type="flow data set" refObjectId="11336ea5-ca60-4541-ac10-7e081dbd188f" uri="../flows/11336ea5-ca60-4541-ac10-7e081dbd188f.xml">
+        <common:shortDescription xml:lang="en">Electricity, medium voltage {IT}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.9659200E+2</meanAmount>
+      <resultingAmount>5.9659200E+2</resultingAmount>
+      <generalComment>Electricity from grid for plywood production
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="20">
+      <referenceToFlowDataSet type="flow data set" refObjectId="6f7c6c28-a743-47c7-97bd-766ca04d38fe" uri="../flows/6f7c6c28-a743-47c7-97bd-766ca04d38fe.xml">
+        <common:shortDescription xml:lang="en">ARCADIA - Heat, district or industrial, natural gas {Europe without Switzerland}| heat production, natural gas, at boiler modulating &gt;100kW | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.2600000E+3</meanAmount>
+      <resultingAmount>1.2600000E+3</resultingAmount>
+      <generalComment>Naural gas industrial boiler.  The LHV of natural gas is considered = 35,3 MJ/m3. The original dataset " Heat, district or industrial, natural gas {Europe without Switzerland}| heat production, natural gas, at boiler modulating &gt;100kW | Cut-off, U" was modified as follows: the electricity consumption was eliminated because it is already included in the total electricity consumption of the plywood manufacturing company.
+   
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="21">
+      <referenceToFlowDataSet type="flow data set" refObjectId="7ef8a39a-5fd5-487b-9153-dcb4a07cb185" uri="../flows/7ef8a39a-5fd5-487b-9153-dcb4a07cb185.xml">
+        <common:shortDescription xml:lang="en">ARCADIA - Heat, district or industrial, other than natural gas {CH}| heat production, hardwood chips from forest, at furnace 5000kW, state-of-the-art 2014 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.3600000E+3</meanAmount>
+      <resultingAmount>1.3600000E+3</resultingAmount>
+      <generalComment>Wood chips industrial boiler. The LHV of poplar wood is considered = 17,3 MJ/kg. The original dataset " Heat, district or industrial, other than natural gas {CH}| heat production, hardwood chips from forest, at furnace 5000kW, state-of-the-art 2014 | Cut-off, U" was modified as follows: the wood chips input was eliminated because the wood chips used in the plywood production process come from the debarking of plywood logs; the electricity consumption was eliminated because it is already included</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="22">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d5cb2e42-017e-49a0-b006-4b2b3875c99c" uri="../flows/d5cb2e42-017e-49a0-b006-4b2b3875c99c.xml">
+        <common:shortDescription xml:lang="en">Diesel, burned in building machine {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>9.3900000E+1</meanAmount>
+      <resultingAmount>9.3900000E+1</resultingAmount>
+      <generalComment>Diesel for forklifts; the LHV of diesel is considered = 42,7 MJ/kg (from the dataset Diesel, burned in building machine)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="23">
+      <referenceToFlowDataSet type="flow data set" refObjectId="a9993f71-61ee-42e4-a839-5c4b81d7c922" uri="../flows/a9993f71-61ee-42e4-a839-5c4b81d7c922.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry &gt;32 metric ton, euro5 {RER}| market for transport, freight, lorry &gt;32 metric ton, EURO5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.6150000E+2</meanAmount>
+      <resultingAmount>4.6150000E+2</resultingAmount>
+      <generalComment>Plywood logs transport 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="24">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fa949e7b-f075-4071-86d8-95fe3ceceee0" uri="../flows/fa949e7b-f075-4071-86d8-95fe3ceceee0.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry 3.5-7.5 metric ton, euro5 {RER}| market for transport, freight, lorry 3.5-7.5 metric ton, EURO5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.8100000E+0</meanAmount>
+      <resultingAmount>6.8100000E+0</resultingAmount>
+      <generalComment>Transport of pigment, wheat flour, stucco, hydrogen peroxide, paint, ammonium sulfate 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="25">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fa949e7b-f075-4071-86d8-95fe3ceceee0" uri="../flows/fa949e7b-f075-4071-86d8-95fe3ceceee0.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry 3.5-7.5 metric ton, euro5 {RER}| market for transport, freight, lorry 3.5-7.5 metric ton, EURO5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.0000000E-1</meanAmount>
+      <resultingAmount>2.0000000E-1</resultingAmount>
+      <generalComment>Transport of diesel
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="26">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fa949e7b-f075-4071-86d8-95fe3ceceee0" uri="../flows/fa949e7b-f075-4071-86d8-95fe3ceceee0.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry 3.5-7.5 metric ton, euro5 {RER}| market for transport, freight, lorry 3.5-7.5 metric ton, EURO5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.7200000E+1</meanAmount>
+      <resultingAmount>1.7200000E+1</resultingAmount>
+      <generalComment>Transport of resins
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="27">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fa949e7b-f075-4071-86d8-95fe3ceceee0" uri="../flows/fa949e7b-f075-4071-86d8-95fe3ceceee0.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry 3.5-7.5 metric ton, euro5 {RER}| market for transport, freight, lorry 3.5-7.5 metric ton, EURO5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.2600000E-1</meanAmount>
+      <resultingAmount>6.2600000E-1</resultingAmount>
+      <generalComment>Transport of finished plywood packaging (joists, cardboard, angular profiles, plastic film, plast straps)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="28">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fa949e7b-f075-4071-86d8-95fe3ceceee0" uri="../flows/fa949e7b-f075-4071-86d8-95fe3ceceee0.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry 3.5-7.5 metric ton, euro5 {RER}| market for transport, freight, lorry 3.5-7.5 metric ton, EURO5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.6700000E-1</meanAmount>
+      <resultingAmount>3.6700000E-1</resultingAmount>
+      <generalComment>Transport of waste
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="29">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fa949e7b-f075-4071-86d8-95fe3ceceee0" uri="../flows/fa949e7b-f075-4071-86d8-95fe3ceceee0.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry 3.5-7.5 metric ton, euro5 {RER}| market for transport, freight, lorry 3.5-7.5 metric ton, EURO5 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.2000000E-2</meanAmount>
+      <resultingAmount>1.2000000E-2</resultingAmount>
+      <generalComment>Transport of plastic tank for resins, wheat flour, black paint
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="30">
+      <referenceToFlowDataSet type="flow data set" refObjectId="6763e7a4-6954-4634-8238-d978a90a9dcb" uri="../flows/6763e7a4-6954-4634-8238-d978a90a9dcb.xml">
+        <common:shortDescription xml:lang="en">Wastewater, average {Europe without Switzerland}| market for wastewater, average | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.3000000E-3</meanAmount>
+      <resultingAmount>3.3000000E-3</resultingAmount>
+      <generalComment>Wastewater from logs and machinery washing 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="31">
+      <referenceToFlowDataSet type="flow data set" refObjectId="1a2acc3b-42f0-414c-8987-a9f04c1e5216" uri="../flows/1a2acc3b-42f0-414c-8987-a9f04c1e5216.xml">
+        <common:shortDescription xml:lang="en">Waste wood, untreated {CH}| treatment of, municipal incineration | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.5930000E+0</meanAmount>
+      <resultingAmount>2.5930000E+0</resultingAmount>
+      <generalComment>Incineration of dust from wood sheets trimming
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="32">
+      <referenceToFlowDataSet type="flow data set" refObjectId="e1027520-b53f-4ea9-8222-67f24cfc553c" uri="../flows/e1027520-b53f-4ea9-8222-67f24cfc553c.xml">
+        <common:shortDescription xml:lang="en">Municipal solid waste {RoW}| treatment of, sanitary landfill | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.4100000E+0</meanAmount>
+      <resultingAmount>2.4100000E+0</resultingAmount>
+      <generalComment>Landfill treatment of solid waste from coating machines washing 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="33">
+      <referenceToFlowDataSet type="flow data set" refObjectId="72ac79d0-1b23-4752-b80b-7f950bf5a030" uri="../flows/72ac79d0-1b23-4752-b80b-7f950bf5a030.xml">
+        <common:shortDescription xml:lang="en">Inert waste, for final disposal {CH}| treatment of inert waste, inert material landfill | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.4000000E+0</meanAmount>
+      <resultingAmount>1.4000000E+0</resultingAmount>
+      <generalComment>Landfill treatment of boiler wood dust 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="34">
+      <referenceToFlowDataSet type="flow data set" refObjectId="f6a97602-eaaf-4b9f-85c2-851c15536f32" uri="../flows/f6a97602-eaaf-4b9f-85c2-851c15536f32.xml">
+        <common:shortDescription xml:lang="en">Waste plastic, mixture {RoW}| treatment of waste plastic, mixture, municipal incineration | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>8.3500000E-2</meanAmount>
+      <resultingAmount>8.3500000E-2</resultingAmount>
+      <generalComment>Incineration of plastic waste 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="35">
+      <referenceToFlowDataSet type="flow data set" refObjectId="a6c37b79-a6d2-4616-a874-b1c378c7498e" uri="../flows/a6c37b79-a6d2-4616-a874-b1c378c7498e.xml">
+        <common:shortDescription xml:lang="en">Waste paperboard {RoW}| treatment of, municipal incineration | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>5.7000000E-3</meanAmount>
+      <resultingAmount>5.7000000E-3</resultingAmount>
+      <generalComment>Incineration of paper and cardboard waste 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="36">
+      <referenceToFlowDataSet type="flow data set" refObjectId="f06b6a79-967e-4f66-b20f-97ea2fdf1277" uri="../flows/f06b6a79-967e-4f66-b20f-97ea2fdf1277.xml">
+        <common:shortDescription xml:lang="en">Waste plastic, mixture {RoW}| treatment of waste plastic, mixture, sanitary landfill | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.9000000E-2</meanAmount>
+      <resultingAmount>1.9000000E-2</resultingAmount>
+      <generalComment>Landfill treatment of mixed plastic waste 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="37">
+      <referenceToFlowDataSet type="flow data set" refObjectId="943ec741-b60f-49dc-90b6-50e1bf5e648c" uri="../flows/943ec741-b60f-49dc-90b6-50e1bf5e648c.xml">
+        <common:shortDescription xml:lang="en">Waste paperboard {RoW}| treatment of, sanitary landfill | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>8.7000000E-3</meanAmount>
+      <resultingAmount>8.7000000E-3</resultingAmount>
+      <generalComment>Landfill treatment of paper and cardboard waste
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="38">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4f462198-40cd-4184-8733-86648a20dc3f" uri="../flows/4f462198-40cd-4184-8733-86648a20dc3f.xml">
+        <common:shortDescription xml:lang="en">ground water</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>IT</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.2900000E-2</meanAmount>
+      <resultingAmount>4.2900000E-2</resultingAmount>
+      <generalComment>Water from well for industrial boiler and for logs and machinery washing 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="39">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9155-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9155-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">volatile organic compound</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.1340000E-3</meanAmount>
+      <resultingAmount>1.1340000E-3</resultingAmount>
+      <generalComment>Emission of VOC from coating machine hoods
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="40">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-a8d7-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-a8d7-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">methacrylate</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.8900000E-5</meanAmount>
+      <resultingAmount>3.8900000E-5</resultingAmount>
+      <generalComment>Emission of methyl acrilate from coating machine hoods
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="41">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9368-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9368-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">ethyl acrylate</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.8900000E-5</meanAmount>
+      <resultingAmount>3.8900000E-5</resultingAmount>
+      <generalComment>Emission of ethyl acrilate from coating machine hoods
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="42">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-a5b3-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-a5b3-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">butyl acrylate</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.8900000E-5</meanAmount>
+      <resultingAmount>3.8900000E-5</resultingAmount>
+      <generalComment>Emission of N-buthyl acrilate from coating machine hoods
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="43">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-941b-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-941b-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">formaldehyde</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.5500000E-5</meanAmount>
+      <resultingAmount>3.5500000E-5</resultingAmount>
+      <generalComment>Emission of formaldehyde from coating machine hoods
+</generalComment>
+    </exchange>
+  </exchanges>
+</processDataSet>

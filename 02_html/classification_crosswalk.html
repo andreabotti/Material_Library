@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Hosted by pages/5_Developer.py → Classification Crosswalk (fn630). Mapping is static;
+     product types and row counts are injected live as window.__CROSSWALK_COUNTS__. -->
+<title>MatLib Classification Crosswalk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a drawing-register sheet. Header + coverage strip, then a wide horizontally scrolling board:
+   MatLib product types on the left, one column per classification system, wires for matches. */
+:root{
+  --bg:#f3f5f4; --panel:#ffffff; --ink:#1b2422; --muted:#5e6b68; --line:#d5dcda; --soft:#e7ecea;
+  --accent:#0f6d6a; --accent-soft:#d6ebe9; --wire:#0f6d6a;
+  --it:#1d7a4b; --eu:#2b5ea8; --int:#a2661a;
+  --it-soft:#dcefe4; --eu-soft:#dde7f6; --int-soft:#f5e7d2;
+  --gap:#b04a3a;
+  --f-display:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+  --f-body:"Source Sans 3","Segoe UI",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121816; --panel:#1a2220; --ink:#e3ebe8; --muted:#93a29e; --line:#2f3b38; --soft:#222c2a;
+  --accent:#4fc1b9; --accent-soft:#18403d; --wire:#4fc1b9;
+  --it:#62c48f; --eu:#79a6e8; --int:#e0a55a;
+  --it-soft:#1b3427; --eu-soft:#1c2a40; --int-soft:#3a2c17; --gap:#e07b69; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121816; --panel:#1a2220; --ink:#e3ebe8; --muted:#93a29e; --line:#2f3b38; --soft:#222c2a;
+  --accent:#4fc1b9; --accent-soft:#18403d; --wire:#4fc1b9;
+  --it:#62c48f; --eu:#79a6e8; --int:#e0a55a;
+  --it-soft:#1b3427; --eu-soft:#1c2a40; --int-soft:#3a2c17; --gap:#e07b69; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.45}
+.wrap{padding-inline:4px;padding-block:4px 24px}
+header h1{font-family:var(--f-display);font-weight:700;font-size:clamp(30px,4vw,44px);letter-spacing:.01em;margin:0;line-height:1.05;text-wrap:balance}
+header p{margin:.5rem 0 0;color:var(--muted);max-width:72ch}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.stats{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:18px;font-variant-numeric:tabular-nums}
+.stats div{display:flex;flex-direction:column}
+.stats b{font-family:var(--f-display);font-size:28px;font-weight:600;line-height:1}
+.stats span{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+
+.coverage{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin-top:24px}
+.cov{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:10px 12px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.cov .top{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.cov .nm{font-weight:700;font-size:14px}
+.cov .pc{font-family:var(--f-mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.bar{height:6px;background:var(--soft);border-radius:3px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent)}
+.cov small{color:var(--muted);font-size:12px}
+
+.scope{display:inline-block;font-family:var(--f-mono);font-size:10.5px;font-weight:500;letter-spacing:.06em;padding:1px 6px;border-radius:3px}
+.scope.IT{background:var(--it-soft);color:var(--it)} .scope.EU{background:var(--eu-soft);color:var(--eu)} .scope.INT{background:var(--int-soft);color:var(--int)}
+
+.toolbar{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin-top:26px}
+.tabs{display:inline-flex;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--panel)}
+.tabs button{font:600 14px var(--f-body);color:var(--muted);background:none;border:0;padding:7px 14px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--accent);color:var(--panel)}
+.toolbar input{font:14px var(--f-body);color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:7px 10px;width:min(260px,100%)}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chips label{display:inline-flex;gap:5px;align-items:center;font-size:13px;color:var(--muted);cursor:pointer;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:3px 10px}
+button:focus-visible,input:focus-visible,.item:focus-visible,label:focus-within{outline:2px solid var(--accent);outline-offset:2px}
+.hint{font-size:13px;color:var(--muted)}
+
+/* detail band */
+.detail{margin-top:14px;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px 16px;display:grid;grid-template-columns:minmax(200px,260px) 1fr;gap:12px 24px}
+@media (max-width:720px){.detail{grid-template-columns:1fr}}
+.detail h2{font-family:var(--f-display);font-size:26px;font-weight:600;margin:0;line-height:1.1}
+.detail .meta{color:var(--muted);font-size:13px;margin-top:4px}
+.dgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px 18px;min-width:0}
+.dsys h3{margin:0 0 4px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);display:flex;gap:6px;align-items:center}
+.dsys ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:3px}
+.dsys li{font-size:13.5px;line-height:1.3}
+.dsys code,.code{font-family:var(--f-mono);font-size:11.5px;color:var(--accent);margin-right:5px}
+.none{color:var(--gap);font-size:13px;font-style:italic}
+
+/* board */
+.board-scroll{overflow-x:auto;margin-top:14px;border:1px solid var(--line);border-radius:8px;background:var(--soft)}
+.board{position:relative;display:grid;grid-template-columns:230px repeat(var(--ncols),190px);column-gap:46px;padding:16px;width:max-content;align-items:start}
+#wires{position:absolute;inset:0;pointer-events:none;overflow:visible}
+#wires path{fill:none;stroke:var(--wire);stroke-width:1.6;opacity:.75}
+#wires path.faint{opacity:.28;stroke-dasharray:3 3}
+.col{position:relative;display:flex;flex-direction:column;gap:4px;min-width:0}
+.colhead{position:sticky;top:0;padding:4px 2px 8px;display:flex;flex-direction:column;gap:3px}
+.colhead .t{font-family:var(--f-display);font-size:19px;font-weight:600;line-height:1.05}
+.colhead .s{font-size:11.5px;color:var(--muted);line-height:1.25}
+.item{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:5px 8px;font-size:13px;line-height:1.25;cursor:pointer;display:flex;gap:6px;align-items:flex-start;transition:background .12s,border-color .12s,opacity .12s}
+.item .lbl{flex:1;min-width:0}
+.item .n{font-family:var(--f-mono);font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.item.prod{font-weight:600}
+.item.prod .rows{position:absolute;left:0;bottom:0;height:2px;background:var(--accent);opacity:.45;border-radius:0 2px 0 0}
+.item.unused{border-style:dashed;color:var(--muted)}
+.item.unused .n{color:var(--gap)}
+.item:hover{border-color:var(--accent)}
+.board.has-sel .item{opacity:.38}
+.board.has-sel .item.on{opacity:1;background:var(--accent-soft);border-color:var(--accent)}
+.board.has-sel .item.sel{opacity:1;background:var(--accent);border-color:var(--accent);color:var(--panel)}
+.board.has-sel .item.sel .n,.board.has-sel .item.sel .code{color:var(--panel)}
+.board.has-sel .item.co{opacity:.85}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12.5px;color:var(--muted);margin-top:10px}
+.legend i{display:inline-block;width:22px;height:10px;border-radius:2px;vertical-align:-1px;margin-right:5px;border:1px solid var(--line)}
+
+/* matrix */
+.mx-scroll{overflow:auto;margin-top:14px;border:1px solid var(--line);border-radius:8px;background:var(--panel);max-height:760px}
+table.mx{border-collapse:separate;border-spacing:0;font-size:12.5px;font-variant-numeric:tabular-nums}
+.mx th,.mx td{border-bottom:1px solid var(--soft);border-right:1px solid var(--soft);padding:0}
+.mx thead th{position:sticky;background:var(--panel);z-index:2}
+.mx thead tr:first-child th{top:0;height:30px;font:600 12px var(--f-body);text-transform:uppercase;letter-spacing:.05em;color:var(--muted);padding:0 6px;text-align:left;white-space:nowrap;border-bottom:1px solid var(--line)}
+.mx thead tr:nth-child(2) th{top:30px;height:150px;vertical-align:bottom;padding:6px 0;border-bottom:1px solid var(--line)}
+.mx .vlab{writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap;font-weight:400;max-height:140px;overflow:hidden;text-overflow:ellipsis;font-size:11.5px;margin:0 auto;display:block}
+.mx .vlab b{font-family:var(--f-mono);font-weight:500;color:var(--accent);margin-bottom:4px}
+.mx th.rowh{position:sticky;left:0;z-index:1;background:var(--panel);text-align:left;padding:3px 10px;font-weight:600;white-space:nowrap;border-right:1px solid var(--line);min-width:230px}
+.mx thead th.rowh{z-index:3}
+.mx th.rowh .n{font-family:var(--f-mono);font-weight:400;color:var(--muted);font-size:11px;float:right;margin-left:12px}
+.mx td{width:24px;min-width:24px;height:24px;text-align:center}
+.mx td.hit::after{content:"";display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--accent);vertical-align:middle}
+.mx td.sysstart,.mx th.sysstart{border-left:2px solid var(--line)}
+.mx tbody tr:hover th.rowh,.mx tbody tr:hover td{background:var(--accent-soft)}
+.mx td.colhov{background:var(--accent-soft)}
+.mx tfoot td,.mx tfoot th{position:sticky;bottom:0;background:var(--panel);border-top:1px solid var(--line);font-family:var(--f-mono);font-size:11px;color:var(--muted);height:26px}
+.mx tfoot td.zero{color:var(--gap);font-weight:500}
+
+.notes{margin-top:28px;color:var(--muted);font-size:13px;max-width:90ch;display:flex;flex-direction:column;gap:6px}
+.notes b{color:var(--ink)}
+@media (prefers-reduced-motion:reduce){.item{transition:none}}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">EETRA MatLib · D__ProductType_ENG</div>
+    <h1>MatLib Classification Crosswalk</h1>
+    <p>Each Product Type in the dropdown, matched against Italian, European and international construction classification systems. Click a product type to see where it lands in every system, or click a system element to see which product types fall under it.</p>
+    <div class="stats" id="stats"></div>
+  </header>
+
+  <section class="coverage" id="coverage" aria-label="Coverage per system"></section>
+
+  <div class="toolbar">
+    <div class="tabs" role="tablist">
+      <button role="tab" id="tab-threads" aria-selected="true">Threads</button>
+      <button role="tab" id="tab-matrix" aria-selected="false">Matrix</button>
+    </div>
+    <input id="q" type="search" placeholder="Filter product types…" aria-label="Filter product types">
+    <div class="chips" id="scopes">
+      <label><input type="checkbox" id="sc-IT" checked> <span class="scope IT">IT</span> Italy</label>
+      <label><input type="checkbox" id="sc-EU" checked> <span class="scope EU">EU</span> Europe</label>
+      <label><input type="checkbox" id="sc-INT" checked> <span class="scope INT">INT</span> International</label>
+    </div>
+  </div>
+
+  <div id="view-threads">
+    <div class="detail" id="detail"></div>
+    <div class="board-scroll" id="boardScroll"><div class="board" id="board"><svg id="wires" aria-hidden="true"></svg></div></div>
+    <div class="legend">
+      <span><i style="background:var(--accent)"></i>selected</span>
+      <span><i style="background:var(--accent-soft);border-color:var(--accent)"></i>matched</span>
+      <span><i style="border-style:dashed"></i>no MatLib product type matches (a gap)</span>
+      <span>Number on each element = product types linked · on each product type = rows in the catalogue</span>
+    </div>
+  </div>
+
+  <div id="view-matrix" hidden>
+    <div class="mx-scroll"><table class="mx" id="mx"></table></div>
+  </div>
+
+  <div class="notes">
+    <div id="src-note"><b>Source.</b> Product types and row counts come from base_data.parquet with edits_data.parquet applied (1,780 rows, 13 Oct 2026).</div>
+    <div><b>Complete or partial lists.</b> CAM 2025 §2.4, UNI 8290-1 classes and ÖKOBAUDAT top categories are listed in full. For CPR standards, EN 15804 c-PCRs and MasterFormat, only the elements relevant to this catalogue are listed.</div>
+    <div><b>Verification.</b> CAM criteria were checked against the CAM Edilizia 2025 text. MasterFormat section numbers, EAD numbers and c-PCR references come from working knowledge and should be checked against current editions before they are cited.</div>
+  </div>
+</div>
+
+<script>
+const SYS = [
+ {id:"uni",name:"UNI 8290-1",sub:"Sistema tecnologico: classi di unità tecnologiche",scope:"IT",full:true,items:[
+  ["u1","1","Struttura portante"],["u2v","2","Chiusura verticale (pareti perimetrali, infissi esterni)"],
+  ["u2o","2","Chiusura orizzontale inferiore / superiore (coperture)"],["u3v","3","Partizione interna verticale"],
+  ["u3o","3","Partizione interna orizzontale (solai, pavimenti, controsoffitti)"],["u4","4","Partizione esterna"],
+  ["u5","5","Impianto di fornitura servizi"],["u6","6","Impianto di sicurezza"],["u7","7","Attrezzatura interna"],["u8","8","Attrezzatura esterna"]]},
+ {id:"cam",name:"CAM Edilizia 2025",sub:"§2.4 Specifiche tecniche per i prodotti da costruzione",scope:"IT",full:true,items:[
+  ["c1","2.4.1","Emissioni in ambienti interni (VOC)"],["c2","2.4.2","Calcestruzzi in cantiere e preconfezionati"],
+  ["c3","2.4.3","Prefabbricati in cls, vibrocompresso, aerato autoclavato"],["c4","2.4.4","Prodotti in acciaio"],
+  ["c5","2.4.5","Prodotti in laterizio"],["c6","2.4.6","Prodotti di legno o a base legno"],["c7","2.4.7","Isolanti termici ed acustici"],
+  ["c8","2.4.8","Tramezzature, contropareti e controsoffitti a secco"],["c9","2.4.9","Murature in pietrame e miste"],
+  ["c10","2.4.10","Pavimenti resilienti"],["c11","2.4.11","Pavimenti e rivestimenti in ceramica"],
+  ["c12","2.4.12","Chiusure oscuranti e telai per serramenti"],["c13","2.4.13","Tubazioni in materiale plastico"],
+  ["c14","2.4.14","Tubazioni in gres ceramico"],["c15","2.4.15","Pitture e vernici"],["c16","2.4.16","Rubinetteria e sanitari"],
+  ["c17","2.4.17","Impianti tecnologici (aeraulici)"],["c18","2.4.18","Vetrate isolanti"]]},
+ {id:"hen",name:"CPR hEN / EAD",sub:"Standard behind the CE marking (Reg. 305/2011 → 2024/3110)",scope:"EU",full:false,items:[
+  ["e206","EN 206","Concrete (not harmonised)"],["e197","EN 197-1","Cement"],["e1316","EN 13162–71","Factory-made thermal insulation"],
+  ["e520","EN 520","Gypsum plasterboards"],["e15283","EN 15283","Fibre-reinforced gypsum boards"],["e12467","EN 12467","Fibre-cement flat sheets"],
+  ["e14411","EN 14411","Ceramic tiles"],["e771","EN 771","Masonry units"],["e13813","EN 13813","Screed material"],
+  ["e13964","EN 13964","Suspended ceilings"],["e14351","EN 14351-1","Windows and external doors"],["e1279","EN 1279-5","Insulating glass units"],
+  ["a232","EAD 330232","Mechanical fasteners for concrete"],["a499","EAD 330499","Bonded fasteners for concrete"],
+  ["e1090","EN 1090-1","Structural steel and aluminium components"],["e61537","EN 61537","Cable trays (LVD, not CPR)"],
+  ["e14041","EN 14041","Resilient, textile, laminate floor coverings"],["e14195","EN 14195","Metal framing for gypsum systems"],
+  ["e10080","EN 10080","Reinforcing steel (not harmonised)"],["e10346","EN 10346 / 10169","Coated steel flat products"],
+  ["e1504","EN 1504","Concrete protection and repair"],["e13300","EN 13300","Paint classification"],
+  ["e998a","EN 998-1","Rendering and plastering mortar"],["e15824","EN 15824","Renders with organic binders"],
+  ["e13279","EN 13279-1","Gypsum binders and plasters"],["e998b","EN 998-2","Masonry mortar"],["e14509","EN 14509","Sandwich panels"],
+  ["e845","EN 845-2","Lintels"],["e15037","EN 15037-1","Beam-and-block floor systems"],["e12004","EN 12004","Tile adhesives"],
+  ["e13888","EN 13888","Tile grouts"],["e13956","EN 13956 / 13967 / 14891","Waterproofing sheets and liquids"],
+  ["a454","EAD 350454","Fire stopping and sealing products"],["e1338","EN 1338","Concrete paving blocks"],["e12825","EN 12825","Raised access floors"]]},
+ {id:"pcr",name:"EN 15804 c-PCR",sub:"Complementary product category rules for EPDs",scope:"EU",full:false,items:[
+  ["p16757","EN 16757","Concrete and concrete elements"],["p16783","EN 16783","Thermal insulation products"],
+  ["p16908","EN 16908","Cement and building lime"],["p17160","EN 17160","Ceramic tiles"],["p17213","EN 17213","Windows and doors"],
+  ["p16810","EN 16810","Resilient, textile, laminate floor coverings"],["p16485","EN 16485","Round and sawn timber"],
+  ["p50693","EN 50693","Electrical and electronic products (PEP)"],["pcore","EN 15804","Core rules only, no c-PCR"]]},
+ {id:"mf",name:"MasterFormat 2020",sub:"CSI/CSC specification sections",scope:"INT",full:false,items:[
+  ["m030130","03 01 30","Maintenance of cast-in-place concrete"],["m032100","03 21 00","Reinforcement bars"],["m033000","03 30 00","Cast-in-place concrete"],
+  ["m034000","03 40 00","Precast concrete"],["m035300","03 53 00","Concrete topping"],["m035400","03 54 00","Cast underlayment"],
+  ["m036000","03 60 00","Grouting"],["m040513","04 05 13","Masonry mortaring"],["m040523","04 05 23","Masonry accessories"],
+  ["m042100","04 21 00","Clay unit masonry"],["m042200","04 22 00","Concrete unit masonry"],["m050519","05 05 19","Post-installed concrete anchors"],
+  ["m051200","05 12 00","Structural steel framing"],["m054000","05 40 00","Cold-formed metal framing"],["m055000","05 50 00","Metal fabrications"],
+  ["m061000","06 10 00","Rough carpentry"],["m071000","07 10 00","Dampproofing and waterproofing"],["m072100","07 21 00","Thermal insulation"],
+  ["m074100","07 41 00","Roof panels"],["m074200","07 42 00","Wall panels"],["m078400","07 84 00","Firestopping"],
+  ["m081000","08 10 00","Doors and frames"],["m085000","08 50 00","Windows"],["m088000","08 80 00","Glazing"],
+  ["m092116","09 21 16","Gypsum board assemblies"],["m092216","09 22 16","Non-structural metal framing"],["m092300","09 23 00","Gypsum plastering"],
+  ["m092400","09 24 00","Cement plastering"],["m093000","09 30 00","Tiling"],["m095100","09 51 00","Acoustical ceilings"],
+  ["m096500","09 65 00","Resilient flooring"],["m096900","09 69 00","Access flooring"],["m099100","09 91 00","Painting"],
+  ["m099600","09 96 00","High-performance coatings"],["m260536","26 05 36","Cable trays for electrical systems"],["m321400","32 14 00","Unit paving"]]},
+ {id:"oko",name:"ÖKOBAUDAT",sub:"BBSR material categories (top level)",scope:"INT",full:true,items:[
+  ["o1","1","Mineral building products"],["o2","2","Insulation materials"],["o3","3","Wood products"],["o4","4","Metals"],
+  ["o5","5","Coatings"],["o6","6","Plastics"],["o7","7","Components of windows and curtain walls"],["o8","8","Building services"],["o9","9","Other"]]}
+];
+
+// [name, rows, content note, {sys: [item ids]}]
+const P = [
+ ["In situ Concrete",635,"Ready-mixed and site concrete",{uni:["u1"],cam:["c2"],hen:["e206"],pcr:["p16757"],mf:["m033000"],oko:["o1"]}],
+ ["Insulation",337,"Mineral wool, foams and other insulants",{uni:["u2v","u2o","u3v"],cam:["c7"],hen:["e1316"],pcr:["p16783"],mf:["m072100"],oko:["o2"]}],
+ ["Building boards",199,"Gypsum (173), mineral boards (22), fibre cement (4)",{uni:["u3v","u3o"],cam:["c8","c1"],hen:["e520","e15283","e12467"],pcr:["pcore"],mf:["m092116"],oko:["o1"]}],
+ ["Tiles",125,"Ceramic tiles",{uni:["u3o","u3v"],cam:["c11"],hen:["e14411"],pcr:["p17160"],mf:["m093000"],oko:["o1"]}],
+ ["Binder (Cement)",119,"Cements (a constituent, not a building element)",{cam:["c2"],hen:["e197"],pcr:["p16908"],mf:["m033000"],oko:["o1"]}],
+ ["Masonry (Block)",52,"Clay and concrete masonry units",{uni:["u2v","u3v"],cam:["c5","c3"],hen:["e771"],pcr:["p16757","pcore"],mf:["m042100","m042200"],oko:["o1"]}],
+ ["Screed",29,"Screed mortars",{uni:["u3o"],hen:["e13813"],pcr:["pcore"],mf:["m035300"],oko:["o1"]}],
+ ["Suspended ceiling",28,"Ceiling tiles and systems",{uni:["u3o"],cam:["c8","c1"],hen:["e13964"],pcr:["pcore"],mf:["m095100"],oko:["o1"]}],
+ ["Windows & Doors - Whole system",27,"Complete windows and doors",{uni:["u2v","u3v"],cam:["c12","c18"],hen:["e14351"],pcr:["p17213"],mf:["m081000","m085000"],oko:["o7"]}],
+ ["Metal accessories",23,"Hilti screw anchors and helical bars",{cam:["c4"],hen:["a232"],pcr:["pcore"],mf:["m050519"],oko:["o4"]}],
+ ["Cable trays",23,"Cable support systems",{uni:["u5"],hen:["e61537"],pcr:["p50693"],mf:["m260536"],oko:["o8"]}],
+ ["Flooring",17,"Tarkett homogeneous vinyl (PVC)",{uni:["u3o"],cam:["c10","c1"],hen:["e14041"],pcr:["p16810"],mf:["m096500"],oko:["o6"]}],
+ ["Framing profiles (Cladding/stud frame)",17,"Metal studs and tracks",{uni:["u3v","u3o"],cam:["c8","c4"],hen:["e14195"],pcr:["pcore"],mf:["m092216","m054000"],oko:["o4"]}],
+ ["Windows - Other",15,"Warm-edge spacers and Georgian bars (IGU parts)",{uni:["u2v"],cam:["c18"],hen:["e1279"],pcr:["p17213"],mf:["m088000"],oko:["o7"]}],
+ ["Rebar",15,"Reinforcing steel B450C",{uni:["u1"],cam:["c4"],hen:["e10080"],pcr:["pcore"],mf:["m032100"],oko:["o4"]}],
+ ["Coatings",14,"Mapei repair and protection systems, resins",{uni:["u1"],cam:["c15","c1"],hen:["e1504"],pcr:["pcore"],mf:["m030130","m099600"],oko:["o5"]}],
+ ["Rendering",13,"Renders",{uni:["u2v"],cam:["c1"],hen:["e998a","e15824"],pcr:["pcore"],mf:["m092400"],oko:["o1"]}],
+ ["Coil",12,"Coated steel coil and rebar supplied in coil",{uni:["u2o"],cam:["c4"],hen:["e10346","e10080"],pcr:["pcore"],mf:["m074100","m032100"],oko:["o4"]}],
+ ["Cladding",12,"Sandwich panels (PU/PIR), stone composite",{uni:["u2v","u2o"],cam:["c7","c4"],hen:["e14509"],pcr:["pcore"],mf:["m074200"],oko:["o4","o2"]}],
+ ["Structural components",11,"Porotherm lintels and slab beams",{uni:["u1"],cam:["c5","c3"],hen:["e845","e15037"],pcr:["pcore"],mf:["m034000","m040523"],oko:["o1"]}],
+ ["Building fasteners",10,"Hilti bonded (chemical) anchors",{hen:["a499"],pcr:["pcore"],mf:["m050519"],oko:["o9"]}],
+ ["Masonry (Bricklaying)",9,"Masonry mortars (Grigolin), not bricks",{uni:["u1","u2v","u3v"],hen:["e998b"],pcr:["pcore"],mf:["m040513"],oko:["o1"]}],
+ ["Levelling compound",8,"Self-levelling underlayments",{uni:["u3o"],cam:["c1"],hen:["e13813"],pcr:["pcore"],mf:["m035400"],oko:["o1"]}],
+ ["Skim plaster",7,"Finishing plasters",{uni:["u3v"],cam:["c1"],hen:["e13279"],pcr:["pcore"],mf:["m092300"],oko:["o1"]}],
+ ["Adhesives",5,"Tile and board adhesives",{cam:["c1"],hen:["e12004"],pcr:["pcore"],mf:["m093000"],oko:["o1"]}],
+ ["Waterproofing materials",4,"Membranes and liquid waterproofing",{uni:["u2o"],cam:["c1"],hen:["e13956"],pcr:["pcore"],mf:["m071000"],oko:["o6"]}],
+ ["Firestopping accessories",4,"Hilti firestop blocks, plugs, foams, sprays",{uni:["u6"],hen:["a454"],pcr:["pcore"],mf:["m078400"],oko:["o9"]}],
+ ["Paving",3,"Concrete block pavers (masselli autobloccanti)",{uni:["u8","u4"],cam:["c3"],hen:["e1338"],pcr:["p16757"],mf:["m321400"],oko:["o1"]}],
+ ["Grouting",2,"Tile grouts",{cam:["c1"],hen:["e13888"],pcr:["pcore"],mf:["m093000","m036000"],oko:["o1"]}],
+ ["Finish (Walls)",1,"Lime finish (FG 56 B)",{uni:["u3v"],cam:["c1"],hen:["e998a"],pcr:["pcore"],mf:["m092300"],oko:["o1"]}],
+ ["Raised access floor",1,"Access floor system",{uni:["u3o"],hen:["e12825"],pcr:["pcore"],mf:["m096900"],oko:["o4"]}],
+ ["Paints",1,"Paint",{uni:["u3v"],cam:["c15","c1"],hen:["e13300"],pcr:["pcore"],mf:["m099100"],oko:["o5"]}],
+ ["Structural accessories",1,"Hilti heavy base plate",{uni:["u1"],cam:["c4"],hen:["e1090"],pcr:["pcore"],mf:["m055000","m051200"],oko:["o4"]}],
+ ["Various assorted floors",1,"Interface PVC floor",{uni:["u3o"],cam:["c10","c1"],hen:["e14041"],pcr:["p16810"],mf:["m096500"],oko:["o6"]}]
+];
+
+// Live counts injected by pages/5_Developer.py (product type -> rows). Mapped types missing
+// from the data drop to 0; types in the data but not in the crosswalk are listed unmapped.
+const LIVE = window.__CROSSWALK_COUNTS__ || null;
+const UNMAPPED = [];
+if (LIVE){
+  const known = new Set(P.map(p => p[0]));
+  P.forEach(p => { p[1] = LIVE[p[0]] || 0; });
+  Object.entries(LIVE).forEach(([name, n]) => { if (!known.has(name)){ UNMAPPED.push(name); P.push([name, n, "Not in the crosswalk yet", {}]); }});
+  P.sort((a, b) => b[1] - a[1]);
+}
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const ITEM = {}; SYS.forEach(s => s.items.forEach(([id,code,label]) => ITEM[id] = {id,code,label,sys:s}));
+// reverse index: item id -> product indexes
+const REV = {}; Object.keys(ITEM).forEach(k => REV[k] = []);
+P.forEach((p,i) => Object.values(p[3]).flat().forEach(id => REV[id].push(i)));
+const maxRows = Math.max(1, ...P.map(p => p[1]));
+const totalRows = P.reduce((a,p) => a+p[1], 0);
+
+let sel = {type:"p", key:Math.max(0, P.findIndex(p => p[0] === "Insulation"))};
+let hover = null;
+const scopeOn = {IT:true, EU:true, INT:true};
+let q = "";
+
+/* header stats + coverage */
+(function(){
+  const nItems = Object.keys(ITEM).length, nLinks = P.reduce((a,p)=>a+Object.values(p[3]).flat().length,0);
+  $("#stats").innerHTML = [[P.length,"product types"],[totalRows.toLocaleString("en"),"catalogue rows"],[SYS.length,"systems"],[nItems,"system elements"],[nLinks,"matches"]]
+    .map(([b,s])=>`<div><b>${b}</b><span>${s}</span></div>`).join("");
+  $("#coverage").innerHTML = SYS.map(s => {
+    const hitP = P.filter(p => (p[3][s.id]||[]).length).length;
+    const hitR = P.filter(p => (p[3][s.id]||[]).length).reduce((a,p)=>a+p[1],0);
+    const unused = s.items.filter(([id]) => !REV[id].length).length;
+    return `<div class="cov"><div class="top"><span class="nm">${esc(s.name)}</span><span class="scope ${s.scope}">${s.scope}</span></div>
+      <div class="bar"><i style="width:${(hitP/P.length*100).toFixed(0)}%"></i></div>
+      <div class="top"><small>${hitP}/${P.length} types · ${(hitR/totalRows*100).toFixed(0)}% of rows</small><span class="pc">${unused?unused+" unused":"all used"}</span></div></div>`;
+  }).join("");
+})();
+
+/* threads board */
+const board = $("#board");
+function buildBoard(){
+  board.querySelectorAll(".col").forEach(c => c.remove());
+  const vis = SYS.filter(s => scopeOn[s.scope]);
+  board.style.setProperty("--ncols", vis.length);
+  const pc = document.createElement("div"); pc.className = "col";
+  pc.innerHTML = `<div class="colhead"><span class="eyebrow">MatLib</span><span class="t">Product Types</span><span class="s">D__ProductType_ENG · sorted by rows</span></div>` +
+    P.map((p,i) => (q && !p[0].toLowerCase().includes(q)) ? "" :
+      `<div class="item prod" tabindex="0" data-p="${i}"><span class="lbl">${esc(p[0])}</span><span class="n">${p[1]}</span><span class="rows" style="width:${Math.max(3,p[1]/maxRows*100)}%"></span></div>`).join("");
+  board.appendChild(pc);
+  vis.forEach(s => {
+    const c = document.createElement("div"); c.className = "col";
+    c.innerHTML = `<div class="colhead"><span><span class="scope ${s.scope}">${s.scope}</span></span><span class="t">${esc(s.name)}</span><span class="s">${esc(s.sub)}${s.full?"":" · relevant elements only"}</span></div>` +
+      s.items.map(([id,code,label]) => `<div class="item${REV[id].length?"":" unused"}" tabindex="0" data-i="${id}"><span class="lbl"><span class="code">${esc(code)}</span>${esc(label)}</span><span class="n">${REV[id].length}</span></div>`).join("");
+    board.appendChild(c);
+  });
+  paint();
+}
+
+function activeSel(){ return hover || sel; }
+function paint(){
+  const a = activeSel();
+  board.classList.toggle("has-sel", !!a);
+  board.querySelectorAll(".item").forEach(el => el.classList.remove("on","sel","co"));
+  const pairs = [], faint = [];
+  if (a && a.type === "p"){
+    const pe = board.querySelector(`[data-p="${a.key}"]`);
+    if (pe) pe.classList.add("sel");
+    Object.values(P[a.key][3]).flat().forEach(id => {
+      const el = board.querySelector(`[data-i="${id}"]`);
+      if (el){ el.classList.add("on"); if (pe) pairs.push([pe, el]); }
+    });
+  } else if (a && a.type === "i"){
+    const ie = board.querySelector(`[data-i="${a.key}"]`);
+    if (ie) ie.classList.add("sel");
+    REV[a.key].forEach(pi => {
+      const pe = board.querySelector(`[data-p="${pi}"]`);
+      if (pe){ pe.classList.add("on"); if (ie) pairs.push([pe, ie]); }
+      Object.values(P[pi][3]).flat().forEach(id => { if (id !== a.key){ const el = board.querySelector(`[data-i="${id}"]`); if (el) el.classList.add("co"); }});
+    });
+  }
+  drawWires(pairs, faint);
+  renderDetail(sel);
+}
+
+function drawWires(pairs){
+  const svg = $("#wires");
+  svg.setAttribute("width", board.scrollWidth); svg.setAttribute("height", board.scrollHeight);
+  const b = board.getBoundingClientRect();
+  svg.innerHTML = pairs.map(([a,c]) => {
+    const ra = a.getBoundingClientRect(), rc = c.getBoundingClientRect();
+    const x1 = ra.right - b.left, y1 = ra.top + ra.height/2 - b.top;
+    const x2 = rc.left - b.left, y2 = rc.top + rc.height/2 - b.top;
+    const dx = Math.min(140, (x2 - x1) * 0.45);
+    return `<path d="M${x1},${y1} C${x1+dx},${y1} ${x2-dx},${y2} ${x2},${y2}"/>`;
+  }).join("");
+}
+
+function renderDetail(s){
+  const d = $("#detail");
+  if (!s){ d.innerHTML = `<div><h2>Nothing selected</h2><div class="meta">Click a product type or a system element.</div></div>`; return; }
+  if (s.type === "p"){
+    const p = P[s.key];
+    d.innerHTML = `<div><div class="eyebrow">Product type</div><h2>${esc(p[0])}</h2><div class="meta">${p[1]} rows · ${esc(p[2])}</div></div>
+      <div class="dgrid">${SYS.map(sy => { const ids = p[3][sy.id]||[];
+        return `<div class="dsys"><h3><span class="scope ${sy.scope}">${sy.scope}</span>${esc(sy.name)}</h3>${ids.length ? `<ul>${ids.map(id=>`<li><code>${esc(ITEM[id].code)}</code>${esc(ITEM[id].label)}</li>`).join("")}</ul>` : `<span class="none">No matching element</span>`}</div>`;}).join("")}</div>`;
+  } else {
+    const it = ITEM[s.key], ps = REV[s.key];
+    const rows = ps.reduce((a,i)=>a+P[i][1],0);
+    d.innerHTML = `<div><div class="eyebrow">${esc(it.sys.name)}</div><h2><span class="code" style="font-size:16px">${esc(it.code)}</span> ${esc(it.label)}</h2><div class="meta">${ps.length} product types · ${rows} rows</div></div>
+      <div class="dgrid"><div class="dsys" style="grid-column:1/-1"><h3>MatLib product types under this element</h3>${ps.length ? `<ul style="flex-direction:row;flex-wrap:wrap;gap:4px 16px">${ps.map(i=>`<li>${esc(P[i][0])} <span class="code">${P[i][1]}</span></li>`).join("")}</ul>` : `<span class="none">None. The catalogue has no products in this category.</span>`}</div></div>`;
+  }
+}
+
+board.addEventListener("click", e => {
+  const el = e.target.closest(".item"); if (!el) return;
+  const next = el.dataset.p != null ? {type:"p", key:+el.dataset.p} : {type:"i", key:el.dataset.i};
+  sel = (sel && sel.type === next.type && sel.key === next.key) ? null : next;
+  hover = null; paint();
+});
+board.addEventListener("keydown", e => { if ((e.key === "Enter" || e.key === " ") && e.target.closest(".item")){ e.preventDefault(); e.target.click(); }});
+board.addEventListener("mouseover", e => {
+  const el = e.target.closest(".item"); if (!el) return;
+  const h = el.dataset.p != null ? {type:"p", key:+el.dataset.p} : {type:"i", key:el.dataset.i};
+  if (!hover || hover.key !== h.key){ hover = h; paint(); }
+});
+board.addEventListener("mouseleave", () => { hover = null; paint(); });
+
+/* matrix */
+function buildMatrix(){
+  const vis = SYS.filter(s => scopeOn[s.scope]);
+  const rowsP = P.map((p,i)=>i).filter(i => !q || P[i][0].toLowerCase().includes(q));
+  let h = `<thead><tr><th class="rowh">Product type <span class="n">rows</span></th>${vis.map(s=>`<th class="sysstart" colspan="${s.items.length}"><span class="scope ${s.scope}">${s.scope}</span> ${esc(s.name)}</th>`).join("")}</tr>`;
+  h += `<tr><th class="rowh"></th>${vis.map(s => s.items.map(([id,code,label],k)=>`<th class="${k?"":"sysstart"}" data-c="${id}" title="${esc(code+" "+label)}"><span class="vlab"><b>${esc(code)}</b> ${esc(label)}</span></th>`).join("")).join("")}</tr></thead><tbody>`;
+  h += rowsP.map(i => { const set = new Set(Object.values(P[i][3]).flat());
+    return `<tr><th class="rowh">${esc(P[i][0])}<span class="n">${P[i][1]}</span></th>${vis.map(s => s.items.map(([id],k)=>`<td data-c="${id}" class="${k?"":"sysstart"}${set.has(id)?" hit":""}" ${set.has(id)?`title="${esc(P[i][0]+" → "+ITEM[id].code+" "+ITEM[id].label)}"`:""}></td>`).join("")).join("")}</tr>`; }).join("");
+  h += `</tbody><tfoot><tr><th class="rowh">Product types matched</th>${vis.map(s => s.items.map(([id],k)=>`<td class="${k?"":"sysstart"}${REV[id].length?"":" zero"}">${REV[id].length}</td>`).join("")).join("")}</tr></tfoot>`;
+  $("#mx").innerHTML = h;
+}
+$("#mx").addEventListener("mouseover", e => {
+  const c = e.target.closest("[data-c]"); const id = c && c.dataset.c;
+  $("#mx").querySelectorAll(".colhov").forEach(x => x.classList.remove("colhov"));
+  if (id) $("#mx").querySelectorAll(`td[data-c="${id}"]`).forEach(x => x.classList.add("colhov"));
+});
+
+/* view switching, filters */
+function setView(v){
+  $("#tab-threads").setAttribute("aria-selected", v==="threads"); $("#tab-matrix").setAttribute("aria-selected", v==="matrix");
+  $("#view-threads").hidden = v!=="threads"; $("#view-matrix").hidden = v!=="matrix";
+  if (v === "threads") paint(); else buildMatrix();
+}
+$("#tab-threads").onclick = () => setView("threads");
+$("#tab-matrix").onclick = () => setView("matrix");
+$("#q").addEventListener("input", e => { q = e.target.value.trim().toLowerCase(); buildBoard(); buildMatrix(); });
+["IT","EU","INT"].forEach(k => $("#sc-"+k).addEventListener("change", e => { scopeOn[k] = e.target.checked; buildBoard(); buildMatrix(); }));
+let rT; window.addEventListener("resize", () => { clearTimeout(rT); rT = setTimeout(paint, 80); });
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(paint);
+
+if (LIVE) $("#src-note").innerHTML = `<b>Source.</b> Product types and row counts are read live from the loaded catalogue (${totalRows.toLocaleString("en")} rows).` +
+  (UNMAPPED.length ? ` Not in the crosswalk yet: ${UNMAPPED.map(esc).join(", ")}.` : " Every product type in the data is mapped.");
+buildBoard(); buildMatrix();
+if (location.hash === "#matrix") setView("matrix");
+</script>
+
+</body>
+</html>

@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>5637cdb3-8dce-4771-8c7a-d94d7b6567a9</common:UUID>
+      <name>
+        <baseName xml:lang="en">Electricity grid mix, technology mix, production mix at plant, High Voltage</baseName>
+      </name>
+      <common:synonyms>Rete mix elettrico, mix tecnologico, produzione all’impianto , Alto Voltaggio</common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">Energy carriers and technologies</common:class>
+          <common:class level="1">Electricity</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment>Dataset developed according to Arcadia project Methodology (Report: “Metodologia per gli studi di filiera della Banca Dati italiana LCA”). LCA study of electricity production from Italian electric mix (Report: “Filiera di produzione del mix elettrico italiano”). &#13;
+The dataset refers to the production of 1 kWh of electricity from electrical mix in high voltage, in Italy, and it is representative of the processing technologies used for this purpose.&#13;
+The dataset consists of 17 processes: &#13;
+1) Electricity production from hydroelectric sources - with pumped storage plants (percentage contribution to the whole dataset: 4,86%).&#13;
+2) Electricity production from hydroelectric sources - with reservoir plants (percentage contribution to the whole dataset: 4,94%).&#13;
+3) Electricity production from hydroelectric sources - with flowing water plants (percentage contribution to the whole dataset: 8,07%).&#13;
+4) Electricity production from wind sources - with a power of less than 1 MW (percentage contribution to the whole dataset: 0,30%).&#13;
+5) Electricity production from wind power - with installations with an electrical power of between 1 and 10 and more than 10 MW (percentage contribution to the whole dataset: 7,19%).&#13;
+6) Electricity production from geothermal sources (percentage contribution to the whole dataset: 2,25%).&#13;
+7) Electricity production from hard coal with cogeneration plants (percentage contribution to the whole dataset: 0,07%).&#13;
+8) ) Electricity production from hard coal with non-cogeneration plants (percentage contribution to the whole dataset: 6,90%).&#13;
+9) Electricity production from natural gas (percentage contribution to the whole dataset: 52,55%).&#13;
+10) Electricity production from gas derivatives- blast furnace gas (percentage contribution to the whole dataset: 0,53%).&#13;
+11) Electricity production from gas derivatives- coal gas (percentage contribution to the whole dataset: 0,36%).&#13;
+12) Electricity production from oil products (percentage contribution to the whole dataset: 3,79%).&#13;
+13) Electricity production from other waste (percentage contribution to the whole dataset: 0,91%).&#13;
+15) Electricity production from Bioenergy - Biogas plants (percentage contribution to the whole dataset: 2,45%).&#13;
+16) Electricity production from Bioenergy – Solid biomass plants (percentage contribution to the whole dataset: 3,07%).&#13;
+17) Electricity production from Bioenergy – Bioliquids plants (percentage contribution to the whole dataset: 1,74%).&#13;
+</common:generalComment>
+      <referenceToExternalDocumentation type="source data set" refObjectId="0a24b2f5-27b5-4afe-b487-3958b2e2584b" version="01.00.000" uri="../sources/0a24b2f5-27b5-4afe-b487-3958b2e2584b.xml">
+        <common:shortDescription>Gabriella Fiorentino, Simona Scalbi, Antonietta Cerbone, Giuliana Ansanelli, Marco Giammartini, Amalia Zucaro. Filiera di produzione del mix elettrico italiano.&#13;
+&#13;
+Background datasets from EcoInvent database cut-off (v.3.7.1) were used for the LCA study. &#13;
+</common:shortDescription>
+      </referenceToExternalDocumentation>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2019</common:referenceYear>
+      <common:dataSetValidUntil>2026</common:dataSetValidUntil>
+      <common:timeRepresentativenessDescription>This dataset has been considered valid until 2026, since no main changes have occurred in the electricity mix in Italy in the investigated years.</common:timeRepresentativenessDescription>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT"/>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>The dataset (1kWh of electricity from the Italian electricity mix) refers to a system that includes national production processes from hydroelectric, wind, geothermal, gas derivatives (blast furnace gas and coke oven gas), natural gas, oil, hard coal (from cogeneration and non-cogeneration plants), natural gas, other waste, bioenergy (biogas, solid biomass, bioliquids). Production from hydroelectric sources includes reservoir plants, pumped storage and run-of-river plants, for which secondary data were used. Production from wind power plants includes plants with a capacity of less than or equal to 1 MW, and those with a capacity between 1 MW and 10 MW and more than 10 MW. Secondary data were used for modelling this process. Production of electricity from geothermal, coal, derived gases, petroleum products and other waste also relies on to secondary data. Energy production from natural gas includes the entire production phase of natural gas, plant engineering, water consumption and emissions (primary data from EMAS declarations of 4 Italian plants were used).&#13;
+With regard to electricity production from bioenergy:&#13;
+For biogas the system includes: (i) for unit processes of classes CL1 and CL2, that use biomass from agro-forestry and animal manure, the agricultural phase of biomass (for the production only in the case of dedicated crops), the transport of biomass to anaerobic digestion plants for biogas production and the conversion of biogas into energy (electrical and thermal), by Cogeneration Heat and Power (CHP) plant (cradle-to-gate approach) and (ii) for class CL3, that use municipal solid waste and sludge, the transport of biomass to anaerobic digestion plants for biogas production and the conversion of biogas into energy (electrical and thermal), by CHP plant (gate-to-gate approach). The power of the cogeneration plants is between 1 and 1700 kW. In accordance with the GSE (Gestore Servizi Energetici) report, "Statistical Report 2019 on Renewable Energy Sources", the percentage contribution to the Italian electricity production from biogas is set equal to 22% for the dataset “Electricity 1-700 kW”, 60 % for the dataset “Electricity 701-1700 kW” and 18% for the dataset “Electricity from waste&amp;sludge”. Primary data from the biomass project of ENAMA (Ente Nazionale Meccanizzazione Agricola) were used; in particular, these are data from farms, located in various regions of Italy, whose plants fall within the selected nominal power bands (1-700 kW and 701-1700 kW), and the GSE, 2021, Statistical Report 2019 on Renewable Sources; from Atlaimpianti (https://www.gse.it/dati-e-scenari/atlaimpianti) and from environmental declarations of plants that use waste&amp;sludge as biomass to obtain electricity. &#13;
+For solid biomass the system includes pre-treatment of residual biomass (chipping), transport (secondary data) and the combustion of residual biomass from forest, agri-food and agro-industrial sectors (primary data) in order obtain electrical energy (cradle-to-gate approach). The capacity of biomass treatment plants is between 1 and 75 MW. The primary data were provided by companies belonging to the Energy from Solid Biomass Association (EBS), distributed throughout the country, and the GSE (Gestore Servizi Energetici), 2022. Statistical Report 2020 on Renewable Sources; from Atlaimpianti (https://www.gse.it/dati-e-scenari/atlaimpianti). For wood chip pre-treatment, data were taken from the study conducted by Scrucca et al. 2021 (Arcadia Report "Chain Study - Forest Chips").&#13;
+For bioliquids the dataset is referred to a system including the conversion of biooil into energy (electrical), by means of combustion (500 MW plant). The power of the combustion plant is 500 MW named “Oil power plant, 500MW {GLO}| market for | Cut-off, U”.&#13;
+The data concerning the sinks of biooil are obtained by secondary data, in accordance with the GSE (Gestore Servizi Energetici) report, "Statistical Report 2020 on Renewable Energy Sources.&#13;
+&#13;
+For the LCA study, background datasets from EcoInvent database 3.7.1 cut-off were used.&#13;
+</technologyDescriptionAndIncludedProcesses>
+      <technologicalApplicability>Electricity from Italian electricity mix sold to Italian electric grid.&#13;
+Production mix that can be used in further modelling steps.&#13;
+</technologicalApplicability>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <deviationsFromLCIMethodPrinciple>None</deviationsFromLCIMethodPrinciple>
+      <LCIMethodApproaches>Not applicable</LCIMethodApproaches>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <dataCutOffAndCompletenessPrinciples>Production of equipment and infrastructures is not included, except for the background system</dataCutOffAndCompletenessPrinciples>
+      <dataCollectionPeriod>2018 - 2019 </dataCollectionPeriod>
+      <referenceToDataSource type="source data set" refObjectId="785ccf1b-f115-4e66-8371-330b77d9e513" version="01.00.000" uri="../sources/785ccf1b-f115-4e66-8371-330b77d9e513.xml">
+        <common:shortDescription>20231031172057_Filiera di produzione del mix elettrico italiano.pdf</common:shortDescription>
+      </referenceToDataSource>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>No statement</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Independent external review">
+        <common:reviewDetails>The review was performed in compliance with Arcadia Metodology: “Metodologia per gli studi di filiera della Banca Dati italiana LCA” and ISO 14040-44 norms. The dataset has been assessed limited to the foreground data collected during the supply chain studies.&#13;
+Each dataset has been evaluated based on the following 4 criteria:&#13;
+1. Technological Representativeness; 2. Time Representativeness; 3. Geographical Representativeness; 4. Reliability (A)&#13;
+In this contest the Reliability is very good.&#13;
+</common:reviewDetails>
+        <common:referenceToNameOfReviewerAndInstitution type="contact data set" refObjectId="e7497dfc-6893-434e-8707-3fed0a2becf1" version="01.00.000" uri="../sources/e7497dfc-6893-434e-8707-3fed0a2becf1.xml">
+          <common:shortDescription>Ecoinnovazione</common:shortDescription>
+        </common:referenceToNameOfReviewerAndInstitution>
+        <common:otherReviewDetails>The study was judged by the reviewer as compliant with both ISO 14040-44 and Arcadia methodology.</common:otherReviewDetails>
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Very good"/>
+          <common:dataQualityIndicator name="Completeness" value="Good"/>
+          <common:dataQualityIndicator name="Precision" value="Not applicable"/>
+          <common:dataQualityIndicator name="Methodological appropriateness and consistency" value="Not applicable"/>
+          <common:dataQualityIndicator name="Overall quality" value="Not applicable"/>
+        </common:dataQualityIndicators>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="cddbe022-2be5-40a9-bd2e-92ec3555213a" uri="../sources/cddbe022-2be5-40a9-bd2e-92ec3555213a.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="de1b799b-aa04-43fd-aa1e-f1a3ea6bae35" uri="../sources/de1b799b-aa04-43fd-aa1e-f1a3ea6bae35.xml">
+          <common:shortDescription xml:lang="en">ISO 14044</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Not defined</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="e48dbfb8-2923-4fd6-89d3-f842671d1863" uri="../sources/e48dbfb8-2923-4fd6-89d3-f842671d1863.xml">
+        <common:shortDescription xml:lang="en">Arcadia – PON Governance e Capacità istituzionale 2014-2020</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Arcadia – PON Governance e Capacità istituzionale 2014-2020</common:project>
+    </common:commissionerAndGoal>
+    <dataGenerator>
+      <common:referenceToPersonOrEntityGeneratingTheDataSet refObjectId="37fbf2cd-04c0-4dd6-826c-bc143bd2d2af" type="contact data set" uri="../sources/37fbf2cd-04c0-4dd6-826c-bc143bd2d2af.xml" version="01.00.000">
+        <common:shortDescription>ENEA</common:shortDescription>
+      </common:referenceToPersonOrEntityGeneratingTheDataSet>
+    </dataGenerator>
+    <dataEntryBy>
+      <common:timeStamp>2023-10-26T09:54:35.153+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="2fd53365-b493-498e-9ee5-3a323c20b685" uri="../sources/2fd53365-b493-498e-9ee5-3a323c20b685.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2021-10-06T11:50:42.603Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/5637cdb3-8dce-4771-8c7a-d94d7b6567a9.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="79448cc8-2946-4259-a884-d0bb5e3c5a65" type="contact data set" uri="../contacts/79448cc8-2946-4259-a884-d0bb5e3c5a65.xml" version="01.00.000">
+        <common:shortDescription>ENEA-ARCADIA</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+      <common:accessRestrictions>Type of license: Open Database Licence (ODbL)</common:accessRestrictions>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="079414e6-dfe7-42e8-ba36-b4aae2981456" uri="../flows/079414e6-dfe7-42e8-ba36-b4aae2981456.xml">
+        <common:shortDescription xml:lang="en">Electricity grid mix, technology mix, production mix at plant, High Voltage</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.6000000E+0</meanAmount>
+      <resultingAmount>3.6000000E+0</resultingAmount>
+      <generalComment>The total electricity production in 2019 is 269,38 TWh (Terna 2021)
+ 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="67adc20d-17bb-4240-ba6d-09c2722da007" uri="../flows/67adc20d-17bb-4240-ba6d-09c2722da007.xml">
+        <common:shortDescription xml:lang="en">Electricity, high voltage {IT}| electricity production, hydro, pumped storage | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.7496000E-1</meanAmount>
+      <resultingAmount>1.7496000E-1</resultingAmount>
+      <generalComment>For this process, the value of total electricity production (13.08 TWh, Terna 2021) is multiplied by the hydro parameter (total energy/net energy ratio = 1.01)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d9db178f-9776-491e-93b5-6a90eacef898" uri="../flows/d9db178f-9776-491e-93b5-6a90eacef898.xml">
+        <common:shortDescription xml:lang="en">Electricity, high voltage {IT}| electricity production, hydro, run-of-river | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.9052000E-1</meanAmount>
+      <resultingAmount>2.9052000E-1</resultingAmount>
+      <generalComment>For this process, the value of total electricity production (21.75 TWh, Terna 2021) is multiplied by the hydro parameter (total energy/net energy ratio = 1.01)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="3">
+      <referenceToFlowDataSet type="flow data set" refObjectId="362b3bdd-e72d-4463-b23c-6959ad768692" uri="../flows/362b3bdd-e72d-4463-b23c-6959ad768692.xml">
+        <common:shortDescription xml:lang="en">Electricity, high voltage {IT}| electricity production, hydro, reservoir, alpine region | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.7820000E-1</meanAmount>
+      <resultingAmount>1.7820000E-1</resultingAmount>
+      <generalComment>For this process, the value of total electricity production (13.32 TWh, Terna 2021) is multiplied by the hydro parameter (total energy/net energy ratio = 1.01)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="4">
+      <referenceToFlowDataSet type="flow data set" refObjectId="139cbefa-a0dc-4b6b-a54b-16c114568bc6" uri="../flows/139cbefa-a0dc-4b6b-a54b-16c114568bc6.xml">
+        <common:shortDescription xml:lang="en">Electricity, high voltage {IT}| electricity production, wind, &lt;1MW turbine, onshore | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.0800000E-2</meanAmount>
+      <resultingAmount>1.0800000E-2</resultingAmount>
+      <generalComment>For this process, the value of total electricity production (0.82 TWh, Terna 2021) is multiplied by the wind parameter (total energy/net energy ratio = 1.01)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="5">
+      <referenceToFlowDataSet type="flow data set" refObjectId="f7d70c20-d807-43f4-ba2d-9f2db7022dc6" uri="../flows/f7d70c20-d807-43f4-ba2d-9f2db7022dc6.xml">
+        <common:shortDescription xml:lang="en">Electricity, high voltage {IT}| electricity production, wind, &gt;3MW turbine, onshore | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.5884000E-1</meanAmount>
+      <resultingAmount>2.5884000E-1</resultingAmount>
+      <generalComment>For this process, the value of total electricity production (19.38 TWh, Terna 2021) is multiplied by the wind parameter (total energy/net energy ratio = 1.01)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="6">
+      <referenceToFlowDataSet type="flow data set" refObjectId="97486e64-e06a-422d-bf0e-9bb821926905" uri="../flows/97486e64-e06a-422d-bf0e-9bb821926905.xml">
+        <common:shortDescription xml:lang="en">Electricity, high voltage {IT}| electricity production, deep geothermal | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>8.1000000E-2</meanAmount>
+      <resultingAmount>8.1000000E-2</resultingAmount>
+      <generalComment>For this process, the value of total electricity production (6.07 TWh, Terna 2021) is multiplied by the geothermal parameter (total energy/net energy ratio = 1.07)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="7">
+      <referenceToFlowDataSet type="flow data set" refObjectId="9a448223-45d3-4cdf-a9b8-b0764027ef3c" uri="../flows/9a448223-45d3-4cdf-a9b8-b0764027ef3c.xml">
+        <common:shortDescription xml:lang="en">Electricity, high voltage {IT}| electricity production, hard coal | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.4876000E-1</meanAmount>
+      <resultingAmount>2.4876000E-1</resultingAmount>
+      <generalComment>For this process, 99% of total electricity production from hard coal (18.8 TWh, Terna 2021), multiplied by the thermal parameter (energy/net energy ratio = 1.04), comes from not cogenerative processes
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="8">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d090651f-d13a-4986-893b-ddf8354c8d0c" uri="../flows/d090651f-d13a-4986-893b-ddf8354c8d0c.xml">
+        <common:shortDescription xml:lang="en">Electricity, high voltage {IT}| heat and power co-generation, hard coal | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.5128000E-3</meanAmount>
+      <resultingAmount>2.5128000E-3</resultingAmount>
+      <generalComment>For this process, 1% of total electricity production from hard coal (18.8 TWh, Terna 2021), multiplied by the thermal parameter (energy/net energy ratio = 1.04) , comes from cogenerative processes
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="9">
+      <referenceToFlowDataSet type="flow data set" refObjectId="2cddb2f7-8e6f-4ac4-85c3-e991603808d1" uri="../flows/2cddb2f7-8e6f-4ac4-85c3-e991603808d1.xml">
+        <common:shortDescription xml:lang="en">Electricity from natural gas, mix of cogeneration and non-cogeneration, production mix at plant, High Voltage</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.8914400E+0</meanAmount>
+      <resultingAmount>1.8914400E+0</resultingAmount>
+      <generalComment>For this process, the value of total electricity production (141.55 TWh, Terna 2021) is multiplied by the thermal parameter (total energy/net energy ratio = 1.04)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="10">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fbf046cd-83da-4fcb-9a00-66d999dbdfc6" uri="../flows/fbf046cd-83da-4fcb-9a00-66d999dbdfc6.xml">
+        <common:shortDescription xml:lang="en">Electricity, high voltage {IT}| treatment of blast furnace gas, in power plant | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.9080000E-2</meanAmount>
+      <resultingAmount>1.9080000E-2</resultingAmount>
+      <generalComment>For this process, the value of total electricity production (1.44 TWh, Terna 2021) is multiplied by the thermal parameter (total energy/net energy ratio = 1.04)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="11">
+      <referenceToFlowDataSet type="flow data set" refObjectId="ae65a678-2aee-4851-b5a9-75084e9267f3" uri="../flows/ae65a678-2aee-4851-b5a9-75084e9267f3.xml">
+        <common:shortDescription xml:lang="en">Electricity, high voltage {IT}| treatment of coal gas, in power plant | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.2960000E-2</meanAmount>
+      <resultingAmount>1.2960000E-2</resultingAmount>
+      <generalComment>For this process, the value of total electricity production (0.96 TWh, Terna 2021) is multiplied by the thermal parameter (total energy/net energy ratio = 1.04)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="12">
+      <referenceToFlowDataSet type="flow data set" refObjectId="29779029-2a44-4db5-8d62-1ae605a4a2a6" uri="../flows/29779029-2a44-4db5-8d62-1ae605a4a2a6.xml">
+        <common:shortDescription xml:lang="en">Electricity, high voltage {IT}| electricity production, oil | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.3644000E-1</meanAmount>
+      <resultingAmount>1.3644000E-1</resultingAmount>
+      <generalComment>For this process, the value of total electricity production (10.2 TWh, Terna 2021) is multiplied by the thermal parameter (total energy/net energy ratio = 1.04)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="13">
+      <referenceToFlowDataSet type="flow data set" refObjectId="f422e476-3621-4360-a751-c6f87ef3e107" uri="../flows/f422e476-3621-4360-a751-c6f87ef3e107.xml">
+        <common:shortDescription xml:lang="en">Electricity, for reuse in municipal waste incineration only {IT}| treatment of municipal solid waste, incineration | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.2760000E-2</meanAmount>
+      <resultingAmount>3.2760000E-2</resultingAmount>
+      <generalComment>For this process, the value of total electricity production (2.44 TWh, Terna 2021) is multiplied by the thermal parameter (total energy/net energy ratio = 1.04)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="14">
+      <referenceToFlowDataSet type="flow data set" refObjectId="ad3eb177-3753-468f-9fd6-aa957adc9b4f" uri="../flows/ad3eb177-3753-468f-9fd6-aa957adc9b4f.xml">
+        <common:shortDescription xml:lang="en">Electricity from biogas, Anaerobic digestion and cogeneration, at plant</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>8.8200000E-2</meanAmount>
+      <resultingAmount>8.8200000E-2</resultingAmount>
+      <generalComment>For this process, the value of total electricity production (6.61 TWh, Terna 2021) is multiplied by the thermal parameter (total energy/net energy ratio = 1.04)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="15">
+      <referenceToFlowDataSet type="flow data set" refObjectId="ab25a2f7-ba6c-4540-9c9b-0dc0873474bd" uri="../flows/ab25a2f7-ba6c-4540-9c9b-0dc0873474bd.xml">
+        <common:shortDescription xml:lang="en">Electricity from solid biomass, Combustion, cogeneration and waste-to-energy, at plant</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.1052000E-1</meanAmount>
+      <resultingAmount>1.1052000E-1</resultingAmount>
+      <generalComment>For this process, the value of total electricity production (8.28 TWh, Terna 2021) is multiplied by the thermal parameter (total energy/net energy ratio = 1.04)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="16">
+      <referenceToFlowDataSet type="flow data set" refObjectId="974de47a-36ff-4faa-9889-35e0fc36a395" uri="../flows/974de47a-36ff-4faa-9889-35e0fc36a395.xml">
+        <common:shortDescription xml:lang="en">Electricity bioliquids, combustion, at plant</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.2640000E-2</meanAmount>
+      <resultingAmount>6.2640000E-2</resultingAmount>
+      <generalComment>For this process, the value of total electricity production (4.68 TWh, Terna 2021) is multiplied by the thermal parameter (total energy/net energy ratio = 1.04)
+</generalComment>
+    </exchange>
+  </exchanges>
+</processDataSet>

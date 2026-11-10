@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>66abc146-33f4-4449-84b4-ceb5e364fa1d</common:UUID>
+      <name>
+        <baseName xml:lang="en">Mixed C&amp;D waste, landfill </baseName>
+      </name>
+      <common:synonyms>Discarica per rifiuti C&amp;D  </common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">End-of-life treatment</common:class>
+          <common:class level="1">Landfilling</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment xml:lang="en">Dataset developed within the ARCADIA project in the context of the Ph.D. of Federica Carollo (Politecnico di Milano). &#13;
+The dataset relates to the landfilling of 1 kg of mixed construction and demolition (C&amp;D) waste (EWC 17 09 04) in Italy.  &#13;
+The original dataset " Inert waste {CH}| treatment of, sanitary landfill | Cut-off, U (Ecoinvent 3.3)" was modified as follows:  it was added some site-specific values concerning an Italian inert landfill (taken from Blengini and Garbarino, 2010) (Process: Inert landfill operativity, Lombardy Region) &#13;
+ </common:generalComment>
+      <referenceToExternalDocumentation type="source data set" refObjectId="43c46b50-2fca-40d7-bd88-99eb181594dd" version="01.00.000" uri="../sources/43c46b50-2fca-40d7-bd88-99eb181594dd.xml">
+        <common:shortDescription>Carollo F. (2023). Circularity in construction and demolition waste management chain, Ph.D. Dissertation (Tutored by Rigamonti L., Ceruti F.). Politecnico di Milano. Background datasets from the EcoInvent database cut-off (v. 3.8) were used for the LCA study. &#13;
+</common:shortDescription>
+      </referenceToExternalDocumentation>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2022</common:referenceYear>
+      <common:dataSetValidUntil>2027</common:dataSetValidUntil>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT">
+        <descriptionOfRestrictions>Lombardy Region</descriptionOfRestrictions>
+      </locationOfOperationSupplyOrProduction>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>An existing Ecoinvent 3.3 process was used for the modelling of landfill disposal of inert C&amp;D waste (and also of waste from C&amp;D processing in mobile plants), which simulates the disposal in landfills of waste containing only cement (a hypothesis that also reflects the actual situation, as the most significant percentage of waste disposed of, is made up of cement scraps); such process includes the production of leachate, containing the polluting compounds that derive from the leaching following contact of the disposed waste with rainwater that infiltrates the storage. The default process has been partially modified to adapt it to the context of the disposal of C&amp;D in Lombardia using the literature data of Blengini et al., 2012. &#13;
+ &#13;
+Good the Reliability;   &#13;
+Very Good the Geographical representativeness;   &#13;
+Very Good the Time representativeness;   &#13;
+Very Good the Technological representativeness. </technologyDescriptionAndIncludedProcesses>
+      <technologicalApplicability>Sanitary Landfill of inert waste deriving from construction and demolition activities. </technologicalApplicability>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Allocation - mass</LCIMethodApproaches>
+      <referenceToLCAMethodDetails type="source data set" refObjectId="bf8674a3-882a-49df-aff3-152704e8cd5c" version="01.00.000" uri="../sources/bf8674a3-882a-49df-aff3-152704e8cd5c.xml">
+        <common:shortDescription>Carollo F. (2023). Circularity in construction and demolition waste management chain, Ph.D. Dissertation (Tutored by Rigamonti L., Ceruti F.). Politecnico di Milano.</common:shortDescription>
+      </referenceToLCAMethodDetails>
+      <referenceToLCAMethodDetails type="source data set" refObjectId="4d04be55-ea9d-4f21-948e-cd8f5d41cffd" version="01.00.000" uri="../sources/4d04be55-ea9d-4f21-948e-cd8f5d41cffd.xml">
+        <common:shortDescription>Borghi, G., Pantini, S., &amp; Rigamonti, L. (2018). Life cycle assessment of non-hazardous Construction and  Demolition Waste (CDW) management in Lombardy Region (Italy). Journal of Cleaner Production, 184, 815–825.  </common:shortDescription>
+      </referenceToLCAMethodDetails>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <dataTreatmentAndExtrapolationsPrinciples xml:lang="en"></dataTreatmentAndExtrapolationsPrinciples>
+      <referenceToDataSource type="source data set" refObjectId="ce29542e-1569-4dc3-a6ac-e6f6ec369010" version="01.00.000" uri="../sources/ce29542e-1569-4dc3-a6ac-e6f6ec369010.xml">
+        <common:shortDescription>Carollo F. (2023). Circularity in construction and demolition waste management chain, Ph.D. Dissertation (Tutored by Rigamonti L., Ceruti F.). Politecnico di Milano. Background datasets from the EcoInvent database cut-off (v. 3.8) were used for the LCA study. &#13;
+</common:shortDescription>
+      </referenceToDataSource>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>All relevant flows quantified</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Not reviewed">
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Good"/>
+          <common:dataQualityIndicator name="Completeness" value="Good"/>
+          <common:dataQualityIndicator name="Precision" value="Good"/>
+          <common:dataQualityIndicator name="Methodological appropriateness and consistency" value="Good"/>
+          <common:dataQualityIndicator name="Overall quality" value="Good"/>
+        </common:dataQualityIndicators>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="88d4f8d9-60f9-43d1-9ea3-329c10d7d727" uri="../sources/88d4f8d9-60f9-43d1-9ea3-329c10d7d727.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Fully compliant</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Fully compliant</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="d92a1a12-2545-49e2-a585-55c259997756" uri="../sources/d92a1a12-2545-49e2-a585-55c259997756.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Fully compliant</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Fully compliant</common:methodologicalCompliance>
+        <common:reviewCompliance>Fully compliant</common:reviewCompliance>
+        <common:documentationCompliance>Fully compliant</common:documentationCompliance>
+        <common:qualityCompliance>Fully compliant</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="01807191-e156-421a-b2f6-aa609ea534f4" uri="../contacts/01807191-e156-421a-b2f6-aa609ea534f4.xml">
+        <common:shortDescription xml:lang="en">EPLCA project team</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Arcadia – PON Governance e Capacità istituzionali 2014-2020 (PhD Project of Federica Carollo).</common:project>
+    </common:commissionerAndGoal>
+    <dataGenerator>
+      <common:referenceToPersonOrEntityGeneratingTheDataSet type="contact data set" refObjectId="569b90b6-c396-43b4-8153-0e5947361252" uri="../contacts/569b90b6-c396-43b4-8153-0e5947361252.xml">
+        <common:shortDescription xml:lang="en">generated by: [System] support@ecoinvent.org</common:shortDescription>
+      </common:referenceToPersonOrEntityGeneratingTheDataSet>
+    </dataGenerator>
+    <dataEntryBy>
+      <common:timeStamp>2022-12-03T16:44:07.244+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="a97a0155-0234-4b87-b4ce-a45da52f2a40" uri="../sources/a97a0155-0234-4b87-b4ce-a45da52f2a40.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+      <common:referenceToPersonOrEntityEnteringTheData type="contact data set" refObjectId="74fcdf01-ea8b-4445-aed9-9e6e8be0879d" uri="../contacts/74fcdf01-ea8b-4445-aed9-9e6e8be0879d.xml">
+        <common:shortDescription xml:lang="en">data entry by:   is active author:</common:shortDescription>
+      </common:referenceToPersonOrEntityEnteringTheData>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2016-08-03T00:00:00.0Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/66abc146-33f4-4449-84b4-ceb5e364fa1d.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="81cb2342-8bdb-4e70-a56d-a312dd446456" type="contact data set" uri="../sources/81cb2342-8bdb-4e70-a56d-a312dd446456.xml" version="01.00.000">
+        <common:shortDescription>ENEA-ARCADIA</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+      <common:accessRestrictions>Type of license: Open Database Licence (ODbL).</common:accessRestrictions>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="7b3d9ef0-94e9-4485-a00b-64bd0fa17abc" uri="../flows/7b3d9ef0-94e9-4485-a00b-64bd0fa17abc.xml">
+        <common:shortDescription xml:lang="en">Mixed C&amp;D waste, landfill</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0000000E+0</meanAmount>
+      <resultingAmount>1.0000000E+0</resultingAmount>
+      <generalComment>Reference: Borghi et al., 2018. 
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d442e2a9-3a14-4d54-b555-33122066aea0" uri="../flows/d442e2a9-3a14-4d54-b555-33122066aea0.xml">
+        <common:shortDescription xml:lang="en">Sanitary landfill facility {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.5600000E-10</meanAmount>
+      <resultingAmount>5.5600000E-10</resultingAmount>
+      <uncertaintyDistributionType>log-normal</uncertaintyDistributionType>
+      <relativeStandardDeviation95In>1.507</relativeStandardDeviation95In>
+      <generalComment>(1,1,5,5,1,na)
+demands per kilogram waste. uncertainty is heeded in the module
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="0577f828-2575-4d5f-9c83-7d6a20425693" uri="../flows/0577f828-2575-4d5f-9c83-7d6a20425693.xml">
+        <common:shortDescription xml:lang="en">Inert landfill operativity, Lombardy Region</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.0000000E+0</meanAmount>
+      <resultingAmount>1.0000000E+0</resultingAmount>
+      <uncertaintyDistributionType>log-normal</uncertaintyDistributionType>
+      <relativeStandardDeviation95In>1.507</relativeStandardDeviation95In>
+      <generalComment>(1,1,5,5,1,na)
+demands per kilogram waste. uncertainty is heeded in the module.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="3">
+      <referenceToFlowDataSet type="flow data set" refObjectId="377ec55d-6a7b-4840-9ba3-290d9e2b659f" uri="../flows/377ec55d-6a7b-4840-9ba3-290d9e2b659f.xml">
+        <common:shortDescription xml:lang="en">Wastewater treatment facility, capacity 5E9l/year {GLO}| market for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.4200000E-11</meanAmount>
+      <resultingAmount>1.4200000E-11</resultingAmount>
+      <uncertaintyDistributionType>log-normal</uncertaintyDistributionType>
+      <relativeStandardDeviation95In>2.504</relativeStandardDeviation95In>
+      <generalComment>(5,5,5,5,5,na)
+burden from wastewater treatment of the short-term leachate (0-100a). Uncertainty calculated from unertainty of the waste composition of this waste, uncertainty in waste decomposition and short-term leaching in sanitary landfill
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="4">
+      <referenceToFlowDataSet type="flow data set" refObjectId="7294110c-d654-4c86-8403-608dffa56ab9" uri="../flows/7294110c-d654-4c86-8403-608dffa56ab9.xml">
+        <common:shortDescription xml:lang="en">Transport, freight, lorry &gt;32 metric ton, EURO4 {RER}| transport, freight, lorry &gt;32 metric ton, EURO4 | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>6.4800000E-3</meanAmount>
+      <resultingAmount>6.4800000E-3</resultingAmount>
+      <generalComment>[0,072/1000*90]
+Replaced sewer system with transport on barrel (simulated with large vehicles) to deliver the leachate from the landfill to the Wastewater treatment plant; assumed an average distance of 90km from the inert landfill (from MUD data); 0.072 kg of leachate per kg of waste delivered (from MUD data)
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="5">
+      <referenceToFlowDataSet type="flow data set" refObjectId="a3d93631-0276-4891-96b5-a6d65252aa22" uri="../flows/a3d93631-0276-4891-96b5-a6d65252aa22.xml">
+        <common:shortDescription xml:lang="en">Electricity, low voltage {Europe without Switzerland}| market group for | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.5200000E-4</meanAmount>
+      <resultingAmount>2.5200000E-4</resultingAmount>
+      <uncertaintyDistributionType>log-normal</uncertaintyDistributionType>
+      <relativeStandardDeviation95In>2.504</relativeStandardDeviation95In>
+      <generalComment>(5,5,5,5,5,na)
+burden from wastewater treatment of the short-term leachate (0-100a). Uncertainty calculated from unertainty of the waste composition of this waste, uncertainty in waste decomposition and short-term leaching in sanitary landfill
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="6">
+      <referenceToFlowDataSet type="flow data set" refObjectId="91ecbcb1-9f65-446a-8383-0869ccab290f" uri="../flows/91ecbcb1-9f65-446a-8383-0869ccab290f.xml">
+        <common:shortDescription xml:lang="en">Heat, central or small-scale, other than natural gas {Europe without Switzerland}| market for heat, central or small-scale, other than natural gas | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.2524000E-5</meanAmount>
+      <resultingAmount>3.2524000E-5</resultingAmount>
+      <uncertaintyDistributionType>log-normal</uncertaintyDistributionType>
+      <relativeStandardDeviation95In>2.504</relativeStandardDeviation95In>
+      <generalComment>(5,5,5,5,5,na)
+burden from wastewater treatment of the short-term leachate (0-100a). Uncertainty calculated from unertainty of the waste composition of this waste, uncertainty in waste decomposition and short-term leaching in sanitary landfill
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="7">
+      <referenceToFlowDataSet type="flow data set" refObjectId="d2d7ff8e-959a-4f1a-99bb-ed4f5bbb2315" uri="../flows/d2d7ff8e-959a-4f1a-99bb-ed4f5bbb2315.xml">
+        <common:shortDescription xml:lang="en">Heat, district or industrial, natural gas {Europe without Switzerland}| market for heat, district or industrial, natural gas | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>4.4928000E-5</meanAmount>
+      <resultingAmount>4.4928000E-5</resultingAmount>
+      <uncertaintyDistributionType>log-normal</uncertaintyDistributionType>
+      <relativeStandardDeviation95In>2.504</relativeStandardDeviation95In>
+      <generalComment>(5,5,5,5,5,na)
+burden from wastewater treatment of the short-term leachate (0-100a). Uncertainty calculated from unertainty of the waste composition of this waste, uncertainty in waste decomposition and short-term leaching in sanitary landfill
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="8">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4b17ea78-1f9d-405d-beaa-b71771d61047" uri="../flows/4b17ea78-1f9d-405d-beaa-b71771d61047.xml">
+        <common:shortDescription xml:lang="en">Waste graphical paper {Europe without Switzerland}| market group for waste graphical paper | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.8800000E-5</meanAmount>
+      <resultingAmount>3.8800000E-5</resultingAmount>
+      <uncertaintyDistributionType>log-normal</uncertaintyDistributionType>
+      <relativeStandardDeviation95In>2.504</relativeStandardDeviation95In>
+      <generalComment>(5,5,5,5,5,na)
+burden from wastewater treatment of the short-term leachate (0-100a). Uncertainty calculated from unertainty of the waste composition of this waste, uncertainty in waste decomposition and short-term leaching in sanitary landfill
+Production Volume Amount: 479725.65975503
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="9">
+      <referenceToFlowDataSet type="flow data set" refObjectId="95ea0859-2c0b-4937-bb65-6ba2189c7088" uri="../flows/95ea0859-2c0b-4937-bb65-6ba2189c7088.xml">
+        <common:shortDescription xml:lang="en">Waste plastic, mixture {Europe without Switzerland}| market group for waste plastic, mixture | Cut-off, U</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.8800000E-5</meanAmount>
+      <resultingAmount>3.8800000E-5</resultingAmount>
+      <uncertaintyDistributionType>log-normal</uncertaintyDistributionType>
+      <relativeStandardDeviation95In>2.504</relativeStandardDeviation95In>
+      <generalComment>(5,5,5,5,5,na)
+burden from wastewater treatment of the short-term leachate (0-100a). Uncertainty calculated from unertainty of the waste composition of this waste, uncertainty in waste decomposition and short-term leaching in sanitary landfill
+Production Volume Amount: 479725.65975503
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="10">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-a297-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-a297-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">calcium</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.8300000E-1</meanAmount>
+      <resultingAmount>1.8300000E-1</resultingAmount>
+      <uncertaintyDistributionType>log-normal</uncertaintyDistributionType>
+      <relativeStandardDeviation95In>1.953</relativeStandardDeviation95In>
+      <generalComment>(1,1,5,5,1,na)
+Emissions from long-term leachate (&gt;100a) directly from MSW landfill and indirectly via incineration of treatement sludge from leachate treatement. Uncertainty calculated depending on waste input and uncertainty of long-term transfer coefficents in landfill.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="11">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-ac5a-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-ac5a-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">sulfate</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.3800000E-2</meanAmount>
+      <resultingAmount>1.3800000E-2</resultingAmount>
+      <uncertaintyDistributionType>log-normal</uncertaintyDistributionType>
+      <relativeStandardDeviation95In>4.067</relativeStandardDeviation95In>
+      <generalComment>(1,1,5,5,1,na)
+Emissions from long-term leachate (&gt;100a) directly from MSW landfill and indirectly via incineration of treatement sludge from leachate treatement. Uncertainty calculated depending on waste input and uncertainty of long-term transfer coefficents in landfill.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="12">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9bcb-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9bcb-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">manganese</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.8600000E-4</meanAmount>
+      <resultingAmount>1.8600000E-4</resultingAmount>
+      <uncertaintyDistributionType>log-normal</uncertaintyDistributionType>
+      <relativeStandardDeviation95In>6.824</relativeStandardDeviation95In>
+      <generalComment>(1,1,5,5,1,na)
+Emissions from long-term leachate (&gt;100a) directly from MSW landfill and indirectly via incineration of treatement sludge from leachate treatement. Uncertainty calculated depending on waste input and uncertainty of long-term transfer coefficents in landfill.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="13">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4d9a8790-3ddd-11dd-8fd8-0050c2490048" uri="../flows/4d9a8790-3ddd-11dd-8fd8-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">chromium (vi)</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>9.6900000E-8</meanAmount>
+      <resultingAmount>9.6900000E-8</resultingAmount>
+      <uncertaintyDistributionType>log-normal</uncertaintyDistributionType>
+      <relativeStandardDeviation95In>339.750</relativeStandardDeviation95In>
+      <generalComment>(1,1,5,5,1,na)
+Emissions from long-term leachate (&gt;100a) directly from MSW landfill and indirectly via incineration of treatement sludge from leachate treatement. Uncertainty calculated depending on waste input and uncertainty of long-term transfer coefficents in landfill.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="14">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9596-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9596-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">iron</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>7.0400000E-4</meanAmount>
+      <resultingAmount>7.0400000E-4</resultingAmount>
+      <uncertaintyDistributionType>log-normal</uncertaintyDistributionType>
+      <relativeStandardDeviation95In>19.189</relativeStandardDeviation95In>
+      <generalComment>(1,1,5,5,1,na)
+Emissions from long-term leachate (&gt;100a) directly from MSW landfill and indirectly via incineration of treatement sludge from leachate treatement. Uncertainty calculated depending on waste input and uncertainty of long-term transfer coefficents in landfill.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="15">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-a291-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-a291-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">cadmium</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>6.0700000E-7</meanAmount>
+      <resultingAmount>6.0700000E-7</resultingAmount>
+      <uncertaintyDistributionType>log-normal</uncertaintyDistributionType>
+      <relativeStandardDeviation95In>13.278</relativeStandardDeviation95In>
+      <generalComment>(1,1,5,5,1,na)
+Emissions from long-term leachate (&gt;100a) directly from MSW landfill and indirectly via incineration of treatement sludge from leachate treatement. Uncertainty calculated depending on waste input and uncertainty of long-term transfer coefficents in landfill.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="16">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-94ae-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-94ae-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">hydrogen sulfide</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.6000000E-4</meanAmount>
+      <resultingAmount>3.6000000E-4</resultingAmount>
+      <uncertaintyDistributionType>log-normal</uncertaintyDistributionType>
+      <relativeStandardDeviation95In>4.067</relativeStandardDeviation95In>
+      <generalComment>(1,1,5,5,1,na)
+Emissions from long-term leachate (&gt;100a) directly from MSW landfill and indirectly via incineration of treatement sludge from leachate treatement. Uncertainty calculated depending on waste input and uncertainty of long-term transfer coefficents in landfill.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="17">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-a733-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-a733-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">aluminium</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.3400000E-2</meanAmount>
+      <resultingAmount>1.3400000E-2</resultingAmount>
+      <uncertaintyDistributionType>log-normal</uncertaintyDistributionType>
+      <relativeStandardDeviation95In>3.387</relativeStandardDeviation95In>
+      <generalComment>(1,1,5,5,1,na)
+Emissions from long-term leachate (&gt;100a) directly from MSW landfill and indirectly via incineration of treatement sludge from leachate treatement. Uncertainty calculated depending on waste input and uncertainty of long-term transfer coefficents in landfill.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="18">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9506-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9506-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">sodium</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>4.1200000E-3</meanAmount>
+      <resultingAmount>4.1200000E-3</resultingAmount>
+      <uncertaintyDistributionType>log-normal</uncertaintyDistributionType>
+      <relativeStandardDeviation95In>4.242</relativeStandardDeviation95In>
+      <generalComment>(1,1,5,5,1,na)
+Emissions from long-term leachate (&gt;100a) directly from MSW landfill and indirectly via incineration of treatement sludge from leachate treatement. Uncertainty calculated depending on waste input and uncertainty of long-term transfer coefficents in landfill.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="19">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-94e8-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-94e8-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">zinc</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>6.6500000E-5</meanAmount>
+      <resultingAmount>6.6500000E-5</resultingAmount>
+      <uncertaintyDistributionType>log-normal</uncertaintyDistributionType>
+      <relativeStandardDeviation95In>7.703</relativeStandardDeviation95In>
+      <generalComment>(1,1,5,5,1,na)
+Emissions from long-term leachate (&gt;100a) directly from MSW landfill and indirectly via incineration of treatement sludge from leachate treatement. Uncertainty calculated depending on waste input and uncertainty of long-term transfer coefficents in landfill.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="20">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-91e0-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-91e0-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">arsenic</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.4000000E-6</meanAmount>
+      <resultingAmount>3.4000000E-6</resultingAmount>
+      <uncertaintyDistributionType>log-normal</uncertaintyDistributionType>
+      <relativeStandardDeviation95In>11.226</relativeStandardDeviation95In>
+      <generalComment>(1,1,5,5,1,na)
+Emissions from long-term leachate (&gt;100a) directly from MSW landfill and indirectly via incineration of treatement sludge from leachate treatement. Uncertainty calculated depending on waste input and uncertainty of long-term transfer coefficents in landfill.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="21">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9787-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9787-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">phosphate</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>4.8100000E-6</meanAmount>
+      <resultingAmount>4.8100000E-6</resultingAmount>
+      <uncertaintyDistributionType>log-normal</uncertaintyDistributionType>
+      <relativeStandardDeviation95In>209.540</relativeStandardDeviation95In>
+      <generalComment>(1,1,5,5,1,na)
+Emissions from long-term leachate (&gt;100a) directly from MSW landfill and indirectly via incineration of treatement sludge from leachate treatement. Uncertainty calculated depending on waste input and uncertainty of long-term transfer coefficents in landfill.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="22">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4d9a8790-3ddd-11dd-96ce-0050c2490048" uri="../flows/4d9a8790-3ddd-11dd-96ce-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">copper</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>3.8600000E-6</meanAmount>
+      <resultingAmount>3.8600000E-6</resultingAmount>
+      <uncertaintyDistributionType>log-normal</uncertaintyDistributionType>
+      <relativeStandardDeviation95In>10.950</relativeStandardDeviation95In>
+      <generalComment>(1,1,5,5,1,na)
+Emissions from long-term leachate (&gt;100a) directly from MSW landfill and indirectly via incineration of treatement sludge from leachate treatement. Uncertainty calculated depending on waste input and uncertainty of long-term transfer coefficents in landfill.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="23">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-a8c9-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-a8c9-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">mercury</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.7100000E-8</meanAmount>
+      <resultingAmount>1.7100000E-8</resultingAmount>
+      <uncertaintyDistributionType>log-normal</uncertaintyDistributionType>
+      <relativeStandardDeviation95In>16.468</relativeStandardDeviation95In>
+      <generalComment>(1,1,5,5,1,na)
+Emissions from long-term leachate (&gt;100a) directly from MSW landfill and indirectly via incineration of treatement sludge from leachate treatement. Uncertainty calculated depending on waste input and uncertainty of long-term transfer coefficents in landfill.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="24">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-968e-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-968e-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">antimony</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>8.8400000E-9</meanAmount>
+      <resultingAmount>8.8400000E-9</resultingAmount>
+      <uncertaintyDistributionType>log-normal</uncertaintyDistributionType>
+      <relativeStandardDeviation95In>37.667</relativeStandardDeviation95In>
+      <generalComment>(1,1,5,5,1,na)
+Emissions from long-term leachate (&gt;100a) directly from MSW landfill and indirectly via incineration of treatement sludge from leachate treatement. Uncertainty calculated depending on waste input and uncertainty of long-term transfer coefficents in landfill.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="25">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4d9a8790-3ddd-11dd-8dbf-0050c2490048" uri="../flows/4d9a8790-3ddd-11dd-8dbf-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">vanadium</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>6.7400000E-6</meanAmount>
+      <resultingAmount>6.7400000E-6</resultingAmount>
+      <uncertaintyDistributionType>log-normal</uncertaintyDistributionType>
+      <relativeStandardDeviation95In>12.275</relativeStandardDeviation95In>
+      <generalComment>(1,1,5,5,1,na)
+Emissions from long-term leachate (&gt;100a) directly from MSW landfill and indirectly via incineration of treatement sludge from leachate treatement. Uncertainty calculated depending on waste input and uncertainty of long-term transfer coefficents in landfill.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="26">
+      <referenceToFlowDataSet type="flow data set" refObjectId="33c7b302-b29b-4a19-b8dc-0a8999f15419" uri="../flows/33c7b302-b29b-4a19-b8dc-0a8999f15419.xml">
+        <common:shortDescription xml:lang="en">Silicon</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>7.3500000E-4</meanAmount>
+      <resultingAmount>7.3500000E-4</resultingAmount>
+      <uncertaintyDistributionType>log-normal</uncertaintyDistributionType>
+      <relativeStandardDeviation95In>59.448</relativeStandardDeviation95In>
+      <generalComment>(1,1,5,5,1,na)
+Emissions from long-term leachate (&gt;100a) directly from MSW landfill and indirectly via incineration of treatement sludge from leachate treatement. Uncertainty calculated depending on waste input and uncertainty of long-term transfer coefficents in landfill.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="27">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9990-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9990-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">tin</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.3300000E-6</meanAmount>
+      <resultingAmount>1.3300000E-6</resultingAmount>
+      <uncertaintyDistributionType>log-normal</uncertaintyDistributionType>
+      <relativeStandardDeviation95In>12.275</relativeStandardDeviation95In>
+      <generalComment>(1,1,5,5,1,na)
+Emissions from long-term leachate (&gt;100a) directly from MSW landfill and indirectly via incineration of treatement sludge from leachate treatement. Uncertainty calculated depending on waste input and uncertainty of long-term transfer coefficents in landfill.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="28">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-9968-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-9968-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">thallium</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.9300000E-7</meanAmount>
+      <resultingAmount>1.9300000E-7</resultingAmount>
+      <uncertaintyDistributionType>log-normal</uncertaintyDistributionType>
+      <relativeStandardDeviation95In>14.874</relativeStandardDeviation95In>
+      <generalComment>(1,1,5,5,1,na)
+Emissions from long-term leachate (&gt;100a) directly from MSW landfill and indirectly via incineration of treatement sludge from leachate treatement. Uncertainty calculated depending on waste input and uncertainty of long-term transfer coefficents in landfill.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="29">
+      <referenceToFlowDataSet type="flow data set" refObjectId="fe0acd60-3ddc-11dd-a4ef-0050c2490048" uri="../flows/fe0acd60-3ddc-11dd-a4ef-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">cobalt</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.7600000E-6</meanAmount>
+      <resultingAmount>1.7600000E-6</resultingAmount>
+      <uncertaintyDistributionType>log-normal</uncertaintyDistributionType>
+      <relativeStandardDeviation95In>11.887</relativeStandardDeviation95In>
+      <generalComment>(1,1,5,5,1,na)
+Emissions from long-term leachate (&gt;100a) directly from MSW landfill and indirectly via incineration of treatement sludge from leachate treatement. Uncertainty calculated depending on waste input and uncertainty of long-term transfer coefficents in landfill.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="30">
+      <referenceToFlowDataSet type="flow data set" refObjectId="4d9a8790-3ddd-11dd-91e1-0050c2490048" uri="../flows/4d9a8790-3ddd-11dd-91e1-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">lead</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>2.9400000E-5</meanAmount>
+      <resultingAmount>2.9400000E-5</resultingAmount>
+      <uncertaintyDistributionType>log-normal</uncertaintyDistributionType>
+      <relativeStandardDeviation95In>8.636</relativeStandardDeviation95In>
+      <generalComment>(1,1,5,5,1,na)
+Emissions from long-term leachate (&gt;100a) directly from MSW landfill and indirectly via incineration of treatement sludge from leachate treatement. Uncertainty calculated depending on waste input and uncertainty of long-term transfer coefficents in landfill.
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="31">
+      <referenceToFlowDataSet type="flow data set" refObjectId="08a91e70-3ddc-11dd-96cd-0050c2490048" uri="../flows/08a91e70-3ddc-11dd-96cd-0050c2490048.xml">
+        <common:shortDescription xml:lang="en">nickel</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.6500000E-5</meanAmount>
+      <resultingAmount>1.6500000E-5</resultingAmount>
+      <uncertaintyDistributionType>log-normal</uncertaintyDistributionType>
+      <relativeStandardDeviation95In>9.290</relativeStandardDeviation95In>
+      <generalComment>(1,1,5,5,1,na)
+Emissions from long-term leachate (&gt;100a) directly from MSW landfill and indirectly via incineration of treatement sludge from leachate treatement. Uncertainty calculated depending on waste input and uncertainty of long-term transfer coefficents in landfill.
+</generalComment>
+    </exchange>
+  </exchanges>
+</processDataSet>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+</head>
+<body>
+<script>
+(function () {
+  function post(type, data) {
+    window.parent.postMessage(
+      Object.assign({ isStreamlitMessage: true, type: type }, data || {}),
+      "*"
+    );
+  }
+  function setValue(v) {
+    post("streamlit:setComponentValue", { value: v });
+  }
+
+  post("streamlit:componentReady", { apiVersion: 1 });
+  post("streamlit:setFrameHeight", { height: 0 });
+
+  // Actions forwarded from the JS2 catalogue iframe. Anything not in this list
+  // is ignored, so the bridge can't be driven by unrelated page messages.
+  var ACTIONS = {
+    "eetra:viewDocuments": 1,
+    "eetra:closeDocuments": 1,
+    "eetra:editItem": 1
+  };
+
+  var lastNonce = null;
+
+  function onCatalogueMessage(event) {
+    var d = event.data;
+    if (!d || !d.type || !ACTIONS[d.type]) return;
+    if (!d.eetraId) return;
+    // Guard against the same click being delivered twice (the listener is
+    // registered on both this window and the parent, and either may fire).
+    if (d.nonce != null && d.nonce === lastNonce) return;
+    lastNonce = d.nonce;
+    // `kind` is the document the user asked to preview, when the message is a
+    // preview request — Python rasterises just that one (see fn357_build_doc_panel_payload).
+    setValue({
+      type: d.type,
+      eetraId: String(d.eetraId),
+      kind: d.kind == null ? "" : String(d.kind),
+      nonce: d.nonce,
+    });
+  }
+
+  window.addEventListener("message", onCatalogueMessage);
+  // The catalogue iframe posts to *its* parent (the main app window), so the
+  // listener has to live there too. Same-origin because declared components are
+  // served by Streamlit itself.
+  try { window.parent.addEventListener("message", onCatalogueMessage); } catch (e) {}
+  try { window.top.addEventListener("message", onCatalogueMessage); } catch (e) {}
+})();
+</script>
+</body>
+</html>

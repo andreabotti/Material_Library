@@ -1,0 +1,70 @@
+# --- Secrets (NEVER commit: this repository is public) ---
+# Deployment credentials belong in the host's secret manager (Streamlit Cloud
+# -> App settings -> Secrets), or in NEON_DATABASE_URL / environment variables.
+# Patterns are deliberately wide: an exact path misses secrets.toml.bak,
+# secrets.toml.old, secrets (1).toml and similar near-misses, any one of which
+# would publish the Neon connection string, the R2 keys and the GCP private key.
+.streamlit/secrets*
+**/secrets.toml*
+*secrets*.toml
+*.env
+.env
+01_data/.env
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+# Backups of anything, which routinely carry credentials
+*.bak
+*.bak_*
+*_bak_*
+*.old
+*.orig
+
+# ...but the committed, value-stripped template must stay tracked.
+!.streamlit/secrets.toml.example
+!**/*.example
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# --- Node ---
+node_modules/
+
+# --- Runtime caches / regenerable assets (not code, not data) ---
+.cache/
+logs/
+*.lock
+
+# Heavy asset stores: EPD/technical PDFs and their static mirrors.
+# See REMOTE_ASSET_STORAGE.md -- these live in the Cloudflare R2 bucket.
+01_data/pdf/
+static/docs/
+static/cat_cache/
+static/img_cache/
+
+# --- OneDrive / sync conflict copies ---
+# OneDrive renames a conflicted file "<name>-<MACHINE>.<ext>" and leaves both.
+# These are dead weight everywhere, but one of them is actively harmful:
+# Streamlit turns every file in pages/ into a navigation entry, so a conflict
+# copy there ships as a second, stale page in the deployed sidebar.
+*-DESKTOP-*
+*-LAPTOP-*
+*[Cc]onflicted copy*
+
+# --- OS ---
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# --- Agent / editor tooling (not part of the app) ---
+# Local assistant config and vendored skill docs: useful on a workstation,
+# irrelevant to the deployed app. Directory rules, not the per-file list
+# that "Ignore file" generates -- that misses every file added later.
+.agents/
+.claude/

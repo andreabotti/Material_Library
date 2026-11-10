@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processDataSet xmlns="http://lca.jrc.it/ILCD/Process" xmlns:common="http://lca.jrc.it/ILCD/Common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lca.jrc.it/ILCD/Process ../../schemas/ILCD_ProcessDataSet.xsd" version="1.1" locations="..\ILCDLocations.xml">
+  <processInformation>
+    <dataSetInformation>
+      <common:UUID>6e6636b9-fe70-46a9-8c90-846d53d9a939</common:UUID>
+      <name>
+        <baseName xml:lang="en">School meal set disposable and compostable polylactide granulate for dishes</baseName>
+        <treatmentStandardsRoutes> disposable and compostable</treatmentStandardsRoutes>
+        <mixAndLocationTypes> polylactide granulate for dishes</mixAndLocationTypes>
+      </name>
+      <common:synonyms>Kit usa e getta compostabile per mensa scolastica</common:synonyms>
+      <classificationInformation>
+        <common:classification name="ILCDCategories" classes="../ILCDClassification.xml">
+          <common:class level="0">Systems</common:class>
+          <common:class level="1">Other systems</common:class>
+        </common:classification>
+      </classificationInformation>
+      <common:generalComment>The dataset has been developed in LIFE EFFIGE project. Details are given in “PEFCR of contracted supply service for school meals” (lifeeffige.eu). The background system is not included in the model. To complete the inventory, the use of data from other published database is necessary.</common:generalComment>
+    </dataSetInformation>
+    <quantitativeReference type="Reference flow(s)">
+      <referenceToReferenceFlow>0</referenceToReferenceFlow>
+    </quantitativeReference>
+    <time>
+      <common:referenceYear>2019</common:referenceYear>
+      <common:dataSetValidUntil>2024</common:dataSetValidUntil>
+    </time>
+    <geography>
+      <locationOfOperationSupplyOrProduction location="IT"/>
+    </geography>
+    <technology>
+      <technologyDescriptionAndIncludedProcesses>The dataset includes a simplified model of tableset disposable and compostable.  Average data are provided concerning the amount of materials needed to supply a tableset suitable for school meals.  A typical tableset includes a placemate, a paper napkin, a glass, a set of cutlery, a couple of dishes. The background system is not included in the model. To complete the inventory, the use of data from other published database is necessary. </technologyDescriptionAndIncludedProcesses>
+      <technologicalApplicability>In agreement with the scope definition, the dataset shall be used for those cases where the impact of the meal kit is not the main contribution to the total impact of the investigated system. </technologicalApplicability>
+    </technology>
+  </processInformation>
+  <modellingAndValidation>
+    <LCIMethodAndAllocation>
+      <typeOfDataSet>Partly terminated system</typeOfDataSet>
+      <LCIMethodPrinciple>Attributional</LCIMethodPrinciple>
+      <LCIMethodApproaches>Not applicable</LCIMethodApproaches>
+    </LCIMethodAndAllocation>
+    <dataSourcesTreatmentAndRepresentativeness>
+      <dataCutOffAndCompletenessPrinciples>Processes to produce the different parts of the tableset (e.g. stamping, drawing etc.) and the end-of-life treatments are out of the scope of the dataset.  </dataCutOffAndCompletenessPrinciples>
+      <referenceToDataSource type="source data set" refObjectId="43b809cf-6a1e-4ab8-b53a-7a7d6375fda8" version="01.00.000" uri="../sources/43b809cf-6a1e-4ab8-b53a-7a7d6375fda8.xml">
+        <common:shortDescription>PEFCR of contracted supply service for school meals (lifeeffige.eu)</common:shortDescription>
+      </referenceToDataSource>
+      <referenceToDataSource type="source data set" refObjectId="efd0940e-99a9-40ea-b2ea-711b8ad81809" version="01.00.000" uri="../sources/efd0940e-99a9-40ea-b2ea-711b8ad81809.xml">
+        <common:shortDescription>Primary data from service supplier</common:shortDescription>
+      </referenceToDataSource>
+    </dataSourcesTreatmentAndRepresentativeness>
+    <completeness>
+      <completenessProductModel>No statement</completenessProductModel>
+    </completeness>
+    <validation>
+      <review type="Independent internal review">
+        <common:dataQualityIndicators>
+          <common:dataQualityIndicator name="Technological representativeness" value="Not applicable"/>
+          <common:dataQualityIndicator name="Time representativeness" value="Not applicable"/>
+          <common:dataQualityIndicator name="Geographical representativeness" value="Not applicable"/>
+          <common:dataQualityIndicator name="Completeness" value="Not applicable"/>
+          <common:dataQualityIndicator name="Precision" value="Not applicable"/>
+          <common:dataQualityIndicator name="Methodological appropriateness and consistency" value="Not applicable"/>
+          <common:dataQualityIndicator name="Overall quality" value="Not applicable"/>
+        </common:dataQualityIndicators>
+      </review>
+    </validation>
+    <complianceDeclarations>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="88d4f8d9-60f9-43d1-9ea3-329c10d7d727" uri="../sources/88d4f8d9-60f9-43d1-9ea3-329c10d7d727.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Not defined</common:methodologicalCompliance>
+        <common:reviewCompliance>Not defined</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+      <compliance>
+        <common:referenceToComplianceSystem type="source data set" refObjectId="d92a1a12-2545-49e2-a585-55c259997756" uri="../sources/d92a1a12-2545-49e2-a585-55c259997756.xml">
+          <common:shortDescription xml:lang="en">ISO 14040</common:shortDescription>
+        </common:referenceToComplianceSystem>
+        <common:approvalOfOverallCompliance>Fully compliant</common:approvalOfOverallCompliance>
+        <common:nomenclatureCompliance>Not defined</common:nomenclatureCompliance>
+        <common:methodologicalCompliance>Not defined</common:methodologicalCompliance>
+        <common:reviewCompliance>Not defined</common:reviewCompliance>
+        <common:documentationCompliance>Not defined</common:documentationCompliance>
+        <common:qualityCompliance>Not defined</common:qualityCompliance>
+      </compliance>
+    </complianceDeclarations>
+  </modellingAndValidation>
+  <administrativeInformation>
+    <common:commissionerAndGoal>
+      <common:referenceToCommissioner type="contact data set" refObjectId="01807191-e156-421a-b2f6-aa609ea534f4" uri="../contacts/01807191-e156-421a-b2f6-aa609ea534f4.xml">
+        <common:shortDescription xml:lang="en">EPLCA project team</common:shortDescription>
+      </common:referenceToCommissioner>
+      <common:project>Progetto Life EFFIGE (LIFE16 ENV/IT/000172)</common:project>
+    </common:commissionerAndGoal>
+    <dataEntryBy>
+      <common:timeStamp>2022-04-12T17:42:41.741+02:00</common:timeStamp>
+      <common:referenceToDataSetFormat type="source data set" refObjectId="a97a0155-0234-4b87-b4ce-a45da52f2a40" uri="../sources/a97a0155-0234-4b87-b4ce-a45da52f2a40.xml">
+        <common:shortDescription xml:lang="en">ILCD format 1.1</common:shortDescription>
+      </common:referenceToDataSetFormat>
+    </dataEntryBy>
+    <publicationAndOwnership>
+      <common:dateOfLastRevision>2018-07-18T12:11:31.695Z</common:dateOfLastRevision>
+      <common:dataSetVersion>01.00.000</common:dataSetVersion>
+      <common:permanentDataSetURI>../processes/6e6636b9-fe70-46a9-8c90-846d53d9a939.xml</common:permanentDataSetURI>
+      <common:referenceToOwnershipOfDataSet refObjectId="fe5086c3-ec02-4096-8603-7a5e4aca018e" type="contact data set" uri="../sources/fe5086c3-ec02-4096-8603-7a5e4aca018e.xml" version="01.00.000">
+        <common:shortDescription>LIFE EFFIGE</common:shortDescription>
+      </common:referenceToOwnershipOfDataSet>
+      <common:copyright>true</common:copyright>
+      <common:licenseType>Free of charge for all users and uses</common:licenseType>
+      <common:accessRestrictions>Type of license: Open Database Licence (ODbL)</common:accessRestrictions>
+    </publicationAndOwnership>
+  </administrativeInformation>
+  <exchanges>
+    <exchange dataSetInternalID="0">
+      <referenceToFlowDataSet type="flow data set" refObjectId="6e0ac72d-9bbd-4bbf-ae2c-fe17c1aaaaba" uri="../flows/6e0ac72d-9bbd-4bbf-ae2c-fe17c1aaaaba.xml">
+        <common:shortDescription xml:lang="en">School meal set disposable and compostable</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>IT</location>
+      <exchangeDirection>Output</exchangeDirection>
+      <meanAmount>1.0000000E+0</meanAmount>
+      <resultingAmount>1.0000000E+0</resultingAmount>
+      <generalComment>Tableset for 1 meal
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="1">
+      <referenceToFlowDataSet type="flow data set" refObjectId="f7663a68-47eb-4e32-afd2-261feea6593f" uri="../flows/f7663a68-47eb-4e32-afd2-261feea6593f.xml">
+        <common:shortDescription xml:lang="en">Polylactide, granulate {GLO}| market for | Cut-off, S</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>1.7000000E-2</meanAmount>
+      <resultingAmount>1.7000000E-2</resultingAmount>
+      <generalComment>cutlery
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="2">
+      <referenceToFlowDataSet type="flow data set" refObjectId="6d640f52-a975-4fc2-be63-95d1015afd96" uri="../flows/6d640f52-a975-4fc2-be63-95d1015afd96.xml">
+        <common:shortDescription xml:lang="en">Tissue paper {RER}| production | Cut-off, S</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>2.1000000E-3</meanAmount>
+      <resultingAmount>2.1000000E-3</resultingAmount>
+      <generalComment>napkin
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="3">
+      <referenceToFlowDataSet type="flow data set" refObjectId="6d640f52-a975-4fc2-be63-95d1015afd96" uri="../flows/6d640f52-a975-4fc2-be63-95d1015afd96.xml">
+        <common:shortDescription xml:lang="en">Tissue paper {RER}| production | Cut-off, S</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>5.7000000E-3</meanAmount>
+      <resultingAmount>5.7000000E-3</resultingAmount>
+      <generalComment>placemat	
+</generalComment>
+    </exchange>
+    <exchange dataSetInternalID="4">
+      <referenceToFlowDataSet type="flow data set" refObjectId="f7663a68-47eb-4e32-afd2-261feea6593f" uri="../flows/f7663a68-47eb-4e32-afd2-261feea6593f.xml">
+        <common:shortDescription xml:lang="en">Polylactide, granulate {GLO}| market for | Cut-off, S</common:shortDescription>
+      </referenceToFlowDataSet>
+      <location>GLO</location>
+      <exchangeDirection>Input</exchangeDirection>
+      <meanAmount>3.5600000E-2</meanAmount>
+      <resultingAmount>3.5600000E-2</resultingAmount>
+      <generalComment>2 dishes and 1 glass
+</generalComment>
+    </exchange>
+  </exchanges>
+</processDataSet>
