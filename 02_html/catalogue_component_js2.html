@@ -1156,8 +1156,9 @@ table.cat2-price-table tr.is-match td{background:#f1f5ff;font-weight:600;color:#
      lib_ui.fn358_rasterize_pdf_pages. -->
 <!-- Main script is inert (type="text/plain") and started by the loader at the end
      of <body> once window.__DATA__ is available: Python serves the catalogue rows
-     as a static file (window.__DATA_URL__, see lib_ui._fn336_static_products_url)
-     rather than inlining ~11 MB into every rerun's srcdoc. -->
+     out-of-band (window.__DATA_URL__, see lib_ui._fn336_static_products_url —
+     MediaFileManager first, then static/cat_cache) rather than inlining ~11 MB
+     into every rerun's srcdoc. -->
 <script type="text/plain" id="cat2-main-script">
 const PRODUCTS   =(window.__DATA__ && window.__DATA__.length) ? window.__DATA__ : [];
 const PRICE_TABLES = window.__PRICE_TABLES__ || {};   // EETRA id → listino table
@@ -4470,23 +4471,43 @@ function applyFilterBarConfig(){
     s.text = src ? src.textContent : "";
     document.body.appendChild(s);
   }
+  function showLoadError(detail){
+    window.__DATA__ = [];
+    startMain();
+    const msg = document.createElement("div");
+    msg.style.cssText = "padding:12px 16px;margin:8px;border:1px solid #f5c2c7;background:#f8d7da;color:#842029;font:13px sans-serif;border-radius:6px";
+    msg.textContent = "Catalogue data could not be loaded (" + detail + "). Reload the page to retry.";
+    document.body.insertBefore(msg, document.body.firstChild);
+  }
   const url = window.__DATA_URL__;
   if(!url || (window.__DATA__ && window.__DATA__.length)){ startMain(); return; }
-  // Same origin resolution as appStaticUrl() in the main script.
-  let origin = "";
-  try{ const o = window.parent.location.origin; if(o && o !== "null") origin = o; }catch(_e){}
-  if(!origin){ try{ const o = window.location.origin; if(o && o !== "null") origin = o; }catch(_e){} }
-  fetch(origin + url)
-    .then(r => { if(!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
-    .then(rows => { window.__DATA__ = Array.isArray(rows) ? rows : []; startMain(); })
-    .catch(err => {
-      window.__DATA__ = [];
-      startMain();
-      const msg = document.createElement("div");
-      msg.style.cssText = "padding:12px 16px;margin:8px;border:1px solid #f5c2c7;background:#f8d7da;color:#842029;font:13px sans-serif;border-radius:6px";
-      msg.textContent = "Catalogue data could not be loaded (" + (err && err.message || err) + "). Reload the page to retry.";
-      document.body.insertBefore(msg, document.body.firstChild);
-    });
+  // Prefer the origin Python injected (st.context.url); then parent; then self.
+  // Absolute /media/… and /app/static/… paths still resolve if origin is "".
+  let origin = String(window.__APP_ORIGIN__ || "");
+  if(!origin || origin === "null"){
+    try{ const o = window.parent.location.origin; if(o && o !== "null") origin = o; }catch(_e){}
+  }
+  if(!origin || origin === "null"){
+    try{ const o = window.location.origin; if(o && o !== "null") origin = o; }catch(_e){}
+  }
+  if(origin === "null") origin = "";
+  const href = /^https?:\/\//i.test(url) ? url : (origin + url);
+  fetch(href)
+    .then(function(r){
+      if(!r.ok) throw new Error("HTTP " + r.status);
+      return r.text().then(function(text){
+        const t = String(text || "").replace(/^\uFEFF/, "").trim();
+        if(!t) throw new Error("empty response");
+        // SPA/HTML fallback when static serving misses — first char is '<'
+        if(t.charAt(0) !== "[" && t.charAt(0) !== "{"){
+          throw new Error("not JSON (got " + t.slice(0, 48).replace(/\s+/g, " ") + "…)");
+        }
+        try { return JSON.parse(t); }
+        catch(e){ throw new Error((e && e.message) || "JSON.parse failed"); }
+      });
+    })
+    .then(function(rows){ window.__DATA__ = Array.isArray(rows) ? rows : []; startMain(); })
+    .catch(function(err){ showLoadError((err && err.message) || err); });
 })();
 </script>
 </body>
