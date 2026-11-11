@@ -1328,11 +1328,11 @@ def static_img_cache_url(url: str, tier: str = _STATIC_IMG_TIER_CARD) -> str:
 def static_img_payload_url(url_or_path: str) -> str:
     """URL safe to put in the catalogue iframe ``imageUrl`` field.
 
-    Locally ``/app/static/img_cache/…`` is fine (``enableStaticServing``). On
-    Community Cloud, files written under ``static/`` at runtime are not reliably
-    served to the browser — the same SPA-HTML miss that broke catalogue JSON —
-    so rewrite those to a data URI read from the local cache file. Absolute
-    ``https://`` / ``data:`` URLs pass through unchanged.
+    Always rewrite ``/app/static/img_cache/…`` to a data URI read from the
+    local cache file. On Community Cloud those paths return the SPA HTML shell
+    (HTTP 200, ``text/html``) — runtime-written ``static/`` is not served to the
+    browser — so an ``<img src="/app/static/img_cache/…">`` never paints.
+    Absolute ``https://`` / ``data:`` URLs pass through unchanged.
     """
     u = str(url_or_path or "").strip()
     if not u:
@@ -1340,15 +1340,6 @@ def static_img_payload_url(url_or_path: str) -> str:
     if u.startswith(("data:", "http://", "https://")):
         return u
     if not u.startswith("/app/static/img_cache/"):
-        return u
-    # Prefer HTTP static URLs only when we know the browser can fetch them.
-    use_static_http = False
-    if not fn_on_streamlit_cloud():
-        try:
-            use_static_http = bool(st.get_option("server.enableStaticServing"))
-        except Exception:
-            use_static_http = False
-    if use_static_http:
         return u
     name = Path(u).name
     if not name or name in (".", "..") or "/" in name or "\\" in name:

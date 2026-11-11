@@ -4904,14 +4904,9 @@ def _fn336_payload_config_signature() -> str:
         parts.append(str(_TRANSLATIONS_PATH.stat().st_mtime_ns))
     except Exception:
         parts.append("lang?")
-    try:
-        # Image URLs are /app/static locally and data: URIs on Community Cloud
-        # (static_img_payload_url). Warmup without a browser URL must not poison
-        # the Cloud cache with unservable static paths.
-        from .lib_data import fn_on_streamlit_cloud
-        parts.append("cloud" if fn_on_streamlit_cloud() else "local")
-    except Exception:
-        parts.append("host?")
+    # Bust cached payloads that still embed /app/static/img_cache/… URLs
+    # (unservable on Community Cloud — see static_img_payload_url).
+    parts.append("img:datauri-v1")
     return hashlib.md5("\x1f".join(parts).encode("utf-8", "replace")).hexdigest()
 
 
@@ -5295,10 +5290,20 @@ def _fn336_cached_catalogue_payload(
                 # Never fall back to pandas NA placeholders — they become
                 # literal img src="<NA>" and break Streamlit static serving.
                 out_u = "" if _u in ("-", "nan", "None", "NaN", "<NA>", "NA") else _u
-            # Community Cloud cannot serve runtime-written /app/static/img_cache
-            # to the iframe — rewrite those to data URIs (local HTTP URLs stay).
-            out_u = static_img_payload_url(out_u) if out_u.startswith("/app/static/") else out_u
-            out_d = static_img_payload_url(out_d) if out_d.startswith("/app/static/") else (out_d or out_u)
+            # /app/static/img_cache is unservable on Community Cloud (SPA HTML
+            # 200). Always rewrite to a data URI; if the file is missing, fall
+            # back to the original remote URL rather than a dead static path.
+            def _payload_img(candidate: str) -> str:
+                c = str(candidate or "").strip()
+                if not c.startswith("/app/static/"):
+                    return c
+                converted = static_img_payload_url(c)
+                if converted:
+                    return converted
+                return "" if _u in ("-", "nan", "None", "NaN", "<NA>", "NA") else _u
+
+            out_u = _payload_img(out_u)
+            out_d = _payload_img(out_d) if out_d else out_u
             if not out_d:
                 out_d = out_u
             _uri_cache[_ck] = (out_u, out_d)
