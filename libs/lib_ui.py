@@ -5889,33 +5889,14 @@ def fn336_render_catalogue_flipcard(
     # toggle: Expanded turns one EPD row into one card per "Collezione".
     _range_collections_json = json.dumps(_fn_product_range_collections(), ensure_ascii=False)
     _load_pct = 0
-    # JS2: point the iframe at an out-of-band copy of the rows instead of
-    # inlining them (see _fn336_static_products_url). The template defers its
-    # main script until window.__DATA_URL__ has been fetched. Inject the app
-    # origin so the sandboxed loader does not have to read parent.location.
-    _data_url = (
-        _fn336_static_products_url(products_json, _payload.get("products_md5", ""))
-        if _is_js2 else None
-    )
-    _app_origin = ""
-    if _is_js2:
-        try:
-            from urllib.parse import urlparse as _urlparse
-
-            _page_url = st.context.url
-            if _page_url:
-                _pu = _urlparse(str(_page_url))
-                if _pu.scheme and _pu.netloc:
-                    _app_origin = f"{_pu.scheme}://{_pu.netloc}"
-        except Exception:
-            _app_origin = ""
-    if _data_url:
-        _data_js = (
-            f"window.__DATA_URL__={json.dumps(_data_url)};"
-            f"window.__APP_ORIGIN__={json.dumps(_app_origin)};"
-        )
-    else:
-        _data_js = f"window.__DATA__={products_json};"
+    # Always inline the rows into the srcdoc. Serving them via /app/static or
+    # /media and fetching from the iframe looks smaller on the wire locally,
+    # but on Community Cloud those HTTP GETs often hit another replica (or the
+    # SPA catch-all) and return <!doctype html> — see Streamlit's own guidance
+    # to prefer WebSocket/base64 over media HTTP in multi-replica hosts.
+    # `_fn336_static_products_url` remains for optional local tooling; the
+    # catalogue render path no longer uses it.
+    _data_js = f"window.__DATA__={products_json};"
     data_injection = (
         f"<style>{_root_css}</style>\n"
         f"{js2_list_view_col_widths_css()}\n"
