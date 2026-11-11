@@ -5608,6 +5608,65 @@ _CAT_STATIC_PROTECT_S = 2 * 3600
 _CAT_STATIC_LAST_USED: dict[str, float] = {}
 
 
+def _fn336_safe_script_json(json_text: str) -> str:
+    """Make a JSON text safe to embed inside an HTML ``<script>`` element.
+
+    The HTML parser closes ``<script>`` on the literal characters ``</script>``
+    even when they sit inside a JS string. Escaping ``<`` to ``\\u003c`` keeps
+    the JS value identical while preventing breakout. Also neutralise the
+    Unicode line separators that are legal in JSON strings but terminate JS
+    statements in some engines.
+    """
+    return (
+        str(json_text)
+        .replace("\u2028", "\\u2028")
+        .replace("\u2029", "\\u2029")
+        .replace("<", "\\u003c")
+    )
+
+
+def _fn336_inline_products_js(products_json: str) -> str:
+    """JS that defines ``window.__DATA__`` for the catalogue iframe.
+
+    Prefer a gzip+base64 blob (``window.__DATA_GZ__``): ~11 MB of product JSON
+    shrinks to ~1–2 MB, stays clear of ``</script>`` breakouts (base64 alphabet
+    has no ``<``), and survives Community Cloud websocket size pressure better
+    than a raw array literal. The iframe loader inflates it with
+    ``DecompressionStream``.
+
+    Falls back to a ``<``-escaped raw assignment if compression fails.
+    """
+    import base64
+    import gzip
+
+    text = str(products_json or "")
+    if not text:
+        return "window.__DATA__=[];"
+
+    # pandas ``to_json`` can emit NaN/Infinity, which JSON.parse rejects.
+    try:
+        json.loads(text)
+        raw = text.encode("utf-8")
+    except (TypeError, ValueError, json.JSONDecodeError):
+        cleaned = (
+            text
+            .replace(":NaN", ":null")
+            .replace(":Infinity", ":null")
+            .replace(":-Infinity", ":null")
+        )
+        try:
+            json.loads(cleaned)
+            raw = cleaned.encode("utf-8")
+        except (TypeError, ValueError, json.JSONDecodeError):
+            return f"window.__DATA__={_fn336_safe_script_json(text)};"
+
+    try:
+        b64 = base64.b64encode(gzip.compress(raw, compresslevel=6)).decode("ascii")
+        return f"window.__DATA_GZ__={json.dumps(b64)};"
+    except Exception:
+        return f"window.__DATA__={_fn336_safe_script_json(raw.decode('utf-8'))};"
+
+
 def _fn336_on_streamlit_cloud() -> bool:
     """True when the browser URL looks like Streamlit Community Cloud."""
     try:
@@ -5889,34 +5948,31 @@ def fn336_render_catalogue_flipcard(
     # toggle: Expanded turns one EPD row into one card per "Collezione".
     _range_collections_json = json.dumps(_fn_product_range_collections(), ensure_ascii=False)
     _load_pct = 0
-    # Always inline the rows into the srcdoc. Serving them via /app/static or
-    # /media and fetching from the iframe looks smaller on the wire locally,
-    # but on Community Cloud those HTTP GETs often hit another replica (or the
-    # SPA catch-all) and return <!doctype html> — see Streamlit's own guidance
-    # to prefer WebSocket/base64 over media HTTP in multi-replica hosts.
-    # `_fn336_static_products_url` remains for optional local tooling; the
-    # catalogue render path no longer uses it.
-    _data_js = f"window.__DATA__={products_json};"
+    # Inline product rows into the srcdoc (no /app/static or /media fetch — those
+    # return SPA HTML on Community Cloud). Gzip+base64 keeps the payload smaller
+    # and avoids </script> breakouts from product text; see _fn336_inline_products_js.
+    _sj = _fn336_safe_script_json
+    _data_js = _fn336_inline_products_js(products_json)
     data_injection = (
         f"<style>{_root_css}</style>\n"
         f"{js2_list_view_col_widths_css()}\n"
         f"<script>{_data_js} window.__COLS__={int(cols)}; "
         f"window.__INITIAL_DETAIL__={json.dumps(_initial_detail_js)}; "
-        f"window.__GWP_RANGES__={gwp_ranges_json}; "
-        f"window.__RC_RANGES__={_rc_ranges_json}; "
-        f"window.__CAT_IMG_BINDER__={_binder_img}; "
-        f"window.__LIST_FIELDS__={_list_fields_json}; "
+        f"window.__GWP_RANGES__={_sj(gwp_ranges_json)}; "
+        f"window.__RC_RANGES__={_sj(_rc_ranges_json)}; "
+        f"window.__CAT_IMG_BINDER__={_sj(_binder_img)}; "
+        f"window.__LIST_FIELDS__={_sj(_list_fields_json)}; "
         f"window.__STELLA_IMG__={json.dumps(_stella_img_uri)}; "
-        f"window.__CAT_CFG__={js_catalogue_window_config_json()}; "
-        f"window.__JS2_FIELDS__={_js2_fields_json}; "
-        f"window.__VALUE_I18N__={_value_i18n_json}; "
-        f"window.__CHROME_I18N__={_chrome_i18n_json}; "
-        f"window.__VOC_ALIGN__={_voc_align_json}; "
-        f"window.__VOC_FW__={_voc_fw_json}; "
-        f"window.__FIELD_VIS__={_field_vis_json}; "
-        f"window.__RANGE_INDEX__={_range_index_json}; "
-        f"window.__RANGE_COLLECTIONS__={_range_collections_json}; "
-        f"window.__MFR_LOGOS__={json.dumps(_fn_catalogue_mfr_logo_urls(), ensure_ascii=False)}; "
+        f"window.__CAT_CFG__={_sj(js_catalogue_window_config_json())}; "
+        f"window.__JS2_FIELDS__={_sj(_js2_fields_json)}; "
+        f"window.__VALUE_I18N__={_sj(_value_i18n_json)}; "
+        f"window.__CHROME_I18N__={_sj(_chrome_i18n_json)}; "
+        f"window.__VOC_ALIGN__={_sj(_voc_align_json)}; "
+        f"window.__VOC_FW__={_sj(_voc_fw_json)}; "
+        f"window.__FIELD_VIS__={_sj(_field_vis_json)}; "
+        f"window.__RANGE_INDEX__={_sj(_range_index_json)}; "
+        f"window.__RANGE_COLLECTIONS__={_sj(_range_collections_json)}; "
+        f"window.__MFR_LOGOS__={_sj(json.dumps(_fn_catalogue_mfr_logo_urls(), ensure_ascii=False))}; "
         f"window.__LOAD_PCT__={_load_pct};"
     )
     if _is_js2:
@@ -5928,10 +5984,12 @@ def fn336_render_catalogue_flipcard(
         if open_product:
             data_injection += f" window.__OPEN_PRODUCT__={json.dumps(str(open_product))};"
         if doc_preview and doc_preview.get("docs"):
-            data_injection += f" window.__DOC_PREVIEW__={json.dumps(doc_preview)};"
+            data_injection += (
+                f" window.__DOC_PREVIEW__={_sj(json.dumps(doc_preview))};"
+            )
         if price_tables:
             data_injection += (
-                f" window.__PRICE_TABLES__={json.dumps(price_tables, ensure_ascii=False)};"
+                f" window.__PRICE_TABLES__={_sj(json.dumps(price_tables, ensure_ascii=False))};"
             )
     data_injection += "</script>\n"
     html_out = html_template.replace("</head>", data_injection + "</head>", 1)
