@@ -4910,6 +4910,31 @@ def _fn336_payload_config_signature() -> str:
     return hashlib.md5("\x1f".join(parts).encode("utf-8", "replace")).hexdigest()
 
 
+def _fn_range_img_for_payload(cached_path: str, remote_url: str = "") -> str:
+    """Image URL for range index / collection cards in the catalogue iframe.
+
+    Prefer a data URI from ``static/img_cache`` when the file exists. Otherwise
+    use the manufacturer HTTPS URL (``img_src`` / member ``img``). Never emit
+    ``/app/static/img_cache/…`` — on Community Cloud those paths return SPA HTML.
+    """
+    cached = str(cached_path or "").strip()
+    remote = str(remote_url or "").strip()
+    if cached.startswith(("http://", "https://", "data:")):
+        return cached
+    if cached.startswith("/app/static/img_cache/"):
+        try:
+            from .lib_data import static_img_payload_url
+            data_uri = static_img_payload_url(cached)
+            if data_uri:
+                return data_uri
+        except Exception:
+            pass
+        return remote if remote.startswith(("http://", "https://")) else ""
+    if remote.startswith(("http://", "https://", "data:")):
+        return remote
+    return cached
+
+
 @st.cache_data(show_spinner=False, max_entries=1)
 def _fn_product_range_index() -> dict:
     """``aux_09__product_ranges.json`` → flat {lower-cased name: member} index.
@@ -4919,6 +4944,9 @@ def _fn_product_range_index() -> dict:
     rather than as more rows, and the row points at it through
     ``D__IncludedProducts``. Missing or unreadable file → {}, and the
     included-products popup silently stays the plain text list it was.
+
+    Each entry's ``img`` is rewritten for the iframe (data URI or ``img_src``
+    HTTPS) so clay-tile / collection galleries work on Community Cloud.
     """
     path = Path(__file__).resolve().parent.parent / "aux_09__product_ranges.json"
     try:
@@ -4926,7 +4954,20 @@ def _fn_product_range_index() -> dict:
     except Exception:
         return {}
     index = data.get("index")
-    return index if isinstance(index, dict) else {}
+    if not isinstance(index, dict):
+        return {}
+    out: dict = {}
+    for key, meta in index.items():
+        if not isinstance(meta, dict):
+            out[key] = meta
+            continue
+        entry = dict(meta)
+        entry["img"] = _fn_range_img_for_payload(
+            entry.get("img") or entry.get("img_cached") or "",
+            entry.get("img_src") or "",
+        )
+        out[key] = entry
+    return out
 
 
 @st.cache_data(show_spinner=False, max_entries=1)
@@ -4942,8 +4983,8 @@ def _fn_product_range_collections() -> dict:
 
     Deliberately summary-only: the label, where it came from, what the colours
     have in common, and one representative thumbnail (the first member that has
-    a cached one). Missing or unreadable file → {}, and the toggle falls back to
-    Condensed with nothing to expand.
+    a cached one, else its remote ``img``). Missing or unreadable file → {}, and
+    the toggle falls back to Condensed with nothing to expand.
     """
     path = Path(__file__).resolve().parent.parent / "aux_09__product_ranges.json"
     try:
@@ -4960,15 +5001,14 @@ def _fn_product_range_collections() -> dict:
         members = rng.get("members") or []
         thumb = ""
         for m in members:
-            if isinstance(m, dict) and m.get("img_cached"):
-                thumb = m["img_cached"]
+            if not isinstance(m, dict):
+                continue
+            thumb = _fn_range_img_for_payload(
+                m.get("img_cached") or "",
+                m.get("img") or "",
+            )
+            if thumb:
                 break
-        if thumb.startswith("/app/static/"):
-            try:
-                from .lib_data import static_img_payload_url
-                thumb = static_img_payload_url(thumb) or ""
-            except Exception:
-                thumb = ""
         out[str(rid)] = {
             "label": rng.get("label") or str(rid),
             "brand": rng.get("brand") or "",

@@ -1952,7 +1952,11 @@ function mountIncludedProductsList(host, p, opts){
     btn.title = url
       ? "Open product page on manufacturer page"
       : "No manufacturer page available";
-    const thumbSrc = meta ? productImageSrc(meta.img) : "";
+    // img is rewritten server-side (data URI or HTTPS); img_src is the original
+    // manufacturer CDN URL kept as a fallback when static cache paths survive.
+    const thumbSrc = meta
+      ? productImageSrc(meta.img || meta.img_src || "")
+      : "";
     const thumb = thumbSrc
       ? `<img src="${escAttr(thumbSrc)}" alt="" loading="lazy" decoding="async"
            onerror="this.closest('.cat2-incl-thumb').innerHTML='<div class=\\'cat2-incl-thumb-fallback\\'>no image</div>'">`
