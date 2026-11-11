@@ -4904,6 +4904,14 @@ def _fn336_payload_config_signature() -> str:
         parts.append(str(_TRANSLATIONS_PATH.stat().st_mtime_ns))
     except Exception:
         parts.append("lang?")
+    try:
+        # Image URLs are /app/static locally and data: URIs on Community Cloud
+        # (static_img_payload_url). Warmup without a browser URL must not poison
+        # the Cloud cache with unservable static paths.
+        from .lib_data import fn_on_streamlit_cloud
+        parts.append("cloud" if fn_on_streamlit_cloud() else "local")
+    except Exception:
+        parts.append("host?")
     return hashlib.md5("\x1f".join(parts).encode("utf-8", "replace")).hexdigest()
 
 
@@ -4960,6 +4968,12 @@ def _fn_product_range_collections() -> dict:
             if isinstance(m, dict) and m.get("img_cached"):
                 thumb = m["img_cached"]
                 break
+        if thumb.startswith("/app/static/"):
+            try:
+                from .lib_data import static_img_payload_url
+                thumb = static_img_payload_url(thumb) or ""
+            except Exception:
+                thumb = ""
         out[str(rid)] = {
             "label": rng.get("label") or str(rid),
             "brand": rng.get("brand") or "",
@@ -5178,6 +5192,7 @@ def _fn336_cached_catalogue_payload(
             resolve_local_product_image_path,
             save_static_img_cache,
             static_img_cache_url,
+            static_img_payload_url,
         )
 
         from concurrent.futures import ThreadPoolExecutor as _TPE, as_completed as _as_completed
@@ -5280,7 +5295,13 @@ def _fn336_cached_catalogue_payload(
                 # Never fall back to pandas NA placeholders — they become
                 # literal img src="<NA>" and break Streamlit static serving.
                 out_u = "" if _u in ("-", "nan", "None", "NaN", "<NA>", "NA") else _u
-            _uri_cache[_ck] = (out_u, out_d or out_u)
+            # Community Cloud cannot serve runtime-written /app/static/img_cache
+            # to the iframe — rewrite those to data URIs (local HTTP URLs stay).
+            out_u = static_img_payload_url(out_u) if out_u.startswith("/app/static/") else out_u
+            out_d = static_img_payload_url(out_d) if out_d.startswith("/app/static/") else (out_d or out_u)
+            if not out_d:
+                out_d = out_u
+            _uri_cache[_ck] = (out_u, out_d)
             return _uri_cache[_ck]
 
         _has_img_local = "U__Img_Local" in df_catalog.columns
@@ -5670,21 +5691,10 @@ def _fn336_inline_products_js(products_json: str) -> str:
 def _fn336_on_streamlit_cloud() -> bool:
     """True when the browser URL looks like Streamlit Community Cloud."""
     try:
-        url = str(st.context.url or "").lower()
+        from .lib_data import fn_on_streamlit_cloud
+        return bool(fn_on_streamlit_cloud())
     except Exception:
-        url = ""
-    if "streamlit.app" in url or "share.streamlit.io" in url:
-        return True
-    # Hosting env vars used by Community Cloud / similar hosts.
-    for key in ("STREAMLIT_SHARING_MODE", "STREAMLIT_SERVER_HEADLESS"):
-        try:
-            if str(os.environ.get(key) or "").strip():
-                # Headless alone is not Cloud-specific; only treat sharing mode.
-                if key == "STREAMLIT_SHARING_MODE":
-                    return True
-        except Exception:
-            pass
-    return False
+        return False
 
 
 def _fn336_static_products_url(products_json: str, products_md5: str) -> "str | None":

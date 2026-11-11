@@ -1288,6 +1288,22 @@ def _static_img_cache_key(url: str, tier: str = _STATIC_IMG_TIER_CARD) -> str:
     return hashlib.md5(primary.encode()).hexdigest() + _STATIC_IMG_TIER_SUFFIX.get(tier, "")
 
 
+def fn_on_streamlit_cloud() -> bool:
+    """True when the browser URL looks like Streamlit Community Cloud."""
+    try:
+        url = str(getattr(st.context, "url", None) or "").lower()
+    except Exception:
+        url = ""
+    if "streamlit.app" in url or "share.streamlit.io" in url:
+        return True
+    try:
+        if str(os.environ.get("STREAMLIT_SHARING_MODE") or "").strip():
+            return True
+    except Exception:
+        pass
+    return False
+
+
 def static_img_cache_url(url: str, tier: str = _STATIC_IMG_TIER_CARD) -> str:
     """Same-origin URL for a cached product image at *tier*, or "" if not on disk.
 
@@ -1306,6 +1322,40 @@ def static_img_cache_url(url: str, tier: str = _STATIC_IMG_TIER_CARD) -> str:
         for ext in (".png", ".jpg", ".jpeg", ".webp"):
             if f"{key}{ext}" in index:
                 return f"/app/static/img_cache/{key}{ext}"
+    return ""
+
+
+def static_img_payload_url(url_or_path: str) -> str:
+    """URL safe to put in the catalogue iframe ``imageUrl`` field.
+
+    Locally ``/app/static/img_cache/…`` is fine (``enableStaticServing``). On
+    Community Cloud, files written under ``static/`` at runtime are not reliably
+    served to the browser — the same SPA-HTML miss that broke catalogue JSON —
+    so rewrite those to a data URI read from the local cache file. Absolute
+    ``https://`` / ``data:`` URLs pass through unchanged.
+    """
+    u = str(url_or_path or "").strip()
+    if not u:
+        return ""
+    if u.startswith(("data:", "http://", "https://")):
+        return u
+    if not u.startswith("/app/static/img_cache/"):
+        return u
+    # Prefer HTTP static URLs only when we know the browser can fetch them.
+    use_static_http = False
+    if not fn_on_streamlit_cloud():
+        try:
+            use_static_http = bool(st.get_option("server.enableStaticServing"))
+        except Exception:
+            use_static_http = False
+    if use_static_http:
+        return u
+    name = Path(u).name
+    if not name or name in (".", "..") or "/" in name or "\\" in name:
+        return ""
+    path = _STATIC_IMG_CACHE_DIR / name
+    if path.is_file():
+        return image_path_to_data_uri(path) or ""
     return ""
 
 
