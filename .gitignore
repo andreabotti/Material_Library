@@ -44,6 +44,7 @@ logs/
 # Heavy asset stores: EPD/technical PDFs and their static mirrors.
 # See REMOTE_ASSET_STORAGE.md -- these live in the Cloudflare R2 bucket.
 01_data/pdf/
+01_data/_cache/
 static/docs/
 static/cat_cache/
 static/img_cache/

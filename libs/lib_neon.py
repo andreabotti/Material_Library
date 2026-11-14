@@ -147,6 +147,28 @@ def _normalize_url(url: str) -> str:
     return urlunparse(p._replace(query=urlencode(q)))
 
 
+def _conn_error_hint(e: BaseException) -> str:
+    """Operator-facing hint for a failed Neon connection."""
+    err = str(e).lower()
+    if "exceeded the quota" in err or "quota" in err:
+        return (
+            "Neon account/project quota exceeded — new connections are refused. "
+            "Check usage in the Neon console; upgrade the plan or wait for reset."
+        )
+    return (
+        "Neon connection failed. Re-copy the connection string from Neon → "
+        "Connect → Postgres database (click Show password first — a masked "
+        "******** paste will fail auth). Prefer the non-pooled host if the "
+        "pooler keeps timing out. Special characters in the password must be "
+        "URL-encoded (@ → %40, # → %23, % → %25)."
+    )
+
+
+def is_quota_error(e: BaseException) -> bool:
+    """True when Neon refused the connection for an exceeded account/project quota."""
+    return "exceeded the quota" in str(e).lower()
+
+
 @st.cache_resource(show_spinner=False)
 def _pool(url: str):
     """One small pool per process. ``check`` re-validates connections Neon closed
@@ -169,22 +191,72 @@ def _pool(url: str):
         except Exception:
             pass
         _pool.clear()  # type: ignore[attr-defined]
-        hint = (
-            "Neon connection failed. Re-copy the connection string from Neon → "
-            "Connect → Postgres database (click Show password first — a masked "
-            "******** paste will fail auth). Prefer the non-pooled host if the "
-            "pooler keeps timing out. Special characters in the password must be "
-            "URL-encoded (@ → %40, # → %23, % → %25)."
-        )
-        raise RuntimeError(f"{hint}\nUnderlying error: {e}") from e
+        raise RuntimeError(f"{_conn_error_hint(e)}\nUnderlying error: {e}") from e
     return pool
 
 
 def _conn():
+    """Borrow a pooled connection; surface Neon quota / auth failures clearly.
+
+    ``PoolTimeout`` is raised on context enter (``getconn``), not when building
+    the context manager — so we wrap enter/exit here.
+    """
+    from contextlib import contextmanager
+
+    from psycopg import OperationalError
+    from psycopg_pool import PoolTimeout
+
     url = neon_url()
     if not url:
         raise RuntimeError("Neon is not configured (secrets [neon] database_url).")
-    return _pool(_normalize_url(url)).connection()
+    pool = _pool(_normalize_url(url))
+
+    def _fail(e: BaseException) -> None:
+        # Cached pool can outlive a working Neon project (quota, suspend).
+        # PoolTimeout often hides the real Neon message (only logged to stderr),
+        # so probe once with a short direct connect to surface it.
+        detail = str(e)
+        try:
+            import psycopg
+
+            with psycopg.connect(
+                _normalize_url(url), connect_timeout=8, autocommit=True
+            ) as c:
+                c.execute("select 1")
+        except Exception as probe:  # noqa: BLE001 — diagnostic only
+            detail = f"{e}; probe: {probe}"
+        try:
+            pool.close()
+        except Exception:
+            pass
+        try:
+            _pool.clear()  # type: ignore[attr-defined]
+        except Exception:
+            pass
+        msg = detail.lower()
+        if "exceeded the quota" in msg or "quota" in msg:
+            raise RuntimeError(
+                "Neon account/project quota exceeded — the database is refusing "
+                "new connections. Check usage in the Neon console and upgrade the "
+                "plan or wait for the quota to reset. "
+                f"Underlying error: {detail}"
+            ) from e
+        raise RuntimeError(
+            "Neon connection timed out or failed. Common causes: free-tier "
+            "compute suspended, network blip, or quota. "
+            f"Underlying error: {detail}"
+        ) from e
+
+    @contextmanager
+    def _cm():
+        try:
+            with pool.connection() as conn:
+                yield conn
+        except (PoolTimeout, OperationalError) as e:
+            _fail(e)
+
+    return _cm()
+
 
 
 # ── version token (replaces file mtimes as the cache key) ────────────────────
@@ -238,6 +310,175 @@ def base_row_count() -> int:
     with _conn() as conn:
         n = conn.execute("select count(*) from matlib_base").fetchone()[0]
     return int(n)
+
+
+def _direct_pool(url: str):
+    """Short-lived pool for background preload (no Streamlit cache / script context)."""
+    from psycopg_pool import ConnectionPool
+
+    return ConnectionPool(
+        _normalize_url(url),
+        min_size=0,
+        max_size=2,
+        open=True,
+        timeout=60,
+        check=ConnectionPool.check_connection,
+        kwargs={"connect_timeout": 60, "autocommit": False},
+    )
+
+
+def _versions_on(conn) -> tuple[int, int]:
+    """``(base_version, edits_version)`` on an already-open connection."""
+    brow = conn.execute(
+        "select coalesce(extract(epoch from uploaded_at) * 1000, 0)::bigint, "
+        "coalesce(n_rows, 0) from matlib_base_meta where id = 1"
+    ).fetchone()
+    base_v = int(brow[0]) * 1_000_003 + int(brow[1]) if brow else 0
+    n, last = conn.execute(
+        "select count(*), coalesce(max(edit_id), 0) from matlib_edits"
+    ).fetchone()
+    edits_v = int(n) * 1_000_003 + int(last) % 1_000_003 if n else 0
+    return base_v, edits_v
+
+
+def _base_on(conn) -> pd.DataFrame:
+    """Full ``matlib_base`` snapshot on an already-open connection."""
+    meta = conn.execute("select dtypes from matlib_base_meta where id = 1").fetchone()
+    recs = conn.execute("select eetra_id, row from matlib_base").fetchall()
+    if not recs:
+        return pd.DataFrame()
+    data = []
+    for eid, row in recs:
+        payload = dict(row) if row is not None else {}
+        payload["0__EETRA_ID"] = eid
+        data.append(payload)
+    df = pd.DataFrame(data)
+    dtypes = dict(meta[0]) if meta and meta[0] else {}
+    return _restore_dtypes(df, dtypes)
+
+
+def _edits_on(conn, audit_cols: tuple[str, ...]) -> pd.DataFrame:
+    """Full ``matlib_edits`` log on an already-open connection."""
+    recs = conn.execute(
+        "select edit_id, edit_ts, edit_user, edit_op, eetra_id, row, "
+        "edit_batch, edit_reason, edit_evidence, edit_evidence_url, edit_fields "
+        "from matlib_edits order by edit_id"
+    ).fetchall()
+    if not recs:
+        return pd.DataFrame({c: pd.Series(dtype="string") for c in audit_cols})
+    data = pd.DataFrame([r[5] for r in recs]).astype("string")
+    data["0__EETRA_ID"] = pd.Series([r[4] for r in recs], dtype="string")
+    data["_edit_id"] = pd.Series([str(r[0]) for r in recs], dtype="string")
+    data["_edit_ts"] = pd.Series([r[1] for r in recs], dtype="string")
+    data["_edit_user"] = pd.Series([r[2] for r in recs], dtype="string")
+    data["_edit_op"] = pd.Series([r[3] for r in recs], dtype="string")
+    for pos, name in enumerate(
+        ("_edit_batch", "_edit_reason", "_edit_evidence", "_edit_evidence_url", "_edit_fields"),
+        start=6,
+    ):
+        data[name] = pd.Series([r[pos] for r in recs], dtype="string")
+    for c in _NUMERIC_COLS:
+        if c in data.columns:
+            data[c] = pd.to_numeric(data[c], errors="coerce").astype("Float64")
+    return data
+
+
+def load_all_from_url(
+    url: str,
+    audit_cols: tuple[str, ...],
+    *,
+    with_edits: bool = True,
+    progress=None,
+    skip_if_versions: tuple[int, int] | None = None,
+) -> tuple[int, int, pd.DataFrame | None, pd.DataFrame | None]:
+    """Versions + base + edits over ONE connection.
+
+    The background preload used to call ``versions_from_url``, ``load_base_from_url``
+    and ``load_edits_from_url`` in sequence, each of which opened and closed its own
+    pool — three TCP+TLS+auth handshakes against a compute that may be waking from
+    scale-to-zero, plus three runs of the ``create table if not exists`` DDL. One
+    connection pays the cold start once.
+
+    ``progress`` is an optional ``callable(phase: str, pct: int)`` for the login
+    banner.
+
+    ``skip_if_versions`` is a ``(base_v, edits_v)`` the caller already holds — a
+    local snapshot. When the server reports the same pair nothing has changed, so
+    the rows are not fetched at all and ``base`` comes back ``None``. ``base`` is
+    ``None`` only in that case: an empty database returns an empty frame.
+
+    Returns ``(base_v, edits_v, base_or_None, edits_or_None)``.
+    """
+    def _tick(phase: str, pct: int) -> None:
+        if progress is not None:
+            try:
+                progress(phase, pct)
+            except Exception:
+                pass
+
+    import psycopg
+
+    # A plain connection, not a pool: the preload is one short-lived read, and a
+    # pool would retry for its full ``timeout`` before surfacing anything. On a
+    # refusal Neon states the reason (quota, auth) on the first attempt — raise it
+    # now instead of spinning at 5% for a minute.
+    _tick("connect", 5)
+    try:
+        conn = psycopg.connect(_normalize_url(url), connect_timeout=60, autocommit=False)
+    except Exception as e:  # noqa: BLE001 — re-raised with an operator hint
+        raise RuntimeError(f"{_conn_error_hint(e)}\nUnderlying error: {e}") from e
+    try:
+        with conn:
+            # Once per connection, not once per query.
+            conn.execute(_SCHEMA)
+            _tick("versions", 15)
+            base_v, edits_v = _versions_on(conn)
+            if skip_if_versions is not None and (
+                int(skip_if_versions[0]) == base_v
+                and int(skip_if_versions[1]) == edits_v
+            ):
+                # Snapshot is current: skip the whole download.
+                return base_v, edits_v, None, None
+            _tick("base", 20)
+            base = _base_on(conn)
+            _tick("edits", 55)
+            edits = _edits_on(conn, audit_cols) if with_edits else None
+    finally:
+        conn.close()
+    return base_v, edits_v, base, edits
+
+
+def versions_from_url(url: str) -> tuple[int, int]:
+    """``(base_version, edits_version)`` via a direct connection (thread-safe)."""
+    pool = _direct_pool(url)
+    try:
+        with pool.connection() as conn:
+            conn.execute(_SCHEMA)
+            return _versions_on(conn)
+    finally:
+        pool.close()
+
+
+def load_base_from_url(url: str) -> pd.DataFrame:
+    """Same as ``load_base`` but with a direct pool (safe off the script thread)."""
+    pool = _direct_pool(url)
+    try:
+        with pool.connection() as conn:
+            conn.execute(_SCHEMA)
+            return _base_on(conn)
+    finally:
+        pool.close()
+
+
+def load_edits_from_url(url: str, audit_cols: tuple[str, ...]) -> pd.DataFrame:
+    """Same as ``load_edits`` but with a direct pool (safe off the script thread)."""
+    pool = _direct_pool(url)
+    try:
+        with pool.connection() as conn:
+            conn.execute(_SCHEMA)
+            return _edits_on(conn, audit_cols)
+    finally:
+        pool.close()
 
 
 # ── helpers ──────────────────────────────────────────────────────────────────

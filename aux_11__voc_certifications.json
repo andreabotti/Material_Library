@@ -1,6 +1,6 @@
 {
   "_comment": "VOC emission / content claims used by Add/Edit Item (VO__VOC_Cert dropdown) and Developer → Available options. Each entry is written to stand alone as a material-library clarification. Scheme criteria change over time — check the criteria documents before using these texts in tender documentation.",
-  "_version": 2,
+  "_version": 3,
   "field": "VO__VOC_Cert",
   "_body_comment": "body / body_role name the organisation behind each claim (scheme owner, laboratory, regulator, rating system or the manufacturer itself). Used by Developer → VOC Bodies & Certifications; the status entries carry none.",
   "caveat": "Scheme criteria change over time, particularly the exact equivalences covered by Indoor Air Comfort Gold and the Belgian regulation's scope, so check the relevant criteria documents before using these descriptions in tender documentation.",
@@ -14,81 +14,178 @@
           "body": "Eurofins",
           "body_role": "Laboratory & scheme owner",
           "label": "Indoor Air Comfort",
-          "aliases": ["IAC", "Indoor Air Comfort®"],
-          "description": "Eurofins certification confirming that a product meets the regulatory VOC emission requirements of the main European markets, including the French VOC label, German AgBB/ABG requirements and the Belgian regulation. Testing follows EN 16516 / ISO 16000 and includes ongoing surveillance through factory inspections and periodic retesting."
+          "aliases": [
+            "IAC",
+            "Indoor Air Comfort®"
+          ],
+          "description": "Eurofins certification confirming that a product meets the regulatory VOC emission requirements of the main European markets, including the French VOC label, German AgBB/ABG requirements and the Belgian regulation. Testing follows EN 16516 / ISO 16000 and includes ongoing surveillance through factory inspections and periodic retesting.",
+          "leed": {
+            "listed": true,
+            "applicability": [
+              "CW"
+            ]
+          }
         },
         {
           "id": "indoor_air_comfort_gold",
           "body": "Eurofins",
           "body_role": "Laboratory & scheme owner",
           "label": "Indoor Air Comfort Gold",
-          "aliases": ["IAC Gold", "Indoor Air Comfort Gold®", "Indoor Air Gold"],
-          "description": "The higher level of the Eurofins Indoor Air Comfort scheme. On top of the European regulatory requirements, it demonstrates compliance with the strictest voluntary emission labels and specifications, such as EMICODE EC1PLUS, M1 and Blue Angel. It is commonly used as evidence for green building rating systems."
+          "aliases": [
+            "IAC Gold",
+            "Indoor Air Comfort Gold®",
+            "Indoor Air Gold"
+          ],
+          "description": "The higher level of the Eurofins Indoor Air Comfort scheme. On top of the European regulatory requirements, it demonstrates compliance with the strictest voluntary emission labels and specifications, such as EMICODE EC1PLUS, M1 and Blue Angel. It is commonly used as evidence for green building rating systems.",
+          "leed": {
+            "listed": true,
+            "applicability": [
+              "GE",
+              "VC",
+              "CW"
+            ]
+          }
         },
         {
           "id": "emicode_ec1plus",
           "body": "GEV",
           "body_role": "Scheme owner",
           "label": "EMICODE EC1PLUS",
-          "aliases": ["EC1PLUS", "EC1+", "EMICODE EC1+"],
-          "description": "The highest class of the EMICODE scheme run by GEV (Germany), meaning \"very low emission plus.\" It covers installation products such as flooring adhesives, sealants, screeds, primers and underlays. Licensing is based on chamber testing, with random market checks by GEV."
+          "aliases": [
+            "EC1PLUS",
+            "EC1+",
+            "EMICODE EC1+"
+          ],
+          "description": "The highest class of the EMICODE scheme run by GEV (Germany), meaning \"very low emission plus.\" It covers installation products such as flooring adhesives, sealants, screeds, primers and underlays. Licensing is based on chamber testing, with random market checks by GEV.",
+          "leed": {
+            "listed": true,
+            "applicability": [
+              "GE",
+              "VC"
+            ]
+          }
         },
         {
           "id": "emicode_ec1",
           "body": "GEV",
           "body_role": "Scheme owner",
           "label": "EMICODE EC1",
-          "aliases": ["EC1"],
-          "description": "The \"very low emission\" class of the EMICODE scheme. Its limits are stricter than EC2 but less stringent than EC1PLUS."
+          "aliases": [
+            "EC1"
+          ],
+          "description": "The \"very low emission\" class of the EMICODE scheme. Its limits are stricter than EC2 but less stringent than EC1PLUS.",
+          "leed": {
+            "listed": true,
+            "applicability": [
+              "GE",
+              "VC"
+            ]
+          }
         },
         {
           "id": "emicode_ec2",
           "body": "GEV",
           "body_role": "Scheme owner",
           "label": "EMICODE EC2",
-          "aliases": ["EC2"],
-          "description": "The \"low emission\" class of the EMICODE scheme, and the entry level for installation products that qualify for EMICODE at all."
+          "aliases": [
+            "EC2"
+          ],
+          "description": "The \"low emission\" class of the EMICODE scheme, and the entry level for installation products that qualify for EMICODE at all.",
+          "leed": {
+            "listed": false,
+            "applicability": []
+          }
         },
         {
           "id": "m1_emission_classification",
           "body": "Building Information Foundation RTS",
           "body_role": "Scheme owner",
           "label": "M1 Emission Classification",
-          "aliases": ["M1", "M1 Emission Class"],
-          "description": "The lowest-emission class of the Finnish classification of building materials, run by Rakennustieto (RTS). Alongside TVOC, it sets limits for formaldehyde, ammonia and carcinogenic compounds, and it includes a sensory odour assessment, which is unusual among emission schemes."
+          "aliases": [
+            "M1",
+            "M1 Emission Class"
+          ],
+          "description": "The lowest-emission class of the Finnish classification of building materials, run by Rakennustieto (RTS). Alongside TVOC, it sets limits for formaldehyde, ammonia and carcinogenic compounds, and it includes a sensory odour assessment, which is unusual among emission schemes.",
+          "leed": {
+            "listed": true,
+            "applicability": [
+              "GE",
+              "CW",
+              "FF"
+            ]
+          }
         },
         {
           "id": "blue_angel",
           "body": "RAL gGmbH",
           "body_role": "Scheme owner",
           "label": "Blue Angel",
-          "aliases": ["Blauer Engel", "RAL-UZ"],
+          "aliases": [
+            "Blauer Engel",
+            "RAL-UZ"
+          ],
           "description": "German Type I ecolabel (ISO 14024), awarded by RAL gGmbH with the German Environment Agency. Several product-specific criteria cover building products and include emission limits: DE-UZ 132 (insulation and suspended ceilings), DE-UZ 113 (floor-covering installation materials), DE-UZ 38 (wood-based products) and DE-UZ 12a (paints). Beyond emissions, the criteria also address other environmental and health aspects of the product.",
-          "cert_number_hint": "Store the DE-UZ criteria number (e.g. DE-UZ 113) in VOC Certificate Number when known."
+          "cert_number_hint": "Store the DE-UZ criteria number (e.g. DE-UZ 113) in VOC Certificate Number when known.",
+          "leed": {
+            "listed": true,
+            "applicability": [
+              "GE",
+              "CW"
+            ]
+          }
         },
         {
           "id": "ul_greenguard",
           "body": "UL Solutions",
           "body_role": "Laboratory & scheme owner",
           "label": "UL Greenguard",
-          "aliases": ["Greenguard", "GREENGUARD"],
-          "description": "UL certification for low chemical emissions under UL 2818, based on chamber testing and covering TVOC, formaldehyde and individual VOCs. It is the standard level of the scheme, intended for general indoor environments."
+          "aliases": [
+            "Greenguard",
+            "GREENGUARD"
+          ],
+          "description": "UL certification for low chemical emissions under UL 2818, based on chamber testing and covering TVOC, formaldehyde and individual VOCs. It is the standard level of the scheme, intended for general indoor environments.",
+          "leed": {
+            "listed": true,
+            "applicability": [
+              "FF"
+            ]
+          }
         },
         {
           "id": "ul_greenguard_gold",
           "body": "UL Solutions",
           "body_role": "Laboratory & scheme owner",
           "label": "UL Greenguard Gold",
-          "aliases": ["Greenguard Gold", "GREENGUARD Gold"],
-          "description": "The stricter level of UL Greenguard, with lower limits designed for sensitive occupants in settings such as schools and healthcare facilities. It includes compliance with CDPH Standard Method v1.2, so it is widely accepted as evidence for LEED."
+          "aliases": [
+            "Greenguard Gold",
+            "GREENGUARD Gold"
+          ],
+          "description": "The stricter level of UL Greenguard, with lower limits designed for sensitive occupants in settings such as schools and healthcare facilities. It includes compliance with CDPH Standard Method v1.2, so it is widely accepted as evidence for LEED.",
+          "leed": {
+            "listed": true,
+            "applicability": [
+              "GE",
+              "FF"
+            ]
+          }
         },
         {
           "id": "scs_indoor_advantage_gold",
           "body": "SCS Global Services",
           "body_role": "Certification body",
           "label": "SCS Indoor Advantage Gold",
-          "aliases": ["Indoor Advantage Gold"],
-          "description": "SCS Global Services certification for building materials and furniture, based on CDPH Standard Method v1.2. It is broadly comparable in scope and stringency to Greenguard Gold."
+          "aliases": [
+            "Indoor Advantage Gold"
+          ],
+          "description": "SCS Global Services certification for building materials and furniture, based on CDPH Standard Method v1.2. It is broadly comparable in scope and stringency to Greenguard Gold.",
+          "leed": {
+            "listed": true,
+            "applicability": [
+              "GE",
+              "VC",
+              "FF"
+            ]
+          }
         },
         {
           "id": "floorscore",
@@ -96,31 +193,371 @@
           "body_role": "Certification body",
           "label": "FloorScore",
           "aliases": [],
-          "description": "Emission certification for hard-surface flooring and associated underlayments, developed by the Resilient Floor Covering Institute and administered by SCS Global Services. It is based on CDPH Standard Method v1.2."
+          "description": "Emission certification for hard-surface flooring and associated underlayments, developed by the Resilient Floor Covering Institute and administered by SCS Global Services. It is based on CDPH Standard Method v1.2.",
+          "leed": {
+            "listed": true,
+            "applicability": [
+              "GE"
+            ]
+          }
         },
         {
           "id": "cri_green_label_plus",
           "body": "CRI (Carpet and Rug Institute)",
           "body_role": "Scheme owner",
           "label": "CRI Green Label Plus",
-          "aliases": ["Green Label Plus", "GLP"],
-          "description": "Carpet and Rug Institute program for carpets, carpet cushions and carpet adhesives. Its emission testing is aligned with CDPH Standard Method v1.2."
+          "aliases": [
+            "Green Label Plus",
+            "GLP"
+          ],
+          "description": "Carpet and Rug Institute program for carpets, carpet cushions and carpet adhesives. Its emission testing is aligned with CDPH Standard Method v1.2.",
+          "leed": {
+            "listed": true,
+            "applicability": [
+              "GE"
+            ]
+          }
         },
         {
           "id": "gut",
           "body": "GUT e.V.",
           "body_role": "Scheme owner",
           "label": "GUT",
-          "aliases": ["Gemeinschaft umweltfreundlicher Teppichboden"],
-          "description": "Label from GUT (Gemeinschaft umweltfreundlicher Teppichboden), the German association for environmentally friendly textile floor coverings. It tests carpets for emissions, odour and harmful substances."
+          "aliases": [
+            "Gemeinschaft umweltfreundlicher Teppichboden"
+          ],
+          "description": "Label from GUT (Gemeinschaft umweltfreundlicher Teppichboden), the German association for environmentally friendly textile floor coverings. It tests carpets for emissions, odour and harmful substances.",
+          "leed": {
+            "listed": true,
+            "applicability": [
+              "GE"
+            ]
+          }
         },
         {
           "id": "danish_indoor_climate_label",
           "body": "Danish Society of Indoor Climate",
           "body_role": "Scheme owner",
           "label": "Danish Indoor Climate Label",
-          "aliases": ["DICL", "Indeklimamærket"],
-          "description": "Label from the Danish Society of Indoor Climate. It assesses both chemical emissions and odour, and it expresses results as a \"time value\": how long a product takes to reach acceptable indoor levels."
+          "aliases": [
+            "DICL",
+            "Indeklimamærket"
+          ],
+          "description": "Label from the Danish Society of Indoor Climate. It assesses both chemical emissions and odour, and it expresses results as a \"time value\": how long a product takes to reach acceptable indoor levels.",
+          "leed": {
+            "listed": true,
+            "applicability": [
+              "GE"
+            ]
+          }
+        },
+        {
+          "id": "clearchem",
+          "body": "Berkeley Analytical",
+          "body_role": "Laboratory & scheme owner",
+          "label": "ClearChem",
+          "aliases": [
+            "ClearChem Certified"
+          ],
+          "description": "Berkeley Analytical certification covering both the general emissions evaluation and the VOC content of wet-applied products. Chamber testing follows CDPH Standard Method v1.2 and the certificate states the product name or code it refers to.",
+          "leed": {
+            "listed": true,
+            "applicability": [
+              "GE",
+              "VC"
+            ]
+          }
+        },
+        {
+          "id": "voc_green_program",
+          "body": "Benchmark International",
+          "body_role": "Scheme owner",
+          "label": "VOC Green Program",
+          "aliases": [
+            "Benchmark VOC Green"
+          ],
+          "description": "Benchmark International certification covering general emissions, composite wood and furniture evaluations. Used mainly in Asian supply chains and accepted by LEED for those three evaluations.",
+          "leed": {
+            "listed": true,
+            "applicability": [
+              "GE",
+              "CW",
+              "FF"
+            ]
+          }
+        },
+        {
+          "id": "chps_products",
+          "body": "Collaborative for High Performance Schools (CHPS)",
+          "body_role": "Scheme owner",
+          "label": "CHPS Products",
+          "aliases": [
+            "CHPS Low-Emitting",
+            "CHPS certified"
+          ],
+          "description": "Listing in the CHPS low-emitting products database, based on CDPH Standard Method testing in the classroom scenario. It covers the general emissions evaluation only.",
+          "leed": {
+            "listed": true,
+            "applicability": [
+              "GE"
+            ]
+          }
+        },
+        {
+          "id": "eco_institut_label",
+          "body": "eco-INSTITUT Germany GmbH",
+          "body_role": "Laboratory & scheme owner",
+          "label": "eco-INSTITUT-Label",
+          "aliases": [
+            "eco-INSTITUT",
+            "eco institut label"
+          ],
+          "description": "German emission and pollutant label covering flooring, insulation, boards, paints and adhesives. Certification is based on chamber testing with periodic retesting; it covers the general emissions evaluation.",
+          "leed": {
+            "listed": true,
+            "applicability": [
+              "GE"
+            ]
+          }
+        },
+        {
+          "id": "indoor_air_comfort_usa",
+          "body": "Eurofins",
+          "body_role": "Laboratory & scheme owner",
+          "label": "Indoor Air Comfort USA",
+          "aliases": [
+            "IAC USA"
+          ],
+          "description": "The US variant of the Eurofins Indoor Air Comfort scheme. It appears on the USGBC list of certification bodies but carries no applicability code, so on its own it does not cover any Low-Emitting Materials requirement.",
+          "leed": {
+            "listed": true,
+            "applicability": []
+          }
+        },
+        {
+          "id": "intertek_clean_air_gold",
+          "body": "Intertek",
+          "body_role": "Laboratory & scheme owner",
+          "label": "Intertek Clean Air GOLD",
+          "aliases": [
+            "Clean Air GOLD",
+            "Intertek Clean Air Gold"
+          ],
+          "description": "Intertek emission certification at the GOLD level, covering the general emissions evaluation and the furniture evaluation.",
+          "leed": {
+            "listed": true,
+            "applicability": [
+              "GE",
+              "FF"
+            ]
+          }
+        },
+        {
+          "id": "intertek_clean_air_silver",
+          "body": "Intertek",
+          "body_role": "Laboratory & scheme owner",
+          "label": "Intertek Clean Air Silver",
+          "aliases": [
+            "Clean Air Silver"
+          ],
+          "description": "The Silver level of the Intertek Clean Air scheme. For LEED it covers the furniture evaluation only.",
+          "leed": {
+            "listed": true,
+            "applicability": [
+              "FF"
+            ]
+          }
+        },
+        {
+          "id": "nsf_ansi_140",
+          "body": "NSF International",
+          "body_role": "Scheme owner",
+          "label": "NSF/ANSI 140",
+          "aliases": [
+            "NSF 140",
+            "ANSI/NSF 140"
+          ],
+          "description": "Sustainability assessment standard for carpet. Certification at any level includes emission testing, so for LEED it covers the general emissions evaluation.",
+          "leed": {
+            "listed": true,
+            "applicability": [
+              "GE"
+            ]
+          }
+        },
+        {
+          "id": "nsf_ansi_332",
+          "body": "NSF International",
+          "body_role": "Scheme owner",
+          "label": "NSF/ANSI 332",
+          "aliases": [
+            "NSF 332",
+            "ANSI/NSF 332"
+          ],
+          "description": "Sustainability assessment standard for resilient floor coverings. Certification includes emission testing, so for LEED it covers the general emissions evaluation.",
+          "leed": {
+            "listed": true,
+            "applicability": [
+              "GE"
+            ]
+          }
+        },
+        {
+          "id": "scs_indoor_advantage",
+          "body": "SCS Global Services",
+          "body_role": "Laboratory & scheme owner",
+          "label": "SCS Indoor Advantage",
+          "aliases": [
+            "Indoor Advantage"
+          ],
+          "description": "The base level of the SCS Indoor Advantage scheme. For LEED it covers the furniture evaluation only; the Gold level is the one that covers general emissions and VOC content.",
+          "leed": {
+            "listed": true,
+            "applicability": [
+              "FF"
+            ]
+          }
+        },
+        {
+          "id": "mas_certified_green",
+          "body": "MAS (Materials Analytical Services)",
+          "body_role": "Laboratory & scheme owner",
+          "label": "MAS Certified Green",
+          "aliases": [
+            "MAS Certified Green Program",
+            "MAS Green"
+          ],
+          "description": "Emission certification run by Materials Analytical Services, covering the general emissions evaluation, the VOC content of wet-applied products and the furniture evaluation.",
+          "leed": {
+            "listed": true,
+            "applicability": [
+              "GE",
+              "VC",
+              "FF"
+            ]
+          }
+        },
+        {
+          "id": "bifma_level",
+          "body": "BIFMA",
+          "body_role": "Scheme owner",
+          "label": "BIFMA LEVEL (ANSI/BIFMA e3)",
+          "aliases": [
+            "level",
+            "BIFMA level",
+            "ANSI/BIFMA e3"
+          ],
+          "description": "Furniture sustainability certification. Credit is given for the emission criteria of ANSI/BIFMA e3: §7.6.1 counts for half the furniture cost and §7.6.2 for the full cost.",
+          "leed": {
+            "listed": true,
+            "applicability": [
+              "FF"
+            ]
+          }
+        },
+        {
+          "id": "green_seal_gs11",
+          "body": "Green Seal",
+          "body_role": "Scheme owner",
+          "label": "Green Seal GS-11",
+          "aliases": [
+            "GS-11",
+            "Green Seal GS 11"
+          ],
+          "description": "Green Seal standard for paints and coatings. It sets both VOC content limits and emission requirements, so for LEED it covers the general emissions evaluation and VOC content.",
+          "leed": {
+            "listed": true,
+            "applicability": [
+              "GE",
+              "VC"
+            ]
+          }
+        },
+        {
+          "id": "natureplus",
+          "body": "natureplus e.V.",
+          "body_role": "Scheme owner",
+          "label": "natureplus",
+          "aliases": [
+            "natureplus label"
+          ],
+          "description": "European label for building products made largely from renewable or mineral raw materials. Certification includes emission testing, so it covers the general emissions evaluation.",
+          "leed": {
+            "listed": true,
+            "applicability": [
+              "GE"
+            ]
+          }
+        },
+        {
+          "id": "byggvarubedomningen",
+          "body": "Byggvarubedömningen",
+          "body_role": "Scheme owner",
+          "label": "Byggvarubedömningen (BVB)",
+          "aliases": [
+            "BVB",
+            "Byggvarubedomningen"
+          ],
+          "description": "Swedish building product assessment. For LEED Low-Emitting Materials it is accepted for the composite wood evaluation.",
+          "leed": {
+            "listed": true,
+            "applicability": [
+              "CW"
+            ]
+          }
+        },
+        {
+          "id": "tuv_rheinland_green_product_mark",
+          "body": "TÜV Rheinland",
+          "body_role": "Laboratory & scheme owner",
+          "label": "TÜV Rheinland Green Product Mark",
+          "aliases": [
+            "Green Product Mark",
+            "TUV Rheinland Green Product Mark"
+          ],
+          "description": "TÜV Rheinland product mark covering emissions and substance restrictions. For LEED it covers the furniture evaluation.",
+          "leed": {
+            "listed": true,
+            "applicability": [
+              "FF"
+            ]
+          }
+        },
+        {
+          "id": "tuv_sud_tm",
+          "body": "TÜV SÜD",
+          "body_role": "Laboratory & scheme owner",
+          "label": "TÜV SÜD TM-07 / TM-09 / TM-10",
+          "aliases": [
+            "TUV SUD TM-07",
+            "TM-07",
+            "TM-09",
+            "TM-10"
+          ],
+          "description": "TÜV SÜD emission test marks for building products and furnishings. For LEED they cover the general emissions evaluation.",
+          "leed": {
+            "listed": true,
+            "applicability": [
+              "GE"
+            ]
+          }
+        },
+        {
+          "id": "taiwan_healthy_building_material",
+          "body": "Taiwan Architecture & Building Center",
+          "body_role": "Scheme owner",
+          "label": "Taiwan Healthy Building Material Label",
+          "aliases": [
+            "Taiwan HBM",
+            "Healthy Building Material Label"
+          ],
+          "description": "Taiwanese label for low-emitting building materials, based on chamber testing. For LEED it covers the general emissions evaluation.",
+          "leed": {
+            "listed": true,
+            "applicability": [
+              "GE"
+            ]
+          }
         }
       ]
     },
@@ -133,56 +570,149 @@
           "body": "French Ministry for Ecological Transition",
           "body_role": "Regulator (self-applied label)",
           "label": "French VOC Label (A+)",
-          "aliases": ["A+", "Émissions dans l'air intérieur A+"],
-          "description": "Top class of the mandatory French labelling for construction and decoration products sold in France, in force since 2012. Classes run from A+ to C, based on 28-day emission concentrations of TVOC and ten individual substances, including formaldehyde. The label is usually self-applied by the manufacturer on the basis of an accredited lab test report."
+          "aliases": [
+            "A+",
+            "Émissions dans l'air intérieur A+"
+          ],
+          "description": "Top class of the mandatory French labelling for construction and decoration products sold in France, in force since 2012. Classes run from A+ to C, based on 28-day emission concentrations of TVOC and ten individual substances, including formaldehyde. The label is usually self-applied by the manufacturer on the basis of an accredited lab test report.",
+          "leed": {
+            "listed": true,
+            "applicability": [
+              "CW"
+            ]
+          }
         },
         {
           "id": "french_voc_a",
           "body": "French Ministry for Ecological Transition",
           "body_role": "Regulator (self-applied label)",
           "label": "French VOC Label (A)",
-          "aliases": ["French VOC A", "Émissions dans l'air intérieur A"],
-          "description": "Second class of the French VOC labelling scheme. It indicates low emissions, but it may not satisfy specifications that require A+."
+          "aliases": [
+            "French VOC A",
+            "Émissions dans l'air intérieur A"
+          ],
+          "description": "Second class of the French VOC labelling scheme. It indicates low emissions, but it may not satisfy specifications that require A+.",
+          "leed": {
+            "listed": true,
+            "applicability": [
+              "CW"
+            ]
+          }
         },
         {
           "id": "french_voc_b_c",
           "body": "French Ministry for Ecological Transition",
           "body_role": "Regulator (self-applied label)",
           "label": "French VOC Label (B/C)",
-          "aliases": ["French VOC B", "French VOC C", "Émissions dans l'air intérieur B", "Émissions dans l'air intérieur C"],
-          "description": "The lower classes of the French VOC labelling scheme, grouped here as one entry. They indicate higher emissions, and products in these classes will generally not meet green building or CAM requirements for indoor emissions."
+          "aliases": [
+            "French VOC B",
+            "French VOC C",
+            "Émissions dans l'air intérieur B",
+            "Émissions dans l'air intérieur C"
+          ],
+          "description": "The lower classes of the French VOC labelling scheme, grouped here as one entry. They indicate higher emissions, and products in these classes will generally not meet green building or CAM requirements for indoor emissions.",
+          "leed": {
+            "listed": false,
+            "applicability": []
+          }
         },
         {
           "id": "agbb_abg",
           "body": "AgBB",
           "body_role": "Regulator",
           "label": "AgBB/ABG Compliance",
-          "aliases": ["AgBB", "ABG", "AgBB Compliance"],
-          "description": "Compliance with the German AgBB evaluation scheme for VOC emissions from construction products, now embedded in German building regulations through the ABG. It evaluates TVOC and SVOC at 3 and 28 days, carcinogenic substances, and individual VOCs against LCI values (the combined \"R value\"). This is a compliance statement, not a certification."
+          "aliases": [
+            "AgBB",
+            "ABG",
+            "AgBB Compliance"
+          ],
+          "description": "Compliance with the German AgBB evaluation scheme for VOC emissions from construction products, now embedded in German building regulations through the ABG. It evaluates TVOC and SVOC at 3 and 28 days, carcinogenic substances, and individual VOCs against LCI values (the combined \"R value\"). This is a compliance statement, not a certification.",
+          "leed": {
+            "listed": false,
+            "applicability": []
+          }
         },
         {
           "id": "belgian_voc",
           "body": "Belgian FPS Health, Food Chain Safety and Environment",
           "body_role": "Regulator",
           "label": "Belgian VOC Regulation Compliance",
-          "aliases": ["Belgian VOC", "Belgian Royal Decree VOC"],
-          "description": "Compliance with the Belgian Royal Decree of 2014 on VOC emissions from construction products, initially covering floor coverings and since extended to further product groups. This is a mandatory requirement for products placed on the Belgian market."
+          "aliases": [
+            "Belgian VOC",
+            "Belgian Royal Decree VOC"
+          ],
+          "description": "Compliance with the Belgian Royal Decree of 2014 on VOC emissions from construction products, initially covering floor coverings and since extended to further product groups. This is a mandatory requirement for products placed on the Belgian market.",
+          "leed": {
+            "listed": false,
+            "applicability": []
+          }
         },
         {
           "id": "cdph_v1_2",
           "body": "California Department of Public Health",
           "body_role": "Regulator (standard method)",
           "label": "CDPH Standard Method v1.2 Compliance",
-          "aliases": ["CDPH", "CDPH v1.2", "CA Section 01350"],
-          "description": "Compliance with the California Department of Public Health Standard Method v1.2 (2017), based on chamber testing and modelled indoor concentrations for defined scenarios such as a school classroom or private office. Individual VOCs are assessed against half their California chronic reference exposure levels. It is the technical basis of LEED v4.1 and of several North American certifications, and it is recorded here when a manufacturer holds a compliant test report without a branded certification."
+          "aliases": [
+            "CDPH",
+            "CDPH v1.2",
+            "CA Section 01350"
+          ],
+          "description": "Compliance with the California Department of Public Health Standard Method v1.2 (2017), based on chamber testing and modelled indoor concentrations for defined scenarios such as a school classroom or private office. Individual VOCs are assessed against half their California chronic reference exposure levels. It is the technical basis of LEED v4.1 and of several North American certifications, and it is recorded here when a manufacturer holds a compliant test report without a branded certification.",
+          "leed": {
+            "listed": false,
+            "applicability": []
+          }
         },
         {
           "id": "cam_voc_attestation",
           "body": "MASE (Ministero dell'Ambiente e della Sicurezza Energetica)",
           "body_role": "Regulator",
           "label": "Italian CAM Attestation",
-          "aliases": ["CAM Attestation", "Attestazione CAM", "Italian CAM Compliance"],
-          "description": "Statement that the product meets the indoor-emission limits of the Italian Criteri Ambientali Minimi (CAM edilizia), which are mandatory in public procurement. The emission evidence behind it is normally an ISO 16000 / EN 16516 chamber test; the attestation itself is the manufacturer's or the lab's declaration against the CAM thresholds, not a certification scheme."
+          "aliases": [
+            "CAM Attestation",
+            "Attestazione CAM",
+            "Italian CAM Compliance"
+          ],
+          "description": "Statement that the product meets the indoor-emission limits of the Italian Criteri Ambientali Minimi (CAM edilizia), which are mandatory in public procurement. The emission evidence behind it is normally an ISO 16000 / EN 16516 chamber test; the attestation itself is the manufacturer's or the lab's declaration against the CAM thresholds, not a certification scheme.",
+          "leed": {
+            "listed": false,
+            "applicability": []
+          }
+        },
+        {
+          "id": "carb_ulef",
+          "body": "CARB (California Air Resources Board)",
+          "body_role": "Regulator",
+          "label": "CARB ULEF",
+          "aliases": [
+            "ULEF",
+            "ultra-low-emitting formaldehyde"
+          ],
+          "description": "Declaration that the composite wood product uses ultra-low-emitting formaldehyde resins under the CARB Airborne Toxic Control Measure (and EPA TSCA Title VI). It covers the composite wood evaluation only.",
+          "leed": {
+            "listed": true,
+            "applicability": [
+              "CW"
+            ]
+          }
+        },
+        {
+          "id": "carb_naf",
+          "body": "CARB (California Air Resources Board)",
+          "body_role": "Regulator",
+          "label": "CARB Exempt (NAF)",
+          "aliases": [
+            "NAF",
+            "no added formaldehyde",
+            "CARB NAF"
+          ],
+          "description": "Declaration that the composite wood product is made with no added formaldehyde resins and is therefore exempt under the CARB Airborne Toxic Control Measure (and EPA TSCA Title VI). It covers the composite wood evaluation only.",
+          "leed": {
+            "listed": true,
+            "applicability": [
+              "CW"
+            ]
+          }
         }
       ]
     },
@@ -195,16 +725,32 @@
           "body": "U.S. Green Building Council (USGBC)",
           "body_role": "Rating system",
           "label": "LEED v4 Low-Emitting Materials Attestation",
-          "aliases": ["LEED v4 LEM", "LEED v4 Low-Emitting"],
-          "description": "Compliance statement for the LEED v4 EQ Credit Low-Emitting Materials. For products outside the US, it may rest on the European testing pathway (EN 16516 / ISO 16000 against schemes such as AgBB or the French label) rather than CDPH. For wet-applied products, it also covers VOC content limits. It is meaningful only within LEED projects."
+          "aliases": [
+            "LEED v4 LEM",
+            "LEED v4 Low-Emitting"
+          ],
+          "description": "Compliance statement for the LEED v4 EQ Credit Low-Emitting Materials. For products outside the US, it may rest on the European testing pathway (EN 16516 / ISO 16000 against schemes such as AgBB or the French label) rather than CDPH. For wet-applied products, it also covers VOC content limits. It is meaningful only within LEED projects.",
+          "leed": {
+            "listed": false,
+            "applicability": []
+          }
         },
         {
           "id": "leed_v41_low_emitting",
           "body": "U.S. Green Building Council (USGBC)",
           "body_role": "Rating system",
           "label": "LEED v4.1 Low-Emitting Materials Attestation",
-          "aliases": ["LEED v4.1 LEM", "LEED v4.1 Low-Emitting", "LEED v4.1 BETA Low-Emitting Materials Attestation", "LEED v4 / v4.1 BETA Low-Emitting Materials Attestation"],
-          "description": "Compliance statement for the LEED v4.1 EQ Credit Low-Emitting Materials. It is based on CDPH Standard Method v1.2 testing, with disclosure of the TVOC range and the exposure scenario used, backed by an accredited laboratory. For wet-applied products, it also covers VOC content limits. It is meaningful only within LEED projects."
+          "aliases": [
+            "LEED v4.1 LEM",
+            "LEED v4.1 Low-Emitting",
+            "LEED v4.1 BETA Low-Emitting Materials Attestation",
+            "LEED v4 / v4.1 BETA Low-Emitting Materials Attestation"
+          ],
+          "description": "Compliance statement for the LEED v4.1 EQ Credit Low-Emitting Materials. It is based on CDPH Standard Method v1.2 testing, with disclosure of the TVOC range and the exposure scenario used, backed by an accredited laboratory. For wet-applied products, it also covers VOC content limits. It is meaningful only within LEED projects.",
+          "leed": {
+            "listed": false,
+            "applicability": []
+          }
         }
       ]
     },
@@ -217,24 +763,46 @@
           "body": "Manufacturer",
           "body_role": "Manufacturer",
           "label": "VOC Content Declaration",
-          "aliases": ["VOC content", "g/L VOC"],
-          "description": "Manufacturer's statement of VOC content, in g/L, for wet-applied products such as paints, coatings, adhesives and sealants. The typical references are the EU Decopaint Directive (2004/42/EC), SCAQMD Rule 1168 or CARB limits. It measures content in the product, not emissions into indoor air."
+          "aliases": [
+            "VOC content",
+            "g/L VOC"
+          ],
+          "description": "Manufacturer's statement of VOC content, in g/L, for wet-applied products such as paints, coatings, adhesives and sealants. The typical references are the EU Decopaint Directive (2004/42/EC), SCAQMD Rule 1168 or CARB limits. It measures content in the product, not emissions into indoor air.",
+          "leed": {
+            "listed": false,
+            "applicability": []
+          }
         },
         {
           "id": "voc_emissions_self_declaration",
           "body": "Manufacturer",
           "body_role": "Manufacturer",
           "label": "VOC Emissions Self-Declaration",
-          "aliases": ["VOC self-declaration", "Self-declared VOC emissions"],
-          "description": "Manufacturer's own claim about a product's VOC emission performance, with no certification scheme behind it. Treat it as low-assurance evidence unless it is supported by an accredited lab test report."
+          "aliases": [
+            "VOC self-declaration",
+            "Self-declared VOC emissions"
+          ],
+          "description": "Manufacturer's own claim about a product's VOC emission performance, with no certification scheme behind it. Treat it as low-assurance evidence unless it is supported by an accredited lab test report.",
+          "leed": {
+            "listed": false,
+            "applicability": []
+          }
         },
         {
           "id": "eu_taxonomy_dnsh",
           "body": "Manufacturer",
           "body_role": "Manufacturer",
           "label": "EU Taxonomy DNSH VOC Declaration",
-          "aliases": ["EU Taxonomy DNSH Declaration / VOC limits declaration", "EU Taxonomy DNSH", "DNSH VOC declaration"],
-          "description": "Manufacturer's declaration that the product meets the VOC limits of the Do No Significant Harm criteria of the EU Taxonomy (Delegated Regulation 2021/2139, Appendix C), which point at the emission classes of the main European schemes. It is a self-declaration made for taxonomy reporting, not a certification."
+          "aliases": [
+            "EU Taxonomy DNSH Declaration / VOC limits declaration",
+            "EU Taxonomy DNSH",
+            "DNSH VOC declaration"
+          ],
+          "description": "Manufacturer's declaration that the product meets the VOC limits of the Do No Significant Harm criteria of the EU Taxonomy (Delegated Regulation 2021/2139, Appendix C), which point at the emission classes of the main European schemes. It is a self-declaration made for taxonomy reporting, not a certification.",
+          "leed": {
+            "listed": false,
+            "applicability": []
+          }
         }
       ]
     },
@@ -247,8 +815,16 @@
           "body": "Accredited laboratory",
           "body_role": "Laboratory",
           "label": "VOC Emission Test Report",
-          "aliases": ["Emission test report", "VOC test report", "Chamber test report"],
-          "description": "An emission test report from a laboratory, with no certification or label behind it. The assurance comes from the laboratory's accreditation and the standard used, so record the lab in VOC Description, the standard in VOC Test Standard and the report number in VOC Certificate Number."
+          "aliases": [
+            "Emission test report",
+            "VOC test report",
+            "Chamber test report"
+          ],
+          "description": "An emission test report from a laboratory, with no certification or label behind it. The assurance comes from the laboratory's accreditation and the standard used, so record the lab in VOC Description, the standard in VOC Test Standard and the report number in VOC Certificate Number.",
+          "leed": {
+            "listed": false,
+            "applicability": []
+          }
         }
       ]
     },
@@ -259,16 +835,35 @@
         {
           "id": "na_not_available",
           "label": "n/a (not available)",
-          "aliases": ["n/a", "na", "N/A", "not available"],
-          "description": "The product could reasonably carry a VOC emission or content claim, but none is available. This flags a gap to follow up with the manufacturer."
+          "aliases": [
+            "n/a",
+            "na",
+            "N/A",
+            "not available"
+          ],
+          "description": "The product could reasonably carry a VOC emission or content claim, but none is available. This flags a gap to follow up with the manufacturer.",
+          "leed": {
+            "listed": false,
+            "applicability": []
+          }
         },
         {
           "id": "nr_not_relevant",
           "label": "n/r (not relevant)",
-          "aliases": ["n/r", "nr", "N/R", "not relevant"],
-          "description": "VOC emission testing is not relevant for this product, typically because it is inert (for example steel, glass, ceramic or natural stone without coatings or treatments)."
+          "aliases": [
+            "n/r",
+            "nr",
+            "N/R",
+            "not relevant"
+          ],
+          "description": "VOC emission testing is not relevant for this product, typically because it is inert (for example steel, glass, ceramic or natural stone without coatings or treatments).",
+          "leed": {
+            "listed": false,
+            "applicability": []
+          }
         }
       ]
     }
-  ]
+  ],
+  "_leed_comment": "leed.listed says whether the claim appears on the USGBC list of certifications accepted for EQ Credit Low-Emitting Materials; leed.applicability holds its codes (GE = General Emissions, VC = VOC Content for wet-applied, CW = Composite Wood, FF = Furniture). A certification covers a requirement only when its codes include the code that the material group requires - see aux_17__leed_low_emitting.json."
 }

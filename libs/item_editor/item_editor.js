@@ -226,8 +226,9 @@ function sameVal(a, b) { // lib_epd_family._same
 const STATUS_TEXT = { filled: "● Filled", missing: "● Missing", not_relevant: "● Not relevant" };
 const SIDE_FIELDS = new Set(["U__ProductInfo_URL", "U__TechDetails_URL", "U__Img_URL"]);
 const SYNC_COLS = ["P__Thick_mm", "P__Mass_kgm3", "P__Mass_kgm2"];
-const VOC_CERT_NR_LOCK = new Set(["VO__VOC_Cert_No", "VO__Exp_Date"]);
+const VOC_CERT_NR_LOCK = new Set(["VO__VOC_Cert_No", "VO__Exp_Date", "VO__IssueDate"]);
 const VOC_DATA_RELEVANT_COL = "VO__Data_Relevant";
+const VOC_HAS_TEST_CERT_COL = "VO__Has_Test_Cert";
 const GWP_TOL = 0.02;
 
 function vocCertIsNr(v) {
@@ -237,6 +238,10 @@ function vocCertIsNr(v) {
 }
 
 function vocDataIsNr(v) {
+  return str(v).trim().toLowerCase() === "no";
+}
+
+function vocHasTestCertIsNo(v) {
   return str(v).trim().toLowerCase() === "no";
 }
 
@@ -316,6 +321,8 @@ class Editor {
     for (const c of cats) for (const f of c.fields) if (!seen.has(f)) { seen.add(f); this.allFields.push(f); }
     this.phys = new Set(this.S.phys || []);
     this.vocFields = new Set(this.S.voc_fields || []);
+    this.vocCertDocFields = new Set(this.S.voc_cert_doc_fields || []);
+    this.vocTestDocFields = new Set(this.S.voc_test_doc_fields || []);
     this.vocNrTypes = new Set(this.S.voc_nr_types || []);
     this.cementTypes = new Set(this.S.cement_types || []);
     this.cementOnly = new Set(this.S.cement_only || []);
@@ -335,6 +342,7 @@ class Editor {
     this.values = { ...((rec && rec.values) || {}) };
     this.applyVocCertNrLock();
     this.applyVocDataNrLock();
+    this.applyVocTestNrLock();
     this.initial = { ...this.values };
     this.pctMode = {};
     for (const c of this.pctFields || []) {
@@ -347,21 +355,26 @@ class Editor {
   productType() { return str(this.values.D__ProductType_ENG).trim(); }
   vocTypeLocked(pt) { return this.vocNrTypes.has(str(pt).trim()); }
   vocDataNr() { return vocDataIsNr(this.values[VOC_DATA_RELEVANT_COL]); }
+  vocTestNr() { return vocHasTestCertIsNo(this.values[VOC_HAS_TEST_CERT_COL]); }
+  // Full Health VOC block swap (locked n/r panel) — product type or certificate gate No.
   vocLocked(pt) { return this.vocTypeLocked(pt) || this.vocDataNr(); }
+  vocTestLocked(pt) { return this.vocLocked(pt) || this.vocTestNr(); }
   vocCertNr() { return vocCertIsNr(this.values.VO__VOC_Cert); }
   conceptNrFor(pt) {
     const p = str(pt).trim();
     return this.conceptNr[p] || this.conceptNrLower[p.toLowerCase()] || this.conceptNr[""] || new Set();
   }
   relevance(col, pt) { // field_relevance
-    if (this.vocFields.has(col) && this.vocLocked(pt)) return "not_relevant";
+    if (this.vocFields.has(col) && !this.vocTestDocFields.has(col) && this.vocLocked(pt)) return "not_relevant";
+    if (this.vocTestDocFields.has(col) && this.vocTestLocked(pt)) return "not_relevant";
     if (VOC_CERT_NR_LOCK.has(col) && this.vocCertNr()) return "not_relevant";
     if (col === "U__TechDetails_URL") return "relevant";
     if (!this.conceptCols.has(col)) return "unknown";
     return this.conceptNrFor(pt).has(col) ? "not_relevant" : "relevant";
   }
   typeDisabled(col, pt) { // field_disabled_for_product_type
-    if (this.vocFields.has(col) && this.vocLocked(pt)) return true;
+    if (this.vocFields.has(col) && !this.vocTestDocFields.has(col) && this.vocLocked(pt)) return true;
+    if (this.vocTestDocFields.has(col) && this.vocTestLocked(pt)) return true;
     if (VOC_CERT_NR_LOCK.has(col) && this.vocCertNr()) return true;
     if (this.conceptCols.has(col) && this.relevance(col, pt) === "not_relevant") return true;
     if (!this.cementOnly.has(col)) return false;
@@ -385,6 +398,8 @@ class Editor {
   effVal(col) {
     if (col in this.derived) return this.derived[col];
     if (col === VOC_DATA_RELEVANT_COL && this.vocTypeLocked(this.productType())) return "No";
+    if (col === VOC_HAS_TEST_CERT_COL && this.vocLocked(this.productType())) return "No";
+    if (this.vocTestDocFields.has(col) && this.vocTestLocked(this.productType())) return this.S.voc_nr_value || "n/r";
     if (this.vocFields.has(col) && this.vocLocked(this.productType())) return this.S.voc_nr_value || "n/r";
     if (VOC_CERT_NR_LOCK.has(col) && this.vocCertNr()) return this.S.voc_nr_value || "n/r";
     return this.values[col];
@@ -398,7 +413,14 @@ class Editor {
     if (!this.vocLocked(this.productType())) return;
     const nr = this.S.voc_nr_value || "n/r";
     for (const col of this.vocFields) this.values[col] = nr;
+    this.values[VOC_HAS_TEST_CERT_COL] = "No";
     if (this.vocTypeLocked(this.productType())) this.values[VOC_DATA_RELEVANT_COL] = "No";
+  }
+  applyVocTestNrLock() {
+    if (this.vocLocked(this.productType())) return; // already handled
+    if (!this.vocTestNr()) return;
+    const nr = this.S.voc_nr_value || "n/r";
+    for (const col of this.vocTestDocFields) this.values[col] = nr;
   }
   counts(fields, pt) {
     const c = { filled: 0, missing: 0, not_relevant: 0 };
@@ -600,27 +622,79 @@ class Editor {
   }
 
   buildCategory(cat, panel) {
-    // Health tab: the VOC groups swap between editable and locked n/r; the
-    // health-declaration groups below them stay editable for every product type.
+    const fields = new Set(cat.fields);
+    const subtabs = cat.subtabs || [];
+    const subPanels = {};
+
+    if (subtabs.length) {
+      if (!this.activeSubtab) this.activeSubtab = {};
+      if (!this.activeSubtab[cat.key]) this.activeSubtab[cat.key] = subtabs[0].key;
+      this.subtabEls = this.subtabEls || {};
+      this.subPanels = this.subPanels || {};
+      const bar = h("div", { class: "ie-subtabs", role: "tablist" });
+      const body = h("div", { class: "ie-subtab-body" });
+      panel.append(bar, body);
+      this.subtabEls[cat.key] = { bar, body, buttons: {}, panels: {} };
+      for (const st of subtabs) {
+        const p = h("div", { class: "ie-subpanel", "data-subtab": st.key });
+        subPanels[st.key] = p;
+        body.append(p);
+        this.subtabEls[cat.key].panels[st.key] = p;
+        const btn = h("button", {
+          class: "ie-subtab",
+          type: "button",
+          role: "tab",
+          "data-subtab": st.key,
+          onclick: () => {
+            this.activeSubtab[cat.key] = st.key;
+            this.renderSubtabs(cat.key);
+          },
+        }, st.label);
+        bar.append(btn);
+        this.subtabEls[cat.key].buttons[st.key] = btn;
+      }
+      this.renderSubtabs(cat.key);
+    }
+
+    // VOC Documentation subtab: certificate gate above the lock/edit swap.
     let vocPanel = null;
-    const vocFields = new Set(this.S.voc_fields || []);
+    let vocGate = null;
     if (cat.key === "vo") {
+      const vocHost = subPanels.voc_docs || panel;
+      this.vocGateEl = h("div");
       this.vocLockEl = h("div", { class: "ie-voc-locked" });
       this.vocEditEl = h("div");
-      panel.append(this.vocLockEl, this.vocEditEl);
+      vocHost.append(this.vocGateEl, this.vocLockEl, this.vocEditEl);
       this.buildVocLocked(cat, this.vocLockEl);
       vocPanel = this.vocEditEl;
+      vocGate = this.vocGateEl;
+      // LEED subtab also swaps to a locked n/r readout when VOC is locked.
+      if (subPanels.leed) {
+        this.leedLockEl = h("div", { class: "ie-voc-locked" });
+        this.leedEditEl = h("div");
+        subPanels.leed.append(this.leedLockEl, this.leedEditEl);
+        this.buildLeedLocked(cat, this.leedLockEl);
+      }
     }
     if (cat.key === "gwp") {
       this.bannerEl = h("div", { class: "ie-banner" });
       panel.append(this.bannerEl);
     }
-    const fields = new Set(cat.fields);
     if (cat.field_groups) {
       for (const g of cat.field_groups) {
         const gf = (g.fields || []).filter((f) => fields.has(f));
-        const isVoc = vocPanel && gf.length && gf.every((f) => vocFields.has(f));
-        if (gf.length) this.buildGroup(g, gf, isVoc ? vocPanel : panel);
+        if (!gf.length) continue;
+        const stKey = g.subtab || "";
+        // Certificate gate (+ Evidence URL on the same row) stays above the lock swap.
+        const hasCertGate = gf.includes(VOC_DATA_RELEVANT_COL);
+        const isLeed = stKey === "leed" || gf.every((f) => str(f).startsWith("VO__LEED_"));
+        let target;
+        if (hasCertGate && vocGate) target = vocGate;
+        else if (isLeed && this.leedEditEl) target = this.leedEditEl;
+        else if (stKey === "voc_docs" && vocPanel) target = vocPanel;
+        else if (stKey && subPanels[stKey]) target = subPanels[stKey];
+        else target = panel;
+        this.buildGroup(g, gf, target);
       }
     } else {
       const bottom = (cat.bottom_fields || []).filter((f) => fields.has(f));
@@ -631,6 +705,20 @@ class Editor {
     if (cat.key === "gwp") {
       this.gwpPanelEl = h("div", { class: "ie-gwp" });
       panel.append(this.gwpPanelEl);
+    }
+  }
+
+  renderSubtabs(catKey) {
+    const pack = (this.subtabEls || {})[catKey];
+    if (!pack) return;
+    const active = (this.activeSubtab || {})[catKey];
+    for (const [key, btn] of Object.entries(pack.buttons || {})) {
+      const on = key === active;
+      btn.classList.toggle("ie-subtab-on", on);
+      btn.setAttribute("aria-selected", on ? "true" : "false");
+    }
+    for (const [key, p] of Object.entries(pack.panels || {})) {
+      p.style.display = key === active ? "" : "none";
     }
   }
 
@@ -647,6 +735,11 @@ class Editor {
         marginTop: g.section_margin_top || null,
         page: str(g.section_title_style).toLowerCase() === "page_title",
       }));
+    } else if (g.section_margin_top) {
+      // Spacer-only groups (e.g. VOC testing gate after the certificate row).
+      const spacer = h("div");
+      spacer.style.marginTop = str(g.section_margin_top);
+      panel.append(spacer);
     }
     const labels = g.field_labels || {};
     // Identity side-label rows: one full-width row each.
@@ -673,6 +766,216 @@ class Editor {
       panel.append(this.checklistEl);
       this.refreshDerivedChecklist();
     }
+    if (g.leed_requirements) {
+      this.leedReqEl = h("div", { class: "ie-align" });
+      panel.append(this.leedReqEl);
+    }
+    if (g.leed_verdict) {
+      this.leedVerdictEl = h("div", { class: "ie-leed" });
+      panel.append(this.leedVerdictEl);
+      this.leedRefEl = h("div", { class: "ie-leed-ref" });
+      panel.append(this.leedRefEl);
+    }
+    if (g.leed_requirements || g.leed_verdict) this.refreshLeed();
+  }
+
+  // ── LEED v4.1 Low-Emitting Materials ──────────────────────────────────────
+  // The hierarchy itself is resolved in Python (lib_leed_voc.leed_editor_payload):
+  // each group arrives with what every certification and every document covers
+  // in it, so all that happens here is a set union over the claim and the ticked
+  // documents. Keep the two in step through that function, not by editing rules
+  // into this file.
+  leedGroup() {
+    const L = this.S.leed || {};
+    const raw = str(this.effVal ? this.effVal("VO__LEED_Group") : this.values.VO__LEED_Group).trim();
+    if (!raw) return null;
+    const low = raw.toLowerCase();
+    return (L.groups || []).find((g) =>
+      str(g.name).toLowerCase() === low || str(g.id).toLowerCase() === low ||
+      str(g.label).toLowerCase() === low) || null;
+  }
+
+  leedPathway() {
+    const g = this.leedGroup();
+    return g ? str(g.pathway) : "";
+  }
+
+  leedDocIds() {
+    return str(this.values.VO__LEED_Documents).split(";").map((s) => s.trim()).filter(Boolean);
+  }
+
+  // The verdict: which requirements of the group are covered, and by what.
+  leedEvaluate() {
+    const g = this.leedGroup();
+    if (!g) return null;
+    const covered = new Map();   // kind → [sources]
+    const cert = str(this.effVal ? this.effVal("VO__VOC_Cert") : this.values.VO__VOC_Cert).trim();
+    const unlisted = [];
+    if (cert && !vocCertIsNr(cert)) {
+      const key = cert.toLowerCase();
+      const kinds = (g.cert_covers || {})[key];
+      if (kinds && kinds.length) {
+        for (const k of kinds) covered.set(k, [...(covered.get(k) || []), cert]);
+      } else if (!(g.listed || []).includes(key)) {
+        unlisted.push(cert);
+      }
+    }
+    const byId = new Map((g.documents || []).map((d) => [d.id, d]));
+    for (const id of this.leedDocIds()) {
+      const doc = byId.get(id);
+      if (!doc) continue;
+      for (const k of doc.covers || []) covered.set(k, [...(covered.get(k) || []), doc.label]);
+    }
+    const rows = (g.requirements || []).map((r) => ({
+      ...r, covered: covered.has(r.kind), sources: covered.get(r.kind) || [],
+    }));
+    const miss = rows.filter((r) => !r.covered);
+    const hit = rows.filter((r) => r.covered);
+    const status = rows.length && !miss.length ? "compliant" : (hit.length ? "partial" : "not_compliant");
+    return { group: g, rows, hit, miss, status, unlisted };
+  }
+
+  // The documents multiselect — only what LEED accepts for the chosen group.
+  renderLeedDocs(ctrl) {
+    const c = ctrl || this.leedDocsCtrl;
+    if (!c || !c.docsBox) return;
+    const L = this.S.leed || {};
+    const T = L.text || {};
+    const g = this.leedGroup();
+    const box = c.docsBox;
+    box.textContent = "";
+    if (!g) {
+      box.append(h("div", { class: "ie-leed-empty", text: T.pick_group_first || "Select a LEED material group first" }));
+      return;
+    }
+    const valid = new Set((g.documents || []).map((d) => d.id));
+    const picked = new Set(this.leedDocIds().filter((id) => valid.has(id)));
+    for (const doc of g.documents || []) {
+      const covers = (doc.covers || [])
+        .map((k) => (g.requirements.find((r) => r.kind === k) || {}).short || k)
+        .join(", ");
+      const cb = h("input", {
+        type: "checkbox", checked: picked.has(doc.id), disabled: !!c.docsDisabled,
+        onchange: (e) => {
+          const next = new Set(this.leedDocIds().filter((id) => valid.has(id)));
+          if (e.target.checked) next.add(doc.id); else next.delete(doc.id);
+          const ordered = (g.documents || []).map((d) => d.id).filter((id) => next.has(id));
+          this.onEdit("VO__LEED_Documents", ordered.join("; "));
+        },
+      });
+      const lab = h("label", { class: "ie-leed-doc", title: doc.conditions || "" },
+        cb, h("span", { text: doc.label }), h("em", { text: covers ? ` · ${covers}` : "" }));
+      box.append(lab);
+    }
+  }
+
+  refreshLeed() {
+    const L = this.S.leed || {};
+    const T = L.text || {};
+    const g = this.leedGroup();
+
+    if (this.leedReqEl) {
+      const el = this.leedReqEl;
+      el.textContent = "";
+      if (!g) {
+        el.append(h("div", { class: "ie-leed-empty", text: T.pick_group || "" }));
+      } else {
+        const pills = h("div", { class: "ie-align-pills" },
+          h("span", { class: "ie-align-lbl", text: T.requirements || "Requirements" }));
+        for (const r of g.requirements || []) {
+          const p = h("span", { class: "ie-al ie-al-req", text: `${r.label} · ${r.cert_code}` });
+          p.title = r.summary || "";
+          pills.append(p);
+        }
+        const alts = [];
+        if (g.allow_non_emitting) alts.push(T.non_emitting);
+        if (g.allow_salvaged) alts.push(T.salvaged);
+        const bits = [h("span", { text: g.scope || "" })];
+        if (alts.length) bits.push(h("span", {}, h("b", { text: ` · ${T.alternatives}: ` }), h("span", { text: alts.join(", ") })));
+        bits.push(h("span", {}, h("b", { text: ` · ${T.threshold}: ` }), h("span", { text: g.threshold || "" })));
+        if (g.note) bits.push(h("span", { text: ` · ${g.note}` }));
+        el.append(pills, h("div", { class: "ie-align-note" }, ...bits));
+      }
+    }
+
+    if (this.leedDocsCtrl) this.renderLeedDocs(this.leedDocsCtrl);
+
+    if (this.leedVerdictEl) {
+      const el = this.leedVerdictEl;
+      el.textContent = "";
+      const v = g ? this.leedEvaluate() : null;
+      if (v) {
+        const MARK = { compliant: "✓", partial: "◐", not_compliant: "✘" };
+        const head = v.status === "partial"
+          ? `${T.partial_covers} ${v.hit.map((r) => r.label).join(", ")}; ${T.partial_missing}: ${v.miss.map((r) => r.label).join(", ")}`
+          : (v.status === "compliant" ? T.compliant : T.not_compliant);
+        const box = h("div", { class: `ie-leed-box ie-leed-${v.status}` },
+          h("div", { class: "ie-leed-head", text: `${MARK[v.status]} ${head}` }));
+        const grid = h("div", { class: "ie-checklist" });
+        for (const r of v.rows) {
+          const src = [...new Set(r.sources)].join(", ");
+          grid.append(h("div", { class: "ie-checklist-item" },
+            h("b", { class: r.covered ? "ie-chk-yes" : "ie-chk-no", text: r.covered ? "✓" : "✘" }),
+            h("span", { text: r.label }),
+            h("em", { text: src ? `← ${src}` : "" })));
+        }
+        box.append(grid);
+        const detail = v.miss.length
+          ? v.miss.map((r) => (v.group.hints || {})[r.kind]).filter(Boolean).join(" ")
+          : v.group.threshold || "";
+        if (detail) box.append(h("div", { class: "ie-align-note", text: detail }));
+        if (v.unlisted.length) {
+          box.append(h("div", { class: "ie-align-miss", text: `${v.unlisted.join(", ")} — ${T.unlisted}` }));
+        }
+        el.append(box);
+      }
+    }
+
+    if (this.leedRefEl) this.renderLeedReference(g);
+  }
+
+  // The group's sheet from the workbook, collapsed.
+  renderLeedReference(g) {
+    const el = this.leedRefEl;
+    if (!el) return;
+    if (el._gid === (g ? g.id : null)) return;   // only rebuild when the group changes
+    el._gid = g ? g.id : null;
+    el.textContent = "";
+    if (!g) return;
+    const L = this.S.leed || {};
+    const T = L.text || {};
+    const body = h("div", { class: "ie-leed-ref-body" });
+    const section = (title, node) => body.append(h("div", { class: "ie-leed-ref-h", text: title }), node);
+
+    const reqs = h("ul", { class: "ie-leed-ul" },
+      (g.requirements || []).map((r) => h("li", {}, h("b", { text: `${r.label} (${r.cert_code})` }), h("span", { text: ` — ${r.summary || ""}` }))));
+    section(T.requirements, reqs);
+
+    const docs = h("ul", { class: "ie-leed-ul" },
+      (g.documents || []).map((d) => {
+        const covers = (d.covers || []).map((k) => (g.requirements.find((r) => r.kind === k) || {}).label || k).join(", ");
+        return h("li", {}, h("b", { text: d.label }), h("span", { text: ` — ${T.covers}: ${covers}. ${d.conditions || ""}` }));
+      }));
+    section(T.conditions, docs);
+
+    if ((g.thresholds || []).length) {
+      const rows = g.thresholds.map((t) => h("tr", {}, h("td", { text: t.subcategory }), h("td", { text: str(t.limit_g_l) })));
+      section(T.thresholds, h("div", { class: "ie-leed-scroll" }, h("table", { class: "ie-leed-table" }, h("tbody", {}, rows))));
+    }
+
+    const guidance = L.guidance || {};
+    if ((guidance.not_sufficient || []).length) {
+      section(T.not_sufficient, h("ul", { class: "ie-leed-ul" }, guidance.not_sufficient.map((s) => h("li", { text: s }))));
+    }
+    if ((guidance.general_rules || []).length) {
+      section(T.general_rules, h("ul", { class: "ie-leed-ul" }, guidance.general_rules.map((s) => h("li", { text: s }))));
+    }
+    const credit = L.credit || {};
+    body.append(h("div", { class: "ie-leed-caveat", text: `${credit.label || ""} — ${L.caveat || ""}` }));
+
+    const det = h("details", { class: "ie-leed-det" },
+      h("summary", { text: `${T.guidance} — ${g.label}` }), body);
+    el.append(det);
   }
 
   // How the chosen VOC claim reads against LEED v4.1, WELL v2 and CAM 2025.
@@ -687,11 +990,13 @@ class Editor {
     if (!cert || vocCertIsNr(cert)) return;
     const frameworks = this.S.voc_frameworks || [];
     if (!frameworks.length) return;
-    const rows = (this.S.voc_align || {})[cert.toLowerCase()];
+    // LEED is read from the material group and the documents below, not from
+    // the claim alone, so its pill is dropped here (see refreshLeed).
+    const rows = ((this.S.voc_align || {})[cert.toLowerCase()] || []).filter((r) => r.id !== "leed");
     const pills = h("div", { class: "ie-align-pills" },
       h("span", { class: "ie-align-lbl", text: "Alignment" }));
-    if (!rows) {
-      for (const fw of frameworks) {
+    if (!rows.length) {
+      for (const fw of frameworks.filter((f) => f.id !== "leed")) {
         pills.append(h("span", { class: "ie-al ie-al-unknown", text: `${fw.short} ?` }));
       }
       el.append(pills, h("div", { class: "ie-align-note ie-align-miss",
@@ -765,7 +1070,44 @@ class Editor {
     el.append(h("div", { class: "ie-msg ie-msg-locked", html: "" }));
     const groups = cat.field_groups || [{ fields: cat.fields, columns_per_row: 3 }];
     const vocFields = new Set(this.S.voc_fields || []);
+    // Gate row (certificate Y/N + Evidence URL) stays above — do not duplicate it here.
+    const gateRow = new Set();
     for (const g of groups) {
+      if ((g.fields || []).includes(VOC_DATA_RELEVANT_COL)) {
+        for (const f of g.fields) gateRow.add(f);
+      }
+    }
+    for (const g of groups) {
+      if (g.subtab && g.subtab !== "voc_docs") continue;
+      // Skip the certificate gate row and non-VOC fields.
+      const gf = (g.fields || []).filter((f) =>
+        cat.fields.includes(f)
+        && (vocFields.has(f) || f === VOC_HAS_TEST_CERT_COL)
+        && !gateRow.has(f)
+        && !str(f).startsWith("VV__")
+        && !str(f).startsWith("VO__LEED_")
+      );
+      if (!gf.length) continue;
+      const grid = h("div", { class: "ie-grid" });
+      grid.style.gridTemplateColumns = g.column_weights && g.column_weights.length === gf.length
+        ? g.column_weights.map((w) => `minmax(0, ${w}fr)`).join(" ")
+        : `repeat(${Math.max(1, Number(g.columns_per_row || gf.length))}, minmax(0, 1fr))`;
+      for (const f of gf) {
+        const lockedVal = f === VOC_HAS_TEST_CERT_COL ? "No" : (this.S.voc_nr_value || "n/r");
+        grid.append(h("div", { class: "ie-f" },
+          h("div", { class: "ie-lab ie-muted", text: (g.field_labels && g.field_labels[f]) || this.label(f) }),
+          h("div", { class: "ie-locked-val", text: lockedVal })));
+      }
+      el.append(grid);
+    }
+  }
+
+  buildLeedLocked(cat, el) {
+    el.append(h("div", { class: "ie-msg ie-msg-locked", html: "" }));
+    const groups = cat.field_groups || [];
+    const vocFields = new Set(this.S.voc_fields || []);
+    for (const g of groups) {
+      if (g.subtab && g.subtab !== "leed") continue;
       const gf = (g.fields || []).filter((f) => cat.fields.includes(f) && vocFields.has(f));
       if (!gf.length) continue;
       const grid = h("div", { class: "ie-grid" });
@@ -774,7 +1116,7 @@ class Editor {
         : `repeat(${Math.max(1, Number(g.columns_per_row || gf.length))}, minmax(0, 1fr))`;
       for (const f of gf) {
         grid.append(h("div", { class: "ie-f" },
-          h("div", { class: "ie-lab ie-muted", text: this.label(f) }),
+          h("div", { class: "ie-lab ie-muted", text: (g.field_labels && g.field_labels[f]) || this.label(f) }),
           h("div", { class: "ie-locked-val", text: this.S.voc_nr_value || "n/r" })));
       }
       el.append(grid);
@@ -824,20 +1166,72 @@ class Editor {
       ctrl.setDisabled = (b) => combo.setDisabled(b);
       ctrl.optionSet = new Set(opts.map((o) => o.toLowerCase()));
       cell.append(headRow, combo.el);
+    } else if (m.kind === "leedgroup") {
+      // Step 1 of the LEED hierarchy. Fixed vocabulary — the eight groups of
+      // the Low-Emitting Materials calculator, so no free text here.
+      const L = this.S.leed || {};
+      let options = [""].concat((L.groups || []).map((g) => g.name));
+      if (cur && !options.includes(cur)) options = ["", cur, ...options.slice(1)];
+      const fmt = {};
+      for (const g of L.groups || []) fmt[g.name] = g.option_label || g.name;
+      const sel = h("select", { class: "ie-in", onchange: (e) => set(e.target.value) },
+        options.map((o) => h("option", { value: o, text: o ? (fmt[o] || o) : ((L.text || {}).not_set || "(not set)") })));
+      sel.value = options.includes(cur) ? cur : "";
+      ctrl.input = sel;
+      ctrl.setDisplay = (v) => { sel.value = str(v); };
+      ctrl.setDisabled = (b) => { sel.disabled = b; };
+      cell.append(this.labelEl(col, labelOverride), sel);
+    } else if (m.kind === "leeddocs") {
+      // Step 3. The options depend on the chosen group, so the list is rebuilt
+      // by refreshLeed(); a pick that the new group does not accept is dropped.
+      const box = h("div", { class: "ie-leed-docs" });
+      ctrl.docsBox = box;
+      ctrl.setDisplay = () => { this.renderLeedDocs(ctrl); };
+      ctrl.setDisabled = (b) => {
+        ctrl.docsDisabled = b;
+        box.querySelectorAll("input").forEach((i) => { i.disabled = b; });
+      };
+      cell.append(this.labelEl(col, labelOverride), box);
+      this.leedDocsCtrl = ctrl;
+      this.renderLeedDocs(ctrl);
     } else if (m.kind === "readonly") {
       const inp = h("input", { class: "ie-in", type: "text", disabled: true, value: cur, placeholder: this.section === "add" ? "assigned on save" : "" });
       ctrl.input = inp;
       ctrl.setDisplay = (v) => { inp.value = str(v); };
       ctrl.setDisabled = () => {};
       cell.append(this.labelEl(col, labelOverride), inp);
-    } else if (m.kind === "yn" || m.kind === "epdref" || m.kind === "checklist" || m.kind === "voc_relevant") {
+    } else if (m.kind === "voc_relevant" || m.kind === "voc_yn") {
+      // Horizontal Y/N radios; stored values remain Yes/No.
+      let curYn = str(cur).trim();
+      if (/^y(es)?$/i.test(curYn)) curYn = "Yes";
+      else if (/^n(o)?$/i.test(curYn)) curYn = "No";
+      else if (curYn !== "Yes" && curYn !== "No") curYn = "";
+      const name = `ie-radio-${col}`;
+      const inputs = [];
+      const row = h("div", { class: "ie-radio-row", role: "radiogroup" });
+      for (const o of ["Yes", "No"]) {
+        const id = `${name}-${o}`;
+        const inp = h("input", {
+          type: "radio", name, id, value: o, checked: curYn === o,
+          onchange: () => set(o),
+        });
+        inputs.push(inp);
+        row.append(h("label", { class: "ie-radio", for: id }, inp, h("span", { text: o === "Yes" ? "Y" : "N" })));
+      }
+      ctrl.input = inputs[0];
+      ctrl.setDisplay = (v) => {
+        let s = str(v).trim();
+        if (/^y(es)?$/i.test(s)) s = "Yes";
+        else if (/^n(o)?$/i.test(s)) s = "No";
+        for (const inp of inputs) inp.checked = inp.value === s;
+      };
+      ctrl.setDisabled = (b) => { for (const inp of inputs) inp.disabled = b; };
+      cell.append(this.labelEl(col, labelOverride), row);
+    } else if (m.kind === "yn" || m.kind === "epdref" || m.kind === "checklist") {
       let options = m.kind === "yn" ? ["", "Y", "N"] : ["", "Y", "N", "n/r"];
       if (m.kind === "checklist") options = (this.S.voc_checklist_values || ["", "Yes", "No", "Unknown", "n/r"]).slice();
-      if (m.kind === "voc_relevant") options = (this.S.voc_data_relevant_values || ["", "Yes", "No", "Not sure"]).slice();
       const fmt = m.kind === "checklist"
         ? { "": "(not reviewed)" }
-        : m.kind === "voc_relevant"
-        ? { "": "(blank)", Yes: "Yes — VOC data applies", No: "No — lock VOC fields to n/r", "Not sure": "Not sure — leave editable" }
         : m.kind === "yn"
         ? { "": "(blank)" }
         : { "": "(blank)", Y: "Y — reference product (factor 1)", N: "N — reference × multiplication factor" };
@@ -1025,6 +1419,7 @@ class Editor {
     this.values[col] = v;
     if (col === "VO__VOC_Cert") this.applyVocCertNrLock();
     if (col === VOC_DATA_RELEVANT_COL || col === "D__ProductType_ENG") this.applyVocDataNrLock();
+    if (col === VOC_HAS_TEST_CERT_COL) this.applyVocTestNrLock();
     if (SYNC_COLS.includes(col) || SYNC_COLS.some((s) => `${s}_CM` === col)) this.syncPhys();
     // A message about the last save / check is stale once editing resumes.
     this.localFlash = null;
@@ -1091,23 +1486,32 @@ class Editor {
     const epd = this.epdContext();
     this.epd = epd;
     this.derived = epd.derived || {};
+    // The LEED pathway follows from the material group, so it joins the derived
+    // map: shown read-only, and collected from there on save.
+    const leedPath = this.leedPathway();
+    if (leedPath) this.derived.VO__LEED_Pathway = leedPath;
+    this.refreshLeed();
     this.applyVocCertNrLock();
     this.applyVocDataNrLock();
+    this.applyVocTestNrLock();
 
     for (const c of Object.values(this.ctrls)) {
       const col = c.col;
       const isDerived = col in this.derived;
       const certLock = VOC_CERT_NR_LOCK.has(col) && this.vocCertNr();
+      const testLock = this.vocTestDocFields.has(col) && this.vocTestLocked(pt);
+      const fieldNrLock = (this.vocFields.has(col) && this.vocLocked(pt)) || testLock || certLock;
       const typeLocksData = col === VOC_DATA_RELEVANT_COL && this.vocTypeLocked(pt);
+      const locksTestGate = col === VOC_HAS_TEST_CERT_COL && this.vocLocked(pt);
       if (isDerived) {
         c.setDisplay(fmtEpd(this.derived[col]));
         c.setDisabled(true);
         c.wasDerived = true;
       } else {
         if (c.wasDerived) { c.setDisplay(this.values[col]); c.wasDerived = false; }
-        // Date inputs cannot show "n/r" — switch to text while cert-locked.
+        // Date inputs cannot show "n/r" — switch to text while locked to n/r.
         if (c.kind === "date" && c.input) {
-          if (certLock) {
+          if (fieldNrLock) {
             if (c.input.type === "date") {
               c.input.type = "text";
               c._wasDateInput = true;
@@ -1119,11 +1523,11 @@ class Editor {
             if (vocCertIsNr(this.values[col])) this.values[col] = "";
             c.setDisplay(this.values[col]);
           }
-        } else if (certLock) {
+        } else if (fieldNrLock && col !== VOC_HAS_TEST_CERT_COL) {
           c.setDisplay(this.S.voc_nr_value || "n/r");
         }
-        if (typeLocksData) c.setDisplay("No");
-        const tDis = this.typeDisabled(col, pt) || typeLocksData;
+        if (typeLocksData || locksTestGate) c.setDisplay("No");
+        const tDis = this.typeDisabled(col, pt) || typeLocksData || locksTestGate;
         const cmC = this.phys.has(col) && c.cmSel && str(this.values[`${col}_CM`]).toUpperCase() === "C";
         c.setDisabled(tDis || cmC);
         if (c.cmSel) c.cmSel.disabled = tDis;
@@ -1149,13 +1553,21 @@ class Editor {
       if (vocLocked) {
         this.vocLockEl.firstChild.innerHTML = this.vocTypeLocked(pt)
           ? (`🔒 <b>VOC not relevant</b> for product type “${esc(pt)}” — no product in this category can carry an indoor-air ` +
-            "emission certificate, so every VOC field is fixed at <code>n/r</code> and locked. Change the <b>Product Type</b> " +
-            "on the <b>Product ID</b> tab to edit these fields. Health declarations below remain editable.")
-          : ("🔒 <b>VOC Data Relevant</b> is <b>No</b> — inherently non-emitting / no VOC evidence required, so every VOC " +
-            "field is fixed at <code>n/r</code> and locked. Choose <b>Yes</b> or <b>Not sure</b> above to edit these fields. " +
-            "Health declarations below remain editable.");
+            "emission certificate, so VOC documentation is fixed at <code>n/r</code> and locked. Change the <b>Product Type</b> " +
+            "on the <b>Product ID</b> tab to edit these fields. Health declarations remain editable.")
+          : ("🔒 <b>Does product have a VOC certificate?</b> is <b>No</b> — certificate documentation is fixed at " +
+            "<code>n/r</code> and locked. Choose <b>Y</b> above to edit these fields. Health declarations remain editable.");
       }
     }
+    if (this.leedLockEl && this.leedEditEl) {
+      this.leedLockEl.style.display = vocLocked ? "" : "none";
+      this.leedEditEl.style.display = vocLocked ? "none" : "";
+      if (vocLocked) {
+        this.leedLockEl.firstChild.innerHTML =
+          "🔒 LEED Low-Emitting fields are locked to <code>n/r</code> while VOC documentation is not relevant.";
+      }
+    }
+    if (this.activeTab === "vo") this.renderSubtabs("vo");
 
     this.renderTabs(pt, vocLocked);
     if (this.activeTab === "summary") this.renderSummary(pt);
@@ -1281,6 +1693,15 @@ class Editor {
     this.hideTip();
     if (!catKey) return;
     this.activeTab = catKey;
+    // Health fields live under a subtab — open the matching one first.
+    if (catKey === "vo") {
+      const cat = (this.S.categories || []).find((c) => c.key === "vo");
+      const g = (cat && cat.field_groups || []).find((fg) => (fg.fields || []).includes(col));
+      if (g && g.subtab) {
+        this.activeSubtab = this.activeSubtab || {};
+        this.activeSubtab.vo = g.subtab;
+      }
+    }
     this.refresh();
     // setTimeout, not requestAnimationFrame: rAF never fires in a hidden tab.
     setTimeout(() => {

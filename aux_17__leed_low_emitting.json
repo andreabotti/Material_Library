@@ -1,0 +1,1152 @@
+{
+  "_comment": "LEED v4.1 EQ Low-Emitting Materials - material groups, requirements per group, which document covers which requirement, and the VOC content thresholds. Read by libs/lib_leed_voc.py and shown in the Add/Edit Item Health tab. Every text carries 'it' and 'en'; the UI picks by lib_i18n.",
+  "_version": 1,
+  "_source": "EETRA Material Library - Low Emitting Materials (LEED) workbook, Approfondimento VOC. Material groups and applicability codes inherited from the LEED Low-Emitting Materials calculator; credit requirements summarised, not reproduced.",
+  "_caveat": {
+    "it": "Riassunto operativo, non testo normativo: prima di una submission verificare sempre il documento del prodotto e i requisiti del credito. La lista USGBC delle certificazioni accettate cambia nel tempo.",
+    "en": "A working summary, not the credit text: before a submission always check the product's own document and the credit requirements. The USGBC list of accepted certifications changes over time."
+  },
+  "credit": {
+    "label": {
+      "it": "LEED v4.1 — EQ Credit Low-Emitting Materials",
+      "en": "LEED v4.1 — EQ Credit Low-Emitting Materials"
+    },
+    "url": "https://www.usgbc.org/credits/new-construction/v4.1/eqc2"
+  },
+  "applicability_codes": {
+    "GE": {
+      "it": "Valutazione delle emissioni generali (General Emissions Evaluation)",
+      "en": "General Emissions Evaluation"
+    },
+    "VC": {
+      "it": "Contenuto di COV per prodotti applicati a umido (VOC Content for Wet-Applied)",
+      "en": "VOC Content for Wet-Applied products"
+    },
+    "CW": {
+      "it": "Valutazione del legno composito (Composite Wood Evaluation)",
+      "en": "Composite Wood Evaluation"
+    },
+    "FF": {
+      "it": "Valutazione degli arredi (Furniture Evaluation)",
+      "en": "Furniture Evaluation"
+    }
+  },
+  "requirements": {
+    "voc_content": {
+      "label": {
+        "it": "Contenuto di COV",
+        "en": "VOC content"
+      },
+      "short": {
+        "it": "Contenuto",
+        "en": "Content"
+      },
+      "cert_code": "VC",
+      "summary": {
+        "it": "Il contenuto di COV del prodotto applicato a umido deve essere ≤ alla soglia della sua sottocategoria. Basta la dichiarazione del produttore: non serve un laboratorio accreditato.",
+        "en": "The VOC content of the wet-applied product must be ≤ the threshold of its sub-category. A manufacturer declaration is enough: no accredited laboratory is required."
+      }
+    },
+    "voc_emissions": {
+      "label": {
+        "it": "Emissioni di COV",
+        "en": "VOC emissions"
+      },
+      "short": {
+        "it": "Emissioni",
+        "en": "Emissions"
+      },
+      "cert_code": "GE",
+      "summary": {
+        "it": "Prova in camera secondo CDPH Standard Method v1.2-2017 (limiti Tab. 4-1, range TVOC a 14 giorni) oppure EN 16516:2017 con valori LCI AgBB 2015 e formaldeide ≤ 10 µg/m³ (range TVOC a 28 giorni), da laboratorio accreditato ISO/IEC 17025.",
+        "en": "Chamber testing to CDPH Standard Method v1.2-2017 (Table 4-1 limits, 14-day TVOC range) or EN 16516:2017 against AgBB 2015 LCI values with formaldehyde ≤ 10 µg/m³ (28-day TVOC range), by an ISO/IEC 17025 accredited laboratory."
+      }
+    },
+    "formaldehyde": {
+      "label": {
+        "it": "Formaldeide",
+        "en": "Formaldehyde"
+      },
+      "short": {
+        "it": "Formaldeide",
+        "en": "Formaldehyde"
+      },
+      "cert_code": "CW",
+      "summary": {
+        "it": "Il legno composito deve essere ULEF o NAF secondo CARB ATCM / EPA TSCA Title VI, oppure classe E1 secondo EN 717-1:2014, oppure legno composito strutturale con adesivi ASTM D2559.",
+        "en": "Composite wood must be ULEF or NAF under CARB ATCM / EPA TSCA Title VI, or EN 717-1:2014 class E1, or structural composite wood using ASTM D2559 adhesives."
+      }
+    }
+  },
+  "groups": [
+    {
+      "id": "paints_coatings",
+      "leed_name": "Paints and coatings",
+      "label": {
+        "it": "Pitture e rivestimenti",
+        "en": "Paints and coatings"
+      },
+      "requirements": [
+        {
+          "kind": "voc_content",
+          "cert_code": "VC"
+        },
+        {
+          "kind": "voc_emissions",
+          "cert_code": "GE"
+        }
+      ],
+      "scope": {
+        "it": "Pitture e rivestimenti interni applicati in opera.",
+        "en": "Interior paints and coatings applied on site."
+      },
+      "project_threshold": {
+        "it": "≥75% dei prodotti (volume o superficie) conformi a VOC emissions E 100% conformi a VOC content",
+        "en": "≥75% of products (by volume or surface) meeting VOC emissions AND 100% meeting VOC content"
+      },
+      "allow_inherently_non_emitting": false,
+      "allow_salvaged": false,
+      "voc_content_thresholds": "paints_coatings"
+    },
+    {
+      "id": "adhesives_sealants",
+      "leed_name": "Adhesives and sealants",
+      "label": {
+        "it": "Adesivi e sigillanti",
+        "en": "Adhesives and sealants"
+      },
+      "requirements": [
+        {
+          "kind": "voc_content",
+          "cert_code": "VC"
+        },
+        {
+          "kind": "voc_emissions",
+          "cert_code": "GE"
+        }
+      ],
+      "scope": {
+        "it": "Adesivi e sigillanti interni applicati in opera.",
+        "en": "Interior adhesives and sealants applied on site."
+      },
+      "project_threshold": {
+        "it": "≥75% dei prodotti (volume o superficie) conformi a VOC emissions E 100% conformi a VOC content",
+        "en": "≥75% of products (by volume or surface) meeting VOC emissions AND 100% meeting VOC content"
+      },
+      "allow_inherently_non_emitting": false,
+      "allow_salvaged": false,
+      "voc_content_thresholds": "adhesives_sealants"
+    },
+    {
+      "id": "flooring",
+      "leed_name": "Flooring",
+      "label": {
+        "it": "Pavimentazioni",
+        "en": "Flooring"
+      },
+      "requirements": [
+        {
+          "kind": "voc_emissions",
+          "cert_code": "GE"
+        }
+      ],
+      "scope": {
+        "it": "Pavimentazioni dure e tessili, battiscopa, sottofondi di posa e altri rivestimenti a pavimento. Escluso il subflooring.",
+        "en": "Hard and textile flooring, skirtings, underlayments and other floor coverings. Subflooring excluded."
+      },
+      "project_threshold": {
+        "it": "≥90% (costo o superficie) conforme",
+        "en": "≥90% (by cost or surface) compliant"
+      },
+      "allow_inherently_non_emitting": true,
+      "allow_salvaged": true
+    },
+    {
+      "id": "wall_panels",
+      "leed_name": "Wall panels",
+      "label": {
+        "it": "Pannelli e finiture a parete",
+        "en": "Wall panels"
+      },
+      "requirements": [
+        {
+          "kind": "voc_emissions",
+          "cert_code": "GE"
+        }
+      ],
+      "scope": {
+        "it": "Finiture a parete, cartongesso/intonaco, pareti mobili e divisorie, porte, telai, finestre e schermature interne. Esclusi pannelli tessili rimovibili, arredi fissi su misura, elementi strutturali verticali.",
+        "en": "Wall finishes, plasterboard/plaster, movable and partition walls, doors, frames, interior windows and shading. Removable textile panels, custom built-in furniture and vertical structural elements are excluded."
+      },
+      "project_threshold": {
+        "it": "≥75% (costo o superficie) conforme",
+        "en": "≥75% (by cost or surface) compliant"
+      },
+      "allow_inherently_non_emitting": true,
+      "allow_salvaged": true
+    },
+    {
+      "id": "ceilings",
+      "leed_name": "Ceilings",
+      "label": {
+        "it": "Soffitti e controsoffitti",
+        "en": "Ceilings"
+      },
+      "requirements": [
+        {
+          "kind": "voc_emissions",
+          "cert_code": "GE"
+        }
+      ],
+      "scope": {
+        "it": "Pannelli e doghe a soffitto, controsoffitti in cartongesso/intonaco, sistemi sospesi (canopy, baffle), lucernari vetrati. Esclusi elementi strutturali a vista.",
+        "en": "Ceiling panels and planks, plasterboard/plaster suspended ceilings, suspended systems (canopies, baffles), glazed rooflights. Exposed structural elements are excluded."
+      },
+      "project_threshold": {
+        "it": "≥90% (costo o superficie) conforme",
+        "en": "≥90% (by cost or surface) compliant"
+      },
+      "allow_inherently_non_emitting": true,
+      "allow_salvaged": true
+    },
+    {
+      "id": "insulation",
+      "leed_name": "Insulation",
+      "label": {
+        "it": "Isolanti",
+        "en": "Insulation"
+      },
+      "requirements": [
+        {
+          "kind": "voc_emissions",
+          "cert_code": "GE"
+        }
+      ],
+      "scope": {
+        "it": "Isolanti termici e acustici (pannelli, materassini, rotoli, schiume in opera, sfusi, insufflati, spruzzati). Esclusi isolamenti di canali e tubazioni.",
+        "en": "Thermal and acoustic insulation (boards, mats, rolls, in-situ foams, loose-fill, blown, sprayed). Duct and pipe insulation is excluded."
+      },
+      "project_threshold": {
+        "it": "≥75% conforme",
+        "en": "≥75% compliant"
+      },
+      "allow_inherently_non_emitting": false,
+      "allow_salvaged": false
+    },
+    {
+      "id": "furniture",
+      "leed_name": "Furniture",
+      "label": {
+        "it": "Arredi",
+        "en": "Furniture"
+      },
+      "requirements": [
+        {
+          "kind": "voc_emissions",
+          "cert_code": "FF"
+        },
+        {
+          "kind": "formaldehyde",
+          "cert_code": "FF"
+        }
+      ],
+      "scope": {
+        "it": "Arredi mobili acquistati per il progetto.",
+        "en": "Loose furniture purchased for the project."
+      },
+      "project_threshold": {
+        "it": "≥75% (costo) conforme; BIFMA e3 §7.6.1 vale per metà del costo, §7.6.2 per il costo pieno",
+        "en": "≥75% (by cost) compliant; BIFMA e3 §7.6.1 counts for half the cost, §7.6.2 for the full cost"
+      },
+      "allow_inherently_non_emitting": true,
+      "allow_salvaged": true,
+      "note": {
+        "it": "In LEED v4.1 la valutazione degli arredi (ANSI/BIFMA) comprende VOC e formaldeide in un unico report.",
+        "en": "In LEED v4.1 the furniture evaluation (ANSI/BIFMA) covers VOC and formaldehyde in a single report."
+      }
+    },
+    {
+      "id": "composite_wood",
+      "leed_name": "Composite wood",
+      "label": {
+        "it": "Legno composito",
+        "en": "Composite wood"
+      },
+      "requirements": [
+        {
+          "kind": "voc_emissions",
+          "cert_code": "GE"
+        },
+        {
+          "kind": "formaldehyde",
+          "cert_code": "CW"
+        }
+      ],
+      "scope": {
+        "it": "Truciolare, MDF, compensato con impiallacciatura, legno composito strutturale non già compresi in Flooring, Ceilings, Wall panels, Furniture.",
+        "en": "Particleboard, MDF, veneered plywood and structural composite wood not already covered by Flooring, Ceilings, Wall panels or Furniture."
+      },
+      "project_threshold": {
+        "it": "≥75% (costo o superficie) conforme",
+        "en": "≥75% (by cost or surface) compliant"
+      },
+      "allow_inherently_non_emitting": false,
+      "allow_salvaged": true,
+      "note": {
+        "it": "LEED v4.1 richiede per questa categoria solo la valutazione formaldeide; il requisito VOC emissions è adottato da EETRA.",
+        "en": "LEED v4.1 only requires the formaldehyde evaluation for this category; the VOC emissions requirement is an EETRA addition."
+      }
+    }
+  ],
+  "documents": [
+    {
+      "id": "mfr_voc_content_declaration",
+      "kind": "declaration",
+      "type": {
+        "it": "Dichiarazione",
+        "en": "Declaration"
+      },
+      "label": {
+        "it": "Dichiarazione del produttore sul VOC content (scheda tecnica, SDS o lettera)",
+        "en": "Manufacturer declaration of VOC content (technical data sheet, SDS or letter)"
+      },
+      "coverage": {
+        "paints_coatings": [
+          "voc_content"
+        ],
+        "adhesives_sealants": [
+          "voc_content"
+        ]
+      },
+      "conditions": {
+        "it": "Riporta il VOC content (g/l) e la norma di riferimento; valore ≤ soglia della sottocategoria. Non serve un laboratorio ISO/IEC 17025. Se la norma prevede la sottrazione dei composti esenti, quelli aggiunti intenzionalmente oltre l'1% in peso vanno dichiarati.",
+        "en": "States the VOC content (g/l) and the reference standard; the value is ≤ the sub-category threshold. No ISO/IEC 17025 laboratory is required. Where the standard allows exempt compounds to be subtracted, those intentionally added above 1% by weight must be declared."
+      }
+    },
+    {
+      "id": "voc_content_test_report",
+      "kind": "test",
+      "type": {
+        "it": "Test",
+        "en": "Test report"
+      },
+      "label": {
+        "it": "Test report sul VOC content",
+        "en": "VOC content test report"
+      },
+      "coverage": {
+        "paints_coatings": [
+          "voc_content"
+        ],
+        "adhesives_sealants": [
+          "voc_content"
+        ]
+      },
+      "conditions": {
+        "it": "Metodo di prova previsto dalla norma di riferimento; valore ≤ soglia della sottocategoria.",
+        "en": "Test method required by the reference standard; value ≤ the sub-category threshold."
+      }
+    },
+    {
+      "id": "iso17025_emissions_test_report",
+      "kind": "test",
+      "type": {
+        "it": "Test",
+        "en": "Test report"
+      },
+      "label": {
+        "it": "Test report sulle emissioni VOC di laboratorio accreditato ISO/IEC 17025",
+        "en": "VOC emissions test report from an ISO/IEC 17025 accredited laboratory"
+      },
+      "coverage": {
+        "paints_coatings": [
+          "voc_emissions"
+        ],
+        "adhesives_sealants": [
+          "voc_emissions"
+        ],
+        "flooring": [
+          "voc_emissions"
+        ],
+        "wall_panels": [
+          "voc_emissions"
+        ],
+        "ceilings": [
+          "voc_emissions"
+        ],
+        "insulation": [
+          "voc_emissions"
+        ],
+        "furniture": [
+          "voc_emissions",
+          "formaldehyde"
+        ],
+        "composite_wood": [
+          "voc_emissions"
+        ]
+      },
+      "conditions": {
+        "it": "Metodo CDPH Standard Method v1.2-2017 (limiti Tab. 4-1, range TVOC a 14 giorni) oppure EN 16516:2017 con LCI AgBB 2015, formaldeide ≤ 10 µg/m³ e range TVOC a 28 giorni; scenario private office (classroom per aule scolastiche); laboratorio accreditato ISO/IEC 17025 per il metodo; il report dichiara esplicitamente la conformità ai limiti; test con meno di 3 anni e non successivo alla data di acquisto; per prodotti applicati a umido la dichiarazione riporta la quantità applicata nel test (g/m²).",
+        "en": "CDPH Standard Method v1.2-2017 (Table 4-1 limits, 14-day TVOC range) or EN 16516:2017 against AgBB 2015 LCI values with formaldehyde ≤ 10 µg/m³ and 28-day TVOC range; private office scenario (classroom for school rooms); laboratory accredited to ISO/IEC 17025 for the method; the report states compliance with the limits explicitly; the test is less than 3 years old and not later than the purchase date; for wet-applied products the declaration reports the quantity applied in the test (g/m²)."
+      },
+      "conditions_by_group": {
+        "furniture": {
+          "it": "Metodo ANSI/BIFMA M7.1-2011 (R2016) con conformità a ANSI/BIFMA e3-2014e §7.6.1 (vale metà del costo) o §7.6.2 (costo pieno; con anche §7.6.3 livello esemplare); scenario di esposizione dichiarato (seating per sedute, classroom per arredi scolastici, altrimenti open plan o private office); laboratorio accreditato ISO/IEC 17025 per il metodo; il report dichiara esplicitamente la conformità; test con meno di 3 anni e non successivo alla data di acquisto.",
+          "en": "ANSI/BIFMA M7.1-2011 (R2016) with compliance to ANSI/BIFMA e3-2014e §7.6.1 (counts for half the cost) or §7.6.2 (full cost; §7.6.3 as well for exemplary level); the exposure scenario is stated (seating for seats, classroom for school furniture, otherwise open plan or private office); laboratory accredited to ISO/IEC 17025 for the method; the report states compliance explicitly; the test is less than 3 years old and not later than the purchase date."
+        }
+      },
+      "note": {
+        "it": "Per gli arredi lo stesso report BIFMA copre VOC e formaldeide; nelle altre categorie non copre il VOC content né la formaldeide.",
+        "en": "For furniture the same BIFMA report covers VOC and formaldehyde; in the other categories it covers neither VOC content nor formaldehyde."
+      }
+    },
+    {
+      "id": "mfr_emissions_self_declaration",
+      "kind": "declaration",
+      "type": {
+        "it": "Dichiarazione",
+        "en": "Declaration"
+      },
+      "label": {
+        "it": "Autodichiarazione del produttore sulle emissioni VOC basata su test di laboratorio accreditato ISO/IEC 17025",
+        "en": "Manufacturer self-declaration of VOC emissions based on ISO/IEC 17025 accredited laboratory testing"
+      },
+      "coverage": {
+        "paints_coatings": [
+          "voc_emissions"
+        ],
+        "adhesives_sealants": [
+          "voc_emissions"
+        ],
+        "flooring": [
+          "voc_emissions"
+        ],
+        "wall_panels": [
+          "voc_emissions"
+        ],
+        "ceilings": [
+          "voc_emissions"
+        ],
+        "insulation": [
+          "voc_emissions"
+        ],
+        "furniture": [
+          "voc_emissions",
+          "formaldehyde"
+        ],
+        "composite_wood": [
+          "voc_emissions"
+        ]
+      },
+      "conditions": {
+        "it": "Stesse condizioni del test report. La dichiarazione cita il report (laboratorio, numero, data, metodo, scenario, risultato) e l'accreditamento ISO/IEC 17025 del laboratorio per quel metodo.",
+        "en": "Same conditions as the test report. The declaration cites the report (laboratory, number, date, method, scenario, result) and the laboratory's ISO/IEC 17025 accreditation for that method."
+      },
+      "note": {
+        "it": "Per gli arredi lo stesso report BIFMA copre VOC e formaldeide; nelle altre categorie non copre il VOC content né la formaldeide.",
+        "en": "For furniture the same BIFMA report covers VOC and formaldehyde; in the other categories it covers neither VOC content nor formaldehyde."
+      }
+    },
+    {
+      "id": "ulef_naf_declaration",
+      "kind": "declaration",
+      "type": {
+        "it": "Dichiarazione",
+        "en": "Declaration"
+      },
+      "label": {
+        "it": "Dichiarazione ULEF o NAF ai sensi di CARB ATCM o EPA TSCA Title VI",
+        "en": "ULEF or NAF declaration under CARB ATCM or EPA TSCA Title VI"
+      },
+      "coverage": {
+        "composite_wood": [
+          "formaldehyde"
+        ]
+      },
+      "conditions": {
+        "it": "Il prodotto è realizzato con resine ULEF (ultra-low-emitting formaldehyde) o NAF (no added formaldehyde) secondo CARB ATCM o EPA TSCA Title VI.",
+        "en": "The product is made with ULEF (ultra-low-emitting formaldehyde) or NAF (no added formaldehyde) resins under CARB ATCM or EPA TSCA Title VI."
+      }
+    },
+    {
+      "id": "en717_1_e1_report",
+      "kind": "test",
+      "type": {
+        "it": "Test",
+        "en": "Test report"
+      },
+      "label": {
+        "it": "Test report EN 717-1:2014 – classe di emissione E1",
+        "en": "EN 717-1:2014 test report – emission class E1"
+      },
+      "coverage": {
+        "composite_wood": [
+          "formaldehyde"
+        ]
+      },
+      "conditions": {
+        "it": "Prova in camera secondo EN 717-1:2014 con esito classe E1; test con meno di 3 anni e non successivo alla data di acquisto.",
+        "en": "Chamber test to EN 717-1:2014 with a class E1 result; the test is less than 3 years old and not later than the purchase date."
+      }
+    },
+    {
+      "id": "structural_composite_wood_astm_d2559",
+      "kind": "product_certification",
+      "type": {
+        "it": "Certificazione di prodotto",
+        "en": "Product certification"
+      },
+      "label": {
+        "it": "Legno composito strutturale con adesivi ASTM D2559 e certificazione di prodotto",
+        "en": "Structural composite wood with ASTM D2559 adhesives and product certification"
+      },
+      "coverage": {
+        "composite_wood": [
+          "formaldehyde"
+        ]
+      },
+      "conditions": {
+        "it": "Adesivi resistenti all'umidità conformi ASTM D2559, nessun trattamento superficiale con resine urea-formaldeide, e prodotto conforme a una norma di settore: compensato PS 1-09 / PS 2-10 / AS/NZS 2269 / EN 636 3S / CSA O121, O151, O153, O325; OSB PS 2-10 (Exposure 1 o Exterior); SCL ASTM D5456-13; lamellare ANSI A190.1-2012; travi a I ASTM D5055-13; X-LAM PRG 320-15; giunti a pettine DOC PS-20 (HRA).",
+        "en": "Moisture-resistant adhesives to ASTM D2559, no urea-formaldehyde surface treatment, and the product complies with an industry standard: plywood PS 1-09 / PS 2-10 / AS/NZS 2269 / EN 636 3S / CSA O121, O151, O153, O325; OSB PS 2-10 (Exposure 1 or Exterior); SCL ASTM D5456-13; glulam ANSI A190.1-2012; I-joists ASTM D5055-13; CLT PRG 320-15; finger joints DOC PS-20 (HRA)."
+      }
+    },
+    {
+      "id": "inherently_non_emitting",
+      "kind": "material_criterion",
+      "type": {
+        "it": "Criterio di materiale",
+        "en": "Material criterion"
+      },
+      "label": {
+        "it": "Prodotto intrinsecamente non emissivo",
+        "en": "Inherently non-emitting product"
+      },
+      "coverage": {
+        "flooring": [
+          "voc_emissions"
+        ],
+        "wall_panels": [
+          "voc_emissions"
+        ],
+        "ceilings": [
+          "voc_emissions"
+        ],
+        "furniture": [
+          "voc_emissions",
+          "formaldehyde"
+        ]
+      },
+      "conditions": {
+        "it": "Pietra, ceramica, metallo verniciato a polvere, metallo placcato o anodizzato, vetro, calcestruzzo, laterizio, legno massello non trattato, senza rivestimenti, leganti o sigillanti organici integrati.",
+        "en": "Stone, ceramic, powder-coated metal, plated or anodised metal, glass, concrete, masonry or untreated solid wood, with no integral organic coatings, binders or sealants."
+      },
+      "note": {
+        "it": "Opzione non ammessa da LEED nelle categorie in cui non compare.",
+        "en": "LEED does not allow this option in the categories where it is not listed."
+      }
+    },
+    {
+      "id": "salvaged_material",
+      "kind": "material_criterion",
+      "type": {
+        "it": "Criterio di materiale",
+        "en": "Material criterion"
+      },
+      "label": {
+        "it": "Materiale di recupero (più di 1 anno al momento dell'uso)",
+        "en": "Salvaged material (more than 1 year old at the time of use)"
+      },
+      "coverage": {
+        "flooring": [
+          "voc_emissions"
+        ],
+        "wall_panels": [
+          "voc_emissions"
+        ],
+        "ceilings": [
+          "voc_emissions"
+        ],
+        "furniture": [
+          "voc_emissions",
+          "formaldehyde"
+        ],
+        "composite_wood": [
+          "voc_emissions",
+          "formaldehyde"
+        ]
+      },
+      "conditions": {
+        "it": "Il prodotto ha più di un anno al momento dell'uso; eventuali finiture applicate in opera devono rispettare VOC emissions e VOC content.",
+        "en": "The product is more than one year old at the time of use; any site-applied finishes must meet VOC emissions and VOC content."
+      },
+      "note": {
+        "it": "Opzione non ammessa da LEED nelle categorie in cui non compare.",
+        "en": "LEED does not allow this option in the categories where it is not listed."
+      }
+    }
+  ],
+  "not_sufficient": {
+    "it": [
+      "Dichiarazioni generiche ('low VOC', 'a basse emissioni')",
+      "Marcatura CE / DoP",
+      "SDS senza dati di emissione",
+      "EPD",
+      "Test di laboratorio non accreditato ISO/IEC 17025",
+      "Report di emissione senza dichiarazione di conformità ai limiti LEED",
+      "Certificato scaduto o riferito a un prodotto diverso"
+    ],
+    "en": [
+      "Generic claims ('low VOC', 'low emitting')",
+      "CE marking / DoP",
+      "SDS without emission data",
+      "EPD",
+      "Testing by a laboratory not accredited to ISO/IEC 17025",
+      "Emission report without a statement of compliance with the LEED limits",
+      "Expired certificate, or one referring to a different product"
+    ]
+  },
+  "general_rules": {
+    "it": [
+      "Certificazione listata: copre un requisito solo se la sua applicabilità include il codice richiesto dalla categoria.",
+      "Il certificato deve essere valido alla data di acquisto e riferito al prodotto specifico (nome o codice).",
+      "VOC content: basta la dichiarazione del produttore (scheda tecnica, SDS o lettera), senza laboratorio ISO/IEC 17025.",
+      "VOC emissions: in alternativa alla certificazione, test report o autodichiarazione del produttore basata su test di laboratorio accreditato ISO/IEC 17025, che dimostri chiaramente il rispetto dei limiti LEED. Il test deve avere meno di 3 anni e non può essere successivo alla data di acquisto del prodotto.",
+      "Una certificazione o un documento parziale va integrato con un altro documento per i requisiti mancanti (es. certificazione GE + dichiarazione VOC content del produttore)."
+    ],
+    "en": [
+      "A listed certification covers a requirement only if its applicability includes the code the category requires.",
+      "The certificate must be valid at the purchase date and refer to the specific product (name or code).",
+      "VOC content: a manufacturer declaration (technical data sheet, SDS or letter) is enough — no ISO/IEC 17025 laboratory.",
+      "VOC emissions: instead of a certification, a test report or a manufacturer self-declaration based on ISO/IEC 17025 accredited testing that clearly demonstrates compliance with the LEED limits. The test must be less than 3 years old and not later than the product's purchase date.",
+      "A partial certification or document must be combined with another document covering the missing requirements (e.g. a GE certification + the manufacturer's VOC content declaration)."
+    ]
+  },
+  "steps": {
+    "it": [
+      "Indicare la categoria LEED del prodotto.",
+      "In base alla categoria il materiale deve rispondere a VOC content e/o VOC emissions e/o formaldeide.",
+      "Indicare che documentazione ha il prodotto.",
+      "Il prodotto ha una delle certificazioni listate da LEED per la categoria?",
+      "Se sì, il prodotto è conforme per i requisiti coperti da quella certificazione.",
+      "Se no, o se la copertura è parziale, controllare gli altri documenti ammessi per la categoria."
+    ],
+    "en": [
+      "State the product's LEED category.",
+      "The category decides whether the material must meet VOC content and/or VOC emissions and/or formaldehyde.",
+      "State which documentation the product has.",
+      "Does the product hold one of the certifications LEED lists for that category?",
+      "If yes, the product is compliant for the requirements that certification covers.",
+      "If not, or if the coverage is partial, check the other documents accepted for the category."
+    ]
+  },
+  "voc_content_thresholds": {
+    "paints_coatings": [
+      {
+        "subcategory": "Bond breakers",
+        "limit_g_l": 350.0
+      },
+      {
+        "subcategory": "Colorant - Architectural coatings, excluding IM coatings",
+        "limit_g_l": 50.0
+      },
+      {
+        "subcategory": "Colorant - Solvent-based IM",
+        "limit_g_l": 600.0
+      },
+      {
+        "subcategory": "Colorant - Waterborne IM",
+        "limit_g_l": 50.0
+      },
+      {
+        "subcategory": "Concrete - Curing compounds",
+        "limit_g_l": 100.0
+      },
+      {
+        "subcategory": "Concrete - Curing compounds for roadways and bridges",
+        "limit_g_l": 350.0
+      },
+      {
+        "subcategory": "Concrete surface retarder",
+        "limit_g_l": 50.0
+      },
+      {
+        "subcategory": "Driveway sealer",
+        "limit_g_l": 50.0
+      },
+      {
+        "subcategory": "Dry-fog coatings",
+        "limit_g_l": 50.0
+      },
+      {
+        "subcategory": "Faux finishing coatings - Clear topcoat",
+        "limit_g_l": 100.0
+      },
+      {
+        "subcategory": "Faux finishing coatings - Decorative coatings",
+        "limit_g_l": 350.0
+      },
+      {
+        "subcategory": "Faux finishing coatings - Glazes",
+        "limit_g_l": 350.0
+      },
+      {
+        "subcategory": "Faux finishing coatings - Japan",
+        "limit_g_l": 350.0
+      },
+      {
+        "subcategory": "Faux finishing coatings - Trowel applied coatings",
+        "limit_g_l": 50.0
+      },
+      {
+        "subcategory": "Fire-proofing coatings",
+        "limit_g_l": 150.0
+      },
+      {
+        "subcategory": "Flats",
+        "limit_g_l": 50.0
+      },
+      {
+        "subcategory": "Floor coatings",
+        "limit_g_l": 50.0
+      },
+      {
+        "subcategory": "Form release compound",
+        "limit_g_l": 100.0
+      },
+      {
+        "subcategory": "Graphic arts (sign) coatings",
+        "limit_g_l": 200.0
+      },
+      {
+        "subcategory": "Industrial maintenance coatings",
+        "limit_g_l": 100.0
+      },
+      {
+        "subcategory": "Industrial maintenance coatings - Color indicating safety coatings",
+        "limit_g_l": 480.0
+      },
+      {
+        "subcategory": "Industrial maintenance coatings - High temperature IM coatings",
+        "limit_g_l": 420.0
+      },
+      {
+        "subcategory": "Industrial maintenance coatings - Non-sacrificial anti-graffiti coatings",
+        "limit_g_l": 100.0
+      },
+      {
+        "subcategory": "Industrial maintenance coatings - Zinc-rich IM primers",
+        "limit_g_l": 100.0
+      },
+      {
+        "subcategory": "Magnesite cement coatings",
+        "limit_g_l": 450.0
+      },
+      {
+        "subcategory": "Mastic coatings",
+        "limit_g_l": 100.0
+      },
+      {
+        "subcategory": "Metallic pigmented coatings",
+        "limit_g_l": 150.0
+      },
+      {
+        "subcategory": "Multi-Color coatings",
+        "limit_g_l": 250.0
+      },
+      {
+        "subcategory": "Nonflat coatings",
+        "limit_g_l": 50.0
+      },
+      {
+        "subcategory": "Pre-treatment wash primers",
+        "limit_g_l": 420.0
+      },
+      {
+        "subcategory": "Primers, sealers, and undercoaters",
+        "limit_g_l": 100.0
+      },
+      {
+        "subcategory": "Reactive penetrating sealers",
+        "limit_g_l": 350.0
+      },
+      {
+        "subcategory": "Recycled coatings",
+        "limit_g_l": 250.0
+      },
+      {
+        "subcategory": "Roof coatings",
+        "limit_g_l": 50.0
+      },
+      {
+        "subcategory": "Roof coatings, aluminum",
+        "limit_g_l": 100.0
+      },
+      {
+        "subcategory": "Roof primers, bituminous",
+        "limit_g_l": 350.0
+      },
+      {
+        "subcategory": "Rust preventative coatings",
+        "limit_g_l": 100.0
+      },
+      {
+        "subcategory": "Sacrificial anti-graffiti coatings",
+        "limit_g_l": 50.0
+      },
+      {
+        "subcategory": "Shellac - Clear",
+        "limit_g_l": 730.0
+      },
+      {
+        "subcategory": "Shellac - Pigmented",
+        "limit_g_l": 550.0
+      },
+      {
+        "subcategory": "Specialty primers",
+        "limit_g_l": 100.0
+      },
+      {
+        "subcategory": "Stains",
+        "limit_g_l": 100.0
+      },
+      {
+        "subcategory": "Stains, interior",
+        "limit_g_l": 250.0
+      },
+      {
+        "subcategory": "Stone consolidants",
+        "limit_g_l": 450.0
+      },
+      {
+        "subcategory": "Swimming pool coatings - Repair",
+        "limit_g_l": 340.0
+      },
+      {
+        "subcategory": "Swimming pool coatings - Other",
+        "limit_g_l": 340.0
+      },
+      {
+        "subcategory": "Tile and stone sealers",
+        "limit_g_l": 100.0
+      },
+      {
+        "subcategory": "Traffic coatings",
+        "limit_g_l": 100.0
+      },
+      {
+        "subcategory": "Tub and tile refinish coatings",
+        "limit_g_l": 420.0
+      },
+      {
+        "subcategory": "Waterproofing sealers",
+        "limit_g_l": 100.0
+      },
+      {
+        "subcategory": "Waterproofing concrete/masonry sealers",
+        "limit_g_l": 100.0
+      },
+      {
+        "subcategory": "Wood coatings - varnish",
+        "limit_g_l": 275.0
+      },
+      {
+        "subcategory": "Wood coatings - sanding sealers",
+        "limit_g_l": 275.0
+      },
+      {
+        "subcategory": "Wood coatings - lacquer",
+        "limit_g_l": 275.0
+      },
+      {
+        "subcategory": "Wood conditioners",
+        "limit_g_l": 100.0
+      },
+      {
+        "subcategory": "Wood preservatives",
+        "limit_g_l": 350.0
+      },
+      {
+        "subcategory": "Low solids coatings",
+        "limit_g_l": 120.0
+      }
+    ],
+    "adhesives_sealants": [
+      {
+        "subcategory": "Building envelope membrane adhesive",
+        "limit_g_l": 250.0
+      },
+      {
+        "subcategory": "Carpet pad adhesive",
+        "limit_g_l": 50.0
+      },
+      {
+        "subcategory": "Ceramic, glass, porcelain & stone tile adhesive",
+        "limit_g_l": 65.0
+      },
+      {
+        "subcategory": "Cove base adhesive",
+        "limit_g_l": 50.0
+      },
+      {
+        "subcategory": "Dry wall and panel adhesive",
+        "limit_g_l": 50.0
+      },
+      {
+        "subcategory": "Multi-purpose construction adhesive",
+        "limit_g_l": 70.0
+      },
+      {
+        "subcategory": "Hot applied modified bitumen/built up roof adhesive",
+        "limit_g_l": 250.0
+      },
+      {
+        "subcategory": "EPDM/TPO single ply roof membrane adhesive",
+        "limit_g_l": 250.0
+      },
+      {
+        "subcategory": "Single ply roof membrane adhesive (except EPDM/TPO)",
+        "limit_g_l": 250.0
+      },
+      {
+        "subcategory": "Shingle laminating adhesive",
+        "limit_g_l": 250.0
+      },
+      {
+        "subcategory": "All other roof adhesives",
+        "limit_g_l": 250.0
+      },
+      {
+        "subcategory": "Rubber floor adhesive",
+        "limit_g_l": 60.0
+      },
+      {
+        "subcategory": "Structural glazing adhesive",
+        "limit_g_l": 100.0
+      },
+      {
+        "subcategory": "Structural wood member adhesive",
+        "limit_g_l": 140.0
+      },
+      {
+        "subcategory": "Subfloor adhesive",
+        "limit_g_l": 50.0
+      },
+      {
+        "subcategory": "VCT and asphalt tile adhesive",
+        "limit_g_l": 50.0
+      },
+      {
+        "subcategory": "Wood flooring adhesive",
+        "limit_g_l": 100.0
+      },
+      {
+        "subcategory": "All other indoor floor covering adhesives",
+        "limit_g_l": 50.0
+      },
+      {
+        "subcategory": "All other outdoor floor covering adhesives",
+        "limit_g_l": 50.0
+      },
+      {
+        "subcategory": "Computer diskette manufacturing adhesive",
+        "limit_g_l": 350.0
+      },
+      {
+        "subcategory": "Contact adhesive",
+        "limit_g_l": 80.0
+      },
+      {
+        "subcategory": "Edge glue adhesive",
+        "limit_g_l": 250.0
+      },
+      {
+        "subcategory": "Rubber vulcanization adhesive",
+        "limit_g_l": 850.0
+      },
+      {
+        "subcategory": "Special purpose contact adhesive",
+        "limit_g_l": 250.0
+      },
+      {
+        "subcategory": "Thin metal laminating adhesive",
+        "limit_g_l": 780.0
+      },
+      {
+        "subcategory": "Tire tread adhesive",
+        "limit_g_l": 100.0
+      },
+      {
+        "subcategory": "Top and trim adhesive",
+        "limit_g_l": 540.0
+      },
+      {
+        "subcategory": "Waterproof resorcinol glue",
+        "limit_g_l": 170.0
+      },
+      {
+        "subcategory": "All other adhesives",
+        "limit_g_l": 250.0
+      },
+      {
+        "subcategory": "ABS welding cement",
+        "limit_g_l": 325.0
+      },
+      {
+        "subcategory": "ABS to PVC transition cement",
+        "limit_g_l": 510.0
+      },
+      {
+        "subcategory": "CPVC welding cement",
+        "limit_g_l": 490.0
+      },
+      {
+        "subcategory": "CPVC for life-safety systems",
+        "limit_g_l": 490.0
+      },
+      {
+        "subcategory": "Higher viscosity CPVC",
+        "limit_g_l": 490.0
+      },
+      {
+        "subcategory": "PVC welding cement",
+        "limit_g_l": 510.0
+      },
+      {
+        "subcategory": "All other plastic welding cements",
+        "limit_g_l": 100.0
+      },
+      {
+        "subcategory": "Metal",
+        "limit_g_l": 30.0
+      },
+      {
+        "subcategory": "Plastic foams",
+        "limit_g_l": 50.0
+      },
+      {
+        "subcategory": "Porous material (except wood)",
+        "limit_g_l": 50.0
+      },
+      {
+        "subcategory": "Wood",
+        "limit_g_l": 30.0
+      },
+      {
+        "subcategory": "Fiberglass",
+        "limit_g_l": 80.0
+      },
+      {
+        "subcategory": "Reinforced plastic composite",
+        "limit_g_l": 200.0
+      },
+      {
+        "subcategory": "Clear, paintable, and immediately water-resistant sealant",
+        "limit_g_l": 380.0
+      },
+      {
+        "subcategory": "Foam insulation",
+        "limit_g_l": 250.0
+      },
+      {
+        "subcategory": "One-component foam sealant",
+        "limit_g_l": 250.0
+      },
+      {
+        "subcategory": "High-pressure two-component foam sealant",
+        "limit_g_l": 250.0
+      },
+      {
+        "subcategory": "Low-pressure two-component foam sealant",
+        "limit_g_l": 250.0
+      },
+      {
+        "subcategory": "Grout",
+        "limit_g_l": 65.0
+      },
+      {
+        "subcategory": "Roadway sealant",
+        "limit_g_l": 250.0
+      },
+      {
+        "subcategory": "Non-staining plumbing putty",
+        "limit_g_l": 150.0
+      },
+      {
+        "subcategory": "Potable water sealant",
+        "limit_g_l": 100.0
+      },
+      {
+        "subcategory": "Single ply roof membrane sealant (except cut edge)",
+        "limit_g_l": 450.0
+      },
+      {
+        "subcategory": "Cut edge single ply roof membrane sealant",
+        "limit_g_l": 450.0
+      },
+      {
+        "subcategory": "All other roof sealants",
+        "limit_g_l": 300.0
+      },
+      {
+        "subcategory": "All other architectural sealants",
+        "limit_g_l": 50.0
+      },
+      {
+        "subcategory": "Marine deck sealant",
+        "limit_g_l": 760.0
+      },
+      {
+        "subcategory": "All other sealants",
+        "limit_g_l": 420.0
+      },
+      {
+        "subcategory": "Plastic",
+        "limit_g_l": 550.0
+      },
+      {
+        "subcategory": "Pressure sensitive",
+        "limit_g_l": 785.0
+      },
+      {
+        "subcategory": "Traffic marking tape",
+        "limit_g_l": 150.0
+      },
+      {
+        "subcategory": "Vehicle glass",
+        "limit_g_l": 700.0
+      },
+      {
+        "subcategory": "Roof adhesive primers",
+        "limit_g_l": 250.0
+      },
+      {
+        "subcategory": "All other adhesive primers",
+        "limit_g_l": 250.0
+      },
+      {
+        "subcategory": "Architectural non porous",
+        "limit_g_l": 250.0
+      },
+      {
+        "subcategory": "Architectural porous",
+        "limit_g_l": 775.0
+      },
+      {
+        "subcategory": "Marine deck",
+        "limit_g_l": 760.0
+      },
+      {
+        "subcategory": "Modified bituminous",
+        "limit_g_l": 500.0
+      },
+      {
+        "subcategory": "Roof sealant primers",
+        "limit_g_l": 750.0
+      },
+      {
+        "subcategory": "All other sealant primers",
+        "limit_g_l": 750.0
+      }
+    ]
+  }
+}

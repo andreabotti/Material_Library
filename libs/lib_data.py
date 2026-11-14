@@ -105,10 +105,26 @@ import urllib3
 from io import BytesIO
 from PIL import Image, ImageDraw, ImageFont
 from pathlib import Path
-from office365.sharepoint.client_context import ClientContext
-from office365.runtime.auth.client_credential import ClientCredential
-from msal import ConfidentialClientApplication
 from typing import Dict, List, Optional
+
+# ``office365`` and ``msal`` used to be imported here, at module scope. Measured
+# with ``python -X importtime`` on ``import libs.page_imports``, which every page
+# pulls in: office365.sharepoint.client_context cost 0.51 s and msal 0.03 s, out
+# of 3.15 s total — 18% of the app's import budget, before pandas and Streamlit
+# are counted. On Community Cloud that lands on every cold boot and every wake
+# from sleep, and the shared vCPU makes it several times worse.
+#
+# The two ``office365`` names (ClientContext, ClientCredential) were dead: no
+# module in the app, in ``pages/`` or in ``04_tools/`` ever referenced either.
+# They are gone. ``Office365-REST-Python-Client`` is now an unused dependency —
+# left declared in requirements.txt rather than removed here, as that is a
+# packaging decision, not an import one.
+#
+# ``ConfidentialClientApplication`` has exactly one caller,
+# ``fn103_load_from_sharepoint``, and SharePoint is not the default data source
+# (fn149 defaults to Neon) — so it is imported inside that function now. This is
+# the same treatment ``duckdb`` already gets in fn105/fn106 below, and ``fitz``
+# gets in lib_ui.
 
 # ════════════════════════════════════════════════════════════════════════════
 # CEMENT MARKING PARSER (EN 197-1 / bilingual)
@@ -492,6 +508,56 @@ SCHEMA_COLUMN_PREFIXES: tuple[str, ...] = (
 )
 
 
+def fn122b_compact_string_dtypes(df: "pd.DataFrame") -> "pd.DataFrame":
+    """Re-back every ``string`` column with Arrow storage. Mutates in place.
+
+    Both parquet files load as ``string[python]`` — a NumPy object array of
+    individual Python ``str`` objects, each carrying ~49 bytes of interpreter
+    overhead before a single character of text. Arrow storage holds the same
+    values as one contiguous buffer plus an offsets array. Measured on this
+    dataset:
+
+    ==========================  =========  ==============
+    file                        current    string[pyarrow]
+    ==========================  =========  ==============
+    ``base_data.parquet``       12.7 MB    3.9 MB
+    ``edits_data.parquet``      35.7 MB    10.2 MB
+    ==========================  =========  ==============
+
+    That 3.3× lands three times over: on the process-wide frame held by
+    ``fn158c_cached_load_clean_effective_live``, and on both of the per-session
+    copies ``app.py`` derives from it (``ORIGINAL_DATA`` and ``FILTERED_DATA``).
+    On Community Cloud the RAM ceiling is shared by every concurrent session, so
+    the per-session copies are what actually decide how many users fit.
+
+    ``StringDtype`` either way — only the *storage* changes, so ``pd.NA``
+    semantics, ``.str`` accessors, comparisons and groupby all behave exactly as
+    before. This is deliberately not ``dtype_backend="pyarrow"``, which would be
+    another ~2 MB cheaper but would swap NA handling across every numeric and
+    boolean column in the app.
+
+    Idempotent and defensive: columns that are already Arrow-backed are skipped,
+    and any column that refuses to convert is left exactly as it was.
+    """
+    if df is None or getattr(df, "empty", True):
+        return df
+    try:
+        for col in df.columns:
+            dtype = df[col].dtype
+            if not isinstance(dtype, pd.StringDtype):
+                continue
+            if getattr(dtype, "storage", "") in ("pyarrow", "pyarrow_numpy"):
+                continue
+            try:
+                df[col] = df[col].astype("string[pyarrow]")
+            except Exception:
+                # A single bad column must not cost the whole frame its load.
+                pass
+    except Exception:
+        pass
+    return df
+
+
 def fn122_clean_dataframe(df, key_column=None):
     """Clean DataFrame: drop empties, markers, Excel artifacts, section headers."""
     df_cleaned = df.dropna(how='all')
@@ -571,7 +637,12 @@ def fn122_clean_dataframe(df, key_column=None):
         key_column = df_cleaned.columns[0]
     key_series = df_cleaned[key_column].astype(str).str.strip()
     df_cleaned = df_cleaned[(key_series != None) & (~key_series.str.startswith("*"))]
-    return normalize_product_type_column(df_cleaned)
+    # Backstop for every data source: Neon, parquet and the SharePoint workbook
+    # all reach the shared frame through here, and the steps above (dropna,
+    # column drops, row filters) each hand back a fresh object, so this is never
+    # mutating a caller's frame. The loaders convert earlier as well — see
+    # fn122b_compact_string_dtypes — this catches whatever they missed.
+    return fn122b_compact_string_dtypes(normalize_product_type_column(df_cleaned))
 
 
 # Canonical D__ProductType_ENG labels (SharePoint renames → app standard).
@@ -1671,6 +1742,8 @@ def fn103_load_from_sharepoint(
     sheet_name=0, document_library=None
 ):
     """Download Excel from SharePoint via Graph API (MSAL auth)."""
+    from msal import ConfidentialClientApplication  # lazy: see the import block
+
     authority = f"https://login.microsoftonline.com/{tenant_id}"
     scope = ["https://graph.microsoft.com/.default"]
     app = ConfidentialClientApplication(
@@ -1933,7 +2006,7 @@ def fn111_get_auth_users():
     def _with_default_accounts(users_map):
         users_map = dict(users_map or {})
         # Keep demo login always available unless explicitly overridden in secrets.
-        users_map.setdefault("demo", {"user": "demo", "pwd": "demo", "role": "user"})
+        users_map.setdefault("demo", {"user": "demo", "pwd": "d3m0", "role": "user"})
         return users_map
 
     def _infer_role(default_key, explicit_user, explicit_role):
@@ -1984,8 +2057,9 @@ def fn111_get_auth_users():
                 return _with_default_accounts(parsed)
         except Exception:
             pass
+        # Hardcoded fallback when ``.streamlit/secrets.toml`` has no auth users.
         return {
-            "demo": {"user": "demo", "pwd": "demo", "role": "user"},
+            "demo": {"user": "demo", "pwd": "d3m0", "role": "user"},
             "eetra": {"user": "eetra", "pwd": "F4rz1", "role": "admin"},
         }
 
@@ -2017,16 +2091,20 @@ def fn112_try_default_admin_login() -> bool:
 
 def fn112_try_login(username: str, password: str) -> bool:
     """Validate credentials and set ``auth_user`` / ``auth_role``. Returns True on success."""
-    if not username or not str(username).strip():
+    user = str(username or "").strip()
+    if not user:
         return False
+    # Coerce secrets AttrDict / non-str values; do not strip password (may be significant).
+    pwd = "" if password is None else str(password)
     users = fn111_get_auth_users()
     found = None
     for k, v in users.items():
-        if str(username).strip().lower() in {k.lower(), str(v.get("user", "")).lower()}:
+        if user.lower() in {k.lower(), str(v.get("user", "")).lower()}:
             found = v
             break
-    if found and password == found.get("pwd"):
-        st.session_state["auth_user"] = found.get("user") or str(username).strip()
+    stored = "" if not found else str(found.get("pwd") or "")
+    if found and pwd == stored:
+        st.session_state["auth_user"] = found.get("user") or user
         st.session_state["auth_role"] = found.get("role", "user")
         return True
     return False
@@ -2081,23 +2159,32 @@ def fn112_render_login():
 # NOTE: st.html runs CSS through DOMPurify. A rejected rule can empty the whole
 # <style> block — keep this sheet free of content:/expression/@import quirks, and
 # inject password-eye icon CSS separately (or skip it).
+# Hide chrome only — no content:/expression/@import (DOMPurify can wipe the
+# whole <style> if one rule is rejected; keep this block separate from bg CSS).
 _AUTH_GATE_HIDE_CHROME_CSS = """
+section[data-testid="stSidebar"],
 [data-testid="stSidebar"],
 [data-testid="stSidebarContent"],
 [data-testid="stSidebarNav"],
+[data-testid="stSidebarNavItems"],
 [data-testid="stSidebarCollapsedControl"],
 [data-testid="collapsedControl"],
 [data-testid="stExpandSidebarButton"],
-[data-testid="stSidebarCollapseButton"] {
+[data-testid="stSidebarCollapseButton"],
+[data-testid="stSidebarUserContent"] {
     display: none !important;
     visibility: hidden !important;
     width: 0 !important;
     min-width: 0 !important;
     max-width: 0 !important;
+    height: 0 !important;
+    min-height: 0 !important;
     padding: 0 !important;
     margin: 0 !important;
     overflow: hidden !important;
+    opacity: 0 !important;
     pointer-events: none !important;
+    border: none !important;
 }
 header[data-testid="stHeader"] { display: none !important; }
 div[data-testid="stToolbar"] { display: none !important; }
@@ -2165,6 +2252,12 @@ div.st-key-welcome_login_pwd button p,
 div.st-key-welcome_login_pwd button span {
     font-size: 0 !important;
     color: transparent !important;
+}
+div.st-key-login_card div.st-key-welcome_login_pwd_cue,
+div.st-key-login_card [data-testid="stCaptionContainer"] {
+    margin-top: -0.35rem !important;
+    margin-bottom: 0.15rem !important;
+    color: #94a3b8 !important;
 }
 .login-gate-or {
     text-align: center;
@@ -2239,7 +2332,7 @@ def _auth_gate_background_image_url() -> str:
 
 
 def fn112a_render_auth_gate_screen() -> None:
-    """Startup login mask: hide chrome + centred sign-in card (defaults admin). Then ``st.stop()``."""
+    """Startup login mask: hide chrome + centred sign-in card (defaults demo). Then ``st.stop()``."""
     import html as _html
 
     from libs.lib_auth_m365 import fn804_m365_handle_redirect, fn808_m365_render_login_button
@@ -2261,35 +2354,117 @@ def fn112a_render_auth_gate_screen() -> None:
     except Exception:
         pass
 
+    # Overlap Neon/parquet catalogue load with the login form.
+    fn158f_start_catalogue_preload(key_column="A__Manufacturer")
+
     st.markdown(font_links_html(), unsafe_allow_html=True)
-    _bg_css = ""
-    try:
-        _bg_css = _auth_gate_background_css(_auth_gate_background_image_url())
-    except Exception:
-        _bg_css = ""
-    # Single st.html style sheet (DOMPurify can empty a whole <style> if one rule
-    # is rejected — keep hide+card CSS free of content: icon hacks).
     st.html(
-        f"<style>{_AUTH_GATE_HIDE_CHROME_CSS}{_bg_css}{auth_gate_typography_css()}</style>"
+        "<style data-eetra-auth-gate='1'>"
+        ".eetra-login-load-status{"
+        "position:fixed;top:0;left:0;right:0;z-index:100000;"
+        "text-align:center;padding:0.85rem 1rem 0.55rem 1rem;"
+        "color:#ffffff;font-size:0.95rem;font-weight:600;"
+        "letter-spacing:0.02em;"
+        "text-shadow:0 1px 2px rgba(0,0,0,0.45),0 0 12px rgba(0,0,0,0.25);"
+        "pointer-events:none;}"
+        "</style>"
     )
-    # Belt-and-suspenders: force-hide the auto pages/ sidebar if CSS loses a race.
+
+    @st.fragment(run_every=1.0)
+    def _login_catalogue_status() -> None:
+        info = fn158f_catalogue_preload_status()
+        status = info.get("status") or "idle"
+        pct = int(info.get("pct") or 0)
+        if status == "ready":
+            if info.get("warning"):
+                msg = ("Catalogue ready (cached copy) — database unreachable, "
+                       "so recent edits may be missing")
+            elif info.get("refreshing"):
+                msg = "Catalogue ready (cached copy) — checking for updates…"
+            else:
+                msg = "Catalogue ready"
+        elif status == "error":
+            err = str(info.get("error") or "").lower()
+            if "quota" in err:
+                msg = ("Database unavailable — Neon quota exceeded. "
+                       "Switch Data Source to Local Parquet, or check the Neon console.")
+            else:
+                msg = "Catalogue preload paused — will retry after sign-in"
+        elif status == "running":
+            msg = f"{fn158f_preload_phase_label(info)} {pct}%"
+        else:
+            msg = "Loading catalogue…"
+        st.markdown(
+            f"<div class='eetra-login-load-status'>{_html.escape(msg)}</div>",
+            unsafe_allow_html=True,
+        )
+
+    _login_catalogue_status()
+
+    # Separate st.html sheets: DOMPurify can empty a whole <style> if one rule
+    # is rejected (e.g. content: in the background ::after). Hide-chrome must
+    # not share a block with the photo backdrop.
+    # data-eetra-auth-gate marks sheets so the post-login restore can disable them.
+    st.html(
+        f"<style data-eetra-auth-gate='1'>{_AUTH_GATE_HIDE_CHROME_CSS}</style>"
+    )
+    try:
+        st.html(
+            f"<style data-eetra-auth-gate='1'>"
+            f"{_auth_gate_background_css(_auth_gate_background_image_url())}</style>"
+        )
+    except Exception:
+        pass
+    st.html(f"<style data-eetra-auth-gate='1'>{auth_gate_typography_css()}</style>")
+    # Hide sidebar only while the login card is on screen; RESTORE inline styles
+    # when it disappears (otherwise display:none sticks after sign-in).
     st.html(
         "<script>(function(){"
-        "var sel='[data-testid=stSidebar],[data-testid=stSidebarNav],"
+        "var sel='section[data-testid=stSidebar],[data-testid=stSidebar],"
+        "[data-testid=stSidebarNav],[data-testid=stSidebarNavItems],"
+        "[data-testid=stSidebarContent],[data-testid=stSidebarUserContent],"
         "[data-testid=stSidebarCollapsedControl],[data-testid=collapsedControl],"
-        "[data-testid=stExpandSidebarButton]';"
-        "function hide(){document.querySelectorAll(sel).forEach(function(el){"
+        "[data-testid=stExpandSidebarButton],[data-testid=stSidebarCollapseButton]';"
+        "var props=['display','visibility','width','min-width','max-width',"
+        "'height','min-height','opacity','pointer-events','padding','margin',"
+        "'overflow','border'];"
+        "function gateOn(){"
+        "return !!document.querySelector('.login-gate-brand,.st-key-login_card');}"
+        "function hide(){"
+        "document.querySelectorAll(sel).forEach(function(el){"
         "el.style.setProperty('display','none','important');"
         "el.style.setProperty('visibility','hidden','important');"
-        "el.style.setProperty('width','0','important');}});"
-        "hide();"
-        "new MutationObserver(hide).observe(document.body,{childList:true,subtree:true});"
+        "el.style.setProperty('width','0','important');"
+        "el.style.setProperty('min-width','0','important');"
+        "el.style.setProperty('max-width','0','important');"
+        "el.style.setProperty('height','0','important');"
+        "el.style.setProperty('min-height','0','important');"
+        "el.style.setProperty('opacity','0','important');"
+        "el.style.setProperty('pointer-events','none','important');"
+        "el.style.setProperty('padding','0','important');"
+        "el.style.setProperty('margin','0','important');"
+        "el.style.setProperty('overflow','hidden','important');"
+        "el.style.setProperty('border','none','important');"
+        "});}"
+        "function restore(){"
+        "document.querySelectorAll(sel).forEach(function(el){"
+        "props.forEach(function(p){el.style.removeProperty(p);});});"
+        "document.querySelectorAll('style[data-eetra-auth-gate]').forEach(function(s){"
+        "s.disabled=true;s.textContent='';});}"
+        "function sync(){if(gateOn())hide();else restore();}"
+        "sync();"
+        "if(!window.__eetraAuthGateObs){"
+        "window.__eetraAuthGateObs=new MutationObserver(sync);"
+        "window.__eetraAuthGateObs.observe(document.body,{childList:true,subtree:true});}"
         "})();</script>",
         unsafe_allow_javascript=True,
     )
-    _def_user, _def_pwd = fn112_default_admin_credentials()
-    st.session_state.setdefault("welcome_login_user", _def_user or "admin")
-    st.session_state.setdefault("welcome_login_pwd", _def_pwd or "")
+    # Prefill demo username; leave password empty with a cue under the field.
+    # One-shot key clears stale admin prefills from older gate versions.
+    if st.session_state.get("_login_gate_defaults") != "demo_v1":
+        st.session_state["welcome_login_user"] = "demo"
+        st.session_state["welcome_login_pwd"] = ""
+        st.session_state["_login_gate_defaults"] = "demo_v1"
 
     from libs.lib_tokens import theme_section
 
@@ -2322,25 +2497,28 @@ def fn112a_render_auth_gate_screen() -> None:
     )
 
     with st.container(key="login_card", border=True):
-        st.text_input("Username", key="welcome_login_user")
-        st.text_input("Password", type="password", key="welcome_login_pwd")
-        _login_failed = False
-        if st.button("Log in", width='stretch', key="welcome_sign_in"):
-            if fn112_try_login(
+        # Form + on_click callback: widget values are committed before the
+        # callback, and auth_user is set as a prefix to the script rerun so
+        # app.py skips the gate on that same rerun (no nested st.rerun()).
+        def _on_welcome_login_submit() -> None:
+            ok = fn112_try_login(
                 st.session_state.get("welcome_login_user", ""),
                 st.session_state.get("welcome_login_pwd", ""),
-            ):
-                st.rerun()
-            else:
-                _login_failed = True
-        if _login_failed:
+            )
+            st.session_state["_welcome_login_failed"] = not ok
+
+        with st.form("welcome_login_form", border=False, clear_on_submit=False):
+            st.text_input("Username", key="welcome_login_user")
+            st.text_input("Password", type="password", key="welcome_login_pwd")
+            st.caption("d3m0")
+            st.form_submit_button(
+                "Log in",
+                width="stretch",
+                on_click=_on_welcome_login_submit,
+            )
+        if st.session_state.pop("_welcome_login_failed", False):
             st.error("Invalid username or password.")
         fn808_m365_render_login_button()
-        st.markdown(
-            "<p class='login-gate-demo'>"
-            "Demo account: username <b>demo</b>, password <b>demo</b></p>",
-            unsafe_allow_html=True,
-        )
 
 
 def fn113_get_base_product_name(product_name) -> str:
@@ -4064,12 +4242,14 @@ def fn153b_load_base_dataframe(path: Path | None = None) -> pd.DataFrame:
     """
     if path is None and _fn_neon_base_on():
         from libs.lib_neon import load_base
-        return load_base()
+        return fn122b_compact_string_dtypes(load_base())
     path = Path(path) if path is not None else fn153_resolve_base_parquet_path()
     if not path.exists():
         return pd.DataFrame()
     try:
-        return pd.read_parquet(path)
+        # Arrow-backed strings here, not just in fn122, so the merge and the
+        # clean that follow work on a 3.9 MB frame instead of a 12.7 MB one.
+        return fn122b_compact_string_dtypes(pd.read_parquet(path))
     except Exception:
         return pd.DataFrame()
 
@@ -4141,12 +4321,13 @@ def fn155_load_edits_dataframe(path: Path | None = None) -> pd.DataFrame:
     ``EDIT_AUDIT_COLS`` being present."""
     if _fn_neon_edits_for_path(path):
         from libs.lib_neon import load_edits
-        return load_edits(EDIT_AUDIT_COLS)
+        return fn122b_compact_string_dtypes(load_edits(EDIT_AUDIT_COLS))
     path = Path(path) if path is not None else fn154_resolve_edits_parquet_path()
     if not path.exists():
         return pd.DataFrame({c: pd.Series(dtype="string") for c in EDIT_AUDIT_COLS})
     try:
-        edits = pd.read_parquet(path)
+        # The larger of the two files: 35.7 MB as string[python], 10.2 MB here.
+        edits = fn122b_compact_string_dtypes(pd.read_parquet(path))
     except Exception:
         return pd.DataFrame({c: pd.Series(dtype="string") for c in EDIT_AUDIT_COLS})
     for col in EDIT_AUDIT_COLS:
@@ -4262,6 +4443,13 @@ def fn156b_append_edit_records(
             combined = pd.concat([existing, new_row], ignore_index=True)
     # Object columns straight out of a dict round-trip badly through pyarrow when
     # a column holds a mix of str/NA — pin them to pandas' nullable string dtype.
+    #
+    # This also absorbs the storage mismatch fn122b_compact_string_dtypes
+    # introduces: ``existing`` now arrives Arrow-backed while ``new_row`` is
+    # built from a dict, and pandas resolves that concat to ``object``. Pinned
+    # back to ``string`` here, written as Arrow strings by pyarrow, and read
+    # back as ``string[python]`` — which fn155 re-compacts on the next load. The
+    # file on disk is unchanged either way; only the in-memory storage differs.
     for col in combined.columns:
         if combined[col].dtype == "object":
             combined[col] = combined[col].astype("string")
@@ -4508,6 +4696,383 @@ def fn158a_cached_load_effective_live(
     return fn158_load_effective_live_dataframe()
 
 
+# ── Local catalogue snapshot (parquet write-through cache) ─────────
+# After a successful Neon pull, base and edits are written to disk. The next
+# start reads them in ~0.1s, rebuilds the catalogue locally (~0.7s), and only
+# then revalidates versions against Neon — so a cold compute, or an outright
+# refusal (quota, network), degrades to a stale catalogue instead of none.
+#
+# The two source frames are cached rather than the finished catalogue because
+# ``fn122_clean_dataframe`` emits columns of mixed float/str that parquet
+# refuses (edited cells arrive from the edit log as strings, unedited ones stay
+# Float64). Caching the inputs and replaying the same merge+clean also makes a
+# cache hit produce a frame identical to the live path, dtypes included, which
+# storing a coerced copy of the output would not.
+# Derived data — safe to delete at any time.
+_FN158G_SNAPSHOT_DIR = _LOCAL_DATA_DIR / "_cache"
+_FN158G_SCHEMA = 1
+
+
+def fn158g_snapshot_paths() -> tuple[Path, Path, Path]:
+    """``(base_parquet, edits_parquet, sidecar_json)`` for the cached catalogue."""
+    d = _FN158G_SNAPSHOT_DIR
+    return (
+        d / "snapshot_base.parquet",
+        d / "snapshot_edits.parquet",
+        d / "snapshot.json",
+    )
+
+
+def fn158g_read_snapshot(key_column: str) -> tuple[pd.DataFrame, pd.DataFrame, tuple] | None:
+    """Cached ``(base, edits, key)``, or None.
+
+    None when absent, unreadable, written by another schema version, or cleaned
+    for a different key column — every one of which just means "reload".
+    """
+    base_pq, edits_pq, meta_path = fn158g_snapshot_paths()
+    if not (base_pq.exists() and edits_pq.exists() and meta_path.exists()):
+        return None
+    try:
+        meta = json.loads(meta_path.read_text(encoding="utf-8"))
+        if int(meta.get("schema") or 0) != _FN158G_SCHEMA:
+            return None
+        if str(meta.get("key_column") or "") != str(key_column):
+            return None
+        key = (int(meta["base_v"]), int(meta["edits_v"]), str(meta["key_column"]))
+        base = pd.read_parquet(base_pq)
+        edits = pd.read_parquet(edits_pq)
+    except Exception:
+        return None
+    if base is None or base.empty:
+        return None
+    return base, edits, key
+
+
+def fn158g_write_snapshot(base: pd.DataFrame, edits: pd.DataFrame, key: tuple) -> bool:
+    """Write both frames + sidecar atomically. False on any failure (never fatal).
+
+    A failed write only costs the next start its head start, so callers ignore
+    the result rather than failing the load.
+    """
+    if base is None or base.empty:
+        return False
+    if edits is None:
+        edits = pd.DataFrame()
+    base_pq, edits_pq, meta_path = fn158g_snapshot_paths()
+    tmps = [p.with_suffix(p.suffix + ".tmp") for p in (base_pq, edits_pq, meta_path)]
+    try:
+        _FN158G_SNAPSHOT_DIR.mkdir(parents=True, exist_ok=True)
+        base.to_parquet(tmps[0], index=False)
+        edits.to_parquet(tmps[1], index=False)
+        meta = {
+            "schema": _FN158G_SCHEMA,
+            "base_v": int(key[0]),
+            "edits_v": int(key[1]),
+            "key_column": str(key[2]),
+            "n_base_rows": int(len(base)),
+            "n_edit_rows": int(len(edits)),
+            "written_at": time.strftime("%Y-%m-%dT%H:%M:%S"),
+        }
+        tmps[2].write_text(json.dumps(meta, indent=2), encoding="utf-8")
+        # Sidecar last: a reader needs all three, and it is the one that is
+        # checked for schema and key, so it gates the other two.
+        os.replace(tmps[0], base_pq)
+        os.replace(tmps[1], edits_pq)
+        os.replace(tmps[2], meta_path)
+        return True
+    except Exception:
+        for t in tmps:
+            try:
+                t.unlink(missing_ok=True)
+            except Exception:
+                pass
+        return False
+
+
+def fn158g_clear_snapshot() -> None:
+    """Delete the cached catalogue (next start pulls a fresh one)."""
+    for f in fn158g_snapshot_paths():
+        try:
+            f.unlink(missing_ok=True)
+        except Exception:
+            pass
+
+
+# ── Login-page catalogue preload (background thread, process-wide) ────────
+# Starts on the auth gate so Neon cold-start overlaps with typing credentials.
+# Result is consumed by ``fn158c`` so post-login load stays a cache hit.
+_CATALOGUE_PRELOAD: dict = {
+    "status": "idle",  # idle | running | ready | error
+    "pct": 0,
+    "phase": "",       # connect | versions | base | edits | merge | clean
+    "source": "",      # snapshot | neon | local — where the served frame came from
+    "refreshing": False,  # serving a snapshot while revalidating against Neon
+    "warning": None,   # non-fatal: snapshot served, refresh failed
+    "key": None,       # (base_v, edits_v, key_column)
+    "df": None,
+    "error": None,
+    "lock": threading.Lock(),
+    "done": threading.Event(),
+}
+
+
+def fn158f_catalogue_preload_status() -> dict:
+    """Snapshot for the login-gate status line: status / pct / error."""
+    with _CATALOGUE_PRELOAD["lock"]:
+        return {
+            "status": _CATALOGUE_PRELOAD["status"],
+            "pct": int(_CATALOGUE_PRELOAD["pct"] or 0),
+            "phase": _CATALOGUE_PRELOAD["phase"] or "",
+            "source": _CATALOGUE_PRELOAD["source"] or "",
+            "refreshing": bool(_CATALOGUE_PRELOAD["refreshing"]),
+            "warning": _CATALOGUE_PRELOAD["warning"],
+            "error": _CATALOGUE_PRELOAD["error"],
+            "key": _CATALOGUE_PRELOAD["key"],
+        }
+
+
+_FN158F_PHASE_LABELS = {
+    "connect": "Waking database…",
+    "cache": "Loading cached catalogue…",
+    "versions": "Checking catalogue version…",
+    "base": "Downloading catalogue…",
+    "edits": "Downloading recent edits…",
+    "merge": "Applying edits…",
+    "clean": "Preparing catalogue…",
+}
+
+
+def fn158f_preload_phase_label(info: dict | None = None) -> str:
+    """Human label for the current preload phase.
+
+    The percentage alone made a cold Neon start look frozen at 5% — that number
+    is one blocking connect, so it cannot move until the compute wakes.
+    """
+    if info is None:
+        info = fn158f_catalogue_preload_status()
+    return _FN158F_PHASE_LABELS.get(str(info.get("phase") or ""), "Loading catalogue…")
+
+
+def _fn158f_set_pct(pct: int, phase: str | None = None) -> None:
+    with _CATALOGUE_PRELOAD["lock"]:
+        _CATALOGUE_PRELOAD["pct"] = max(0, min(100, int(pct)))
+        if phase is not None:
+            _CATALOGUE_PRELOAD["phase"] = str(phase)
+
+
+def _fn158f_set_pct_phase(phase: str, pct: int) -> None:
+    """``progress`` adapter for ``lib_neon.load_all_from_url`` (phase-first)."""
+    _fn158f_set_pct(pct, phase)
+
+
+def fn158f_start_catalogue_preload(key_column: str = "A__Manufacturer") -> None:
+    """Fire-and-forget catalogue warm on the login screen (no-op if already going)."""
+    with _CATALOGUE_PRELOAD["lock"]:
+        if _CATALOGUE_PRELOAD["status"] in ("running", "ready"):
+            return
+        _CATALOGUE_PRELOAD["status"] = "running"
+        _CATALOGUE_PRELOAD["pct"] = 0
+        _CATALOGUE_PRELOAD["phase"] = "connect"
+        _CATALOGUE_PRELOAD["source"] = ""
+        _CATALOGUE_PRELOAD["refreshing"] = False
+        _CATALOGUE_PRELOAD["warning"] = None
+        _CATALOGUE_PRELOAD["error"] = None
+        _CATALOGUE_PRELOAD["df"] = None
+        _CATALOGUE_PRELOAD["key"] = None
+        _CATALOGUE_PRELOAD["done"].clear()
+
+    from libs.lib_neon import neon_url
+
+    # Capture Streamlit-bound config on the script thread before the worker starts.
+    url = neon_url()
+    parquet_base_override = False
+    parquet_edits_override = False
+    try:
+        _pq = st.secrets.get("parquet") or {}
+        parquet_base_override = bool(_pq.get("base_path"))
+        parquet_edits_override = bool(_pq.get("edits_path"))
+    except Exception:
+        pass
+    use_neon_base = bool(url) and not parquet_base_override
+    use_neon_edits = bool(url) and not parquet_edits_override
+    try:
+        if st.session_state.get("data_platform") == "Local Parquet":
+            use_neon_base = False
+            use_neon_edits = False
+    except Exception:
+        pass
+    cfg = {
+        "url": url,
+        "use_neon_base": use_neon_base,
+        "use_neon_edits": use_neon_edits,
+        "base_path": str(fn153_resolve_base_parquet_path()),
+        "edits_path": str(fn154_resolve_edits_parquet_path()),
+        "key_column": str(key_column),
+        "audit_cols": EDIT_AUDIT_COLS,
+    }
+
+    def _publish(out, key, source: str) -> None:
+        with _CATALOGUE_PRELOAD["lock"]:
+            _CATALOGUE_PRELOAD["df"] = out
+            _CATALOGUE_PRELOAD["key"] = key
+            _CATALOGUE_PRELOAD["pct"] = 100
+            _CATALOGUE_PRELOAD["phase"] = ""
+            _CATALOGUE_PRELOAD["status"] = "ready"
+            _CATALOGUE_PRELOAD["error"] = None
+            _CATALOGUE_PRELOAD["source"] = source
+
+    def _worker() -> None:
+        snap_key = None
+        served_snapshot = False
+        try:
+            from pathlib import Path as _Path
+
+            from libs.lib_neon import load_all_from_url
+
+            use_neon = bool(cfg["use_neon_base"] and cfg["url"])
+
+            # Serve the local snapshot first so the app is usable while Neon is
+            # still waking — or never answers. Only for the Neon path: the
+            # parquet branch already reads local files.
+            if use_neon:
+                snap = fn158g_read_snapshot(cfg["key_column"])
+                if snap is not None:
+                    snap_base, snap_edits, snap_key = snap
+                    _fn158f_set_pct(40, "cache")
+                    snap_out = fn122_clean_dataframe(
+                        fn157_merge_base_and_edits(snap_base, snap_edits),
+                        cfg["key_column"],
+                    )
+                    _publish(snap_out, snap_key, "snapshot")
+                    served_snapshot = True
+                    with _CATALOGUE_PRELOAD["lock"]:
+                        _CATALOGUE_PRELOAD["refreshing"] = True
+
+            if not served_snapshot:
+                # With a snapshot on screen the status is already "ready";
+                # resetting pct here would contradict it.
+                _fn158f_set_pct(5, "connect")
+            url = cfg["url"]
+            if use_neon:
+                try:
+                    # One connection for versions + base + edits: a cold Neon
+                    # compute is woken once instead of once per query.
+                    base_v, edits_v, base, edits = load_all_from_url(
+                        url,
+                        cfg["audit_cols"],
+                        with_edits=bool(cfg["use_neon_edits"]),
+                        # While a snapshot is on screen the banner says "ready";
+                        # per-phase ticks would fight that.
+                        progress=None if served_snapshot else _fn158f_set_pct_phase,
+                        skip_if_versions=(
+                            (snap_key[0], snap_key[1]) if snap_key else None
+                        ),
+                    )
+                except Exception as exc:  # noqa: BLE001 — snapshot covers it
+                    if served_snapshot:
+                        # Stale catalogue beats no catalogue: keep serving it and
+                        # say why it may be behind.
+                        with _CATALOGUE_PRELOAD["lock"]:
+                            _CATALOGUE_PRELOAD["warning"] = str(exc)[:300]
+                            _CATALOGUE_PRELOAD["refreshing"] = False
+                        return
+                    raise
+                if base is None:
+                    # Versions matched: the snapshot already is the live data.
+                    with _CATALOGUE_PRELOAD["lock"]:
+                        _CATALOGUE_PRELOAD["warning"] = None
+                        _CATALOGUE_PRELOAD["refreshing"] = False
+                    return
+                if edits is None:
+                    edits = (
+                        pd.read_parquet(cfg["edits_path"])
+                        if _Path(cfg["edits_path"]).exists()
+                        else pd.DataFrame(
+                            {c: pd.Series(dtype="string") for c in cfg["audit_cols"]}
+                        )
+                    )
+            else:
+                bp, ep = _Path(cfg["base_path"]), _Path(cfg["edits_path"])
+                base_v = int(bp.stat().st_mtime_ns) if bp.exists() else 0
+                edits_v = int(ep.stat().st_mtime_ns) if ep.exists() else 0
+                _fn158f_set_pct(15, "base")
+                base = pd.read_parquet(bp) if bp.exists() else pd.DataFrame()
+                _fn158f_set_pct(55, "edits")
+                edits = (
+                    pd.read_parquet(ep)
+                    if ep.exists()
+                    else pd.DataFrame(
+                        {c: pd.Series(dtype="string") for c in cfg["audit_cols"]}
+                    )
+                )
+            if not served_snapshot:
+                _fn158f_set_pct(75, "merge")
+            merged = fn157_merge_base_and_edits(base, edits)
+            if not served_snapshot:
+                _fn158f_set_pct(90, "clean")
+            out = fn122_clean_dataframe(merged, cfg["key_column"])
+            key = (int(base_v), int(edits_v), str(cfg["key_column"]))
+            _publish(out, key, "neon" if use_neon else "local")
+            with _CATALOGUE_PRELOAD["lock"]:
+                _CATALOGUE_PRELOAD["warning"] = None
+                _CATALOGUE_PRELOAD["refreshing"] = False
+            if use_neon:
+                # Best effort: a failed write only costs the next start its head
+                # start, so it must not touch the loaded catalogue.
+                fn158g_write_snapshot(base, edits, key)
+        except Exception as exc:  # noqa: BLE001 — surfaced via status
+            with _CATALOGUE_PRELOAD["lock"]:
+                _CATALOGUE_PRELOAD["status"] = "error"
+                _CATALOGUE_PRELOAD["error"] = str(exc)[:300]
+                _CATALOGUE_PRELOAD["pct"] = 0
+                _CATALOGUE_PRELOAD["refreshing"] = False
+        finally:
+            _CATALOGUE_PRELOAD["done"].set()
+
+    threading.Thread(target=_worker, name="eetra-catalogue-preload", daemon=True).start()
+
+
+def fn158f_catalogue_preload_wait(timeout_s: float = 120.0) -> dict:
+    """Block until preload finishes (or timeout). Returns ``fn158f_catalogue_preload_status()``."""
+    with _CATALOGUE_PRELOAD["lock"]:
+        running = _CATALOGUE_PRELOAD["status"] == "running"
+    if running:
+        _CATALOGUE_PRELOAD["done"].wait(timeout=max(0.0, float(timeout_s)))
+    return fn158f_catalogue_preload_status()
+
+
+def fn158f_catalogue_preload_get(
+    base_mtime_ns: int,
+    edits_mtime_ns: int,
+    key_column: str = "A__Manufacturer",
+    *,
+    wait_s: float = 0.0,
+) -> pd.DataFrame | None:
+    """Return the preloaded frame when ready for this version key, else None."""
+    key = (int(base_mtime_ns), int(edits_mtime_ns), str(key_column))
+    if wait_s > 0:
+        fn158f_catalogue_preload_wait(wait_s)
+    with _CATALOGUE_PRELOAD["lock"]:
+        if (
+            _CATALOGUE_PRELOAD["status"] == "ready"
+            and _CATALOGUE_PRELOAD["key"] == key
+            and _CATALOGUE_PRELOAD["df"] is not None
+        ):
+            return _CATALOGUE_PRELOAD["df"]
+        # Same key_column and ready: accept even if the caller used a stale
+        # mtime probe (preload's version tokens are authoritative).
+        if (
+            wait_s > 0
+            and _CATALOGUE_PRELOAD["status"] == "ready"
+            and _CATALOGUE_PRELOAD["df"] is not None
+            and isinstance(_CATALOGUE_PRELOAD["key"], tuple)
+            and len(_CATALOGUE_PRELOAD["key"]) >= 3
+            and str(_CATALOGUE_PRELOAD["key"][2]) == str(key_column)
+        ):
+            return _CATALOGUE_PRELOAD["df"]
+    return None
+
+
 @st.cache_resource(show_spinner=False, max_entries=2)
 def fn158c_cached_load_clean_effective_live(
     base_mtime_ns: int, edits_mtime_ns: int, key_column: str = "A__Manufacturer"
@@ -4520,12 +5085,28 @@ def fn158c_cached_load_clean_effective_live(
     any page code ran). Keyed on scalars only and held as a resource, a hit is a
     dict lookup.
 
+    Prefers the login-page background preload when the version key matches.
+
     **Read-only.** The same object is shared by every session; callers derive new
     frames from it (fn114 / fn507 copy, filters subset) and must never mutate it
     in place.
     """
-    df = fn158_load_effective_live_dataframe()
-    return fn122_clean_dataframe(df, key_column)
+    pre = fn158f_catalogue_preload_get(
+        base_mtime_ns, edits_mtime_ns, key_column, wait_s=0.0
+    )
+    if pre is not None:
+        return pre
+    # Fallback if the caller did not wait: join a still-running preload once.
+    pre = fn158f_catalogue_preload_get(
+        base_mtime_ns, edits_mtime_ns, key_column, wait_s=30.0
+    )
+    if pre is not None:
+        return pre
+    base = fn153b_load_base_dataframe()
+    return fn122_clean_dataframe(
+        fn157_merge_base_and_edits(base, fn155_load_edits_dataframe()),
+        key_column,
+    )
 
 
 # ── SharePoint source: load ⊕ edits ⊕ clean ⊕ Map_yn, once per version ─────

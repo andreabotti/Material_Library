@@ -43,6 +43,9 @@ for _libs_attempt in range(2):
             fn149_ensure_data_platform_session  as fn_149_ensure_data_platform_session,
             fn158b_effective_live_mtimes        as fn_158b_effective_live_mtimes,
             fn158c_cached_load_clean_effective_live as fn_158c_cached_load_clean_effective_live,
+            fn158f_catalogue_preload_status      as fn_158f_catalogue_preload_status,
+            fn158f_catalogue_preload_wait        as fn_158f_catalogue_preload_wait,
+            fn158f_preload_phase_label           as fn_158f_preload_phase_label,
             fn158d_load_sharepoint_effective    as fn_158d_load_sharepoint_effective,
         )
         from libs.lib_ui import (
@@ -71,17 +74,58 @@ for _libs_attempt in range(2):
 fn350_begin_run()
 
 # ── Auth gate (must run before any data/page initialization) ─────────────
-# The gate screen pre-fills the default admin credentials (fn112a_render_auth_gate_screen
-# -> fn112_default_admin_credentials), so signing in is a single click rather than a
-# silent auto-login — the user always sees who they're signing in as before entering.
-# fn112a also collapses the sidebar (pages/ auto-nav preview) and paints the splash.
+# Prefills demo username with an empty password (cue ``d3m0`` under the field).
+# Admin credentials stay in ``.streamlit/secrets.toml`` for typed login; when
+# secrets have no auth users the hardcoded fallback is eetra / F4rz1.
+# Login submit sets ``auth_user`` in a form callback (prefix of the rerun), so
+# this check skips the gate on the post-login run. fn112a hides sidebar chrome
+# only while the login card is present.
 if "auth_user" not in st.session_state:
     fn_061_render_auth_gate_screen()
     st.stop()
 fn_060_sync_auth_session_with_secrets()
 
+# Undo auth-gate sidebar kill-switch (inline display:none + lingering <style>).
+st.html(
+    "<script>(function(){"
+    "var sel='section[data-testid=stSidebar],[data-testid=stSidebar],"
+    "[data-testid=stSidebarNav],[data-testid=stSidebarNavItems],"
+    "[data-testid=stSidebarContent],[data-testid=stSidebarUserContent],"
+    "[data-testid=stSidebarCollapsedControl],[data-testid=collapsedControl],"
+    "[data-testid=stExpandSidebarButton],[data-testid=stSidebarCollapseButton],"
+    "header[data-testid=stHeader],div[data-testid=stToolbar],"
+    "footer[data-testid=stFooter],div[data-testid=stDecoration]';"
+    "var props=['display','visibility','width','min-width','max-width',"
+    "'height','min-height','opacity','pointer-events','padding','margin',"
+    "'overflow','border'];"
+    "function restore(){"
+    "document.querySelectorAll('style[data-eetra-auth-gate]').forEach(function(s){"
+    "s.disabled=true;s.textContent='';});"
+    "document.querySelectorAll(sel).forEach(function(el){"
+    "props.forEach(function(p){el.style.removeProperty(p);});});"
+    "var side=document.querySelector('section[data-testid=stSidebar]');"
+    "if(side){side.style.removeProperty('display');"
+    "side.style.removeProperty('visibility');"
+    "side.style.removeProperty('width');"
+    "side.style.removeProperty('min-width');"
+    "side.style.removeProperty('max-width');"
+    "side.style.removeProperty('opacity');"
+    "side.style.removeProperty('pointer-events');}"
+    "}"
+    "restore();"
+    "setTimeout(restore,50);"
+    "setTimeout(restore,250);"
+    "setTimeout(restore,800);"
+    "})();</script>",
+    unsafe_allow_javascript=True,
+)
+
 # ── Page config (masthead rendered after st.navigation — see below) ───────
-# Additive after the auth-gate collapsed config; restores width for the app shell.
+# Additive after the auth-gate collapsed config; force the sidebar back open.
+try:
+    st.set_page_config(initial_sidebar_state="expanded")
+except Exception:
+    pass
 fn001_create_page_header(show_branding=False)
 
 # ── Push config into session state for all pages ─────────────────────────
@@ -185,15 +229,28 @@ else:
 
 # ── Data loading ─────────────────────────────────────────────────────────
 df = pd.DataFrame()
-# Stat both parquets once per run; reused by the loader and the fingerprint below.
-_live_mtimes = fn_158b_effective_live_mtimes()
+# Prefer the login-page preload (started on the auth gate). Waiting here avoids
+# a duplicate Neon pull when the user signs in mid-load.
+_preload = fn_158f_catalogue_preload_status()
+if input_data_platform in ("Neon", "Local Parquet") and _preload.get("status") == "running":
+    _spin = f"{fn_158f_preload_phase_label(_preload)} {int(_preload.get('pct') or 0)}%"
+    with st.spinner(_spin):
+        _preload = fn_158f_catalogue_preload_wait(120.0)
+
+_preload_key = _preload.get("key")
+if _preload.get("status") == "ready" and isinstance(_preload_key, tuple) and len(_preload_key) >= 2:
+    _live_mtimes = (int(_preload_key[0]), int(_preload_key[1]))
+else:
+    _live_mtimes = fn_158b_effective_live_mtimes()
 
 if input_data_platform in ("Neon", "Local Parquet"):
     # Neon: matlib_base ⊕ matlib_edits. Local Parquet: the two files under 01_data/.
     # Same merge/clean path; libs/lib_neon chooses the backend from Data Source.
-    # Cache key is both sides' versions (Neon tokens or file mtimes).
+    # Login-page preload makes this a cache hit after sign-in.
     try:
-        df = fn_158c_cached_load_clean_effective_live(*_live_mtimes, key_column="A__Manufacturer")
+        df = fn_158c_cached_load_clean_effective_live(
+            *_live_mtimes, key_column="A__Manufacturer"
+        )
     except Exception as _e:
         _src = "Neon" if input_data_platform == "Neon" else "Parquet"
         st.error(f"{_src} error: {_e}")

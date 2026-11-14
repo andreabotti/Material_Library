@@ -66,8 +66,10 @@ from libs.lib_revalu_map import (
     field_disabled_for_product_type, OPTION_SELECT_FIELDS, status_rect_cell_style,
     VOC_FIELDS, VOC_NOT_RELEVANT_VALUE, VOC_CERT_NR_LOCK_FIELDS,
     VOC_DATA_RELEVANT_FIELD, VOC_DATA_RELEVANT_VALUES,
+    VOC_HAS_TEST_CERT_FIELD, VOC_HAS_TEST_CERT_VALUES,
+    VOC_CERT_DOC_FIELDS, VOC_TEST_DOC_FIELDS,
     voc_not_relevant, voc_cert_is_not_relevant, voc_data_is_not_relevant,
-    voc_emissions_locked,
+    voc_has_test_cert_is_no, voc_emissions_locked, voc_test_docs_locked,
     PHYSICAL_PROPERTY_FIELDS, physical_cm_column, infer_physical_cm, PHYSICAL_CM_HELP,
     voc_cert_labels, voc_cert_clarification, voc_cert_tiers, voc_cert_caveat,
     voc_cert_by_label, VOC_LEED_PATHWAYS, VOC_BODIES,
@@ -75,8 +77,16 @@ from libs.lib_revalu_map import (
     voc_checklist_derived, voc_cert_alignment, voc_rating_frameworks,
     voc_alignment_lookup,
 )
+from libs.lib_leed_voc import (
+    leed_lang, leed_text, leed_caveat, leed_credit,
+    leed_group, leed_group_ids, leed_group_label, leed_group_option_labels,
+    leed_group_requirements, leed_documents, leed_document_label,
+    leed_document_conditions, leed_document_option_labels, leed_document_covers,
+    leed_certs_for_group, leed_evaluate, leed_pathway_for_group,
+    leed_thresholds, leed_guidance, leed_editor_payload,
+)
 from libs.lib_tokens import theme_section, add_edit_form_css
-from libs.lib_i18n import fn714_tu as _tu
+from libs.lib_i18n import fn702_current_language, fn714_tu as _tu
 from libs.lib_epd_family import (
     DERIVED_COLS as _EPD_DERIVED_COLS,
     FACTOR_COL as _EPD_FACTOR_COL,
@@ -451,6 +461,117 @@ def _widget_optional_pct(
     )
 
 
+_LEED_EMPTY_VALUES = frozenset({"", "-", "nan", "none", "<na>", "*", "n/a", "n/r"})
+
+
+def _leed_clean(value) -> str:
+    """One stored cell as text, with the dataset's empty markers read as empty."""
+    if value is None:
+        return ""
+    try:
+        if pd.isna(value):
+            return ""
+    except (TypeError, ValueError):
+        pass
+    text = str(value).strip()
+    return "" if text.lower() in _LEED_EMPTY_VALUES else text
+
+
+def _leed_split_documents(value) -> list[str]:
+    """``VO__LEED_Documents`` as a list of document ids."""
+    text = _leed_clean(value)
+    if not text:
+        return []
+    return [p.strip() for p in text.split(";") if p.strip()]
+
+
+def _leed_group_from_key(key: str) -> str:
+    """Group id chosen by the LEED Material Group widget rendered in the same run.
+
+    The widget keys share the form's ``{mode}_`` prefix, so the sibling field is
+    found from this field's own key — no mode has to be threaded through.
+    """
+    prefix = key.rsplit("VO__", 1)[0] if "VO__" in key else ""
+    g = leed_group(st.session_state.get(prefix + "VO__LEED_Group"))
+    return str((g or {}).get("id") or "")
+
+
+def _widget_leed_group(current, key: str, *, label: str, disabled: bool = False) -> str:
+    """Step 1 of the hierarchy — the eight groups of the LEED calculator.
+
+    Stored as the LEED name ("Paints and coatings"), not an internal id: that is
+    what a submission and the calculator both speak. A value already in the data
+    that no group matches stays selectable, so a save never silently blanks it.
+    """
+    ids = leed_group_ids()
+    labels = leed_group_option_labels()
+    raw = _leed_clean(current)
+    matched = leed_group(raw)
+    menu = [""] + ids
+    legacy = "" if (matched or not raw) else raw
+    if legacy:
+        menu = ["", legacy] + ids
+    cur = str((matched or {}).get("id") or "") or legacy
+    picked = st.selectbox(
+        label,
+        menu,
+        index=menu.index(cur) if cur in menu else 0,
+        key=key,
+        format_func=lambda v: labels.get(v, v) if v else _tu("(not set)"),
+        disabled=disabled,
+        **widget_help_kwargs("VO__LEED_Group"),
+    )
+    g = leed_group(picked)
+    return str(g.get("leed_name")) if g else str(picked or "")
+
+
+def _widget_leed_documents(current, key: str, *, label: str, disabled: bool = False) -> str:
+    """Step 3 — which accepted documents the product actually holds.
+
+    Only the documents LEED accepts for the chosen group are offered; a choice
+    that stops being valid when the group changes is dropped rather than left to
+    contradict the group.
+    """
+    gid = _leed_group_from_key(key)
+    option_labels = leed_document_option_labels(gid) if gid else {}
+    options = list(option_labels)
+    if not options:
+        st.selectbox(
+            label, [""], index=0, key=key, disabled=True,
+            format_func=lambda _v: _tu("Select a LEED material group first"),
+            **widget_help_kwargs("VO__LEED_Documents"),
+        )
+        return _leed_clean(current)
+    if key in st.session_state:
+        kept = [d for d in (st.session_state.get(key) or []) if d in options]
+        st.session_state[key] = kept
+        default_kwargs = {}
+    else:
+        default_kwargs = {"default": [d for d in _leed_split_documents(current) if d in options]}
+    picked = st.multiselect(
+        label,
+        options,
+        key=key,
+        format_func=lambda v: option_labels.get(v, v),
+        disabled=disabled,
+        **default_kwargs,
+        **widget_help_kwargs("VO__LEED_Documents"),
+    )
+    return "; ".join(picked)
+
+
+def _widget_leed_pathway(current, key: str, *, label: str) -> str:
+    """Read-only: the pathway follows from the material group, it is not typed."""
+    gid = _leed_group_from_key(key)
+    derived = leed_pathway_for_group(gid) if gid else ""
+    value = derived or _leed_clean(current)
+    st.session_state[key] = value
+    st.text_input(
+        label, key=key, disabled=True, **widget_help_kwargs("VO__LEED_Pathway")
+    )
+    return value
+
+
 def _widget_for_field(
     col: str,
     current,
@@ -485,6 +606,12 @@ def _widget_for_field(
             new_label="➕ New manufacturer…",
             new_input_label="New manufacturer name",
         )
+    if col == "VO__LEED_Group":
+        return _widget_leed_group(current, key, label=label, disabled=disabled)
+    if col == "VO__LEED_Documents":
+        return _widget_leed_documents(current, key, label=label, disabled=disabled)
+    if col == "VO__LEED_Pathway":
+        return _widget_leed_pathway(current, key, label=label)
     if col in OPTION_SELECT_FIELDS:
         opts = (field_options or {}).get(col, [])
         new_label, new_input = _OPTION_SELECT_NEW_LABELS.get(
@@ -533,20 +660,25 @@ def _widget_for_field(
         return st.selectbox(label, options, index=options.index(cur_str), key=key,
                             format_func=lambda v: _fmt.get(v, v), disabled=disabled,
                             **widget_help_kwargs(col))
-    if col == VOC_DATA_RELEVANT_FIELD:
-        options = list(VOC_DATA_RELEVANT_VALUES)
+    if col in (VOC_DATA_RELEVANT_FIELD, VOC_HAS_TEST_CERT_FIELD):
+        # Horizontal Y/N radios; stored values stay Yes/No for existing data.
+        options = ["Yes", "No"]
         cur_str = str(current).strip() if current not in (None, "") else ""
-        if cur_str and cur_str not in options:
-            options.append(cur_str)
-        _fmt = {
-            "": "(blank)",
-            "Yes": "Yes — VOC data applies",
-            "No": "No — lock VOC fields to n/r",
-            "Not sure": "Not sure — leave editable",
-        }
-        return st.selectbox(
-            label, options, index=options.index(cur_str) if cur_str in options else 0,
-            key=key, format_func=lambda v: _fmt.get(v, v), disabled=disabled,
+        if cur_str.lower() in ("y", "yes"):
+            cur_str = "Yes"
+        elif cur_str.lower() in ("n", "no"):
+            cur_str = "No"
+        elif cur_str not in options:
+            cur_str = ""
+        idx = options.index(cur_str) if cur_str in options else None
+        return st.radio(
+            label,
+            options,
+            index=idx,
+            key=key,
+            horizontal=True,
+            format_func=lambda v: "Y" if v == "Yes" else "N",
+            disabled=disabled,
             **widget_help_kwargs(col),
         )
     if col in VOC_CHECKLIST_FIELDS:
@@ -987,8 +1119,17 @@ def _voc_data_relevant_value(
     existing_row: dict | None,
     values: dict | None = None,
 ):
-    """Latest VOC Data Relevant choice (this run's widget, session, or row)."""
+    """Latest VOC certificate gate choice (this run's widget, session, or row)."""
     return _effective_field_value(mode, VOC_DATA_RELEVANT_FIELD, existing_row, values)
+
+
+def _voc_has_test_cert_value(
+    mode: str,
+    existing_row: dict | None,
+    values: dict | None = None,
+):
+    """Latest VOC testing-certificate gate choice."""
+    return _effective_field_value(mode, VOC_HAS_TEST_CERT_FIELD, existing_row, values)
 
 
 def _render_one_field(
@@ -1016,12 +1157,13 @@ def _render_one_field(
     product_type = str(values.get("D__ProductType_ENG", product_type_current) or "")
     voc_cert = _voc_cert_value(mode, existing_row, values)
     data_relevant = _voc_data_relevant_value(mode, existing_row, values)
+    has_test_cert = _voc_has_test_cert_value(mode, existing_row, values)
     _derived = _EPD_DERIVED.get(mode, {})
     if col in _derived:
         _render_epd_derived_field(col, key, _derived[col], values, product_type,
                                   label_override=label_override)
         return
-    # VOC Certification = n/r → certificate number / expiry are n/r and greyed.
+    # VOC Certification = n/r → certificate number / dates are n/r and greyed.
     if col in VOC_CERT_NR_LOCK_FIELDS and voc_cert_is_not_relevant(voc_cert):
         st.session_state[key] = VOC_NOT_RELEVANT_VALUE
         label = label_override or _label_for(col)
@@ -1033,7 +1175,30 @@ def _render_one_field(
         )
         values[col] = VOC_NOT_RELEVANT_VALUE
         status = field_status(
-            col, val, product_type, voc_cert=voc_cert, data_relevant=data_relevant,
+            col, val, product_type,
+            voc_cert=voc_cert, data_relevant=data_relevant, has_test_cert=has_test_cert,
+        )
+        st.markdown(
+            f'{status_badge_html(status)} &nbsp; {revalu_caption_html(col)}',
+            unsafe_allow_html=True,
+        )
+        return
+    # Testing gate No → checklist / test date lock to n/r.
+    if col in VOC_TEST_DOC_FIELDS and voc_test_docs_locked(
+        product_type, data_relevant=data_relevant, has_test_cert=has_test_cert
+    ):
+        st.session_state[key] = VOC_NOT_RELEVANT_VALUE
+        label = label_override or _label_for(col)
+        val = st.text_input(
+            label,
+            key=key,
+            disabled=True,
+            **widget_help_kwargs(col),
+        )
+        values[col] = VOC_NOT_RELEVANT_VALUE
+        status = field_status(
+            col, val, product_type,
+            voc_cert=voc_cert, data_relevant=data_relevant, has_test_cert=has_test_cert,
         )
         st.markdown(
             f'{status_badge_html(status)} &nbsp; {revalu_caption_html(col)}',
@@ -1041,7 +1206,7 @@ def _render_one_field(
         )
         return
     # Leaving a cert-n/r lock: date_input cannot keep a literal "n/r" in session.
-    if col == "VO__Exp_Date" and key in st.session_state:
+    if col in ("VO__Exp_Date", "VO__IssueDate", "VO__TestDate") and key in st.session_state:
         _prev = str(st.session_state.get(key) or "").strip().lower().replace("\\", "/")
         if _prev in ("n/r", "nr") or _prev.startswith("n/r ") or _prev.startswith("nr "):
             del st.session_state[key]
@@ -1052,7 +1217,8 @@ def _render_one_field(
         current = "No"
     else:
         disabled = field_disabled_for_product_type(
-            col, product_type, voc_cert=voc_cert, data_relevant=data_relevant,
+            col, product_type,
+            voc_cert=voc_cert, data_relevant=data_relevant, has_test_cert=has_test_cert,
         )
     val = _widget_for_field(
         col, current, key, product_types, manufacturers, disabled=disabled,
@@ -1061,7 +1227,9 @@ def _render_one_field(
     values[col] = "No" if (col == VOC_DATA_RELEVANT_FIELD and voc_not_relevant(product_type)) else val
     status = field_status(
         col, values[col], values.get("D__ProductType_ENG", product_type_current),
-        voc_cert=voc_cert, data_relevant=values.get(VOC_DATA_RELEVANT_FIELD, data_relevant),
+        voc_cert=voc_cert,
+        data_relevant=values.get(VOC_DATA_RELEVANT_FIELD, data_relevant),
+        has_test_cert=values.get(VOC_HAS_TEST_CERT_FIELD, has_test_cert),
     )
     st.markdown(
         f'{status_badge_html(status)} &nbsp; {revalu_caption_html(col)}',
@@ -1199,8 +1367,8 @@ def _render_field_group(
     field_options: dict[str, list[str]] | None = None,
 ) -> None:
     section_title = group.get("section_title")
+    _mt = group.get("section_margin_top")
     if section_title:
-        _mt = group.get("section_margin_top")
         if group.get("section_divider"):
             render_add_edit_section_title_with_divider(str(section_title), margin_top=_mt)
         else:
@@ -1216,6 +1384,11 @@ def _render_field_group(
                 f"{html.escape(str(section_title))}</div>",
                 unsafe_allow_html=True,
             )
+    elif _mt:
+        st.markdown(
+            f'<div style="margin-top:{html.escape(str(_mt))};" aria-hidden="true"></div>',
+            unsafe_allow_html=True,
+        )
     field_labels = group.get("field_labels") or {}
 
     # Physical properties: one pair-column per field (value|C/M + status line).
@@ -1286,6 +1459,10 @@ def _render_field_group(
         _render_derived_checklist(mode, existing_row, values)
     if group.get("rating_alignment"):
         _render_rating_alignment(mode, existing_row, values)
+    if group.get("leed_requirements"):
+        _render_leed_requirements(mode, existing_row, values)
+    if group.get("leed_verdict"):
+        _render_leed_verdict(mode, existing_row, values)
 
 
 _CHECKLIST_COLOURS = {"Yes": "#15803d", "No": "#b91c1c", "Unknown": "#a16207"}
@@ -1311,7 +1488,10 @@ def _render_rating_alignment(mode: str, existing_row: dict | None, values: dict)
     cert_str = "" if cert is None else str(cert).strip()
     if not cert_str or voc_cert_is_not_relevant(cert_str):
         return
-    rows = voc_cert_alignment(cert_str)
+    # LEED is no longer read off the claim alone: the verdict below takes the
+    # material group and the supporting documents into account, which is what
+    # the credit actually asks. WELL and CAM still read from the claim.
+    rows = [r for r in voc_cert_alignment(cert_str) if r.get("id") != "leed"]
     if not rows:
         return
     pills, notes = [], []
@@ -1340,6 +1520,224 @@ def _render_rating_alignment(mode: str, existing_row: dict | None, values: dict)
         + tail + "</div></div>",
         unsafe_allow_html=True,
     )
+
+
+# ── LEED v4.1 Low-Emitting Materials ─────────────────────────────────────────
+# The hierarchy of aux_17__leed_low_emitting.json, rendered under the fields it
+# reads: the group states the requirements, the claim and the documents answer
+# them, and whatever stays open is named. Nothing here is stored — the verdict
+# is recomputed from the three fields on every run.
+_LEED_VERDICT_STYLE = {
+    "compliant": ("#dcfce7", "#15803d", "✓"),
+    "partial": ("#fef3c7", "#a16207", "◐"),
+    "not_compliant": ("#fee2e2", "#b91c1c", "✘"),
+    "unknown": ("#f1f5f9", "#64748b", "·"),
+}
+
+
+def _leed_group_value(mode: str, existing_row: dict | None, values: dict) -> str:
+    """The material group chosen in this run, as a group id ("" when not set)."""
+    raw = _effective_field_value(mode, "VO__LEED_Group", existing_row, values)
+    g = leed_group(_leed_clean(raw))
+    return str((g or {}).get("id") or "")
+
+
+def _leed_block_applies(mode: str, existing_row: dict | None, values: dict) -> bool:
+    """False when the row carries no VOC evidence at all (locked or n/r)."""
+    product_type = str(values.get("D__ProductType_ENG", "") or "")
+    if voc_emissions_locked(
+        product_type, data_relevant=_voc_data_relevant_value(mode, existing_row, values)
+    ):
+        return False
+    return True
+
+
+def _render_leed_requirements(mode: str, existing_row: dict | None, values: dict) -> None:
+    """Step 2 — what the chosen group has to demonstrate, and its project threshold."""
+    if not _leed_block_applies(mode, existing_row, values):
+        return
+    lang = leed_lang()
+    gid = _leed_group_value(mode, existing_row, values)
+    if not gid:
+        st.markdown(
+            '<div style="margin:2px 0 10px;color:#94a3b8;font-size:0.78rem;">'
+            + html.escape(
+                "Scegliere la categoria LEED: decide quali requisiti il prodotto deve dimostrare."
+                if lang == "it" else
+                "Choose the LEED group: it decides which requirements the product must demonstrate."
+            )
+            + "</div>",
+            unsafe_allow_html=True,
+        )
+        return
+    g = leed_group(gid) or {}
+    pills = []
+    for req in leed_group_requirements(gid, lang):
+        pills.append(
+            '<span style="background:#eef2ff;color:#4338ca;font-size:0.7rem;font-weight:600;'
+            'padding:1px 6px;border-radius:3px;white-space:nowrap;" title="'
+            + html.escape(req["summary"]) + '">'
+            + html.escape(req["label"]) + " · " + html.escape(req["cert_code"])
+            + "</span>"
+        )
+    alternatives = []
+    if g.get("allow_inherently_non_emitting"):
+        alternatives.append("Intrinsecamente non emissivo" if lang == "it"
+                            else "Inherently non-emitting")
+    if g.get("allow_salvaged"):
+        alternatives.append("Materiale di recupero" if lang == "it" else "Salvaged material")
+    tail = [html.escape(leed_text(g.get("scope"), lang))]
+    if alternatives:
+        tail.append(
+            "<b>" + html.escape("Alternative ammesse" if lang == "it" else "Alternatives allowed")
+            + ":</b> " + html.escape(", ".join(alternatives))
+        )
+    tail.append(
+        "<b>" + html.escape("Soglia di progetto" if lang == "it" else "Project threshold")
+        + ":</b> " + html.escape(leed_text(g.get("project_threshold"), lang))
+    )
+    if g.get("note"):
+        tail.append(html.escape(leed_text(g.get("note"), lang)))
+    st.markdown(
+        '<div style="margin:2px 0 10px;">'
+        '<div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;">'
+        '<span style="font-size:0.72rem;color:#94a3b8;text-transform:uppercase;'
+        'letter-spacing:.05em;">'
+        + html.escape("Requisiti" if lang == "it" else "Requirements")
+        + "</span>" + "".join(pills) + "</div>"
+        '<div style="margin-top:4px;color:#64748b;font-size:0.75rem;line-height:1.45;">'
+        + " · ".join(t for t in tail if t) + "</div></div>",
+        unsafe_allow_html=True,
+    )
+
+
+def _render_leed_verdict(mode: str, existing_row: dict | None, values: dict) -> None:
+    """Steps 4-6 — the verdict, the gap, and the group's reference sheet."""
+    if not _leed_block_applies(mode, existing_row, values):
+        return
+    lang = leed_lang()
+    gid = _leed_group_value(mode, existing_row, values)
+    if not gid:
+        return
+    cert = _effective_field_value(mode, "VO__VOC_Cert", existing_row, values)
+    docs = _effective_field_value(mode, "VO__LEED_Documents", existing_row, values)
+    result = leed_evaluate(gid, cert, docs, lang=lang)
+    bg, fg, mark = _LEED_VERDICT_STYLE.get(result["status"], _LEED_VERDICT_STYLE["unknown"])
+
+    per_req = []
+    for row in result["requirements"]:
+        ok = row["covered"]
+        colour = "#15803d" if ok else "#b91c1c"
+        sources = ", ".join(dict.fromkeys(row["sources"]))
+        per_req.append(
+            f'<div style="display:flex;gap:6px;align-items:baseline;min-width:0;">'
+            f'<b style="color:{colour};font-size:0.82rem;">{"✓" if ok else "✘"}</b>'
+            f'<span style="font-size:0.82rem;">{html.escape(row["label"])}</span>'
+            f'<span style="font-size:0.72rem;color:#94a3b8;">'
+            f'{html.escape("← " + sources) if sources else ""}</span></div>'
+        )
+    unlisted = ""
+    if result["unlisted_certs"]:
+        lead = ("non è fra le certificazioni accettate da LEED per questa categoria"
+                if lang == "it" else
+                "is not among the certifications LEED accepts for this group")
+        unlisted = (
+            '<div style="margin-top:4px;color:#b91c1c;font-size:0.75rem;">'
+            + html.escape(", ".join(result["unlisted_certs"]) + " — " + lead)
+            + "</div>"
+        )
+    st.markdown(
+        f'<div style="margin:6px 0 10px;background:{bg};border-radius:4px;padding:7px 10px;">'
+        f'<div style="color:{fg};font-weight:600;font-size:0.82rem;">'
+        f'{mark} {html.escape(result["headline"])}</div>'
+        '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));'
+        'gap:2px 18px;margin-top:5px;color:#475569;">' + "".join(per_req) + "</div>"
+        + (f'<div style="margin-top:4px;color:#64748b;font-size:0.75rem;line-height:1.45;">'
+           f'{html.escape(result["detail"])}</div>' if result["detail"] else "")
+        + unlisted + "</div>",
+        unsafe_allow_html=True,
+    )
+    _render_leed_reference(gid, lang)
+
+
+def _render_leed_reference(gid: str, lang: str) -> None:
+    """The group's sheet from the workbook: certifications, documents, thresholds."""
+    g = leed_group(gid) or {}
+    title = ("Guida LEED — {g}" if lang == "it" else "LEED guidance — {g}").format(
+        g=leed_group_label(gid, lang)
+    )
+    with st.expander(title, expanded=False):
+        guidance = leed_guidance(lang)
+        reqs = leed_group_requirements(gid, lang)
+
+        st.markdown("**" + ("Requisiti della categoria" if lang == "it"
+                            else "Requirements for this group") + "**")
+        for req in reqs:
+            st.markdown(
+                f"- **{req['label']}** (`{req['cert_code']}`) — {req['summary']}"
+            )
+
+        st.markdown("**" + ("Certificazioni listate da LEED" if lang == "it"
+                            else "Certifications listed by LEED") + "**")
+        outcome_text = {
+            "full": ("Sufficiente da sola" if lang == "it" else "Sufficient on its own"),
+            "partial": ("Parziale" if lang == "it" else "Partial"),
+            "none": ("Non valida per questa categoria" if lang == "it"
+                     else "Not valid for this group"),
+        }
+        by_label = {r["kind"]: r["label"] for r in reqs}
+        rows = []
+        for cert in leed_certs_for_group(gid, lang):
+            rows.append({
+                ("Ente" if lang == "it" else "Body"): cert["body"],
+                ("Certificazione" if lang == "it" else "Certification"): cert["label"],
+                ("Applicabilità" if lang == "it" else "Applicability"): ", ".join(cert["codes"]) or "—",
+                ("Copre" if lang == "it" else "Covers"):
+                    ", ".join(by_label.get(k, k) for k in cert["covers"]) or "—",
+                ("Esito" if lang == "it" else "Outcome"): outcome_text[cert["outcome"]],
+            })
+        if rows:
+            st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
+
+        st.markdown("**" + ("Altri documenti ammessi" if lang == "it"
+                            else "Other accepted documents") + "**")
+        for doc in leed_documents(gid):
+            covers = ", ".join(
+                by_label.get(k, k) for k in leed_document_covers(doc.get("id"), gid)
+            )
+            st.markdown(
+                f"- **{leed_document_label(doc.get('id'), lang)}** — "
+                f"{'copre' if lang == 'it' else 'covers'}: {covers}. "
+                f"{leed_document_conditions(doc.get('id'), gid, lang)}"
+            )
+
+        thresholds = leed_thresholds(gid)
+        if thresholds:
+            st.markdown("**" + ("Soglie VOC content per sottocategoria (g/l)" if lang == "it"
+                                else "VOC content thresholds by sub-category (g/l)") + "**")
+            st.dataframe(
+                pd.DataFrame([
+                    {("Sottocategoria" if lang == "it" else "Sub-category"): t["subcategory"],
+                     ("Soglia (g/l)" if lang == "it" else "Limit (g/l)"): t["limit_g_l"]}
+                    for t in thresholds
+                ]),
+                use_container_width=True, hide_index=True, height=260,
+            )
+
+        if guidance["not_sufficient"]:
+            st.markdown("**" + ("Documenti NON sufficienti" if lang == "it"
+                                else "Documents that are NOT sufficient") + "**")
+            st.markdown("\n".join("- " + s for s in guidance["not_sufficient"]))
+
+        if guidance["general_rules"]:
+            st.markdown("**" + ("Regole generali" if lang == "it" else "General rules") + "**")
+            st.markdown("\n".join("- " + s for s in guidance["general_rules"]))
+
+        credit = leed_credit(lang)
+        st.caption(
+            f"{credit['label']} — {leed_caveat(lang)}"
+            + (f" · {credit['url']}" if credit.get("url") else "")
+        )
 
 
 def _render_derived_checklist(mode: str, existing_row: dict | None, values: dict) -> None:
@@ -1392,30 +1790,60 @@ def _voc_locked_field_html(col: str) -> str:
     )
 
 
-def _render_voc_locked_tab(cat: dict, values: dict, product_type: str) -> None:
-    """Render the Health tab's VOC fields as locked n/r and record those values.
+def _voc_locked_gate_html(col: str, value: str = "No") -> str:
+    """Greyed gate field (Yes/No) shown inside the locked VOC block."""
+    return (
+        f'<div style="margin-bottom:0.55rem;">'
+        f'<div style="font-size:0.8rem;color:{_VOC_LOCKED_GREY};margin-bottom:0.2rem;">'
+        f"{html.escape(_label_for(col))}</div>"
+        f'<div style="border:1px solid #e5e7eb;border-radius:0.5rem;background:#f8fafc;'
+        f'color:{_VOC_LOCKED_GREY};padding:0.45rem 0.7rem;font-size:0.9rem;'
+        f'user-select:none;">{html.escape(value)}</div>'
+        f"</div>"
+    )
 
-    Only the VOC_FIELDS are locked; the caller renders the rest of the tab
-    (VOC Data Relevant, health declarations, MSDS) as normal editable fields.
+
+def _render_voc_locked_tab(
+    cat: dict,
+    values: dict,
+    product_type: str,
+    *,
+    groups: list[dict] | None = None,
+) -> None:
+    """Render VOC / LEED fields as locked n/r and record those values.
+
+    Only the VOC_FIELDS (+ testing gate) are locked; the caller keeps the
+    certificate gate and health declarations editable. Pass *groups* to limit
+    the locked readout to one Health subtab.
     """
     for col in VOC_FIELDS:
         values[col] = VOC_NOT_RELEVANT_VALUE
+    values[VOC_HAS_TEST_CERT_FIELD] = "No"
+    group_list = groups if groups is not None else (
+        cat.get("field_groups") or [{"fields": list(cat["fields"]), "columns_per_row": 3}]
+    )
+    sub_keys = {g.get("subtab") for g in group_list if g.get("subtab")}
+    leed_only = sub_keys == {"leed"}
     if voc_not_relevant(product_type):
         values[VOC_DATA_RELEVANT_FIELD] = "No"
         banner = (
             f"🔒 <b>VOC not relevant</b> for product type "
             f"“{html.escape(str(product_type))}” — no product in this category can "
-            f"carry an indoor-air emission certificate, so every VOC field is fixed at "
+            f"carry an indoor-air emission certificate, so these fields are fixed at "
             f"<code>n/r</code> and locked. Change the <b>Product Type</b> on the "
-            f"<b>Product ID</b> tab to edit these fields. Health declarations below "
-            f"remain editable."
+            f"<b>Product ID</b> tab to edit them. Health declarations remain editable."
+        )
+    elif leed_only:
+        banner = (
+            "🔒 LEED Low-Emitting fields are locked to <code>n/r</code> while VOC "
+            "documentation is not relevant."
         )
     else:
         banner = (
-            "🔒 <b>VOC Data Relevant</b> is <b>No</b> — inherently non-emitting / no "
-            "VOC evidence required, so every VOC field is fixed at <code>n/r</code> "
-            "and locked. Choose <b>Yes</b> or <b>Not sure</b> above to edit these "
-            "fields. Health declarations below remain editable."
+            "🔒 <b>Does product have a VOC certificate?</b> is <b>No</b> — no VOC "
+            "certificate documentation required, so those fields are fixed at "
+            "<code>n/r</code> and locked. Choose <b>Y</b> above to edit them. "
+            "Health declarations remain editable."
         )
 
     st.markdown(
@@ -1427,11 +1855,11 @@ def _render_voc_locked_tab(cat: dict, values: dict, product_type: str) -> None:
         unsafe_allow_html=True,
     )
 
-    # Same column shape as the editable tab, so the layout does not jump when a
-    # product type moves in or out of the locked set.
-    groups = cat.get("field_groups") or [{"fields": list(cat["fields"]), "columns_per_row": 3}]
-    for group in groups:
-        group_fields = [f for f in group.get("fields", []) if f in VOC_FIELDS]
+    for group in group_list:
+        group_fields = [
+            f for f in group.get("fields", [])
+            if f in VOC_FIELDS or f == VOC_HAS_TEST_CERT_FIELD
+        ]
         if not group_fields:
             continue
         weights = group.get("column_weights")
@@ -1444,7 +1872,13 @@ def _render_voc_locked_tab(cat: dict, values: dict, product_type: str) -> None:
             )
         for j, field_col in enumerate(group_fields):
             with cols[j % len(cols)]:
-                st.markdown(_voc_locked_field_html(field_col), unsafe_allow_html=True)
+                if field_col == VOC_HAS_TEST_CERT_FIELD:
+                    st.markdown(
+                        _voc_locked_gate_html(field_col, "No"),
+                        unsafe_allow_html=True,
+                    )
+                else:
+                    st.markdown(_voc_locked_field_html(field_col), unsafe_allow_html=True)
 
 
 def _resolve_field_value(mode: str, col: str, existing_row: dict | None):
@@ -2358,47 +2792,112 @@ def _render_form(mode: str, raw_df: pd.DataFrame, existing_row: dict | None) -> 
         filled, relevant = _category_progress(
             cat, mode, existing_row, product_type_for_labels
         )
-        return f"{cat['label']} ({filled}/{relevant})"
+        return f"{_tu(str(cat['label']))} ({filled}/{relevant})"
 
     cat_labels = [
-        f"Summary ({summary_filled}/{summary_relevant})",
+        f"{_tu('Summary')} ({summary_filled}/{summary_relevant})",
         *[_cat_label(cat) for cat in CATEGORIES],
     ]
     cat_tabs = st.tabs(cat_labels)
     for cat, tab in zip(CATEGORIES, cat_tabs[1:]):
         with tab:
             fields = list(cat["fields"])
-            if cat["key"] == "vo" and _voc_locked:
-                # Keep VOC Data Relevant editable above the locked n/r block.
-                field_groups_pre = cat.get("field_groups") or []
-                for group in field_groups_pre:
-                    group_fields = [
-                        f for f in group.get("fields", [])
-                        if f in fields and f not in VOC_FIELDS and f.startswith("VO__")
-                    ]
-                    if group_fields:
-                        _render_field_group(
-                            group, group_fields, mode, existing_row, values,
-                            product_type_current, product_types, manufacturers,
-                            field_options=field_options,
-                        )
-                        for f in group_fields:
-                            if f in fields:
-                                fields = [x for x in fields if x != f]
-                _render_voc_locked_tab(cat, values, product_type_for_labels)
-                fields = [f for f in fields if f not in VOC_FIELDS]
             field_groups = cat.get("field_groups")
+            subtabs = cat.get("subtabs") or []
             if cat["key"] == "gwp":
                 _render_epd_family_banner(_epd_ctx)
-            if field_groups:
-                for group in field_groups:
-                    group_fields = [f for f in group.get("fields", []) if f in fields]
+
+            def _render_groups_for(
+                groups: list[dict],
+                remaining: list[str],
+                *,
+                voc_locked_mode: bool = False,
+            ) -> list[str]:
+                """Render *groups*; return remaining field keys still to show."""
+                left = list(remaining)
+                if voc_locked_mode and cat["key"] == "vo":
+                    # Certificate gate row (Y/N + Evidence URL) stays above;
+                    # the rest of VOC docs lock.
+                    gate_row: set[str] = set()
+                    for group in groups:
+                        gf = list(group.get("fields") or [])
+                        if VOC_DATA_RELEVANT_FIELD not in gf:
+                            continue
+                        group_fields = [f for f in gf if f in left]
+                        if group_fields:
+                            _render_field_group(
+                                group, group_fields, mode, existing_row, values,
+                                product_type_current, product_types, manufacturers,
+                                field_options=field_options,
+                            )
+                            gate_row.update(group_fields)
+                            left = [x for x in left if x not in group_fields]
+                    locked_groups = [
+                        {
+                            **group,
+                            "fields": [
+                                f for f in (group.get("fields") or [])
+                                if f not in gate_row
+                            ],
+                        }
+                        for group in groups
+                    ]
+                    _render_voc_locked_tab(
+                        cat, values, product_type_for_labels, groups=locked_groups,
+                    )
+                    return [
+                        f for f in left
+                        if f not in VOC_FIELDS and f != VOC_HAS_TEST_CERT_FIELD
+                    ]
+                for group in groups:
+                    group_fields = [f for f in group.get("fields", []) if f in left]
                     if group_fields:
                         _render_field_group(
                             group, group_fields, mode, existing_row, values,
                             product_type_current, product_types, manufacturers,
                             field_options=field_options,
                         )
+                        left = [x for x in left if x not in group_fields]
+                return left
+
+            if subtabs and field_groups:
+                # Nested Health subtabs only — same page_title look for all three.
+                st.markdown(
+                    "<style>"
+                    "div[data-testid='stTabs'] div[data-testid='stTabs'] "
+                    "button[data-baseweb='tab'] p{"
+                    "font-family:var(--st-heading-font,'Source Serif Pro',serif)!important;"
+                    "font-size:1.05rem!important;font-weight:600!important;}"
+                    "</style>",
+                    unsafe_allow_html=True,
+                )
+                sub_labels = [_tu(str(st_def["label"])) for st_def in subtabs]
+                nested = st.tabs(sub_labels)
+                by_sub: dict[str, list[dict]] = {st_def["key"]: [] for st_def in subtabs}
+                for group in field_groups:
+                    sk = group.get("subtab") or subtabs[0]["key"]
+                    by_sub.setdefault(sk, []).append(group)
+                for st_def, nested_tab in zip(subtabs, nested):
+                    with nested_tab:
+                        groups = by_sub.get(st_def["key"]) or []
+                        voc_lock_here = (
+                            cat["key"] == "vo"
+                            and _voc_locked
+                            and st_def["key"] in ("voc_docs", "leed")
+                        )
+                        _render_groups_for(
+                            groups, fields, voc_locked_mode=voc_lock_here,
+                        )
+                if cat["key"] == "gwp":
+                    _render_gwp_conversion_panel(mode, existing_row, values)
+                continue
+
+            if cat["key"] == "vo" and _voc_locked and field_groups:
+                fields = _render_groups_for(
+                    field_groups, fields, voc_locked_mode=True,
+                )
+            if field_groups:
+                _render_groups_for(field_groups, fields)
                 if cat["key"] == "gwp":
                     _render_gwp_conversion_panel(mode, existing_row, values)
                 continue
@@ -2642,14 +3141,20 @@ def _render_add_section() -> None:
         _ptype_vals = str(_values.get("D__ProductType_ENG", "") or "")
         if voc_not_relevant(_ptype_vals):
             _values[VOC_DATA_RELEVANT_FIELD] = "No"
+            _values[VOC_HAS_TEST_CERT_FIELD] = "No"
             for _col in VOC_FIELDS:
                 _values[_col] = VOC_NOT_RELEVANT_VALUE
         elif voc_data_is_not_relevant(_values.get(VOC_DATA_RELEVANT_FIELD)):
+            _values[VOC_HAS_TEST_CERT_FIELD] = "No"
             for _col in VOC_FIELDS:
                 _values[_col] = VOC_NOT_RELEVANT_VALUE
-        elif voc_cert_is_not_relevant(_values.get("VO__VOC_Cert")):
-            for _col in VOC_CERT_NR_LOCK_FIELDS:
-                _values[_col] = VOC_NOT_RELEVANT_VALUE
+        else:
+            if voc_has_test_cert_is_no(_values.get(VOC_HAS_TEST_CERT_FIELD)):
+                for _col in VOC_TEST_DOC_FIELDS:
+                    _values[_col] = VOC_NOT_RELEVANT_VALUE
+            if voc_cert_is_not_relevant(_values.get("VO__VOC_Cert")):
+                for _col in VOC_CERT_NR_LOCK_FIELDS:
+                    _values[_col] = VOC_NOT_RELEVANT_VALUE
 
     if st.button(_tu("💾 Save new item"), key="add_save", type="primary"):
         _manu = str(_values.get("A__Manufacturer", "")).strip()
@@ -2826,14 +3331,20 @@ def _render_edit_section() -> None:
             _ptype_vals = str(_values.get("D__ProductType_ENG", "") or "")
             if voc_not_relevant(_ptype_vals):
                 _values[VOC_DATA_RELEVANT_FIELD] = "No"
+                _values[VOC_HAS_TEST_CERT_FIELD] = "No"
                 for _col in VOC_FIELDS:
                     _values[_col] = VOC_NOT_RELEVANT_VALUE
             elif voc_data_is_not_relevant(_values.get(VOC_DATA_RELEVANT_FIELD)):
+                _values[VOC_HAS_TEST_CERT_FIELD] = "No"
                 for _col in VOC_FIELDS:
                     _values[_col] = VOC_NOT_RELEVANT_VALUE
-            elif voc_cert_is_not_relevant(_values.get("VO__VOC_Cert")):
-                for _col in VOC_CERT_NR_LOCK_FIELDS:
-                    _values[_col] = VOC_NOT_RELEVANT_VALUE
+            else:
+                if voc_has_test_cert_is_no(_values.get(VOC_HAS_TEST_CERT_FIELD)):
+                    for _col in VOC_TEST_DOC_FIELDS:
+                        _values[_col] = VOC_NOT_RELEVANT_VALUE
+                if voc_cert_is_not_relevant(_values.get("VO__VOC_Cert")):
+                    for _col in VOC_CERT_NR_LOCK_FIELDS:
+                        _values[_col] = VOC_NOT_RELEVANT_VALUE
 
         _c_save, _c_delete, _ = st.columns([2, 2, 6], gap=_add_edit_col_gap())
         with _c_save:
@@ -2936,12 +3447,21 @@ def _ie_kind(col: str) -> str:
         return "url"
     if col in READONLY_FIELDS:
         return "readonly"
+    if col == "VO__LEED_Group":
+        return "leedgroup"
+    if col == "VO__LEED_Documents":
+        return "leeddocs"
+    if col == "VO__LEED_Pathway":
+        # Derived from the material group (see lib_leed_voc.leed_pathway_for_group).
+        return "readonly"
     if col in ("D__ProductType_ENG", "A__Manufacturer") or col in OPTION_SELECT_FIELDS:
         return "combo"
     if col == _EPD_REF_FLAG_COL:
         return "epdref"
     if col == VOC_DATA_RELEVANT_FIELD:
         return "voc_relevant"
+    if col == VOC_HAS_TEST_CERT_FIELD:
+        return "voc_yn"
     if col in VOC_CHECKLIST_FIELDS:
         return "checklist"
     if col == "A__Map_yn" or col in YN_SELECT_FIELDS:
@@ -3045,13 +3565,49 @@ def _ie_voc_catalog() -> dict:
     return {"caveat": voc_cert_caveat(), "tiers": tiers}
 
 
+def _ie_localize_categories(categories: list[dict]) -> list[dict]:
+    """Copy CATEGORIES with ``label`` / ``section_title`` / subtab labels via ``_tu``."""
+    out: list[dict] = []
+    for cat in categories:
+        c = dict(cat)
+        if c.get("label"):
+            c["label"] = _tu(str(c["label"]))
+        if c.get("subtabs"):
+            c["subtabs"] = [
+                {
+                    **dict(st),
+                    "label": _tu(str(st["label"])) if st.get("label") else st.get("label"),
+                }
+                for st in c["subtabs"]
+            ]
+        groups = []
+        for g in c.get("field_groups") or []:
+            gg = dict(g)
+            if gg.get("section_title"):
+                gg["section_title"] = _tu(str(gg["section_title"]))
+            fl = gg.get("field_labels")
+            if isinstance(fl, dict) and fl:
+                gg["field_labels"] = {
+                    k: _tu(str(v)) if v else v for k, v in fl.items()
+                }
+            groups.append(gg)
+        if groups:
+            c["field_groups"] = groups
+        out.append(c)
+    return out
+
+
 def _ie_schema(raw_df: pd.DataFrame) -> tuple[dict, str]:
-    """Everything static the editor needs, rebuilt only when a parquet changes."""
-    # Include textarea heights / form field set so layout or category tweaks
-    # (e.g. VOC Data Relevant) refresh without a data change.
+    """Everything static the editor needs; rebuilt when data or language changes."""
+    # Include language so switching ITA ↔ ENG refreshes widget labels (fn703 /
+    # fn714). Also textarea heights / form field set for layout tweaks.
+    _lang = fn702_current_language()
     _h_sig = ",".join(f"{c}:{textarea_height(c)}" for c in sorted(TEXTAREA_FIELDS))
     _f_sig = ",".join(_all_form_fields())
-    sig = f"{_effective_mtimes()}:{len(_column_display_labels)}:{_h_sig}:{_f_sig}"
+    sig = (
+        f"{_effective_mtimes()}:{len(_column_display_labels)}:"
+        f"{_h_sig}:{_f_sig}:{_lang}"
+    )
     memo = st.session_state.get("_ie_schema_memo")
     if memo and memo[0] == sig:
         return memo[1], sig
@@ -3061,9 +3617,10 @@ def _ie_schema(raw_df: pd.DataFrame) -> tuple[dict, str]:
     for col in _all_form_fields():
         rv_field, tier = REVALU_MAP.get(col, (None, None))
         kind = _ie_kind(col)
+        help_txt = help_for(col)
         fields[col] = {
             "label": _label_for(col),
-            "help": help_for(col),
+            "help": _tu(help_txt) if help_txt else help_txt,
             "kind": kind,
             "rv": [rv_field, tier] if rv_field else None,
             "h": textarea_height(col),
@@ -3080,15 +3637,20 @@ def _ie_schema(raw_df: pd.DataFrame) -> tuple[dict, str]:
     except Exception:
         violet = "#8c66e0"
     schema = {
-        "categories": CATEGORIES,
+        "categories": _ie_localize_categories(CATEGORIES),
         "fields": fields,
         "options": options,
         "phys": list(_PHYS_FIELDS),
-        "phys_cm_help": PHYSICAL_CM_HELP,
+        "phys_cm_help": _tu(PHYSICAL_CM_HELP) if PHYSICAL_CM_HELP else PHYSICAL_CM_HELP,
         "voc_fields": list(VOC_FIELDS),
+        "voc_cert_doc_fields": sorted(VOC_CERT_DOC_FIELDS),
+        "voc_test_doc_fields": sorted(VOC_TEST_DOC_FIELDS),
         "voc_checklist_values": list(VOC_CHECKLIST_VALUES),
-        "voc_checklist_derived": [list(pair) for pair in VOC_CHECKLIST_DERIVED],
+        "voc_checklist_derived": [
+            [_tu(str(label)), col] for label, col in VOC_CHECKLIST_DERIVED
+        ],
         "voc_data_relevant_values": list(VOC_DATA_RELEVANT_VALUES),
+        "voc_has_test_cert_values": list(VOC_HAS_TEST_CERT_VALUES),
         "voc_nr_types": sorted(VOC_NOT_RELEVANT_PRODUCT_TYPES),
         "voc_nr_value": VOC_NOT_RELEVANT_VALUE,
         "cement_types": sorted(CEMENT_CONCRETE_PRODUCT_TYPES),
@@ -3098,8 +3660,12 @@ def _ie_schema(raw_df: pd.DataFrame) -> tuple[dict, str]:
         "voc_catalog": _ie_voc_catalog(),
         "voc_align": voc_alignment_lookup(),
         "voc_frameworks": voc_rating_frameworks(),
+        # LEED v4.1 Low-Emitting Materials: the hierarchy resolved per group, so
+        # the browser only has to union what the claim and the documents cover.
+        "leed": leed_editor_payload(),
         "epd": _ie_epd_index(raw_df),
         "violet": violet,
+        "lang": _lang,
     }
     st.session_state["_ie_schema_memo"] = (sig, schema)
     return schema, sig
@@ -3146,14 +3712,20 @@ def _ie_coerce(values: dict, product_type: str) -> dict:
             out[col] = "" if v is None else v
     if voc_not_relevant(product_type):
         out[VOC_DATA_RELEVANT_FIELD] = "No"
+        out[VOC_HAS_TEST_CERT_FIELD] = "No"
         for col in VOC_FIELDS:
             out[col] = VOC_NOT_RELEVANT_VALUE
     elif voc_data_is_not_relevant(out.get(VOC_DATA_RELEVANT_FIELD)):
         for col in VOC_FIELDS:
             out[col] = VOC_NOT_RELEVANT_VALUE
-    elif voc_cert_is_not_relevant(out.get("VO__VOC_Cert")):
-        for col in VOC_CERT_NR_LOCK_FIELDS:
-            out[col] = VOC_NOT_RELEVANT_VALUE
+        out[VOC_HAS_TEST_CERT_FIELD] = "No"
+    else:
+        if voc_has_test_cert_is_no(out.get(VOC_HAS_TEST_CERT_FIELD)):
+            for col in VOC_TEST_DOC_FIELDS:
+                out[col] = VOC_NOT_RELEVANT_VALUE
+        if voc_cert_is_not_relevant(out.get("VO__VOC_Cert")):
+            for col in VOC_CERT_NR_LOCK_FIELDS:
+                out[col] = VOC_NOT_RELEVANT_VALUE
     return out
 
 

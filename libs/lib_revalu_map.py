@@ -154,6 +154,7 @@ REVALU_MAP: dict[str, tuple[str, str] | tuple[None, None]] = {
     "R__Rec_Cert_Expiry": (None, None),
     "R__Rec_Cert_Plant": (None, None),
     "VO__Data_Relevant": (None, None),
+    "VO__Has_Test_Cert": (None, None),
     "VO__VOC_Body": (None, None),
     "VO__VOC_Cert": ("certificates", "related"),
     "VO__TestStandard": (None, None),
@@ -163,10 +164,13 @@ REVALU_MAP: dict[str, tuple[str, str] | tuple[None, None]] = {
     "VO__Exp_Date": (None, None),
     "VO__TestDate": (None, None),
     "VO__IssueDate": (None, None),
+    "VO__LEED_Group": (None, None),
+    "VO__LEED_Documents": (None, None),
     "VO__LEED_Pathway": (None, None),
     "VO__Chk_TVOC": (None, None),
     "VO__Chk_ISO17025": (None, None),
     "VO__Chk_Scenario": (None, None),
+    "VO__Chk_Lab": (None, None),
     "VO__Application_Scope": (None, None),
     "VO__Product_Category": (None, None),
     "VV__Other": (None, None),
@@ -288,6 +292,7 @@ VOC_LEED_PATHWAYS: tuple[str, ...] = (
     "VOC Content",
     "VOC Emissions + VOC Content",
     "Formaldehyde Emissions",
+    "VOC Emissions + Formaldehyde Emissions",
     "Furniture Emissions",
     "Inherently Non-Emitting",
     "n/a",
@@ -302,18 +307,34 @@ VOC_CHECKLIST_FIELDS: tuple[str, ...] = (
     "VO__Chk_TVOC",
     "VO__Chk_ISO17025",
     "VO__Chk_Scenario",
+    "VO__Chk_Lab",
 )
 VOC_CHECKLIST_VALUES: tuple[str, ...] = ("", "Yes", "No", "Unknown", "n/r")
 
-# Manual gate for the VOC emissions block (ceramic tiles, untreated minerals, …).
-# Kept out of VOC_FIELDS so a "No" answer can lock the rest without overwriting itself.
+# Manual gate for the VOC *certificate* documentation block.
+# Kept out of VOC_FIELDS so a "No" answer can lock dependents without overwriting itself.
 VOC_DATA_RELEVANT_FIELD = "VO__Data_Relevant"
-VOC_DATA_RELEVANT_VALUES: tuple[str, ...] = ("", "Yes", "No", "Not sure")
+VOC_DATA_RELEVANT_VALUES: tuple[str, ...] = ("", "Yes", "No")
 
-# (control, source column, how to read it) — the derived half of the checklist.
+# Manual gate for the VOC *testing* documentation block (checklist + test date).
+VOC_HAS_TEST_CERT_FIELD = "VO__Has_Test_Cert"
+VOC_HAS_TEST_CERT_VALUES: tuple[str, ...] = ("", "Yes", "No")
+
+# Certificate documentation fields locked when Data Relevant is No.
+VOC_CERT_DOC_FIELDS: frozenset[str] = frozenset({
+    "VO__VOC_URL", "VO__VOC_Body", "VO__VOC_Cert", "VO__VOC_Cert_No",
+    "VO__IssueDate", "VO__Exp_Date", "VO__ReportType", "VO__TestStandard",
+})
+
+# Testing documentation fields locked when Has Test Cert is No.
+VOC_TEST_DOC_FIELDS: frozenset[str] = frozenset({
+    "VO__Chk_TVOC", "VO__Chk_ISO17025", "VO__Chk_Scenario", "VO__Chk_Lab",
+    "VO__TestDate",
+})
+
+# (control, source column) — legacy derived readouts (kept for any remaining UI).
 VOC_CHECKLIST_DERIVED: tuple[tuple[str, str], ...] = (
     ("Laboratory identified?", "VO__VOC_Body"),
-    ("Test date available?", "VO__TestDate"),
     ("VOC Content documented?", "VO__LEED_Pathway"),
 )
 
@@ -642,85 +663,100 @@ CATEGORIES: list[dict] = [
                    "R__Rec_Cert_Plant"],
     },
     {
-        # Health: VOC emissions plus material-health declarations (HPD, Declare,
-        # C2C Material Health, …) and the safety data sheet. Key stays "vo" so
-        # session state / summary logic keyed on it keeps working.
+        # Health: three equal sub-tabs (VOC Documentation, Health declarations,
+        # LEED). Key stays "vo" so session state / summary logic keyed on it
+        # keeps working. Subtab labels are the only titles (same page_title look).
         "key": "vo", "label": "Health", "icon": "🌿",
+        "subtabs": [
+            {"key": "voc_docs", "label": "VOC Documentation"},
+            {"key": "health_decl", "label": "Health declarations"},
+            {"key": "leed", "label": "LEED Low-Emitting Materials"},
+        ],
         "field_groups": [
             {
-                "section_title": "VOC emissions",
-                "section_title_style": "page_title",
-                # Manual Yes/No/Not sure gate — own group so it stays editable when
-                # the remaining VOC fields swap to the locked n/r panel.
-                "fields": ["VO__Data_Relevant"],
-                "columns_per_row": 3,
+                "subtab": "voc_docs",
+                "fields": ["VO__Data_Relevant", "VO__VOC_URL"],
+                "column_weights": [1, 3],
+                "field_labels": {
+                    "VO__Data_Relevant": "Does product have a VOC certificate?",
+                    "VO__VOC_URL": "VOC Evidence URL",
+                },
             },
             {
-                "fields": ["VO__VOC_Cert", "VO__VOC_Cert_No", "VO__VOC_Body",
-                           "VO__ReportType", "VO__TestStandard"],
-                "columns_per_row": 5,
-                # Under the row: how the chosen claim reads against LEED v4.1,
-                # WELL v2 and CAM 2025 (aux_12__voc_rating_alignment.json).
+                "subtab": "voc_docs",
+                "fields": [
+                    "VO__VOC_Body", "VO__VOC_Cert", "VO__VOC_Cert_No",
+                    "VO__IssueDate", "VO__Exp_Date",
+                ],
+                "column_weights": [2, 4, 3, 2, 2],
                 "rating_alignment": True,
             },
             {
-                "section_title": "Documentation review",
-                "section_margin_top": "16px",
-                "fields": ["VO__Chk_TVOC", "VO__Chk_ISO17025", "VO__Chk_Scenario"],
-                "columns_per_row": 3,
-                "derived_checklist": True,
-            },
-            {
-                # Traceability: when the lab tested it, when the certificate was
-                # issued, when it expires, and which LEED pathway it serves. The
-                # three dates sit together so a gap in the chain is visible.
-                "fields": ["VO__TestDate", "VO__IssueDate", "VO__Exp_Date", "VO__LEED_Pathway"],
-                "columns_per_row": 4,
-            },
-            {
-                "fields": ["VO__VOC_URL"],
-                "columns_per_row": 1,
-            },
-            {
-                "section_title": "Health declarations",
-                "section_title_style": "page_title",
+                "subtab": "voc_docs",
                 "section_margin_top": "20px",
-                "section_divider": True,
+                "fields": ["VO__Has_Test_Cert"],
+                "columns_per_row": 1,
+                "field_labels": {
+                    "VO__Has_Test_Cert": "Does product have a VOC testing certificate?",
+                },
+            },
+            {
+                "subtab": "voc_docs",
+                "fields": [
+                    "VO__Chk_TVOC", "VO__Chk_ISO17025", "VO__Chk_Scenario",
+                    "VO__Chk_Lab", "VO__TestDate",
+                ],
+                "columns_per_row": 5,
+            },
+            {
+                "subtab": "health_decl",
                 "fields": ["VV__HPD", "VV__Declare", "VV__C2C_MH", "VV__HealthDecl_Other"],
                 "columns_per_row": 4,
             },
             {
+                "subtab": "health_decl",
                 "fields": ["VV__HPD_URL", "VV__Declare_URL", "VV__C2C_MH_URL", "VV__HealthDecl_Other_URL"],
                 "columns_per_row": 4,
             },
             {
+                "subtab": "health_decl",
                 "fields": ["VV__MSDS__URL"],
                 "columns_per_row": 1,
             },
+            {
+                "subtab": "leed",
+                "fields": ["VO__LEED_Group", "VO__LEED_Pathway"],
+                "columns_per_row": 2,
+            },
+            {
+                "subtab": "leed",
+                "fields": ["VO__LEED_Documents"],
+                "columns_per_row": 1,
+                "leed_verdict": True,
+                # Requirements sit under every LEED field (group, pathway, docs).
+                "leed_requirements": True,
+            },
         ],
-        # VO__Product_Category and VO__Application_Scope stay hidden app-wide as
-        # uninformative: off the form, so a save never touches their stored
-        # values, and out of the Catalogue VOC line. The columns stay in the
-        # data and the Revalu export. VO__VOC_Body was hidden with them while it
-        # held free prose; it is now the testing / certifying body, on a
-        # vocabulary (VOC_BODIES), and back on the form. It is still off the
-        # Catalogue VOC line (aux_10__ui_config.json) — the card shows the claim,
-        # not who issued it.
+        # VO__Product_Category and VO__Application_Scope stay hidden app-wide.
         "fields": [
             "VO__Data_Relevant",
+            "VO__Has_Test_Cert",
+            "VO__VOC_URL",
+            "VO__VOC_Body",
             "VO__VOC_Cert",
             "VO__VOC_Cert_No",
-            "VO__VOC_Body",
-            "VO__Exp_Date",
-            "VO__TestDate",
             "VO__IssueDate",
-            "VO__LEED_Pathway",
+            "VO__Exp_Date",
             "VO__Chk_TVOC",
             "VO__Chk_ISO17025",
             "VO__Chk_Scenario",
+            "VO__Chk_Lab",
+            "VO__TestDate",
+            "VO__LEED_Group",
+            "VO__LEED_Documents",
+            "VO__LEED_Pathway",
             "VO__TestStandard",
             "VO__ReportType",
-            "VO__VOC_URL",
             "VV__HPD", "VV__Declare", "VV__C2C_MH", "VV__HealthDecl_Other",
             "VV__HPD_URL", "VV__Declare_URL", "VV__C2C_MH_URL", "VV__HealthDecl_Other_URL",
             "VV__MSDS__URL",
@@ -779,19 +815,18 @@ VOC_NOT_RELEVANT_PRODUCT_TYPES = frozenset({
 VOC_NOT_RELEVANT_VALUE = "n/r"
 
 # The VOC fields of the Health category (its VO__ columns), excluding the
-# manual relevance gate. Health declarations and the MSDS share the tab but
+# manual Yes/No gates. Health declarations and the MSDS share the tab but
 # stay editable for every product type.
 VOC_FIELDS: tuple[str, ...] = tuple(
     f for f in next(cat for cat in CATEGORIES if cat["key"] == "vo")["fields"]
-    if f.startswith("VO__") and f != VOC_DATA_RELEVANT_FIELD
+    if f.startswith("VO__")
+    and f not in (VOC_DATA_RELEVANT_FIELD, VOC_HAS_TEST_CERT_FIELD)
 )
 
 # When VOC Certification is ``n/r``, these dependent fields are forced to ``n/r``
-# and greyed out (certificate number / expiry do not apply without a certificate).
+# and greyed out (certificate number / dates do not apply without a certificate).
 VOC_CERT_NR_LOCK_FIELDS = frozenset({
-    "VO__VOC_Cert_No", "VO__Exp_Date", "VO__TestDate", "VO__IssueDate",
-    "VO__LEED_Pathway", "VO__VOC_Body",
-    "VO__Chk_TVOC", "VO__Chk_ISO17025", "VO__Chk_Scenario",
+    "VO__VOC_Cert_No", "VO__Exp_Date", "VO__IssueDate",
 })
 
 
@@ -804,8 +839,13 @@ def voc_cert_is_not_relevant(cert_value) -> bool:
 
 
 def voc_data_is_not_relevant(data_relevant) -> bool:
-    """True when VOC Data Relevant is the manual ``No`` choice."""
+    """True when the VOC certificate gate is the manual ``No`` choice."""
     return str(data_relevant or "").strip().lower() == "no"
+
+
+def voc_has_test_cert_is_no(has_test_cert) -> bool:
+    """True when the VOC testing-certificate gate is the manual ``No`` choice."""
+    return str(has_test_cert or "").strip().lower() == "no"
 
 
 def voc_not_relevant(product_type: str | None) -> bool:
@@ -818,8 +858,21 @@ def voc_emissions_locked(
     *,
     data_relevant=None,
 ) -> bool:
-    """True when every VOC emissions field (except Data Relevant) is fixed at n/r."""
+    """True when VOC certificate documentation (and dependents) is fixed at n/r."""
     return voc_not_relevant(product_type) or voc_data_is_not_relevant(data_relevant)
+
+
+def voc_test_docs_locked(
+    product_type: str | None = None,
+    *,
+    data_relevant=None,
+    has_test_cert=None,
+) -> bool:
+    """True when the VOC testing checklist / test date are fixed at n/r."""
+    return (
+        voc_emissions_locked(product_type, data_relevant=data_relevant)
+        or voc_has_test_cert_is_no(has_test_cert)
+    )
 
 
 # ── friendly labels (fn128_clean_column_name mangles camelCase single-word
@@ -895,20 +948,24 @@ FIELD_LABELS: dict[str, str] = {
     "R__Rec_Cert_Scheme": "Rec. Cert. System",
     "R__Rec_Cert_Expiry": "Rec. Cert. Expiry",
     "R__Rec_Cert_Plant": "Rec. Cert. Production Unit",
-    "VO__Data_Relevant": "VOC Data Relevant",
+    "VO__Data_Relevant": "Does product have a VOC certificate?",
+    "VO__Has_Test_Cert": "Does product have a VOC testing certificate?",
     "VO__VOC_Body": "VOC Testing / Certifying Body",
     "VO__VOC_Cert": "VOC Certification",
     "VO__TestStandard": "VOC Test Standard",
     "VO__ReportType": "VOC Report Type",
-    "VO__VOC_URL": "VOC Document URL",
+    "VO__VOC_URL": "VOC Evidence URL",
     "VO__VOC_Cert_No": "VOC Certificate Number",
     "VO__Exp_Date": "VOC Certificate Expiry Date",
     "VO__TestDate": "VOC Test Date",
     "VO__IssueDate": "VOC Certificate Issue Date",
+    "VO__LEED_Group": "LEED Material Group",
+    "VO__LEED_Documents": "LEED Supporting Documents",
     "VO__LEED_Pathway": "LEED Low-Emitting Pathway",
     "VO__Chk_TVOC": "TVOC stated?",
     "VO__Chk_ISO17025": "ISO 17025 scope verified?",
     "VO__Chk_Scenario": "Required scenario documented?",
+    "VO__Chk_Lab": "Laboratory identified?",
     "VO__Application_Scope": "VOC Application Scope",
     "VO__Product_Category": "VOC Product Category",
     "VV__Other": "Other Notes",
@@ -941,11 +998,16 @@ FIELD_HELP: dict[str, str] = {
     ),
     "G__GWP_FU": "FU: Functional Unit · DU: Declared unit.",
     "VO__Data_Relevant": (
-        "Does this product need VOC emission / content evidence? Choose No for "
-        "inherently non-emitting mineral products (e.g. untreated ceramic tiles) "
-        "that LEED treats as non-emissive without further testing — all other VOC "
-        "fields then lock to n/r. Yes = fill the claim and documentation; "
-        "Not sure = leave fields editable until confirmed."
+        "Does this product hold a VOC scheme certificate or declaration? "
+        "Choose No for inherently non-emitting products that need no certificate "
+        "— certificate documentation then locks to n/r. Yes = fill the evidence "
+        "URL, body, claim and dates."
+    ),
+    "VO__Has_Test_Cert": (
+        "Does this product hold a laboratory VOC test report (or equivalent "
+        "testing certificate)? Choose No when only a scheme certificate exists "
+        "or no testing is available — the testing checklist and test date then "
+        "lock to n/r."
     ),
     "VO__VOC_Body": (
         "Whose name is on the document behind the VOC claim: the testing "
@@ -968,6 +1030,11 @@ FIELD_HELP: dict[str, str] = {
         "classroom or private office, EN 16516 reference room) and the loading "
         "factor used? Without it the concentrations cannot be compared."
     ),
+    "VO__Chk_Lab": (
+        "Is the testing laboratory named on the report (or identifiable from "
+        "the certificate)? Without a named lab the ISO 17025 check cannot be "
+        "completed."
+    ),
     "VO__TestDate": (
         "Date the laboratory ran the emission test, as printed on the test report — "
         "not the date the certificate was issued. Chamber results age, so a scheme "
@@ -977,7 +1044,19 @@ FIELD_HELP: dict[str, str] = {
         "Date the certificate or declaration was issued, completing the chain "
         "test date → issue date → expiry date."
     ),
+    "VO__LEED_Group": (
+        "The product's category in the LEED v4.1 Low-Emitting Materials calculator. "
+        "It decides which requirements apply (VOC content, VOC emissions, formaldehyde) "
+        "and which applicability code a certification must carry to cover each of them."
+    ),
+    "VO__LEED_Documents": (
+        "What the product holds besides its certification: VOC content declaration, "
+        "ISO/IEC 17025 emission test report, manufacturer self-declaration, ULEF/NAF, "
+        "EN 717-1 E1, or a material criterion (inherently non-emitting, salvaged). "
+        "Only the documents LEED accepts for the chosen group are offered."
+    ),
     "VO__LEED_Pathway": (
+        "Derived from the LEED material group — not typed. "
         "Which LEED v4.1 EQ Low-Emitting Materials pathway this evidence serves. "
         "Emissions = chamber testing (CDPH / EN 16516); Content = VOC g/L limits for "
         "wet-applied products; Inherently Non-Emitting = unfinished inorganic "
@@ -1236,12 +1315,18 @@ def field_disabled_for_product_type(
     *,
     voc_cert=None,
     data_relevant=None,
+    has_test_cert=None,
 ) -> bool:
     """Grey out fields that do not apply to the current product type / VOC cert."""
-    # Whole VOC emissions block is locked for cementitious / metallic product
-    # types, or when VOC Data Relevant is manually set to No.
-    if col in VOC_FIELDS and voc_emissions_locked(
+    # Certificate documentation + LEED: locked for non-emitting product types,
+    # or when the VOC certificate gate is No.
+    if col in VOC_FIELDS and col not in VOC_TEST_DOC_FIELDS and voc_emissions_locked(
         product_type, data_relevant=data_relevant
+    ):
+        return True
+    # Testing checklist / test date: also locked when the testing gate is No.
+    if col in VOC_TEST_DOC_FIELDS and voc_test_docs_locked(
+        product_type, data_relevant=data_relevant, has_test_cert=has_test_cert
     ):
         return True
     if col in VOC_CERT_NR_LOCK_FIELDS and voc_cert_is_not_relevant(voc_cert):
@@ -1249,7 +1334,11 @@ def field_disabled_for_product_type(
     # aux_10__ui_config.json field_visibility (Extended): Conductivity, U-value,
     # EN197-1, etc. — same n/r + grey treatment as Cement Designation.
     if col in CONCEPT_FIELD_MAP and field_relevance(
-        col, product_type, voc_cert=voc_cert, data_relevant=data_relevant
+        col,
+        product_type,
+        voc_cert=voc_cert,
+        data_relevant=data_relevant,
+        has_test_cert=has_test_cert,
     ) == "not_relevant":
         return True
     if col not in CEMENT_CONCRETE_ONLY_FIELDS:
@@ -1267,12 +1356,17 @@ def field_relevance(
     *,
     voc_cert=None,
     data_relevant=None,
+    has_test_cert=None,
 ) -> str:
     """Return "relevant", "not_relevant", or "unknown" (always-relevant / no rule)."""
-    # Product-type / Data Relevant rules win over aux_10__ui_config.json, which
+    # Product-type / gate rules win over aux_10__ui_config.json, which
     # only carries a single "VOC" concept flag covering four of the VO__ fields.
-    if col in VOC_FIELDS and voc_emissions_locked(
+    if col in VOC_FIELDS and col not in VOC_TEST_DOC_FIELDS and voc_emissions_locked(
         product_type, data_relevant=data_relevant
+    ):
+        return "not_relevant"
+    if col in VOC_TEST_DOC_FIELDS and voc_test_docs_locked(
+        product_type, data_relevant=data_relevant, has_test_cert=has_test_cert
     ):
         return "not_relevant"
     if col in VOC_CERT_NR_LOCK_FIELDS and voc_cert_is_not_relevant(voc_cert):
@@ -1355,10 +1449,15 @@ def field_status(
     *,
     voc_cert=None,
     data_relevant=None,
+    has_test_cert=None,
 ) -> str:
     """Return "filled", "missing", or "not_relevant" for one field's current value."""
     if field_relevance(
-        col, product_type, voc_cert=voc_cert, data_relevant=data_relevant
+        col,
+        product_type,
+        voc_cert=voc_cert,
+        data_relevant=data_relevant,
+        has_test_cert=has_test_cert,
     ) == "not_relevant":
         return "not_relevant"
     if col in OPTIONAL_PCT_SENTINEL_FIELDS:

@@ -86,7 +86,7 @@ def _lazy_fetch_image(url, *, eetra_id=None, product_name=None):
 # When True, the app uses startup login only (no secondary Developer password form).
 REQUIRE_AUTH  = True
 DEMO_USERNAME = "demo"
-DEMO_PASSWORD = "pwd"
+DEMO_PASSWORD = "d3m0"
 EXCLUDE_KEYWORDS = ["void"]
 
 # ── Static colour map ─────────────────────────────────────────────────────────
@@ -5024,6 +5024,31 @@ def _fn_product_range_collections() -> dict:
     return out
 
 
+# The two functions above are cached; their *serialisation* was not. fn336
+# called ``json.dumps`` on both results on every rerun of the Catalogue page —
+# measured at ~10 ms and ~1 MB of garbage for the index alone, on every search
+# keystroke and tag toggle. Cached here instead, so a rerun carries the string
+# straight through.
+#
+# ``@st.cache_data`` rather than a plain dict memo: these two derive from the
+# cached dicts above, and ``st.cache_data.clear()`` has to invalidate the text
+# and the dict together or the iframe would be handed a stale index after a
+# cache reset. The copy that costs — unpickling ~1 MB of string on a hit — is
+# well under a millisecond, against the ~10 ms it replaces.
+
+
+@st.cache_data(show_spinner=False, max_entries=1)
+def _fn_product_range_index_json() -> str:
+    """``_fn_product_range_index()`` as the JSON the iframe receives."""
+    return json.dumps(_fn_product_range_index(), ensure_ascii=False)
+
+
+@st.cache_data(show_spinner=False, max_entries=1)
+def _fn_product_range_collections_json() -> str:
+    """``_fn_product_range_collections()`` as the JSON the iframe receives."""
+    return json.dumps(_fn_product_range_collections(), ensure_ascii=False)
+
+
 @st.cache_data(show_spinner="🔄 Building catalogue…", max_entries=4)
 def _fn336_cached_catalogue_payload(
     df_catalog: "pd.DataFrame",
@@ -5691,7 +5716,13 @@ def _fn336_safe_script_json(json_text: str) -> str:
     )
 
 
-def _fn336_inline_products_js(products_json: str) -> str:
+# Process-lifetime memo for the compressed products blob, keyed on the payload's
+# own ``products_md5``. See _fn336_inline_products_js for why it exists.
+_FN336_DATA_JS_MEMO: "dict[str, str]" = {}
+_FN336_DATA_JS_MEMO_MAX = 4
+
+
+def _fn336_inline_products_js(products_json: str, products_md5: str = "") -> str:
     """JS that defines ``window.__DATA__`` for the catalogue iframe.
 
     Prefer a gzip+base64 blob (``window.__DATA_GZ__``): ~11 MB of product JSON
@@ -5701,6 +5732,24 @@ def _fn336_inline_products_js(products_json: str) -> str:
     ``DecompressionStream``.
 
     Falls back to a ``<``-escaped raw assignment if compression fails.
+
+    **Memoized on ``products_md5``.** The JSON itself comes out of
+    ``_fn336_cached_catalogue_payload``, so it is already a cache hit on most
+    reruns — but this compression was not, and it ran on *every* rerun of the
+    Catalogue page: a search keystroke, a tag toggle, opening the document rail.
+    Measured against an 11 MB payload, ``compresslevel=6`` costs ~133 ms on a
+    workstation and roughly 3–5× that on Community Cloud's shared vCPU, which
+    put it ahead of everything else in the per-interaction budget.
+
+    The key is the payload's own ``products_md5``, computed inside the cached
+    builder and therefore free on a hit. Keying a ``@st.cache_data`` on
+    ``products_json`` instead would make Streamlit hash the whole 11 MB string
+    on every call, trading most of the saving back. A plain dict is enough: the
+    blob is immutable, read-only and shared by every session, so there is
+    nothing to copy out and nothing to protect.
+
+    ``_FN336_DATA_JS_MEMO_MAX`` matches the builder's ``max_entries=4`` — the
+    same handful of recent filter states, and ~1 MB each rather than ~11 MB.
     """
     import base64
     import gzip
@@ -5708,6 +5757,12 @@ def _fn336_inline_products_js(products_json: str) -> str:
     text = str(products_json or "")
     if not text:
         return "window.__DATA__=[];"
+
+    _memo_key = str(products_md5 or "")
+    if _memo_key:
+        _hit = _FN336_DATA_JS_MEMO.get(_memo_key)
+        if _hit is not None:
+            return _hit
 
     # pandas ``to_json`` can emit NaN/Infinity, which JSON.parse rejects.
     try:
@@ -5724,13 +5779,21 @@ def _fn336_inline_products_js(products_json: str) -> str:
             json.loads(cleaned)
             raw = cleaned.encode("utf-8")
         except (TypeError, ValueError, json.JSONDecodeError):
+            # Not valid JSON either way — don't memoize a degraded fallback.
             return f"window.__DATA__={_fn336_safe_script_json(text)};"
 
     try:
         b64 = base64.b64encode(gzip.compress(raw, compresslevel=6)).decode("ascii")
-        return f"window.__DATA_GZ__={json.dumps(b64)};"
+        out = f"window.__DATA_GZ__={json.dumps(b64)};"
     except Exception:
         return f"window.__DATA__={_fn336_safe_script_json(raw.decode('utf-8'))};"
+
+    if _memo_key:
+        # Oldest-first eviction; dicts preserve insertion order.
+        while len(_FN336_DATA_JS_MEMO) >= _FN336_DATA_JS_MEMO_MAX:
+            _FN336_DATA_JS_MEMO.pop(next(iter(_FN336_DATA_JS_MEMO)), None)
+        _FN336_DATA_JS_MEMO[_memo_key] = out
+    return out
 
 
 def _fn336_on_streamlit_cloud() -> bool:
@@ -5998,16 +6061,16 @@ def fn336_render_catalogue_flipcard(
     # Commercial ranges behind an EPD row (aux_09__product_ranges.json): the
     # included-products popup resolves each D__IncludedProducts name against
     # this index and shows the range as a gallery when it finds images.
-    _range_index_json = json.dumps(_fn_product_range_index(), ensure_ascii=False)
+    _range_index_json = _fn_product_range_index_json()
     # Collection-level view of the same file, for the Condensed/Expanded entry
     # toggle: Expanded turns one EPD row into one card per "Collezione".
-    _range_collections_json = json.dumps(_fn_product_range_collections(), ensure_ascii=False)
+    _range_collections_json = _fn_product_range_collections_json()
     _load_pct = 0
     # Inline product rows into the srcdoc (no /app/static or /media fetch — those
     # return SPA HTML on Community Cloud). Gzip+base64 keeps the payload smaller
     # and avoids </script> breakouts from product text; see _fn336_inline_products_js.
     _sj = _fn336_safe_script_json
-    _data_js = _fn336_inline_products_js(products_json)
+    _data_js = _fn336_inline_products_js(products_json, _payload.get("products_md5", ""))
     data_injection = (
         f"<style>{_root_css}</style>\n"
         f"{js2_list_view_col_widths_css()}\n"
@@ -6760,6 +6823,40 @@ def fn356_empty_state(
 def fn357_loading(label: str):
     """The app's single loading indicator (context manager)."""
     return st.spinner(label, show_time=False)
+
+
+def fn357a_loading_progress(load_fn, *, label: str = "Loading catalogue…"):
+    """Run *load_fn(on_pct)* under ``Loading catalogue… N%`` and a 20% white veil.
+
+    *load_fn* must accept a single ``on_pct(percent: int)`` callback and return
+    the loaded frame. Percent updates run on the main script thread so Neon /
+    Streamlit caches keep a valid ScriptRunContext.
+    """
+    st.html(
+        "<style>"
+        ".eetra-load-veil{"
+        "position:fixed;inset:0;background:rgba(255,255,255,0.20);"
+        "z-index:99990;pointer-events:none;}"
+        "div[data-testid='stProgress']{"
+        "position:relative;z-index:99991;"
+        "max-width:28rem;margin:30vh auto 0 auto;}"
+        "div[data-testid='stProgress'] [data-testid='stMarkdownContainer'] p{"
+        "color:#1e293b;font-weight:600;}"
+        "</style>"
+        "<div class='eetra-load-veil' aria-hidden='true'></div>"
+    )
+    bar = st.progress(0, text=f"{label} 0%")
+
+    def _on_pct(percent: int) -> None:
+        p = max(0, min(100, int(percent)))
+        bar.progress(p, text=f"{label} {p}%")
+
+    try:
+        result = load_fn(_on_pct)
+        _on_pct(100)
+        return result
+    finally:
+        bar.empty()
 
 
 def fn358_debug_caption(text: str) -> None:

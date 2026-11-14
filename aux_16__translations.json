@@ -98,22 +98,29 @@
       "R__Rec_Cert_Scheme": "Schema di certificazione riciclato",
       "R__Rec_Cert_Expiry": "Scadenza certificato riciclato",
       "R__Rec_Cert_Plant": "Unità produttiva certificata",
-      "VO__Data_Relevant": "Dati VOC pertinenti",
+      "VO__Data_Relevant": "Il prodotto ha un certificato VOC?",
+      "VO__Has_Test_Cert": "Il prodotto ha un certificato di prova VOC?",
       "VO__VOC_Body": "Ente di prova / certificazione VOC",
       "VO__VOC_Cert": "Certificazione VOC",
       "VO__TestStandard": "Norma di prova VOC",
       "VO__ReportType": "Tipo di rapporto VOC",
-      "VO__VOC_URL": "URL documento VOC",
+      "VO__VOC_URL": "URL evidenza VOC",
       "VO__VOC_Cert_No": "Numero certificato VOC",
       "VO__Exp_Date": "Data di scadenza certificato VOC",
       "VO__TestDate": "Data della prova VOC",
       "VO__IssueDate": "Data di emissione certificato VOC",
+      "VO__LEED_Group": "Categoria LEED del materiale",
+      "VO__LEED_Documents": "Documentazione LEED a supporto",
       "VO__LEED_Pathway": "Percorso LEED basse emissioni",
       "VO__Chk_TVOC": "TVOC dichiarato?",
       "VO__Chk_ISO17025": "Scopo ISO 17025 verificato?",
       "VO__Chk_Scenario": "Scenario richiesto documentato?",
+      "VO__Chk_Lab": "Laboratorio identificato?",
       "VO__Application_Scope": "Ambito di applicazione VOC",
       "VO__Product_Category": "Categoria di prodotto VOC",
+      "VOC Documentation": "Documentazione VOC",
+      "Health declarations": "Dichiarazioni sanitarie",
+      "LEED Low-Emitting Materials": "LEED materiali a basse emissioni",
       "VV__Other": "Altre note",
       "VV__LEED_MR_RawMat": "LEED MR — Materie prime",
       "VV__MSDS__URL": "URL scheda di sicurezza (MSDS)",
@@ -135,7 +142,10 @@
       "PR__Price_Source": "Fonte del prezzo",
       "PR__Price_Date": "Data del listino"
     },
-    "ENG": {}
+    "ENG": {
+      "VO__LEED_Group": "LEED Material Group",
+      "VO__LEED_Documents": "LEED Supporting Documents"
+    }
   },
   "values": {
     "_comment": "Dataset VALUE translations, keyed by the raw column the value comes from, then by the English value exactly as stored. Lookup is exact first, then case-insensitive (libs/lib_i18n.fn708). These are display-only: filtering, grouping and every per-product-type rule still run on the English value. The Product Type map also feeds the derived D__ProductType_ITA column (libs/lib_i18n.fn710), the counterpart of the D__MaterialType_ITA column already in the dataset.",
@@ -798,7 +808,9 @@
       "No product type data available.": "Nessun dato disponibile sulle tipologie di prodotto.",
       "No products in the database yet.": "Nessun prodotto ancora presente nel database.",
       "No products match this selection.": "Nessun prodotto corrisponde a questa selezione.",
-      "Run ingestion and mapping first to see distribution and coverage.": "Esegui prima ingestione e mappatura per vedere distribuzione e copertura."
+      "Run ingestion and mapping first to see distribution and coverage.": "Esegui prima ingestione e mappatura per vedere distribuzione e copertura.",
+      "(not set)": "(non indicata)",
+      "Select a LEED material group first": "Selezionare prima la categoria LEED"
     },
     "ENG": {}
   }
